@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "constellation",
+  "type": "registry:ui",
+  "title": "Constellation",
+  "description": "Connecting-dots constellation loader.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/constellation.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type ConstellationProps = {\r\n  className?: string;\r\n  label?: string;\r\n  nodes?: number;\r\n};\r\n\r\n/**\r\n * Connecting-dots constellation loader for agent / network work.\r\n */\r\nfunction Constellation({\r\n  className,\r\n  label = \"Linking context\",\r\n  nodes = 5,\r\n}: ConstellationProps) {\r\n  const pts = React.useMemo(() => {\r\n    const n = Math.min(8, Math.max(3, nodes));\r\n    return Array.from({ length: n }, (_, i) => {\r\n      const a = (-Math.PI / 2) + (Math.PI * 2 * i) / n;\r\n      return { x: 50 + Math.cos(a) * 32, y: 50 + Math.sin(a) * 32 };\r\n    });\r\n  }, [nodes]);\r\n\r\n  const path = pts\r\n    .map((p, i) => `${i === 0 ? \"M\" : \"L\"} ${p.x} ${p.y}`)\r\n    .join(\" \");\r\n\r\n  return (\r\n    <div className={cn(\"inline-flex flex-col items-center gap-3\", className)}>\r\n      <svg viewBox=\"0 0 100 100\" className=\"size-24 text-primary\">\r\n        <path\r\n          d={`${path} Z`}\r\n          fill=\"none\"\r\n          stroke=\"currentColor\"\r\n          strokeWidth=\"1.2\"\r\n          strokeDasharray=\"48\"\r\n          className=\"animate-[joy-weave_2.2s_ease-in-out_infinite] opacity-70\"\r\n        />\r\n        {pts.map((p, i) => (\r\n          <circle\r\n            key={i}\r\n            cx={p.x}\r\n            cy={p.y}\r\n            r=\"3.2\"\r\n            className=\"fill-primary\"\r\n            style={{\r\n              animation: `joy-pulse-soft 2s ease-in-out ${i * 0.15}s infinite`,\r\n            }}\r\n          />\r\n        ))}\r\n        <circle cx=\"50\" cy=\"50\" r=\"4\" className=\"fill-foreground/80\" />\r\n      </svg>\r\n      <div className=\"text-xs font-medium text-muted-foreground\">{label}</div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { Constellation };\r\n"
+    }
+  ]
+}

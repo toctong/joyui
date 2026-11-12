@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glyph-spark",
+  "type": "registry:ui",
+  "title": "Glyph Spark",
+  "description": "Type-out text with per-glyph sparks.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glyph-spark.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type GlyphSparkProps = {\r\n  text: string;\r\n  className?: string;\r\n  /** Characters per second when auto-playing */\r\n  speed?: number;\r\n  playing?: boolean;\r\n};\r\n\r\n/**\r\n * Type-out display where each revealed glyph emits a tiny spark.\r\n */\r\nfunction GlyphSpark({\r\n  text,\r\n  className,\r\n  speed = 18,\r\n  playing = true,\r\n}: GlyphSparkProps) {\r\n  const [count, setCount] = React.useState(playing ? 0 : text.length);\r\n  const [sparks, setSparks] = React.useState<\r\n    { id: number; i: number; x: number; y: number }[]\r\n  >([]);\r\n\r\n  React.useEffect(() => {\r\n    if (!playing) {\r\n      setCount(text.length);\r\n      return;\r\n    }\r\n    setCount(0);\r\n    const id = window.setInterval(() => {\r\n      setCount((c) => {\r\n        if (c >= text.length) {\r\n          window.clearInterval(id);\r\n          return c;\r\n        }\r\n        const next = c + 1;\r\n        setSparks((s) => [\r\n          ...s.slice(-12),\r\n          {\r\n            id: Date.now() + next,\r\n            i: next - 1,\r\n            x: (Math.random() - 0.5) * 16,\r\n            y: -10 - Math.random() * 12,\r\n          },\r\n        ]);\r\n        return next;\r\n      });\r\n    }, 1000 / speed);\r\n    return () => window.clearInterval(id);\r\n  }, [text, speed, playing]);\r\n\r\n  return (\r\n    <div className={cn(\"relative inline-block font-semibold tracking-tight\", className)}>\r\n      <span className=\"relative\">\r\n        {text.slice(0, count).split(\"\").map((ch, i) => (\r\n          <span key={`${i}-${ch}`} className=\"relative inline-block\">\r\n            {ch === \" \" ? \"\\u00A0\" : ch}\r\n            {sparks\r\n              .filter((s) => s.i === i)\r\n              .map((s) => (\r\n                <span\r\n                  key={s.id}\r\n                  aria-hidden\r\n                  className=\"pointer-events-none absolute left-1/2 top-0 size-1.5 -translate-x-1/2 rounded-full bg-primary animate-[joy-spark_0.55s_ease-out_forwards]\"\r\n                  style={\r\n                    {\r\n                      \"--joy-spark-x\": `${s.x}px`,\r\n                      \"--joy-spark-y\": `${s.y}px`,\r\n                    } as React.CSSProperties\r\n                  }\r\n                />\r\n              ))}\r\n          </span>\r\n        ))}\r\n        {playing && count < text.length ? (\r\n          <span className=\"ml-0.5 inline-block h-[1em] w-[2px] animate-pulse bg-primary align-[-0.1em]\" />\r\n        ) : null}\r\n      </span>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { GlyphSpark };\r\n"
+    }
+  ]
+}

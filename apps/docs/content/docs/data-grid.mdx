@@ -1,0 +1,38 @@
+---
+title: "数据网格"
+description: "可配置 columns / data 的电子表格：编辑、筛选、导出。"
+---
+import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+续约表、库存表等场景共用同一 `DataGrid`：传入 `data`、`columns`、`getRowId`、`onDataChange` 即可，不要复制演示行数据。
+
+<ComponentDocPreview slug="data-grid" />
+
+## 安装
+
+```bash
+npx joyui add data-grid --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 应用场景
+
+销售续约工作台：列定义来自 CRM 字段，行数据来自 API；编辑后经 `onDataChange` 写回。
+
+```tsx
+<DataGrid
+  aria-label="Renewals"
+  data={rows}
+  columns={columns}
+  getRowId={(row) => row.id}
+  onDataChange={setRows}
+  height={520}
+  exportFileName="renewals.csv"
+/>
+```
+
+## API
+
+<DocApiSection slug="data-grid" />

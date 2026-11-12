@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radial-burst",
+  "type": "registry:ui",
+  "title": "Radial Burst",
+  "description": "Press to fan a radial action burst.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/radial-burst.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type RadialBurstAction = {\r\n  id: string;\r\n  label: string;\r\n  onSelect?: () => void;\r\n};\r\n\r\nexport type RadialBurstProps = {\r\n  actions: RadialBurstAction[];\r\n  className?: string;\r\n  label?: string;\r\n};\r\n\r\n/**\r\n * Press-and-hold / click radial burst menu — actions fan out around the hub.\r\n */\r\nfunction RadialBurst({\r\n  actions,\r\n  className,\r\n  label = \"Actions\",\r\n}: RadialBurstProps) {\r\n  const [open, setOpen] = React.useState(false);\r\n  const items = actions.slice(0, 6);\r\n\r\n  return (\r\n    <div className={cn(\"relative grid place-items-center py-10\", className)}>\r\n      {items.map((action, i) => {\r\n        const angle = (-90 + (360 / items.length) * i) * (Math.PI / 180);\r\n        const r = open ? 78 : 0;\r\n        const x = Math.cos(angle) * r;\r\n        const y = Math.sin(angle) * r;\r\n        return (\r\n          <button\r\n            key={action.id}\r\n            type=\"button\"\r\n            onClick={() => {\r\n              action.onSelect?.();\r\n              setOpen(false);\r\n            }}\r\n            className={cn(\r\n              \"absolute z-[1] rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium shadow-[var(--shadow-lift)] transition-all duration-300\",\r\n              open ? \"opacity-100 scale-100\" : \"opacity-0 scale-50 pointer-events-none\",\r\n            )}\r\n            style={{ transform: `translate(${x}px, ${y}px)` }}\r\n          >\r\n            {action.label}\r\n          </button>\r\n        );\r\n      })}\r\n      <button\r\n        type=\"button\"\r\n        aria-expanded={open}\r\n        onClick={() => setOpen((v) => !v)}\r\n        className=\"relative z-[2] inline-flex h-14 w-14 items-center justify-center rounded-full bg-foreground text-xs font-semibold text-background shadow-[var(--shadow-lift)] transition-transform active:scale-95\"\r\n      >\r\n        {open ? \"Close\" : label}\r\n      </button>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { RadialBurst };\r\n"
+    }
+  ]
+}

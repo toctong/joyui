@@ -1,0 +1,31 @@
+---
+title: "RTL 支持"
+description: "DirectionProvider、逻辑样式与阿拉伯语/希伯来语布局。"
+badge: "全新"
+---
+
+JoyUI 组件支持 RTL（阿拉伯语、希伯来语等）。
+
+## 安装 direction
+
+```bash
+npx joyui add direction --yes
+```
+
+## 用法
+
+```tsx
+import { DirectionProvider } from "@/components/foundations/direction/direction";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ar" dir="rtl">
+      <body>
+        <DirectionProvider locale="ar">{children}</DirectionProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+使用逻辑样式（`ps`/`pe`、`ms`/`me`、`start`/`end`）。邮箱、URL、OTP 保持 LTR。

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "format",
+  "type": "registry:lib",
+  "title": "Formatters",
+  "description": "dayjs-based date helpers plus Intl formatters.",
+  "dependencies": [
+    "dayjs"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "lib/format.ts",
+      "type": "registry:lib",
+      "content": "import dayjs from \"dayjs\";\r\nimport customParseFormat from \"dayjs/plugin/customParseFormat.js\";\r\nimport duration from \"dayjs/plugin/duration.js\";\r\nimport localizedFormat from \"dayjs/plugin/localizedFormat.js\";\r\nimport relativeTime from \"dayjs/plugin/relativeTime.js\";\r\nimport timezone from \"dayjs/plugin/timezone.js\";\r\nimport utc from \"dayjs/plugin/utc.js\";\r\nimport \"dayjs/locale/zh-cn.js\";\r\n\r\ndayjs.extend(customParseFormat);\r\ndayjs.extend(duration);\r\ndayjs.extend(localizedFormat);\r\ndayjs.extend(relativeTime);\r\ndayjs.extend(timezone);\r\ndayjs.extend(utc);\r\n\r\nexport type DateInput = string | number | Date | dayjs.Dayjs | null | undefined;\r\n\r\nexport function toDayjs(value: DateInput, locale = \"zh-cn\") {\r\n  return dayjs(value ?? undefined).locale(locale);\r\n}\r\n\r\n/** Format a date. Default pattern mirrors common dashboard tables. */\r\nexport function formatDate(\r\n  value: DateInput,\r\n  pattern = \"YYYY-MM-DD HH:mm\",\r\n  locale = \"zh-cn\",\r\n) {\r\n  const d = toDayjs(value, locale);\r\n  return d.isValid() ? d.format(pattern) : \"\";\r\n}\r\n\r\nexport function fromNow(value: DateInput, locale = \"zh-cn\") {\r\n  const d = toDayjs(value, locale);\r\n  return d.isValid() ? d.fromNow() : \"\";\r\n}\r\n\r\nexport function toNativeDate(value: DateInput) {\r\n  const d = toDayjs(value);\r\n  return d.isValid() ? d.toDate() : undefined;\r\n}\r\n\r\nexport function formatNumber(\r\n  value: number,\r\n  locale = \"zh-CN\",\r\n  options?: Intl.NumberFormatOptions,\r\n) {\r\n  return new Intl.NumberFormat(locale, options).format(value);\r\n}\r\n\r\nexport function formatPercent(\r\n  value: number,\r\n  locale = \"zh-CN\",\r\n  fractionDigits = 1,\r\n) {\r\n  return new Intl.NumberFormat(locale, {\r\n    style: \"percent\",\r\n    maximumFractionDigits: fractionDigits,\r\n  }).format(value);\r\n}\r\n\r\nexport function formatCurrency(\r\n  value: number,\r\n  currency = \"CNY\",\r\n  locale = \"zh-CN\",\r\n) {\r\n  return new Intl.NumberFormat(locale, {\r\n    style: \"currency\",\r\n    currency,\r\n    maximumFractionDigits: 2,\r\n  }).format(value);\r\n}\r\n\r\nexport function formatCompact(value: number, locale = \"zh-CN\") {\r\n  return new Intl.NumberFormat(locale, {\r\n    notation: \"compact\",\r\n    maximumFractionDigits: 1,\r\n  }).format(value);\r\n}\r\n\r\nconst BYTE_UNITS = [\"B\", \"KB\", \"MB\", \"GB\", \"TB\"] as const;\r\n\r\nexport function formatBytes(bytes: number, fractionDigits = 1) {\r\n  if (!Number.isFinite(bytes) || bytes < 0) return \"\";\r\n  if (bytes === 0) return \"0 B\";\r\n  const i = Math.min(\r\n    Math.floor(Math.log(bytes) / Math.log(1024)),\r\n    BYTE_UNITS.length - 1,\r\n  );\r\n  const n = bytes / 1024 ** i;\r\n  return `${n.toFixed(fractionDigits)} ${BYTE_UNITS[i]}`;\r\n}\r\n\r\nexport { dayjs };\r\n"
+    }
+  ]
+}

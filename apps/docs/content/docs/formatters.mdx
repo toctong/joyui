@@ -1,0 +1,49 @@
+---
+title: Formatters
+description: dayjs 与 Intl 格式化工具。
+---
+
+安装：`npx joyui add format --yes`
+
+## 日期
+
+Calendar / DatePicker 仍使用原生 `Date`；展示层统一走 dayjs。
+
+```tsx
+import { formatDate, fromNow, toDayjs, toNativeDate } from "@joyui/react";
+
+formatDate(new Date()); // 2026-11-11 22:00
+fromNow("2026-11-01"); // …前
+toNativeDate(toDayjs("2026-11-11"));
+```
+
+## 数字 / 金额 / 体积
+
+```tsx
+import {
+  formatNumber,
+  formatCurrency,
+  formatPercent,
+  formatCompact,
+  formatBytes,
+} from "@joyui/react";
+
+formatNumber(128400);
+formatCurrency(128400); // ¥128,400.00
+formatPercent(0.148); // 14.8%
+formatCompact(128400); // 12.8万
+formatBytes(1536000);
+```
+
+## Attributes
+
+| 方法 | 说明 | 典型入参 |
+|------|------|----------|
+| `formatDate` | 日期时间格式化 | `value`, `pattern?`, `locale?` |
+| `fromNow` | 相对时间 | `value`, `locale?` |
+| `toDayjs` / `toNativeDate` | dayjs ↔ Date | `value` |
+| `formatNumber` | 本地化数字 | `value`, `options?` |
+| `formatCurrency` | 货币 | `value`, `currency?` |
+| `formatPercent` | 百分比 | `value`（小数） |
+| `formatCompact` | 紧凑数字 | `value` |
+| `formatBytes` | 字节体积 | `value` |

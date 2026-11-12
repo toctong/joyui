@@ -1,0 +1,25 @@
+---
+title: 颜色
+description: JoyUI 语义色 token：文字、表面、边框、状态与图表色。
+---
+
+import { FoundationColorDemo } from "@/components/demos/joyui-showcases";
+
+只使用语义 token，不要用 raw palette（如 `bg-blue-500`）或 hex。
+
+<FoundationColorDemo />
+
+## 常用类名
+
+| 用途 | 类名 |
+|------|------|
+| 主文字 | `text-text-primary` |
+| 次文字 | `text-text-secondary` |
+| 三级文字 | `text-text-tertiary` |
+| 主表面 | `bg-background-primary-default` |
+| 次表面 | `bg-background-secondary-default` |
+| 边框 | `border-border-default` |
+| 分隔 | `border-separator-border` |
+| 图标 | `text-foreground-icon-primary` |
+
+深色模式：给 `<html>` 加 `.dark`，token 自动翻转。

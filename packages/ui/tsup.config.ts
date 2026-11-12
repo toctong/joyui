@@ -1,0 +1,54 @@
+import { defineConfig } from "tsup";
+
+const externals = [
+  "react",
+  "react-dom",
+  "react/jsx-runtime",
+  "react-aria",
+  "react-aria-components",
+  "@internationalized/date",
+  "@remixicon/react",
+  "@tanstack/react-table",
+  "@tanstack/react-virtual",
+  "recharts",
+  "motion",
+  "dayjs",
+  "clsx",
+  "tailwind-merge",
+  "tailwindcss",
+  "@tiptap/react",
+  "@tiptap/starter-kit",
+  "@tiptap/extension-mention",
+  "@tiptap/extension-placeholder",
+  "@tiptap/pm",
+  "@tiptap/suggestion",
+  "tippy.js",
+  "lucide-react",
+  "next",
+  "next/image",
+  "next/link",
+  "next/navigation",
+];
+
+export default defineConfig([
+  {
+    entry: ["src/index.ts"],
+    format: ["esm", "cjs"],
+    dts: true,
+    sourcemap: true,
+    clean: true,
+    treeshake: true,
+    external: externals,
+  },
+  {
+    entry: {
+      "lib/format": "src/lib/format.ts",
+      "lib/utils": "src/lib/utils.ts",
+    },
+    format: ["esm", "cjs"],
+    dts: true,
+    sourcemap: true,
+    clean: false,
+    external: externals,
+  },
+]);

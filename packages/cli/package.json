@@ -1,0 +1,29 @@
+{
+  "name": "joyui",
+  "version": "0.1.0",
+  "description": "JoyUI CLI — init, add components, MCP server, and agent skill",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "joyui": "./dist/index.js"
+  },
+  "files": ["dist", "skill"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "commander": "^14.0.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.32",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

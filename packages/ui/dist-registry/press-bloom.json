@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "press-bloom",
+  "type": "registry:ui",
+  "title": "Press Bloom",
+  "description": "CTA that blooms concentric rings on press.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/press-bloom.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type PressBloomProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {\r\n  label?: string;\r\n};\r\n\r\n/**\r\n * Primary CTA that blooms concentric rings on press — tactile feedback without\r\n * shipping a generic Button primitive API.\r\n */\r\nfunction PressBloom({\r\n  className,\r\n  label = \"Launch\",\r\n  children,\r\n  onPointerDown,\r\n  ...props\r\n}: PressBloomProps) {\r\n  const [blooms, setBlooms] = React.useState<{ id: number; x: number; y: number }[]>(\r\n    [],\r\n  );\r\n\r\n  const handleDown = (e: React.PointerEvent<HTMLButtonElement>) => {\r\n    onPointerDown?.(e);\r\n    const r = e.currentTarget.getBoundingClientRect();\r\n    const id = Date.now();\r\n    setBlooms((prev) => [\r\n      ...prev,\r\n      { id, x: e.clientX - r.left, y: e.clientY - r.top },\r\n    ]);\r\n    window.setTimeout(() => {\r\n      setBlooms((prev) => prev.filter((b) => b.id !== id));\r\n    }, 700);\r\n  };\r\n\r\n  return (\r\n    <button\r\n      type=\"button\"\r\n      onPointerDown={handleDown}\r\n      className={cn(\r\n        \"relative inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition-transform active:scale-[0.97]\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {blooms.map((b) => (\r\n        <span\r\n          key={b.id}\r\n          aria-hidden\r\n          className=\"pointer-events-none absolute size-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary-foreground/50 animate-[joy-bloom_0.7s_cubic-bezier(0.22,1,0.36,1)_forwards]\"\r\n          style={{ left: b.x, top: b.y }}\r\n        />\r\n      ))}\r\n      <span className=\"relative z-[1]\">{children ?? label}</span>\r\n    </button>\r\n  );\r\n}\r\n\r\nexport { PressBloom };\r\n"
+    }
+  ]
+}

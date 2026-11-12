@@ -1,0 +1,109 @@
+---
+title: "关闭按钮"
+description: "圆形 ✕，四种可配置尺寸，用于公告、吐司、模态与抽屉。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  CloseButtonModalHeaderPreview,
+  CloseButtonSizePreview,
+} from "@/components/demos/close-button-docs";
+import { DocsPropsTable } from "@/components/docs-props-table";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+圆形 ✕，用于关闭紧凑表面、公告、吐司、模态框和抽屉。每个尺寸用自己的笔画画字形——`2xs` 为 1.6px，`xs` / `sm` 为 2px，`md` 为 2.5px——权重保持像素真实，而不是缩放同一图标。
+
+通过 `size` 切换款式；下面预览是**同一个** `CloseButton` 的四种配置。
+
+<ComponentDocPreview slug="close-button" />
+
+## 安装
+
+```bash
+npx joyui add close-button --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 尺寸
+
+四种尺寸由 `size` 控制：16、20、24、32 像素。控件没有可见文字，请始终传入 `aria-label`。
+
+<DemoFrame
+  fileName="close-button-sizes.tsx"
+  code={`import { CloseButton } from "@/components/base/buttons/close-button";
+
+<div className="flex items-center gap-6">
+  <CloseButton size="2xs" aria-label="Close" /> {/* 16px · 1.6px stroke */}
+  <CloseButton size="xs" aria-label="Close" />  {/* 20px · 2px stroke */}
+  <CloseButton size="sm" aria-label="Close" />  {/* 24px · 2px stroke */}
+  <CloseButton size="md" aria-label="Close" />  {/* 32px · 2.5px stroke */}
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CloseButtonSizePreview />
+</DemoFrame>
+
+```tsx
+<CloseButton size="2xs" aria-label="Close" /> {/* 16px, 1.6px stroke */}
+<CloseButton size="xs" aria-label="Close" />  {/* 20px, 2px stroke */}
+<CloseButton size="sm" aria-label="Close" />  {/* 24px, 2px stroke */}
+<CloseButton size="md" aria-label="Close" />  {/* 32px, 2.5px stroke */}
+```
+
+## 在模态标题中
+
+<DemoFrame
+  fileName="close-button-modal.tsx"
+  code={`import { CloseButton } from "@/components/base/buttons/close-button";
+
+<header className="flex items-center justify-between p-4">
+  <p className="text-body-medium text-text-primary">模态标题</p>
+  <CloseButton size="md" aria-label="关闭模态框" onClick={onClose} />
+</header>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CloseButtonModalHeaderPreview />
+</DemoFrame>
+
+```tsx
+<header className="flex items-center justify-between p-4">
+  <p className="text-body-medium text-text-primary">模态标题</p>
+  <CloseButton size="md" aria-label="关闭模态框" onClick={onClose} />
+</header>
+```
+
+## API
+
+<DocsPropsTable
+  caption="CloseButton"
+  rows={[
+    {
+      name: "size",
+      description: "点击区域与笔画权重。每种尺寸单独绘制 ✕，避免缩放导致线宽失真。",
+      type: '"2xs" | "xs" | "sm" | "md"',
+      options: "2xs · xs · sm · md",
+      defaultValue: "xs",
+    },
+    {
+      name: "aria-label",
+      description: "无障碍名称（必填）。控件没有可见文字。",
+      type: "string",
+      options: "—",
+      defaultValue: "—",
+    },
+    {
+      name: "className",
+      description: "合并到根按钮上的额外类名。",
+      type: "string",
+      options: "—",
+      defaultValue: "—",
+    },
+    {
+      name: "onClick",
+      description: "点击回调；其余原生 button 属性均可传入。",
+      type: "MouseEventHandler",
+      options: "—",
+      defaultValue: "—",
+    },
+  ]}
+/>

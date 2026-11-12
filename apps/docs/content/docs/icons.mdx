@@ -1,0 +1,23 @@
+---
+title: "图标"
+description: "使用 @remixicon/react 组件引用，配合语义图标色。"
+---
+
+JoyUI 文档站使用 [@remixicon/react](https://remixicon.com/)（3000+ 图标）。
+
+## 规则
+
+- 传**组件引用**，不要渲染元素：`leadingIcon={RiAddLine}`
+- 颜色用语义 token：`text-foreground-icon-primary` … `text-foreground-icon-quaternary`
+- RTL 下导航箭头用 `directional-icon` 工具镜像
+
+## 示例
+
+```tsx
+import { RiAddLine, RiArrowRightLine } from "@remixicon/react";
+import { Button } from "@/components/base/buttons/button";
+
+<Button leadingIcon={RiAddLine} trailingIcon={RiArrowRightLine}>
+  New project
+</Button>
+```

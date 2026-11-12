@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fan-shuffle",
+  "type": "registry:ui",
+  "title": "Fan Shuffle",
+  "description": "Drag a fan of cards to shuffle stack order.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/fan-shuffle.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type FanShuffleCard = {\r\n  id: string;\r\n  title: string;\r\n  subtitle?: string;\r\n};\r\n\r\nexport type FanShuffleProps = {\r\n  cards: FanShuffleCard[];\r\n  className?: string;\r\n  onOrderChange?: (ids: string[]) => void;\r\n};\r\n\r\n/**\r\n * Fan of cards you can drag left/right to shuffle the stack order.\r\n */\r\nfunction FanShuffle({ cards, className, onOrderChange }: FanShuffleProps) {\r\n  const [order, setOrder] = React.useState(cards.map((c) => c.id));\r\n  const dragRef = React.useRef<{ id: string; x: number } | null>(null);\r\n  const [dx, setDx] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    setOrder(cards.map((c) => c.id));\r\n  }, [cards]);\r\n\r\n  const byId = React.useMemo(\r\n    () => Object.fromEntries(cards.map((c) => [c.id, c])),\r\n    [cards],\r\n  );\r\n\r\n  const onPointerDown = (id: string, e: React.PointerEvent) => {\r\n    e.currentTarget.setPointerCapture(e.pointerId);\r\n    dragRef.current = { id, x: e.clientX };\r\n    setDx(0);\r\n  };\r\n\r\n  const onPointerMove = (e: React.PointerEvent) => {\r\n    if (!dragRef.current) return;\r\n    setDx(e.clientX - dragRef.current.x);\r\n  };\r\n\r\n  const onPointerUp = () => {\r\n    if (!dragRef.current) return;\r\n    if (Math.abs(dx) > 48) {\r\n      const next = [...order];\r\n      if (dx > 0) next.push(next.shift()!);\r\n      else next.unshift(next.pop()!);\r\n      setOrder(next);\r\n      onOrderChange?.(next);\r\n    }\r\n    dragRef.current = null;\r\n    setDx(0);\r\n  };\r\n\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative mx-auto h-[200px] w-full max-w-md touch-none select-none\",\r\n        className,\r\n      )}\r\n      onPointerMove={onPointerMove}\r\n      onPointerUp={onPointerUp}\r\n      onPointerCancel={onPointerUp}\r\n    >\r\n      {order.map((id, i) => {\r\n        const card = byId[id];\r\n        if (!card) return null;\r\n        const mid = (order.length - 1) / 2;\r\n        const offset = i - mid;\r\n        const isTop = i === 0;\r\n        return (\r\n          <div\r\n            key={id}\r\n            onPointerDown={(e) => onPointerDown(id, e)}\r\n            className={cn(\r\n              \"absolute left-1/2 top-6 w-[68%] -translate-x-1/2 cursor-grab rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-lift)] active:cursor-grabbing\",\r\n              !isTop && \"pointer-events-none\",\r\n            )}\r\n            style={{\r\n              zIndex: order.length - i,\r\n              transform: `translate(calc(-50% + ${offset * 18 + (isTop ? dx * 0.35 : 0)}px), ${i * 10}px) rotate(${offset * 4 + (isTop ? dx * 0.04 : 0)}deg)`,\r\n              opacity: 1 - i * 0.12,\r\n            }}\r\n          >\r\n            <div className=\"text-sm font-semibold\">{card.title}</div>\r\n            {card.subtitle ? (\r\n              <div className=\"mt-1 text-xs text-muted-foreground\">\r\n                {card.subtitle}\r\n              </div>\r\n            ) : null}\r\n          </div>\r\n        );\r\n      })}\r\n      <p className=\"absolute bottom-2 left-0 right-0 text-center text-[11px] text-muted-foreground\">\r\n        Drag to shuffle\r\n      </p>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { FanShuffle };\r\n"
+    }
+  ]
+}

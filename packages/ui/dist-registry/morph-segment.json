@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morph-segment",
+  "type": "registry:ui",
+  "title": "Morph Segment",
+  "description": "Morphing segmented control with spring pill.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/morph-segment.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type MorphSegmentItem = {\r\n  value: string;\r\n  label: string;\r\n};\r\n\r\nexport type MorphSegmentProps = {\r\n  items: MorphSegmentItem[];\r\n  value?: string;\r\n  defaultValue?: string;\r\n  onValueChange?: (value: string) => void;\r\n  className?: string;\r\n};\r\n\r\n/**\r\n * Morphing segmented control — the pill indicator springs between options.\r\n */\r\nfunction MorphSegment({\r\n  items,\r\n  value,\r\n  defaultValue,\r\n  onValueChange,\r\n  className,\r\n}: MorphSegmentProps) {\r\n  const [internal, setInternal] = React.useState(\r\n    defaultValue ?? items[0]?.value ?? \"\",\r\n  );\r\n  const current = value ?? internal;\r\n  const idx = Math.max(\r\n    0,\r\n    items.findIndex((i) => i.value === current),\r\n  );\r\n  const listRef = React.useRef<HTMLDivElement>(null);\r\n  const [indicator, setIndicator] = React.useState({ left: 0, width: 0 });\r\n\r\n  const measure = React.useCallback(() => {\r\n    const root = listRef.current;\r\n    if (!root) return;\r\n    const btn = root.querySelectorAll(\"button\")[idx] as HTMLButtonElement | undefined;\r\n    if (!btn) return;\r\n    setIndicator({ left: btn.offsetLeft, width: btn.offsetWidth });\r\n  }, [idx]);\r\n\r\n  React.useEffect(() => {\r\n    measure();\r\n    window.addEventListener(\"resize\", measure);\r\n    return () => window.removeEventListener(\"resize\", measure);\r\n  }, [measure, items]);\r\n\r\n  const set = (v: string) => {\r\n    if (value === undefined) setInternal(v);\r\n    onValueChange?.(v);\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={listRef}\r\n      className={cn(\r\n        \"relative inline-flex rounded-full border border-border bg-muted/60 p-1\",\r\n        className,\r\n      )}\r\n      role=\"tablist\"\r\n    >\r\n      <span\r\n        aria-hidden\r\n        className=\"absolute top-1 h-[calc(100%-0.5rem)] rounded-full bg-card shadow-[var(--shadow-soft)] transition-[left,width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]\"\r\n        style={{ left: indicator.left, width: indicator.width }}\r\n      />\r\n      {items.map((item) => {\r\n        const active = item.value === current;\r\n        return (\r\n          <button\r\n            key={item.value}\r\n            type=\"button\"\r\n            role=\"tab\"\r\n            aria-selected={active}\r\n            onClick={() => set(item.value)}\r\n            className={cn(\r\n              \"relative z-[1] rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors\",\r\n              active ? \"text-foreground\" : \"text-muted-foreground\",\r\n            )}\r\n          >\r\n            {item.label}\r\n          </button>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { MorphSegment };\r\n"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "prompt-trail",
+  "type": "registry:ui",
+  "title": "Prompt Trail",
+  "description": "Agent prompt lines with glowing caret wake.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/prompt-trail.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type PromptTrailProps = {\r\n  lines?: string[];\r\n  className?: string;\r\n  /** ms between characters */\r\n  charDelay?: number;\r\n};\r\n\r\n/**\r\n * Agent prompt trail — lines type in with a glowing caret wake.\r\n */\r\nfunction PromptTrail({\r\n  lines = [\r\n    \"Scan monorepo compounds…\",\r\n    \"Compose linked motion blocks…\",\r\n    \"Ship the portal preview.\",\r\n  ],\r\n  className,\r\n  charDelay = 28,\r\n}: PromptTrailProps) {\r\n  const [lineIdx, setLineIdx] = React.useState(0);\r\n  const [chars, setChars] = React.useState(0);\r\n\r\n  React.useEffect(() => {\r\n    const line = lines[lineIdx] ?? \"\";\r\n    if (chars < line.length) {\r\n      const t = window.setTimeout(() => setChars((c) => c + 1), charDelay);\r\n      return () => window.clearTimeout(t);\r\n    }\r\n    const t = window.setTimeout(() => {\r\n      setLineIdx((i) => (i + 1) % lines.length);\r\n      setChars(0);\r\n    }, 1200);\r\n    return () => window.clearTimeout(t);\r\n  }, [chars, lineIdx, lines, charDelay]);\r\n\r\n  const shown = (lines[lineIdx] ?? \"\").slice(0, chars);\r\n\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card px-4 py-3 shadow-[var(--shadow-soft)]\",\r\n        className,\r\n      )}\r\n    >\r\n      <div\r\n        aria-hidden\r\n        className=\"pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary/15 to-transparent\"\r\n        style={{\r\n          transform: `translateX(${Math.min(chars * 7, 220)}px)`,\r\n          transition: \"transform 40ms linear\",\r\n        }}\r\n      />\r\n      <div className=\"relative font-mono text-sm tracking-tight text-foreground\">\r\n        <span className=\"text-muted-foreground\">› </span>\r\n        {shown}\r\n        <span className=\"ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 bg-primary shadow-[0_0_12px_var(--color-primary)]\" />\r\n      </div>\r\n      <div className=\"relative mt-2 flex gap-1\">\r\n        {lines.map((_, i) => (\r\n          <span\r\n            key={i}\r\n            className={cn(\r\n              \"h-1 flex-1 rounded-full\",\r\n              i === lineIdx ? \"bg-primary\" : \"bg-muted\",\r\n            )}\r\n          />\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { PromptTrail };\r\n"
+    }
+  ]
+}

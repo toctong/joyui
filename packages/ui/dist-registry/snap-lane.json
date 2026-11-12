@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "snap-lane",
+  "type": "registry:ui",
+  "title": "Snap Lane",
+  "description": "Horizontal swipe lane with snap and peek.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/snap-lane.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type SnapLaneItem = {\r\n  id: string;\r\n  title: string;\r\n  description?: string;\r\n};\r\n\r\nexport type SnapLaneProps = {\r\n  items: SnapLaneItem[];\r\n  className?: string;\r\n};\r\n\r\n/**\r\n * Horizontal swipe lane with snap points and peek of the next card.\r\n */\r\nfunction SnapLane({ items, className }: SnapLaneProps) {\r\n  const ref = React.useRef<HTMLDivElement>(null);\r\n\r\n  return (\r\n    <div className={cn(\"w-full\", className)}>\r\n      <div\r\n        ref={ref}\r\n        className=\"flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden\"\r\n      >\r\n        {items.map((item, i) => (\r\n          <article\r\n            key={item.id}\r\n            className=\"w-[78%] shrink-0 snap-center rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:w-[56%]\"\r\n            style={{\r\n              backgroundImage: `linear-gradient(145deg, color-mix(in oklch, var(--color-chart-${(i % 5) + 1}) 14%, transparent), transparent 55%)`,\r\n            }}\r\n          >\r\n            <div className=\"text-[11px] font-medium text-muted-foreground\">\r\n              {String(i + 1).padStart(2, \"0\")}\r\n            </div>\r\n            <h3 className=\"mt-2 text-lg font-semibold tracking-tight\">\r\n              {item.title}\r\n            </h3>\r\n            {item.description ? (\r\n              <p className=\"mt-2 text-sm text-muted-foreground\">\r\n                {item.description}\r\n              </p>\r\n            ) : null}\r\n          </article>\r\n        ))}\r\n      </div>\r\n      <p className=\"mt-1 text-center text-[11px] text-muted-foreground\">\r\n        Swipe to snap\r\n      </p>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { SnapLane };\r\n"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+# JoyUI
+
+> React + Tailwind CSS v4 design system for dashboards and agentic UIs.
+> npm: @joyui/react · CLI/MCP: joyui · Registry: @joyui
+
+## Install
+
+- npm: `pnpm add @joyui/react`
+- Registry: `npx shadcn@latest registry add @joyui=https://joyui.dev/r/{name}.json`
+- CLI: `npx joyui@latest init --yes` then `npx joyui@latest add button data-table --yes`
+- MCP: `npx -y joyui@latest mcp`
+- Skill: `npx joyui@latest skill`
+
+## Docs
+
+- [Quick start](https://joyui.dev/docs): Overview and install paths
+- [Installation](https://joyui.dev/docs/installation)
+- [Plugins](https://joyui.dev/docs/plugins)
+- [Formatters](https://joyui.dev/docs/formatters)
+- [MCP](https://joyui.dev/docs/mcp)
+- [Button](https://joyui.dev/docs/button)
+- [Data Table](https://joyui.dev/docs/data-table)
+- [Charts](https://joyui.dev/docs/charts)
+
+## Registry
+
+- Catalog: https://joyui.dev/r/registry.json
+- Item: https://joyui.dev/r/{name}.json
+
+## Agent preference order
+
+1. JoyUI MCP stdio — `npx -y joyui@latest mcp`
+2. shadcn MCP with `@joyui` registry configured
+3. Plain HTTP registry JSON + `joyui add` / `shadcn add`

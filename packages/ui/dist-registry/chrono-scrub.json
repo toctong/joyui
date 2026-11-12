@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chrono-scrub",
+  "type": "registry:ui",
+  "title": "Chrono Scrub",
+  "description": "Scrub an agent timeline of frames.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/chrono-scrub.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type ChronoScrubFrame = {\r\n  id: string;\r\n  title: string;\r\n  detail?: string;\r\n  at: string;\r\n};\r\n\r\nexport type ChronoScrubProps = {\r\n  frames: ChronoScrubFrame[];\r\n  className?: string;\r\n  value?: number;\r\n  defaultValue?: number;\r\n  onValueChange?: (index: number) => void;\r\n};\r\n\r\n/**\r\n * Scrub an agent / activity timeline — sliding updates the active frame story.\r\n */\r\nfunction ChronoScrub({\r\n  frames,\r\n  className,\r\n  value,\r\n  defaultValue = 0,\r\n  onValueChange,\r\n}: ChronoScrubProps) {\r\n  const [internal, setInternal] = React.useState(defaultValue);\r\n  const index = value ?? internal;\r\n  const frame = frames[Math.min(frames.length - 1, Math.max(0, index))];\r\n\r\n  const set = (n: number) => {\r\n    if (value === undefined) setInternal(n);\r\n    onValueChange?.(n);\r\n  };\r\n\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"w-full max-w-lg space-y-3 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)]\",\r\n        className,\r\n      )}\r\n    >\r\n      <div className=\"min-h-[4.5rem]\">\r\n        <div className=\"text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground\">\r\n          {frame?.at}\r\n        </div>\r\n        <div className=\"mt-1 text-lg font-semibold tracking-tight\">\r\n          {frame?.title}\r\n        </div>\r\n        {frame?.detail ? (\r\n          <p className=\"mt-1 text-sm text-muted-foreground\">{frame.detail}</p>\r\n        ) : null}\r\n      </div>\r\n      <input\r\n        type=\"range\"\r\n        min={0}\r\n        max={Math.max(frames.length - 1, 0)}\r\n        step={1}\r\n        value={index}\r\n        onChange={(e) => set(Number(e.target.value))}\r\n        className=\"w-full accent-[var(--color-primary)]\"\r\n        aria-label=\"Scrub timeline\"\r\n      />\r\n      <div className=\"flex justify-between gap-2\">\r\n        {frames.map((f, i) => (\r\n          <button\r\n            key={f.id}\r\n            type=\"button\"\r\n            onClick={() => set(i)}\r\n            className={cn(\r\n              \"h-1.5 flex-1 rounded-full transition-colors\",\r\n              i <= index ? \"bg-primary\" : \"bg-muted\",\r\n            )}\r\n            aria-label={f.title}\r\n          />\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { ChronoScrub };\r\n"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+---
+title: MCP 服务器
+description: 连接 Cursor / VS Code，让智能体浏览并安装 JoyUI 组件。
+---
+
+JoyUI 提供 MCP：一次连接即可浏览全部组件、读取真实用法示例、配置项目并写入源码。
+
+## Cursor / VS Code
+
+```json
+{
+  "mcpServers": {
+    "joyui": {
+      "command": "npx",
+      "args": ["-y", "joyui@latest", "mcp"]
+    }
+  }
+}
+```
+
+## 常用工具
+
+| 工具 | 用途 |
+|------|------|
+| `list_components` | 浏览目录 |
+| `get_component` / `get_usage_examples` | 源码与示例 |
+| `install_components` | 写入源码并安装依赖 |
+| `init_joyui` | 初始化主题与 utils |
+| `install_skill` | 安装智能体技能 |
+
+## 示例提示
+
+> 初始化 JoyUI 并构建带有统计卡和面积图的收入仪表盘。

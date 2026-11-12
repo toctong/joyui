@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utils",
+  "type": "registry:lib",
+  "title": "Utils",
+  "description": "cn/cx class merge helpers.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "type": "registry:lib",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\r\nimport { twMerge } from \"tailwind-merge\";\r\n\r\n/** Merge Tailwind classes the JoyUI way (clsx + tailwind-merge). */\r\nexport function cn(...inputs: ClassValue[]) {\r\n  return twMerge(clsx(inputs));\r\n}\r\n\r\n/** Alias used in agent rules / JoyUI docs. */\r\nexport const cx = cn;\r\n"
+    }
+  ]
+}

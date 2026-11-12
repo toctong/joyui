@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-rim",
+  "type": "registry:ui",
+  "title": "Aurora Rim",
+  "description": "Iridescent aurora rim for working surfaces.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/aurora-rim.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type AuroraRimProps = {\r\n  children: React.ReactNode;\r\n  active?: boolean;\r\n  className?: string;\r\n};\r\n\r\n/**\r\n * Aurora rim wrapper — iridescent orbit for working composers / panels.\r\n */\r\nfunction AuroraRim({ children, active = true, className }: AuroraRimProps) {\r\n  return (\r\n    <div className={cn(\"relative\", className)}>\r\n      <div\r\n        aria-hidden\r\n        className={cn(\r\n          \"pointer-events-none absolute -inset-px overflow-hidden rounded-[inherit] transition-opacity duration-500\",\r\n          active ? \"opacity-100\" : \"opacity-0\",\r\n        )}\r\n        style={{ borderRadius: \"inherit\" }}\r\n      >\r\n        <div\r\n          className={cn(\r\n            \"absolute inset-0 rounded-[1.25rem]\",\r\n            active && \"animate-[joy-aura-spin_3.2s_linear_infinite]\",\r\n          )}\r\n          style={{\r\n            background:\r\n              \"conic-gradient(from 20deg, transparent 0%, color-mix(in oklch, var(--color-primary) 80%, white) 12%, transparent 24%, color-mix(in oklch, var(--color-chart-4) 75%, white) 40%, transparent 52%, color-mix(in oklch, var(--color-chart-2) 70%, white) 68%, transparent 80%, color-mix(in oklch, var(--color-primary) 80%, white) 92%, transparent 100%)\",\r\n            padding: \"1.5px\",\r\n            WebkitMask:\r\n              \"linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)\",\r\n            WebkitMaskComposite: \"xor\",\r\n            maskComposite: \"exclude\",\r\n          }}\r\n        />\r\n      </div>\r\n      {active ? (\r\n        <div\r\n          aria-hidden\r\n          className=\"pointer-events-none absolute inset-3 rounded-[1rem] opacity-35 blur-2xl\"\r\n          style={{\r\n            background:\r\n              \"radial-gradient(ellipse at 25% 35%, color-mix(in oklch, var(--color-primary) 30%, transparent), transparent 55%), radial-gradient(ellipse at 75% 65%, color-mix(in oklch, var(--color-chart-4) 24%, transparent), transparent 50%)\",\r\n          }}\r\n        />\r\n      ) : null}\r\n      <div className=\"relative z-[1]\">{children}</div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { AuroraRim };\r\n"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+---
+title: "选择框"
+description: "可配置标签、尺寸与选项列表的下拉选择。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SelectFilterScenario,
+  SelectSizePreview,
+} from "@/components/demos/select-docs";
+import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+选项通过 `SelectItem` 的 `id` / children 配置；`size`、`label`、`selectedKey` 控制外观与受控状态。
+
+<ComponentDocPreview slug="select" />
+
+## 安装
+
+```bash
+npx joyui add select --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 尺寸
+
+`md`（默认）与 `sm`（表格等紧凑场景）。
+
+<DemoFrame
+  fileName="select-sizes.tsx"
+  code={`import { Select, SelectItem } from "@/components/base/select/select";
+
+<>
+  <Select label="地区" size="md" defaultSelectedKey="eu">
+    <SelectItem id="eu">Europe</SelectItem>
+  </Select>
+  <Select label="地区" size="sm" defaultSelectedKey="na">
+    <SelectItem id="na">North America</SelectItem>
+  </Select>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SelectSizePreview />
+</DemoFrame>
+
+## 应用场景
+
+数据表格工具栏的多过滤器：地区 + 阶段，选项列表由业务数据驱动。
+
+<DemoFrame
+  fileName="select-filters.tsx"
+  code={`import { Select, SelectItem } from "@/components/base/select/select";
+
+<div className="flex gap-3">
+  <Select label="地区" defaultSelectedKey="eu">
+    <SelectItem id="eu">Europe</SelectItem>
+    <SelectItem id="na">North America</SelectItem>
+  </Select>
+  <Select label="阶段">
+    <SelectItem id="discovery">Discovery</SelectItem>
+    <SelectItem id="won">Closed won</SelectItem>
+  </Select>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SelectFilterScenario />
+</DemoFrame>
+
+## API
+
+<DocApiSection slug="select" />

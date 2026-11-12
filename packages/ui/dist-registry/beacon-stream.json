@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beacon-stream",
+  "type": "registry:ui",
+  "title": "Beacon Stream",
+  "description": "Equalizer-style streaming status beacon.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/beacon-stream.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type BeaconStreamProps = {\r\n  className?: string;\r\n  label?: string;\r\n  bars?: number;\r\n};\r\n\r\n/**\r\n * Streaming status beacon — equalizer-style bars for live agent output.\r\n */\r\nfunction BeaconStream({\r\n  className,\r\n  label = \"Streaming\",\r\n  bars = 7,\r\n}: BeaconStreamProps) {\r\n  const count = Math.min(12, Math.max(3, bars));\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"inline-flex items-center gap-3 rounded-full border border-border bg-card px-3 py-2 shadow-[var(--shadow-soft)]\",\r\n        className,\r\n      )}\r\n    >\r\n      <div className=\"flex h-5 items-end gap-0.5\">\r\n        {Array.from({ length: count }, (_, i) => (\r\n          <span\r\n            key={i}\r\n            className=\"w-1 origin-bottom rounded-full bg-primary animate-[joy-beacon_1.8s_ease-in-out_infinite]\"\r\n            style={{\r\n              height: \"100%\",\r\n              animationDelay: `${i * 0.12}s`,\r\n            }}\r\n          />\r\n        ))}\r\n      </div>\r\n      <span className=\"text-xs font-medium text-muted-foreground\">{label}</span>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { BeaconStream };\r\n"
+    }
+  ]
+}

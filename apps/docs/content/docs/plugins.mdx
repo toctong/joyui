@@ -1,0 +1,36 @@
+---
+title: 插件与扩展
+description: JoyUI 以组合组件为主；样式与工具通过 tokens / format / MCP 扩展。
+---
+
+## 样式
+
+所有组合组件依赖同一套语义 token。引入：
+
+```css
+@import "@joyui/react/styles.css";
+```
+
+详见 [Color](/docs/color) 与 [Typography](/docs/typography)。
+
+## 格式化
+
+日期与数字用 `@joyui/react` 的 format 助手（dayjs + Intl）：
+
+```tsx
+import { formatDate, formatCompact } from "@joyui/react";
+
+formatDate(new Date());
+formatCompact(128400);
+```
+
+见 [Formatters](/docs/formatters)。
+
+## AI / MCP
+
+```bash
+npx joyui@latest mcp
+npx joyui@latest skill
+```
+
+Agent 应安装真实组合名（如 `cursor-flare`），而不是手写仿制品。见 [MCP](/docs/mcp)。

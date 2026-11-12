@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "joyui",
+  "homepage": "https://joyui.dev",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "cn/cx class merge helpers.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "format",
+      "type": "registry:lib",
+      "title": "Formatters",
+      "description": "dayjs-based date helpers plus Intl formatters.",
+      "dependencies": [
+        "dayjs"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "lib/format.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

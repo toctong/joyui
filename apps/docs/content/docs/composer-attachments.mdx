@@ -1,0 +1,26 @@
+---
+title: "输入框附件"
+description: "AI 输入栏内的附件卡片：progress 可配置，成功态为黄边 + 100% 徽章。"
+---
+import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+附件列表通过 `attachments` 传入；`progress: 0` 播上传环，到 `100` 显示「上传成功！」并切黄边。文件名、类型、缩略图都是数据项，不是写死 UI。
+
+<ComponentDocPreview slug="composer-attachments" />
+
+## 安装
+
+```bash
+npx joyui add composer-attachments --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 应用场景
+
+智能体对话中拖入合同 / 截图：把上传接口的进度写回 `progress`，完成后由父级把文件 id 交给下一轮 prompt。
+
+## API
+
+<DocApiSection slug="composer-attachments" />

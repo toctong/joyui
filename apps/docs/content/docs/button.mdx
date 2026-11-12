@@ -1,0 +1,104 @@
+---
+title: "按钮"
+description: "主按钮、次按钮、幽灵与危险操作，三档尺寸，图标可配置。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ButtonIconPreview,
+  ButtonSizePreview,
+  ButtonToolbarScenario,
+  ButtonVariantPreview,
+} from "@/components/demos/button-docs";
+import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+主操作、次要、幽灵与危险四种 `variant`，三档 `size`，图标通过 `leadingIcon` / `trailingIcon` 传入组件引用。下方预览是**同一个** `Button` 的不同配置。
+
+<ComponentDocPreview slug="button" />
+
+## 安装
+
+```bash
+npx joyui add button --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 变体
+
+通过 `variant` 切换语义色。
+
+<DemoFrame
+  fileName="button-variants.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+
+<>
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="danger">Danger</Button>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ButtonVariantPreview />
+</DemoFrame>
+
+## 尺寸
+
+`medium`（36px）· `small`（32px）· `xs`（24px）。
+
+<DemoFrame
+  fileName="button-sizes.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+
+<>
+  <Button size="medium">Continue</Button>
+  <Button size="small">Continue</Button>
+  <Button size="xs">Continue</Button>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ButtonSizePreview />
+</DemoFrame>
+
+## 图标
+
+传入 Remix Icon **组件引用**，不要传已渲染的元素。
+
+<DemoFrame
+  fileName="button-icons.tsx"
+  code={`import { RiAddLine, RiArrowRightLine } from "@remixicon/react";
+import { Button } from "@/components/base/buttons/button";
+
+<>
+  <Button leadingIcon={RiAddLine}>New project</Button>
+  <Button trailingIcon={RiArrowRightLine}>Continue</Button>
+  <Button iconOnly leadingIcon={RiAddLine} aria-label="Add" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ButtonIconPreview />
+</DemoFrame>
+
+## 应用场景
+
+表单页脚或卡片工具栏：取消（ghost）+ 次要 + 主操作。
+
+<DemoFrame
+  fileName="button-toolbar.tsx"
+  code={`import { RiArrowRightLine } from "@remixicon/react";
+import { Button } from "@/components/base/buttons/button";
+
+<div className="flex items-center gap-2">
+  <Button variant="ghost" size="small">取消</Button>
+  <Button variant="secondary" size="small">存为模板</Button>
+  <Button size="small" trailingIcon={RiArrowRightLine}>发布</Button>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ButtonToolbarScenario />
+</DemoFrame>
+
+## API
+
+<DocApiSection slug="button" />

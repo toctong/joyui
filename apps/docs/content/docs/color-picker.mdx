@@ -1,0 +1,72 @@
+---
+title: "颜色选择器"
+description: "用眼睛、hex 或预设选择品牌色、标签色或图表系列色。"
+badge: "全新"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  COLOR_PICKER_ALPHA_CODE,
+  COLOR_PICKER_BASIC_CODE,
+  COLOR_PICKER_WELL_CODE,
+  ColorPickerAlphaPreview,
+  ColorPickerBasicPreview,
+  ColorWellScenario,
+} from "@/components/demos/color-picker-docs";
+import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+让用户凭眼睛、用十六进制值或从你的预设中选择品牌色、标签颜色或图表系列颜色。`value` / `onChange` / `swatches` / `showAlpha` 均可配置。
+
+<ComponentDocPreview slug="color-picker" code={COLOR_PICKER_BASIC_CODE} />
+
+## 安装
+
+```bash
+npx joyui add color-picker --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 内联选择器
+
+受控 `ColorPicker`：饱和度场、色相轨、hex 与预设色板。
+
+<DemoFrame
+  fileName="color-picker-basic.tsx"
+  code={COLOR_PICKER_BASIC_CODE}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ColorPickerBasicPreview />
+</DemoFrame>
+
+## 色井弹出
+
+`ColorWell` 是圆形色板，点击后在弹出层打开同一编辑器——适合设置行、标签色。
+
+<DemoFrame
+  fileName="color-picker-well.tsx"
+  code={COLOR_PICKER_WELL_CODE}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ColorWellScenario />
+</DemoFrame>
+
+## 透明度
+
+`showAlpha` 增加不透明度轨（棋盘底）。
+
+<DemoFrame
+  fileName="color-picker-alpha.tsx"
+  code={COLOR_PICKER_ALPHA_CODE}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ColorPickerAlphaPreview />
+</DemoFrame>
+
+## 应用场景
+
+主题定制或标签设置：多行 `ColorWell` 绑定不同业务字段（品牌 / 标签 / 图表系列）。
+
+## API
+
+<DocApiSection slug="color-picker" />

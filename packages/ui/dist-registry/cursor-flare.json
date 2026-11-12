@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-flare",
+  "type": "registry:ui",
+  "title": "Cursor Flare",
+  "description": "Shared cursor spotlight across a KPI grid.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/cursor-flare.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type CursorFlareItem = {\r\n  id: string;\r\n  label: string;\r\n  value: string;\r\n  hint?: string;\r\n};\r\n\r\nexport type CursorFlareProps = {\r\n  items: CursorFlareItem[];\r\n  className?: string;\r\n  headline?: string;\r\n};\r\n\r\n/**\r\n * Shared cursor spotlight across a KPI grid — the flare follows the pointer\r\n * and brightens the tile under it while soft-dimming siblings.\r\n */\r\nfunction CursorFlare({\r\n  items,\r\n  className,\r\n  headline = \"Live surface\",\r\n}: CursorFlareProps) {\r\n  const rootRef = React.useRef<HTMLDivElement>(null);\r\n  const [pos, setPos] = React.useState({ x: 50, y: 40 });\r\n  const [activeId, setActiveId] = React.useState<string | null>(\r\n    items[0]?.id ?? null,\r\n  );\r\n\r\n  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {\r\n    const el = rootRef.current;\r\n    if (!el) return;\r\n    const r = el.getBoundingClientRect();\r\n    setPos({\r\n      x: ((e.clientX - r.left) / r.width) * 100,\r\n      y: ((e.clientY - r.top) / r.height) * 100,\r\n    });\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={rootRef}\r\n      onMouseMove={onMove}\r\n      onMouseLeave={() => setActiveId(items[0]?.id ?? null)}\r\n      className={cn(\r\n        \"relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)] sm:p-5\",\r\n        className,\r\n      )}\r\n    >\r\n      <div\r\n        aria-hidden\r\n        className=\"pointer-events-none absolute inset-0 transition-[background] duration-150\"\r\n        style={{\r\n          background: `radial-gradient(420px circle at ${pos.x}% ${pos.y}%, color-mix(in oklch, var(--color-primary) 18%, transparent), transparent 55%)`,\r\n        }}\r\n      />\r\n      <div className=\"relative mb-3 text-xs font-medium text-muted-foreground\">\r\n        {headline}\r\n      </div>\r\n      <div className=\"relative grid grid-cols-2 gap-2 sm:grid-cols-4\">\r\n        {items.map((item) => {\r\n          const active = activeId === item.id;\r\n          return (\r\n            <button\r\n              key={item.id}\r\n              type=\"button\"\r\n              onMouseEnter={() => setActiveId(item.id)}\r\n              className={cn(\r\n                \"rounded-xl border border-border/70 bg-background/70 p-3 text-left transition-[opacity,transform,box-shadow] duration-200\",\r\n                active\r\n                  ? \"opacity-100 shadow-[var(--shadow-lift)] scale-[1.02]\"\r\n                  : \"opacity-55 hover:opacity-80\",\r\n              )}\r\n            >\r\n              <div className=\"text-[11px] text-muted-foreground\">{item.label}</div>\r\n              <div className=\"mt-1 text-lg font-semibold tabular-nums tracking-tight\">\r\n                {item.value}\r\n              </div>\r\n              {item.hint ? (\r\n                <div className=\"mt-1 text-[11px] text-muted-foreground\">\r\n                  {item.hint}\r\n                </div>\r\n              ) : null}\r\n            </button>\r\n          );\r\n        })}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { CursorFlare };\r\n"
+    }
+  ]
+}

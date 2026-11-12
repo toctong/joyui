@@ -1,0 +1,56 @@
+---
+title: 开始使用
+description: JoyUI 文档站：React + Tailwind v4 高保真组件与模板。
+---
+
+JoyUI 是 React 19 + Tailwind CSS v4 + React Aria 的设计系统文档站，侧栏覆盖**快速入门 / 基础规范 / 基础组件 / 组合组件 / 图表 / 模板**全部条目。
+
+## 三条路径
+
+### A. 整库 npm 安装（推荐）
+
+```bash
+pnpm add @joyui/react react-aria-components @remixicon/react
+```
+
+```css
+@import "tailwindcss";
+@import "@joyui/react/styles.css";
+```
+
+```tsx
+import { Button, DataTable, AdminDashboard } from "@joyui/react";
+```
+
+详见 [安装](/docs/installation)。
+
+### B. MCP（Cursor / VS Code）
+
+```json
+{
+  "mcpServers": {
+    "joyui": {
+      "command": "npx",
+      "args": ["-y", "joyui@latest", "mcp"]
+    }
+  }
+}
+```
+
+然后让 Agent：`list_components` → 优先引导使用 `@joyui/react` 整库安装。
+
+### C. 本仓库预览
+
+```bash
+pnpm install
+pnpm --filter @joyui/docs dev
+```
+
+打开侧栏任一组件页查看实况预览。
+
+## 下一步
+
+- [安装](/docs/installation)
+- [MCP 服务器](/docs/mcp) · [智能体技能](/docs/skill) · [RTL](/docs/rtl)
+- [颜色](/docs/color) · [字体排版](/docs/typography) · [图标](/docs/icons)
+- [按钮](/docs/button) · [数据网格](/docs/data-grid) · [收入图表](/docs/revenue-chart-card)

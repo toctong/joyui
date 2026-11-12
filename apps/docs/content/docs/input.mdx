@@ -1,0 +1,65 @@
+---
+title: "输入框"
+description: "标签、提示、错误态与前置图标均可配置的文本输入。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  InputLoginScenario,
+  InputStatesPreview,
+} from "@/components/demos/input-docs";
+import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+`label` / `hint` / `errorMessage` / `leadingIcon` / `isRequired` / `isDisabled` 均为可配置 props。下方为同一 `Input` 的多种状态。
+
+<ComponentDocPreview slug="input" />
+
+## 安装
+
+```bash
+npx joyui add input --yes
+```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 状态
+
+默认、带提示、必填、错误、禁用——都通过 props 切换，无需另写组件。
+
+<DemoFrame
+  fileName="input-states.tsx"
+  code={`import { RiMailLine } from "@remixicon/react";
+import { Input } from "@/components/base/input/input";
+
+<>
+  <Input label="邮箱" placeholder="you@company.com" leadingIcon={RiMailLine} />
+  <Input label="工号" isRequired hint="用于登录" />
+  <Input label="邮箱" isInvalid errorMessage="请输入有效邮箱" />
+  <Input label="只读" defaultValue="不可编辑" isDisabled />
+</>`}
+  canvasClassName="min-h-40 items-start justify-center bg-background-primary-default p-8"
+>
+  <InputStatesPreview />
+</DemoFrame>
+
+## 应用场景
+
+登录表单：邮箱 + 密码，字段均可替换为业务文案与校验。
+
+<DemoFrame
+  fileName="input-login.tsx"
+  code={`import { RiMailLine } from "@remixicon/react";
+import { Input } from "@/components/base/input/input";
+
+<form className="flex flex-col gap-4">
+  <Input label="邮箱" type="email" leadingIcon={RiMailLine} isRequired />
+  <Input label="密码" type="password" isRequired />
+</form>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <InputLoginScenario />
+</DemoFrame>
+
+## API
+
+<DocApiSection slug="input" />

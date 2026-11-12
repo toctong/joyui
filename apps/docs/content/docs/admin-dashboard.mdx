@@ -1,0 +1,30 @@
+---
+title: "后台管理"
+description: "侧栏导航、KPI、收入/订单图表与数据表组装的后台控制台。"
+badge: "全新"
+---
+
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+用 JoyUI 现有组件拼出的后台管理页：浮动侧栏、顶栏操作、KPI 卡片、收入/订单图表与可筛选数据表。
+
+<ComponentDocPreview slug="admin-dashboard" />
+
+## 安装
+
+模板由下列组件组装，可按需安装源码：
+
+```bash
+npx joyui add sidebar data-table stat-cards revenue-chart-card orders-chart-card notification-center settings-modal --yes
+```
+
+页面入口见本页「代码」选项卡中的 `AdminDashboard`。
+
+## 应用场景
+
+适合运营后台、CRM、订单与内容管理等控制台首页。替换导航项、面包屑与表格数据源即可接入业务。
+
+## API
+
+<DocApiSection slug="admin-dashboard" />

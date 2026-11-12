@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "strict": false,
+    "noUncheckedIndexedAccess": false,
+    "skipLibCheck": true,
+    "paths": {
+      "@joyui/react/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}

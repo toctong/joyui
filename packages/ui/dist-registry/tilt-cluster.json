@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-cluster",
+  "type": "registry:ui",
+  "title": "Tilt Cluster",
+  "description": "Perspective tilt cluster that leans toward the pointer.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tilt-cluster.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type TiltClusterCard = {\r\n  id: string;\r\n  title: string;\r\n  subtitle?: string;\r\n  accent?: string;\r\n};\r\n\r\nexport type TiltClusterProps = {\r\n  cards: TiltClusterCard[];\r\n  className?: string;\r\n};\r\n\r\n/**\r\n * Perspective tilt cluster — the whole stage leans toward the pointer while\r\n * each card keeps a subtle depth offset.\r\n */\r\nfunction TiltCluster({ cards, className }: TiltClusterProps) {\r\n  const ref = React.useRef<HTMLDivElement>(null);\r\n  const [tilt, setTilt] = React.useState({ rx: 0, ry: 0 });\r\n\r\n  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {\r\n    const el = ref.current;\r\n    if (!el) return;\r\n    const r = el.getBoundingClientRect();\r\n    const px = (e.clientX - r.left) / r.width - 0.5;\r\n    const py = (e.clientY - r.top) / r.height - 0.5;\r\n    setTilt({ rx: py * -10, ry: px * 14 });\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      onMouseMove={onMove}\r\n      onMouseLeave={() => setTilt({ rx: 0, ry: 0 })}\r\n      className={cn(\"perspective-[1200px]\", className)}\r\n    >\r\n      <div\r\n        className=\"relative mx-auto grid h-[220px] w-full max-w-md place-items-center transition-transform duration-200 ease-out\"\r\n        style={{\r\n          transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,\r\n          transformStyle: \"preserve-3d\",\r\n        }}\r\n      >\r\n        {cards.slice(0, 3).map((card, i) => (\r\n          <div\r\n            key={card.id}\r\n            className=\"absolute w-[70%] rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-lift)]\"\r\n            style={{\r\n              transform: `translateZ(${40 - i * 28}px) translateY(${i * 18}px) translateX(${(i - 1) * 18}px)`,\r\n              backgroundImage: card.accent\r\n                ? `linear-gradient(160deg, color-mix(in oklch, ${card.accent} 18%, var(--color-card)), var(--color-card))`\r\n                : undefined,\r\n            }}\r\n          >\r\n            <div className=\"text-sm font-semibold tracking-tight\">{card.title}</div>\r\n            {card.subtitle ? (\r\n              <div className=\"mt-1 text-xs text-muted-foreground\">\r\n                {card.subtitle}\r\n              </div>\r\n            ) : null}\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { TiltCluster };\r\n"
+    }
+  ]
+}

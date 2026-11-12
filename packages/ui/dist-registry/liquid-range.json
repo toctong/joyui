@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-range",
+  "type": "registry:ui",
+  "title": "Liquid Range",
+  "description": "Liquid-fill scrubber with blooming track.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/liquid-range.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type LiquidRangeProps = {\r\n  value?: number;\r\n  defaultValue?: number;\r\n  onValueChange?: (value: number) => void;\r\n  min?: number;\r\n  max?: number;\r\n  className?: string;\r\n  label?: string;\r\n};\r\n\r\n/**\r\n * Liquid-fill scrubber — the track blooms as you slide.\r\n */\r\nfunction LiquidRange({\r\n  value,\r\n  defaultValue = 42,\r\n  onValueChange,\r\n  min = 0,\r\n  max = 100,\r\n  className,\r\n  label = \"Intensity\",\r\n}: LiquidRangeProps) {\r\n  const [internal, setInternal] = React.useState(defaultValue);\r\n  const current = value ?? internal;\r\n\r\n  const set = (n: number) => {\r\n    const next = Math.min(max, Math.max(min, n));\r\n    if (value === undefined) setInternal(next);\r\n    onValueChange?.(next);\r\n  };\r\n\r\n  const pct = ((current - min) / (max - min)) * 100;\r\n\r\n  return (\r\n    <div className={cn(\"w-full max-w-md space-y-2\", className)}>\r\n      <div className=\"flex items-center justify-between text-xs\">\r\n        <span className=\"font-medium text-muted-foreground\">{label}</span>\r\n        <span className=\"tabular-nums text-foreground\">{Math.round(current)}</span>\r\n      </div>\r\n      <div className=\"relative h-12 overflow-hidden rounded-full border border-border bg-muted/50\">\r\n        <div\r\n          className=\"absolute inset-y-0 left-0 rounded-full transition-[width] duration-75\"\r\n          style={{\r\n            width: `${pct}%`,\r\n            background:\r\n              \"linear-gradient(90deg, color-mix(in oklch, var(--color-primary) 55%, transparent), color-mix(in oklch, var(--color-chart-4) 70%, var(--color-primary)))\",\r\n            boxShadow:\r\n              \"0 0 24px color-mix(in oklch, var(--color-primary) 35%, transparent)\",\r\n          }}\r\n        />\r\n        <input\r\n          type=\"range\"\r\n          min={min}\r\n          max={max}\r\n          value={current}\r\n          onChange={(e) => set(Number(e.target.value))}\r\n          className=\"absolute inset-0 z-[1] h-full w-full cursor-ew-resize opacity-0\"\r\n          aria-label={label}\r\n        />\r\n        <div\r\n          aria-hidden\r\n          className=\"pointer-events-none absolute top-1/2 size-8 -translate-y-1/2 rounded-full border border-border bg-card shadow-[var(--shadow-lift)] transition-[left] duration-75\"\r\n          style={{ left: `calc(${pct}% - 1rem)` }}\r\n        />\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport { LiquidRange };\r\n"
+    }
+  ]
+}

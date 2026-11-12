@@ -1,0 +1,12 @@
+/**
+ * JoyUI design tokens + typography for Tailwind CSS v4.
+ *
+ * In your app stylesheet:
+ *
+ *   @import "tailwindcss";
+ *   @import "@joyui/react/styles.css";
+ *
+ * Or in JS: import "@joyui/react/styles.css";
+ */
+@import "./theme.css";
+@import "./typography.css";
