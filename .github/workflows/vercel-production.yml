@@ -13,7 +13,6 @@ concurrency:
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  VERCEL_DIR: apps/docs
 
 jobs:
   deploy:
@@ -24,32 +23,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9.15.0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
+      - name: Point Vercel project at apps/docs
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          curl -sS -X PATCH "https://api.vercel.com/v9/projects/${VERCEL_PROJECT_ID}" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d '{"rootDirectory":"apps/docs"}' >/dev/null
+
       - name: Pull Vercel environment
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: ${{ env.VERCEL_DIR }}
 
-      - name: Build
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: ${{ env.VERCEL_DIR }}
-
-      # --archive=tgz avoids pnpm symlink holes that break plain --prebuilt deploys
+      # Remote build (no --prebuilt): avoids pnpm symlink holes in GHA packaging
       - name: Deploy production
         run: |
-          url=$(vercel deploy --prebuilt --archive=tgz --prod --token=${{ secrets.VERCEL_TOKEN }})
+          url=$(vercel deploy --yes --prod --token=${{ secrets.VERCEL_TOKEN }})
           echo "### Vercel Production" >> "$GITHUB_STEP_SUMMARY"
           echo "$url" >> "$GITHUB_STEP_SUMMARY"
-        working-directory: ${{ env.VERCEL_DIR }}
