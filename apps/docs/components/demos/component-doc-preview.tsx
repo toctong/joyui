@@ -75,30 +75,35 @@ export function ProComponentDoc({
 }) {
   // Prefer the generated preview when the component is vendored locally so
   //「预览」and「代码」stay on the same snippet (charts, composer, …).
-  const Preview = GENERATED_DOC_PREVIEWS[slug];
+  const hasPreview = Object.hasOwn(GENERATED_DOC_PREVIEWS, slug);
+  const Preview = hasPreview ? GENERATED_DOC_PREVIEWS[slug] : undefined;
   const demoCode =
     getComponentDocCode(slug) ??
     getProDocCode(slug, name) ??
     getFallbackDocCode(slug, name);
 
+  if (!Preview) {
+    return (
+      <DemoFrame
+        code={demoCode}
+        fileName={`${slug}-demo.tsx`}
+        canvasClassName="relative min-h-40 items-center justify-center bg-background-full p-0 sm:p-0"
+      >
+        <div className="relative flex min-h-40 w-full min-w-0 items-center justify-center overflow-x-clip bg-background-full p-6">
+          <JoyProPreview slug={slug} name={name} />
+        </div>
+      </DemoFrame>
+    );
+  }
+
   return (
     <DemoFrame
       code={demoCode}
       fileName={`${slug}-demo.tsx`}
-      canvasClassName={cx(
-        "relative items-center justify-center p-0 sm:p-0",
-        Preview ? undefined : "min-h-40 bg-background-full",
-      )}
+      canvasClassName="relative items-center justify-center p-0 sm:p-0"
     >
-      <div
-        className={cx(
-          "relative flex w-full min-w-0 items-center justify-center overflow-x-clip p-6",
-          Preview
-            ? "bg-background-primary-default"
-            : "min-h-40 bg-background-full",
-        )}
-      >
-        {Preview ? <Preview /> : <JoyProPreview slug={slug} name={name} />}
+      <div className="relative flex w-full min-w-0 items-center justify-center overflow-x-clip bg-background-primary-default p-6">
+        <Preview />
       </div>
     </DemoFrame>
   );

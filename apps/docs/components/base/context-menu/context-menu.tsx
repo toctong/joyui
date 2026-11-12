@@ -91,7 +91,8 @@ const TriggerContext = createContext<TriggerState | null>(null);
 /** The root menu's id, action handler and close, for the menus in its submenus. */
 const RootMenuContext = createContext<{
   id: string;
-  onAction?: (key: Key, ...args: unknown[]) => void;
+  // Menu item payloads vary by menu; keep this loose for nested menus.
+  onAction?: (key: Key, ...args: any[]) => void;
   close: () => void;
 } | null>(null);
 

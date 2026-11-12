@@ -127,7 +127,7 @@ const codes = {
     'import { Chip } from "@/components/base/badges/chip";',
     `<div className="flex gap-2">
   <Chip>默认</Chip>
-  <Chip color="green">成功</Chip>
+  <Chip color="lime">成功</Chip>
 </div>`,
   ),
   "close-button": wrap(
@@ -185,7 +185,7 @@ export function Example() {
   ),
   "date-picker": wrap(
     'import { DatePicker } from "@/components/base/date-picker/date-picker";',
-    `<DatePicker label="开始日期" />`,
+    `<DatePicker aria-label="开始日期" />`,
   ),
   divider: wrap(
     'import { Divider } from "@/components/base/divider/divider";',
@@ -205,9 +205,9 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/ba
     'import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";',
     `<Dropdown>
   <DropdownTrigger>菜单</DropdownTrigger>
-  <DropdownPopover>
-    <DropdownItem id="a">选项 A</DropdownItem>
-    <DropdownItem id="b">选项 B</DropdownItem>
+  <DropdownPopover aria-label="菜单选项">
+    <DropdownItem>选项 A</DropdownItem>
+    <DropdownItem>选项 B</DropdownItem>
   </DropdownPopover>
 </Dropdown>`,
   ),
@@ -231,7 +231,7 @@ import { Input } from "@/components/base/input/input";
 />`,
   "input-otp": wrap(
     'import { InputOtp } from "@/components/base/input-otp/input-otp";',
-    `<InputOtp aria-label="验证码" maxLength={6} />`,
+    `<InputOtp aria-label="验证码" length={6} />`,
   ),
   kbd: wrap(
     'import { Kbd } from "@/components/base/kbd/kbd";',
@@ -296,7 +296,7 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
   ),
   radio: wrap(
     'import { Radio, RadioGroup } from "@/components/base/radio/radio";',
-    `<RadioGroup label="计划" defaultValue="pro">
+    `<RadioGroup aria-label="计划" defaultValue="pro">
   <Radio value="free">Free</Radio>
   <Radio value="pro">Pro</Radio>
 </RadioGroup>`,

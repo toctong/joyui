@@ -213,7 +213,7 @@ function Preview_chip() {
   return (
     <div className="flex gap-2">
       <Chip>默认</Chip>
-      <Chip color="green">成功</Chip>
+      <Chip color="lime">成功</Chip>
     </div>
   );
 }
@@ -336,7 +336,7 @@ function Preview_date_calendar() {
 
 function Preview_date_picker() {
   return (
-    <DatePicker label="开始日期" />
+    <DatePicker aria-label="开始日期" />
   );
 }
 
@@ -362,9 +362,9 @@ function Preview_dropdown() {
   return (
     <Dropdown>
       <DropdownTrigger>菜单</DropdownTrigger>
-      <DropdownPopover>
-        <DropdownItem id="a">选项 A</DropdownItem>
-        <DropdownItem id="b">选项 B</DropdownItem>
+      <DropdownPopover aria-label="菜单选项">
+        <DropdownItem>选项 A</DropdownItem>
+        <DropdownItem>选项 B</DropdownItem>
       </DropdownPopover>
     </Dropdown>
   );
@@ -414,7 +414,7 @@ function Preview_input() {
 
 function Preview_input_otp() {
   return (
-    <InputOtp aria-label="验证码" maxLength={6} />
+    <InputOtp aria-label="验证码" length={6} />
   );
 }
 
@@ -531,7 +531,7 @@ function Preview_radial_chart_card() {
 
 function Preview_radio() {
   return (
-    <RadioGroup label="计划" defaultValue="pro">
+    <RadioGroup aria-label="计划" defaultValue="pro">
       <Radio value="free">Free</Radio>
       <Radio value="pro">Pro</Radio>
     </RadioGroup>

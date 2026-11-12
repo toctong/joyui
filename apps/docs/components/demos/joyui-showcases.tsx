@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { RiAddLine, RiArrowRightLine } from "@remixicon/react";
-import { Button } from "@/components/base/buttons/button";
+import { Button, ButtonLink } from "@/components/base/buttons/button";
 import { Input } from "@/components/base/input/input";
 import { Checkbox } from "@/components/base/checkbox/checkbox";
 import { Switch } from "@/components/base/switch/switch";
@@ -206,12 +206,12 @@ export function TemplatesShowcase() {
         </div>
       </div>
       <div className="flex flex-wrap gap-3">
-        <Button trailingIcon={RiArrowRightLine} href="/docs/admin-dashboard">
+        <ButtonLink trailingIcon={RiArrowRightLine} href="/docs/admin-dashboard">
           查看后台管理
-        </Button>
-        <Button variant="secondary" href="/docs/templates">
+        </ButtonLink>
+        <ButtonLink variant="secondary" href="/docs/templates">
           模板总览
-        </Button>
+        </ButtonLink>
       </div>
     </Frame>
   );
