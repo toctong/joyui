@@ -5,7 +5,7 @@
 | Package | Role |
 |---------|------|
 | `@joyui/react` | 整库组件 / utils / format / tokens |
-| `joyui` CLI | init / add（可选源码拷贝）/ mcp |
+| `@joyui/cli` | init / add（可选源码拷贝）/ mcp |
 | `apps/docs` | Fumadocs + JoyUI 组件演示 |
 
 ## 业务项目安装

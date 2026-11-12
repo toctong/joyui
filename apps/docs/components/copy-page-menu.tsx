@@ -52,14 +52,14 @@ export function Example() {
 }
 
 function buildInstallCommand(component: string) {
-  return `npx joyui add ${component} --yes`;
+  return `npx @joyui/cli add ${component} --yes`;
 }
 
 const MCP_JSON = `{
   "mcpServers": {
     "joyui": {
       "command": "npx",
-      "args": ["-y", "joyui@latest", "mcp"]
+      "args": ["-y", "@joyui/cli@latest", "mcp"]
     }
   }
 }`;

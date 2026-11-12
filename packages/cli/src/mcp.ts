@@ -85,7 +85,7 @@ export async function startMcpServer() {
             text: JSON.stringify(
               {
                 ...item,
-                install: `npx joyui@latest add ${item.name} --yes`,
+                install: `npx @joyui/cli@latest add ${item.name} --yes`,
                 shadcn: `npx shadcn@latest add @joyui/${item.name}`,
                 registryUrl: resolveRegistryUrl(item.name),
                 usage:
@@ -137,7 +137,7 @@ export async function startMcpServer() {
           isError: true,
         };
       }
-      const cmd = `${runner(packageManager)} joyui@latest add ${names.join(" ")} --yes`;
+      const cmd = `${runner(packageManager)} @joyui/cli@latest add ${names.join(" ")} --yes`;
       return {
         content: [
           {
@@ -165,7 +165,7 @@ export async function startMcpServer() {
       content: [
         {
           type: "text",
-          text: `npx joyui@latest init${yes ? " --yes" : ""}\n\nThis writes tokens CSS, utils, AGENTS.md rules, and .cursor/rules/joyui.mdc.`,
+          text: `npx @joyui/cli@latest init${yes ? " --yes" : ""}\n\nThis writes tokens CSS, utils, AGENTS.md rules, and .cursor/rules/joyui.mdc.`,
         },
       ],
     }),
@@ -179,7 +179,7 @@ export async function startMcpServer() {
       content: [
         {
           type: "text",
-          text: "npx joyui@latest init --yes\n# or re-run rules only:\nnpx joyui@latest skill --force",
+          text: "npx @joyui/cli@latest init --yes\n# or re-run rules only:\nnpx @joyui/cli@latest skill --force",
         },
       ],
     }),
@@ -195,7 +195,7 @@ export async function startMcpServer() {
           type: "text",
           text: [
             "JoyUI Agent Skill (SKILL.md open standard) gives always-loaded catalog + design rules.",
-            "Install: npx joyui@latest skill",
+            "Install: npx @joyui/cli@latest skill",
             "Flags: --global (~/.claude/skills), --client codex (~/.agents/skills), --path <dir>, --force",
             "Restart the agent session after installing.",
           ].join("\n"),
@@ -222,7 +222,7 @@ export async function startMcpServer() {
         content: [
           {
             type: "text",
-            text: `npx joyui@latest skill ${flags}`.trim(),
+            text: `npx @joyui/cli@latest skill ${flags}`.trim(),
           },
         ],
       };

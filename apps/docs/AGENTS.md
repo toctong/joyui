@@ -16,7 +16,7 @@ This project uses JoyUI (React + Tailwind CSS v4, source-owned components under 
 ## Components first
 
 - Before hand-building any UI element, check for an installed JoyUI component under `components/base/` and `components/application/`, and prefer it.
-- Missing a component? Install it (JoyUI MCP `install_components`, or `npx joyui@latest add <name>`) instead of writing a lookalike.
+- Missing a component? Install it (JoyUI MCP `install_components`, or `npx @joyui/cli@latest add <name>`) instead of writing a lookalike.
 - Import through the `@/` alias, e.g. `import { Button } from "@/components/base/buttons/button"`.
 
 ## Color: semantic tokens only

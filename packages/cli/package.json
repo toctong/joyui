@@ -1,5 +1,5 @@
 {
-  "name": "joyui",
+  "name": "@joyui/cli",
   "version": "0.1.0",
   "description": "JoyUI CLI — init, add components, MCP server, and agent skill",
   "license": "MIT",

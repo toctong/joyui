@@ -226,7 +226,7 @@ function componentMdx(entry) {
 
   if (sections.includes("安装")) {
     body += `## 安装\n\n`;
-    body += `\`\`\`bash\nnpx joyui@latest add ${install} --yes\n\`\`\`\n\n`;
+    body += `\`\`\`bash\nnpx @joyui/cli@latest add ${install} --yes\n\`\`\`\n\n`;
     body += `或通过 JoyUI MCP：\`install_components\` → \`${install}\`。\n\n`;
   }
 
@@ -261,10 +261,10 @@ JoyUI 提供标准 Agent Skill（\`SKILL.md\`），覆盖完整组件目录、�
 ## 安装
 
 \`\`\`bash
-npx joyui@latest skill
+npx @joyui/cli@latest skill
 \`\`\`
 
-全局：\`npx joyui@latest skill --global\`  
+全局：\`npx @joyui/cli@latest skill --global\`  
 其他客户端：\`--client codex\` 或 \`--path <dir>\`
 
 也可通过 MCP：\`install_skill\`。
@@ -288,7 +288,7 @@ JoyUI 免费与 Pro 源码均支持 RTL。
 ## 安装 direction
 
 \`\`\`bash
-npx joyui@latest add direction --yes
+npx @joyui/cli@latest add direction --yes
 \`\`\`
 
 ## 用法
@@ -409,7 +409,7 @@ description: "基础 · 组合 · 图表 · 模板分区总览。"
 | 图表 | ${charts.length} |
 | 模板 | ${templates.length} |
 
-安装一律使用精确名称：\`npx joyui@latest add <name> --yes\`，或通过 JoyUI MCP。
+安装一律使用精确名称：\`npx @joyui/cli@latest add <name> --yes\`，或通过 JoyUI MCP。
 `;
   fs.writeFileSync(path.join(docsDir, "components.mdx"), overview);
 

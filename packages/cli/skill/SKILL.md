@@ -18,9 +18,9 @@ agent loaders. It does **not** ship Button/Input/Dialog primitives.
 
 ## Workflow
 
-1. **Detect** — If there is no JoyUI utils/tokens, run `npx joyui@latest init --yes`.
-2. **Discover** — Exact names in [references/components.md](references/components.md) or `npx joyui list`.
-3. **Install** — `npx joyui@latest add <name> --yes` (keep `--yes` for non-interactive agents).
+1. **Detect** — If there is no JoyUI utils/tokens, run `npx @joyui/cli@latest init --yes`.
+2. **Discover** — Exact names in [references/components.md](references/components.md) or `npx @joyui/cli list`.
+3. **Install** — `npx @joyui/cli@latest add <name> --yes` (keep `--yes` for non-interactive agents).
 4. **Compose** — Import from `@/components/ui/...` or `@joyui/react`.
 5. **Verify** — Semantic tokens only; cn/cx; no hex; dark via `.dark`.
 
@@ -35,6 +35,6 @@ agent loaders. It does **not** ship Button/Input/Dialog primitives.
 
 ## Going deeper
 
-- MCP: `npx -y joyui@latest mcp`
+- MCP: `npx -y @joyui/cli@latest mcp`
 - Registry: configure `@joyui` → `https://joyui.dev/r/{name}.json`
 - Theme notes: [references/theming.md](references/theming.md)

@@ -8,7 +8,7 @@ for (const f of fs.readdirSync(dir)) {
   let s = fs.readFileSync(p, "utf8");
   const next = s
     .replace(/\n## 预览\n\n/g, "\n")
-    .replace(/npx joyui@latest add/g, "npx joyui add")
+    .replace(/npx @joyui/cli@latest add/g, "npx @joyui/cli add")
     .replace(
       /或通过 JoyUI MCP：`install_components` → `[^`]+`。/g,
       "或通过 JoyUI MCP / CLI 安装。",

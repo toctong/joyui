@@ -3,7 +3,7 @@
 ## Packages
 
 - `packages/ui` → npm `@joyui/react`（整库组件 / utils / format / tokens）
-- `packages/cli` → npm `joyui`（init / add / mcp）
+- `packages/cli` → npm `@joyui/cli`（init / add / mcp）
 - `apps/docs` → Fumadocs 文档站（演示 JoyUI 组件）
 
 ## Product focus
@@ -39,7 +39,7 @@ import "@joyui/react/styles.css";
 import { Button, DataTable } from "@joyui/react";
 ```
 
-CLI `npx joyui add <name>` 仅在需要把源码拷进业务仓库时使用。
+CLI `npx @joyui/cli add <name>` 仅在需要把源码拷进业务仓库时使用。
 
 ## Build
 

@@ -110,7 +110,7 @@ export function BaseComponentsShowcase() {
         </SegmentedControl>
         <Accordion>
           <AccordionItem id="install" title="How do I install components?">
-            Use JoyUI CLI or MCP: npx joyui@latest add button — source lands
+            Use JoyUI CLI or MCP: npx @joyui/cli@latest add button — source lands
             in your repo.
           </AccordionItem>
           <AccordionItem id="tokens" title="How do tokens work?">

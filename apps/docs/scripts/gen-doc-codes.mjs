@@ -503,21 +503,21 @@ export function Example() {
   return <Calendar />;
 }
 
-// 安装: npx joyui add calendar --yes`,
+// 安装: npx @joyui/cli add calendar --yes`,
   questionnaire: `import { Questionnaire } from "@joyui/react";
 
 export function Example() {
   return <Questionnaire />;
 }
 
-// 安装: npx joyui add questionnaire --yes`,
+// 安装: npx @joyui/cli add questionnaire --yes`,
   "task-list": `import { TaskList } from "@joyui/react";
 
 export function Example() {
   return <TaskList />;
 }
 
-// 安装: npx joyui add task-list --yes`,
+// 安装: npx @joyui/cli add task-list --yes`,
   "admin-dashboard": wrap(
     'import { AdminDashboard } from "@/components/application/admin/admin-dashboard";',
     `<div className="h-[720px] w-full overflow-hidden rounded-2xl border border-separator-border">
@@ -676,7 +676,7 @@ export function Example() {
   return <\${exportName} />;
 }
 
-// 安装: npx joyui add \${slug} --yes\${name ? \`\\n// \${name}\` : ""}\`;
+// 安装: npx @joyui/cli add \${slug} --yes\${name ? \`\\n// \${name}\` : ""}\`;
 }
 `);
 

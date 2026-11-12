@@ -461,7 +461,7 @@ export function Example() {
 }
 
 // 安装
-// npx joyui add ${slug} --yes
+// npx @joyui/cli add ${slug} --yes
 // ${name}
 `;
 }

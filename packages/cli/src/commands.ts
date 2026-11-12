@@ -129,7 +129,7 @@ async function appendAgents(cwd: string) {
 
 const AGENTS_SNIPPET = `Use JoyUI components instead of hand-built lookalikes.
 Prefer \`pnpm add @joyui/react\` and \`import { Button } from "@joyui/react"\` (whole library).
-Optional source copy: \`npx joyui@latest add <name> --yes\`.
+Optional source copy: \`npx @joyui/cli@latest add <name> --yes\`.
 Style with semantic tokens only (\`bg-background-primary-default\`, \`text-text-primary\`, \`border-border-*\`, …).
 Merge classes with \`cn\`/\`cx\`. Dark mode uses the \`.dark\` class — no raw \`dark:\` palette overrides.`;
 
@@ -142,7 +142,7 @@ alwaysApply: true
 # JoyUI rules
 
 - Prefer \`pnpm add @joyui/react\` and import from \`@joyui/react\` over reinventing UI.
-- Optional source copy: \`npx joyui add <name> --yes\`.
+- Optional source copy: \`npx @joyui/cli add <name> --yes\`.
 - Use semantic tokens: text-text-primary, bg-background-*-default, border-border-*.
 - Merge classes with cn()/cx() from @joyui/react.
 - Dark mode via .dark class; do not hardcode hex colors.

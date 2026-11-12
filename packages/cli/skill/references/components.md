@@ -6,7 +6,7 @@ Docs app demonstrates JoyUI sources under `apps/docs`. Prefer the JoyUI CLI/MCP 
 
 | Section | Route | Install examples |
 |---------|-------|------------------|
-| 快速入门 | `/docs` | `npx joyui@latest init` |
+| 快速入门 | `/docs` | `npx @joyui/cli@latest init` |
 | 基础规范 | `/docs/color` `/docs/typography` | theme · typography · globals |
 | 基础组件 | `/docs/base` | `button` `input` `select` `modal` … |
 | 组合组件 | `/docs/compounds` | `composer-loader` `auth-card` … |
@@ -17,5 +17,5 @@ Docs app demonstrates JoyUI sources under `apps/docs`. Prefer the JoyUI CLI/MCP 
 
 | Name | Layer | Install |
 |------|-------|---------|
-| utils | lib | `npx joyui add utils --yes` |
-| format | lib | `npx joyui add format --yes` |
+| utils | lib | `npx @joyui/cli add utils --yes` |
+| format | lib | `npx @joyui/cli add format --yes` |

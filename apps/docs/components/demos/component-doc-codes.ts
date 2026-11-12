@@ -14,7 +14,7 @@ export const COMPONENT_DOC_CODES: Record<string, string> = {
   "breadcrumb": "import { Breadcrumb, BreadcrumbItem } from \"@/components/base/breadcrumb/breadcrumb\";\n\n<Breadcrumb>\n  <BreadcrumbItem href=\"/\">首页</BreadcrumbItem>\n  <BreadcrumbItem href=\"/docs\">文档</BreadcrumbItem>\n  <BreadcrumbItem>按钮</BreadcrumbItem>\n</Breadcrumb>",
   "button": "import { Button } from \"@/components/base/buttons/button\";\n\n<div className=\"flex items-center gap-3\">\n  <Button variant=\"primary\">Primary</Button>\n  <Button variant=\"secondary\">Secondary</Button>\n  <Button variant=\"ghost\">Ghost</Button>\n  <Button variant=\"danger\">Danger</Button>\n</div>",
   "button-group": "import { ButtonGroup, ButtonGroupItem } from \"@/components/base/buttons/button-group\";\n\n<ButtonGroup aria-label=\"对齐\">\n  <ButtonGroupItem id=\"left\">左</ButtonGroupItem>\n  <ButtonGroupItem id=\"center\" selected>\n    中\n  </ButtonGroupItem>\n  <ButtonGroupItem id=\"right\">右</ButtonGroupItem>\n</ButtonGroup>",
-  "calendar": "import { Calendar } from \"@joyui/react\";\n\nexport function Example() {\n  return <Calendar />;\n}\n\n// 安装: npx joyui add calendar --yes",
+  "calendar": "import { Calendar } from \"@joyui/react\";\n\nexport function Example() {\n  return <Calendar />;\n}\n\n// 安装: npx @joyui/cli add calendar --yes",
   "carousel": "import { Carousel, CarouselItem } from \"@/components/base/carousel/carousel\";\n\n<Carousel aria-label=\"图库\">\n  <CarouselItem>一</CarouselItem>\n  <CarouselItem>二</CarouselItem>\n  <CarouselItem>三</CarouselItem>\n</Carousel>",
   "checkbox": "import { Checkbox } from \"@/components/base/checkbox/checkbox\";\n\n<Checkbox defaultSelected>通知我智能体运行结果</Checkbox>",
   "chip": "import { Chip } from \"@/components/base/badges/chip\";\n\n<div className=\"flex gap-2\">\n  <Chip>默认</Chip>\n  <Chip color=\"green\">成功</Chip>\n</div>",
@@ -56,7 +56,7 @@ export const COMPONENT_DOC_CODES: Record<string, string> = {
   "pagination": "import { useState } from \"react\";\nimport { Pagination } from \"@/components/base/pagination/pagination\";\n\nexport function Example() {\n  const [page, setPage] = useState(2);\n  return (\n    <Pagination page={page} totalPages={12} onChange={setPage} />\n  );\n}",
   "popover": "import { Button } from \"@/components/base/buttons/button\";\nimport { Popover, PopoverTrigger } from \"@/components/base/popover/popover\";\n\n<PopoverTrigger>\n  <Button>打开</Button>\n  <Popover>弹出内容</Popover>\n</PopoverTrigger>",
   "progress": "import { ProgressBar } from \"@/components/base/progress/progress\";\n\n<ProgressBar label=\"上传中\" value={64} />",
-  "questionnaire": "import { Questionnaire } from \"@joyui/react\";\n\nexport function Example() {\n  return <Questionnaire />;\n}\n\n// 安装: npx joyui add questionnaire --yes",
+  "questionnaire": "import { Questionnaire } from \"@joyui/react\";\n\nexport function Example() {\n  return <Questionnaire />;\n}\n\n// 安装: npx @joyui/cli add questionnaire --yes",
   "radar-chart-card": "import { RadarChartCard } from \"@/components/application/dashboard/radar-chart-card\";\n\n<RadarChartCard />",
   "radial-chart-card": "import { RadialChartCard } from \"@/components/application/dashboard/radial-chart-card\";\n\n<RadialChartCard />",
   "radio": "import { Radio, RadioGroup } from \"@/components/base/radio/radio\";\n\n<RadioGroup label=\"计划\" defaultValue=\"pro\">\n  <Radio value=\"free\">Free</Radio>\n  <Radio value=\"pro\">Pro</Radio>\n</RadioGroup>",
@@ -80,7 +80,7 @@ export const COMPONENT_DOC_CODES: Record<string, string> = {
   "table": "import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from \"@/components/base/table/table\";\n\n<Table aria-label=\"客户\">\n  <TableHeader>\n    <TableColumn isRowHeader>名称</TableColumn>\n    <TableColumn>状态</TableColumn>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell>Acme</TableCell>\n      <TableCell>活跃</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>",
   "tabs": "import { Tab, TabList, Tabs } from \"@/components/base/tabs/tabs\";\n\n<Tabs>\n  <TabList aria-label=\"分区\">\n    <Tab id=\"general\">通用</Tab>\n    <Tab id=\"billing\">账单</Tab>\n  </TabList>\n</Tabs>",
   "tag-group": "import { Tag, TagGroup } from \"@/components/base/tag-group/tag-group\";\n\n<TagGroup aria-label=\"标签\" selectionMode=\"multiple\">\n  <Tag id=\"design\">设计</Tag>\n  <Tag id=\"eng\">工程</Tag>\n</TagGroup>",
-  "task-list": "import { TaskList } from \"@joyui/react\";\n\nexport function Example() {\n  return <TaskList />;\n}\n\n// 安装: npx joyui add task-list --yes",
+  "task-list": "import { TaskList } from \"@joyui/react\";\n\nexport function Example() {\n  return <TaskList />;\n}\n\n// 安装: npx @joyui/cli add task-list --yes",
   "textarea": "import { Textarea } from \"@/components/base/textarea/textarea\";\n\n<Textarea label=\"备注\" placeholder=\"补充说明…\" rows={4} />",
   "theme-toggle": "import { ThemeToggle } from \"@/components/application/theme/theme-toggle\";\n\n<ThemeToggle />",
   "time-field": "import { TimeField } from \"@/components/base/time-field/time-field\";\n\n<TimeField label=\"开始时间\" />",
@@ -106,5 +106,5 @@ export function Example() {
   return <${exportName} />;
 }
 
-// 安装: npx joyui add ${slug} --yes${name ? `\n// ${name}` : ""}`;
+// 安装: npx @joyui/cli add ${slug} --yes${name ? `\n// ${name}` : ""}`;
 }
