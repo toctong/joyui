@@ -7,6 +7,12 @@
  *   @import "@joyui/react/styles.css";
  *
  * Or in JS: import "@joyui/react/styles.css";
+ *
+ * Tailwind v4 does not scan `node_modules` by default. Class names live in
+ * the published `dist/` JS, so this file registers that path via `@source`.
+ * Consumers only need to import this stylesheet; no local `@source` required.
  */
+@source "../../dist";
+
 @import "./theme.css";
 @import "./typography.css";
