@@ -171,7 +171,7 @@ export { Tooltip, TooltipTrigger } from "./components/base/tooltip/tooltip";
 export { TreeView, TreeViewItem, TreeViewCollection } from "./components/base/tree-view/tree-view";
 export { TypingText } from "./components/base/typing-text/typing-text";
 export { VoiceRing } from "./components/base/voice-ring/voice-ring";
-export { Logo, ProLogo } from "./components/foundations/brand/logo";
+export { Logo, ProLogo, NavBrand } from "./components/foundations/brand/logo";
 export { DirectionProvider, useDirection } from "./components/foundations/direction/direction";
 export { JoyUIProvider, useJoyI18n, useT, en, zhCN, builtInLocales, resolveMessages, createMessageTranslator } from "./components/foundations/i18n/index";
 export { ChevronDownSmall, ChevronRightSmall, ChevronUpDownSmall, ChevronSortDown } from "./components/foundations/icons/chevrons";

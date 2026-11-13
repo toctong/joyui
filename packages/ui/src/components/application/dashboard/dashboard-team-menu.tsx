@@ -30,7 +30,7 @@ import { ChevronDownSmall } from "../../foundations/icons/chevrons";
 import { cx } from "../../../utils/cx";
 
 /**
- * Figma source: JoyUI → sidebar profile menu (node 3823:3699).
+ * Figma source: JoyUI �?sidebar profile menu (node 3823:3699).
  *
  * Dropdown opened from the sidebar's "JoyUI" card. Floats to the right of
  * the sidebar: white panel, 1px border/button/default, radius 16, p 10,
@@ -156,7 +156,7 @@ export function DashboardTeamMenu({
   const direction = useDirection();
   const [isOpen, setIsOpen] = useState(false);
   // "right" placement assumes room to the sidebar's right (true in-flow on
-  // desktop) — on mobile the sidebar can span the full viewport, so the
+  // desktop) �?on mobile the sidebar can span the full viewport, so the
   // 265px panel would render off-screen. Below sm, drop into a plain
   // dropdown under the trigger instead.
   const isMobile = useSyncExternalStore(subscribeMobile, mobileSnapshot, () => false);
@@ -177,7 +177,7 @@ export function DashboardTeamMenu({
         )}
       >
         <span className="flex min-w-0 items-center gap-2">
-          <Avatar size="md" color="blue" src="/brand/JoyUI_logo_circle.webp" alt="JoyUI" />
+          <Avatar size="md" color="blue" src="/brand/JoyUI_logo_circle.png" alt="JoyUI" />
           <Collapsible collapsed={collapsed}>
             <span className="flex min-w-0 flex-col items-start justify-center">
               <span className="text-body-medium whitespace-nowrap text-text-primary">JoyUI</span>
@@ -208,7 +208,7 @@ export function DashboardTeamMenu({
         <AriaDialog aria-label="JoyUI menu" className="flex flex-col gap-[7px] outline-none">
           {/* Header */}
           <div className="flex w-full items-center gap-2 px-2 pt-1">
-            <Avatar size="md" color="blue" src="/brand/JoyUI_logo_circle.webp" alt="JoyUI" />
+            <Avatar size="md" color="blue" src="/brand/JoyUI_logo_circle.png" alt="JoyUI" />
             <div className="flex min-w-0 flex-col items-start justify-center">
               <span className="text-body-medium whitespace-nowrap text-text-primary">JoyUI</span>
               <span className="text-body-regular whitespace-nowrap text-text-secondary">hi@joyui.dev</span>

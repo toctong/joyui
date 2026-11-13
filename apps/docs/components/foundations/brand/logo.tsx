@@ -1,12 +1,15 @@
+import type { ComponentProps } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { cx } from "@/utils/cx";
 
-/** JoyUI mark. Renders the brand icon at a fixed pixel size (24 / 32 / 40).
- *  `mono` swaps between the light and dark black-and-white assets through the
- *  shared theme class on the document root. */
+/**
+ * JoyUI sprout mark. Default is theme-aware mono (black in light / white in
+ * dark). Pass `mono={false}` for the fixed light-mode asset only.
+ */
 export function Logo({
   size = 32,
-  mono = false,
+  mono = true,
   className,
 }: {
   size?: number;
@@ -21,7 +24,7 @@ export function Logo({
           alt="JoyUI"
           width={size}
           height={size}
-          className={cx("theme-logo-light shrink-0", className)}
+          className={cx("theme-logo-light shrink-0 object-contain", className)}
           priority
         />
         <Image
@@ -29,7 +32,7 @@ export function Logo({
           alt="JoyUI"
           width={size}
           height={size}
-          className={cx("theme-logo-dark shrink-0", className)}
+          className={cx("theme-logo-dark shrink-0 object-contain", className)}
           priority
         />
       </>
@@ -42,7 +45,7 @@ export function Logo({
       alt="JoyUI"
       width={size}
       height={size}
-      className={cx("shrink-0", className)}
+      className={cx("shrink-0 object-contain", className)}
       priority
     />
   );
@@ -81,5 +84,24 @@ export function ProLogo({
         priority={priority}
       />
     </>
+  );
+}
+
+/** Compact nav title: mark + wordmark for fumadocs `nav.title`. */
+export function NavBrand({
+  className,
+  size = 22,
+  href = "/",
+  ...props
+}: ComponentProps<"a"> & { size?: number }) {
+  return (
+    <Link
+      href={href ?? "/"}
+      className={cx("inline-flex items-center gap-2", className)}
+      {...props}
+    >
+      <Logo size={size} />
+      <span className="tracking-tight">JoyUI</span>
+    </Link>
   );
 }

@@ -10,6 +10,7 @@ import {
 import { ThemeSwitch } from "fumadocs-ui/layouts/shared/slots/theme-switch";
 import { buttonVariants } from "fumadocs-ui/components/ui/button";
 import { cn } from "@/lib/cn";
+import { Logo } from "@/components/foundations/brand/logo";
 import { appName, gitConfig } from "@/lib/shared";
 import type { ComponentProps } from "react";
 import type { BreadcrumbOptions } from "fumadocs-core/breadcrumb";
@@ -34,6 +35,7 @@ export function DocsContentHeader({ ...breadcrumbProps }: DocsContentHeaderProps
   return (
     <div className="not-prose mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-fd-border pb-3">
       <div className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden text-sm text-fd-muted-foreground">
+        <Logo size={16} className="shrink-0" />
         <span className="shrink-0 font-medium text-fd-foreground">{appName}</span>
         <span className="shrink-0 text-fd-border">/</span>
         <PageBreadcrumb

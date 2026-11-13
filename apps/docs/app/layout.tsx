@@ -27,6 +27,13 @@ export const metadata = {
   },
   description:
     "JoyUI — React + Tailwind 设计系统：基础组件、组合组件、图表与模板，面向智能体界面。",
+  icons: {
+    icon: [
+      { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/JoyUI_logo.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export default async function Layout({ children }: LayoutProps<"/">) {
