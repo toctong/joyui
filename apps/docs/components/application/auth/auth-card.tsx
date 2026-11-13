@@ -106,6 +106,13 @@ export interface AuthCardProps {
    * anything reading the page as a document.
    */
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /**
+   * Custom body. When set, replaces the built-in email/password/OTP form,
+   * social providers, and mode-switch footer — use this to wire your own
+   * JWT / OAuth fields while keeping the card chrome (logo, title, media).
+   * Omit it to get the batteries-included sign-in / sign-up / verify template.
+   */
+  children?: ReactNode;
   className?: string;
 }
 
@@ -152,6 +159,7 @@ export function AuthCard({
   onProvider,
   switchHref = "#",
   headingLevel = 1,
+  children,
   className,
 }: AuthCardProps) {
   const localize = useTemplateCopy();
@@ -218,137 +226,149 @@ export function AuthCard({
         </div>
       ) : null}
 
-      <div className={cx("flex flex-col gap-1.5", centerContent && "text-center")}>
-        <TitleHeading className="text-title-2-medium text-text-primary">
-          {title ?? copy.title}
-        </TitleHeading>
-        <p className="text-body-regular text-text-secondary">
-          {description ??
-            (verify && email ? (
+      {(title != null || description != null || !children) && (
+        <div className={cx("flex flex-col gap-1.5", centerContent && "text-center")}>
+          {(title != null || !children) && (
+            <TitleHeading className="text-title-2-medium text-text-primary">
+              {title ?? copy.title}
+            </TitleHeading>
+          )}
+          {(description != null || !children) && (
+            <p className="text-body-regular text-text-secondary">
+              {description ??
+                (verify && email ? (
+                  <>
+                    Enter the code we sent to{" "}
+                    <span className="text-body-medium text-text-primary">{email}</span>{" "}
+                    to finish signing in.
+                  </>
+                ) : (
+                  copy.description
+                ))}
+            </p>
+          )}
+        </div>
+      )}
+
+      {children ? (
+        <div className="mt-6 flex flex-col gap-4">{children}</div>
+      ) : (
+        <>
+          <form onSubmit={submit} className="mt-6 flex flex-col gap-4">
+            {verify ? (
+              <div className="flex flex-col gap-1.5">
+                <span className="text-body-medium text-text-secondary">
+                  Verification code
+                </span>
+                <InputOtp
+                  value={code}
+                  onChange={setCode}
+                  onComplete={onComplete}
+                  length={codeLength}
+                  groupEvery={codeLength % 2 === 0 ? codeLength / 2 : undefined}
+                  aria-label="Verification code"
+                  className="justify-start"
+                />
+              </div>
+            ) : null}
+
+            {signup && !confirmPassword ? (
+              <Input name="name" label="Full name" placeholder="Ada Lovelace" isRequired />
+            ) : null}
+
+            {verify ? null : (
+            <Input
+              name="email"
+              type="email"
+              label="Email"
+              placeholder="you@company.com"
+              autoComplete="email"
+              hint={signup ? "We use this to contact you, and never share it." : undefined}
+              isRequired
+            />
+            )}
+
+            {verify ? null : signup && confirmPassword ? (
+              // Stacked, full width: a password field pair is easier to fill at
+              // full width than in two half-width columns, and it keeps the whole
+              // form on one rhythm.
               <>
-                Enter the code we sent to{" "}
-                <span className="text-body-medium text-text-primary">{email}</span>{" "}
-                to finish signing in.
+                <Input
+                  name="password"
+                  type="password"
+                  label="Password"
+                  placeholder="At least 8 characters"
+                  autoComplete="new-password"
+                  isRequired
+                />
+                <Input
+                  name="confirmPassword"
+                  type="password"
+                  label="Confirm password"
+                  placeholder="Repeat your password"
+                  autoComplete="new-password"
+                  isRequired
+                />
               </>
             ) : (
-              copy.description
-            ))}
-        </p>
-      </div>
+              <Input
+                name="password"
+                type="password"
+                label="Password"
+                placeholder={signup ? "At least 8 characters" : "Enter your password"}
+                autoComplete={signup ? "new-password" : "current-password"}
+                isRequired
+              />
+            )}
 
-      <form onSubmit={submit} className="mt-6 flex flex-col gap-4">
-        {verify ? (
-          <div className="flex flex-col gap-1.5">
-            <span className="text-body-medium text-text-secondary">
-              Verification code
-            </span>
-            <InputOtp
-              value={code}
-              onChange={setCode}
-              onComplete={onComplete}
-              length={codeLength}
-              groupEvery={codeLength % 2 === 0 ? codeLength / 2 : undefined}
-              aria-label="Verification code"
-              className="justify-start"
-            />
-          </div>
-        ) : null}
+            {signup || verify ? null : (
+              <div className="flex items-center justify-between">
+                <Checkbox size="sm" isSelected={remember} onChange={setRemember}>
+                  Remember me
+                </Checkbox>
+                <LinkButton href="#">Forgot password?</LinkButton>
+              </div>
+            )}
 
-        {signup && !confirmPassword ? (
-          <Input name="name" label="Full name" placeholder="Ada Lovelace" isRequired />
-        ) : null}
+            <Button type="submit" className="w-full">
+              {copy.cta}
+            </Button>
 
-        {verify ? null : (
-        <Input
-          name="email"
-          type="email"
-          label="Email"
-          placeholder="you@company.com"
-          autoComplete="email"
-          hint={signup ? "We use this to contact you, and never share it." : undefined}
-          isRequired
-        />
-        )}
+            {/* The split layout carries its terms line under the card instead,
+                through `footnote`, so it does not crowd the CTA. */}
+            {signup && !footnote ? (
+              <p className="text-caption-1-regular text-text-tertiary">
+                By creating an account you agree to our Terms of Service and Privacy Policy.
+              </p>
+            ) : null}
+          </form>
 
-        {verify ? null : signup && confirmPassword ? (
-          // Stacked, full width: a password field pair is easier to fill at
-          // full width than in two half-width columns, and it keeps the whole
-          // form on one rhythm.
-          <>
-            <Input
-              name="password"
-              type="password"
-              label="Password"
-              placeholder="At least 8 characters"
-              autoComplete="new-password"
-              isRequired
-            />
-            <Input
-              name="confirmPassword"
-              type="password"
-              label="Confirm password"
-              placeholder="Repeat your password"
-              autoComplete="new-password"
-              isRequired
-            />
-          </>
-        ) : (
-          <Input
-            name="password"
-            type="password"
-            label="Password"
-            placeholder={signup ? "At least 8 characters" : "Enter your password"}
-            autoComplete={signup ? "new-password" : "current-password"}
-            isRequired
-          />
-        )}
+          {/* Providers always follow the form, in every layout: the email fields
+              are the path this card is built around, and a bank of provider
+              buttons above them buries the thing people came to fill in. The
+              code step shows none — the visitor has already picked a method. */}
+          {!verify && providers.length > 0 ? (
+            <>
+              <div className="my-5">
+                <Divider>or continue with</Divider>
+              </div>
+              {social}
+            </>
+          ) : null}
 
-        {signup || verify ? null : (
-          <div className="flex items-center justify-between">
-            <Checkbox size="sm" isSelected={remember} onChange={setRemember}>
-              Remember me
-            </Checkbox>
-            <LinkButton href="#">Forgot password?</LinkButton>
-          </div>
-        )}
-
-        <Button type="submit" className="w-full">
-          {copy.cta}
-        </Button>
-
-        {/* The split layout carries its terms line under the card instead,
-            through `footnote`, so it does not crowd the CTA. */}
-        {signup && !footnote ? (
-          <p className="text-caption-1-regular text-text-tertiary">
-            By creating an account you agree to our Terms of Service and Privacy Policy.
-          </p>
-        ) : null}
-      </form>
-
-      {/* Providers always follow the form, in every layout: the email fields
-          are the path this card is built around, and a bank of provider
-          buttons above them buries the thing people came to fill in. The
-          code step shows none — the visitor has already picked a method. */}
-      {!verify && providers.length > 0 ? (
-        <>
-          <div className="my-5">
-            <Divider>or continue with</Divider>
-          </div>
-          {social}
+          {/* Resend is an action, not a destination, so on the code step the
+              footer is a button. `LinkButton` renders one when given no href. */}
+          {verify ? (
+            <p className="mt-6 text-center text-body-regular text-text-secondary">
+              {copy.switchLead}{" "}
+              <LinkButton onClick={onResend}>{copy.switchAction}</LinkButton>
+            </p>
+          ) : (
+            <p className="mt-6 text-center text-body-regular text-text-secondary">
+              {copy.switchLead} <LinkButton href={switchHref}>{copy.switchAction}</LinkButton>
+            </p>
+          )}
         </>
-      ) : null}
-
-      {/* Resend is an action, not a destination, so on the code step the
-          footer is a button. `LinkButton` renders one when given no href. */}
-      {verify ? (
-        <p className="mt-6 text-center text-body-regular text-text-secondary">
-          {copy.switchLead}{" "}
-          <LinkButton onClick={onResend}>{copy.switchAction}</LinkButton>
-        </p>
-      ) : (
-        <p className="mt-6 text-center text-body-regular text-text-secondary">
-          {copy.switchLead} <LinkButton href={switchHref}>{copy.switchAction}</LinkButton>
-        </p>
       )}
     </>
   );

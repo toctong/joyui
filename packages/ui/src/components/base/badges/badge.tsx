@@ -10,9 +10,20 @@ import { cx, sortCx } from "../../../utils/cx";
  *   - px 4, py 1, radius/sm (4px)
  *   - primary → bg color/blue/400, white text (sits on the selected nav item)
  *   - neutral → bg color/neutral/200, text/secondary
+ *
+ * Semantic colors (success / warning / error / brand) were added so product
+ * UIs are not forced onto Chip for every status readout. Prefer Chip when
+ * you need the full emphasis / color matrix; Badge stays the compact
+ * counter / status pill.
  */
 
-type BadgeColor = "primary" | "neutral";
+type BadgeColor =
+  | "primary"
+  | "neutral"
+  | "brand"
+  | "success"
+  | "warning"
+  | "error";
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   color?: BadgeColor;
@@ -23,7 +34,11 @@ const styles = sortCx({
   base: "inline-flex items-center justify-center rounded-sm px-1 py-px text-caption-1-semibold tracking-normal whitespace-nowrap",
   color: {
     primary: "bg-accent-400 text-white",
+    brand: "bg-accent-400 text-white",
     neutral: "bg-badge-neutral-background text-text-secondary",
+    success: "bg-status-lime-background text-status-lime-text",
+    warning: "bg-status-yellow-background text-status-yellow-text",
+    error: "bg-status-rose-background text-status-rose-text",
   },
 });
 

@@ -14,22 +14,15 @@ export {
 } from "./lib/format";
 export { cx as mergeCx, sortCx } from "./utils/cx";
 
-/** Friendly alias for the shippable data-table demo surface. */
-export { DataTableExample as DataTable } from "./components/application/data-table/data-table";
-
+/**
+ * TipTap-backed Composer lives at `@joyui/react/composer` so apps that only
+ * need Button/Input/etc. do not pull optional @tiptap/* peers into the bundle.
+ */
 export { AdminDashboard } from "./components/application/admin/admin-dashboard";
 export { ShimmerText, RowConnector, GuideBridge, WorkingRow, LogRow } from "./components/application/agent-log/agent-log";
 export { AgentThinking } from "./components/application/agent-thinking/agent-thinking";
 export { NotificationBell } from "./components/application/app-shell/notification-bell";
 export { AuthCard, AuthMediaCarousel } from "./components/application/auth/auth-card";
-export { ComposerLoader } from "./components/application/composer-loader/composer-loader";
-export { ComposerAttachmentStrip } from "./components/application/composer-panel/composer-attachment-strip";
-export { ComposerWithAttachments } from "./components/application/composer-panel/composer-attachments";
-export { ComposerPanel } from "./components/application/composer-panel/composer-panel";
-export { ComposerRichInput } from "./components/application/composer-panel/composer-rich-input";
-export { ProviderIcon } from "./components/application/composer-panel/provider-icons";
-export { Composer } from "./components/application/composer/composer";
-export { EffortSlider } from "./components/application/composer/effort-slider";
 export { ActivityRingsCard } from "./components/application/dashboard/activity-rings-card";
 export { AreaChartCard } from "./components/application/dashboard/area-chart-card";
 export { BarListCard } from "./components/application/dashboard/bar-list-card";
@@ -139,12 +132,6 @@ export type { RevealTickerOptions } from "./components/application/agent-log/age
 export type { AgentThinkingVariant, AgentThinkingTone, AgentThinkingProps } from "./components/application/agent-thinking/agent-thinking";
 export type { AuthLayout, AuthMode, AuthCardProps } from "./components/application/auth/auth-card";
 export type { AuthMediaSlide } from "./components/application/auth/auth-media-carousel";
-export type { ComposerLoaderProps } from "./components/application/composer-loader/composer-loader";
-export type { ComposerAttachmentKind, ComposerAttachment } from "./components/application/composer-panel/composer-attachment-strip";
-export type { MentionKind, MentionItem, ComposerRichInputHandle } from "./components/application/composer-panel/composer-rich-input";
-export type { ProviderId } from "./components/application/composer-panel/provider-icons";
-export type { ComposerModel } from "./components/application/composer/composer";
-export type { EffortLevel } from "./components/application/composer/effort-slider";
 export type { ActivityDay } from "./components/application/dashboard/activity-rings-card";
 export type { AreaChartPoint } from "./components/application/dashboard/area-chart-card";
 export type { BarListItem, BarListTab, BarListCardProps } from "./components/application/dashboard/bar-list-card";

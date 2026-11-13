@@ -42,6 +42,7 @@ export default defineConfig([
   },
   {
     entry: {
+      composer: "src/composer.ts",
       "lib/format": "src/lib/format.ts",
       "lib/utils": "src/lib/utils.ts",
     },

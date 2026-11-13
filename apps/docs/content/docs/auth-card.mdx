@@ -6,7 +6,7 @@ badge: "全新"
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-登录/注册与第三方登录按钮。
+内置 `signin` / `signup` / `verify` 模板；也可传 `children` 自定义表单，只保留卡片外壳。
 
 <ComponentDocPreview slug="auth-card" />
 
@@ -18,10 +18,25 @@ npx @joyui/cli add auth-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 自定义表单（`children`）
+
+需要对接自有 JWT / OAuth 时，把字段放进 `children`，内置邮箱密码表单与社交区会被替换：
+
+```tsx
+import { AuthCard, Button, Input } from "@joyui/react";
+
+<AuthCard title="Sign in" description="Use your workspace account.">
+  <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+    <Input name="username" label="Username" isRequired />
+    <Input name="password" type="password" label="Password" isRequired />
+    <Button type="submit" className="w-full">Continue</Button>
+  </form>
+</AuthCard>
+```
 
 ## 应用场景
 
-登录 / 注册落地页或设置里的账号接入：社交按钮提供商、邮箱字段与 CTA 文案均可配置。
+登录 / 注册落地页或设置里的账号接入：社交按钮提供商、邮箱字段与 CTA 文案均可配置；复杂登录流用 `children` 自建字段。
 
 上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
 

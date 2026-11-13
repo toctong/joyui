@@ -12,6 +12,8 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 
 `label` / `hint` / `errorMessage` / `leadingIcon` / `isRequired` / `isDisabled` 均为可配置 props。下方为同一 `Input` 的多种状态。
 
+> **`Input` vs `TextField`**：业务表单请用 `Input`（含 label/placeholder）。`TextField` 是底层 React Aria 组合容器，用于自定义字段布局，**没有** `label` / `placeholder` props。
+
 <ComponentDocPreview slug="input" />
 
 ## 安装

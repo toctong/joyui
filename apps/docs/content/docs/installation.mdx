@@ -10,10 +10,23 @@ pnpm add @joyui/react react-aria-components @remixicon/react
 # 或 npm / yarn 等价命令
 ```
 
-按需再装可选 peer（图表、表格、编辑器等）：
+按需再装可选 peer（图表、表格等）：
 
 ```bash
-pnpm add recharts @tanstack/react-table @tanstack/react-virtual motion dayjs
+pnpm add recharts @tanstack/react-table@^8 @tanstack/react-virtual motion@^12 dayjs
+```
+
+`motion@14` 与 `@tanstack/react-table@9` 也兼容；上式只是锁定常见稳定区间。
+
+**Composer / TipTap 编辑器**走子路径，避免主入口硬依赖：
+
+```bash
+pnpm add @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/suggestion \
+  @tiptap/extension-mention @tiptap/extension-placeholder tippy.js
+```
+
+```tsx
+import { Composer, ComposerPanel } from "@joyui/react/composer";
 ```
 
 在全局样式中引入 Tailwind 与 JoyUI token：
@@ -26,12 +39,13 @@ pnpm add recharts @tanstack/react-table @tanstack/react-virtual motion dayjs
 组件可直接从包导入，不必再逐个 `add`：
 
 ```tsx
-import { Button, DataTable, RevenueChartCard, AdminDashboard } from "@joyui/react";
+import { Button, Input, RevenueChartCard, AdminDashboard } from "@joyui/react";
 
 export function Page() {
   return (
     <>
-      <Button variant="primary">保存</Button>
+      <Button variant="primary" isDisabled={false}>保存</Button>
+      <Input label="邮箱" placeholder="you@company.com" />
       <RevenueChartCard />
       <AdminDashboard />
     </>
@@ -39,12 +53,16 @@ export function Page() {
 }
 ```
 
+> 带 `label` / `placeholder` / `hint` 的字段请用 **`Input`**（或 `Textarea`）。`TextField` 是 React Aria 组合容器，不接受这些 props。  
+> 演示表 `DataTableExample` 请按示例名导入；生产表格更推荐 `@tanstack/react-table`。
+
 ## 设计约定
 
 - 语义 token：`text-text-primary`、`bg-background-primary-default`、`border-border-default`
 - 字阶：`text-title-2-medium`、`text-body-1-regular`（不要拆成 `text-sm font-medium`）
 - 合并 class：`cx()` / `cn()`（来自 `@joyui/react`）
 - 图标：`@remixicon/react` 传**组件引用**，不是 `<Icon />`
+- 按钮禁用：`disabled` 与 `isDisabled` 均可
 - 深色：`.dark` 翻转 token，禁止手写 `dark:` 调色板
 
 ## 可选：拷贝源码到本地

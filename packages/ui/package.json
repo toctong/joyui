@@ -1,6 +1,6 @@
 {
   "name": "@joyui/react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JoyUI — React + Tailwind CSS v4 component library",
   "license": "MIT",
   "type": "module",
@@ -25,6 +25,11 @@
       "import": "./dist/lib/format.js",
       "require": "./dist/lib/format.cjs"
     },
+    "./composer": {
+      "types": "./dist/composer.d.ts",
+      "import": "./dist/composer.js",
+      "require": "./dist/composer.cjs"
+    },
     "./styles.css": "./src/styles/styles.css",
     "./theme.css": "./src/styles/theme.css",
     "./typography.css": "./src/styles/typography.css",
@@ -40,7 +45,7 @@
   "peerDependencies": {
     "@internationalized/date": "^3.0.0",
     "@remixicon/react": "^4.0.0",
-    "@tanstack/react-table": "^8.0.0",
+    "@tanstack/react-table": "^8.0.0 || ^9.0.0",
     "@tanstack/react-virtual": "^3.0.0",
     "@tiptap/extension-mention": "^3.0.0",
     "@tiptap/extension-placeholder": "^3.0.0",
@@ -50,7 +55,7 @@
     "@tiptap/suggestion": "^3.0.0",
     "dayjs": "^1.11.0",
     "lucide-react": ">=0.400.0",
-    "motion": "^12.0.0",
+    "motion": "^12.0.0 || ^14.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-aria-components": "^1.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",

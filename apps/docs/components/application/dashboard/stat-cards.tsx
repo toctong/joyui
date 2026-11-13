@@ -46,11 +46,14 @@ export type StatCardsVariant = "plain" | "footer";
 export type StatTone = "blue" | "orange" | "purple" | "pink" | "sky" | "emerald";
 
 export type Stat = {
-  icon: IconComponent;
+  /** Defaults to a generic box icon when omitted (minimal KPI usage). */
+  icon?: IconComponent;
   label: string;
   value: string;
-  delta: string;
-  deltaColor: "lime" | "rose" | "neutral";
+  /** Defaults to an em dash when omitted. */
+  delta?: string;
+  /** Defaults to `neutral` when omitted. */
+  deltaColor?: "lime" | "rose" | "neutral";
   /** Footer variant: icon tile tint (defaults to blue). */
   tone?: StatTone;
   /** Footer variant: comparison caption in the band ("From last month"). */
@@ -58,6 +61,15 @@ export type Stat = {
   /** Footer variant: shows an info glyph with this text on hover. */
   hint?: string;
 };
+
+function resolveStat(stat: Stat): Required<Pick<Stat, "icon" | "delta" | "deltaColor">> & Stat {
+  return {
+    ...stat,
+    icon: stat.icon ?? RiBox3Line,
+    delta: stat.delta ?? "—",
+    deltaColor: stat.deltaColor ?? "neutral",
+  };
+}
 
 const DEFAULT_STATS: Stat[] = [
   { icon: RiGroupLine, label: "Customers", value: "14,592", delta: "+5.3%", deltaColor: "lime" },
@@ -181,17 +193,19 @@ function StatHint({ label, hint }: { label: string; hint: string }) {
 
 function PlainStatCard({ stat }: { stat: Stat }) {
   const localize = useTemplateCopy();
+  const resolved = resolveStat(stat);
+  const Icon = resolved.icon;
   return localize((
     <section className="flex h-[132px] min-w-0 flex-col items-start justify-between rounded-2xl bg-background-secondary-default p-4">
       <span className="flex items-center rounded-md bg-stat-card-icon-background p-1.5">
-        <stat.icon className="size-5 shrink-0 text-foreground-icon-primary" aria-hidden />
+        <Icon className="size-5 shrink-0 text-foreground-icon-primary" aria-hidden />
       </span>
       <div className="flex w-full flex-col gap-0.5">
-        <p className="w-full text-body-medium text-text-secondary">{stat.label}</p>
+        <p className="w-full text-body-medium text-text-secondary">{resolved.label}</p>
         <div className="flex w-full flex-wrap items-center gap-2">
-          <p className="text-title-1-medium whitespace-nowrap text-text-primary">{stat.value}</p>
-          <Chip variant="bold" color={stat.deltaColor}>
-            {stat.delta}
+          <p className="text-title-1-medium whitespace-nowrap text-text-primary">{resolved.value}</p>
+          <Chip variant="bold" color={resolved.deltaColor}>
+            {resolved.delta}
           </Chip>
         </div>
       </div>
@@ -201,6 +215,8 @@ function PlainStatCard({ stat }: { stat: Stat }) {
 
 function FooterStatCard({ stat }: { stat: Stat }) {
   const localize = useTemplateCopy();
+  const resolved = resolveStat(stat);
+  const Icon = resolved.icon;
   return localize((
     <section className="flex min-w-0 flex-col rounded-2xl bg-background-secondary-default p-2">
       {/* Icon tile + optional info glyph, both hanging from the same top inset */}
@@ -208,28 +224,28 @@ function FooterStatCard({ stat }: { stat: Stat }) {
         <span
           className={cx(
             "flex size-10 shrink-0 items-center justify-center rounded-2lg bg-linear-to-b",
-            TILE_TONES[stat.tone ?? "blue"],
+            TILE_TONES[resolved.tone ?? "blue"],
           )}
         >
-          <stat.icon className="size-5 shrink-0 text-white" aria-hidden />
+          <Icon className="size-5 shrink-0 text-white" aria-hidden />
         </span>
-        {stat.hint && <StatHint label={stat.label} hint={stat.hint} />}
+        {resolved.hint && <StatHint label={resolved.label} hint={resolved.hint} />}
       </div>
 
       {/* Label sits directly over the number, as on the plain cards */}
       <div className="flex flex-col gap-0.5 px-2 pt-2.5 pb-3.5">
-        <p className="truncate text-body-medium text-text-secondary">{stat.label}</p>
+        <p className="truncate text-body-medium text-text-secondary">{resolved.label}</p>
         <p className="text-display-4-medium whitespace-nowrap text-text-primary tabular-nums">
-          {stat.value}
+          {resolved.value}
         </p>
       </div>
 
       {/* Footer band: comparison caption + delta pill on an inner tile */}
       <div className="mt-auto flex w-full items-center justify-between gap-2 rounded-2lg bg-background-inner-default py-1.5 pe-1.5 ps-2.5 shadow-card">
         <p className="truncate text-body-regular text-text-secondary">
-          {stat.caption ?? "From last month"}
+          {resolved.caption ?? "From last month"}
         </p>
-        <DeltaPill delta={stat.delta} deltaColor={stat.deltaColor} />
+        <DeltaPill delta={resolved.delta} deltaColor={resolved.deltaColor} />
       </div>
     </section>
   ));

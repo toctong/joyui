@@ -59,6 +59,11 @@ export interface ButtonProps
   iconOnly?: boolean;
   leadingIcon?: IconComponent;
   trailingIcon?: IconComponent;
+  /**
+   * React Aria-style alias for the native `disabled` attribute.
+   * Prefer either; when both are set, `disabled` wins.
+   */
+  isDisabled?: boolean;
   children?: ReactNode;
   ref?: Ref<HTMLButtonElement>;
 }
@@ -70,6 +75,8 @@ export interface ButtonLinkProps
   iconOnly?: boolean;
   leadingIcon?: IconComponent;
   trailingIcon?: IconComponent;
+  /** React Aria-style alias for `aria-disabled` / pointer blocking. */
+  isDisabled?: boolean;
   children?: ReactNode;
   ref?: Ref<HTMLAnchorElement>;
 }
@@ -151,13 +158,18 @@ export function Button({
   children,
   className,
   type = "button",
+  isDisabled,
+  disabled,
   ref,
   ...props
 }: ButtonProps) {
+  const off = Boolean(disabled ?? isDisabled);
   return (
     <button
       ref={ref}
       type={type}
+      disabled={off}
+      aria-disabled={off || undefined}
       className={cx(
         styles.base,
         styles.size[size],
@@ -187,17 +199,31 @@ export function ButtonLink({
   trailingIcon: Trailing,
   children,
   className,
+  isDisabled,
   ref,
+  onClick,
   ...props
 }: ButtonLinkProps) {
+  const off = Boolean(isDisabled || props["aria-disabled"]);
   return (
     <a
       ref={ref}
+      aria-disabled={off || undefined}
+      tabIndex={off ? -1 : props.tabIndex}
+      onClick={(event) => {
+        if (off) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+        onClick?.(event);
+      }}
       className={cx(
         styles.base,
         styles.size[size],
         styles.variant[variant],
         iconOnly && styles.iconOnlySize[size],
+        off && "pointer-events-none opacity-50",
         className,
       )}
       {...props}

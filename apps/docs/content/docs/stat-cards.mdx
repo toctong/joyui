@@ -6,7 +6,7 @@ badge: "全新"
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-带增减芯片的 KPI 统计卡行。
+带增减芯片的 KPI 统计卡行。`Stat` 仅需 `label` + `value`；`icon` / `delta` / `deltaColor` 均可选（有默认值）。
 
 <ComponentDocPreview slug="stat-cards" />
 
@@ -18,6 +18,18 @@ npx @joyui/cli add stat-cards --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 最小 KPI
+
+```tsx
+import { StatCards } from "@joyui/react";
+
+<StatCards
+  stats={[
+    { label: "Tasks", value: "128" },
+    { label: "Saved", value: "42", delta: "+12%", deltaColor: "lime" },
+  ]}
+/>
+```
 
 ## 应用场景
 
