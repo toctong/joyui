@@ -1,11 +1,16 @@
 ﻿---
 title: "分割线"
-description: "单线、双线、填充与对齐分隔。"
+description: "单线、双线、填充与带内容对齐分隔。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DividerVariantPreview,
+  DividerContentPreview,
+} from "@/components/demos/divider-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-单线、双线、填充与对齐分隔。
+单线、双线与填充三种 `variant`；可传入子节点作为中间文案或操作。
 
 <ComponentDocPreview slug="divider" />
 
@@ -17,14 +22,45 @@ npx @joyui/cli add divider --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 变体
 
-## 应用场景
+`single` · `double` · `fill`。
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+<DemoFrame
+  fileName="divider-variants.tsx"
+  code={`import { Divider } from "@/components/base/divider/divider";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<>
+  <Divider variant="single" />
+  <Divider variant="double" />
+  <Divider variant="fill" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DividerVariantPreview />
+</DemoFrame>
+
+## 带内容
+
+通过 `children` 与 `align` 放置文案或按钮。
+
+<DemoFrame
+  fileName="divider-content.tsx"
+  code={`import { Divider } from "@/components/base/divider/divider";
+import { Button } from "@/components/base/buttons/button";
+
+<>
+  <Divider variant="single" align="center">或</Divider>
+  <Divider variant="single" align="start">更多选项</Divider>
+  <Divider variant="fill" align="center">
+    <Button variant="ghost" size="xs">展开全部</Button>
+  </Divider>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DividerContentPreview />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="divider" />
-

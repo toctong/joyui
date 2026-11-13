@@ -1,11 +1,17 @@
 ---
-title: "面包屑导航"
-description: "可带图标的路径面包屑。"
+title: "面包屑"
+description: "路径导航：图标项、深层层级与页面顶栏场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  BreadcrumbDeepPreview,
+  BreadcrumbIconPreview,
+  BreadcrumbPageScenario,
+} from "@/components/demos/breadcrumb-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-可带图标的路径面包屑。
+层级路径导航。`BreadcrumbItem` 支持 `href`、`icon`、`current`。下方是**同一个** Breadcrumb 的不同配置。
 
 <ComponentDocPreview slug="breadcrumb" />
 
@@ -17,14 +23,64 @@ npx @joyui/cli add breadcrumb --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 图标
+
+为关键节点传入 Remix Icon 组件引用。
+
+<DemoFrame
+  fileName="breadcrumb-icons.tsx"
+  code={`import { RiFolder3Line, RiHomeLine, RiSettings3Line } from "@remixicon/react";
+import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
+
+<Breadcrumb aria-label="带图标面包屑">
+  <BreadcrumbItem icon={RiHomeLine} href="#">工作区</BreadcrumbItem>
+  <BreadcrumbItem icon={RiFolder3Line} href="#">项目</BreadcrumbItem>
+  <BreadcrumbItem icon={RiSettings3Line} current>设置</BreadcrumbItem>
+</Breadcrumb>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <BreadcrumbIconPreview />
+</DemoFrame>
+
+## 深层路径
+
+多级文本路径，末项标记 `current`。
+
+<DemoFrame
+  fileName="breadcrumb-deep.tsx"
+  code={`import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
+
+<Breadcrumb aria-label="深层路径">
+  <BreadcrumbItem href="#">首页</BreadcrumbItem>
+  <BreadcrumbItem href="#">发现</BreadcrumbItem>
+  <BreadcrumbItem href="#">电影</BreadcrumbItem>
+  <BreadcrumbItem current>星际穿越</BreadcrumbItem>
+</Breadcrumb>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <BreadcrumbDeepPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+设置页顶栏：路径 + 简短说明。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="breadcrumb-page.tsx"
+  code={`import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
+
+<div>
+  <Breadcrumb aria-label="设置路径">
+    <BreadcrumbItem href="#">设置</BreadcrumbItem>
+    <BreadcrumbItem href="#">账号</BreadcrumbItem>
+    <BreadcrumbItem current>夸克 Cookie</BreadcrumbItem>
+  </Breadcrumb>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <BreadcrumbPageScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="breadcrumb" />
-

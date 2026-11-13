@@ -1,10 +1,21 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
+import {
+  Children,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import {
   OverlayArrow as AriaOverlayArrow,
   Tooltip as AriaTooltip,
-  TooltipTrigger as AriaTooltipTrigger,
+  TooltipContext,
+  TooltipTriggerStateContext,
 } from "react-aria-components";
 import type { TooltipProps as AriaTooltipProps } from "react-aria-components";
 import { cx, sortCx } from "../../../utils/cx";
@@ -20,20 +31,18 @@ import { useDirection } from "../../foundations/direction/direction";
  *            side (not one path rotated with CSS) faces the trigger via
  *            OverlayArrow's `placement` render prop — see `TOOLTIP_CARETS` below.
  *
- * Behaviour comes from react-aria's TooltipTrigger / Tooltip — hover + focus
- * open, Escape closes, positioning + collision flipping, and the
- * `aria-describedby` wiring onto the trigger. We only dress the surface.
+ * Surface / positioning still come from react-aria's Tooltip. Open / close is
+ * owned here with plain mouseenter / mouseleave / focus / blur — RAC's
+ * TooltipTrigger only opens hover when `getInteractionModality() === "pointer"`,
+ * which silently no-ops for JoyUI's plain `<button>` path in the docs preview.
  *
  *   <TooltipTrigger delay={0}>
  *     <Button>Hover me</Button>
  *     <Tooltip size="md">Helpful copy</Tooltip>
  *   </TooltipTrigger>
  *
- * The trigger's single child must be focusable (react-aria `Button`, or any
- * component built on `useFocusable`).
- * JoyUI opens and begins closing immediately. The tooltip surface itself is
- * non-interactive, so moving off the trigger never keeps it open and tooltip
- * copy cannot be selected accidentally.
+ * The tooltip surface itself is non-interactive, so moving off the trigger
+ * never keeps it open and tooltip copy cannot be selected accidentally.
  */
 
 export type TooltipSize = "sm" | "md";
@@ -123,8 +132,135 @@ export function Tooltip({ children, className, size = "sm", showArrow = true, of
   );
 }
 
-export type TooltipTriggerProps = ComponentProps<typeof AriaTooltipTrigger>;
+export interface TooltipTriggerProps {
+  children: ReactNode;
+  /** Open delay in ms. Default `0`. */
+  delay?: number;
+  /** Close delay in ms. Default `0`. */
+  closeDelay?: number;
+  isDisabled?: boolean;
+  isOpen?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
+  /** When `"focus"`, only keyboard / focus opens the tooltip. */
+  trigger?: "focus";
+}
 
-export function TooltipTrigger({ delay = 0, closeDelay = 0, ...props }: TooltipTriggerProps) {
-  return <AriaTooltipTrigger delay={delay} closeDelay={closeDelay} {...props} />;
+export function TooltipTrigger({
+  delay = 0,
+  closeDelay = 0,
+  children,
+  isDisabled = false,
+  isOpen: controlledOpen,
+  defaultOpen = false,
+  onOpenChange,
+  trigger,
+}: TooltipTriggerProps) {
+  const childArray = Children.toArray(children);
+  const triggerChild = childArray[0];
+  const rest = childArray.slice(1);
+
+  const triggerRef = useRef<HTMLSpanElement | null>(null);
+  const tooltipId = useId();
+  const openTimer = useRef<number | null>(null);
+  const closeTimer = useRef<number | null>(null);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const isControlled = controlledOpen != null;
+  const isOpen = isControlled ? Boolean(controlledOpen) : uncontrolledOpen;
+
+  const setOpen = useCallback(
+    (next: boolean) => {
+      if (!isControlled) setUncontrolledOpen(next);
+      onOpenChange?.(next);
+    },
+    [isControlled, onOpenChange],
+  );
+
+  const clearTimers = useCallback(() => {
+    if (openTimer.current != null) {
+      window.clearTimeout(openTimer.current);
+      openTimer.current = null;
+    }
+    if (closeTimer.current != null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  const open = useCallback(
+    (immediate = false) => {
+      if (isDisabled) return;
+      clearTimers();
+      if (immediate || delay <= 0) setOpen(true);
+      else openTimer.current = window.setTimeout(() => setOpen(true), delay);
+    },
+    [clearTimers, delay, isDisabled, setOpen],
+  );
+
+  const close = useCallback(
+    (immediate = false) => {
+      clearTimers();
+      if (immediate || closeDelay <= 0) setOpen(false);
+      else closeTimer.current = window.setTimeout(() => setOpen(false), closeDelay);
+    },
+    [clearTimers, closeDelay, setOpen],
+  );
+
+  useEffect(() => () => clearTimers(), [clearTimers]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        close(true);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown, true);
+    return () => document.removeEventListener("keydown", onKeyDown, true);
+  }, [close, isOpen]);
+
+  // Shape expected by RAC `Tooltip` (open/close/isOpen/shouldSkipAnimation).
+  const state = useMemo(
+    () => ({
+      isOpen,
+      open: (immediate?: boolean) => open(Boolean(immediate)),
+      close: (immediate?: boolean) => close(Boolean(immediate)),
+      shouldSkipAnimation: false,
+    }),
+    [close, isOpen, open],
+  );
+
+  return (
+    <TooltipTriggerStateContext.Provider value={state as never}>
+      <TooltipContext.Provider
+        value={
+          {
+            id: isOpen ? tooltipId : undefined,
+            triggerRef: triggerRef as RefObject<Element | null>,
+          } as never
+        }
+      >
+        <span
+          ref={triggerRef}
+          className="inline-flex max-w-full"
+          aria-describedby={isOpen ? tooltipId : undefined}
+          onMouseEnter={() => {
+            if (trigger === "focus") return;
+            open(false);
+          }}
+          onMouseLeave={() => {
+            if (trigger === "focus") return;
+            close(false);
+          }}
+          onFocus={() => open(false)}
+          onBlur={() => close(true)}
+          onPointerDown={() => close(true)}
+        >
+          {triggerChild}
+        </span>
+        {rest}
+      </TooltipContext.Provider>
+    </TooltipTriggerStateContext.Provider>
+  );
 }

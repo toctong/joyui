@@ -1,11 +1,16 @@
 ---
-title: "单选"
-description: "渐变选中点，两档尺寸，含卡片变体。"
+title: "单选框"
+description: "单选控件：md · sm 尺寸与单选卡片布局。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  RadioCardScenario,
+  RadioSizePreview,
+} from "@/components/demos/radio-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-渐变选中点，两档尺寸，含卡片变体。
+互斥选项。`Radio` 需放在 `RadioGroup` 内。下方是**同一个** Radio 的不同配置。
 
 <ComponentDocPreview slug="radio" />
 
@@ -17,14 +22,47 @@ npx @joyui/cli add radio --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`size="md"`（默认）· `sm`。
+
+<DemoFrame
+  fileName="radio-sizes.tsx"
+  code={`import { Radio, RadioGroup } from "@/components/base/radio/radio";
+
+<>
+  <RadioGroup defaultValue="a" aria-label="中号单选">
+    <Radio value="a" size="md">标准 md</Radio>
+    <Radio value="b" size="md">备选</Radio>
+  </RadioGroup>
+  <RadioGroup defaultValue="a" aria-label="小号单选">
+    <Radio value="a" size="sm">紧凑 sm</Radio>
+    <Radio value="b" size="sm">备选</Radio>
+  </RadioGroup>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <RadioSizePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+命名策略：`RadioCard` 标题 + 描述。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="radio-cards.tsx"
+  code={`import { RadioGroup } from "@/components/base/radio/radio";
+import { RadioCard } from "@/components/base/radio/radio-card";
+
+<RadioGroup defaultValue="balanced" aria-label="命名策略" className="grid gap-2">
+  <RadioCard value="balanced" title="智能命名" description="优先剧集元数据" />
+  <RadioCard value="keep" title="保留原名" description="不做重命名" />
+</RadioGroup>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <RadioCardScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="radio" />
-

@@ -6,6 +6,7 @@ import { statusBadgesPlugin } from "fumadocs-core/source/status-badges";
 import { defineDocs } from "fumadocs-mdx/macro";
 import { metaSchema, pageSchema as basePageSchema } from "fumadocs-core/source/schema";
 import { DocsStatusBadge } from "@/components/docs-status-badge";
+import { collapsibleSeparatorsPlugin } from "./collapsible-separators-plugin";
 import { docsRoute } from "./shared";
 
 const pageSchema = basePageSchema.extend({
@@ -34,6 +35,7 @@ export const source = loader({
     statusBadgesPlugin({
       renderBadge: (status) => createElement(DocsStatusBadge, { status }),
     }),
+    collapsibleSeparatorsPlugin(),
   ],
 });
 

@@ -1,21 +1,37 @@
 ﻿---
-status: new
 title: "时间线"
-description: "纵向活动流：日志、审计、转存历史。"
+description: "纵向活动流，以及横向流程轨。"
+status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-`Timeline` + `TimelineItem`，支持 `tone` 与自定义 `indicator`。
+一套时间线家族：纵向活动流；流程步骤用横向轨变体。API 各自独立、安装按 slug。
+
+## 基础
+
+`Timeline` + `TimelineItem`，支持 `tone` 与自定义 `indicator`。适合日志、审计、转存历史。
 
 <ComponentDocPreview slug="timeline" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add timeline --yes
 ```
 
-## API
+### API
 
 <DocApiSection slug="timeline" />
+
+## 横向
+
+水平流程轨：入职、审批链、转存管线等步骤进度。
+
+<ComponentDocPreview slug="timeline-horizontal" />
+
+```bash
+npx @joyui/cli add timeline-horizontal --yes
+```
+
+### API
+
+<DocApiSection slug="timeline-horizontal" />

@@ -1,10 +1,14 @@
 ---
-title: "思考光球"
-description: "环绕脉动的 AI 等待指示，适合对话与 Agent 状态。"
+title: "思考球"
+description: "模型思考态指示：三档尺寸。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { ThinkingOrbsSizePreview } from "@/components/demos/thinking-orbs-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+Agent / Composer 等待回复时的品牌动效。
 
 <ComponentDocPreview slug="thinking-orbs" />
 
@@ -13,6 +17,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add thinking-orbs --yes
 ```
+
+## 尺寸
+
+`sm` · `md` · `lg`。
+
+<DemoFrame
+  fileName="thinking-orbs-sizes.tsx"
+  code={`import { ThinkingOrbs } from "@/components/base/thinking-orbs/thinking-orbs";
+
+<>
+  <ThinkingOrbs size="sm" />
+  <ThinkingOrbs size="md" />
+  <ThinkingOrbs size="lg" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ThinkingOrbsSizePreview />
+</DemoFrame>
 
 ## API
 

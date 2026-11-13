@@ -1,10 +1,17 @@
 ---
 title: "引用来源"
-description: "RAG / Agent 回答下的来源芯片，可带外链。"
+description: "RAG / Agent 回答下的来源芯片：序号、外链与无图标。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  CitationLinkPreview,
+  CitationRowScenario,
+} from "@/components/demos/citation-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+来源芯片。`href` 时渲染为链接。下方是**同一个** `Citation` 的不同配置。
 
 <ComponentDocPreview slug="citation" />
 
@@ -13,6 +20,44 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add citation --yes
 ```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 链接与图标
+
+`index` 序号；`href` 外链；`showIcon={false}` 隐藏图标。
+
+<DemoFrame
+  fileName="citation-links.tsx"
+  code={`import { Citation } from "@/components/base/citation/citation";
+
+<>
+  <Citation index={1} title="JoyUI docs" href="https://www.joyui.top" />
+  <Citation index={2} title="Agent handbook" />
+  <Citation index={3} title="Internal wiki" href="#" showIcon={false} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CitationLinkPreview />
+</DemoFrame>
+
+## 应用场景
+
+回答正文下方的来源行。
+
+<DemoFrame
+  fileName="citation-row.tsx"
+  code={`import { Citation } from "@/components/base/citation/citation";
+
+<div>
+  <p>根据知识库检索，建议优先使用 Pattern A。</p>
+  <Citation index={1} title="JoyUI docs" href="https://www.joyui.top" />
+  <Citation index={2} title="组件规范" href="#" />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CitationRowScenario />
+</DemoFrame>
 
 ## API
 

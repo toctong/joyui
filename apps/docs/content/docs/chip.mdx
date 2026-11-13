@@ -1,11 +1,17 @@
 ---
 title: "标签"
-description: "状态/增减标签，粗体与柔和变体。"
+description: "状态 / 增量标签：多色矩阵与 bold · subtle · caption 三种强调。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ChipColorPreview,
+  ChipScenarioPreview,
+  ChipVariantPreview,
+} from "@/components/demos/chip-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-状态/增减标签，粗体与柔和变体。
+状态与增量标签。`color` 覆盖语义色矩阵；`variant` 控制字号与内边距。
 
 <ComponentDocPreview slug="chip" />
 
@@ -17,14 +23,61 @@ npx @joyui/cli add chip --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 颜色
+
+`orange` · `lime` · `rose` · `yellow` · `cyan` · `blue` · `purple` · `neutral` · `gray` · `soft`。
+
+<DemoFrame
+  fileName="chip-colors.tsx"
+  code={`import { Chip } from "@/components/base/badges/chip";
+
+<>
+  <Chip color="lime">lime</Chip>
+  <Chip color="rose">rose</Chip>
+  <Chip color="cyan">cyan</Chip>
+  <Chip color="soft">soft</Chip>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ChipColorPreview />
+</DemoFrame>
+
+## 变体
+
+`bold`（状态）· `subtle`（价格 / 增量）· `caption`（角色标签）。
+
+<DemoFrame
+  fileName="chip-variants.tsx"
+  code={`import { Chip } from "@/components/base/badges/chip";
+
+<>
+  <Chip variant="bold" color="lime">进行中</Chip>
+  <Chip variant="subtle" color="lime">¥128</Chip>
+  <Chip variant="caption" color="soft">管理员</Chip>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ChipVariantPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+文件行：状态 + 增量 + 角色标签组合。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="chip-file-row.tsx"
+  code={`import { Chip } from "@/components/base/badges/chip";
+
+<>
+  <Chip color="lime" variant="bold">已完成</Chip>
+  <Chip color="cyan" variant="subtle">+12.4%</Chip>
+  <Chip color="soft" variant="caption">财务</Chip>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ChipScenarioPreview />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="chip" />
-

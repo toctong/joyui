@@ -1,10 +1,14 @@
 ---
 title: "模型选择"
-description: "对话工具栏用的紧凑模型分段选择。"
+description: "Composer 模型切换：尺寸与禁用项。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { ModelSelectSizePreview } from "@/components/demos/model-select-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+对话输入栏旁的模型切换器。`options` 含 `id` / `label` / 可选 `description` / `disabled`。
 
 <ComponentDocPreview slug="model-select" />
 
@@ -13,6 +17,28 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add model-select --yes
 ```
+
+## 尺寸
+
+`medium` · `small`。
+
+<DemoFrame
+  fileName="model-select-sizes.tsx"
+  code={`import { ModelSelect } from "@/components/base/model-select/model-select";
+
+const options = [
+  { id: "fable-5", label: "Fable 5", description: "均衡" },
+  { id: "fast", label: "Fast", description: "低延迟" },
+];
+
+<>
+  <ModelSelect options={options} defaultValue="fable-5" size="medium" />
+  <ModelSelect options={options} defaultValue="fast" size="small" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ModelSelectSizePreview />
+</DemoFrame>
 
 ## API
 

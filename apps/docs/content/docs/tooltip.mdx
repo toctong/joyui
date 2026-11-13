@@ -1,11 +1,17 @@
 ---
 title: "工具提示"
-description: "悬停与焦点时的轻表面提示。"
+description: "悬停 / 聚焦说明：sm · md 尺寸、方位与箭头开关。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  TooltipPlacementPreview,
+  TooltipSizePreview,
+  TooltipToolbarScenario,
+} from "@/components/demos/tooltip-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-悬停与焦点时的轻表面提示。
+短延迟说明文案。`TooltipTrigger` 包裹触发器，`Tooltip` 配置尺寸、方位与箭头。下方是**同一个** Tooltip 的不同配置。
 
 <ComponentDocPreview slug="tooltip" />
 
@@ -17,14 +23,68 @@ npx @joyui/cli add tooltip --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸与箭头
+
+`size="sm" | "md"`；`showArrow={false}` 可关闭箭头。
+
+<DemoFrame
+  fileName="tooltip-sizes.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+
+<>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary" size="small">小号</Button>
+    <Tooltip size="sm">快捷说明 · sm</Tooltip>
+  </TooltipTrigger>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary" size="small">无箭头</Button>
+    <Tooltip showArrow={false}>关闭箭头</Tooltip>
+  </TooltipTrigger>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TooltipSizePreview />
+</DemoFrame>
+
+## 方位
+
+`placement`：`top` · `bottom` · `left` · `right`。
+
+<DemoFrame
+  fileName="tooltip-placement.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+
+<TooltipTrigger delay={0}>
+  <Button variant="ghost" size="small">上方</Button>
+  <Tooltip placement="top">上方提示</Tooltip>
+</TooltipTrigger>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TooltipPlacementPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+工具栏操作：复制链接、归档等按钮旁挂简短说明。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="tooltip-toolbar.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+
+<>
+  <TooltipTrigger delay={0}>
+    <Button variant="secondary" size="small">复制链接</Button>
+    <Tooltip>复制到剪贴板</Tooltip>
+  </TooltipTrigger>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <TooltipToolbarScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="tooltip" />
-

@@ -1,12 +1,17 @@
-﻿---
+---
 status: new
 title: "二维码"
-description: "把链接 / 文本编码成 SVG 二维码；依赖 qrcode 已内置。"
+description: "把链接 / 文本编码成 SVG 二维码；纠错级别与中心叠加。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  QrCodeLevelPreview,
+  QrCodeOverlayPreview,
+} from "@/components/demos/qr-code-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-分享链接、登录票据、设备配对等场景。纠错级别 `L / M / Q / H`，可选中心 `overlay`（Logo）。
+分享链接、登录票据、设备配对。依赖 `qrcode` 已内置。
 
 <ComponentDocPreview slug="qr-code" />
 
@@ -16,19 +21,41 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add qr-code --yes
 ```
 
-整库（推荐，依赖已随包安装）：
+## 纠错级别
 
-```tsx
-import { QrCode } from "@joyui/react";
+`L` · `M` · `Q` · `H` — 级别越高可容纳更多遮挡（如 Logo）。
 
-<QrCode value="https://www.joyui.top" size={180} level="M" />
-```
+<DemoFrame
+  fileName="qr-code-levels.tsx"
+  code={`import { QrCode } from "@/components/base/qr-code/qr-code";
 
-## 应用场景
+<>
+  <QrCode value="https://www.joyui.top" size={120} level="L" />
+  <QrCode value="https://www.joyui.top" size={120} level="H" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <QrCodeLevelPreview />
+</DemoFrame>
 
-- 移动端打开分享 URL  
-- 设置页展示配对码  
-- 与 `CopyButton` 并排放：扫码或复制  
+## 中心叠加
+
+`overlay` 放 Logo；建议配合 `level="H"`。
+
+<DemoFrame
+  fileName="qr-code-overlay.tsx"
+  code={`import { QrCode } from "@/components/base/qr-code/qr-code";
+
+<QrCode
+  value="https://www.joyui.top"
+  size={160}
+  level="H"
+  overlay={<span>Joy</span>}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <QrCodeOverlayPreview />
+</DemoFrame>
 
 ## API
 

@@ -33,12 +33,12 @@ const styles = sortCx({
     md: "gap-3 px-6 py-10",
   },
   iconWrap: {
-    sm: "mb-0.5 flex size-9 items-center justify-center rounded-xl bg-background-secondary-default",
-    md: "mb-1 flex size-11 items-center justify-center rounded-2xl bg-background-secondary-default",
+    sm: "mb-1 flex size-12 items-center justify-center rounded-2xl bg-background-secondary-default",
+    md: "mb-1.5 flex size-16 items-center justify-center rounded-2xl bg-background-secondary-default",
   },
   icon: {
-    sm: "size-4 text-foreground-icon-primary",
-    md: "size-5 text-foreground-icon-primary",
+    sm: "size-6 text-foreground-icon-primary",
+    md: "size-8 text-foreground-icon-primary",
   },
 });
 

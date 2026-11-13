@@ -1,11 +1,13 @@
 ﻿---
 title: "提示条"
-description: "表单与页面内的内联反馈：info / success / warning / error。"
+description: "表单与页面内联反馈：info / success / warning / error 四种 tone。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { AlertScenarioPreview, AlertTonePreview } from "@/components/demos/alert-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-常驻在布局里的反馈条。短暂成功提示优先用 Toast。
+常驻在布局里的反馈条。短暂成功提示优先用 Toast。下方是同一 `Alert` 的不同 `tone` 与场景。
 
 <ComponentDocPreview slug="alert" />
 
@@ -15,18 +17,42 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add alert --yes
 ```
 
-```tsx
-import { Alert } from "@joyui/react";
+或通过 JoyUI MCP / CLI 安装。
 
-<Alert tone="warning" title="Cookie expired">
-  Re-sign Quark in Settings, then retry the transfer.
-</Alert>
-```
+## 语气
+
+`tone`：`info` · `success` · `warning` · `error`。图标可按语气默认，也可传入自定义 `icon`。
+
+<DemoFrame
+  fileName="alert-tones.tsx"
+  code={`import { Alert } from "@/components/base/alert/alert";
+
+<>
+  <Alert tone="info" title="同步已暂停">上游接口限流。</Alert>
+  <Alert tone="success" title="设置已保存">规则已生效。</Alert>
+  <Alert tone="warning" title="Cookie 即将过期">请重新登录。</Alert>
+  <Alert tone="error" title="转存失败">链接无效。</Alert>
+</>`}
+  canvasClassName="min-h-40 items-start justify-center bg-background-primary-default p-8"
+>
+  <AlertTonePreview />
+</DemoFrame>
 
 ## 应用场景
 
-登录失败、设置保存错误、缺 Cookie、Discovery 上游报错等页面级提示。  
-`tone`：`info` · `success` · `warning` · `error`。
+新建任务表单：解析失败时用 `role="alert"` 的错误条，文案可换成业务错误。
+
+<DemoFrame
+  fileName="alert-form.tsx"
+  code={`import { Alert } from "@/components/base/alert/alert";
+
+<Alert tone="error" title="无法解析分享链接" role="alert">
+  请确认链接完整，且未设置提取码限制。
+</Alert>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <AlertScenarioPreview />
+</DemoFrame>
 
 ## API
 

@@ -1,7 +1,16 @@
 "use client";
 
 import { useId, useState } from "react";
-import { Area, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Area,
+  CartesianGrid,
+  ComposedChart,
+  Line,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 import { Chip } from "@/components/base/badges/chip";
 import { useCountUp } from "@/hooks/use-count-up";
@@ -79,7 +88,14 @@ function ActiveDot({ cx: x, cy: y }: { cx?: number; cy?: number }) {
   return (
     <g>
       <circle cx={x} cy={y} r={7} fill="var(--color-chart-2-active)" opacity={0.25} />
-      <circle cx={x} cy={y} r={4} fill="var(--color-chart-2-active)" stroke="var(--color-background-secondary-default)" strokeWidth={2} />
+      <circle
+        cx={x}
+        cy={y}
+        r={4}
+        fill="var(--color-chart-2-active)"
+        stroke="var(--color-background-full)"
+        strokeWidth={2}
+      />
     </g>
   );
 }
@@ -115,15 +131,17 @@ export function RevenueChartCard({
   return (
     <section
       className={cx(
-        "flex h-[344px] min-w-0 flex-1 flex-col gap-6 rounded-2xl bg-background-secondary-default px-4 pt-4 pb-3",
+        "flex h-[344px] min-w-0 flex-1 flex-col gap-4 overflow-hidden rounded-2xl border border-separator-border bg-background-full px-5 pt-5 pb-4 shadow-xs",
         className,
       )}
     >
       {/* Header: label over the count-up figure and its delta; legend on the right */}
       <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="w-full text-body-medium text-text-secondary">{label}</p>
-          <div className="flex w-full items-center gap-2">
+          <p className="w-full text-caption-1-semibold tracking-[0.04em] text-text-tertiary uppercase">
+            {label}
+          </p>
+          <div className="flex w-full flex-wrap items-center gap-2">
             <p
               key={activeIndex ?? "total"}
               className="animate-number-fade text-title-1-medium whitespace-nowrap text-text-primary tabular-nums"
@@ -138,7 +156,7 @@ export function RevenueChartCard({
             ${formatMoney(comparison)} {point ? "a year earlier" : "last year"}
           </p>
         </div>
-        <dl className="flex shrink-0 items-center gap-4 text-body-2-medium text-text-secondary">
+        <dl className="flex shrink-0 items-center gap-3 rounded-full bg-background-secondary-default px-3 py-1.5 text-caption-1-medium text-text-secondary">
           <div className="flex items-center gap-1.5">
             <span className="size-2 rounded-full bg-chart-2-active" aria-hidden />
             <dt>This year</dt>
@@ -155,7 +173,7 @@ export function RevenueChartCard({
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
             data={data}
-            margin={{ top: 4, right: 6, bottom: 0, left: 0 }}
+            margin={{ top: 8, right: 8, bottom: 0, left: 0 }}
             onMouseMove={(state) => {
               const index = Number(state?.activeTooltipIndex);
               if (state?.isTooltipActive && Number.isFinite(index)) setActiveIndex(index);
@@ -164,13 +182,19 @@ export function RevenueChartCard({
           >
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--color-chart-2)" stopOpacity={0.35} />
+                <stop offset="0%" stopColor="var(--color-chart-2)" stopOpacity={0.42} />
+                <stop offset="55%" stopColor="var(--color-chart-2)" stopOpacity={0.12} />
                 <stop offset="100%" stopColor="var(--color-chart-2)" stopOpacity={0} />
               </linearGradient>
             </defs>
+            <CartesianGrid
+              vertical={false}
+              stroke="var(--color-separator-border)"
+              strokeDasharray="3 6"
+            />
             <YAxis
-              width={44}
-              domain={[0, yMax * 1.1]}
+              width={40}
+              domain={[0, yMax * 1.08]}
               tickCount={4}
               tickFormatter={formatK}
               tickLine={false}
@@ -181,9 +205,9 @@ export function RevenueChartCard({
               dataKey="label"
               tickLine={false}
               axisLine={false}
-              tickMargin={12}
+              tickMargin={10}
               interval="preserveStartEnd"
-              tick={{ fontSize: 13, fill: "var(--color-text-tertiary)" }}
+              tick={{ fontSize: 12, fill: "var(--color-text-tertiary)" }}
             />
             <Tooltip
               content={() => null}

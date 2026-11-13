@@ -1,21 +1,98 @@
-﻿---
+---
 status: new
 title: "评分"
-description: "只读或可点选的星级评分。"
+description: "星级评分，以及表情量表变体。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  RatingInteractivePreview,
+  RatingReviewScenario,
+  RatingSizePreview,
+} from "@/components/demos/rating-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+一套评分家族：基础星级；需要心情 / NPS 表情量表时换下方变体。
+
+## 星级
 
 发现页评分、评论卡片。`interactive` 时点击星星触发 `onChange`。
 
 <ComponentDocPreview slug="rating" />
 
-## 安装
-
 ```bash
 npx @joyui/cli add rating --yes
 ```
 
-## API
+### 尺寸
+
+`sm` · `md`；可用 `max` 调整星数。
+
+<DemoFrame
+  fileName="rating-sizes.tsx"
+  code={`import { Rating } from "@/components/base/rating/rating";
+
+<>
+  <Rating value={4} size="sm" aria-label="小尺寸评分" />
+  <Rating value={3.6} size="md" aria-label="中尺寸评分" />
+  <Rating value={4} max={7} size="md" aria-label="七星评分" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <RatingSizePreview />
+</DemoFrame>
+
+### 交互
+
+开启 `interactive` 后点击更新 `value`。
+
+<DemoFrame
+  fileName="rating-interactive.tsx"
+  code={`import { useState } from "react";
+import { Rating } from "@/components/base/rating/rating";
+
+function Example() {
+  const [value, setValue] = useState(3);
+  return <Rating interactive value={value} onChange={setValue} aria-label="可点选评分" />;
+}`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <RatingInteractivePreview />
+</DemoFrame>
+
+### 应用场景
+
+媒体评论卡片：标题旁只读星级。
+
+<DemoFrame
+  fileName="rating-review.tsx"
+  code={`import { Rating } from "@/components/base/rating/rating";
+
+<div className="flex flex-col gap-2 rounded-2xl border p-4">
+  <div className="flex items-center justify-between gap-3">
+    <p>星际穿越</p>
+    <Rating value={5} size="sm" aria-label="评分 5" />
+  </div>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <RatingReviewScenario />
+</DemoFrame>
+
+### API
 
 <DocApiSection slug="rating" />
+
+## 表情评分
+
+愤怒 → 兴奋五级表情，适合满意度 / NPS。
+
+<ComponentDocPreview slug="rating-emoji" />
+
+```bash
+npx @joyui/cli add rating-emoji --yes
+```
+
+### API
+
+<DocApiSection slug="rating-emoji" />

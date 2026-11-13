@@ -1,10 +1,14 @@
 ---
 title: "滑动确认"
-description: "拖动手柄滑过轨道以确认危险操作。"
+description: "滑动解锁式确认：发布、删除等高风险操作。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { SlideToConfirmLabelsPreview } from "@/components/demos/slide-to-confirm-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+拖到阈值触发 `onConfirm`；可自定义文案与重置时长。
 
 <ComponentDocPreview slug="slide-to-confirm" />
 
@@ -13,6 +17,20 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add slide-to-confirm --yes
 ```
+
+## 文案
+
+`label` / `confirmedLabel` 覆盖默认文案。
+
+<DemoFrame
+  fileName="slide-to-confirm-labels.tsx"
+  code={`import { SlideToConfirm } from "@/components/base/slide-to-confirm/slide-to-confirm";
+
+<SlideToConfirm label="滑动以发布" confirmedLabel="已发布" onConfirm={() => {}} />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SlideToConfirmLabelsPreview />
+</DemoFrame>
 
 ## API
 

@@ -1,37 +1,8 @@
 ---
 title: 颜色
-description: JoyUI 语义色 token：文字、表面、边框、状态与图表色。
+description: JoyUI 语义色 token——文字、表面、边框与状态色，随浅色 / 深色自动翻转。
 ---
 
-import { FoundationColorDemo } from "@/components/demos/joyui-showcases";
+import { FoundationsColorPage } from "@/components/docs/foundations";
 
-只使用语义 token，不要用 raw palette（如 `bg-blue-500`）或 hex。
-
-<FoundationColorDemo />
-
-## 常用类名
-
-| 用途 | 类名 |
-|------|------|
-| 主文字 | `text-text-primary` |
-| 次文字 | `text-text-secondary` |
-| 三级文字 | `text-text-tertiary` |
-| 品牌文字 | `text-text-brand-primary` |
-| 错误文字 | `text-text-error-primary` |
-| 主表面 | `bg-background-primary-default` |
-| 次表面 | `bg-background-secondary-default` |
-| 三级表面 | `bg-background-tertiary-default` |
-| 页面底 | `bg-background-full` |
-| 边框 | `border-border-default` / `border-border-secondary-default` |
-| 按钮描边 | `border-border-button-default` |
-| 分隔 | `border-separator-border` |
-| 焦点环 | `ring-border-focus-ring` |
-| 图标 | `text-foreground-icon-primary` |
-| 状态石灰 | `bg-status-lime-background` · `text-status-lime-text` |
-| 状态黄 | `bg-status-yellow-background` · `text-status-yellow-text` |
-| 状态玫红 | `bg-status-rose-background` · `text-status-rose-text` |
-
-完整 token 定义见包内 `@joyui/react/theme.css`（含 `.dark` 翻转）。  
-不存在的类（如随意的 `bg-background-brand-default`）不会生效——以 theme.css `@theme` 导出为准。
-
-深色模式：给 `<html>` 加 `.dark`，token 自动翻转。
+<FoundationsColorPage />

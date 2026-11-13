@@ -283,7 +283,12 @@ export function StatCards({
           : variant === "footer"
             ? "grid-cols-1 sm:grid-cols-2"
             : "grid-cols-2",
-        columns === 4 && (variant === "footer" ? "xl:grid-cols-4" : "lg:grid-cols-4"),
+        // Prefer host-width when available; fall back to viewport breakpoints
+        // so narrow docs layouts don't force a crushed 4-up row.
+        columns === 4 &&
+          (variant === "footer"
+            ? "@container @min-[820px]:grid-cols-4 xl:grid-cols-4"
+            : "@container @min-[640px]:grid-cols-4 lg:grid-cols-4"),
         className,
       )}
     >

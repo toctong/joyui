@@ -1,11 +1,13 @@
 ---
 title: "分段控件"
-description: "周/月/年等滑动胶囊切换。"
+description: "互斥选项切换：solid / plain 两种表面。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { SegmentedVariantPreview } from "@/components/demos/segmented-control-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-周/月/年等滑动胶囊切换。
+时间范围、视图模式等短选项切换。拇指位移动画跟随选中项。
 
 <ComponentDocPreview slug="segmented-control" />
 
@@ -15,16 +17,29 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add segmented-control --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+## 变体
 
+`solid`（默认填充轨）· `plain`（轻量）。
 
-## 应用场景
+<DemoFrame
+  fileName="segmented-control-variants.tsx"
+  code={`import { SegmentedControl, SegmentedControlItem } from "@/components/base/segmented-control/segmented-control";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<>
+  <SegmentedControl aria-label="时间" defaultSelectedKeys={["day"]} variant="solid">
+    <SegmentedControlItem id="day">日</SegmentedControlItem>
+    <SegmentedControlItem id="week">周</SegmentedControlItem>
+  </SegmentedControl>
+  <SegmentedControl aria-label="视图" defaultSelectedKeys={["list"]} variant="plain">
+    <SegmentedControlItem id="list">列表</SegmentedControlItem>
+    <SegmentedControlItem id="board">看板</SegmentedControlItem>
+  </SegmentedControl>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SegmentedVariantPreview />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="segmented-control" />
-

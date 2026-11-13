@@ -1,11 +1,17 @@
 ---
 title: "公告"
-description: "侧边栏页脚用的可关闭公告卡片。"
+description: "侧栏 / 页脚公告：操作按钮、可关闭与自定义图标。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  AnnouncementActionPreview,
+  AnnouncementIconPreview,
+  AnnouncementSidebarScenario,
+} from "@/components/demos/announcement-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-侧边栏页脚用的可关闭公告卡片。
+推广与引导条。下方是**同一个** `Announcement` 的不同配置。
 
 <ComponentDocPreview slug="announcement" />
 
@@ -17,14 +23,65 @@ npx @joyui/cli add announcement --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 操作与关闭
+
+`actionLabel` 主操作；`dismissible` 显示关闭按钮。
+
+<DemoFrame
+  fileName="announcement-action.tsx"
+  code={`import { Announcement } from "@/components/base/announcement/announcement";
+
+<Announcement
+  title="新功能"
+  description="智能体技能已上线。"
+  actionLabel="立即查看"
+  dismissible
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AnnouncementActionPreview />
+</DemoFrame>
+
+## 自定义图标
+
+传入 Remix Icon 组件引用覆盖默认图标。
+
+<DemoFrame
+  fileName="announcement-icon.tsx"
+  code={`import { RiSparklingFill } from "@remixicon/react";
+import { Announcement } from "@/components/base/announcement/announcement";
+
+<Announcement
+  title="试用 Pro"
+  description="解锁更多模板与图表。"
+  icon={RiSparklingFill}
+  actionLabel="升级"
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AnnouncementIconPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+侧栏页脚引导完成设置。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="announcement-sidebar.tsx"
+  code={`import { Announcement } from "@/components/base/announcement/announcement";
+
+<Announcement
+  title="完成设置"
+  description="添加第一个工作区成员。"
+  actionLabel="邀请同事"
+  dismissible
+  closeLabel="关闭公告"
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <AnnouncementSidebarScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="announcement" />
-

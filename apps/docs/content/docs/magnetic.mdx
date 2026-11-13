@@ -1,10 +1,14 @@
 ---
 title: "磁吸"
-description: "指针靠近时轻微吸向光标的包装层。"
+description: "指针靠近时轻微位移的磁吸包裹。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { MagneticStrengthPreview } from "@/components/demos/magnetic-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+CTA 或图标按钮的微交互；`strength` / `radius` 控制吸力与作用半径。
 
 <ComponentDocPreview slug="magnetic" />
 
@@ -13,6 +17,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add magnetic --yes
 ```
+
+## 吸力
+
+更大的 `strength` 与 `radius` 让位移更明显。
+
+<DemoFrame
+  fileName="magnetic-strength.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Magnetic } from "@/components/base/magnetic/magnetic";
+
+<>
+  <Magnetic strength={12} radius={80}><Button variant="secondary">轻吸力</Button></Magnetic>
+  <Magnetic strength={28} radius={120}><Button>强吸力</Button></Magnetic>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <MagneticStrengthPreview />
+</DemoFrame>
 
 ## API
 

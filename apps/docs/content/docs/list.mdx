@@ -1,10 +1,15 @@
-﻿---
+---
 status: new
 title: "列表"
-description: "分组列表外壳与行：标题、描述、前置/后置槽。"
+description: "分组列表外壳与行：交互行、前置槽与分隔。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ListInteractivePreview,
+  ListLeadingPreview,
+} from "@/components/demos/list-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
 设置账号行、搜索结果、日志条目等，用 `List` + `ListItem` 替代手写 `divide-y` 盒子。
 
@@ -16,33 +21,38 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add list --yes
 ```
 
-整库：
+## 可点击行
 
-```tsx
-import { Chip, List, ListItem } from "@joyui/react";
+`interactive` 加上悬停底与指针；`trailing` 可放 Chip。
+
+<DemoFrame
+  fileName="list-interactive.tsx"
+  code={`import { Chip } from "@/components/base/badges/chip";
+import { List, ListItem } from "@/components/base/list/list";
 
 <List className="w-full max-w-md">
-  <ListItem
-    title="admin@marhub.local"
-    description="primary (transfer)"
-    trailing={<Chip color="lime" variant="subtle">ok</Chip>}
-  />
-  <ListItem
-    title="CloudSaver"
-    description="Plugin endpoint"
-    interactive
-    trailing={<Chip color="neutral" variant="subtle">off</Chip>}
-  />
-</List>
-```
+  <ListItem title="CloudSaver" description="插件端点" interactive trailing={<Chip color="neutral" variant="subtle">off</Chip>} />
+</List>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ListInteractivePreview />
+</DemoFrame>
 
-## 应用场景
+## 前置槽
 
-- Logs：消息 + level Chip  
-- Search：标题 + 分享链接 + source Chip  
-- Settings：账号 / 插件状态行  
+`leading` 放头像或序号；`divided={false}` 去掉行间分隔。
 
-`interactive` 或 `onClick` 会加上悬停底与指针样式。`description` 可放链接或纯文本。
+<DemoFrame
+  fileName="list-leading.tsx"
+  code={`import { List, ListItem } from "@/components/base/list/list";
+
+<List divided={false}>
+  <ListItem leading={<span>A</span>} title="账号同步" description="每 15 分钟" />
+</List>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ListLeadingPreview />
+</DemoFrame>
 
 ## API
 

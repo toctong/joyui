@@ -1,11 +1,16 @@
 ---
 title: "分页"
-description: "带省略折叠的数字分页。"
+description: "页码导航：siblingCount 控制邻页宽度，适合表格页脚。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  PaginationSiblingPreview,
+  PaginationTableScenario,
+} from "@/components/demos/pagination-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-带省略折叠的数字分页。
+受控分页：`page` + `totalPages` + `onChange`。下方是**同一个** `Pagination` 的不同配置。
 
 <ComponentDocPreview slug="pagination" />
 
@@ -17,14 +22,40 @@ npx @joyui/cli add pagination --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 相邻页数
+
+`siblingCount` 控制当前页两侧展示的页码数量。
+
+<DemoFrame
+  fileName="pagination-siblings.tsx"
+  code={`import { Pagination } from "@/components/base/pagination/pagination";
+
+<>
+  <Pagination page={5} totalPages={20} onChange={() => {}} siblingCount={1} previousLabel="上一页" nextLabel="下一页" />
+  <Pagination page={5} totalPages={20} onChange={() => {}} siblingCount={2} previousLabel="上一页" nextLabel="下一页" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <PaginationSiblingPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+表格页脚：转存记录列表底部翻页。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="pagination-table.tsx"
+  code={`import { Pagination } from "@/components/base/pagination/pagination";
+
+<div>
+  <p>转存记录 · 第 1 页</p>
+  <Pagination page={1} totalPages={8} onChange={() => {}} previousLabel="上一页" nextLabel="下一页" />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <PaginationTableScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="pagination" />
-

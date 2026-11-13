@@ -1,9 +1,9 @@
-import type {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  ComponentType,
-  ReactNode,
-  Ref,
+import {
+  forwardRef,
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type ComponentType,
+  type ReactNode,
 } from "react";
 import { cx, sortCx } from "../../../utils/cx";
 import { directionalIconClass } from "../../../utils/directional-icon";
@@ -65,7 +65,6 @@ export interface ButtonProps
    */
   isDisabled?: boolean;
   children?: ReactNode;
-  ref?: Ref<HTMLButtonElement>;
 }
 
 export interface ButtonLinkProps
@@ -78,7 +77,6 @@ export interface ButtonLinkProps
   /** React Aria-style alias for `aria-disabled` / pointer blocking. */
   isDisabled?: boolean;
   children?: ReactNode;
-  ref?: Ref<HTMLAnchorElement>;
 }
 
 const styles = sortCx({
@@ -149,20 +147,23 @@ const styles = sortCx({
   },
 });
 
-export function Button({
-  variant = "primary",
-  size = "medium",
-  iconOnly = false,
-  leadingIcon: Leading,
-  trailingIcon: Trailing,
-  children,
-  className,
-  type = "button",
-  isDisabled,
-  disabled,
+/** `forwardRef` so React Aria overlays (Tooltip / Popover) can attach the trigger ref. */
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    variant = "primary",
+    size = "medium",
+    iconOnly = false,
+    leadingIcon: Leading,
+    trailingIcon: Trailing,
+    children,
+    className,
+    type = "button",
+    isDisabled,
+    disabled,
+    ...props
+  },
   ref,
-  ...props
-}: ButtonProps) {
+) {
   const off = Boolean(disabled ?? isDisabled);
   return (
     <button
@@ -188,22 +189,24 @@ export function Button({
       ) : null}
     </button>
   );
-}
+});
 
 /** Anchor counterpart to Button for navigational actions. */
-export function ButtonLink({
-  variant = "primary",
-  size = "medium",
-  iconOnly = false,
-  leadingIcon: Leading,
-  trailingIcon: Trailing,
-  children,
-  className,
-  isDisabled,
+export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(function ButtonLink(
+  {
+    variant = "primary",
+    size = "medium",
+    iconOnly = false,
+    leadingIcon: Leading,
+    trailingIcon: Trailing,
+    children,
+    className,
+    isDisabled,
+    onClick,
+    ...props
+  },
   ref,
-  onClick,
-  ...props
-}: ButtonLinkProps) {
+) {
   const off = Boolean(isDisabled || props["aria-disabled"]);
   return (
     <a
@@ -237,7 +240,7 @@ export function ButtonLink({
       ) : null}
     </a>
   );
-}
+});
 
 /** Style maps, exported for advanced composition and the dev Design Tuner. */
 export const buttonStyles = styles;

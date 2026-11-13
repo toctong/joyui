@@ -1,17 +1,13 @@
 ---
-title: "图标"
-description: "Remix Icon 全库浏览：搜索、筛选，点击即可复制组件名或 import。"
+title: 图标
+description: Remix Icon 全库浏览：搜索、筛选，点击即可复制组件名或 import。
 status: new
 ---
+
+import { FoundationsIconsIntro } from "@/components/docs/foundations";
 import { IconsGallery } from "@/components/docs/icons-gallery";
 
-JoyUI 使用 [@remixicon/react](https://remixicon.com/)（3000+ 图标）。下方可浏览全库，**点击单个图标即可复制**。
-
-## 规则
-
-- 传**组件引用**，不要渲染元素：`leadingIcon={RiAddLine}`
-- 颜色用语义 token：`text-foreground-icon-primary` … `text-foreground-icon-quaternary`
-- RTL 下导航箭头用 `directional-icon` 工具镜像
+<FoundationsIconsIntro />
 
 ## 示例
 
@@ -25,7 +21,5 @@ import { Button } from "@/components/base/buttons/button";
 ```
 
 ## 图标库
-
-默认展示 Line 线框；可切换 Fill / 全部。支持「复制名称」或「复制 import」。
 
 <IconsGallery />

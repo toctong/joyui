@@ -1,12 +1,18 @@
 ﻿---
-status: new
 title: "条形码"
-description: "1D 条码（默认 CODE128）；依赖 jsbarcode 已内置。"
+description: "1D 条码：CODE128 / EAN13 等格式，可开关显示数值。"
+status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  BarcodeDisplayPreview,
+  BarcodeFormatPreview,
+  BarcodeTicketScenario,
+} from "@/components/demos/barcode-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-SKU、运单号、票务码。支持 EAN / UPC / CODE39 等常见格式。
+SKU、运单号、票务码。默认 `CODE128`；依赖 jsbarcode 已内置。下方是**同一个** `Barcode` 的不同配置。
 
 <ComponentDocPreview slug="barcode" />
 
@@ -16,11 +22,58 @@ SKU、运单号、票务码。支持 EAN / UPC / CODE39 等常见格式。
 npx @joyui/cli add barcode --yes
 ```
 
-```tsx
-import { Barcode } from "@joyui/react";
+或通过 JoyUI MCP / CLI 安装。
 
-<Barcode value="MH-2026-0312" format="CODE128" displayValue />
-```
+## 格式
+
+`format` 切换编码（如 `CODE128`、`EAN13`）；`height` 控制条高。
+
+<DemoFrame
+  fileName="barcode-formats.tsx"
+  code={`import { Barcode } from "@/components/base/barcode/barcode";
+
+<>
+  <Barcode value="MH-2026-0312" format="CODE128" />
+  <Barcode value="5901234123457" format="EAN13" height={48} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <BarcodeFormatPreview />
+</DemoFrame>
+
+## 显示数值
+
+`displayValue` 控制条码下方文字（默认 `true`）。
+
+<DemoFrame
+  fileName="barcode-display.tsx"
+  code={`import { Barcode } from "@/components/base/barcode/barcode";
+
+<>
+  <Barcode value="TICKET-8841" displayValue height={56} />
+  <Barcode value="TICKET-8841" displayValue={false} height={56} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <BarcodeDisplayPreview />
+</DemoFrame>
+
+## 应用场景
+
+入场凭证：CODE128 扫码核销。
+
+<DemoFrame
+  fileName="barcode-ticket.tsx"
+  code={`import { Barcode } from "@/components/base/barcode/barcode";
+
+<div>
+  <p>入场凭证</p>
+  <Barcode value="JOY-GATE-2026" format="CODE128" height={56} aria-label="入场条码" />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <BarcodeTicketScenario />
+</DemoFrame>
 
 ## 与二维码怎么选
 

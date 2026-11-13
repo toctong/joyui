@@ -1,10 +1,14 @@
 ---
 title: "语音环"
-description: "录音 / 聆听态的同心脉冲环，包裹麦克风按钮。"
+description: "麦克风按钮外的聆听脉冲环。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { VoiceRingActivePreview } from "@/components/demos/voice-ring-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+语音输入空闲 / 聆听态。`active` 打开脉冲。
 
 <ComponentDocPreview slug="voice-ring" />
 
@@ -13,6 +17,29 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add voice-ring --yes
 ```
+
+## 聆听态
+
+包裹图标按钮，切换 `active`。
+
+<DemoFrame
+  fileName="voice-ring-active.tsx"
+  code={`import { RiMicLine } from "@remixicon/react";
+import { Button } from "@/components/base/buttons/button";
+import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
+
+<>
+  <VoiceRing>
+    <Button iconOnly leadingIcon={RiMicLine} aria-label="麦克风" variant="secondary" />
+  </VoiceRing>
+  <VoiceRing active>
+    <Button iconOnly leadingIcon={RiMicLine} aria-label="正在聆听" />
+  </VoiceRing>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <VoiceRingActivePreview />
+</DemoFrame>
 
 ## API
 

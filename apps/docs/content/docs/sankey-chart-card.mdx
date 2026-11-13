@@ -1,11 +1,15 @@
 ---
 title: "桑基图"
-description: "着色流与悬停隔离的桑基卡。"
+description: "流向桑基卡片。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  SankeyChartEmbed
+} from "@/components/demos/chart-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-着色流与悬停隔离的桑基卡。
+流向桑基卡片。
 
 <ProComponentDoc slug="sankey-chart-card" name="桑基图" />
 
@@ -17,14 +21,20 @@ npx @joyui/cli add sankey-chart-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 仪表盘嵌入
 
-## 应用场景
+桑基流量。
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+<DemoFrame
+  fileName="sankey-chart-card-embed.tsx"
+  code={`import { SankeyChartCard } from "@/components/application/dashboard/sankey-chart-card";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<SankeyChartCard />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <SankeyChartEmbed />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="sankey-chart-card" />
-

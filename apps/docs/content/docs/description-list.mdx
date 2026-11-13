@@ -1,12 +1,13 @@
-﻿---
-status: new
+---
 title: "描述列表"
-description: "键值明细：设置摘要、账号卡片、转存元数据。"
+description: "术语 / 详情网格：单列或双列。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DescriptionListColumnsPreview } from "@/components/demos/description-list-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-`DescriptionList` / `DescriptionItem`（或 `DescriptionTerm` + `DescriptionDetails`）。
+设置摘要、订单明细与只读资料。可用 `DescriptionItem` 快捷配对。
 
 <ComponentDocPreview slug="description-list" />
 
@@ -15,6 +16,28 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add description-list --yes
 ```
+
+## 列数
+
+`columns={1|2}`；双列在 `sm+` 折成两栏。
+
+<DemoFrame
+  fileName="description-list-columns.tsx"
+  code={`import { DescriptionItem, DescriptionList } from "@/components/base/description-list/description-list";
+
+<>
+  <DescriptionList columns={1}>
+    <DescriptionItem term="计划">Pro</DescriptionItem>
+  </DescriptionList>
+  <DescriptionList columns={2}>
+    <DescriptionItem term="区域">亚太</DescriptionItem>
+    <DescriptionItem term="状态">活跃</DescriptionItem>
+  </DescriptionList>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DescriptionListColumnsPreview />
+</DemoFrame>
 
 ## API
 

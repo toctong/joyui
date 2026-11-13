@@ -1,11 +1,16 @@
 ---
 title: "复选框"
-description: "带动画勾选与半选状态，含卡片变体。"
+description: "多选控件：选中 / 半选 / 禁用与小号尺寸，含复选卡片。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  CheckboxCardScenario,
+  CheckboxStatePreview,
+} from "@/components/demos/checkbox-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-带动画勾选与半选状态，含卡片变体。
+多选控件。下方是**同一个** `Checkbox` 的不同状态；选项块可用 `CheckboxCard`。
 
 <ComponentDocPreview slug="checkbox" />
 
@@ -17,14 +22,43 @@ npx @joyui/cli add checkbox --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 状态
+
+未选中 · 已选中 · `isIndeterminate` 半选 · `isDisabled` · `size="sm"`。
+
+<DemoFrame
+  fileName="checkbox-states.tsx"
+  code={`import { Checkbox } from "@/components/base/checkbox/checkbox";
+
+<>
+  <Checkbox>未选中</Checkbox>
+  <Checkbox defaultSelected>已选中</Checkbox>
+  <Checkbox isIndeterminate>半选</Checkbox>
+  <Checkbox isDisabled>禁用</Checkbox>
+  <Checkbox size="sm" defaultSelected>小号 sm</Checkbox>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CheckboxStatePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+下载选项：`CheckboxCard` 标题 + 描述。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="checkbox-cards.tsx"
+  code={`import { CheckboxCard } from "@/components/base/checkbox/checkbox-card";
+
+<>
+  <CheckboxCard title="包含字幕" description="下载外挂字幕文件（若有）" defaultSelected />
+  <CheckboxCard title="保留原文件夹结构" description="按网盘目录层级落盘" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CheckboxCardScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="checkbox" />
-

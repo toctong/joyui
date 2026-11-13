@@ -1,11 +1,17 @@
 ﻿---
 title: "进度"
-description: "条形与环形进度，确定或不确定。"
+description: "条形与环形进度：尺寸、确定 / 不确定与上传场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ProgressSizePreview,
+  ProgressModePreview,
+  ProgressUploadScenario,
+} from "@/components/demos/progress-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-条形与环形进度，确定或不确定。
+条形 `ProgressBar` 与环形 `ProgressCircle`，支持确定值或 `isIndeterminate`。
 
 <ComponentDocPreview slug="progress" />
 
@@ -17,14 +23,62 @@ npx @joyui/cli add progress --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`sm` · `md` · `lg`。
+
+<DemoFrame
+  fileName="progress-sizes.tsx"
+  code={`import { ProgressBar } from "@/components/base/progress/progress";
+
+<>
+  <ProgressBar label="上传 · sm" value={64} size="sm" />
+  <ProgressBar label="上传 · md" value={64} size="md" />
+  <ProgressBar label="上传 · lg" value={64} size="lg" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ProgressSizePreview />
+</DemoFrame>
+
+## 模式
+
+不确定条形进度与环形确定 / 不确定。
+
+<DemoFrame
+  fileName="progress-modes.tsx"
+  code={`import { ProgressBar, ProgressCircle } from "@/components/base/progress/progress";
+
+<>
+  <ProgressBar label="准备导出" isIndeterminate description="正在打包文件…" />
+  <ProgressCircle value={72} aria-label="上传进度 72%" size="lg" />
+  <ProgressCircle isIndeterminate aria-label="加载中" size="lg" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ProgressModePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+文件上传卡片：标题旁环形百分比 + 下方条形进度。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="progress-upload.tsx"
+  code={`import { ProgressBar, ProgressCircle } from "@/components/base/progress/progress";
+
+<div className="flex flex-col gap-3 rounded-2xl border p-4">
+  <div className="flex items-center justify-between gap-3">
+    <p>季度报告.pdf</p>
+    <ProgressCircle value={48} aria-label="上传 48%" size="sm" />
+  </div>
+  <ProgressBar label="上传中" value={48} size="sm" description="约剩余 12 秒" />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ProgressUploadScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="progress" />
-

@@ -4,7 +4,9 @@ description: "复制按钮与带尾部复制的输入字段。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { CopyButtonSizePreview } from "@/components/demos/copy-button-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
 复制家族：图标按钮一键复制，以及带尾部复制动作的字段。
 
@@ -17,6 +19,23 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add copy-button --yes
 ```
+
+### 尺寸
+
+`size`：`small` · `medium`（默认）。
+
+<DemoFrame
+  fileName="copy-button-sizes.tsx"
+  code={`import { CopyButton } from "@/components/base/copy-button/copy-button";
+
+<>
+  <CopyButton value="https://www.joyui.top" size="small" aria-label="复制 small" />
+  <CopyButton value="https://www.joyui.top" size="medium" aria-label="复制 medium" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CopyButtonSizePreview />
+</DemoFrame>
 
 ### API
 

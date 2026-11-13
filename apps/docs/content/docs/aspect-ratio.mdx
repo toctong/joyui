@@ -1,12 +1,17 @@
 ---
 title: "宽高比"
-description: "按比例锁定容器，适合封面、嵌入与骨架。"
+description: "锁定容器比例：16:9 · 1:1 · 4:3 · 2:3，适合封面占位。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  AspectRatioMediaScenario,
+  AspectRatioPresetPreview,
+} from "@/components/demos/aspect-ratio-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-媒体布局常用的比例盒，避免手写 padding hack。
+用 `ratio`（数字，默认 `16/9`）锁定子内容宽高比，避免布局跳动。
 
 <ComponentDocPreview slug="aspect-ratio" />
 
@@ -16,13 +21,45 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add aspect-ratio --yes
 ```
 
-```tsx
-import { AspectRatio } from "@joyui/react";
+或通过 JoyUI MCP / CLI 安装。
 
-<AspectRatio ratio={16 / 9} className="rounded-2xl bg-background-secondary-default">
-  <img src="/cover.jpg" alt="" className="size-full object-cover" />
-</AspectRatio>
-```
+## 常见比例
+
+传入 `16/9`、`1`、`4/3`、`2/3` 等数值。
+
+<DemoFrame
+  fileName="aspect-ratio-presets.tsx"
+  code={`import { AspectRatio } from "@/components/base/aspect-ratio/aspect-ratio";
+
+<>
+  <AspectRatio ratio={16 / 9}>16:9</AspectRatio>
+  <AspectRatio ratio={1}>1:1</AspectRatio>
+  <AspectRatio ratio={4 / 3}>4:3</AspectRatio>
+  <AspectRatio ratio={2 / 3}>2:3</AspectRatio>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AspectRatioPresetPreview />
+</DemoFrame>
+
+## 应用场景
+
+媒体卡片封面：锁定 16:9 占位。
+
+<DemoFrame
+  fileName="aspect-ratio-media.tsx"
+  code={`import { AspectRatio } from "@/components/base/aspect-ratio/aspect-ratio";
+
+<div>
+  <AspectRatio ratio={16 / 9} className="rounded-xl bg-background-secondary-default">
+    <div>封面占位</div>
+  </AspectRatio>
+  <p>产品发布会回放</p>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <AspectRatioMediaScenario />
+</DemoFrame>
 
 ## API
 

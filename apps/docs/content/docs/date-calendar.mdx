@@ -2,10 +2,16 @@
 title: "日期日历"
 description: "页面内月份日历，支持单日或区间。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DateCalendarBookingScenario,
+  DateCalendarRangePreview,
+  DateCalendarSinglePreview,
+} from "@/components/demos/date-calendar-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-页面内月份日历，支持单日或区间。
+页面内月份视图：单日选择用 `DateCalendar`，入住 / 筛选区间用 `DateRangeCalendar`。
 
 <ComponentDocPreview slug="date-calendar" />
 
@@ -17,14 +23,72 @@ npx @joyui/cli add date-calendar --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 单日
+
+`showToday` 默认开启，今天带小圆点。
+
+<DemoFrame
+  fileName="date-calendar-single.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DateCalendar } from "@/components/base/date-picker/date-calendar";
+
+<DateCalendar
+  aria-label="交货日期"
+  defaultValue={parseDate("2026-11-13")}
+  showToday
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DateCalendarSinglePreview />
+</DemoFrame>
+
+## 区间
+
+`visibleMonths={2}` 并排两月；窄屏会自动换行。
+
+<DemoFrame
+  fileName="date-calendar-range.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
+
+<DateRangeCalendar
+  aria-label="入住区间"
+  defaultValue={{
+    start: parseDate("2026-11-10"),
+    end: parseDate("2026-11-16"),
+  }}
+  visibleMonths={2}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DateCalendarRangePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+移动端表单：单月区间，卡片内嵌。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="date-calendar-booking.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
+
+<div className="rounded-2xl border p-4">
+  <p>选择入住日期</p>
+  <DateRangeCalendar
+    aria-label="入住区间"
+    visibleMonths={1}
+    defaultValue={{
+      start: parseDate("2026-11-20"),
+      end: parseDate("2026-11-23"),
+    }}
+  />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <DateCalendarBookingScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="date-calendar" />
-

@@ -1,30 +1,82 @@
 ﻿---
 title: "轻提示"
-description: "任意处 toast()，堆叠为通知卡片。"
+description: "任意处 toast()，以及 loading→成功的 promise 变形。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ToastStatusPreview,
+  ToastTriggersPreview,
+} from "@/components/demos/toast-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-任意处 toast()，堆叠为通知卡片。
+一套轻提示家族：命令式 `toast()` 堆叠为通知卡片；异步流程用 `toastPromise` 做 loading→成功/失败变形。API 各自独立、安装按 slug。
+
+## 基础
+
+任意处 `toast()`，页面根部挂一个 `<Toaster />`。
 
 <ComponentDocPreview slug="toast" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add toast --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+### 状态
 
+与 `Notification` 共享状态色：信息 · 成功 · 错误 · 中性。
 
-## 应用场景
+<DemoFrame
+  fileName="toast-status.tsx"
+  code={`import { Notification } from "@/components/base/notification/notification";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+<div className="flex w-full max-w-sm flex-col gap-3">
+  <Notification status="information" title="正在同步账号" description="请稍候。" />
+  <Notification status="success" title="已保存更改" />
+  <Notification status="error" title="上传失败" description="文件超过 20MB。" />
+  <Notification status="neutral" title="今晚 23:00 维护" />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ToastStatusPreview />
+</DemoFrame>
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+### 触发示例
 
-## API
+交互按钮放在 client 预览里（MDX 是 Server Component，不能直接写 `onClick`）。
+
+<DemoFrame
+  fileName="toast-triggers.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { toast, Toaster } from "@/components/base/toast/toast";
+
+<>
+  <Toaster />
+  <div className="flex flex-wrap gap-2">
+    <Button variant="secondary" onClick={() => toast.info("已加入队列")}>信息</Button>
+    <Button onClick={() => toast.success("已保存更改")}>成功</Button>
+    <Button variant="danger" onClick={() => toast.error("上传失败", { description: "文件超过 20MB。" })}>错误</Button>
+  </div>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ToastTriggersPreview />
+</DemoFrame>
+
+### API
 
 <DocApiSection slug="toast" />
 
+## Promise 变形
+
+先出 loading 卡，Promise 落定后原地变成成功或错误——适合保存、导出、上传。
+
+<ComponentDocPreview slug="toast-promise" />
+
+```bash
+npx @joyui/cli add toast-promise --yes
+```
+
+### API
+
+<DocApiSection slug="toast-promise" />

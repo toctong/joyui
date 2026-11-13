@@ -1,34 +1,88 @@
 ﻿---
 status: new
 title: "步骤条"
-description: "横向 / 纵向多步骤指示：向导与引导流程。"
+description: "横向 / 纵向多步骤指示，以及带内容区与页脚的向导变体。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  StepsHorizontalPreview,
+  StepsVerticalPreview,
+} from "@/components/demos/steps-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-用 `current`（从 0 起）标记当前步，已完成步骤显示勾选。
+一套步骤家族：基础 `Steps` 用 `current`（从 0 起）标记进度；需要内容面板与上一步 / 下一步时换用下方向导变体。
+
+## 基础步骤条
+
+已完成步骤显示勾选；支持 `orientation="horizontal" | "vertical"`。
 
 <ComponentDocPreview slug="steps" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add steps --yes
 ```
 
-```tsx
-import { Steps } from "@joyui/react";
+### 横向
+
+默认方向，适合页面顶栏与弹窗向导头。
+
+<DemoFrame
+  fileName="steps-horizontal.tsx"
+  code={`import { Steps } from "@/components/base/steps/steps";
 
 <Steps
   current={1}
+  orientation="horizontal"
+  className="w-full max-w-xl"
   steps={[
-    { title: "Account", description: "Cookie" },
-    { title: "Sources", description: "TMDB" },
-    { title: "Done" },
+    { title: "账号", description: "Cookie" },
+    { title: "片源", description: "TMDB" },
+    { title: "完成", description: "确认" },
   ]}
-/>
-```
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <StepsHorizontalPreview />
+</DemoFrame>
 
-## API
+### 纵向
+
+侧栏式进度，适合侧边导航与窄屏表单。
+
+<DemoFrame
+  fileName="steps-vertical.tsx"
+  code={`import { Steps } from "@/components/base/steps/steps";
+
+<Steps
+  current={1}
+  orientation="vertical"
+  className="w-full max-w-xs"
+  steps={[
+    { title: "账号", description: "Cookie" },
+    { title: "片源", description: "TMDB" },
+    { title: "完成", description: "确认" },
+  ]}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <StepsVerticalPreview />
+</DemoFrame>
+
+### API
 
 <DocApiSection slug="steps" />
+
+## 步骤向导
+
+步骤头 + 内容面板 +「上一步 / 下一步」页脚，适合多步表单。
+
+<ComponentDocPreview slug="steps-wizard" />
+
+```bash
+npx @joyui/cli add steps-wizard --yes
+```
+
+### API
+
+<DocApiSection slug="steps-wizard" />

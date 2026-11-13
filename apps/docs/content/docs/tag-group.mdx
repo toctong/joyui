@@ -1,9 +1,14 @@
-﻿---
+---
 title: "标签"
 description: "标签组选择 / 移除，以及可输入添加的标签字段。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  TagGroupRemovePreview,
+  TagGroupSizePreview,
+} from "@/components/demos/tag-group-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
 标签家族：可选可删的 `TagGroup`，以及回车添加的 `TagInput`。
 
@@ -16,6 +21,40 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add tag-group --yes
 ```
+
+### 尺寸
+
+`medium` · `small`；`Tag` 支持语义 `color`。
+
+<DemoFrame
+  fileName="tag-group-sizes.tsx"
+  code={`import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
+
+<TagGroup aria-label="技术栈" size="medium" selectionMode="multiple" defaultSelectedKeys={["react"]}>
+  <Tag id="react" color="cyan">React</Tag>
+  <Tag id="aria" color="purple">Aria</Tag>
+</TagGroup>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TagGroupSizePreview />
+</DemoFrame>
+
+### 可移除
+
+提供 `onRemove` 后显示移除控件。
+
+<DemoFrame
+  fileName="tag-group-remove.tsx"
+  code={`import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
+
+<TagGroup aria-label="团队" onRemove={() => undefined}>
+  <Tag id="design" color="rose">设计</Tag>
+  <Tag id="eng" color="cyan">工程</Tag>
+</TagGroup>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <TagGroupRemovePreview />
+</DemoFrame>
 
 ### API
 

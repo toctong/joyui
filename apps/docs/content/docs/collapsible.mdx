@@ -1,12 +1,18 @@
 ﻿---
-status: new
 title: "折叠面板"
-description: "单个展开/收起块；只需一项时比 Accordion 更轻。"
+description: "单个展开/收起块：默认收起、defaultExpanded 与设置场景。"
+status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  CollapsibleBasicPreview,
+  CollapsibleExpandedPreview,
+  CollapsibleSettingsScenario,
+} from "@/components/demos/collapsible-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-高级设置、筛选区、剧透内容。多项并列请用 `Accordion`。
+高级设置、筛选区、剧透内容。多项并列请用 `Accordion`。下方是**同一个** `Collapsible` 的不同配置。
 
 <ComponentDocPreview slug="collapsible" />
 
@@ -15,6 +21,59 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add collapsible --yes
 ```
+
+或通过 JoyUI MCP / CLI 安装。
+
+## 基础
+
+必填 `title`，默认收起。
+
+<DemoFrame
+  fileName="collapsible-basic.tsx"
+  code={`import { Collapsible } from "@/components/base/collapsible/collapsible";
+
+<Collapsible title="高级筛选">
+  可按状态、负责人与更新时间缩小结果范围。
+</Collapsible>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CollapsibleBasicPreview />
+</DemoFrame>
+
+## 默认展开
+
+`defaultExpanded` 初始打开。
+
+<DemoFrame
+  fileName="collapsible-expanded.tsx"
+  code={`import { Collapsible } from "@/components/base/collapsible/collapsible";
+
+<Collapsible title="隐私说明" defaultExpanded>
+  仅工作区成员可见；导出操作会写入审计日志。
+</Collapsible>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CollapsibleExpandedPreview />
+</DemoFrame>
+
+## 应用场景
+
+项目设置里的「高级选项」折叠块。
+
+<DemoFrame
+  fileName="collapsible-settings.tsx"
+  code={`import { Collapsible } from "@/components/base/collapsible/collapsible";
+
+<div>
+  <p>项目设置</p>
+  <Collapsible title="高级选项">
+    开启实验性功能前，请确认团队已完成兼容性测试。
+  </Collapsible>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CollapsibleSettingsScenario />
+</DemoFrame>
 
 ## API
 

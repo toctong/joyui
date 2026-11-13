@@ -1,11 +1,15 @@
 ---
 title: "径向图"
-description: "同心环、仪表与半规堆叠。"
+description: "径向进度卡片。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  RadialChartEmbed
+} from "@/components/demos/chart-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-同心环、仪表与半规堆叠。
+径向进度卡片。
 
 <ProComponentDoc slug="radial-chart-card" name="径向图" />
 
@@ -17,14 +21,20 @@ npx @joyui/cli add radial-chart-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 仪表盘嵌入
 
-## 应用场景
+径向进度。
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+<DemoFrame
+  fileName="radial-chart-card-embed.tsx"
+  code={`import { RadialChartCard } from "@/components/application/dashboard/radial-chart-card";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<RadialChartCard />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <RadialChartEmbed />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="radial-chart-card" />
-

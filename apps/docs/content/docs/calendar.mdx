@@ -2,10 +2,16 @@
 title: "日历"
 description: "含事件芯片与详情弹出的月历。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  DateCalendarBookingScenario,
+  DateCalendarRangePreview,
+} from "@/components/demos/date-calendar-docs";
+import { DatePickerFilterScenario } from "@/components/demos/date-picker-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-含事件芯片与详情弹出的月历。
+含事件芯片与详情弹出的月历（完整模板预览见下）。若只要选日 / 选区间，优先用 `DateCalendar` / `DatePicker`。
 
 <ProComponentDoc slug="calendar" name="日历" />
 
@@ -17,14 +23,60 @@ npx @joyui/cli add calendar --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 相关：页面内区间
 
-## 应用场景
+无事件芯片时，用 `DateRangeCalendar` 做入住 / 筛选。
 
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
+<DemoFrame
+  fileName="calendar-related-range.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DateRangeCalendar
+  aria-label="入住区间"
+  visibleMonths={2}
+  defaultValue={{
+    start: parseDate("2026-11-10"),
+    end: parseDate("2026-11-16"),
+  }}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DateCalendarRangePreview />
+</DemoFrame>
+
+## 相关：表单内嵌
+
+移动端表单里的单月区间。
+
+<DemoFrame
+  fileName="calendar-related-booking.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
+
+<DateRangeCalendar aria-label="入住区间" visibleMonths={1} />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <DateCalendarBookingScenario />
+</DemoFrame>
+
+## 相关：弹出筛选
+
+工具栏用 `DatePicker` 拼起止日。
+
+<DemoFrame
+  fileName="calendar-related-filter.tsx"
+  code={`import { DatePicker } from "@/components/base/date-picker/date-picker";
+
+<>
+  <DatePicker aria-label="起始日" />
+  <DatePicker aria-label="结束日" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <DatePickerFilterScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="calendar" />
-

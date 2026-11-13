@@ -1,10 +1,14 @@
 ---
-title: "涟漪按压"
-description: "按压缩放涟漪，适合按钮与可点击表面。"
+title: "涟漪"
+description: "点击涟漪包裹层：色调继承自 currentColor。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { RippleTonePreview } from "@/components/demos/ripple-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+为按钮或卡片叠加材质涟漪；`text-*` 类决定波纹颜色。
 
 <ComponentDocPreview slug="ripple" />
 
@@ -13,6 +17,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add ripple --yes
 ```
+
+## 色调与关闭
+
+`disabled` 关闭涟漪，保留子节点。
+
+<DemoFrame
+  fileName="ripple-tones.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Ripple } from "@/components/base/ripple/ripple";
+
+<>
+  <Ripple className="rounded-2lg text-accent-500"><Button>主色涟漪</Button></Ripple>
+  <Ripple disabled className="rounded-2lg text-accent-500"><Button variant="ghost">关闭</Button></Ripple>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <RippleTonePreview />
+</DemoFrame>
 
 ## API
 

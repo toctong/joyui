@@ -1,11 +1,17 @@
 ---
 title: "选项卡"
-description: "下划线与胶囊两种选项卡。"
+description: "下划线 Tabs 与胶囊 PillTab：图标、计数与分区切换。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  TabsCountPreview,
+  TabsPillPreview,
+  TabsSettingsScenario,
+} from "@/components/demos/tabs-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-下划线与胶囊两种选项卡。
+下划线选项卡适合页面分区；胶囊适合工具栏视图切换。下方是**同一个** Tabs 家族的不同配置。
 
 <ComponentDocPreview slug="tabs" />
 
@@ -17,14 +23,66 @@ npx @joyui/cli add tabs --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 图标与计数
+
+`Tab` 支持 `icon` 与 `count`，用于文件 / 成员等带数量的分区。
+
+<DemoFrame
+  fileName="tabs-count.tsx"
+  code={`import { RiFolder3Line, RiSettings3Line, RiTeamLine } from "@remixicon/react";
+import { Tab, TabList, TabPanel, Tabs } from "@/components/base/tabs/tabs";
+
+<Tabs defaultSelectedKey="files">
+  <TabList aria-label="工作区">
+    <Tab id="files" icon={RiFolder3Line} count={24}>文件</Tab>
+    <Tab id="members" icon={RiTeamLine} count={8}>成员</Tab>
+    <Tab id="settings" icon={RiSettings3Line}>设置</Tab>
+  </TabList>
+  <TabPanel id="files">项目文件与共享链接。</TabPanel>
+</Tabs>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TabsCountPreview />
+</DemoFrame>
+
+## 胶囊选项卡
+
+`PillTab` + `PillTabList`，`variant="blue" | "gray"`。
+
+<DemoFrame
+  fileName="tabs-pill.tsx"
+  code={`import { PillTab, PillTabList } from "@/components/base/tabs/pill-tab";
+
+<PillTabList aria-label="视图切换">
+  <PillTab variant="blue" isSelected onSelect={() => {}}>变更</PillTab>
+  <PillTab variant="blue" onSelect={() => {}}>浏览器</PillTab>
+</PillTabList>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TabsPillPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+设置页分区：通用 / 账单（带计数）/ 安全。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="tabs-settings.tsx"
+  code={`import { Tab, TabList, TabPanel, Tabs } from "@/components/base/tabs/tabs";
+
+<Tabs defaultSelectedKey="general">
+  <TabList aria-label="设置分区">
+    <Tab id="general">通用</Tab>
+    <Tab id="billing" count={2}>账单</Tab>
+    <Tab id="security">安全</Tab>
+  </TabList>
+  <TabPanel id="general">语言、时区与外观。</TabPanel>
+</Tabs>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <TabsSettingsScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="tabs" />
-

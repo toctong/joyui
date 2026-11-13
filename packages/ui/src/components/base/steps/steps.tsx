@@ -33,9 +33,10 @@ const styles = sortCx({
     vertical: "relative flex gap-3 pb-6 last:pb-0",
   },
   connector: {
+    // Real rail — docs theme has no bg-border-secondary-* (transparent); separator works.
     horizontal:
-      "absolute start-[calc(50%+14px)] end-[calc(-50%+14px)] top-3.5 h-px bg-border-secondary-default",
-    vertical: "absolute start-[13px] top-8 bottom-0 w-px bg-border-secondary-default",
+      "absolute start-[calc(50%+14px)] end-[calc(-50%+14px)] top-3.5 h-px bg-separator-border",
+    vertical: "absolute start-[13px] top-8 bottom-0 w-px bg-separator-border",
   },
   connectorDone: "bg-button-primary",
   marker:

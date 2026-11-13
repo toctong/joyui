@@ -2,10 +2,16 @@
 title: "主题切换"
 description: "手动明暗切换，本地持久化。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ThemeToggleAppearancePreview,
+  ThemeToggleSidebarScenario,
+  ThemeToggleSizePreview,
+} from "@/components/demos/theme-toggle-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-手动明暗切换，本地持久化。
+手动切换浅色 / 深色，写入本地存储；不跟随系统偏好。
 
 <ComponentDocPreview slug="theme-toggle" />
 
@@ -17,14 +23,62 @@ npx @joyui/cli add theme-toggle --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 外观
+
+`sidebar` · `segmented` · `glass-segmented`（着陆页玻璃肤）。
+
+<DemoFrame
+  fileName="theme-toggle-appearance.tsx"
+  code={`import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+
+<>
+  <ThemeToggle appearance="sidebar" />
+  <ThemeToggle appearance="segmented" />
+  <ThemeToggle appearance="glass-segmented" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ThemeToggleAppearancePreview />
+</DemoFrame>
+
+## 尺寸
+
+分段控件支持 `size`；侧栏折叠用 `collapsed`。
+
+<DemoFrame
+  fileName="theme-toggle-sizes.tsx"
+  code={`import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+
+<>
+  <ThemeToggle appearance="segmented" size="medium" />
+  <ThemeToggle appearance="segmented" size="small" />
+  <ThemeToggle collapsed />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ThemeToggleSizePreview />
+</DemoFrame>
 
 ## 应用场景
 
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
+设置行 / 侧栏底栏嵌入。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="theme-toggle-settings-row.tsx"
+  code={`import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+
+<div className="flex items-center justify-between rounded-2xl border px-4 py-3">
+  <div>
+    <p>外观</p>
+    <p>仅手动切换，不跟随系统。</p>
+  </div>
+  <ThemeToggle appearance="sidebar-segmented" size="small" />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ThemeToggleSidebarScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="theme-toggle" />
-

@@ -1,30 +1,56 @@
 ---
 title: "文件上传"
-description: "拖放上传，含校验、进度与完成回调。"
+description: "单文件拖放上传，以及多缩略图预览网格变体。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { FileUploadRestrictPreview } from "@/components/demos/file-upload-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-拖放上传，含校验、进度与完成回调。
+一套上传家族：基础单文件拖放含校验与进度；需要多图预览网格时换下方变体，API 各自独立、安装按 slug。
+
+## 基础上传
+
+拖放或点击选择；扩展名 / 大小校验，周界进度与完成回调。
 
 <ComponentDocPreview slug="file-upload" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add file-upload --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+### 限制类型与大小
 
+`allowedExtensions` 与 `maxBytes` 控制可接受文件。
 
-## 应用场景
+<DemoFrame
+  fileName="file-upload-restrict.tsx"
+  code={`import { FileUpload } from "@/components/base/file-upload/file-upload";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+<FileUpload
+  allowedExtensions={["png", "jpg", "jpeg"]}
+  maxBytes={2 * 1024 * 1024}
+  onUploadComplete={(file) => console.log(file.name)}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <FileUploadRestrictPreview />
+</DemoFrame>
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
-
-## API
+### API
 
 <DocApiSection slug="file-upload" />
 
+## 图库上传
+
+多文件选择 + 缩略图 / 文件卡网格，可移除单项。
+
+<ComponentDocPreview slug="file-upload-gallery" />
+
+```bash
+npx @joyui/cli add file-upload-gallery --yes
+```
+
+### API
+
+<DocApiSection slug="file-upload-gallery" />

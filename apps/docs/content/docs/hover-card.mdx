@@ -1,36 +1,89 @@
 ---
 title: "悬停卡片"
-description: "悬停 / 聚焦预览层，适合指派人与提及。"
+description: "悬停 / 聚焦预览层：可调延迟；资料模板见 HoverCardProfile。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  HoverCardDelayPreview,
+  HoverCardProfileScenario,
+} from "@/components/demos/hover-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-beUI Profile hover card：短延迟打开，移入面板可继续阅读。
+短延迟打开，移入面板可继续阅读。下方是**同一个** `HoverCard` 的不同配置；资料场景可直接用 `HoverCardProfile`。
+
+## 基础
 
 <ComponentDocPreview slug="hover-card" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add hover-card --yes
 ```
 
-```tsx
-import { Avatar, HoverCard } from "@joyui/react";
+### 延迟
+
+`openDelay` / `closeDelay`（毫秒）控制打开与关闭时机。
+
+<DemoFrame
+  fileName="hover-card-delay.tsx"
+  code={`import { Avatar } from "@/components/base/avatar/avatar";
+import { HoverCard } from "@/components/base/hover-card/hover-card";
+
+<>
+  <HoverCard openDelay={0} closeDelay={80} content={<p>立即打开</p>}>
+    <Avatar initials="快" color="blue" />
+  </HoverCard>
+  <HoverCard openDelay={400} closeDelay={200} content={<p>较慢打开</p>}>
+    <Avatar initials="慢" color="lime" />
+  </HoverCard>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <HoverCardDelayPreview />
+</DemoFrame>
+
+### 应用场景
+
+列表行头像悬停：面板内展示姓名与角色。
+
+<DemoFrame
+  fileName="hover-card-profile-scenario.tsx"
+  code={`import { Avatar } from "@/components/base/avatar/avatar";
+import { HoverCard } from "@/components/base/hover-card/hover-card";
 
 <HoverCard
   content={
-    <div>
-      <p className="text-body-medium text-text-primary">Jordan Lee</p>
-      <p className="text-body-2-regular text-text-secondary">Design · @jordan</p>
+    <div className="flex items-center gap-3">
+      <Avatar size="lg" initials="JL" color="blue" />
+      <div>
+        <p className="text-body-medium text-text-primary">Jordan Lee</p>
+        <p className="text-body-2-regular text-text-secondary">Design · @jordan</p>
+      </div>
     </div>
   }
 >
   <Avatar initials="JL" color="blue" />
-</HoverCard>
-```
+</HoverCard>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <HoverCardProfileScenario />
+</DemoFrame>
 
-## API
+### API
 
 <DocApiSection slug="hover-card" />
+
+## 资料悬停卡
+
+`HoverCard` + `Avatar` 组合模板：传入 `name` / `role` / `handle`，触发器放在 `children`。
+
+<ComponentDocPreview slug="hover-card-profile" />
+
+```bash
+npx @joyui/cli add hover-card-profile --yes
+```
+
+### API
+
+<DocApiSection slug="hover-card-profile" />

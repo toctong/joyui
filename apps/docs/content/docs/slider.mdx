@@ -1,11 +1,17 @@
 ﻿---
 title: "滑块"
-description: "单值与区间滑块，带数值气泡。"
+description: "单值与区间滑块：标签、气泡提示与 formatValue。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SliderFilterScenario,
+  SliderRangePreview,
+  SliderValuePreview,
+} from "@/components/demos/slider-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-单值与区间滑块，带数值气泡。
+水平滑块。`Slider` 单值，`RangeSlider` 区间。下方是**同一个** 滑块家族的不同配置。
 
 <ComponentDocPreview slug="slider" />
 
@@ -17,14 +23,63 @@ npx @joyui/cli add slider --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 单值
+
+`label`、`thumbLabel`；`showTooltip={false}` 可关闭气泡。
+
+<DemoFrame
+  fileName="slider-value.tsx"
+  code={`import { Slider } from "@/components/base/slider/slider";
+
+<>
+  <Slider label="音量" defaultValue={40} thumbLabel="音量" />
+  <Slider label="不显示气泡" defaultValue={25} showTooltip={false} thumbLabel="不透明度" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SliderValuePreview />
+</DemoFrame>
+
+## 区间
+
+`RangeSlider` + `thumbLabels` + `formatValue`。
+
+<DemoFrame
+  fileName="slider-range.tsx"
+  code={`import { RangeSlider } from "@/components/base/slider/slider";
+
+<RangeSlider
+  label="价格区间"
+  defaultValue={[20, 80]}
+  thumbLabels={["最低价", "最高价"]}
+  formatValue={(v) => \`¥\${v}\`}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SliderRangePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+筛选面板：预算区间。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="slider-filter.tsx"
+  code={`import { RangeSlider } from "@/components/base/slider/slider";
+
+<RangeSlider
+  label="预算"
+  defaultValue={[30, 70]}
+  minValue={0}
+  maxValue={100}
+  thumbLabels={["最低", "最高"]}
+  formatValue={(v) => \`¥\${v * 10}\`}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SliderFilterScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="slider" />
-

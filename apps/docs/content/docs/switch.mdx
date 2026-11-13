@@ -1,11 +1,17 @@
 ---
 title: "开关"
-description: "拟物拨动开关，两档尺寸，含卡片变体。"
+description: "拟物拨动开关：sm · md · lg 尺寸，pill / rectangle 形状，含开关卡片。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SwitchCardScenario,
+  SwitchShapePreview,
+  SwitchSizePreview,
+} from "@/components/demos/switch-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-拟物拨动开关，两档尺寸，含卡片变体。
+拟物拨动开关。下方是**同一个** `Switch` 的不同配置；设置行可用 `SwitchCard`。
 
 <ComponentDocPreview slug="switch" />
 
@@ -17,14 +23,59 @@ npx @joyui/cli add switch --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`sm` · `md` · `lg`。
+
+<DemoFrame
+  fileName="switch-sizes.tsx"
+  code={`import { Switch } from "@/components/base/switch/switch";
+
+<>
+  <Switch size="sm" defaultSelected>sm</Switch>
+  <Switch size="md" defaultSelected>md</Switch>
+  <Switch size="lg" defaultSelected>lg</Switch>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SwitchSizePreview />
+</DemoFrame>
+
+## 形状
+
+`shape="pill"`（默认）· `rectangle`；支持 `isDisabled`。
+
+<DemoFrame
+  fileName="switch-shapes.tsx"
+  code={`import { Switch } from "@/components/base/switch/switch";
+
+<>
+  <Switch shape="pill" defaultSelected>胶囊</Switch>
+  <Switch shape="rectangle" defaultSelected>直角</Switch>
+  <Switch isDisabled>禁用</Switch>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SwitchShapePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+设置列表：`SwitchCard` 带标题与描述。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="switch-cards.tsx"
+  code={`import { SwitchCard } from "@/components/base/switch/switch-card";
+
+<>
+  <SwitchCard title="桌面通知" description="任务完成时提醒" defaultSelected />
+  <SwitchCard title="自动重试" description="失败后最多重试 3 次" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SwitchCardScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="switch" />
-

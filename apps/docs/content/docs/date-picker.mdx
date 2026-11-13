@@ -1,11 +1,17 @@
 ---
 title: "日期选择器"
-description: "带月份导航的单日弹出日历。"
+description: "带月份导航的单日 / 区间弹出日历。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DatePickerFilterScenario,
+  DatePickerRangePreview,
+  DatePickerSinglePreview,
+} from "@/components/demos/date-picker-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-带月份导航的单日弹出日历。
+触发器打开弹出月历：单日用 `DatePicker`，区间用 `DateRangePicker`。确认前可在底部芯片里改日期。
 
 <ComponentDocPreview slug="date-picker" />
 
@@ -17,14 +23,66 @@ npx @joyui/cli add date-picker --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 单日
+
+默认触发器；`isDisabled` 禁用整控件。
+
+<DemoFrame
+  fileName="date-picker-single.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DatePicker } from "@/components/base/date-picker/date-picker";
+
+<>
+  <DatePicker aria-label="开始日期" defaultValue={parseDate("2026-11-13")} />
+  <DatePicker aria-label="禁用" isDisabled defaultValue={parseDate("2026-11-01")} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DatePickerSinglePreview />
+</DemoFrame>
+
+## 区间
+
+双月视图 + 快捷区间侧栏（见组件实现）。
+
+<DemoFrame
+  fileName="date-picker-range.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DateRangePicker } from "@/components/base/date-picker/date-range-picker";
+
+<DateRangePicker
+  aria-label="活动区间"
+  placeholder="选择日期区间"
+  defaultValue={{
+    start: parseDate("2026-11-10"),
+    end: parseDate("2026-11-16"),
+  }}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DatePickerRangePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+报表筛选条：两个单日选择器拼成起止。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="date-picker-filter.tsx"
+  code={`import { parseDate } from "@internationalized/date";
+import { DatePicker } from "@/components/base/date-picker/date-picker";
+
+<div className="rounded-2xl border p-4">
+  <p>报表筛选</p>
+  <DatePicker aria-label="起始日" defaultValue={parseDate("2026-11-01")} />
+  <span>至</span>
+  <DatePicker aria-label="结束日" defaultValue={parseDate("2026-11-30")} />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <DatePickerFilterScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="date-picker" />
-

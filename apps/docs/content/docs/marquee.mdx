@@ -1,39 +1,65 @@
 ---
 title: "跑马灯"
-description: "无限横向滚动条，适合 Logo 墙、标签带与口碑条。"
+description: "基础横向无限滚动，以及纵向 / 对向双轨 / 透视 3D 等变体。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-HeroUI / beUI 落地页常见的社会证明条：内容复制两份无缝循环，可悬停暂停，边缘可淡出。
+一套跑马灯家族：基础轨用 CSS 无限循环；需要纵向、对向双轨或透视倾斜时直接换下方变体，API 各自独立、安装按 slug。
+
+## 基础
+
+Logo 墙、标签带与口碑条；悬停可暂停，边缘可淡出。
 
 <ComponentDocPreview slug="marquee" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add marquee --yes
 ```
 
-整库：
-
-```tsx
-import { Chip, Marquee } from "@joyui/react";
-
-<Marquee pauseOnHover>
-  <Chip color="soft">React</Chip>
-  <Chip color="soft">Tailwind</Chip>
-  <Chip color="soft">React Aria</Chip>
-</Marquee>
-```
-
-## 应用场景
-
-- 合作品牌 Logo 墙  
-- 技术栈 / 集成标签带  
-- 短评滚动  
-
-## API
+### API
 
 <DocApiSection slug="marquee" />
+
+## 纵向
+
+垂直上升循环，适合侧栏品牌列与窄栏标签流。
+
+<ComponentDocPreview slug="marquee-vertical" />
+
+```bash
+npx @joyui/cli add marquee-vertical --yes
+```
+
+### API
+
+<DocApiSection slug="marquee-vertical" />
+
+## 对向双轨
+
+上下两轨反向滚动，信息密度更高。
+
+<ComponentDocPreview slug="marquee-paired" />
+
+```bash
+npx @joyui/cli add marquee-paired --yes
+```
+
+### API
+
+<DocApiSection slug="marquee-paired" />
+
+## 透视 3D
+
+横向条带 + 按位置微调 rotateY，轻微景深感。
+
+<ComponentDocPreview slug="marquee-3d" />
+
+```bash
+npx @joyui/cli add marquee-3d --yes
+```
+
+### API
+
+<DocApiSection slug="marquee-3d" />

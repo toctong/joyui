@@ -1,12 +1,14 @@
 ---
-title: "闪烁文案"
-description: "文案上扫过的高光，适合 AI 思考中 / 加载提示。"
+title: "文字微光"
+description: "加载 / 思考态文字扫光。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { TextShimmerSpeedPreview } from "@/components/demos/text-shimmer-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-Bencho / Watermelon 加载文案效果：无 spinner 也能表达「进行中」。
+AI 生成中、同步中等等待文案。`duration` 控制一圈秒数。
 
 <ComponentDocPreview slug="text-shimmer" />
 
@@ -16,11 +18,22 @@ Bencho / Watermelon 加载文案效果：无 spinner 也能表达「进行中」
 npx @joyui/cli add text-shimmer --yes
 ```
 
-```tsx
-import { TextShimmer } from "@joyui/react";
+## 速度
 
-<TextShimmer>正在生成回复…</TextShimmer>
-```
+更短的 `duration` 更急促。
+
+<DemoFrame
+  fileName="text-shimmer-speed.tsx"
+  code={`import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";
+
+<>
+  <TextShimmer duration={1.6}>生成中…</TextShimmer>
+  <TextShimmer duration={3.2}>思考下一步</TextShimmer>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TextShimmerSpeedPreview />
+</DemoFrame>
 
 ## API
 

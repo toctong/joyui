@@ -1,11 +1,16 @@
-﻿---
-title: "命令面板"
-description: "⌘K 可搜索命令面板，含分区与快捷键。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+title: "命令面板"
+description: "⌘K 搜索命令与导航：触发、分区与空状态。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  CommandPaletteEmptyPreview,
+  CommandPaletteTriggerPreview,
+} from "@/components/demos/command-palette-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-⌘K 可搜索命令面板，含分区与快捷键。
+可搜索的动作与目的地列表。默认 ⌘K / Ctrl+K 打开；也可受控 `isOpen`。
 
 <ComponentDocPreview slug="command-palette" />
 
@@ -15,16 +20,51 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add command-palette --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+## 按钮触发
 
+关闭全局快捷键（`shortcut={false}`），用按钮受控打开。
 
-## 应用场景
+<DemoFrame
+  fileName="command-palette-trigger.tsx"
+  code={`import { useState } from "react";
+import { RiHome5Line } from "@remixicon/react";
+import { Button } from "@/components/base/buttons/button";
+import { CommandPalette, CommandPaletteItem, CommandPaletteSection } from "@/components/base/command-palette/command-palette";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>打开命令面板</Button>
+      <CommandPalette isOpen={open} onOpenChange={setOpen} shortcut={false} placeholder="搜索…">
+        <CommandPaletteSection title="导航">
+          <CommandPaletteItem id="home" icon={RiHome5Line}>仪表盘</CommandPaletteItem>
+        </CommandPaletteSection>
+      </CommandPalette>
+    </>
+  );
+}`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CommandPaletteTriggerPreview />
+</DemoFrame>
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+## 空状态
+
+`emptyState` 自定义无匹配文案；`footer={false}` 可隐藏底部快捷键提示。
+
+<DemoFrame
+  fileName="command-palette-empty.tsx"
+  code={`import { CommandPalette, CommandPaletteItem } from "@/components/base/command-palette/command-palette";
+
+<CommandPalette isOpen emptyState="没有匹配结果" footer={false} filter={null}>
+  <CommandPaletteItem id="x">隐藏项</CommandPaletteItem>
+</CommandPalette>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CommandPaletteEmptyPreview />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="command-palette" />
-

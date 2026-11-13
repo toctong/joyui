@@ -1,11 +1,15 @@
 ---
 title: "最活跃日"
-description: "连续月历上的每日迷你活动环。"
+description: "周内活跃分布。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  MostActiveDaysEmbed
+} from "@/components/demos/chart-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-连续月历上的每日迷你活动环。
+周内活跃分布。
 
 <ProComponentDoc slug="most-active-days-card" name="最活跃日" />
 
@@ -17,14 +21,20 @@ npx @joyui/cli add most-active-days-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 仪表盘嵌入
 
-## 应用场景
+周内活跃分布。
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+<DemoFrame
+  fileName="most-active-days-card-embed.tsx"
+  code={`import { MostActiveDaysCard } from "@/components/application/dashboard/most-active-days-card";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<MostActiveDaysCard />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <MostActiveDaysEmbed />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="most-active-days-card" />
-

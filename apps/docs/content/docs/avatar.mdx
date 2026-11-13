@@ -3,7 +3,13 @@ title: "头像"
 description: "单头像与叠放头像组：尺寸、色调、+N 溢出。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  AvatarSizePreview,
+  AvatarColorPreview,
+  AvatarRowScenario,
+} from "@/components/demos/avatar-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
 头像家族：单个 `Avatar`，以及协作场景的 `AvatarGroup`。
 
@@ -13,11 +19,73 @@ import { DocApiSection } from "@/components/docs-api-section";
 
 <ComponentDocPreview slug="avatar" />
 
+## 安装
+
 ```bash
 npx @joyui/cli add avatar --yes
 ```
 
-### API
+或通过 JoyUI MCP / CLI 安装。
+
+## 尺寸
+
+`xs` · `sm` · `md` · `lg`。
+
+<DemoFrame
+  fileName="avatar-sizes.tsx"
+  code={`import { Avatar } from "@/components/base/avatar/avatar";
+
+<>
+  <Avatar size="xs" color="blue" initials="AJ" />
+  <Avatar size="sm" color="blue" initials="AJ" />
+  <Avatar size="md" color="blue" initials="AJ" />
+  <Avatar size="lg" color="blue" initials="AJ" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AvatarSizePreview />
+</DemoFrame>
+
+## 色调
+
+`neutral` · `blue` · `lime` · `pink`。
+
+<DemoFrame
+  fileName="avatar-colors.tsx"
+  code={`import { Avatar } from "@/components/base/avatar/avatar";
+
+<>
+  <Avatar color="neutral" initials="N" />
+  <Avatar color="blue" initials="B" />
+  <Avatar color="lime" initials="L" />
+  <Avatar color="pink" initials="P" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AvatarColorPreview />
+</DemoFrame>
+
+## 应用场景
+
+资料行：大头像 + 姓名与状态文案。
+
+<DemoFrame
+  fileName="avatar-row.tsx"
+  code={`import { Avatar } from "@/components/base/avatar/avatar";
+
+<div className="flex items-center gap-3 rounded-2xl border p-4">
+  <Avatar size="lg" color="lime" initials="林" />
+  <div>
+    <p>林晓</p>
+    <p>产品设计 · 在线</p>
+  </div>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <AvatarRowScenario />
+</DemoFrame>
+
+## API
 
 <DocApiSection slug="avatar" />
 

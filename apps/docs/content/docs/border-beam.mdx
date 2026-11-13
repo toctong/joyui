@@ -1,12 +1,14 @@
 ---
 title: "边框光束"
-description: "沿卡片描边游走的柔光，适合落地页与 AI 展位。"
+description: "沿卡片描边游走的柔光，可调速度与延迟。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { BorderBeamSpeedPreview } from "@/components/demos/border-beam-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-借鉴 [Libraries.dev](https://libraries.dev/) Border beam：把一点动效叠在已有 `Card` / 面板上，不改内容结构。
+把一点动效叠在已有 Card / 面板上，不改内容结构。
 
 <ComponentDocPreview slug="border-beam" />
 
@@ -16,21 +18,27 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add border-beam --yes
 ```
 
-整库：
+## 速度与延迟
 
-```tsx
-import { BorderBeam, Card } from "@joyui/react";
+`duration`（秒）与 `delay` 控制追逐节奏。
 
-<BorderBeam className="rounded-2xl">
-  <Card className="relative z-10">Showcase tile</Card>
-</BorderBeam>
-```
+<DemoFrame
+  fileName="border-beam-speed.tsx"
+  code={`import { BorderBeam } from "@/components/base/border-beam/border-beam";
+import { Card } from "@/components/base/card/card";
 
-## 应用场景
-
-- 落地页英雄旁的功能磁贴  
-- Agent / 模型切换器高亮  
-- 定价卡「推荐」方案  
+<>
+  <BorderBeam className="rounded-2xl" duration={5}>
+    <Card className="relative z-10 p-5">快速</Card>
+  </BorderBeam>
+  <BorderBeam className="rounded-2xl" duration={12}>
+    <Card className="relative z-10 p-5">缓慢</Card>
+  </BorderBeam>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <BorderBeamSpeedPreview />
+</DemoFrame>
 
 ## API
 

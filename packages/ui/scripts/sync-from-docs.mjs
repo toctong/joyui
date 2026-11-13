@@ -255,6 +255,8 @@ const VALUE_EXPORT_ALLOW = new Set([
   "translateTemplateCopy",
   "scorePassword",
   "formatRelativeTime",
+  "toast",
+  "toastPromise",
 ]);
 
 function collectExports(filePath) {

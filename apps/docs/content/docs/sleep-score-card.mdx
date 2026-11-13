@@ -1,11 +1,16 @@
 ---
 title: "睡眠评分"
-description: "分段评分环与子分项。"
+description: "睡眠评分卡片。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  SleepScoreEmbed,
+  HealthPair
+} from "@/components/demos/chart-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-分段评分环与子分项。
+睡眠评分卡片。
 
 <ProComponentDoc slug="sleep-score-card" name="睡眠评分" />
 
@@ -17,14 +22,38 @@ npx @joyui/cli add sleep-score-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 仪表盘嵌入
 
-## 应用场景
+健康 KPI。
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+<DemoFrame
+  fileName="sleep-score-card-embed.tsx"
+  code={`import { SleepScoreCard } from "@/components/application/dashboard/sleep-score-card";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<SleepScoreCard />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <SleepScoreEmbed />
+</DemoFrame>
+
+## 与步数并排
+
+健康看板常见组合。
+
+<DemoFrame
+  fileName="health-pair.tsx"
+  code={`import { StepsCard } from "@/components/application/dashboard/steps-card";
+import { SleepScoreCard } from "@/components/application/dashboard/sleep-score-card";
+
+<>
+  <StepsCard />
+  <SleepScoreCard />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-6"
+>
+  <HealthPair />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="sleep-score-card" />
-

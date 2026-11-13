@@ -1,11 +1,17 @@
 ﻿---
 title: "骨架屏"
-description: "内容形占位，加载后模糊淡入。"
+description: "内容形占位：矩形、圆形、文本与卡片加载态。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SkeletonShapePreview,
+  SkeletonTextPreview,
+  SkeletonCardScenario,
+} from "@/components/demos/skeleton-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-内容形占位，加载后模糊淡入。
+内容形占位，加载后模糊淡入。`Skeleton` 控制形状，`SkeletonText` 快速堆叠多行。
 
 <ComponentDocPreview slug="skeleton" />
 
@@ -17,14 +23,61 @@ npx @joyui/cli add skeleton --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 形状
+
+`rect` · `circle` · `text`。
+
+<DemoFrame
+  fileName="skeleton-shapes.tsx"
+  code={`import { Skeleton } from "@/components/base/skeleton/skeleton";
+
+<>
+  <Skeleton shape="rect" className="h-16 w-28" />
+  <Skeleton shape="circle" className="size-12" />
+  <Skeleton shape="text" className="h-3.5 w-40" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SkeletonShapePreview />
+</DemoFrame>
+
+## 文本行
+
+`SkeletonText` 的 `lines` 控制行数。
+
+<DemoFrame
+  fileName="skeleton-text.tsx"
+  code={`import { SkeletonText } from "@/components/base/skeleton/skeleton";
+
+<>
+  <SkeletonText lines={2} />
+  <SkeletonText lines={4} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SkeletonTextPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+列表卡片加载：头像 + 标题行 + 正文骨架。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="skeleton-card.tsx"
+  code={`import { Skeleton, SkeletonText } from "@/components/base/skeleton/skeleton";
+
+<div className="flex gap-3 rounded-2xl border p-4" aria-busy>
+  <Skeleton shape="circle" className="size-10 shrink-0" />
+  <div className="min-w-0 flex-1">
+    <Skeleton shape="text" className="mb-2 h-4 w-2/3" />
+    <SkeletonText lines={2} />
+  </div>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SkeletonCardScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="skeleton" />
-

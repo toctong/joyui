@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 const LABELS: Record<string, string> = {
-  new: "新",
+  new: "New",
   beta: "Beta",
   experimental: "实验",
   deprecated: "弃用",

@@ -1,10 +1,14 @@
 ---
 title: "表单字段"
-description: "Label + 控件 + 提示/错误的表单行外壳。"
+description: "标签 / 提示 / 错误外壳，包裹任意控件。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { FormFieldStatesPreview } from "@/components/demos/form-field-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+当控件本身不含 label（如 `InputBase`）时用 FormField 统一排版。
 
 <ComponentDocPreview slug="form-field" />
 
@@ -13,6 +17,28 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add form-field --yes
 ```
+
+## 提示与错误
+
+`errorMessage` 优先于 `hint`；`isInvalid` 打开错误态。
+
+<DemoFrame
+  fileName="form-field-states.tsx"
+  code={`import { FormField } from "@/components/base/form-field/form-field";
+import { InputBase } from "@/components/base/input/input";
+
+<>
+  <FormField label="项目名称" hint="对外显示名" isRequired htmlFor="ok">
+    <InputBase id="ok" placeholder="MarHub" />
+  </FormField>
+  <FormField label="回调" errorMessage="请输入合法 URL" isInvalid htmlFor="err">
+    <InputBase id="err" />
+  </FormField>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <FormFieldStatesPreview />
+</DemoFrame>
 
 ## API
 

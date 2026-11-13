@@ -2,10 +2,16 @@
 title: "设置对话框"
 description: "多页设置对话框：通用、资料、工具与存储。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SettingsModalGeneralPreview,
+  SettingsModalProfilePreview,
+  SettingsModalToolsPreview,
+} from "@/components/demos/settings-modal-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-多页设置对话框：通用、资料、工具与存储。
+多页设置对话框：通用、资料、工具与存储。受控 `isOpen` / `onClose`；可用 `defaultPage` 指定打开页。
 
 <ComponentDocPreview slug="settings-modal" />
 
@@ -17,14 +23,69 @@ npx @joyui/cli add settings-modal --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 打开到通用
 
-## 应用场景
+宿主按钮控制 `isOpen`；默认页 `general`。
 
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
+<DemoFrame
+  fileName="settings-modal-general.tsx"
+  code={`import { useState } from "react";
+import { Button } from "@/components/base/buttons/button";
+import { SettingsModal } from "@/components/application/settings/settings-modal";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>打开设置 · 通用</Button>
+      <SettingsModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        defaultPage="general"
+        planArtSrc="/templates/settings-plan-art.png"
+      />
+    </>
+  );
+}`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SettingsModalGeneralPreview />
+</DemoFrame>
+
+## 打开到资料
+
+`defaultPage="profile"` 每次打开落在资料页。
+
+<DemoFrame
+  fileName="settings-modal-profile.tsx"
+  code={`<SettingsModal
+  isOpen={open}
+  onClose={() => setOpen(false)}
+  defaultPage="profile"
+  planArtSrc="/templates/settings-plan-art.png"
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SettingsModalProfilePreview />
+</DemoFrame>
+
+## 打开到工具
+
+侧栏页还包括 `tools` · `storage` · `marketplace`。
+
+<DemoFrame
+  fileName="settings-modal-tools.tsx"
+  code={`<SettingsModal
+  isOpen={open}
+  onClose={() => setOpen(false)}
+  defaultPage="tools"
+  planArtSrc="/templates/settings-plan-art.png"
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SettingsModalToolsPreview />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="settings-modal" />
-

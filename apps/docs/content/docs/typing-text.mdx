@@ -1,10 +1,14 @@
 ---
-title: "打字文案"
-description: "打字机效果，适合英雄句与 AI 演示。"
+title: "打字机文本"
+description: "逐字打出；可循环与光标。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { TypingTextLoopPreview } from "@/components/demos/typing-text-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+状态提示、英雄口号与空态文案。
 
 <ComponentDocPreview slug="typing-text" />
 
@@ -13,6 +17,23 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add typing-text --yes
 ```
+
+## 循环与光标
+
+`loop` + `loopDelay`；`caret` 显示闪烁光标。
+
+<DemoFrame
+  fileName="typing-text-loop.tsx"
+  code={`import { TypingText } from "@/components/base/typing-text/typing-text";
+
+<>
+  <TypingText text="正在连接模型…" speed={36} caret />
+  <TypingText text="准备就绪" loop loopDelay={1200} caret />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TypingTextLoopPreview />
+</DemoFrame>
 
 ## API
 

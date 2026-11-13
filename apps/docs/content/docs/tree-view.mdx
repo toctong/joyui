@@ -1,30 +1,84 @@
-﻿---
-title: "树形视图"
-description: "可展开分支、选择与键盘导航的嵌套树。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+title: "树视图"
+description: "嵌套文件夹树，以及带资源管理器外壳的文件树变体。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  TreeViewGuidesPreview,
+  TreeViewSizePreview,
+} from "@/components/demos/tree-view-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-可展开分支、选择与键盘导航的嵌套树。
+一套树视图家族：基础 TreeView 管理展开 / 选择；需要资源管理器外壳与文件图标预设时换下方变体。
+
+## 基础树
+
+React Aria 管理键盘与选择；提供稳定 `id` 与 `aria-label`。
 
 <ComponentDocPreview slug="tree-view" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add tree-view --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+### 尺寸
 
+`sm`（32px）· `md`（36px）。
 
-## 应用场景
+<DemoFrame
+  fileName="tree-view-sizes.tsx"
+  code={`import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+<>
+  <TreeView aria-label="小" size="sm" defaultExpandedKeys={["src"]}>
+    <TreeViewItem id="src" label="src">
+      <TreeViewItem id="a" label="button.tsx" />
+    </TreeViewItem>
+  </TreeView>
+  <TreeView aria-label="中" size="md" defaultExpandedKeys={["src"]}>
+    <TreeViewItem id="src" label="src">
+      <TreeViewItem id="a" label="button.tsx" />
+    </TreeViewItem>
+  </TreeView>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TreeViewSizePreview />
+</DemoFrame>
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+### 无引导线
 
-## API
+`showGuides={false}` 隐藏连接干与弯枝。
+
+<DemoFrame
+  fileName="tree-view-guides.tsx"
+  code={`import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
+
+<TreeView aria-label="文档" showGuides={false} defaultExpandedKeys={["docs"]}>
+  <TreeViewItem id="docs" label="docs">
+    <TreeViewItem id="intro" label="intro.mdx" />
+  </TreeViewItem>
+</TreeView>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <TreeViewGuidesPreview />
+</DemoFrame>
+
+### API
 
 <DocApiSection slug="tree-view" />
 
+## 文件资源管理器
+
+工具栏 + 路径条 + 文件夹 / 文件图标预设。
+
+<ComponentDocPreview slug="tree-view-files" />
+
+```bash
+npx @joyui/cli add tree-view-files --yes
+```
+
+### API
+
+<DocApiSection slug="tree-view-files" />

@@ -77,7 +77,8 @@
   animation-direction: reverse;
 }
 
-.bui-marquee-pause:hover .bui-marquee-track {
+.bui-marquee-pause:hover .bui-marquee-track,
+.bui-marquee-pause:hover .bui-marquee-vertical-track {
   animation-play-state: paused;
 }
 
@@ -91,9 +92,44 @@
   );
 }
 
+/* Marquee vertical — rising strip. */
+@keyframes bui-marquee-vertical {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -100%;
+  }
+}
+
+.bui-marquee-vertical-track {
+  animation: bui-marquee-vertical var(--bui-marquee-duration, 28s) linear infinite;
+  will-change: translate;
+}
+
+.bui-marquee-vertical-fade {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.bui-marquee-3d-item {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .bui-marquee-track {
+  .bui-marquee-track,
+  .bui-marquee-vertical-track {
     animation: none;
+  }
+
+  .bui-marquee-3d-item {
+    transform: none !important;
   }
 }
 

@@ -1,10 +1,14 @@
 ---
-title: "点状加载"
-description: "三枚弹跳圆点，轻量加载指示。"
+title: "点加载"
+description: "三点弹跳动效：行内加载指示。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DotLoaderSizePreview } from "@/components/demos/dot-loader-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+按钮内、消息气泡旁的轻量加载态。
 
 <ComponentDocPreview slug="dot-loader" />
 
@@ -13,6 +17,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add dot-loader --yes
 ```
+
+## 尺寸
+
+`sm` · `md` · `lg`。
+
+<DemoFrame
+  fileName="dot-loader-sizes.tsx"
+  code={`import { DotLoader } from "@/components/base/dot-loader/dot-loader";
+
+<>
+  <DotLoader size="sm" />
+  <DotLoader size="md" />
+  <DotLoader size="lg" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DotLoaderSizePreview />
+</DemoFrame>
 
 ## API
 

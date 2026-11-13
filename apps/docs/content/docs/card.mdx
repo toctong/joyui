@@ -1,11 +1,17 @@
 ﻿---
 title: "卡片"
-description: "内容表面容器：描边 / 柔和底 / 透明。"
+description: "内容表面容器：outline / soft / ghost 变体与 sm · md · lg 内边距。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  CardFormScenario,
+  CardPaddingPreview,
+  CardVariantPreview,
+} from "@/components/demos/card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-用 token 化的圆角与边框包住一组内容，替代手写 `rounded-* border` 盒子。
+用 token 化的圆角与边框包住一组内容，替代手写 `rounded-* border` 盒子。下方是**同一个** `Card` 的不同配置。
 
 <ComponentDocPreview slug="card" />
 
@@ -15,21 +21,60 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add card --yes
 ```
 
-```tsx
-import { Card, Input } from "@joyui/react";
+或通过 JoyUI MCP / CLI 安装。
 
-<Card className="grid gap-3 md:grid-cols-2" padding="md">
-  <Input label="Name" />
-  <Input label="Share URL" />
-</Card>
-```
+## 变体
+
+`outline`（默认白底描边）· `soft`（仪表盘内嵌浅底）· `ghost`（只保留间距）。
+
+<DemoFrame
+  fileName="card-variants.tsx"
+  code={`import { Card } from "@/components/base/card/card";
+
+<>
+  <Card variant="outline" padding="md">描边</Card>
+  <Card variant="soft" padding="md">柔和</Card>
+  <Card variant="ghost" padding="md">透明</Card>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CardVariantPreview />
+</DemoFrame>
+
+## 内边距
+
+`sm` · `md` · `lg` 三档 `padding`。
+
+<DemoFrame
+  fileName="card-paddings.tsx"
+  code={`import { Card } from "@/components/base/card/card";
+
+<>
+  <Card padding="sm">padding="sm"</Card>
+  <Card padding="md">padding="md"</Card>
+  <Card padding="lg">padding="lg"</Card>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <CardPaddingPreview />
+</DemoFrame>
 
 ## 应用场景
 
-设置分区、新建任务表单面板、列表外壳。  
-- `outline`：默认白底描边  
-- `soft`：仪表盘内嵌浅底  
-- `ghost`：只保留间距、无边框  
+设置分区 / 新建任务表单面板：标题说明 + 字段占位。
+
+<DemoFrame
+  fileName="card-form.tsx"
+  code={`import { Card } from "@/components/base/card/card";
+
+<Card variant="outline" padding="lg" className="grid gap-3">
+  <p className="text-title-2-medium text-text-primary">项目设置</p>
+  <p className="text-body-2-regular text-text-secondary">名称与可见性</p>
+</Card>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <CardFormScenario />
+</DemoFrame>
 
 ## API
 

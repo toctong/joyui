@@ -1,11 +1,17 @@
 ---
 title: "下拉菜单"
-description: "可组合弹出菜单：触发器、分组与行。"
+description: "触发器菜单：分组、选中项、分割线与工具栏场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DropdownGroupPreview,
+  DropdownSelectedPreview,
+  DropdownToolbarScenario,
+} from "@/components/demos/dropdown-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-可组合弹出菜单：触发器、分组与行。
+`Dropdown` + `DropdownTrigger` + `DropdownPopover`。下方是**同一个** Dropdown 的不同配置。
 
 <ComponentDocPreview slug="dropdown" />
 
@@ -17,14 +23,81 @@ npx @joyui/cli add dropdown --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 分组与分割线
+
+`DropdownGroup` 的 `label` + `DropdownDivider`。
+
+<DemoFrame
+  fileName="dropdown-groups.tsx"
+  code={`import {
+  Dropdown, DropdownDivider, DropdownGroup, DropdownItem, DropdownPopover, DropdownTrigger,
+} from "@/components/base/dropdown/dropdown";
+
+<Dropdown>
+  <DropdownTrigger>添加</DropdownTrigger>
+  <DropdownPopover aria-label="添加菜单">
+    <DropdownGroup label="内容">
+      <DropdownItem>新建文档</DropdownItem>
+      <DropdownItem>上传文件</DropdownItem>
+    </DropdownGroup>
+    <DropdownDivider />
+    <DropdownGroup label="协作">
+      <DropdownItem>邀请成员</DropdownItem>
+    </DropdownGroup>
+  </DropdownPopover>
+</Dropdown>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DropdownGroupPreview />
+</DemoFrame>
+
+## 选中项
+
+`DropdownItem` 的 `selected` 标记当前视图。
+
+<DemoFrame
+  fileName="dropdown-selected.tsx"
+  code={`import {
+  Dropdown, DropdownItem, DropdownPopover, DropdownTrigger,
+} from "@/components/base/dropdown/dropdown";
+
+<Dropdown>
+  <DropdownTrigger>视图</DropdownTrigger>
+  <DropdownPopover aria-label="视图选项">
+    <DropdownItem selected>列表</DropdownItem>
+    <DropdownItem>看板</DropdownItem>
+    <DropdownItem>日历</DropdownItem>
+  </DropdownPopover>
+</Dropdown>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DropdownSelectedPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+项目卡片「更多」菜单。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="dropdown-toolbar.tsx"
+  code={`import {
+  Dropdown, DropdownDivider, DropdownItem, DropdownPopover, DropdownTrigger,
+} from "@/components/base/dropdown/dropdown";
+
+<Dropdown>
+  <DropdownTrigger>更多</DropdownTrigger>
+  <DropdownPopover aria-label="项目操作">
+    <DropdownItem>重命名</DropdownItem>
+    <DropdownItem>复制链接</DropdownItem>
+    <DropdownDivider />
+    <DropdownItem>归档</DropdownItem>
+  </DropdownPopover>
+</Dropdown>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <DropdownToolbarScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="dropdown" />
-

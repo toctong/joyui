@@ -1,41 +1,51 @@
 ﻿---
 status: new
 title: "媒体卡片"
-description: "发现页海报卡：封面、标题、副标题与操作。"
+description: "发现页海报卡：封面、标题、副标题与操作；悬停揭示与横向宽卡变体。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-TMDB / 豆瓣发现网格的标准封面卡。无 `src` 时显示占位面。
+一套媒体卡家族：基础海报网格；需要悬停揭示或剧集横排时直接换下方变体，API 各自独立、安装按 slug。
+
+## 基础
+
+TMDB / 豆瓣发现网格的标准封面卡。无 `src` 时显示占位面。封面底部叠加内容用 `footer`（评分条、进度），不要做漂浮角标。
 
 <ComponentDocPreview slug="media-card" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add media-card --yes
 ```
 
-整库：
-
-```tsx
-import { Button, MediaCard } from "@joyui/react";
-
-<MediaCard
-  title="Severance"
-  subtitle="2022 · TV"
-  src="https://image.tmdb.org/t/p/w342/…"
-  action={<Button size="small" variant="secondary">Add task</Button>}
-/>
-```
-
-## 应用场景
-
-Discovery 热榜网格：`title` + 评分 `subtitle` + 「创建任务」`action`。  
-封面底部叠加内容用 `footer`（评分条、进度），不要做漂浮角标。
-
-图片默认 `referrerPolicy="no-referrer"`，方便外链海报。
-
-## API
+### API
 
 <DocApiSection slug="media-card" />
+
+## 悬停揭示
+
+封面微缩放，底部叠加与下方操作在悬停 / 聚焦时滑入；适合发现网格想多露一点信息又不挤标题区的场景。
+
+<ComponentDocPreview slug="media-card-hover" />
+
+```bash
+npx @joyui/cli add media-card-hover --yes
+```
+
+### API
+
+<DocApiSection slug="media-card-hover" />
+
+## 横向宽卡
+
+左图右文的横排布局，适合剧集 still、继续观看、相关片段行。
+
+<ComponentDocPreview slug="media-card-landscape" />
+
+```bash
+npx @joyui/cli add media-card-landscape --yes
+```
+
+### API
+
+<DocApiSection slug="media-card-landscape" />

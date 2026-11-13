@@ -1,12 +1,13 @@
-﻿---
-status: new
-title: "文字链接"
-description: "行内品牌色链接，悬停下划线。"
+---
+title: "文本链接"
+description: "行内链接：尺寸与次级色。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { TextLinkTonePreview } from "@/components/demos/text-link-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-替代手写 `text-text-brand-primary hover:underline` 的 `<a>`。
+段落内导航或次要跳转。`muted` 默认次级色，悬停变品牌色。
 
 <ComponentDocPreview slug="text-link" />
 
@@ -15,6 +16,23 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add text-link --yes
 ```
+
+## 色调与尺寸
+
+`sm` / `md`；`muted` 降低默认强调。
+
+<DemoFrame
+  fileName="text-link-tones.tsx"
+  code={`import { TextLink } from "@/components/base/text-link/text-link";
+
+<>
+  <TextLink href="#docs">查看文档</TextLink>
+  <TextLink href="#muted" size="sm" muted>次要链接</TextLink>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TextLinkTonePreview />
+</DemoFrame>
 
 ## API
 

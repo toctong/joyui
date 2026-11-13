@@ -1,13 +1,17 @@
 ---
 title: "条形列表"
-description: "带份额条的排名分解列表。"
+description: "排行条形列表。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  BarListEmbed
+} from "@/components/demos/chart-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-带份额条的排名分解列表：设备 / 浏览器 / 操作系统 / 屏幕尺寸 tab，行内浅色份额条 + 百分比。
+排行条形列表。
 
-<ComponentDocPreview slug="bar-list-card" />
+<ProComponentDoc slug="bar-list-card" name="条形列表" />
 
 ## 安装
 
@@ -17,14 +21,20 @@ npx @joyui/cli add bar-list-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 仪表盘嵌入
 
-## 应用场景
+条形列表。
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+<DemoFrame
+  fileName="bar-list-card-embed.tsx"
+  code={`import { BarListCard } from "@/components/application/dashboard/bar-list-card";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<BarListCard />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <BarListEmbed />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="bar-list-card" />
-

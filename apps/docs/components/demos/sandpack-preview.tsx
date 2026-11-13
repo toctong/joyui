@@ -329,11 +329,13 @@ export function DemoFrame({
   return (
     <div
       className={cn(
-        "not-prose my-4 overflow-hidden rounded-xl border border-fd-border",
+        // Keep overflow visible so portaled-in-place overlays (Tooltip / Popover
+        // arrows) are not clipped by the rounded frame.
+        "not-prose my-4 overflow-visible rounded-xl border border-fd-border",
         className,
       )}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-fd-border bg-fd-secondary/30 px-2 py-1.5">
+      <div className="flex flex-wrap items-center justify-between gap-3 overflow-hidden rounded-t-xl border-b border-fd-border bg-fd-secondary/30 px-2 py-1.5">
         <div className="inline-flex rounded-lg border border-fd-border bg-fd-background p-0.5 text-sm">
           <button
             type="button"
@@ -366,15 +368,15 @@ export function DemoFrame({
         <DocsToolbarActions />
       </div>
       {mode === "preview" ? (
-        <AutoSizePreviewCanvas className={canvasClassName}>
+        <AutoSizePreviewCanvas className={cn("overflow-visible rounded-b-xl", canvasClassName)}>
           {children}
         </AutoSizePreviewCanvas>
       ) : (
-        <div className="bg-[#0d1117]">
-          <div className="border-b border-white/10 px-4 py-2 font-mono text-xs text-zinc-400">
+        <div className="overflow-hidden rounded-b-xl bg-fd-secondary/40">
+          <div className="border-b border-fd-border px-4 py-2 font-mono text-xs text-fd-muted-foreground">
             {fileName}
           </div>
-          <pre className="max-h-[420px] overflow-auto p-4 text-sm text-zinc-100">
+          <pre className="max-h-[420px] overflow-auto p-4 text-sm text-fd-foreground">
             <code>{demoSource}</code>
           </pre>
         </div>

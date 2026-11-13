@@ -57,7 +57,9 @@ export function ComponentDocPreview({
     >
       <div
         className={cx(
-          "relative flex w-full min-w-0 items-center justify-center overflow-x-clip bg-background-primary-default p-6",
+          // overflow-x-clip was clipping Tooltip / Popover carets that render
+          // beside the preview; keep x overflow visible for overlay chrome.
+          "relative flex w-full min-w-0 items-center justify-center overflow-x-visible bg-background-primary-default p-6",
         )}
       >
         <Preview />

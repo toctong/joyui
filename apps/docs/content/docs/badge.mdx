@@ -1,11 +1,13 @@
 ---
-title: "徽标"
-description: "计数胶囊与键盘快捷提示。"
+title: "徽章"
+description: "计数 / 状态胶囊：primary · neutral · brand · success · warning · error。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { BadgeColorPreview, BadgeNavScenario } from "@/components/demos/badge-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-计数 / 状态胶囊。`color` 支持 `primary` | `neutral` | `brand` | `success` | `warning` | `error`。完整强调色矩阵仍优先用 `Chip`。
+计数与状态胶囊。完整强调色矩阵优先用 `Chip`；`Badge` 适合侧栏计数与紧凑状态。
 
 <ComponentDocPreview slug="badge" />
 
@@ -17,13 +19,43 @@ npx @joyui/cli add badge --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 颜色
+
+通过 `color` 切换语义色。
+
+<DemoFrame
+  fileName="badge-colors.tsx"
+  code={`import { Badge } from "@/components/base/badges/badge";
+
+<>
+  <Badge color="primary">12</Badge>
+  <Badge color="neutral">3</Badge>
+  <Badge color="success">OK</Badge>
+  <Badge color="warning">2</Badge>
+  <Badge color="error">99+</Badge>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <BadgeColorPreview />
+</DemoFrame>
+
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+侧栏导航未读计数：选中行可用浅色徽章叠在主色底上。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="badge-nav.tsx"
+  code={`import { Badge } from "@/components/base/badges/badge";
+
+<div className="flex items-center justify-between">
+  <span>收件箱</span>
+  <Badge color="primary">12</Badge>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <BadgeNavScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="badge" />
-

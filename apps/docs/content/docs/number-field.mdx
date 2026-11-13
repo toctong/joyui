@@ -1,11 +1,17 @@
 ﻿---
 title: "数字输入"
-description: "步进器、货币/百分比/单位与上下限。"
+description: "带步进器的数字框：尺寸、货币 / 百分比格式与 hideSteppers。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  NumberFieldCartScenario,
+  NumberFieldFormatPreview,
+  NumberFieldSizePreview,
+} from "@/components/demos/number-field-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-步进器、货币/百分比/单位与上下限。
+数字输入，支持 `minValue` / `maxValue` / `step`。下方是**同一个** `NumberField` 的不同配置。
 
 <ComponentDocPreview slug="number-field" />
 
@@ -17,14 +23,55 @@ npx @joyui/cli add number-field --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`size="medium" | "small"`。
+
+<DemoFrame
+  fileName="number-field-sizes.tsx"
+  code={`import { NumberField } from "@/components/base/number-field/number-field";
+
+<>
+  <NumberField label="席位 · medium" defaultValue={5} minValue={1} maxValue={50} size="medium" />
+  <NumberField label="席位 · small" defaultValue={5} minValue={1} maxValue={50} size="small" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <NumberFieldSizePreview />
+</DemoFrame>
+
+## 格式与步进器
+
+`formatOptions`（货币 / 百分比）；`hideSteppers` 隐藏加减按钮。
+
+<DemoFrame
+  fileName="number-field-format.tsx"
+  code={`import { NumberField } from "@/components/base/number-field/number-field";
+
+<>
+  <NumberField label="价格" defaultValue={49} formatOptions={{ style: "currency", currency: "CNY" }} />
+  <NumberField label="税率" defaultValue={0.08} step={0.01} formatOptions={{ style: "percent" }} />
+  <NumberField label="无步进器" defaultValue={12} hideSteppers />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <NumberFieldFormatPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+购物车数量：紧凑 `small` + 上下限。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="number-field-cart.tsx"
+  code={`import { NumberField } from "@/components/base/number-field/number-field";
+
+<NumberField aria-label="数量" defaultValue={2} minValue={1} maxValue={99} size="small" />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <NumberFieldCartScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="number-field" />
-

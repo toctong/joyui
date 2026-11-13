@@ -1,11 +1,16 @@
 ---
 title: "键盘提示"
-description: "快捷键提示胶囊。"
+description: "快捷键提示胶囊：组合键与搜索场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  KbdComboPreview,
+  KbdSearchScenario,
+} from "@/components/demos/kbd-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-快捷键提示胶囊。
+快捷键提示胶囊，用于命令面板、表单提示与工具栏。
 
 <ComponentDocPreview slug="kbd" />
 
@@ -17,14 +22,51 @@ npx @joyui/cli add kbd --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 组合键
+
+多个 `Kbd` 并排表示修饰键与主键组合。
+
+<DemoFrame
+  fileName="kbd-combo.tsx"
+  code={`import { Kbd } from "@/components/base/kbd/kbd";
+
+<>
+  <div className="flex items-center gap-1">
+    <Kbd>⌘</Kbd>
+    <Kbd>K</Kbd>
+  </div>
+  <div className="flex items-center gap-1">
+    <Kbd>Ctrl</Kbd>
+    <Kbd>Shift</Kbd>
+    <Kbd>P</Kbd>
+  </div>
+  <Kbd>Esc</Kbd>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <KbdComboPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+搜索框右侧展示唤起快捷键。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="kbd-search.tsx"
+  code={`import { Kbd } from "@/components/base/kbd/kbd";
+
+<div className="flex items-center justify-between gap-3 rounded-xl border px-3 py-2">
+  <span>快速搜索…</span>
+  <span className="flex items-center gap-1">
+    <Kbd>⌘</Kbd>
+    <Kbd>K</Kbd>
+  </span>
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <KbdSearchScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="kbd" />
-

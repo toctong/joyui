@@ -1,12 +1,16 @@
-﻿---
-status: new
+---
 title: "分区标题"
-description: "页内分区：标题 + 可选描述与操作，位于 PageHeader 之下。"
+description: "区块标题、说明与右侧操作；可调标题级别。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SectionHeaderActionsPreview,
+  SectionHeaderLevelPreview,
+} from "@/components/demos/section-header-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-Dashboard「Running」、Settings 分组等用 `SectionHeader`，不要手写 `h2`。
+卡片或页面内的分区标题。`level` 映射为 h2–h4。
 
 <ComponentDocPreview slug="section-header" />
 
@@ -15,6 +19,42 @@ Dashboard「Running」、Settings 分组等用 `SectionHeader`，不要手写 `h
 ```bash
 npx @joyui/cli add section-header --yes
 ```
+
+## 标题级别
+
+`2` · `3` · `4`。
+
+<DemoFrame
+  fileName="section-header-levels.tsx"
+  code={`import { SectionHeader } from "@/components/base/section-header/section-header";
+
+<>
+  <SectionHeader level={2} title="概览" description="本周转存" />
+  <SectionHeader level={3} title="配额" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SectionHeaderLevelPreview />
+</DemoFrame>
+
+## 带操作
+
+右侧 `actions` 放次要按钮。
+
+<DemoFrame
+  fileName="section-header-actions.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { SectionHeader } from "@/components/base/section-header/section-header";
+
+<SectionHeader
+  title="最近任务"
+  description="按更新时间排序"
+  actions={<Button size="small" variant="secondary">查看全部</Button>}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SectionHeaderActionsPreview />
+</DemoFrame>
 
 ## API
 

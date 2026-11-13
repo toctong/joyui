@@ -105,7 +105,7 @@ export function DocsHeaderActions() {
   if (!ctx || !ready || claimed) return null;
 
   return (
-    <div className="flex flex-row items-center gap-2 border-b pb-6">
+    <div className="flex shrink-0 flex-row items-center gap-2">
       <ActionButtons />
     </div>
   );

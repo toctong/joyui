@@ -1,19 +1,75 @@
 ---
 title: "入场显现"
-description: "滚动 / 挂载时淡入上移，尊重减少动效偏好。"
+description: "滚动 / 挂载淡入，以及子项交错显现变体。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { RevealDelayPreview, RevealFromPreview } from "@/components/demos/reveal-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+一套显现家族：基础 `Reveal` 单节点入场；列表交错用下方 `RevealStagger`。
+
+## 基础显现
+
+IntersectionObserver 触发；尊重减少动效偏好。
 
 <ComponentDocPreview slug="reveal" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add reveal --yes
 ```
 
-## API
+### 方向
+
+`from`: `up` · `down` · `left` · `right` · `none`。
+
+<DemoFrame
+  fileName="reveal-from.tsx"
+  code={`import { Card } from "@/components/base/card/card";
+import { Reveal } from "@/components/base/reveal/reveal";
+
+<>
+  <Reveal from="up"><Card className="p-4">up</Card></Reveal>
+  <Reveal from="left"><Card className="p-4">left</Card></Reveal>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <RevealFromPreview />
+</DemoFrame>
+
+### 延迟
+
+`delay` 控制入场错峰。
+
+<DemoFrame
+  fileName="reveal-delay.tsx"
+  code={`import { Card } from "@/components/base/card/card";
+import { Reveal } from "@/components/base/reveal/reveal";
+
+<>
+  <Reveal delay={0}><Card className="p-4">0ms</Card></Reveal>
+  <Reveal delay={160}><Card className="p-4">160ms</Card></Reveal>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <RevealDelayPreview />
+</DemoFrame>
+
+### API
 
 <DocApiSection slug="reveal" />
+
+## 交错显现
+
+自动为子项叠加递增 `delay`，免去手写错峰。
+
+<ComponentDocPreview slug="reveal-stagger" />
+
+```bash
+npx @joyui/cli add reveal-stagger --yes
+```
+
+### API
+
+<DocApiSection slug="reveal-stagger" />

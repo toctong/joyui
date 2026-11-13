@@ -1,7 +1,8 @@
 import { cookies } from "next/headers";
 import "./global.css";
 import { Inter, Plus_Jakarta_Sans, Syne } from "next/font/google";
-import { DEFAULT_LOCALE, Providers } from "@/components/providers";
+import { Providers } from "@/components/providers";
+import { DEFAULT_LOCALE, LOCALE_COOKIE } from "@/components/locale";
 import { DirectionProvider } from "@/components/foundations/direction/direction";
 
 const inter = Inter({
@@ -39,7 +40,7 @@ export const metadata = {
 export default async function Layout({ children }: LayoutProps<"/">) {
   const cookieStore = await cookies();
   const rawLocale = String(
-    cookieStore.get("joyui-locale")?.value ?? DEFAULT_LOCALE,
+    cookieStore.get(LOCALE_COOKIE)?.value ?? DEFAULT_LOCALE,
   );
   // Docs UI locale (fumadocs) vs BCP 47 tag for React Aria DirectionProvider.
   const locale = rawLocale;

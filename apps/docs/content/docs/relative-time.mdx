@@ -1,12 +1,14 @@
 ---
 title: "相对时间"
-description: "日志 / 动态用的相对时间，定时刷新。"
+description: "「42 分钟前」类相对时间，可定时刷新。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { RelativeTimeLocalePreview } from "@/components/demos/relative-time-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-仪表盘与活动流常见写法：`Intl.RelativeTimeFormat`，无额外依赖。
+日志、评论与活动流时间戳。基于 `Intl.RelativeTimeFormat`。
 
 <ComponentDocPreview slug="relative-time" />
 
@@ -16,11 +18,22 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add relative-time --yes
 ```
 
-```tsx
-import { RelativeTime } from "@joyui/react";
+## 语言环境
 
-<RelativeTime date={row.createdAt} />
-```
+`locale` 切换格式；`showAbsoluteTitle` 在悬停 title 显示绝对时间。
+
+<DemoFrame
+  fileName="relative-time-locale.tsx"
+  code={`import { RelativeTime } from "@/components/base/relative-time/relative-time";
+
+<>
+  <RelativeTime date={Date.now() - 42 * 60 * 1000} locale="zh-CN" />
+  <RelativeTime date={Date.now() - 42 * 60 * 1000} locale="en-US" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <RelativeTimeLocalePreview />
+</DemoFrame>
 
 ## API
 

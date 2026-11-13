@@ -54,13 +54,18 @@ export function TimelineItem({
       ref={ref}
       className={cx(
         "relative flex gap-3 pb-5 last:pb-0",
-        // Rail under the dot; hide on the last row (valid Tailwind, no arbitrary : in []).
-        "before:pointer-events-none before:absolute before:start-[7px] before:top-5 before:bottom-0 before:w-px before:bg-border-secondary-default before:content-['']",
-        "last:before:hidden",
+        // Hide the rail on the final item (same idea as former last:before:hidden).
+        "last:[&>[data-timeline-rail]]:hidden",
         className,
       )}
       {...props}
     >
+      {/* Real rail — docs theme has no bg-border-secondary-* (transparent); separator works. */}
+      <span
+        data-timeline-rail
+        aria-hidden
+        className="pointer-events-none absolute start-[7px] top-5 bottom-0 w-px bg-separator-border"
+      />
       <div className="relative z-10 flex w-4 shrink-0 justify-center">
         {indicator ?? (
           <span

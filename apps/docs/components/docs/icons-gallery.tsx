@@ -19,11 +19,16 @@ type IconComponent = ComponentType<{ className?: string; "aria-hidden"?: boolean
 
 type IconEntry = {
   name: string;
+  short: string;
   Icon: IconComponent;
   style: "line" | "fill" | "other";
 };
 
 type StyleFilter = "all" | "line" | "fill";
+
+function toShortName(name: string) {
+  return name.replace(/^Ri/, "").replace(/(Line|Fill)$/, "");
+}
 
 const ALL_ICONS: IconEntry[] = Object.entries(RemixIcons)
   .filter(([name, value]) => name.startsWith("Ri") && typeof value === "function")
@@ -31,15 +36,20 @@ const ALL_ICONS: IconEntry[] = Object.entries(RemixIcons)
     let style: IconEntry["style"] = "other";
     if (name.endsWith("Line")) style = "line";
     else if (name.endsWith("Fill")) style = "fill";
-    return { name, Icon: value as IconComponent, style };
+    return {
+      name,
+      short: toShortName(name),
+      Icon: value as IconComponent,
+      style,
+    };
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
-const COLS_SM = 4;
-const COLS_MD = 6;
-const COLS_LG = 8;
-const ROW_HEIGHT = 96;
-const GAP = 8;
+const COLS_SM = 3;
+const COLS_MD = 5;
+const COLS_LG = 6;
+const ROW_HEIGHT = 108;
+const GAP = 10;
 
 function useColumnCount() {
   const [cols, setCols] = useState(COLS_LG);
@@ -47,7 +57,7 @@ function useColumnCount() {
     const sync = () => {
       const w = window.innerWidth;
       if (w < 640) setCols(COLS_SM);
-      else if (w < 1024) setCols(COLS_MD);
+      else if (w < 1100) setCols(COLS_MD);
       else setCols(COLS_LG);
     };
     sync();
@@ -96,7 +106,12 @@ export function IconsGallery() {
       if (style !== "all" && icon.style !== style) return false;
       if (!q) return true;
       const compact = icon.name.toLowerCase();
-      return compact.includes(q) || compact.replace(/^ri/, "").includes(q);
+      const short = icon.short.toLowerCase();
+      return (
+        compact.includes(q) ||
+        compact.replace(/^ri/, "").includes(q) ||
+        short.includes(q)
+      );
     });
   }, [query, style]);
 
@@ -136,11 +151,11 @@ export function IconsGallery() {
   );
 
   return (
-    <div className="not-prose flex w-full flex-col gap-4">
+    <div className="not-prose flex w-full flex-col gap-3">
       <Toaster position="bottom-end" />
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative min-w-0 flex-1">
+      <div className="flex flex-col gap-3">
+        <div className="relative min-w-0">
           <RiSearchLine
             className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-foreground-icon-quaternary"
             aria-hidden
@@ -150,73 +165,86 @@ export function IconsGallery() {
             onChange={(event) => setQuery(event.target.value)}
             placeholder="搜索图标，例如 add / arrow / mail…"
             className={cx(
-              "h-10 w-full rounded-2lg bg-background-tertiary-default pe-3 ps-9",
+              "h-10 w-full rounded-xl border border-separator-border bg-background-full pe-3 ps-9",
               "text-body-regular text-text-primary placeholder:text-text-tertiary",
-              "ring-2 ring-inset ring-transparent outline-none",
-              "focus:ring-accent-500",
+              "outline-none transition-[border-color,box-shadow]",
+              "focus:border-accent-500 focus:shadow-[0_0_0_3px_color-mix(in_oklab,var(--color-accent-500)_18%,transparent)]",
             )}
             aria-label="搜索图标"
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          {(
-            [
-              ["line", "Line"],
-              ["fill", "Fill"],
-              ["all", "全部"],
-            ] as const
-          ).map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => setStyle(id)}
-              className={cx(
-                "h-8 rounded-md px-2.5 text-caption-1-medium transition-colors",
-                style === id
-                  ? "bg-text-primary text-background-primary-default"
-                  : "bg-background-tertiary-default text-text-secondary hover:text-text-primary",
-              )}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div
+            className="inline-flex w-fit rounded-xl border border-separator-border bg-background-secondary-default p-1"
+            role="group"
+            aria-label="图标样式"
+          >
+            {(
+              [
+                ["line", "Line"],
+                ["fill", "Fill"],
+                ["all", "全部"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setStyle(id)}
+                className={cx(
+                  "h-8 rounded-lg px-3 text-caption-1-medium transition-colors",
+                  style === id
+                    ? "bg-background-full text-text-primary shadow-xs"
+                    : "text-text-tertiary hover:text-text-secondary",
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <div
+              className="inline-flex items-center gap-1 text-caption-1-medium text-text-tertiary"
+              role="group"
+              aria-label="复制模式"
             >
-              {label}
-            </button>
-          ))}
-          <span className="mx-1 h-4 w-px bg-border-secondary-default" aria-hidden />
-          {(
-            [
-              ["name", "复制名称"],
-              ["import", "复制 import"],
-            ] as const
-          ).map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => setCopyMode(id)}
-              className={cx(
-                "h-8 rounded-md px-2.5 text-caption-1-medium transition-colors",
-                copyMode === id
-                  ? "bg-accent-500 text-white"
-                  : "bg-background-tertiary-default text-text-secondary hover:text-text-primary",
-              )}
-            >
-              {label}
-            </button>
-          ))}
+              <span>复制</span>
+              {(
+                [
+                  ["name", "名称"],
+                  ["import", "import"],
+                ] as const
+              ).map(([id, label]) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => setCopyMode(id)}
+                  className={cx(
+                    "rounded-md px-1.5 py-0.5 transition-colors",
+                    copyMode === id
+                      ? "bg-accent-50 text-accent-600 dark:bg-accent-900/30"
+                      : "hover:text-text-secondary",
+                  )}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <p className="text-caption-1-regular text-text-tertiary">
+              <span className="tabular-nums text-text-secondary">{filtered.length}</span>
+              {style === "all" ? " 个图标" : style === "line" ? " 个 Line" : " 个 Fill"}
+              {query ? " · 已筛选" : ""}
+              {" · 点击复制"}
+            </p>
+          </div>
         </div>
       </div>
 
-      <p className="text-caption-1-medium text-text-secondary">
-        共 <span className="tabular-nums text-text-primary">{filtered.length}</span> 个
-        {style === "all" ? "" : style === "line" ? " Line" : " Fill"} 图标
-        {query ? "（已筛选）" : ""} · 点击卡片复制
-      </p>
-
       <div
         ref={parentRef}
-        className={cx(
-          "h-[min(68vh,720px)] overflow-auto rounded-2xl",
-          "border border-border-secondary-default bg-background-secondary-default/40 p-2",
-        )}
+        className="h-[min(68vh,720px)] overflow-auto rounded-2xl border border-separator-border bg-background-full p-1.5 sm:p-2"
       >
         {filtered.length === 0 ? (
           <div className="flex h-40 items-center justify-center text-body-regular text-text-secondary">
@@ -254,22 +282,30 @@ export function IconsGallery() {
                         title={icon.name}
                         onClick={() => onCopy(icon.name)}
                         className={cx(
-                          "group flex h-24 flex-col items-center justify-center gap-2 rounded-xl px-1",
-                          "bg-background-primary-default text-foreground-icon-primary",
-                          "ring-1 ring-border-secondary-default",
-                          "transition-[background-color,box-shadow,color] duration-150 ease",
-                          "hover:bg-background-tertiary-default hover:ring-border-button-active",
+                          "group flex h-[108px] flex-col items-center justify-center gap-2 rounded-xl px-2",
+                          "text-foreground-icon-primary",
+                          "transition-[background-color,color] duration-150 ease",
+                          "hover:bg-background-secondary-default hover:text-text-primary",
                           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500",
-                          isCopied && "ring-2 ring-accent-500",
+                          isCopied && "bg-accent-50 text-accent-600 dark:bg-accent-900/30",
                         )}
                       >
-                        {isCopied ? (
-                          <RiCheckLine className="size-6 text-notification-success-foreground" aria-hidden />
-                        ) : (
-                          <Icon className="size-6" aria-hidden />
-                        )}
-                        <span className="max-w-full truncate px-1 text-[10px] leading-3 text-text-tertiary group-hover:text-text-secondary">
-                          {icon.name}
+                        <span className="flex size-11 items-center justify-center">
+                          {isCopied ? (
+                            <RiCheckLine className="size-7" aria-hidden />
+                          ) : (
+                            <Icon className="size-7" aria-hidden />
+                          )}
+                        </span>
+                        <span
+                          className={cx(
+                            "max-w-full truncate text-center text-[12px] leading-4",
+                            isCopied
+                              ? "text-accent-600"
+                              : "text-text-secondary group-hover:text-text-primary",
+                          )}
+                        >
+                          {icon.short}
                         </span>
                       </button>
                     );

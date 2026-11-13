@@ -1,10 +1,14 @@
 ---
 title: "提示建议"
-description: "空态提示词芯片，点击填入或发送。"
+description: "Composer 快捷提问芯片：点击填入提示。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { PromptSuggestionsSelectPreview } from "@/components/demos/prompt-suggestions-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+空对话或输入框上方的建议提问条。
 
 <ComponentDocPreview slug="prompt-suggestions" />
 
@@ -13,6 +17,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add prompt-suggestions --yes
 ```
+
+## 选择回调
+
+`onSelect` 收到点击的建议文案。
+
+<DemoFrame
+  fileName="prompt-suggestions-select.tsx"
+  code={`import { PromptSuggestions } from "@/components/base/prompt-suggestions/prompt-suggestions";
+
+<PromptSuggestions
+  label="试试问"
+  suggestions={["总结本周任务", "生成周报草稿"]}
+  onSelect={(s) => console.log(s)}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <PromptSuggestionsSelectPreview />
+</DemoFrame>
 
 ## API
 

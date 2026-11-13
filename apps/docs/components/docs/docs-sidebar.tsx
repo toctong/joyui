@@ -40,6 +40,15 @@ const itemClass = cx(
   "data-[active=true]:hover:bg-transparent",
 );
 
+/** Top-level section folders (former `---基础组件---` separators). */
+const sectionFolderClass = cx(
+  "relative flex w-full flex-row items-center gap-2 rounded-2lg px-2 py-1.5 text-start",
+  "text-caption-1-semibold tracking-wide text-text-tertiary uppercase wrap-anywhere",
+  "transition-colors hover:bg-background-secondary-hover hover:text-text-secondary",
+  "[&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-foreground-icon-secondary",
+  "data-[active=true]:text-text-secondary",
+);
+
 function offsetStyle(depth: number): { paddingInlineStart: string } {
   return { paddingInlineStart: `calc(${2 + 3 * depth} * var(--spacing))` };
 }
@@ -73,11 +82,12 @@ function DocsSidebarFolderTrigger({
 }: ComponentProps<typeof SidebarFolderTriggerBase>) {
   const folder = useFolder();
   const depth = (folder?.depth ?? 1) - 1;
+  const isSection = depth === 0;
   return (
     <SidebarFolderTriggerBase
       className={(state) =>
         cx(
-          itemClass,
+          isSection ? sectionFolderClass : itemClass,
           "w-full",
           typeof className === "function" ? className(state) : className,
         )
@@ -94,9 +104,10 @@ function DocsSidebarFolderLink({
   ...props
 }: ComponentProps<typeof SidebarFolderLinkBase>) {
   const depth = useFolderDepth() - 1;
+  const isSection = depth === 0;
   return (
     <SidebarFolderLinkBase
-      className={cx(itemClass, "w-full", className)}
+      className={cx(isSection ? sectionFolderClass : itemClass, "w-full", className)}
       style={{ ...offsetStyle(depth), ...style }}
       {...props}
     />

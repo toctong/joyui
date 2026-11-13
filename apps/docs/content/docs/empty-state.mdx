@@ -1,35 +1,92 @@
 ﻿---
 title: "空状态"
-description: "列表 / 表格无数据时的占位说明与可选操作。"
+description: "列表无数据占位：基础空态、搜索空态与插画空态。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  EmptyStateActionPreview,
+  EmptyStateSizePreview,
+} from "@/components/demos/empty-state-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-标题必填；描述与 `action`（通常放 Button）可选。
+一套空状态家族：基础占位通过 `title` / `description` / `action` / `size` 配置；搜索与插画场景换用下方变体，API 各自独立、安装按 slug。
+
+## 基础空态
+
+标题必填；描述与 `action`（通常放 Button）可选。`size="sm"` 适合表格内部；页面级用默认 `md`。
 
 <ComponentDocPreview slug="empty-state" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add empty-state --yes
 ```
 
-```tsx
-import { Button, EmptyState } from "@joyui/react";
+### 尺寸
+
+`sm`（表格内）· `md`（页面级，默认）。
+
+<DemoFrame
+  fileName="empty-state-sizes.tsx"
+  code={`import { RiFolderOpenLine, RiInbox2Line } from "@remixicon/react";
+import { EmptyState } from "@/components/base/empty-state/empty-state";
+
+<>
+  <EmptyState size="sm" icon={RiFolderOpenLine} title="暂无日志" description="表格内紧凑空态（sm）。" />
+  <EmptyState size="md" icon={RiInbox2Line} title="暂无转存" description="页面级默认空态（md）。" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <EmptyStateSizePreview />
+</DemoFrame>
+
+### 带操作
+
+在 `action` 插槽放入 Button，引导用户恢复有数据的状态。
+
+<DemoFrame
+  fileName="empty-state-action.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { EmptyState } from "@/components/base/empty-state/empty-state";
 
 <EmptyState
-  title="No logs yet"
-  description="Run a task or sign in to generate entries."
-  action={<Button variant="secondary">Go to Tasks</Button>}
-/>
-```
+  title="还没有任务"
+  description="在设置中添加 Quark Cookie，然后创建第一个转存任务。"
+  action={<Button size="small" variant="secondary">打开设置</Button>}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <EmptyStateActionPreview />
+</DemoFrame>
 
-## 应用场景
-
-Transfers / Tasks / Logs / Search 空列表，或作为 `DataTable` 的 `emptyState` 插槽。  
-`size="sm"` 适合表格内部；页面级用默认 `md`。
-
-## API
+### API
 
 <DocApiSection slug="empty-state" />
+
+## 搜索空态
+
+回显查询词、建议关键词芯片与清除操作，适合搜索无结果页。
+
+<ComponentDocPreview slug="empty-state-search" />
+
+```bash
+npx @joyui/cli add empty-state-search --yes
+```
+
+### API
+
+<DocApiSection slug="empty-state-search" />
+
+## 插画空态
+
+大插画槽位 + 标题说明 + 双 CTA，适合首次进入或引导转化。
+
+<ComponentDocPreview slug="empty-state-illustrated" />
+
+```bash
+npx @joyui/cli add empty-state-illustrated --yes
+```
+
+### API
+
+<DocApiSection slug="empty-state-illustrated" />

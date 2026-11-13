@@ -108,6 +108,20 @@ const codes = {
   <p className="mt-1 text-body-regular text-text-secondary">移动指针，看光斑跟随。</p>
 </SpotlightCard>`,
   ),
+  "spotlight-card-tilt": wrap(
+    'import { SpotlightCardTilt } from "@/components/base/spotlight-card-tilt/spotlight-card-tilt";',
+    `<SpotlightCardTilt className="w-full max-w-md">
+  <p className="text-body-medium text-text-primary">Spatial canvas</p>
+  <p className="mt-1 text-body-regular text-text-secondary">轻微倾斜跟随指针，光斑同步移动。</p>
+</SpotlightCardTilt>`,
+  ),
+  "spotlight-card-border": wrap(
+    'import { SpotlightCardBorder } from "@/components/base/spotlight-card-border/spotlight-card-border";',
+    `<SpotlightCardBorder className="w-full max-w-md" duration={10}>
+  <p className="text-body-medium text-text-primary">Pro workspace</p>
+  <p className="mt-1 text-body-regular text-text-secondary">边框光束缓缓追逐，指针处仍有柔光。</p>
+</SpotlightCardBorder>`,
+  ),
   "text-shimmer": wrap(
     'import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";',
     `<TextShimmer className="text-title-3-medium">正在生成回复…</TextShimmer>`,
@@ -145,6 +159,18 @@ export function Example() {
 >
   <Avatar initials="JL" color="blue" />
 </HoverCard>`,
+  ),
+  "hover-card-profile": wrap(
+    'import { Avatar } from "@/components/base/avatar/avatar";\nimport { HoverCardProfile } from "@/components/base/hover-card-profile/hover-card-profile";',
+    `<HoverCardProfile
+  name="林晓"
+  role="产品设计"
+  handle="@linxiao"
+  initials="林"
+  color="lime"
+>
+  <Avatar initials="林" color="lime" />
+</HoverCardProfile>`,
   ),
   "relative-time": wrap(
     'import { RelativeTime } from "@/components/base/relative-time/relative-time";',
@@ -280,6 +306,14 @@ export function Example() {
   <Reveal delay={240} from="left"><Card className="p-4 text-body-medium">从左侧进入</Card></Reveal>
 </div>`,
   ),
+  "reveal-stagger": wrap(
+    'import { Card } from "@/components/base/card/card";\nimport { RevealStagger } from "@/components/base/reveal-stagger/reveal-stagger";',
+    `<RevealStagger className="w-full max-w-md" stagger={100} from="up">
+  <Card className="p-4 text-body-medium">第一块</Card>
+  <Card className="p-4 text-body-medium">第二块</Card>
+  <Card className="p-4 text-body-medium">第三块</Card>
+</RevealStagger>`,
+  ),
   ripple: wrap(
     'import { Button } from "@/components/base/buttons/button";\nimport { Ripple } from "@/components/base/ripple/ripple";',
     `<div className="flex items-center gap-4">
@@ -312,9 +346,39 @@ export function Example() {
   "empty-state": wrap(
     'import { Button } from "@/components/base/buttons/button";\nimport { EmptyState } from "@/components/base/empty-state/empty-state";',
     `<EmptyState
-  title="No transfers yet"
-  description="Add a Quark cookie in Settings, then run a task."
-  action={<Button size="small">Open settings</Button>}
+  title="暂无转存"
+  description="在设置中添加 Quark Cookie，然后运行任务。"
+  action={<Button size="small">打开设置</Button>}
+/>`,
+  ),
+  "empty-state-search": `import { useState } from "react";
+import { EmptyStateSearch } from "@/components/base/empty-state-search/empty-state-search";
+
+export function Example() {
+  const [query, setQuery] = useState("Severance");
+  return (
+    <EmptyStateSearch
+      className="w-full max-w-md"
+      query={query}
+      suggestions={["本季热播", "已完结", "纪录片", "动画"]}
+      onSuggestionSelect={setQuery}
+      onClear={() => setQuery("")}
+    />
+  );
+}`,
+  "empty-state-illustrated": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { EmptyStateIllustrated } from "@/components/base/empty-state-illustrated/empty-state-illustrated";',
+    `<EmptyStateIllustrated
+  className="w-full max-w-md"
+  illustration={
+    <div className="flex size-36 items-center justify-center rounded-[28px] bg-background-secondary-default">
+      <div className="size-20 rounded-2xl border border-dashed border-separator-border bg-background-primary-default" />
+    </div>
+  }
+  title="还没有任务"
+  description="创建第一个转存任务，或先去设置里配置 Cookie。"
+  secondaryAction={<Button variant="ghost" size="small">查看文档</Button>}
+  primaryAction={<Button size="small">新建任务</Button>}
 />`,
   ),
   "page-header": wrap(
@@ -516,6 +580,26 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/ba
     <DrawerBody>内容</DrawerBody>
   </Drawer>
 </DrawerTrigger>`,
+  "drawer-form": `import { Button } from "@/components/base/buttons/button";
+import {
+  DrawerForm,
+  DrawerFormTrigger,
+} from "@/components/base/drawer-form/drawer-form";
+import { Input } from "@/components/base/input/input";
+
+<DrawerFormTrigger>
+  <Button>编辑资料</Button>
+  <DrawerForm
+    title="编辑资料"
+    description="保存后立即生效。"
+    onSave={() => new Promise((r) => setTimeout(r, 800))}
+  >
+    <div className="flex flex-col gap-4">
+      <Input label="显示名" defaultValue="Joy" />
+      <Input label="邮箱" type="email" defaultValue="joy@example.com" />
+    </div>
+  </DrawerForm>
+</DrawerFormTrigger>`,
   dropdown: wrap(
     'import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";',
     `<Dropdown>
@@ -529,6 +613,15 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/ba
   "file-upload": wrap(
     'import { FileUpload } from "@/components/base/file-upload/file-upload";',
     `<FileUpload onUploadComplete={(file) => console.log(file.name)} />`,
+  ),
+  "file-upload-gallery": wrap(
+    'import { FileUploadGallery } from "@/components/base/file-upload-gallery/file-upload-gallery";',
+    `<FileUploadGallery
+  className="w-full max-w-xl"
+  title="拖放或点击上传多张图"
+  maxFiles={6}
+  allowedExtensions={["png", "jpg", "jpeg", "webp"]}
+/>`,
   ),
   "icon-button": `import { RiAddLine } from "@remixicon/react";
 import { IconButton } from "@/components/base/buttons/icon-button";
@@ -587,6 +680,43 @@ import { Input } from "@/components/base/input/input";
   <MediaCard title="Untitled" subtitle="No artwork" />
 </div>`,
   ),
+  "media-card-hover": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { MediaCardHover } from "@/components/base/media-card-hover/media-card-hover";',
+    `<div className="grid w-full max-w-sm grid-cols-2 gap-4">
+  <MediaCardHover
+    title="Severance"
+    subtitle="2022 · TV"
+    src="https://image.tmdb.org/t/p/w342/pPHpeI2X1qXQQb1vtlnDJLvxYBi.jpg"
+    footer={<span className="text-caption-1-medium text-white">8.4 · Apple TV+</span>}
+    action={<Button size="small" variant="secondary">Add task</Button>}
+  />
+  <MediaCardHover
+    title="The Bear"
+    subtitle="2022 · TV"
+    src="https://image.tmdb.org/t/p/w342/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg"
+    footer={<span className="text-caption-1-medium text-white">8.6 · FX</span>}
+    action={<Button size="small" variant="secondary">Add task</Button>}
+  />
+</div>`,
+  ),
+  "media-card-landscape": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { MediaCardLandscape } from "@/components/base/media-card-landscape/media-card-landscape";',
+    `<div className="flex w-full max-w-lg flex-col gap-2">
+  <MediaCardLandscape
+    meta="S01E01"
+    title="Good News About Hell"
+    subtitle="53 min · Mark 开始第一天"
+    src="https://image.tmdb.org/t/p/w500/pPHpeI2X1qXQQb1vtlnDJLvxYBi.jpg"
+    action={<Button size="small" variant="secondary">继续</Button>}
+  />
+  <MediaCardLandscape
+    meta="S01E02"
+    title="Half Loop"
+    subtitle="57 min"
+    src="https://image.tmdb.org/t/p/w500/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg"
+  />
+</div>`,
+  ),
   steps: wrap(
     'import { Steps } from "@/components/base/steps/steps";',
     `<Steps
@@ -599,6 +729,41 @@ import { Input } from "@/components/base/input/input";
   ]}
 />`,
   ),
+  "steps-wizard": `import { useState } from "react";
+import { StepsWizard } from "@/components/base/steps-wizard/steps-wizard";
+
+export function Example() {
+  const [current, setCurrent] = useState(0);
+  const panels = [
+    <div key="account" className="flex flex-col gap-1">
+      <p className="text-body-medium text-text-primary">绑定账号</p>
+      <p className="text-body-regular text-text-tertiary">粘贴 Quark Cookie，用于转存鉴权。</p>
+    </div>,
+    <div key="source" className="flex flex-col gap-1">
+      <p className="text-body-medium text-text-primary">选择片源</p>
+      <p className="text-body-regular text-text-tertiary">连接 TMDB，匹配剧集元数据。</p>
+    </div>,
+    <div key="done" className="flex flex-col gap-1">
+      <p className="text-body-medium text-text-primary">完成配置</p>
+      <p className="text-body-regular text-text-tertiary">可以开始创建第一个转存任务了。</p>
+    </div>,
+  ];
+  return (
+    <StepsWizard
+      className="w-full max-w-lg"
+      current={current}
+      onCurrentChange={setCurrent}
+      steps={[
+        { title: "账号", description: "Cookie" },
+        { title: "片源", description: "TMDB" },
+        { title: "完成" },
+      ]}
+      onFinish={() => setCurrent(0)}
+    >
+      {panels[current]}
+    </StepsWizard>
+  );
+}`,
   timeline: wrap(
     'import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";',
     `<Timeline className="w-full max-w-md">
@@ -606,6 +771,15 @@ import { Input } from "@/components/base/input/input";
   <TimelineItem title="转存完成" description="E01.mkv" time="2 分钟前" tone="success" />
   <TimelineItem title="Cookie 失效" description="请重新登录" time="1 小时前" tone="error" />
 </Timeline>`,
+  ),
+  "timeline-horizontal": wrap(
+    'import { TimelineHorizontal, TimelineHorizontalItem } from "@/components/base/timeline-horizontal/timeline-horizontal";',
+    `<TimelineHorizontal aria-label="转存进度" className="w-full max-w-lg">
+  <TimelineHorizontalItem title="创建" description="任务入队" tone="success" />
+  <TimelineHorizontalItem title="转存中" description="写入网盘" tone="info" />
+  <TimelineHorizontalItem title="校验" description="核对比特率" />
+  <TimelineHorizontalItem title="完成" description="可播放" />
+</TimelineHorizontal>`,
   ),
   "description-list": wrap(
     'import { Card } from "@/components/base/card/card";\nimport { DescriptionItem, DescriptionList } from "@/components/base/description-list/description-list";',
@@ -648,6 +822,13 @@ import { Input } from "@/components/base/input/input";
   <Rating value={3} interactive aria-label="可点选评分" />
 </div>`,
   ),
+  "rating-emoji": wrap(
+    'import { RatingEmoji } from "@/components/base/rating-emoji/rating-emoji";',
+    `<div className="flex flex-col items-center gap-4">
+  <RatingEmoji value={4} aria-label="只读表情评分" />
+  <RatingEmoji interactive defaultValue={3} aria-label="可点选表情评分" />
+</div>`,
+  ),
   collapsible: wrap(
     'import { Collapsible } from "@/components/base/collapsible/collapsible";',
     `<Collapsible title="高级筛选" className="w-full max-w-md" defaultExpanded>
@@ -676,6 +857,32 @@ import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@/comp
     )}
   </Modal>
 </ModalTrigger>`,
+  "modal-sheet": `import { Button } from "@/components/base/buttons/button";
+import {
+  ModalSheet,
+  ModalSheetBody,
+  ModalSheetFooter,
+  ModalSheetHeader,
+  ModalSheetTrigger,
+} from "@/components/base/modal-sheet/modal-sheet";
+
+<ModalSheetTrigger>
+  <Button>打开底部 sheet</Button>
+  <ModalSheet showHandle>
+    {({ close }) => (
+      <>
+        <ModalSheetHeader title="筛选" description="按状态与账号缩小范围。" />
+        <ModalSheetBody>
+          <p>勾选需要的条件后点应用。</p>
+        </ModalSheetBody>
+        <ModalSheetFooter>
+          <Button variant="secondary" onClick={close}>重置</Button>
+          <Button onClick={close}>应用</Button>
+        </ModalSheetFooter>
+      </>
+    )}
+  </ModalSheet>
+</ModalSheetTrigger>`,
   notification: wrap(
     'import { Notification } from "@/components/base/notification/notification";',
     `<Notification status="success" title="已保存更改" />`,
@@ -737,6 +944,51 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
   <Chip color="soft">MCP</Chip>
   <Chip color="soft">Charts</Chip>
 </Marquee>`,
+  ),
+  "marquee-vertical": wrap(
+    'import { Chip } from "@/components/base/badges/chip";\nimport { MarqueeVertical } from "@/components/base/marquee-vertical/marquee-vertical";',
+    `<MarqueeVertical className="h-56 w-40" duration={16}>
+  <Chip color="soft">设计系统</Chip>
+  <Chip color="soft">组件库</Chip>
+  <Chip color="soft">无障碍</Chip>
+  <Chip color="soft">主题</Chip>
+  <Chip color="soft">动效</Chip>
+  <Chip color="soft">图表</Chip>
+</MarqueeVertical>`,
+  ),
+  "marquee-paired": wrap(
+    'import { Chip } from "@/components/base/badges/chip";\nimport { MarqueePaired } from "@/components/base/marquee-paired/marquee-paired";',
+    `<MarqueePaired
+  className="w-full max-w-xl py-2"
+  duration={20}
+  topChildren={
+    <>
+      <Chip color="soft">React</Chip>
+      <Chip color="soft">Tailwind</Chip>
+      <Chip color="soft">React Aria</Chip>
+      <Chip color="soft">JoyUI</Chip>
+    </>
+  }
+  bottomChildren={
+    <>
+      <Chip color="soft">设计令牌</Chip>
+      <Chip color="soft">无障碍</Chip>
+      <Chip color="soft">主题</Chip>
+      <Chip color="soft">图表</Chip>
+    </>
+  }
+/>`,
+  ),
+  "marquee-3d": wrap(
+    'import { Chip } from "@/components/base/badges/chip";\nimport { Marquee3d } from "@/components/base/marquee-3d/marquee-3d";',
+    `<Marquee3d className="w-full max-w-xl py-6" duration={22} maxTilt={24}>
+  <Chip color="soft">品牌墙</Chip>
+  <Chip color="soft">合作伙伴</Chip>
+  <Chip color="soft">技术栈</Chip>
+  <Chip color="soft">集成</Chip>
+  <Chip color="soft">开源</Chip>
+  <Chip color="soft">社区</Chip>
+</Marquee3d>`,
   ),
   "number-ticker": wrap(
     'import { NumberTicker } from "@/components/base/number-ticker/number-ticker";',
@@ -850,6 +1102,27 @@ import { toast, Toaster } from "@/components/base/toast/toast";
   <Toaster />
   <Button onClick={() => toast.success("已保存更改")}>保存</Button>
 </>`,
+  "toast-promise": `import { Button } from "@/components/base/buttons/button";
+import { Toaster } from "@/components/base/toast/toast";
+import { toastPromise } from "@/components/base/toast-promise/toast-promise";
+
+<>
+  <Toaster />
+  <Button
+    onClick={() =>
+      toastPromise(
+        () => new Promise((resolve) => setTimeout(resolve, 1200)),
+        {
+          loading: "正在保存…",
+          success: "已保存更改",
+          error: "保存失败",
+        },
+      )
+    }
+  >
+    保存（Promise）
+  </Button>
+</>`,
   tooltip: `import { Button } from "@/components/base/buttons/button";
 import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
 
@@ -878,6 +1151,25 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
   </TreeViewItem>
   <TreeViewItem id="readme" label="README.md" iconClassName="text-chart-1-active" />
 </TreeView>`,
+  ),
+  "tree-view-files": wrap(
+    'import { TreeViewFiles, TreeViewFilesFile, TreeViewFilesFolder } from "@/components/base/tree-view-files/tree-view-files";',
+    `<TreeViewFiles
+  aria-label="项目资源"
+  path="src / components"
+  title="资源管理器"
+  defaultExpandedKeys={["src", "components"]}
+  defaultSelectedKeys={["button"]}
+  className="max-w-sm"
+>
+  <TreeViewFilesFolder id="src" label="src">
+    <TreeViewFilesFolder id="components" label="components">
+      <TreeViewFilesFile id="button" label="button.tsx" />
+      <TreeViewFilesFile id="input" label="input.tsx" />
+    </TreeViewFilesFolder>
+    <TreeViewFilesFile id="readme" label="README.md" kind="text" />
+  </TreeViewFilesFolder>
+</TreeViewFiles>`,
   ),
   "auth-card": wrap(
     'import { AuthCard } from "@/components/application/auth/auth-card";',

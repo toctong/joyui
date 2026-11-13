@@ -1,11 +1,16 @@
 ---
 title: "订单图表"
-description: "今年与去年并列的月度订单柱图。"
+description: "订单量趋势卡片。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import {
+  OrdersChartEmbed,
+  RevenueOrdersPair
+} from "@/components/demos/chart-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-今年与去年并列的月度订单柱图。
+订单量趋势卡片。
 
 <ComponentDocPreview slug="orders-chart-card" />
 
@@ -17,14 +22,38 @@ npx @joyui/cli add orders-chart-card --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 仪表盘嵌入
 
-## 应用场景
+与收入卡同构，便于并排。
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+<DemoFrame
+  fileName="orders-chart-card-embed.tsx"
+  code={`import { OrdersChartCard } from "@/components/application/dashboard/orders-chart-card";
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<OrdersChartCard />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <OrdersChartEmbed />
+</DemoFrame>
+
+## 与收入并排
+
+同构卡片便于对比。
+
+<DemoFrame
+  fileName="orders-revenue-pair.tsx"
+  code={`import { RevenueChartCard } from "@/components/application/dashboard/revenue-chart-card";
+import { OrdersChartCard } from "@/components/application/dashboard/orders-chart-card";
+
+<>
+  <RevenueChartCard />
+  <OrdersChartCard />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-6"
+>
+  <RevenueOrdersPair />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="orders-chart-card" />
-

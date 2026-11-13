@@ -1,11 +1,17 @@
 ﻿---
 title: "气泡卡片"
-description: "锚定触发器的自由内容，可选箭头。"
+description: "锚定触发器的浮层：可选箭头、页眉页脚与分享场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  PopoverArrowPreview,
+  PopoverHeaderPreview,
+  PopoverShareScenario,
+} from "@/components/demos/popover-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-锚定触发器的自由内容，可选箭头。
+`PopoverTrigger` + `Popover` 组合。下方是**同一个** Popover 的不同配置。
 
 <ComponentDocPreview slug="popover" />
 
@@ -17,14 +23,81 @@ npx @joyui/cli add popover --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 箭头
+
+`showArrow` 指向触发器；默认不绘制箭头。
+
+<DemoFrame
+  fileName="popover-arrow.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
+
+<>
+  <PopoverTrigger>
+    <Button variant="secondary" size="small">带箭头</Button>
+    <Popover showArrow aria-label="带箭头说明">
+      <p>showArrow 指向触发器。</p>
+    </Popover>
+  </PopoverTrigger>
+  <PopoverTrigger>
+    <Button variant="ghost" size="small">无箭头</Button>
+    <Popover aria-label="无箭头说明">
+      <p>默认不绘制箭头。</p>
+    </Popover>
+  </PopoverTrigger>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <PopoverArrowPreview />
+</DemoFrame>
+
+## 页眉与页脚
+
+`PopoverHeader`（`title` / `description`）与 `PopoverFooter` 操作区。
+
+<DemoFrame
+  fileName="popover-header.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@/components/base/popover/popover";
+
+<PopoverTrigger>
+  <Button variant="secondary" size="small">分享</Button>
+  <Popover>
+    <PopoverHeader title="分享看板" description="复制链接或邀请协作者。" />
+    <PopoverFooter>
+      <Button variant="ghost" size="xs">取消</Button>
+      <Button size="xs">复制链接</Button>
+    </PopoverFooter>
+  </Popover>
+</PopoverTrigger>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <PopoverHeaderPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+卡片工具栏：分享图表生成只读链接。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="popover-share.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@/components/base/popover/popover";
+
+<PopoverTrigger>
+  <Button variant="secondary" size="small">分享</Button>
+  <Popover showArrow>
+    <PopoverHeader title="分享此图表" description="获得只读链接。" />
+    <PopoverFooter>
+      <Button size="xs">复制链接</Button>
+    </PopoverFooter>
+  </Popover>
+</PopoverTrigger>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <PopoverShareScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="popover" />
-

@@ -1,11 +1,17 @@
 ﻿---
 title: "手风琴"
-description: "就地展开的分区，含分割、容器与分离样式。"
+description: "就地展开的分区：分割、容器与分离三种视觉样式。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  AccordionContainedPreview,
+  AccordionDividedPreview,
+  AccordionSeparatedPreview,
+} from "@/components/demos/accordion-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-就地展开的分区，含分割、容器与分离样式。
+就地展开的分区，适合 FAQ、设置分组与订单明细。通过 `variant` 切换三种样式；`indicator` 可选 `chevron`（默认）或 `plus`。下方预览是**同一个** `Accordion` 的不同配置。
 
 <ComponentDocPreview slug="accordion" />
 
@@ -15,14 +21,101 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add accordion --yes
 ```
 
+## 分割
+
+行间发丝线分隔，适合设置页与长列表 FAQ。
+
+<DemoFrame
+  fileName="accordion-divided.tsx"
+  code={`import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+
+<Accordion variant="divided" defaultExpandedKeys={["billing"]} className="w-full max-w-xl">
+  <AccordionItem id="billing" title="如何计费？">
+    <p>按月为每个活跃席位计费，未使用的席位可随时停用。</p>
+  </AccordionItem>
+  <AccordionItem id="plans" title="之后可以更换方案吗？">
+    <p>随时升级，立即生效；降级在下个计费周期生效。</p>
+  </AccordionItem>
+  <AccordionItem id="data" title="数据会保留多久？">
+    <p>取消订阅后，数据仍可只读访问 30 天。</p>
+  </AccordionItem>
+</Accordion>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AccordionDividedPreview />
+</DemoFrame>
+
+## 容器
+
+卡片托盘样式（落地页 FAQ 常用），可搭配 `indicator="plus"`。
+
+<DemoFrame
+  fileName="accordion-contained.tsx"
+  code={`import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+
+<Accordion
+  variant="contained"
+  indicator="plus"
+  defaultExpandedKeys={["billing"]}
+  className="w-full max-w-xl"
+>
+  <AccordionItem id="billing" title="如何计费？">
+    <p>按月为每个活跃席位计费，未使用的席位可随时停用。</p>
+  </AccordionItem>
+  <AccordionItem id="plans" title="之后可以更换方案吗？">
+    <p>随时升级，立即生效；降级在下个计费周期生效。</p>
+  </AccordionItem>
+</Accordion>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <AccordionContainedPreview />
+</DemoFrame>
+
+## 分离
+
+每项独立描边卡片，可带 `icon` 与 `description`，适合设置分组。
+
+<DemoFrame
+  fileName="accordion-separated.tsx"
+  code={`import { RiCoupon3Line, RiSecurePaymentLine, RiSettings3Line } from "@remixicon/react";
+import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+
+<Accordion variant="separated" defaultExpandedKeys={["security"]} className="w-full max-w-xl">
+  <AccordionItem
+    id="security"
+    title="登录与安全"
+    description="密码、二次验证与设备"
+    icon={RiSecurePaymentLine}
+  >
+    <p>开启二次验证后，敏感操作需要额外确认。</p>
+  </AccordionItem>
+  <AccordionItem
+    id="billing-settings"
+    title="账单偏好"
+    description="发票、币种与付款方式"
+    icon={RiCoupon3Line}
+  >
+    <p>可随时更换付款方式，下一笔账单起生效。</p>
+  </AccordionItem>
+  <AccordionItem
+    id="workspace"
+    title="工作区"
+    description="成员、角色与权限"
+    icon={RiSettings3Line}
+  >
+    <p>管理员可为成员分配只读或编辑权限。</p>
+  </AccordionItem>
+</Accordion>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <AccordionSeparatedPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
-
+将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。  
 上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
 
 ## API
 
 <DocApiSection slug="accordion" />
-

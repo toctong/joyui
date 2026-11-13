@@ -2,10 +2,16 @@
 title: "时间输入"
 description: "按段输入的时间字段。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  TimeFieldFormScenario,
+  TimeFieldFormatPreview,
+  TimeFieldSizePreview,
+} from "@/components/demos/time-field-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-按段输入的时间字段。
+按段输入时 / 分（可选秒）：会议开始、营业时间、提醒时刻。
 
 <ComponentDocPreview slug="time-field" />
 
@@ -17,14 +23,61 @@ npx @joyui/cli add time-field --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`medium`（36px）· `small`（32px）。
+
+<DemoFrame
+  fileName="time-field-sizes.tsx"
+  code={`import { Time } from "@internationalized/date";
+import { TimeField } from "@/components/base/time-field/time-field";
+
+<>
+  <TimeField label="开始时间" size="medium" defaultValue={new Time(9, 30)} />
+  <TimeField label="开始时间" size="small" defaultValue={new Time(9, 30)} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TimeFieldSizePreview />
+</DemoFrame>
+
+## 格式
+
+`hourCycle={24}` · `granularity="second"`。
+
+<DemoFrame
+  fileName="time-field-format.tsx"
+  code={`import { Time } from "@internationalized/date";
+import { TimeField } from "@/components/base/time-field/time-field";
+
+<>
+  <TimeField label="24 小时制" hourCycle={24} defaultValue={new Time(14, 5)} />
+  <TimeField label="含秒" hourCycle={24} granularity="second" defaultValue={new Time(14, 5, 30)} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TimeFieldFormatPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+会议表单：开始 / 结束时间 + 提示文案。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="time-field-meeting.tsx"
+  code={`import { Time } from "@internationalized/date";
+import { TimeField } from "@/components/base/time-field/time-field";
+
+<div className="rounded-2xl border p-4">
+  <p>会议时间</p>
+  <TimeField label="开始" hint="按段输入时、分" defaultValue={new Time(10, 0)} />
+  <TimeField label="结束" hourCycle={24} defaultValue={new Time(11, 30)} />
+</div>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <TimeFieldFormScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="time-field" />
-

@@ -3,7 +3,8 @@
 import { useTemplateCopy } from "../../foundations/template-copy/template-copy";
 
 import { useRef, useState, type ComponentProps } from "react";
-import { CalendarDate } from "@internationalized/date";
+import { CalendarDate, getLocalTimeZone } from "@internationalized/date";
+import { useLocale } from "react-aria-components";
 import { RiCalendarLine, RiExternalLinkLine, RiLogoutCircleLine, RiMailLine } from "@remixicon/react";
 import { Button } from "../../base/buttons/button";
 import { DatePicker } from "../../base/date-picker/date-picker";
@@ -28,13 +29,12 @@ import {
  *                 Device ID (muted, truncated), Log out from all devices.
  */
 
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
-
-function formatBirthDate(date: CalendarDate) {
-  return `${date.day} ${MONTHS[date.month - 1]} ${date.year}`;
+function formatBirthDate(date: CalendarDate, locale: string) {
+  return new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date.toDate(getLocalTimeZone()));
 }
 
 /**
@@ -76,6 +76,7 @@ function SavableInput({
 
 export function SettingsProfile({ onSaved }: { onSaved?: () => void } = {}) {
   const localize = useTemplateCopy();
+  const { locale } = useLocale();
   const [birthDate, setBirthDate] = useState<CalendarDate>(new CalendarDate(1997, 7, 28));
   const [birthOpen, setBirthOpen] = useState(false);
   const birthTriggerRef = useRef<HTMLButtonElement>(null);
@@ -89,15 +90,15 @@ export function SettingsProfile({ onSaved }: { onSaved?: () => void } = {}) {
             aria-label="Email"
             type="email"
             leadingIcon={RiMailLine}
-            initialValue="hi@mertcan.works"
+            initialValue="hi@joyui.dev"
             onSaved={onSaved}
           />
         </SettingsRow>
         <SettingsRow label="First name">
-          <SavableInput aria-label="First name" initialValue="Mertcan" onSaved={onSaved} />
+          <SavableInput aria-label="First name" initialValue="Jordan" onSaved={onSaved} />
         </SettingsRow>
         <SettingsRow label="Last name">
-          <SavableInput aria-label="Last name" initialValue="Esmergül" onSaved={onSaved} />
+          <SavableInput aria-label="Last name" initialValue="Lee" onSaved={onSaved} />
         </SettingsRow>
         <SettingsRow label="Date of birth">
           <button
@@ -113,7 +114,7 @@ export function SettingsProfile({ onSaved }: { onSaved?: () => void } = {}) {
           >
             <RiCalendarLine className="size-[18px] shrink-0 text-foreground-icon-primary" aria-hidden />
             <span className="px-0.5 text-body-regular whitespace-nowrap text-text-primary">
-              {formatBirthDate(birthDate)}
+              {formatBirthDate(birthDate, locale)}
             </span>
           </button>
           <DatePicker
@@ -135,7 +136,7 @@ export function SettingsProfile({ onSaved }: { onSaved?: () => void } = {}) {
         </SettingsRow>
         <SettingsRow
           label="Public profile"
-          description="When enabled your profile page will be visible to anyone"
+          description="Make your profile page visible to anyone with the link."
         >
           <Switch
             aria-label="Public profile"
@@ -148,7 +149,7 @@ export function SettingsProfile({ onSaved }: { onSaved?: () => void } = {}) {
         </SettingsRow>
         <SettingsRow label="Log out from all devices">
           <Button variant="secondary" size="small" leadingIcon={RiLogoutCircleLine}>
-            Logout
+            Log out
           </Button>
         </SettingsRow>
       </SettingsCard>

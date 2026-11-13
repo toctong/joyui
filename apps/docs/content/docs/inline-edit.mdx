@@ -1,10 +1,14 @@
 ---
 title: "行内编辑"
-description: "点击编辑文案，回车保存、Esc 取消。"
+description: "点击切换只读 / 编辑：标题、名称等轻量字段。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { InlineEditSavePreview } from "@/components/demos/inline-edit-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+确认时触发 `onSave`；Esc 取消。
 
 <ComponentDocPreview slug="inline-edit" />
 
@@ -13,6 +17,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add inline-edit --yes
 ```
+
+## 受控保存
+
+`value` + `onSave` 回写业务状态。
+
+<DemoFrame
+  fileName="inline-edit-save.tsx"
+  code={`import { useState } from "react";
+import { InlineEdit } from "@/components/base/inline-edit/inline-edit";
+
+function Example() {
+  const [value, setValue] = useState("季度报告");
+  return <InlineEdit value={value} onSave={setValue} />;
+}`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <InlineEditSavePreview />
+</DemoFrame>
 
 ## API
 

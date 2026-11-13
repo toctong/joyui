@@ -73,11 +73,16 @@ import { DatePicker } from "@/components/base/date-picker/date-picker";
 import { DescriptionItem, DescriptionList } from "@/components/base/description-list/description-list";
 import { Divider } from "@/components/base/divider/divider";
 import { DotLoader } from "@/components/base/dot-loader/dot-loader";
+import { DrawerForm, DrawerFormTrigger } from "@/components/base/drawer-form/drawer-form";
 import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/base/drawer/drawer";
 import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";
+import { EmptyStateIllustrated } from "@/components/base/empty-state-illustrated/empty-state-illustrated";
+import { EmptyStateSearch } from "@/components/base/empty-state-search/empty-state-search";
 import { EmptyState } from "@/components/base/empty-state/empty-state";
+import { FileUploadGallery } from "@/components/base/file-upload-gallery/file-upload-gallery";
 import { FileUpload } from "@/components/base/file-upload/file-upload";
 import { FormField } from "@/components/base/form-field/form-field";
+import { HoverCardProfile } from "@/components/base/hover-card-profile/hover-card-profile";
 import { HoverCard } from "@/components/base/hover-card/hover-card";
 import { InlineEdit } from "@/components/base/inline-edit/inline-edit";
 import { InputOtp } from "@/components/base/input-otp/input-otp";
@@ -85,9 +90,15 @@ import { Input, InputBase } from "@/components/base/input/input";
 import { Kbd } from "@/components/base/kbd/kbd";
 import { List, ListItem } from "@/components/base/list/list";
 import { Magnetic } from "@/components/base/magnetic/magnetic";
+import { Marquee3d } from "@/components/base/marquee-3d/marquee-3d";
+import { MarqueePaired } from "@/components/base/marquee-paired/marquee-paired";
+import { MarqueeVertical } from "@/components/base/marquee-vertical/marquee-vertical";
 import { Marquee } from "@/components/base/marquee/marquee";
+import { MediaCardHover } from "@/components/base/media-card-hover/media-card-hover";
+import { MediaCardLandscape } from "@/components/base/media-card-landscape/media-card-landscape";
 import { MediaCard } from "@/components/base/media-card/media-card";
 import { Meter } from "@/components/base/meter/meter";
+import { ModalSheet, ModalSheetBody, ModalSheetFooter, ModalSheetHeader, ModalSheetTrigger } from "@/components/base/modal-sheet/modal-sheet";
 import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@/components/base/modal/modal";
 import { ModelSelect } from "@/components/base/model-select/model-select";
 import { Notification } from "@/components/base/notification/notification";
@@ -101,8 +112,10 @@ import { ProgressBar } from "@/components/base/progress/progress";
 import { PromptSuggestions } from "@/components/base/prompt-suggestions/prompt-suggestions";
 import { QrCode } from "@/components/base/qr-code/qr-code";
 import { Radio, RadioGroup } from "@/components/base/radio/radio";
+import { RatingEmoji } from "@/components/base/rating-emoji/rating-emoji";
 import { Rating } from "@/components/base/rating/rating";
 import { RelativeTime } from "@/components/base/relative-time/relative-time";
+import { RevealStagger } from "@/components/base/reveal-stagger/reveal-stagger";
 import { Reveal } from "@/components/base/reveal/reveal";
 import { Ripple } from "@/components/base/ripple/ripple";
 import { ScrollProgress } from "@/components/base/scroll-progress/scroll-progress";
@@ -115,7 +128,10 @@ import { SlideToConfirm } from "@/components/base/slide-to-confirm/slide-to-conf
 import { Slider } from "@/components/base/slider/slider";
 import { SocialButton } from "@/components/base/social-button/social-button";
 import { Spinner } from "@/components/base/spinner/spinner";
+import { SpotlightCardBorder } from "@/components/base/spotlight-card-border/spotlight-card-border";
+import { SpotlightCardTilt } from "@/components/base/spotlight-card-tilt/spotlight-card-tilt";
 import { SpotlightCard } from "@/components/base/spotlight-card/spotlight-card";
+import { StepsWizard } from "@/components/base/steps-wizard/steps-wizard";
 import { Steps } from "@/components/base/steps/steps";
 import { Switch } from "@/components/base/switch/switch";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/base/table/table";
@@ -127,9 +143,12 @@ import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";
 import { Textarea } from "@/components/base/textarea/textarea";
 import { ThinkingOrbs } from "@/components/base/thinking-orbs/thinking-orbs";
 import { TimeField } from "@/components/base/time-field/time-field";
+import { TimelineHorizontal, TimelineHorizontalItem } from "@/components/base/timeline-horizontal/timeline-horizontal";
 import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";
+import { toastPromise } from "@/components/base/toast-promise/toast-promise";
 import { Toaster, toast } from "@/components/base/toast/toast";
 import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+import { TreeViewFiles, TreeViewFilesFile, TreeViewFilesFolder } from "@/components/base/tree-view-files/tree-view-files";
 import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
 import { TypingText } from "@/components/base/typing-text/typing-text";
 import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
@@ -624,6 +643,24 @@ function Preview_drawer() {
   );
 }
 
+function Preview_drawer_form() {
+  return (
+    <DrawerFormTrigger>
+      <Button>编辑资料</Button>
+      <DrawerForm
+        title="编辑资料"
+        description="保存后立即生效。"
+        onSave={() => new Promise((r) => setTimeout(r, 800))}
+      >
+        <div className="flex flex-col gap-4">
+          <Input label="显示名" defaultValue="Joy" />
+          <Input label="邮箱" type="email" defaultValue="joy@example.com" />
+        </div>
+      </DrawerForm>
+    </DrawerFormTrigger>
+  );
+}
+
 function Preview_dropdown() {
   return (
     <Dropdown>
@@ -645,9 +682,39 @@ function Preview_earnings_chart_card() {
 function Preview_empty_state() {
   return (
     <EmptyState
-      title="No transfers yet"
-      description="Add a Quark cookie in Settings, then run a task."
-      action={<Button size="small">Open settings</Button>}
+      title="暂无转存"
+      description="在设置中添加 Quark Cookie，然后运行任务。"
+      action={<Button size="small">打开设置</Button>}
+    />
+  );
+}
+
+function Preview_empty_state_illustrated() {
+  return (
+    <EmptyStateIllustrated
+      className="w-full max-w-md"
+      illustration={
+        <div className="flex size-36 items-center justify-center rounded-[28px] bg-background-secondary-default">
+          <div className="size-20 rounded-2xl border border-dashed border-separator-border bg-background-primary-default" />
+        </div>
+      }
+      title="还没有任务"
+      description="创建第一个转存任务，或先去设置里配置 Cookie。"
+      secondaryAction={<Button variant="ghost" size="small">查看文档</Button>}
+      primaryAction={<Button size="small">新建任务</Button>}
+    />
+  );
+}
+
+function Preview_empty_state_search() {
+  const [query, setQuery] = useState("Severance");
+  return (
+    <EmptyStateSearch
+      className="w-full max-w-md"
+      query={query}
+      suggestions={["本季热播", "已完结", "纪录片", "动画"]}
+      onSuggestionSelect={setQuery}
+      onClear={() => setQuery("")}
     />
   );
 }
@@ -655,6 +722,17 @@ function Preview_empty_state() {
 function Preview_file_upload() {
   return (
     <FileUpload onUploadComplete={(file) => console.log(file.name)} />
+  );
+}
+
+function Preview_file_upload_gallery() {
+  return (
+    <FileUploadGallery
+      className="w-full max-w-xl"
+      title="拖放或点击上传多张图"
+      maxFiles={6}
+      allowedExtensions={["png", "jpg", "jpeg", "webp"]}
+    />
   );
 }
 
@@ -693,6 +771,20 @@ function Preview_hover_card() {
     >
       <Avatar initials="JL" color="blue" />
     </HoverCard>
+  );
+}
+
+function Preview_hover_card_profile() {
+  return (
+    <HoverCardProfile
+      name="林晓"
+      role="产品设计"
+      handle="@linxiao"
+      initials="林"
+      color="lime"
+    >
+      <Avatar initials="林" color="lime" />
+    </HoverCardProfile>
   );
 }
 
@@ -791,6 +883,57 @@ function Preview_marquee() {
   );
 }
 
+function Preview_marquee_3d() {
+  return (
+    <Marquee3d className="w-full max-w-xl py-6" duration={22} maxTilt={24}>
+      <Chip color="soft">品牌墙</Chip>
+      <Chip color="soft">合作伙伴</Chip>
+      <Chip color="soft">技术栈</Chip>
+      <Chip color="soft">集成</Chip>
+      <Chip color="soft">开源</Chip>
+      <Chip color="soft">社区</Chip>
+    </Marquee3d>
+  );
+}
+
+function Preview_marquee_paired() {
+  return (
+    <MarqueePaired
+      className="w-full max-w-xl py-2"
+      duration={20}
+      topChildren={
+        <>
+          <Chip color="soft">React</Chip>
+          <Chip color="soft">Tailwind</Chip>
+          <Chip color="soft">React Aria</Chip>
+          <Chip color="soft">JoyUI</Chip>
+        </>
+      }
+      bottomChildren={
+        <>
+          <Chip color="soft">设计令牌</Chip>
+          <Chip color="soft">无障碍</Chip>
+          <Chip color="soft">主题</Chip>
+          <Chip color="soft">图表</Chip>
+        </>
+      }
+    />
+  );
+}
+
+function Preview_marquee_vertical() {
+  return (
+    <MarqueeVertical className="h-56 w-40" duration={16}>
+      <Chip color="soft">设计系统</Chip>
+      <Chip color="soft">组件库</Chip>
+      <Chip color="soft">无障碍</Chip>
+      <Chip color="soft">主题</Chip>
+      <Chip color="soft">动效</Chip>
+      <Chip color="soft">图表</Chip>
+    </MarqueeVertical>
+  );
+}
+
 function Preview_media_card() {
   return (
     <div className="grid w-full max-w-sm grid-cols-2 gap-4">
@@ -801,6 +944,47 @@ function Preview_media_card() {
         action={<Button size="small" variant="secondary">Add task</Button>}
       />
       <MediaCard title="Untitled" subtitle="No artwork" />
+    </div>
+  );
+}
+
+function Preview_media_card_hover() {
+  return (
+    <div className="grid w-full max-w-sm grid-cols-2 gap-4">
+      <MediaCardHover
+        title="Severance"
+        subtitle="2022 · TV"
+        src="https://image.tmdb.org/t/p/w342/pPHpeI2X1qXQQb1vtlnDJLvxYBi.jpg"
+        footer={<span className="text-caption-1-medium text-white">8.4 · Apple TV+</span>}
+        action={<Button size="small" variant="secondary">Add task</Button>}
+      />
+      <MediaCardHover
+        title="The Bear"
+        subtitle="2022 · TV"
+        src="https://image.tmdb.org/t/p/w342/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg"
+        footer={<span className="text-caption-1-medium text-white">8.6 · FX</span>}
+        action={<Button size="small" variant="secondary">Add task</Button>}
+      />
+    </div>
+  );
+}
+
+function Preview_media_card_landscape() {
+  return (
+    <div className="flex w-full max-w-lg flex-col gap-2">
+      <MediaCardLandscape
+        meta="S01E01"
+        title="Good News About Hell"
+        subtitle="53 min · Mark 开始第一天"
+        src="https://image.tmdb.org/t/p/w500/pPHpeI2X1qXQQb1vtlnDJLvxYBi.jpg"
+        action={<Button size="small" variant="secondary">继续</Button>}
+      />
+      <MediaCardLandscape
+        meta="S01E02"
+        title="Half Loop"
+        subtitle="57 min"
+        src="https://image.tmdb.org/t/p/w500/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg"
+      />
     </div>
   );
 }
@@ -828,6 +1012,28 @@ function Preview_modal() {
         )}
       </Modal>
     </ModalTrigger>
+  );
+}
+
+function Preview_modal_sheet() {
+  return (
+    <ModalSheetTrigger>
+      <Button>打开底部 sheet</Button>
+      <ModalSheet showHandle>
+        {({ close }) => (
+          <>
+            <ModalSheetHeader title="筛选" description="按状态与账号缩小范围。" />
+            <ModalSheetBody>
+              <p>勾选需要的条件后点应用。</p>
+            </ModalSheetBody>
+            <ModalSheetFooter>
+              <Button variant="secondary" onClick={close}>重置</Button>
+              <Button onClick={close}>应用</Button>
+            </ModalSheetFooter>
+          </>
+        )}
+      </ModalSheet>
+    </ModalSheetTrigger>
   );
 }
 
@@ -987,6 +1193,15 @@ function Preview_rating() {
   );
 }
 
+function Preview_rating_emoji() {
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <RatingEmoji value={4} aria-label="只读表情评分" />
+      <RatingEmoji interactive defaultValue={3} aria-label="可点选表情评分" />
+    </div>
+  );
+}
+
 function Preview_relative_time() {
   return (
     <div className="flex flex-col gap-2">
@@ -1004,6 +1219,16 @@ function Preview_reveal() {
       <Reveal delay={120}><Card className="p-4 text-body-medium">再显现</Card></Reveal>
       <Reveal delay={240} from="left"><Card className="p-4 text-body-medium">从左侧进入</Card></Reveal>
     </div>
+  );
+}
+
+function Preview_reveal_stagger() {
+  return (
+    <RevealStagger className="w-full max-w-md" stagger={100} from="up">
+      <Card className="p-4 text-body-medium">第一块</Card>
+      <Card className="p-4 text-body-medium">第二块</Card>
+      <Card className="p-4 text-body-medium">第三块</Card>
+    </RevealStagger>
   );
 }
 
@@ -1165,6 +1390,24 @@ function Preview_spotlight_card() {
   );
 }
 
+function Preview_spotlight_card_border() {
+  return (
+    <SpotlightCardBorder className="w-full max-w-md" duration={10}>
+      <p className="text-body-medium text-text-primary">Pro workspace</p>
+      <p className="mt-1 text-body-regular text-text-secondary">边框光束缓缓追逐，指针处仍有柔光。</p>
+    </SpotlightCardBorder>
+  );
+}
+
+function Preview_spotlight_card_tilt() {
+  return (
+    <SpotlightCardTilt className="w-full max-w-md">
+      <p className="text-body-medium text-text-primary">Spatial canvas</p>
+      <p className="mt-1 text-body-regular text-text-secondary">轻微倾斜跟随指针，光斑同步移动。</p>
+    </SpotlightCardTilt>
+  );
+}
+
 function Preview_stage_bars_card() {
   return (
     <StageBarsCard />
@@ -1194,6 +1437,39 @@ function Preview_steps() {
 function Preview_steps_card() {
   return (
     <StepsCard />
+  );
+}
+
+function Preview_steps_wizard() {
+  const [current, setCurrent] = useState(0);
+  const panels = [
+    <div key="account" className="flex flex-col gap-1">
+      <p className="text-body-medium text-text-primary">绑定账号</p>
+      <p className="text-body-regular text-text-tertiary">粘贴 Quark Cookie，用于转存鉴权。</p>
+    </div>,
+    <div key="source" className="flex flex-col gap-1">
+      <p className="text-body-medium text-text-primary">选择片源</p>
+      <p className="text-body-regular text-text-tertiary">连接 TMDB，匹配剧集元数据。</p>
+    </div>,
+    <div key="done" className="flex flex-col gap-1">
+      <p className="text-body-medium text-text-primary">完成配置</p>
+      <p className="text-body-regular text-text-tertiary">可以开始创建第一个转存任务了。</p>
+    </div>,
+  ];
+  return (
+    <StepsWizard
+      className="w-full max-w-lg"
+      current={current}
+      onCurrentChange={setCurrent}
+      steps={[
+        { title: "账号", description: "Cookie" },
+        { title: "片源", description: "TMDB" },
+        { title: "完成" },
+      ]}
+      onFinish={() => setCurrent(0)}
+    >
+      {panels[current]}
+    </StepsWizard>
   );
 }
 
@@ -1304,11 +1580,44 @@ function Preview_timeline() {
   );
 }
 
+function Preview_timeline_horizontal() {
+  return (
+    <TimelineHorizontal aria-label="转存进度" className="w-full max-w-lg">
+      <TimelineHorizontalItem title="创建" description="任务入队" tone="success" />
+      <TimelineHorizontalItem title="转存中" description="写入网盘" tone="info" />
+      <TimelineHorizontalItem title="校验" description="核对比特率" />
+      <TimelineHorizontalItem title="完成" description="可播放" />
+    </TimelineHorizontal>
+  );
+}
+
 function Preview_toast() {
   return (
     <>
       <Toaster />
       <Button onClick={() => toast.success("已保存更改")}>保存</Button>
+    </>
+  );
+}
+
+function Preview_toast_promise() {
+  return (
+    <>
+      <Toaster />
+      <Button
+        onClick={() =>
+          toastPromise(
+            () => new Promise((resolve) => setTimeout(resolve, 1200)),
+            {
+              loading: "正在保存…",
+              success: "已保存更改",
+              error: "保存失败",
+            },
+          )
+        }
+      >
+        保存（Promise）
+      </Button>
     </>
   );
 }
@@ -1343,6 +1652,27 @@ function Preview_tree_view() {
       </TreeViewItem>
       <TreeViewItem id="readme" label="README.md" iconClassName="text-chart-1-active" />
     </TreeView>
+  );
+}
+
+function Preview_tree_view_files() {
+  return (
+    <TreeViewFiles
+      aria-label="项目资源"
+      path="src / components"
+      title="资源管理器"
+      defaultExpandedKeys={["src", "components"]}
+      defaultSelectedKeys={["button"]}
+      className="max-w-sm"
+    >
+      <TreeViewFilesFolder id="src" label="src">
+        <TreeViewFilesFolder id="components" label="components">
+          <TreeViewFilesFile id="button" label="button.tsx" />
+          <TreeViewFilesFile id="input" label="input.tsx" />
+        </TreeViewFilesFolder>
+        <TreeViewFilesFile id="readme" label="README.md" kind="text" />
+      </TreeViewFilesFolder>
+    </TreeViewFiles>
   );
 }
 
@@ -1424,14 +1754,19 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "divider": Preview_divider,
   "dot-loader": Preview_dot_loader,
   "drawer": Preview_drawer,
+  "drawer-form": Preview_drawer_form,
   "dropdown": Preview_dropdown,
   "earnings-chart-card": Preview_earnings_chart_card,
   "empty-state": Preview_empty_state,
+  "empty-state-illustrated": Preview_empty_state_illustrated,
+  "empty-state-search": Preview_empty_state_search,
   "file-upload": Preview_file_upload,
+  "file-upload-gallery": Preview_file_upload_gallery,
   "form-field": Preview_form_field,
   "funnel-chart-card": Preview_funnel_chart_card,
   "heatmap-chart-card": Preview_heatmap_chart_card,
   "hover-card": Preview_hover_card,
+  "hover-card-profile": Preview_hover_card_profile,
   "icon-button": Preview_icon_button,
   "inline-edit": Preview_inline_edit,
   "input": Preview_input,
@@ -1442,9 +1777,15 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "list": Preview_list,
   "magnetic": Preview_magnetic,
   "marquee": Preview_marquee,
+  "marquee-3d": Preview_marquee_3d,
+  "marquee-paired": Preview_marquee_paired,
+  "marquee-vertical": Preview_marquee_vertical,
   "media-card": Preview_media_card,
+  "media-card-hover": Preview_media_card_hover,
+  "media-card-landscape": Preview_media_card_landscape,
   "meter": Preview_meter,
   "modal": Preview_modal,
+  "modal-sheet": Preview_modal_sheet,
   "model-select": Preview_model_select,
   "most-active-days-card": Preview_most_active_days_card,
   "notification": Preview_notification,
@@ -1463,8 +1804,10 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "radial-chart-card": Preview_radial_chart_card,
   "radio": Preview_radio,
   "rating": Preview_rating,
+  "rating-emoji": Preview_rating_emoji,
   "relative-time": Preview_relative_time,
   "reveal": Preview_reveal,
+  "reveal-stagger": Preview_reveal_stagger,
   "revenue-chart-card": Preview_revenue_chart_card,
   "ripple": Preview_ripple,
   "sankey-chart-card": Preview_sankey_chart_card,
@@ -1483,10 +1826,13 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "social-button": Preview_social_button,
   "spinner": Preview_spinner,
   "spotlight-card": Preview_spotlight_card,
+  "spotlight-card-border": Preview_spotlight_card_border,
+  "spotlight-card-tilt": Preview_spotlight_card_tilt,
   "stage-bars-card": Preview_stage_bars_card,
   "stat-cards": Preview_stat_cards,
   "steps": Preview_steps,
   "steps-card": Preview_steps_card,
+  "steps-wizard": Preview_steps_wizard,
   "switch": Preview_switch,
   "table": Preview_table,
   "tabs": Preview_tabs,
@@ -1499,9 +1845,12 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "thinking-orbs": Preview_thinking_orbs,
   "time-field": Preview_time_field,
   "timeline": Preview_timeline,
+  "timeline-horizontal": Preview_timeline_horizontal,
   "toast": Preview_toast,
+  "toast-promise": Preview_toast_promise,
   "tooltip": Preview_tooltip,
   "tree-view": Preview_tree_view,
+  "tree-view-files": Preview_tree_view_files,
   "typing-text": Preview_typing_text,
   "voice-ring": Preview_voice_ring,
   "web-search": Preview_web_search,

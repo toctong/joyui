@@ -1,11 +1,16 @@
-﻿---
+---
 title: "页头"
 description: "页面标题 + 描述 + 右侧操作区。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  PageHeaderActionsPreview,
+  PageHeaderMinimalPreview,
+} from "@/components/demos/page-header-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-仪表盘路由顶部的标准页眉。
+仪表盘路由顶部的标准页眉。小屏自动折行。
 
 <ComponentDocPreview slug="page-header" />
 
@@ -15,24 +20,44 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add page-header --yes
 ```
 
-```tsx
-import { Button, Input, PageHeader } from "@joyui/react";
+## 带操作
+
+`actions` 可放 Button、Input、SegmentedControl。
+
+<DemoFrame
+  fileName="page-header-actions.tsx"
+  code={`import { Button } from "@/components/base/buttons/button";
+import { Input } from "@/components/base/input/input";
+import { PageHeader } from "@/components/base/page-header/page-header";
 
 <PageHeader
-  title="Tasks"
-  description="Auto save, naming, filter and progress"
+  title="任务"
+  description="自动转存、命名规则与进度"
   actions={
     <>
-      <Input aria-label="Search" placeholder="Search tasks" />
-      <Button variant="primary">New task</Button>
+      <Input aria-label="搜索任务" placeholder="搜索任务" />
+      <Button size="small">新建任务</Button>
     </>
   }
-/>
-```
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <PageHeaderActionsPreview />
+</DemoFrame>
 
-## 应用场景
+## 仅标题
 
-`actions` 可放 Button、Input、SegmentedControl 等。小屏自动折行，标题区 `min-w-0` 防溢出。
+省略 `actions` 时只保留标题与描述。
+
+<DemoFrame
+  fileName="page-header-minimal.tsx"
+  code={`import { PageHeader } from "@/components/base/page-header/page-header";
+
+<PageHeader title="设置" description="账号、插件与通知偏好" />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <PageHeaderMinimalPreview />
+</DemoFrame>
 
 ## API
 

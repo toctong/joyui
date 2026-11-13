@@ -1,22 +1,15 @@
 "use client";
 
 import { useDirection } from "../../foundations/direction/direction";
+import { useTemplateCopy } from "../../foundations/template-copy/template-copy";
 import { useEffect, useRef, useState, type ComponentType, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import {
-  RiBankCardLine,
-  RiBookOpenLine,
   RiCheckboxCircleFill,
   RiCloseLine,
-  RiCodeBlock,
   RiDatabase2Line,
-  RiGitMergeLine,
-  RiOrganizationChart,
-  RiPaletteLine,
-  RiPlugLine,
   RiSchoolLine,
   RiSettings6Line,
-  RiSettingsLine,
   RiToolsFill,
   RiStore2Line,
 } from "@remixicon/react";
@@ -74,33 +67,16 @@ interface NavEntry {
   page?: SettingsPage;
 }
 
+/** Only pages that ship content — placeholder rows cluttered the rail. */
 const NAV_GROUPS: { label: string; items: NavEntry[] }[] = [
   {
     label: "Settings",
     items: [
       { label: "General", icon: RiSettings6Line, page: "general" },
       { label: "Profile", icon: RiSchoolLine, page: "profile" },
-      { label: "Marketplace", icon: RiStore2Line, page: "marketplace" },
-      { label: "Appearance", icon: RiPaletteLine },
-      { label: "Billing", icon: RiBankCardLine },
-      { label: "Rules and Workflows", icon: RiOrganizationChart },
       { label: "Tools", icon: RiToolsFill, page: "tools" },
       { label: "Storage", icon: RiDatabase2Line, page: "storage" },
-    ],
-  },
-  {
-    label: "Desktop app",
-    items: [
-      { label: "General", icon: RiSettingsLine },
-      { label: "Plugins", icon: RiPlugLine },
-      { label: "Developer", icon: RiCodeBlock },
-    ],
-  },
-  {
-    label: "Customize",
-    items: [
-      { label: "Skills", icon: RiBookOpenLine },
-      { label: "Git", icon: RiGitMergeLine },
+      { label: "Marketplace", icon: RiStore2Line, page: "marketplace" },
     ],
   },
 ];
@@ -121,6 +97,7 @@ export function SettingsModal({
   marketplace,
 }: SettingsModalProps) {
   const direction = useDirection();
+  const localize = useTemplateCopy();
   const [page, setPage] = useState<SettingsPage>(defaultPage);
 
   // Mount/visible two-phase state so both the enter and the exit play the
@@ -185,6 +162,7 @@ export function SettingsModal({
   if (!mounted || typeof document === "undefined") return null;
 
   return createPortal(
+    localize(
     <div dir={direction} className="fixed inset-0 z-100 flex items-center justify-center p-4" role="presentation">
       {/* Backdrop — dark-mode modal reference uses black at 70%. */}
       <button
@@ -353,7 +331,8 @@ export function SettingsModal({
         <span className="text-body-2-medium whitespace-nowrap text-text-primary">Saved</span>
       </div>
       </div>
-    </div>,
+    </div>
+    ),
     document.body,
   );
 }

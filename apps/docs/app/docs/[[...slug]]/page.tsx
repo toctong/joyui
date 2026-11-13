@@ -41,9 +41,13 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         title={page.data.title}
         component={component}
       >
-        <DocsTitle>{page.data.title}</DocsTitle>
-        <DocsDescription>{page.data.description}</DocsDescription>
-        <DocsHeaderActions />
+        <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
+          <DocsTitle className="mb-0">{page.data.title}</DocsTitle>
+          <DocsHeaderActions />
+        </div>
+        <DocsDescription className="mb-8 max-w-3xl text-pretty">
+          {page.data.description}
+        </DocsDescription>
         <DocsBody>
           <MDX
             components={getMDXComponents({

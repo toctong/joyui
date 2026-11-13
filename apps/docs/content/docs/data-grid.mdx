@@ -2,10 +2,16 @@
 title: "数据网格"
 description: "可配置 columns / data 的电子表格：编辑、筛选、导出。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DataGridEditablePreview,
+  DataGridReadonlyPreview,
+  DataGridWorkbenchScenario,
+} from "@/components/demos/data-grid-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-续约表、库存表等场景共用同一 `DataGrid`：传入 `data`、`columns`、`getRowId`、`onDataChange` 即可，不要复制演示行数据。
+续约表、库存表等场景共用同一 `DataGrid`：传入 `data`、`columns`、`getRowId`、`onDataChange` 即可。
 
 <ComponentDocPreview slug="data-grid" />
 
@@ -17,21 +23,63 @@ npx @joyui/cli add data-grid --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
-## 应用场景
+## 可编辑
 
-销售续约工作台：列定义来自 CRM 字段，行数据来自 API；编辑后经 `onDataChange` 写回。
+提供 `onDataChange` 后单元格可改；省略则为只读。
 
-```tsx
-<DataGrid
-  aria-label="Renewals"
+<DemoFrame
+  fileName="data-grid-editable.tsx"
+  code={`<DataGrid
+  aria-label="续约表"
   data={rows}
   columns={columns}
   getRowId={(row) => row.id}
   onDataChange={setRows}
-  height={520}
+  height={320}
   exportFileName="renewals.csv"
-/>
-```
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <DataGridEditablePreview />
+</DemoFrame>
+
+## 只读
+
+不传 `onDataChange`，仍可筛选 / 导出。
+
+<DemoFrame
+  fileName="data-grid-readonly.tsx"
+  code={`<DataGrid
+  aria-label="只读续约表"
+  data={rows}
+  columns={columns}
+  getRowId={(row) => row.id}
+  height={280}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <DataGridReadonlyPreview />
+</DemoFrame>
+
+## 应用场景
+
+销售续约工作台：列定义来自 CRM，行数据来自 API。
+
+<DemoFrame
+  fileName="data-grid-workbench.tsx"
+  code={`<DataGrid
+  aria-label="续约工作台"
+  data={rows}
+  columns={columns}
+  getRowId={(row) => row.id}
+  onDataChange={setRows}
+  height={300}
+  exportFileName="renewals.csv"
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-6"
+>
+  <DataGridWorkbenchScenario />
+</DemoFrame>
 
 ## API
 

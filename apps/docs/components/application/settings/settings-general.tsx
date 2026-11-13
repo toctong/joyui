@@ -77,9 +77,9 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
               Current plan
             </span>
             <div className="flex flex-col gap-0.5">
-              <p className="text-headline-medium text-text-primary">Ultra $149/mo</p>
+              <p className="text-headline-medium text-text-primary">Ultra · $149/mo</p>
               <p className="text-body-2-regular text-text-secondary">
-                You are on 7x more usage than Regular.
+                7× the usage of the Regular plan.
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
 
       {/* Limits */}
       <SettingsCard>
-        <SettingsRow label="Limits" description="You are on 7x more usage than Premium">
+        <SettingsRow label="Limits" description="7× the usage of the Premium plan.">
           <Button variant="secondary" size="small">
             Manage limits
           </Button>
@@ -100,11 +100,11 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
 
       {/* Pull Requests */}
       <div className="flex w-full flex-col gap-2">
-        <SettingsSectionLabel>Pull Requests</SettingsSectionLabel>
+        <SettingsSectionLabel>Pull requests</SettingsSectionLabel>
         <SettingsCard>
           <SettingsRow
             label="Review provider"
-            description="Select Github or other providers for reviews"
+            description="Choose GitHub or another provider for code reviews."
           >
             <Select
               aria-label="Review provider"
@@ -118,7 +118,7 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
           </SettingsRow>
           <SettingsRow
             label="PR destination"
-            description="Open pull request links inside your app"
+            description="Open pull request links inside the app or in the browser."
           >
             <Select
               aria-label="PR destination"
@@ -138,7 +138,7 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
         <SettingsCard>
           <SettingsRow
             label="Critical requests"
-            description="Get notified when the mode needs to make a critical decision"
+            description="Notify me when a decision needs approval."
           >
             <Switch
               aria-label="Critical requests"
@@ -148,7 +148,7 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
           </SettingsRow>
           <SettingsRow
             label="System notifications"
-            description="Show fundamental notifications when an agent completes a task"
+            description="Show a notification when an agent finishes a task."
           >
             <Switch
               aria-label="System notifications"
@@ -158,7 +158,7 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
           </SettingsRow>
           <SettingsRow
             label="Completion sound"
-            description="Sound effect a task is completed"
+            description="Play a sound when a task completes."
           >
             <Switch
               aria-label="Completion sound"
@@ -168,7 +168,7 @@ export function SettingsGeneral({ planArtSrc }: { planArtSrc?: string }) {
           </SettingsRow>
           <SettingsRow
             label="Dispatch alerts"
-            description="Push notification on your phone when JoyUI messages you"
+            description="Send a push notification when JoyUI messages you."
           >
             <Switch
               aria-label="Dispatch alerts"

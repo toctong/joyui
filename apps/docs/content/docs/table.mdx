@@ -1,11 +1,13 @@
 ---
 title: "表格"
-description: "与仪表盘一致的静态表格原语。"
+description: "React Aria 表格外壳：尺寸密度与滚动容器。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { TableSizePreview } from "@/components/demos/table-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-与仪表盘一致的静态表格原语。
+基础数据表样式层；排序 / 过滤 / 分页逻辑可配合 `@tanstack/react-table` 或使用 DataTable。
 
 <ComponentDocPreview slug="table" />
 
@@ -15,16 +17,31 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add table --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+## 尺寸
 
+`sm`（行高 48px）· `md`（行高 64px）。
 
-## 应用场景
+<DemoFrame
+  fileName="table-sizes.tsx"
+  code={`import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/base/table/table";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<Table aria-label="任务" size="sm">
+  <TableHeader>
+    <TableColumn isRowHeader>名称</TableColumn>
+    <TableColumn>状态</TableColumn>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>转存任务</TableCell>
+      <TableCell>运行中</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TableSizePreview />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="table" />
-

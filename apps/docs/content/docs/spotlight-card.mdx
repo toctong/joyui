@@ -1,30 +1,51 @@
 ---
 title: "光斑卡片"
-description: "指针跟随的径向柔光，适合功能磁贴与 Pro 展位。"
+description: "指针跟随的径向柔光，以及 3D 倾斜与边框光束变体。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
+一套光斑卡家族：基础指针跟随；需要更强表现力时换倾斜或边框光束变体，API 各自独立、安装按 slug。
+
+## 基础
+
 Bencho 式微交互：不改内容结构，只加一层可跟随的光斑。
 
 <ComponentDocPreview slug="spotlight-card" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add spotlight-card --yes
 ```
 
-```tsx
-import { SpotlightCard } from "@joyui/react";
-
-<SpotlightCard>
-  <p className="text-body-medium text-text-primary">Realtime sync</p>
-  <p className="mt-1 text-body-regular text-text-secondary">光标与改动同步出现。</p>
-</SpotlightCard>
-```
-
-## API
+### API
 
 <DocApiSection slug="spotlight-card" />
+
+## 3D 倾斜
+
+指针驱动的轻微透视倾斜 + 同款光斑；幅度克制（默认 ≤7°），尊重减少动态。
+
+<ComponentDocPreview slug="spotlight-card-tilt" />
+
+```bash
+npx @joyui/cli add spotlight-card-tilt --yes
+```
+
+### API
+
+<DocApiSection slug="spotlight-card-tilt" />
+
+## 边框光束
+
+卡片边缘 conic 追逐光束，叠加指针光斑；适合 Pro 展位与功能磁贴。
+
+<ComponentDocPreview slug="spotlight-card-border" />
+
+```bash
+npx @joyui/cli add spotlight-card-border --yes
+```
+
+### API
+
+<DocApiSection slug="spotlight-card-border" />

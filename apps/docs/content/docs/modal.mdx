@@ -1,22 +1,23 @@
 ﻿---
 title: "模态框"
-description: "遮罩对话框：Trigger 模式与受控 isOpen 模式。"
+description: "居中对话框与底部抽屉式 sheet；Trigger 模式与受控 isOpen。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
-import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-遮罩上的对话框。危险确认用 `AlertDialog`（不可点遮罩关闭）。
+一套模态家族：居中对话框；移动端友好的底部 sheet 另用变体。危险确认用 `AlertDialog`（不可点遮罩关闭）。API 各自独立、安装按 slug。
+
+## 基础
+
+遮罩上的居中对话框。支持 Trigger 非受控与 `isOpen` 受控。
 
 <ComponentDocPreview slug="modal" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add modal --yes
 ```
 
-## Trigger 模式（非受控）
+### Trigger 模式（非受控）
 
 按钮打开，内部 `{({ close }) => …}` 关窗：
 
@@ -40,7 +41,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from
 </ModalTrigger>
 ```
 
-## 受控模式（`isOpen`）
+### 受控模式（`isOpen`）
 
 编辑弹窗、命令式打开用自己的 state，**不要**包 `ModalTrigger`：
 
@@ -72,14 +73,28 @@ export function EditTaskDialog() {
 
 `Modal` 继承 React Aria `ModalOverlay` 的 `isOpen` / `onOpenChange` / `isDismissable`。
 
-## 何时用 AlertDialog
+### 何时用 AlertDialog
 
-- 删除、不可逆操作  
-- 需要 `role="alertdialog"`、默认不可点遮罩关闭  
+- 删除、不可逆操作
+- 需要 `role="alertdialog"`、默认不可点遮罩关闭
 - 焦点落在 Cancel
 
 普通表单 / 详情用 `Modal`。
 
-## API
+### API
 
 <DocApiSection slug="modal" />
+
+## 底部抽屉式 sheet
+
+贴底滑入的 sheet，适合手机筛选与快捷操作；可选顶部拖拽条。
+
+<ComponentDocPreview slug="modal-sheet" />
+
+```bash
+npx @joyui/cli add modal-sheet --yes
+```
+
+### API
+
+<DocApiSection slug="modal-sheet" />

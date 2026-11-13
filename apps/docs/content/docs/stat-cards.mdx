@@ -1,11 +1,17 @@
-﻿---
+---
 title: "指标卡片"
 description: "带增减芯片的 KPI 统计卡行。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  StatCardsDashboardScenario,
+  StatCardsFooterPreview,
+  StatCardsPlainPreview,
+} from "@/components/demos/stat-cards-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-带增减芯片的 KPI 统计卡行。`Stat` 仅需 `label` + `value`；`icon` / `delta` / `deltaColor` 均可选（有默认值）。
+带增减芯片的 KPI 统计卡行。`Stat` 仅需 `label` + `value`；`icon` / `delta` / `deltaColor` 均可选。
 
 <ComponentDocPreview slug="stat-cards" />
 
@@ -17,26 +23,53 @@ npx @joyui/cli add stat-cards --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
-## 最小 KPI
+## 朴素变体
 
-```tsx
-import { StatCards } from "@joyui/react";
+`variant="plain"`，可传自定义 `stats`。
+
+<DemoFrame
+  fileName="stat-cards-plain.tsx"
+  code={`import { StatCards } from "@/components/application/dashboard/stat-cards";
 
 <StatCards
+  variant="plain"
+  columns={2}
   stats={[
-    { label: "Tasks", value: "128" },
-    { label: "Saved", value: "42", delta: "+12%", deltaColor: "lime" },
+    { label: "任务", value: "128", delta: "+8.2%", deltaColor: "lime" },
+    { label: "已保存", value: "42", delta: "+12%", deltaColor: "lime" },
   ]}
-/>
-```
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <StatCardsPlainPreview />
+</DemoFrame>
+
+## 页脚变体
+
+`variant="footer"`：大数字 + 底部对比带。
+
+<DemoFrame
+  fileName="stat-cards-footer.tsx"
+  code={`import { StatCards } from "@/components/application/dashboard/stat-cards";
+
+<StatCards variant="footer" columns={2} count={2} />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-6"
+>
+  <StatCardsFooterPreview />
+</DemoFrame>
 
 ## 应用场景
 
-用于仪表盘 KPI 区：传入业务 series 即可替换演示数据，详见下方数据项 / API。
+仪表盘 KPI 区。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="stat-cards-dashboard.tsx"
+  code={`<StatCards variant="plain" columns={2} stats={stats} />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-6"
+>
+  <StatCardsDashboardScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="stat-cards" />
-

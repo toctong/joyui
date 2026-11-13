@@ -1,11 +1,17 @@
 ﻿---
 title: "加载指示"
-description: "三层轨道光环加载动画。"
+description: "三层轨道光环：尺寸、轨道开关与按钮内嵌场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SpinnerSizePreview,
+  SpinnerTrackPreview,
+  SpinnerButtonScenario,
+} from "@/components/demos/spinner-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-三层轨道光环加载动画。
+三层轨道光环加载动画，可嵌在按钮或行内文案旁。
 
 <ComponentDocPreview slug="spinner" />
 
@@ -17,14 +23,68 @@ npx @joyui/cli add spinner --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`xs` · `sm` · `md` · `lg` · `xl`。
+
+<DemoFrame
+  fileName="spinner-sizes.tsx"
+  code={`import { Spinner } from "@/components/base/spinner/spinner";
+
+<>
+  <Spinner size="xs" aria-label="加载 xs" />
+  <Spinner size="sm" aria-label="加载 sm" />
+  <Spinner size="md" aria-label="加载 md" />
+  <Spinner size="lg" aria-label="加载 lg" />
+  <Spinner size="xl" aria-label="加载 xl" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SpinnerSizePreview />
+</DemoFrame>
+
+## 轨道
+
+`track` 控制是否显示背景环；可用 `className` 适配深色底。
+
+<DemoFrame
+  fileName="spinner-track.tsx"
+  code={`import { Spinner } from "@/components/base/spinner/spinner";
+
+<>
+  <Spinner size="lg" track aria-label="带轨道" />
+  <Spinner size="lg" track={false} aria-label="无轨道" />
+  <Spinner size="md" className="text-white" aria-label="浅色" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SpinnerTrackPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+提交按钮禁用态内嵌 Spinner，或行内同步提示。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="spinner-button.tsx"
+  code={`import { Spinner } from "@/components/base/spinner/spinner";
+import { Button } from "@/components/base/buttons/button";
+
+<>
+  <Button isDisabled className="gap-2">
+    <Spinner size="sm" className="text-white" aria-hidden />
+    提交中…
+  </Button>
+  <div className="flex items-center gap-2">
+    <Spinner size="sm" aria-hidden />
+    正在同步数据
+  </div>
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SpinnerButtonScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="spinner" />
-

@@ -1,11 +1,17 @@
 ﻿---
 title: "多行输入"
-description: "自动增高与字数统计的多行字段。"
+description: "多行文本：medium · small 尺寸，自动增高与字数统计。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  TextareaAutoResizePreview,
+  TextareaFormScenario,
+  TextareaSizePreview,
+} from "@/components/demos/textarea-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-自动增高与字数统计的多行字段。
+带标签的多行输入。下方是**同一个** `Textarea` 的不同配置。
 
 <ComponentDocPreview slug="textarea" />
 
@@ -17,14 +23,65 @@ npx @joyui/cli add textarea --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 尺寸
+
+`size="medium" | "small"`，配合 `rows`。
+
+<DemoFrame
+  fileName="textarea-sizes.tsx"
+  code={`import { Textarea } from "@/components/base/textarea/textarea";
+
+<>
+  <Textarea size="medium" label="中号" placeholder="补充说明…" rows={3} />
+  <Textarea size="small" label="小号" placeholder="补充说明…" rows={3} />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TextareaSizePreview />
+</DemoFrame>
+
+## 自动增高与字数
+
+`autoResize` + `maxRows`；`maxLength` + `showCount` 显示字数。
+
+<DemoFrame
+  fileName="textarea-autoresize.tsx"
+  code={`import { Textarea } from "@/components/base/textarea/textarea";
+
+<Textarea
+  label="反馈"
+  placeholder="输入时自动增高…"
+  autoResize
+  maxRows={6}
+  maxLength={120}
+  showCount
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <TextareaAutoResizePreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+工单表单：问题描述 + hint + 字数。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="textarea-form.tsx"
+  code={`import { Textarea } from "@/components/base/textarea/textarea";
+
+<Textarea
+  label="问题描述"
+  hint="请描述复现步骤"
+  placeholder="例如：打开设置页后…"
+  rows={4}
+  maxLength={280}
+  showCount
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <TextareaFormScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="textarea" />
-

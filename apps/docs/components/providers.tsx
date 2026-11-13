@@ -3,15 +3,14 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { RootProvider } from "fumadocs-ui/provider/next";
+import { TemplateCopyProvider } from "@/components/foundations/template-copy/template-copy";
+import {
+  createMessageTranslator,
+  resolveMessages,
+} from "@/components/foundations/i18n/messages";
+import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALES } from "@/components/locale";
 
-export const LOCALES = [
-  { locale: "zh-CN", name: "简体中文" },
-  { locale: "en", name: "English" },
-] as const;
-
-export const DEFAULT_LOCALE = "zh-CN";
-
-const COOKIE_NAME = "joyui-locale";
+export { DEFAULT_LOCALE, LOCALES } from "@/components/locale";
 
 // React 19 warns when next-themes re-renders its FOUC <script> on the client.
 // Keep default script type during SSR; on the client use a non-JS MIME.
@@ -29,6 +28,10 @@ export function Providers({
   locale: string;
 }) {
   const router = useRouter();
+  const translate = React.useMemo(
+    () => createMessageTranslator(resolveMessages(locale)),
+    [locale],
+  );
 
   return (
     <RootProvider
@@ -37,7 +40,7 @@ export function Providers({
         defaultLanguage: DEFAULT_LOCALE,
         locales: [...LOCALES],
         onLocaleChange(next) {
-          document.cookie = `${COOKIE_NAME}=${next};path=/;max-age=31536000;samesite=lax`;
+          document.cookie = `${LOCALE_COOKIE}=${next};path=/;max-age=31536000;samesite=lax`;
           document.documentElement.lang = next;
           router.refresh();
         },
@@ -48,7 +51,8 @@ export function Providers({
         scriptProps: themeScriptProps,
       }}
     >
-      {children}
+      {/* Layout already owns DirectionProvider; only wire UI copy here. */}
+      <TemplateCopyProvider translate={translate}>{children}</TemplateCopyProvider>
     </RootProvider>
   );
 }

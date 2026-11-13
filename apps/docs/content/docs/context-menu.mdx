@@ -1,11 +1,17 @@
 ﻿---
-title: "上下文菜单"
-description: "右键 / 长按菜单，含子菜单与可勾选项。"
+title: "右键菜单"
+description: "上下文菜单：图标、快捷键、危险项与子菜单。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ContextMenuBasicPreview,
+  ContextMenuFileScenario,
+  ContextMenuSubmenuPreview,
+} from "@/components/demos/context-menu-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-右键 / 长按菜单，含子菜单与可勾选项。
+右键 / 长按 / 键盘唤起。下方是**同一个** ContextMenu 的不同配置。
 
 <ComponentDocPreview slug="context-menu" />
 
@@ -17,14 +23,84 @@ npx @joyui/cli add context-menu --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 图标与危险项
+
+`icon`、`shortcut`；`variant="danger"` 用于破坏性操作。
+
+<DemoFrame
+  fileName="context-menu-basic.tsx"
+  code={`import { RiDeleteBinLine, RiEditLine, RiShareLine } from "@remixicon/react";
+import {
+  ContextMenu, ContextMenuItem, ContextMenuSeparator, ContextMenuTrigger,
+} from "@/components/base/context-menu/context-menu";
+
+<ContextMenuTrigger>
+  <div>右键打开</div>
+  <ContextMenu aria-label="文件操作">
+    <ContextMenuItem id="rename" icon={RiEditLine} shortcut="⌘R">重命名</ContextMenuItem>
+    <ContextMenuItem id="share" icon={RiShareLine}>分享</ContextMenuItem>
+    <ContextMenuSeparator />
+    <ContextMenuItem id="delete" icon={RiDeleteBinLine} variant="danger">删除</ContextMenuItem>
+  </ContextMenu>
+</ContextMenuTrigger>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ContextMenuBasicPreview />
+</DemoFrame>
+
+## 子菜单
+
+`ContextMenuSubmenu` 嵌套二级选项。
+
+<DemoFrame
+  fileName="context-menu-submenu.tsx"
+  code={`import { RiEditLine, RiFolderTransferLine } from "@remixicon/react";
+import {
+  ContextMenu, ContextMenuItem, ContextMenuSubmenu, ContextMenuTrigger,
+} from "@/components/base/context-menu/context-menu";
+
+<ContextMenuTrigger>
+  <div>含子菜单</div>
+  <ContextMenu aria-label="移动菜单">
+    <ContextMenuItem id="rename" icon={RiEditLine}>重命名</ContextMenuItem>
+    <ContextMenuSubmenu label="移动到" icon={RiFolderTransferLine}>
+      <ContextMenuItem id="inbox">收件箱</ContextMenuItem>
+      <ContextMenuItem id="archive">归档</ContextMenuItem>
+    </ContextMenuSubmenu>
+  </ContextMenu>
+</ContextMenuTrigger>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ContextMenuSubmenuPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+文件行右键：打开时描边高亮。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="context-menu-file.tsx"
+  code={`import { RiDeleteBinLine, RiEditLine, RiShareLine } from "@remixicon/react";
+import {
+  ContextMenu, ContextMenuItem, ContextMenuSeparator, ContextMenuTrigger,
+} from "@/components/base/context-menu/context-menu";
+
+<ContextMenuTrigger>
+  {({ isOpen }) => (
+    <>
+      <div>季度报告.pdf</div>
+      <ContextMenu aria-label="文件操作">
+        <ContextMenuItem id="rename" icon={RiEditLine}>重命名</ContextMenuItem>
+        <ContextMenuItem id="delete" icon={RiDeleteBinLine} variant="danger">删除</ContextMenuItem>
+      </ContextMenu>
+    </>
+  )}
+</ContextMenuTrigger>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ContextMenuFileScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="context-menu" />
-

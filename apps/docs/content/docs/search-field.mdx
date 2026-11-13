@@ -1,11 +1,17 @@
 ﻿---
 title: "搜索框"
-description: "可清除的搜索输入，支持加载态。"
+description: "搜索输入：pill · rounded 形状、加载态与筛选场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  SearchFieldFilterScenario,
+  SearchFieldLoadingPreview,
+  SearchFieldShapePreview,
+} from "@/components/demos/search-field-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-可清除的搜索输入，支持加载态。
+内置搜索图标与清除按钮。下方是**同一个** `SearchField` 的不同配置。
 
 <ComponentDocPreview slug="search-field" />
 
@@ -17,14 +23,51 @@ npx @joyui/cli add search-field --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 形状
+
+`shape="pill"`（默认）· `rounded`。
+
+<DemoFrame
+  fileName="search-field-shapes.tsx"
+  code={`import { SearchField } from "@/components/base/search-field/search-field";
+
+<>
+  <SearchField aria-label="胶囊搜索" placeholder="搜索（pill）" shape="pill" />
+  <SearchField aria-label="圆角搜索" placeholder="搜索（rounded）" shape="rounded" />
+</>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SearchFieldShapePreview />
+</DemoFrame>
+
+## 加载态
+
+`isLoading` 时显示加载指示。
+
+<DemoFrame
+  fileName="search-field-loading.tsx"
+  code={`import { SearchField } from "@/components/base/search-field/search-field";
+
+<SearchField aria-label="加载中搜索" placeholder="正在搜索…" defaultValue="JoyUI" isLoading />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <SearchFieldLoadingPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+面板内筛选：受控 `value` / `onChange` + `size="small"`。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="search-field-filter.tsx"
+  code={`import { SearchField } from "@/components/base/search-field/search-field";
+
+<SearchField aria-label="筛选成员" placeholder="筛选成员…" size="small" />`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <SearchFieldFilterScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="search-field" />
-

@@ -1,10 +1,14 @@
 ---
-title: "阅读进度"
-description: "顶部细进度条，跟随滚动更新。"
+title: "滚动进度"
+description: "绑定滚动容器的顶部进度条。"
 status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { ScrollProgressDemo } from "@/components/demos/scroll-progress-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+长文、条款与面板阅读进度。`target` 指向可滚动元素。
 
 <ComponentDocPreview slug="scroll-progress" />
 
@@ -13,6 +17,29 @@ import { DocApiSection } from "@/components/docs-api-section";
 ```bash
 npx @joyui/cli add scroll-progress --yes
 ```
+
+## 绑定容器
+
+传入滚动容器 `ref`；`height` 控制条高。
+
+<DemoFrame
+  fileName="scroll-progress-target.tsx"
+  code={`import { useRef } from "react";
+import { ScrollProgress } from "@/components/base/scroll-progress/scroll-progress";
+
+function Example() {
+  const ref = useRef(null);
+  return (
+    <div>
+      <ScrollProgress target={ref} height={3} />
+      <div ref={ref} className="max-h-48 overflow-y-auto">…</div>
+    </div>
+  );
+}`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ScrollProgressDemo />
+</DemoFrame>
 
 ## API
 

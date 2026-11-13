@@ -1,11 +1,17 @@
 ﻿---
 title: "组合框"
-description: "输入即过滤列表，支持分区与自定义值。"
+description: "可搜索下拉：基础选项、分区分组与指派场景。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  ComboboxAssignScenario,
+  ComboboxBasicPreview,
+  ComboboxSectionPreview,
+} from "@/components/demos/combobox-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-输入即过滤列表，支持分区与自定义值。
+可输入筛选的下拉选择。`ComboBox` + `ComboBoxItem`；分组用 `ComboBoxSection`。下方是**同一个** Combobox 的不同配置。
 
 <ComponentDocPreview slug="combobox" />
 
@@ -17,14 +23,61 @@ npx @joyui/cli add combobox --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
+## 基础选项
+
+`label` / `placeholder` / `defaultSelectedKey`，子项需 `id` 与 `textValue`。
+
+<DemoFrame
+  fileName="combobox-basic.tsx"
+  code={`import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
+
+<ComboBox label="负责人" placeholder="搜索成员" defaultSelectedKey="maya">
+  <ComboBoxItem id="maya" textValue="Maya Chen">Maya Chen</ComboBoxItem>
+  <ComboBoxItem id="leo" textValue="Leo Park">Leo Park</ComboBoxItem>
+</ComboBox>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ComboboxBasicPreview />
+</DemoFrame>
+
+## 分区
+
+`ComboBoxSection` 的 `title` 分组选项。
+
+<DemoFrame
+  fileName="combobox-sections.tsx"
+  code={`import { ComboBox, ComboBoxItem, ComboBoxSection } from "@/components/base/combobox/combobox";
+
+<ComboBox label="时区" placeholder="搜索时区" defaultSelectedKey="sha">
+  <ComboBoxSection title="亚洲">
+    <ComboBoxItem id="sha" textValue="上海">上海 · UTC+8</ComboBoxItem>
+  </ComboBoxSection>
+  <ComboBoxSection title="美洲">
+    <ComboBoxItem id="sfo" textValue="旧金山">旧金山 · UTC-7</ComboBoxItem>
+  </ComboBoxSection>
+</ComboBox>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <ComboboxSectionPreview />
+</DemoFrame>
 
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+任务指派：`size="small"` + `emptyMessage`。
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+<DemoFrame
+  fileName="combobox-assign.tsx"
+  code={`import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
+
+<ComboBox aria-label="指派人" placeholder="搜索同事…" size="small" emptyMessage="没有匹配的成员">
+  <ComboBoxItem id="lin" textValue="林晓">林晓</ComboBoxItem>
+  <ComboBoxItem id="chen" textValue="陈可">陈可</ComboBoxItem>
+</ComboBox>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <ComboboxAssignScenario />
+</DemoFrame>
 
 ## API
 
 <DocApiSection slug="combobox" />
-

@@ -3,7 +3,13 @@ title: "数据表格"
 description: "可配置 columns / data 的 TanStack 数据表；筛选排序分页开箱可用。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DataTableEmptyPreview,
+  DataTableSizePreview,
+  DataTableTransfersScenario,
+} from "@/components/demos/data-table-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
 业务列表请用 **`DataTable`**（传入 `data` / `columns` / `getRowId`）。  
 `DataTableExample` 仅是营销演示，不要当生产组件。
@@ -16,15 +22,63 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add data-table --yes
 ```
 
-整库：
+## 尺寸
 
-```tsx
-import { DataTable } from "@joyui/react";
-```
+`sm` · `md`，与基础 `Table` 行高一致。
+
+<DemoFrame
+  fileName="data-table-sizes.tsx"
+  code={`import { DataTable } from "@/components/application/data-table/data-table-view";
+
+<DataTable
+  aria-label="转存表"
+  size="sm"
+  pageSize={3}
+  data={rows}
+  columns={columns}
+  getRowId={(row) => row.id}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DataTableSizePreview />
+</DemoFrame>
+
+## 空状态
+
+无数据时渲染 `emptyState`（默认文案可换）。
+
+<DemoFrame
+  fileName="data-table-empty.tsx"
+  code={`<DataTable
+  aria-label="空转存表"
+  data={[]}
+  columns={columns}
+  getRowId={(row) => row.id}
+  emptyState="暂无转存任务"
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
+>
+  <DataTableEmptyPreview />
+</DemoFrame>
 
 ## 应用场景
 
 Transfers / Tasks / Files 等记录表。电子表格式编辑请用 `DataGrid`。
+
+<DemoFrame
+  fileName="data-table-transfers.tsx"
+  code={`<DataTable
+  aria-label="转存列表"
+  size="sm"
+  pageSize={4}
+  data={transfers}
+  columns={columns}
+  getRowId={(row) => row.id}
+/>`}
+  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
+>
+  <DataTableTransfersScenario />
+</DemoFrame>
 
 ## API
 
