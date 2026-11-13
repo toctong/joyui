@@ -1,26 +1,78 @@
 ---
 title: "轮播"
-description: "CSS scroll-snap 画廊：滑动、箭头、指示点；支持自动播放与循环。"
+description: "基础 scroll-snap 画廊，以及 Coverflow / 淡入 / 缩略图 / 堆叠等高级变体。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-CSS scroll-snap 画廊。需要更强表现力时，可看 Coverflow / 淡入 / 缩略图 / 堆叠 变体。
+一套轮播家族：基础轨用 CSS scroll-snap；需要更强表现力时直接换下方变体，API 各自独立、安装按 slug。
+
+## 基础画廊
+
+滑动、箭头、指示点；支持 `autoplay` / `loop` / 进度点。
 
 <ComponentDocPreview slug="carousel" />
-
-## 安装
 
 ```bash
 npx @joyui/cli add carousel --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
-
-## 应用场景
-
-营销横幅、图库、仪表盘卡片组。`autoplay` + `loop` 适合无人值守展示；`align="center"` 可露出邻卡。
-
-## API
+### API
 
 <DocApiSection slug="carousel" />
+
+## Coverflow
+
+透视舞台，侧卡缩放 + 旋转，适合作品集与产品秀。
+
+<ComponentDocPreview slug="carousel-coverflow" />
+
+```bash
+npx @joyui/cli add carousel-coverflow --yes
+```
+
+### API
+
+<DocApiSection slug="carousel-coverflow" />
+
+## 淡入
+
+叠层交叉淡入，可选 Ken Burns 微缩放，适合英雄图。
+
+<ComponentDocPreview slug="carousel-fade" />
+
+```bash
+npx @joyui/cli add carousel-fade --yes
+```
+
+### API
+
+<DocApiSection slug="carousel-fade" />
+
+## 缩略图
+
+主舞台 + 缩略图条，适合商品图与媒资库。
+
+<ComponentDocPreview slug="carousel-thumbs" />
+
+```bash
+npx @joyui/cli add carousel-thumbs --yes
+```
+
+### API
+
+<DocApiSection slug="carousel-thumbs" />
+
+## 堆叠
+
+卡片扇形叠放，滑动或点击翻下一张。
+
+<ComponentDocPreview slug="carousel-stacked" />
+
+```bash
+npx @joyui/cli add carousel-stacked --yes
+```
+
+### API
+
+<DocApiSection slug="carousel-stacked" />
