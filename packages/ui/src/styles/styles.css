@@ -327,3 +327,25 @@
     transform: scale(1.2);
   }
 }
+
+/* CarouselFade Ken Burns */
+@keyframes bui-carousel-kenburns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+.bui-carousel-kenburns {
+  animation: bui-carousel-kenburns 6.5s ease-out forwards;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-carousel-kenburns {
+    animation: none;
+  }
+}

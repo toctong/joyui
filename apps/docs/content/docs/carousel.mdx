@@ -1,11 +1,11 @@
-﻿---
+---
 title: "轮播"
-description: "CSS scroll-snap 画廊：滑动、箭头与位置指示。"
+description: "CSS scroll-snap 画廊：滑动、箭头、指示点；支持自动播放与循环。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-CSS scroll-snap 画廊：滑动、箭头与位置指示。
+CSS scroll-snap 画廊。需要更强表现力时，可看 Coverflow / 淡入 / 缩略图 / 堆叠 变体。
 
 <ComponentDocPreview slug="carousel" />
 
@@ -17,14 +17,10 @@ npx @joyui/cli add carousel --yes
 
 或通过 JoyUI MCP / CLI 安装。
 
-
 ## 应用场景
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+营销横幅、图库、仪表盘卡片组。`autoplay` + `loop` 适合无人值守展示；`align="center"` 可露出邻卡。
 
 ## API
 
 <DocApiSection slug="carousel" />
-

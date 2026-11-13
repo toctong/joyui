@@ -363,11 +363,76 @@ export function Example() {
   ),
   carousel: wrap(
     'import { Carousel, CarouselItem } from "@/components/base/carousel/carousel";',
-    `<Carousel aria-label="图库">
-  <CarouselItem>一</CarouselItem>
-  <CarouselItem>二</CarouselItem>
-  <CarouselItem>三</CarouselItem>
+    `<Carousel aria-label="图库" autoplay loop className="max-w-xl">
+  {[
+    { src: "/carousel/sunrise.webp", alt: "Sunrise" },
+    { src: "/carousel/kitchen.webp", alt: "Kitchen" },
+    { src: "/carousel/seafood.webp", alt: "Seafood" },
+    { src: "/carousel/floral.webp", alt: "Floral" },
+  ].map((shot) => (
+    <CarouselItem key={shot.src}>
+      <div className="overflow-hidden rounded-2xl border border-border-secondary-default">
+        <img src={shot.src} alt={shot.alt} className="aspect-[16/10] w-full object-cover" />
+      </div>
+    </CarouselItem>
+  ))}
 </Carousel>`,
+  ),
+  "carousel-coverflow": wrap(
+    'import { CarouselCoverflow } from "@/components/base/carousel-coverflow/carousel-coverflow";',
+    `<CarouselCoverflow
+  aria-label="作品集"
+  slideWidth={220}
+  slideHeight={280}
+  autoplay
+  slides={[
+    { id: "1", content: <img src="/carousel/shark-collage.webp" alt="" className="size-full object-cover" /> },
+    { id: "2", content: <img src="/carousel/space-squid.webp" alt="" className="size-full object-cover" /> },
+    { id: "3", content: <img src="/carousel/vending-machine.webp" alt="" className="size-full object-cover" /> },
+    { id: "4", content: <img src="/carousel/sunrise.webp" alt="" className="size-full object-cover" /> },
+    { id: "5", content: <img src="/carousel/floral.webp" alt="" className="size-full object-cover" /> },
+  ]}
+/>`,
+  ),
+  "carousel-fade": wrap(
+    'import { CarouselFade } from "@/components/base/carousel-fade/carousel-fade";',
+    `<CarouselFade
+  aria-label="英雄图"
+  className="max-w-xl"
+  kenBurns
+  slides={[
+    { id: "1", caption: "Sunrise over the ridge", content: <img src="/carousel/sunrise.webp" alt="" className="size-full object-cover" /> },
+    { id: "2", caption: "Quiet kitchen light", content: <img src="/carousel/kitchen.webp" alt="" className="size-full object-cover" /> },
+    { id: "3", caption: "Market catch of the day", content: <img src="/carousel/seafood.webp" alt="" className="size-full object-cover" /> },
+  ]}
+/>`,
+  ),
+  "carousel-thumbs": wrap(
+    'import { CarouselThumbs } from "@/components/base/carousel-thumbs/carousel-thumbs";',
+    `<CarouselThumbs
+  aria-label="商品图"
+  className="max-w-md"
+  slides={[
+    { id: "1", label: "Sunrise", content: <img src="/carousel/sunrise.webp" alt="" className="size-full object-cover" />, thumb: <img src="/carousel/sunrise.webp" alt="" className="size-full object-cover" /> },
+    { id: "2", label: "Kitchen", content: <img src="/carousel/kitchen.webp" alt="" className="size-full object-cover" />, thumb: <img src="/carousel/kitchen.webp" alt="" className="size-full object-cover" /> },
+    { id: "3", label: "Floral", content: <img src="/carousel/floral.webp" alt="" className="size-full object-cover" />, thumb: <img src="/carousel/floral.webp" alt="" className="size-full object-cover" /> },
+    { id: "4", label: "Vending", content: <img src="/carousel/vending-machine.webp" alt="" className="size-full object-cover" />, thumb: <img src="/carousel/vending-machine.webp" alt="" className="size-full object-cover" /> },
+  ]}
+/>`,
+  ),
+  "carousel-stacked": wrap(
+    'import { CarouselStacked } from "@/components/base/carousel-stacked/carousel-stacked";',
+    `<CarouselStacked
+  aria-label="特性卡片"
+  width={280}
+  height={340}
+  slides={[
+    { id: "1", content: <img src="/carousel/space-squid.webp" alt="" className="size-full object-cover" /> },
+    { id: "2", content: <img src="/carousel/shark-collage.webp" alt="" className="size-full object-cover" /> },
+    { id: "3", content: <img src="/carousel/floral.webp" alt="" className="size-full object-cover" /> },
+    { id: "4", content: <img src="/carousel/kitchen.webp" alt="" className="size-full object-cover" /> },
+  ]}
+/>`,
   ),
   checkbox: wrap(
     'import { Checkbox } from "@/components/base/checkbox/checkbox";',

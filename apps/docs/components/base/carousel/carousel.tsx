@@ -8,6 +8,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type FocusEvent,
   type HTMLAttributes,
   type ReactNode,
   type Ref,
@@ -25,9 +26,8 @@ import { cx } from "@/utils/cx";
  * track. That is the whole design decision, and it buys a lot: touch swipe,
  * trackpad gestures, momentum, and keyboard scrolling all work without a line
  * of JavaScript, and the browser handles sub-pixel positioning better than a
- * translate ever does. JS is only here to answer three questions the DOM will
- * not answer on its own — which card is showing, and whether either end has
- * been reached.
+ * translate ever does. JS is only here to answer which card is showing, whether
+ * either end has been reached, and (optionally) autoplay / loop.
  *
  * Positions are read from each item's viewport bounds instead of being computed
  * from a card width, so items of different widths, responsive widths, or a
@@ -35,7 +35,7 @@ import { cx } from "@/utils/cx";
  *
  * Follows the APG carousel pattern for naming: the region is a labelled group
  * that announces itself as a carousel, each item announces its position, and
- * the controls are real buttons that disable at the ends.
+ * the controls are real buttons that disable at the ends (unless `loop`).
  */
 
 export interface CarouselProps
@@ -51,6 +51,14 @@ export interface CarouselProps
   align?: "start" | "center";
   /** Gap between cards, in px. */
   gap?: number;
+  /** Auto-advance slides. */
+  autoplay?: boolean;
+  /** Autoplay interval (ms). Default 4200. */
+  interval?: number;
+  /** Wrap from last → first (and reverse). Enables continuous autoplay. */
+  loop?: boolean;
+  /** Pause autoplay while hovered / focused. Default true. */
+  pauseOnHover?: boolean;
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -84,6 +92,10 @@ export function Carousel({
   showDots = true,
   align = "start",
   gap = 16,
+  autoplay = false,
+  interval = 4200,
+  loop = false,
+  pauseOnHover = true,
   className,
   ref,
   ...props
@@ -93,6 +105,10 @@ export function Carousel({
   const [active, setActive] = useState(0);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const activeRef = useRef(0);
+  const pausedRef = useRef(false);
 
   const count = Children.toArray(children).filter(isValidElement).length;
 
@@ -121,10 +137,12 @@ export function Carousel({
     // it — leaving the last dot permanently unlit and making a click on it
     // look broken. The ends are therefore pinned rather than measured.
     if (end) {
+      activeRef.current = all.length - 1;
       setActive(all.length - 1);
       return;
     }
     if (start) {
+      activeRef.current = 0;
       setActive(0);
       return;
     }
@@ -132,12 +150,21 @@ export function Carousel({
     let nearest = 0;
     let shortest = Number.POSITIVE_INFINITY;
     all.forEach((item, index) => {
-      const distance = Math.abs(scrollOffsetForItem(track.getBoundingClientRect(), item.getBoundingClientRect(), 0, direction, align));
+      const distance = Math.abs(
+        scrollOffsetForItem(
+          track.getBoundingClientRect(),
+          item.getBoundingClientRect(),
+          0,
+          direction,
+          align,
+        ),
+      );
       if (distance < shortest) {
         shortest = distance;
         nearest = index;
       }
     });
+    activeRef.current = nearest;
     setActive(nearest);
   }, [items, direction, align]);
 
@@ -156,16 +183,90 @@ export function Carousel({
     };
   }, [measure]);
 
-  const scrollToIndex = (index: number) => {
-    const track = trackRef.current;
-    const target = items()[Math.max(0, Math.min(index, count - 1))];
-    if (!track || !target) return;
-    // `matchMedia` rather than a hook: this runs on click, so reading the
-    // preference at that moment is both current and cheap.
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const left = scrollOffsetForItem(track.getBoundingClientRect(), target.getBoundingClientRect(), track.scrollLeft, direction, align);
-    track.scrollTo({ left, behavior: reduce ? "auto" : "smooth" });
-  };
+  const scrollToIndex = useCallback(
+    (index: number) => {
+      const track = trackRef.current;
+      if (!track || count === 0) return;
+      let next = index;
+      if (loop) {
+        next = ((index % count) + count) % count;
+      } else {
+        next = Math.max(0, Math.min(index, count - 1));
+      }
+      const target = items()[next];
+      if (!target) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const left = scrollOffsetForItem(
+        track.getBoundingClientRect(),
+        target.getBoundingClientRect(),
+        track.scrollLeft,
+        direction,
+        align,
+      );
+      track.scrollTo({ left, behavior: reduce ? "auto" : "smooth" });
+      setProgress(0);
+    },
+    [align, count, direction, items, loop],
+  );
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
+
+  useEffect(() => {
+    if (!autoplay || count < 2) return;
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    let raf = 0;
+    let started = performance.now();
+    let elapsedAtPause = 0;
+    const tick = (now: number) => {
+      if (pausedRef.current) {
+        elapsedAtPause = now - started;
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+      if (elapsedAtPause > 0) {
+        started = now - elapsedAtPause;
+        elapsedAtPause = 0;
+      }
+      const t = Math.min(1, (now - started) / interval);
+      setProgress(t);
+      if (t >= 1) {
+        const next = activeRef.current + 1;
+        if (loop || next < count) {
+          scrollToIndex(next);
+        }
+        started = now;
+        setProgress(0);
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [autoplay, count, interval, loop, scrollToIndex]);
+
+  // Reset progress when the active slide changes from user interaction.
+  useEffect(() => {
+    setProgress(0);
+  }, [active]);
+
+  const hoverHandlers =
+    autoplay && pauseOnHover
+      ? {
+          onMouseEnter: () => setPaused(true),
+          onMouseLeave: () => setPaused(false),
+          onFocusCapture: () => setPaused(true),
+          onBlurCapture: (event: FocusEvent<HTMLDivElement>) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              setPaused(false);
+            }
+          },
+        }
+      : {};
 
   return (
     <div
@@ -174,6 +275,7 @@ export function Carousel({
       dir={direction}
       aria-roledescription="carousel"
       className={cx("flex w-full flex-col gap-4", className)}
+      {...hoverHandlers}
       {...props}
     >
       {showArrows && count > 0 ? (
@@ -182,14 +284,14 @@ export function Carousel({
             icon={RiArrowLeftSLine}
             size="small"
             aria-label="Previous slide"
-            disabled={atStart}
+            disabled={!loop && atStart}
             onClick={() => scrollToIndex(active - 1)}
           />
           <IconButton
             icon={RiArrowRightSLine}
             size="small"
             aria-label="Next slide"
-            disabled={atEnd}
+            disabled={!loop && atEnd}
             onClick={() => scrollToIndex(active + 1)}
           />
         </div>
@@ -229,12 +331,22 @@ export function Carousel({
               aria-current={index === active}
               onClick={() => scrollToIndex(index)}
               className={cx(
-                "h-1.5 cursor-pointer rounded-full transition-all duration-200 ease-out",
+                "relative h-1.5 cursor-pointer overflow-hidden rounded-full transition-all duration-200 ease-out",
                 index === active
-                  ? "w-4 bg-text-primary"
+                  ? autoplay
+                    ? "w-6 bg-background-tertiary-default"
+                    : "w-4 bg-text-primary"
                   : "w-1.5 bg-background-tertiary-default hover:bg-border-button-active",
               )}
-            />
+            >
+              {autoplay && index === active ? (
+                <span
+                  aria-hidden
+                  className="absolute inset-y-0 start-0 rounded-full bg-text-primary"
+                  style={{ width: `${progress * 100}%` }}
+                />
+              ) : null}
+            </button>
           ))}
         </div>
       ) : null}
