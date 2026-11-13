@@ -417,9 +417,10 @@ export function GettingStartedNext({ className }: { className?: string }) {
 /* -------------------------------------------------------------------------- */
 
 export function GettingStartedLead({ children }: { children: ReactNode }) {
+  // `div`, not `p` — MDX wraps block children in `<p>`, and `<p>`-in-`<p>` hydrates badly.
   return (
-    <p className="not-prose mb-4 max-w-2xl text-pretty text-body-regular text-text-secondary">
+    <div className="not-prose mb-4 max-w-2xl text-pretty text-body-regular text-text-secondary">
       {children}
-    </p>
+    </div>
   );
 }
