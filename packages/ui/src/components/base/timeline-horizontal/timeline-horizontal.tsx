@@ -103,7 +103,7 @@ export function TimelineHorizontalItem({
       data-status={resolved}
       {...props}
     >
-      {/* Real rail — `after:bg-border-secondary-*` is transparent without that token. */}
+      {/* Real rail — `after:bg-border-secondary-*` is transparent in docs theme. */}
       <span
         data-timeline-rail
         aria-hidden

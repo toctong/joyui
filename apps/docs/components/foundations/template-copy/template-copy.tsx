@@ -37,8 +37,19 @@ export function translateTemplateCopy<T>(value: T, translate: TemplateCopyTransl
   function visit(value: unknown, data = false): unknown {
     if (typeof value === "string") return data ? value : translate(value);
     if (Array.isArray(value)) {
-      const result = value.map(item => visit(item, data));
-      return result.every((item, index) => item === value[index]) ? value : result;
+      // Static JSX children are an unkeyed array; remapping them without keys
+      // triggers React's "unique key prop" warning (e.g. breadcrumb catalog card).
+      let changed = false;
+      const result = value.map((item, index) => {
+        const visited = visit(item, data);
+        if (visited !== item) changed = true;
+        if (isValidElement(visited) && visited.key == null) {
+          changed = true;
+          return cloneElement(visited, { key: `.$tc-${index}` });
+        }
+        return visited;
+      });
+      return changed ? result : value;
     }
     if (isValidElement<Record<string, unknown>>(value)) {
       if (typeof value.type === "string" && ["pre", "code", "kbd", "script", "style"].includes(value.type)) return value;

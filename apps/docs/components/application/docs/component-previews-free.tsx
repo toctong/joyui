@@ -1091,44 +1091,46 @@ export const FREE_COMPONENT_PREVIEWS: Partial<Record<PreviewHref, () => React.Re
       </div>
     </Center>
   ),
-  "/components/breadcrumb": () => (
-    <Center>
-      <div className="flex flex-col items-start gap-2">
-        <Breadcrumb>
-          <BreadcrumbItem href="/">Home</BreadcrumbItem>
-          <BreadcrumbItem href="/components">Team</BreadcrumbItem>
-          <BreadcrumbItem current>Billing</BreadcrumbItem>
-        </Breadcrumb>
-        <Breadcrumb>
-          <BreadcrumbItem href="/">Library</BreadcrumbItem>
-          <BreadcrumbItem href="/components">Charts</BreadcrumbItem>
-          <BreadcrumbItem current>Revenue</BreadcrumbItem>
-        </Breadcrumb>
-        <Breadcrumb>
-          <BreadcrumbItem href="/" icon={RiHome5Line}>
-            Home
-          </BreadcrumbItem>
-          <BreadcrumbItem href="/components" icon={RiSettings3Line}>
-            Settings
-          </BreadcrumbItem>
-          <BreadcrumbItem current icon={RiUserLine}>
-            Profile
-          </BreadcrumbItem>
-        </Breadcrumb>
-        <Breadcrumb>
-          <BreadcrumbItem href="/" icon={RiFolder3Line}>
-            Files
-          </BreadcrumbItem>
-          <BreadcrumbItem href="/components" icon={RiFolder3Line}>
-            Design
-          </BreadcrumbItem>
-          <BreadcrumbItem current icon={RiFileTextLine}>
-            Brief
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </div>
-    </Center>
-  ),
+  "/components/breadcrumb": function BreadcrumbPreview() {
+    return (
+      <Center>
+        <div className="flex flex-col items-start gap-2">
+          <Breadcrumb key="text-billing">
+            <BreadcrumbItem href="/">Home</BreadcrumbItem>
+            <BreadcrumbItem href="/components">Team</BreadcrumbItem>
+            <BreadcrumbItem current>Billing</BreadcrumbItem>
+          </Breadcrumb>
+          <Breadcrumb key="text-revenue">
+            <BreadcrumbItem href="/">Library</BreadcrumbItem>
+            <BreadcrumbItem href="/components">Charts</BreadcrumbItem>
+            <BreadcrumbItem current>Revenue</BreadcrumbItem>
+          </Breadcrumb>
+          <Breadcrumb key="icon-profile">
+            <BreadcrumbItem href="/" icon={RiHome5Line}>
+              Home
+            </BreadcrumbItem>
+            <BreadcrumbItem href="/components" icon={RiSettings3Line}>
+              Settings
+            </BreadcrumbItem>
+            <BreadcrumbItem current icon={RiUserLine}>
+              Profile
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Breadcrumb key="icon-brief">
+            <BreadcrumbItem href="/" icon={RiFolder3Line}>
+              Files
+            </BreadcrumbItem>
+            <BreadcrumbItem href="/components" icon={RiFolder3Line}>
+              Design
+            </BreadcrumbItem>
+            <BreadcrumbItem current icon={RiFileTextLine}>
+              Brief
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </div>
+      </Center>
+    );
+  },
   "/components/button": () => (
     <Center>
       <div className="flex flex-col items-center gap-3">

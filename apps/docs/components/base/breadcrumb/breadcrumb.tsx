@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Children, Fragment, isValidElement } from "react";
-import type { ComponentType, ReactNode, Ref } from "react";
+import { Children, cloneElement, isValidElement } from "react";
+import type { ComponentType, ReactElement, ReactNode, Ref } from "react";
 import { ChevronRightSmall } from "@/components/foundations/icons/chevrons";
 import { cx } from "@/utils/cx";
 
@@ -37,7 +37,22 @@ export function Breadcrumb({
   className,
   ref,
 }: BreadcrumbProps) {
-  const items = Children.toArray(children).filter(isValidElement);
+  const items = Children.toArray(children).filter(isValidElement) as ReactElement[];
+
+  // Flat keyed children for `<ol>` — Fragment+separator used to flatten into a
+  // list where the chevron had no key (React warns on /docs/base catalog).
+  const nodes: ReactNode[] = [];
+  items.forEach((item, index) => {
+    const id = item.key ?? `item-${index}`;
+    if (index > 0) {
+      nodes.push(
+        <li key={`sep-${id}`} aria-hidden className="flex items-center">
+          <ChevronRightSmall className="size-3 shrink-0 text-text-tertiary" />
+        </li>,
+      );
+    }
+    nodes.push(cloneElement(item, { key: id }));
+  });
 
   return (
     <nav
@@ -48,16 +63,7 @@ export function Breadcrumb({
         className,
       )}
     >
-      <ol className="flex items-center gap-2.5 px-1">
-        {items.map((item, index) => (
-          <Fragment key={item.key ?? index}>
-            {index > 0 && (
-              <ChevronRightSmall className="size-3 shrink-0 text-text-tertiary" aria-hidden />
-            )}
-            {item}
-          </Fragment>
-        ))}
-      </ol>
+      <ol className="flex items-center gap-2.5 px-1">{nodes}</ol>
     </nav>
   );
 }
