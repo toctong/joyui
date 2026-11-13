@@ -250,6 +250,20 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "description", description: "副标题。", type: "ReactNode", options: "—", defaultValue: "—" },
     { name: "actions", description: "右侧操作区。", type: "ReactNode", options: "—", defaultValue: "—" },
   ]),
+  list: entry("List / ListItem", [
+    { name: "divided (List)", description: "行间分隔线。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "title (Item)", description: "主文案。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "description (Item)", description: "次文案。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "leading / trailing", description: "左右插槽。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "interactive", description: "可点击行样式。", type: "boolean", options: "true · false", defaultValue: "false" },
+  ]),
+  "media-card": entry("MediaCard", [
+    { name: "title", description: "标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "subtitle", description: "副标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "src", description: "封面 URL。", type: "string | null", options: "—", defaultValue: "—" },
+    { name: "action", description: "标题下操作区。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "footer", description: "封面底部叠加内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
   "data-table": entry(
     "DataTable",
     [

@@ -13,7 +13,7 @@
     {
       "path": "lib/utils.ts",
       "type": "registry:lib",
-      "content": "import { clsx, type ClassValue } from \"clsx\";\r\nimport { twMerge } from \"tailwind-merge\";\r\n\r\n/** Merge Tailwind classes the JoyUI way (clsx + tailwind-merge). */\r\nexport function cn(...inputs: ClassValue[]) {\r\n  return twMerge(clsx(inputs));\r\n}\r\n\r\n/** Alias used in agent rules / JoyUI docs. */\r\nexport const cx = cn;\r\n"
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { cx as mergeCx } from \"../utils/cx\";\n\n/** Merge Tailwind classes the JoyUI way (clsx + typography-aware tailwind-merge). */\nexport function cn(...inputs: ClassValue[]) {\n  return mergeCx(clsx(inputs));\n}\n\n/** Alias used in agent rules / JoyUI docs. */\nexport const cx = cn;\n"
     }
   ]
 }

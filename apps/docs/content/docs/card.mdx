@@ -16,9 +16,21 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add card --yes
 ```
 
+```tsx
+import { Card, Input } from "@joyui/react";
+
+<Card className="grid gap-3 md:grid-cols-2" padding="md">
+  <Input label="Name" />
+  <Input label="Share URL" />
+</Card>
+```
+
 ## 应用场景
 
-设置分区、列表外壳、表单面板。`variant="soft"` 适合仪表盘内嵌块。
+设置分区、新建任务表单面板、列表外壳。  
+- `outline`：默认白底描边  
+- `soft`：仪表盘内嵌浅底  
+- `ghost`：只保留间距、无边框  
 
 ## API
 

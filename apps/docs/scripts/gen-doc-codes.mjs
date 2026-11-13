@@ -275,6 +275,34 @@ import { Input } from "@/components/base/input/input";
     'import { LinkButton } from "@/components/base/buttons/link-button";',
     `<LinkButton href="/docs">查看文档</LinkButton>`,
   ),
+  list: wrap(
+    'import { Chip } from "@/components/base/badges/chip";\nimport { List, ListItem } from "@/components/base/list/list";',
+    `<List className="w-full max-w-md">
+  <ListItem
+    title="admin@marhub.local"
+    description="primary (transfer)"
+    trailing={<Chip color="lime" variant="subtle">ok</Chip>}
+  />
+  <ListItem
+    title="CloudSaver"
+    description="Plugin endpoint"
+    interactive
+    trailing={<Chip color="neutral" variant="subtle">off</Chip>}
+  />
+</List>`,
+  ),
+  "media-card": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { MediaCard } from "@/components/base/media-card/media-card";',
+    `<div className="grid w-full max-w-sm grid-cols-2 gap-4">
+  <MediaCard
+    title="Severance"
+    subtitle="2022 · TV"
+    src="https://image.tmdb.org/t/p/w342/pPHpeI2X1qXQQb1vtlnDJLvxYBi.jpg"
+    action={<Button size="small" variant="secondary">Add task</Button>}
+  />
+  <MediaCard title="Untitled" subtitle="No artwork" />
+</div>`,
+  ),
   meter: wrap(
     'import { Meter } from "@/components/base/meter/meter";',
     `<Meter label="席位" value={19} maxValue={20} />`,

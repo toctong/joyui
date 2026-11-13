@@ -16,9 +16,20 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add empty-state --yes
 ```
 
+```tsx
+import { Button, EmptyState } from "@joyui/react";
+
+<EmptyState
+  title="No logs yet"
+  description="Run a task or sign in to generate entries."
+  action={<Button variant="secondary">Go to Tasks</Button>}
+/>
+```
+
 ## 应用场景
 
-Transfers / Tasks / Logs 等空列表，或 DataTable 的 `emptyState` 插槽。
+Transfers / Tasks / Logs / Search 空列表，或作为 `DataTable` 的 `emptyState` 插槽。  
+`size="sm"` 适合表格内部；页面级用默认 `md`。
 
 ## API
 

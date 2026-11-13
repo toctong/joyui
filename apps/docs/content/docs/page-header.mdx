@@ -16,9 +16,24 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add page-header --yes
 ```
 
+```tsx
+import { Button, Input, PageHeader } from "@joyui/react";
+
+<PageHeader
+  title="Tasks"
+  description="Auto save, naming, filter and progress"
+  actions={
+    <>
+      <Input aria-label="Search" placeholder="Search tasks" />
+      <Button variant="primary">New task</Button>
+    </>
+  }
+/>
+```
+
 ## 应用场景
 
-`actions` 可放 Button、Input、SegmentedControl 等。
+`actions` 可放 Button、Input、SegmentedControl 等。小屏自动折行，标题区 `min-w-0` 防溢出。
 
 ## API
 

@@ -1,0 +1,49 @@
+---
+title: "列表"
+description: "分组列表外壳与行：标题、描述、前置/后置槽。"
+badge: "全新"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+设置账号行、搜索结果、日志条目等，用 `List` + `ListItem` 替代手写 `divide-y` 盒子。
+
+<ComponentDocPreview slug="list" />
+
+## 安装
+
+```bash
+npx @joyui/cli add list --yes
+```
+
+整库：
+
+```tsx
+import { Chip, List, ListItem } from "@joyui/react";
+
+<List className="w-full max-w-md">
+  <ListItem
+    title="admin@marhub.local"
+    description="primary (transfer)"
+    trailing={<Chip color="lime" variant="subtle">ok</Chip>}
+  />
+  <ListItem
+    title="CloudSaver"
+    description="Plugin endpoint"
+    interactive
+    trailing={<Chip color="neutral" variant="subtle">off</Chip>}
+  />
+</List>
+```
+
+## 应用场景
+
+- Logs：消息 + level Chip  
+- Search：标题 + 分享链接 + source Chip  
+- Settings：账号 / 插件状态行  
+
+`interactive` 或 `onClick` 会加上悬停底与指针样式。`description` 可放链接或纯文本。
+
+## API
+
+<DocApiSection slug="list" />

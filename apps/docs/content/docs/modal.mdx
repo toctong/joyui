@@ -1,12 +1,13 @@
 ---
 title: "模态框"
-description: "遮罩上的对话框与危险确认。"
+description: "遮罩对话框：Trigger 模式与受控 isOpen 模式。"
 badge: "全新"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-遮罩上的对话框与危险确认。
+遮罩上的对话框。危险确认用 `AlertDialog`（不可点遮罩关闭）。
 
 <ComponentDocPreview slug="modal" />
 
@@ -16,16 +17,70 @@ import { DocApiSection } from "@/components/docs-api-section";
 npx @joyui/cli add modal --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+## Trigger 模式（非受控）
 
+按钮打开，内部 `{({ close }) => …}` 关窗：
 
-## 应用场景
+```tsx
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@joyui/react";
 
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
+<ModalTrigger>
+  <Button>Invite</Button>
+  <Modal>
+    {({ close }) => (
+      <>
+        <ModalHeader title="Invite teammates" description="They get a join link." />
+        <ModalBody>Form fields</ModalBody>
+        <ModalFooter>
+          <Button variant="secondary" onClick={close}>Cancel</Button>
+          <Button onClick={close}>Send</Button>
+        </ModalFooter>
+      </>
+    )}
+  </Modal>
+</ModalTrigger>
+```
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+## 受控模式（`isOpen`）
+
+编辑弹窗、命令式打开用自己的 state，**不要**包 `ModalTrigger`：
+
+```tsx
+import { useState } from "react";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "@joyui/react";
+
+export function EditTaskDialog() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Edit</Button>
+      <Modal isOpen={open} onOpenChange={setOpen}>
+        {({ close }) => (
+          <>
+            <ModalHeader title="Edit task" />
+            <ModalBody>…</ModalBody>
+            <ModalFooter>
+              <Button variant="secondary" onClick={close}>Cancel</Button>
+              <Button onClick={close}>Save</Button>
+            </ModalFooter>
+          </>
+        )}
+      </Modal>
+    </>
+  );
+}
+```
+
+`Modal` 继承 React Aria `ModalOverlay` 的 `isOpen` / `onOpenChange` / `isDismissable`。
+
+## 何时用 AlertDialog
+
+- 删除、不可逆操作  
+- 需要 `role="alertdialog"`、默认不可点遮罩关闭  
+- 焦点落在 Cancel
+
+普通表单 / 详情用 `Modal`。
 
 ## API
 
 <DocApiSection slug="modal" />
-

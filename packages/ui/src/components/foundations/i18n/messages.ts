@@ -22,6 +22,26 @@ export const en: JoyMessages = {
   "No results": "No results",
   "No results.": "No results.",
   "No items.": "No items.",
+  "No logs yet": "No logs yet",
+  "Run a task or sign in to generate entries.":
+    "Run a task or sign in to generate entries.",
+  "Search Quark shares": "Search Quark shares",
+  "Enter a show or movie name, then Search.":
+    "Enter a show or movie name, then Search.",
+  "Try another keyword or check plugin settings.":
+    "Try another keyword or check plugin settings.",
+  "This folder is empty.": "This folder is empty.",
+  "No tasks yet. Create one above or from Discovery.":
+    "No tasks yet. Create one above or from Discovery.",
+  "No running tasks. Create one in Tasks or Discovery.":
+    "No running tasks. Create one in Tasks or Discovery.",
+  "No transfers yet": "No transfers yet",
+  "Add a Quark cookie in Settings, then run a task.":
+    "Add a Quark cookie in Settings, then run a task.",
+  "Create task": "Create task",
+  "New task": "New task",
+  "New folder": "New folder",
+  "No rating": "No rating",
 
   // Auth card
   "Welcome back": "Welcome back",
@@ -85,6 +105,23 @@ export const zhCN: JoyMessages = {
   "No results": "无结果",
   "No results.": "暂无结果。",
   "No items.": "暂无项目。",
+  "No logs yet": "暂无日志",
+  "Run a task or sign in to generate entries.": "运行任务或登录后会生成记录。",
+  "Search Quark shares": "搜索夸克分享",
+  "Enter a show or movie name, then Search.": "输入剧名或电影名后点击搜索。",
+  "Try another keyword or check plugin settings.": "换个关键词，或检查插件设置。",
+  "This folder is empty.": "此文件夹为空。",
+  "No tasks yet. Create one above or from Discovery.":
+    "还没有任务。可在上方新建，或从发现页创建。",
+  "No running tasks. Create one in Tasks or Discovery.":
+    "没有运行中的任务。可在任务页或发现页创建。",
+  "No transfers yet": "暂无转存记录",
+  "Add a Quark cookie in Settings, then run a task.":
+    "请在设置中添加夸克 Cookie，然后运行任务。",
+  "Create task": "创建任务",
+  "New task": "新建任务",
+  "New folder": "新建文件夹",
+  "No rating": "暂无评分",
 
   "Welcome back": "欢迎回来",
   "Sign in to pick up where you left off.": "登录以继续上次的工作。",
