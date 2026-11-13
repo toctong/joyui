@@ -42,6 +42,7 @@ import { Announcement } from "@/components/base/announcement/announcement";
 import { Avatar } from "@/components/base/avatar/avatar";
 import { Badge } from "@/components/base/badges/badge";
 import { Chip } from "@/components/base/badges/chip";
+import { Barcode } from "@/components/base/barcode/barcode";
 import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
 import { Button } from "@/components/base/buttons/button";
 import { ButtonGroup, ButtonGroupItem } from "@/components/base/buttons/button-group";
@@ -78,6 +79,7 @@ import { PageHeader } from "@/components/base/page-header/page-header";
 import { Pagination } from "@/components/base/pagination/pagination";
 import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
 import { ProgressBar } from "@/components/base/progress/progress";
+import { QrCode } from "@/components/base/qr-code/qr-code";
 import { Radio, RadioGroup } from "@/components/base/radio/radio";
 import { Rating } from "@/components/base/rating/rating";
 import { SearchField } from "@/components/base/search-field/search-field";
@@ -180,6 +182,15 @@ function Preview_badge() {
 function Preview_bar_list_card() {
   return (
     <BarListCard />
+  );
+}
+
+function Preview_barcode() {
+  return (
+    <div className="flex w-full max-w-lg flex-col gap-4">
+      <Barcode value="MH-2026-0312" format="CODE128" />
+      <Barcode value="5901234123457" format="EAN13" height={48} />
+    </div>
   );
 }
 
@@ -647,6 +658,15 @@ function Preview_progress() {
   );
 }
 
+function Preview_qr_code() {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <QrCode value="https://www.joyui.top" size={160} />
+      <QrCode value="https://www.joyui.top/docs" size={120} level="H" />
+    </div>
+  );
+}
+
 function Preview_radar_chart_card() {
   return (
     <RadarChartCard />
@@ -964,6 +984,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "avatar": Preview_avatar,
   "badge": Preview_badge,
   "bar-list-card": Preview_bar_list_card,
+  "barcode": Preview_barcode,
   "breadcrumb": Preview_breadcrumb,
   "button": Preview_button,
   "button-group": Preview_button_group,
@@ -1016,6 +1037,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "pagination": Preview_pagination,
   "popover": Preview_popover,
   "progress": Preview_progress,
+  "qr-code": Preview_qr_code,
   "radar-chart-card": Preview_radar_chart_card,
   "radial-chart-card": Preview_radial_chart_card,
   "radio": Preview_radio,

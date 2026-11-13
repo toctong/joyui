@@ -1,0 +1,34 @@
+---
+title: "条形码"
+description: "1D 条码（默认 CODE128）；依赖 jsbarcode 已内置。"
+badge: "全新"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+SKU、运单号、票务码。支持 EAN / UPC / CODE39 等常见格式。
+
+<ComponentDocPreview slug="barcode" />
+
+## 安装
+
+```bash
+npx @joyui/cli add barcode --yes
+```
+
+```tsx
+import { Barcode } from "@joyui/react";
+
+<Barcode value="MH-2026-0312" format="CODE128" displayValue />
+```
+
+## 与二维码怎么选
+
+| 场景 | 组件 |
+|------|------|
+| URL / 长文本 / 配对 | `QrCode` |
+| 纯数字/短 ID、扫码枪 | `Barcode` |
+
+## API
+
+<DocApiSection slug="barcode" />

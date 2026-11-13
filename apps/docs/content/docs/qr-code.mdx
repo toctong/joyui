@@ -1,0 +1,35 @@
+---
+title: "二维码"
+description: "把链接 / 文本编码成 SVG 二维码；依赖 qrcode 已内置。"
+badge: "全新"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+分享链接、登录票据、设备配对等场景。纠错级别 `L / M / Q / H`，可选中心 `overlay`（Logo）。
+
+<ComponentDocPreview slug="qr-code" />
+
+## 安装
+
+```bash
+npx @joyui/cli add qr-code --yes
+```
+
+整库（推荐，依赖已随包安装）：
+
+```tsx
+import { QrCode } from "@joyui/react";
+
+<QrCode value="https://www.joyui.top" size={180} level="M" />
+```
+
+## 应用场景
+
+- 移动端打开分享 URL  
+- 设置页展示配对码  
+- 与 `CopyButton` 并排放：扫码或复制  
+
+## API
+
+<DocApiSection slug="qr-code" />

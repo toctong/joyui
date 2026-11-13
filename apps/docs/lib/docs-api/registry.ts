@@ -309,6 +309,23 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "defaultExpanded", description: "默认展开。", type: "boolean", options: "true · false", defaultValue: "false" },
     { name: "isExpanded", description: "受控展开。", type: "boolean", options: "—", defaultValue: "—" },
   ]),
+  "qr-code": entry("QrCode", [
+    { name: "value", description: "编码内容。", type: "string", options: "—", defaultValue: "—" },
+    { name: "size", description: "边长 px。", type: "number", options: "—", defaultValue: "160" },
+    { name: "level", description: "纠错级别。", type: '"L" | "M" | "Q" | "H"', options: "L · M · Q · H", defaultValue: "M" },
+    { name: "margin", description: "静区模块数。", type: "number", options: "—", defaultValue: "2" },
+    { name: "color", description: "模块色。", type: "string", options: "CSS colour", defaultValue: "currentColor" },
+    { name: "backgroundColor", description: "背景色。", type: "string", options: "CSS colour", defaultValue: "transparent" },
+    { name: "overlay", description: "中心叠加（Logo）。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  barcode: entry("Barcode", [
+    { name: "value", description: "条码内容。", type: "string", options: "—", defaultValue: "—" },
+    { name: "format", description: "编码格式。", type: "BarcodeFormat", options: "CODE128 · EAN13 · UPC · …", defaultValue: "CODE128" },
+    { name: "height", description: "条高 px。", type: "number", options: "—", defaultValue: "64" },
+    { name: "width", description: "模块宽 px。", type: "number", options: "—", defaultValue: "2" },
+    { name: "displayValue", description: "是否显示文字。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "lineColor", description: "条色。", type: "string", options: "CSS colour", defaultValue: "currentColor" },
+  ]),
   "data-table": entry(
     "DataTable",
     [

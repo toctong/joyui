@@ -420,6 +420,20 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
     'import { ProgressBar } from "@/components/base/progress/progress";',
     `<ProgressBar label="上传中" value={64} />`,
   ),
+  "qr-code": wrap(
+    'import { QrCode } from "@/components/base/qr-code/qr-code";',
+    `<div className="flex flex-wrap items-end gap-4">
+  <QrCode value="https://www.joyui.top" size={160} />
+  <QrCode value="https://www.joyui.top/docs" size={120} level="H" />
+</div>`,
+  ),
+  barcode: wrap(
+    'import { Barcode } from "@/components/base/barcode/barcode";',
+    `<div className="flex w-full max-w-lg flex-col gap-4">
+  <Barcode value="MH-2026-0312" format="CODE128" />
+  <Barcode value="5901234123457" format="EAN13" height={48} />
+</div>`,
+  ),
   radio: wrap(
     'import { Radio, RadioGroup } from "@/components/base/radio/radio";',
     `<RadioGroup aria-label="计划" defaultValue="pro">

@@ -24,6 +24,8 @@ const externals = [
   "@tiptap/suggestion",
   "tippy.js",
   "lucide-react",
+  "qrcode",
+  "jsbarcode",
   "next",
   "next/image",
   "next/link",
