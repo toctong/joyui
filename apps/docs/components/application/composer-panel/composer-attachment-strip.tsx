@@ -67,13 +67,13 @@ function AttachmentTile({
   delay?: number;
 }) {
   const boxRef = useRef<HTMLDivElement>(null);
-  const [box, setBox] = useState({ width: 200, height: 148 });
+  const [box, setBox] = useState({ width: 108, height: 96 });
   const [progress, setProgress] = useState(
     file.progress === 0 ? 0 : (file.progress ?? 100),
   );
   const Icon = KIND_ICON[file.kind];
   const done = progress >= 100;
-  const path = ringPath(box.width, box.height, 1, 15);
+  const path = ringPath(box.width, box.height, 1, 11);
 
   useEffect(() => {
     const el = boxRef.current;
@@ -113,16 +113,16 @@ function AttachmentTile({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+      initial={{ opacity: 0, y: 6, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay: delay * 0.08, duration: 0.28, ease: "easeOut" }}
-      className="group relative pt-[9.5px]"
+      transition={{ delay: delay * 0.08, duration: 0.24, ease: "easeOut" }}
+      className="group relative shrink-0 pt-2"
     >
       <div
         ref={boxRef}
         className={cx(
-          "relative flex h-[148px] w-[200px] flex-col items-center justify-center gap-3.5",
-          "rounded-2xl bg-background-primary-default px-3",
+          "relative flex h-24 w-[108px] flex-col items-center justify-center gap-1.5",
+          "rounded-xl bg-background-primary-default px-2",
         )}
       >
         <svg
@@ -136,16 +136,16 @@ function AttachmentTile({
             y={1}
             width={box.width - 2}
             height={box.height - 2}
-            rx={15}
+            rx={11}
             fill="none"
             stroke="var(--color-border-button-default)"
-            strokeWidth={2}
+            strokeWidth={1.5}
           />
           <path
             d={path}
             fill="none"
             stroke={done ? "var(--color-yellow-400)" : "var(--color-accent-400)"}
-            strokeWidth={2}
+            strokeWidth={1.5}
             strokeLinecap="round"
             pathLength={100}
             strokeDasharray={`${done ? 102 : progress} 200`}
@@ -156,27 +156,27 @@ function AttachmentTile({
         <div
           aria-hidden
           className={cx(
-            "absolute -top-[9.5px] left-1/2 z-10 -translate-x-1/2 rounded-md px-1.5 py-0.5",
-            "text-caption-1-medium whitespace-nowrap text-white tabular-nums",
+            "absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-px",
+            "text-[10px] font-medium leading-3 whitespace-nowrap text-white tabular-nums",
             done ? "bg-yellow-400" : "bg-accent-400",
           )}
         >
           {progress}%
         </div>
 
-        <span className="relative flex size-10 items-center justify-center rounded-full border border-border-button-default bg-background-primary-default p-2">
+        <span className="relative flex size-7 items-center justify-center rounded-full border border-border-button-default bg-background-primary-default">
           <Icon
-            className="size-6 shrink-0 text-foreground-icon-secondary"
+            className="size-3.5 shrink-0 text-foreground-icon-secondary"
             aria-hidden
           />
         </span>
 
-        <div className="relative flex max-w-full flex-col items-center gap-1 text-center">
-          <p className="max-w-full truncate text-body-medium text-text-primary">
+        <div className="relative flex max-w-full flex-col items-center gap-0.5 px-0.5 text-center">
+          <p className="max-w-full truncate text-caption-1-medium text-text-primary">
             {file.name}
           </p>
-          <p className="text-body-2-regular text-text-secondary">
-            {done ? "上传成功！" : "上传中…"}
+          <p className="text-[10px] leading-3 text-text-secondary">
+            {done ? "上传成功" : "上传中…"}
           </p>
         </div>
 
@@ -186,12 +186,12 @@ function AttachmentTile({
             aria-label={`移除 ${file.name}`}
             onClick={() => onRemove(file.id)}
             className={cx(
-              "absolute -end-1.5 -top-1.5 z-20 flex size-5 cursor-pointer items-center justify-center rounded-full",
+              "absolute -end-1 -top-1 z-20 flex size-4 cursor-pointer items-center justify-center rounded-full",
               "bg-background-primary-default text-foreground-icon-secondary shadow-xs",
               "ring-1 ring-border-button-default opacity-0 transition-opacity group-hover:opacity-100",
             )}
           >
-            <RiCloseLine className="size-3.5" aria-hidden />
+            <RiCloseLine className="size-3" aria-hidden />
           </button>
         ) : null}
       </div>
@@ -214,7 +214,7 @@ export function ComposerAttachmentStrip({
   return (
     <div
       className={cx(
-        "mb-3 flex gap-2 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        "mb-2 flex gap-1.5 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         className,
       )}
       aria-label="附件"
