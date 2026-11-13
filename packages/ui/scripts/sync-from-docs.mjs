@@ -253,6 +253,8 @@ const VALUE_EXPORT_ALLOW = new Set([
   "en",
   "zhCN",
   "translateTemplateCopy",
+  "scorePassword",
+  "formatRelativeTime",
 ]);
 
 function collectExports(filePath) {
