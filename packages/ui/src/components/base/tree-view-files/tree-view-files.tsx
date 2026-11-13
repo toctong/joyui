@@ -22,13 +22,15 @@ import { cx } from "../../../utils/cx";
  */
 
 export interface TreeViewFilesProps
-  extends Omit<ComponentProps<typeof TreeView>, "children"> {
+  extends Omit<ComponentProps<typeof TreeView>, "children" | "className"> {
   /** Breadcrumb / path shown above the tree. */
   path?: ReactNode;
   /** Optional leading toolbar actions (search, new file…). */
   toolbar?: ReactNode;
   /** Panel title beside the path. */
   title?: ReactNode;
+  /** Classes for the outer panel (not the inner TreeView). */
+  className?: string;
   children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
