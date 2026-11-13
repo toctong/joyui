@@ -52,12 +52,19 @@ export function BorderBeam({
   return (
     <div
       ref={ref}
-      className={cx("bui-border-beam relative isolate overflow-hidden rounded-[inherit]", className)}
+      className={cx(
+        // Default to Card radius when the wrapper isn't given one.
+        "bui-border-beam relative isolate overflow-hidden rounded-2xl",
+        className,
+      )}
       style={vars}
       {...props}
     >
       {children}
-      <span aria-hidden className="bui-border-beam-glow pointer-events-none absolute inset-0 rounded-[inherit]" />
+      <span
+        aria-hidden
+        className="bui-border-beam-glow pointer-events-none absolute inset-0 rounded-[inherit]"
+      />
     </div>
   );
 }

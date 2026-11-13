@@ -570,8 +570,8 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
   ),
   "border-beam": wrap(
     'import { BorderBeam } from "@/components/base/border-beam/border-beam";\nimport { Card } from "@/components/base/card/card";',
-    `<BorderBeam className="w-full max-w-md rounded-2xl">
-  <Card className="relative z-10 w-full" variant="soft">
+    `<BorderBeam className="w-full max-w-md">
+  <Card className="relative z-10 w-full border-0 bg-background-primary-default dark:bg-background-secondary-default" variant="outline">
     <p className="text-body-medium text-text-primary">Showcase tile</p>
     <p className="mt-1 text-body-regular text-text-secondary">Border light for landing / AI cards.</p>
   </Card>
@@ -593,11 +593,11 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
     `<div className="flex w-full max-w-md items-end gap-8">
   <div>
     <p className="text-caption-1-medium text-text-secondary">Transfers</p>
-    <NumberTicker value={1280} suffix="+" className="text-title-1-semibold" startOnView={false} />
+    <NumberTicker value={1280} suffix="+" startOnView={false} />
   </div>
   <div>
     <p className="text-caption-1-medium text-text-secondary">Uptime</p>
-    <NumberTicker value={99.9} precision={1} suffix="%" className="text-title-1-semibold" startOnView={false} />
+    <NumberTicker value={99.9} precision={1} suffix="%" startOnView={false} />
   </div>
 </div>`,
   ),

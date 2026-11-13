@@ -15,7 +15,8 @@ export interface DotLoaderProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const styles = sortCx({
-  root: "bui-dot-loader inline-flex items-center gap-1 text-accent-500",
+  // Spinner / Progress use accent via currentColor — keep the same cue.
+  root: "bui-dot-loader inline-flex items-center gap-1.5 text-accent-500",
   size: {
     sm: "[&>span]:size-1",
     md: "[&>span]:size-1.5",

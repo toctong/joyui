@@ -108,7 +108,10 @@ export function NumberTicker({
         if (typeof ref === "function") ref(node);
         else if (ref) ref.current = node;
       }}
-      className={cx("tabular-nums tracking-tight text-text-primary", className)}
+      className={cx(
+        "inline-block tabular-nums tracking-tight text-title-1-semibold text-text-primary",
+        className,
+      )}
       {...props}
     >
       {prefix}

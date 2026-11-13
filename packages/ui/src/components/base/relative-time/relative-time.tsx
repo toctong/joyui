@@ -83,7 +83,7 @@ export function RelativeTime({
       ref={ref}
       dateTime={Number.isNaN(d.getTime()) ? undefined : d.toISOString()}
       title={showAbsoluteTitle ? absolute : props.title}
-      className={cx("text-body-2-regular text-text-secondary tabular-nums", className)}
+      className={cx("text-caption-1-medium text-text-secondary tabular-nums", className)}
       {...props}
     >
       {label || absolute || "—"}

@@ -10,16 +10,18 @@ import {
   type ReactNode,
   type Ref,
 } from "react";
-import { cx } from "@/utils/cx";
+import { cx, sortCx } from "@/utils/cx";
 
 /**
  * Card that follows the pointer with a soft radial wash — Bencho-style
- * micro-interaction for feature tiles without leaving JoyUI tokens.
+ * micro-interaction on JoyUI Card surfaces.
  *
  *   <SpotlightCard>
- *     <p>Feature title</p>
+ *     <p className="text-body-medium">Feature title</p>
  *   </SpotlightCard>
  */
+
+export type SpotlightCardPadding = "sm" | "md" | "lg";
 
 export interface SpotlightCardProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
@@ -27,14 +29,26 @@ export interface SpotlightCardProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
   /** Spotlight colour (defaults to accent at low alpha). */
   color?: string;
+  padding?: SpotlightCardPadding;
   ref?: Ref<HTMLDivElement>;
 }
+
+const styles = sortCx({
+  // Mirror Card `outline` so spotlight tiles sit next to real Cards.
+  base: "bui-spotlight-card relative isolate overflow-hidden rounded-2xl border border-border-secondary-default bg-background-primary-default dark:bg-background-secondary-default",
+  padding: {
+    sm: "p-3",
+    md: "p-4",
+    lg: "p-6 sm:p-8",
+  },
+});
 
 export function SpotlightCard({
   children,
   className,
-  size = 280,
+  size = 260,
   color,
+  padding = "md",
   style,
   onMouseMove,
   onMouseLeave,
@@ -71,17 +85,15 @@ export function SpotlightCard({
     onMouseLeave?.(event);
   };
 
-  const spotColor = color ?? "color-mix(in oklab, var(--color-accent-500) 28%, transparent)";
+  const spotColor =
+    color ?? "color-mix(in oklab, var(--color-accent-500) 18%, transparent)";
 
   return (
     <div
       ref={setRefs}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className={cx(
-        "bui-spotlight-card relative isolate overflow-hidden rounded-2xl border border-border-secondary-default bg-background-primary-default p-5 dark:bg-background-secondary-default",
-        className,
-      )}
+      className={cx(styles.base, styles.padding[padding], className)}
       style={
         {
           "--bui-spotlight-x": `${pos.x}px`,
@@ -95,7 +107,7 @@ export function SpotlightCard({
       {...props}
     >
       <span aria-hidden className="bui-spotlight-card-glow pointer-events-none absolute inset-0" />
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 min-w-0">{children}</div>
     </div>
   );
 }

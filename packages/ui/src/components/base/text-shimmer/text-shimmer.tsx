@@ -29,7 +29,7 @@ export function TextShimmer({
   return (
     <span
       ref={ref}
-      className={cx("bui-shimmer-text inline-block text-body-medium", className)}
+      className={cx("bui-shimmer-text inline-block text-body-medium text-text-secondary", className)}
       style={
         {
           "--bui-shimmer-duration": `${duration}s`,

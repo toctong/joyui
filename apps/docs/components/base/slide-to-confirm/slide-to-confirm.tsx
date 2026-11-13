@@ -13,7 +13,7 @@ import { cx } from "@/utils/cx";
 
 /**
  * Drag the thumb across the track to confirm a destructive / irreversible
- * action — Bencho “Slide to confirm”.
+ * action — Bencho “Slide to confirm”, drawn like JoyUI Switch (track + thumb).
  *
  *   <SlideToConfirm label="滑动确认删除" onConfirm={deleteRow} />
  */
@@ -31,8 +31,9 @@ export interface SlideToConfirmProps
   ref?: Ref<HTMLDivElement>;
 }
 
-const THUMB = 40;
+const THUMB = 36;
 const PAD = 4;
+const EASE = "ease-[cubic-bezier(0.22,1,0.36,1)]";
 
 export function SlideToConfirm({
   label = "滑动确认",
@@ -124,6 +125,7 @@ export function SlideToConfirm({
   };
 
   const ratio = maxOffset() === 0 ? 0 : offset / maxOffset();
+  const fill = done ? 1 : ratio;
 
   return (
     <div
@@ -131,20 +133,29 @@ export function SlideToConfirm({
       role="group"
       aria-disabled={disabled || undefined}
       className={cx(
-        "relative flex h-12 w-full max-w-sm select-none items-center overflow-hidden rounded-full border border-border-secondary-default bg-background-secondary-default/60",
-        disabled && "pointer-events-none opacity-50",
+        // Switch-off track: tertiary fill, no hard outline.
+        "relative flex h-11 w-full max-w-sm select-none items-center overflow-hidden rounded-full bg-background-tertiary-default",
+        disabled && "pointer-events-none opacity-60",
         className,
       )}
       {...props}
     >
       <div
         aria-hidden
-        className="absolute inset-y-0 start-0 rounded-full bg-accent-500/15"
-        style={{ width: `${Math.max((done ? 1 : ratio) * 100, 0)}%` }}
+        className={cx(
+          "absolute inset-y-0 start-0 rounded-full transition-[width] duration-150 motion-reduce:transition-none",
+          EASE,
+          done ? "shadow-checkbox-selected" : "",
+        )}
+        style={{
+          width: `${Math.max(fill * 100, 0)}%`,
+          backgroundImage: "var(--gradient-button-primary-default)",
+          opacity: fill === 0 ? 0 : 0.22 + fill * 0.78,
+        }}
       />
       <span
         className={cx(
-          "pointer-events-none absolute inset-0 flex items-center justify-center px-12 text-body-medium text-text-secondary transition-opacity",
+          "pointer-events-none absolute inset-0 flex items-center justify-center px-12 text-body-medium text-text-secondary transition-opacity duration-150",
           ratio > 0.12 || done ? "opacity-0" : "opacity-100",
         )}
       >
@@ -152,7 +163,7 @@ export function SlideToConfirm({
       </span>
       <span
         className={cx(
-          "pointer-events-none absolute inset-0 flex items-center justify-center text-body-medium text-accent-700 transition-opacity",
+          "pointer-events-none absolute inset-0 flex items-center justify-center text-body-medium text-white transition-opacity duration-150",
           done ? "opacity-100" : "opacity-0",
         )}
       >
@@ -167,10 +178,12 @@ export function SlideToConfirm({
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
         className={cx(
-          "absolute top-1 z-10 flex size-10 items-center justify-center rounded-full border border-border-button-default bg-background-primary-default text-text-primary shadow-sm touch-none",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring",
-          !dragging && "transition-transform duration-150 ease-out",
-          done && "border-transparent bg-accent-500 text-white",
+          // Switch thumb: white disc + contact shadow.
+          "absolute top-1 z-10 flex size-9 items-center justify-center rounded-full touch-none",
+          "bg-background-primary-default text-foreground-icon-primary shadow-xs",
+          "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-border-focus-ring",
+          !dragging && cx("transition-transform duration-150", EASE),
+          done && "text-accent-600",
         )}
         style={{
           left: PAD,

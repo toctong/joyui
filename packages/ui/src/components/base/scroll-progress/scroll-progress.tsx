@@ -80,8 +80,11 @@ export function ScrollProgress({
       {...props}
     >
       <div
-        className="h-full origin-left bg-accent-500 transition-transform duration-75 ease-out motion-reduce:transition-none"
-        style={{ transform: `scaleX(${Math.min(1, Math.max(0, progress))})` }}
+        className="h-full origin-left transition-transform duration-75 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+        style={{
+          transform: `scaleX(${Math.min(1, Math.max(0, progress))})`,
+          backgroundImage: "var(--gradient-button-primary-default)",
+        }}
       />
     </div>
   );

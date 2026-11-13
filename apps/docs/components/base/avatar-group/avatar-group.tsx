@@ -4,8 +4,8 @@ import type { AvatarProps } from "@/components/base/avatar/avatar";
 import { cx, sortCx } from "@/utils/cx";
 
 /**
- * Stacked avatars for teammates / assignees — the collaboration pattern
- * beUI and Watermelon use on boards and chat headers.
+ * Stacked avatars for teammates / assignees — ringed like notification
+ * badges on JoyUI sidebar surfaces.
  *
  *   <AvatarGroup max={3}>
  *     <Avatar initials="A" />
@@ -35,13 +35,18 @@ const ring = sortCx({
   },
 });
 
+const face = sortCx({
+  base: "relative ring-2 ring-background-primary-default",
+});
+
 const overflow = sortCx({
-  base: "relative z-10 inline-flex shrink-0 items-center justify-center rounded-full border-2 border-background-primary-default bg-background-tertiary-default text-text-secondary",
+  // Soft chip on tertiary — matches Chip `soft` / avatar neutral fallback.
+  base: "relative z-10 inline-flex shrink-0 items-center justify-center rounded-full bg-background-tertiary-default text-text-secondary ring-2 ring-background-primary-default",
   size: {
-    xs: "size-5 text-[9px] font-semibold",
+    xs: "size-5 text-[9px] font-semibold leading-none",
     sm: "size-6 text-caption-1-semibold",
     md: "size-8 text-caption-1-semibold",
-    lg: "size-9 text-body-2-semibold",
+    lg: "size-9 text-headline-semibold",
   },
 });
 
@@ -67,10 +72,7 @@ export function AvatarGroup({
       {visible.map((child, i) =>
         cloneElement(child, {
           size: child.props.size ?? size,
-          className: cx(
-            "relative border-2 border-background-primary-default",
-            child.props.className,
-          ),
+          className: cx(face.base, child.props.className),
           style: { zIndex: visible.length - i, ...child.props.style },
         }),
       )}

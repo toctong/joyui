@@ -97,20 +97,21 @@
   }
 }
 
-/* SpotlightCard — pointer-follow wash. */
+/* SpotlightCard — pointer-follow wash on Card surfaces. */
 .bui-spotlight-card-glow {
   opacity: var(--bui-spotlight-opacity, 0);
-  transition: opacity 180ms ease;
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
   background: radial-gradient(
-    var(--bui-spotlight-size, 280px) circle at var(--bui-spotlight-x, 0) var(--bui-spotlight-y, 0),
+    var(--bui-spotlight-size, 260px) circle at var(--bui-spotlight-x, 0) var(--bui-spotlight-y, 0),
     var(--bui-spotlight-color),
-    transparent 55%
+    transparent 62%
   );
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bui-spotlight-card-glow {
     opacity: 0;
+    transition: none;
   }
 }
 
@@ -149,14 +150,15 @@
   }
 }
 
-/* Magnetic — ease back when the pointer leaves. */
+/* Magnetic — ease back when the pointer leaves (Progress ease). */
 .bui-magnetic {
-  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bui-magnetic {
     transition: none;
+    transform: none !important;
   }
 }
 

@@ -28,11 +28,13 @@ export function AspectRatio({
   return (
     <div
       ref={ref}
-      className={cx("relative w-full overflow-hidden", className)}
+      className={cx("relative w-full overflow-hidden rounded-[inherit]", className)}
       style={{ aspectRatio: String(ratio), ...style } as CSSProperties}
       {...props}
     >
-      <div className="absolute inset-0 size-full">{children}</div>
+      <div className="absolute inset-0 size-full [&>img]:size-full [&>img]:object-cover">
+        {children}
+      </div>
     </div>
   );
 }

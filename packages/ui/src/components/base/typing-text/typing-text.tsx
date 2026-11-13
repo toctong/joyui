@@ -79,7 +79,7 @@ export function TypingText({
   return (
     <span
       ref={ref}
-      className={cx("inline text-text-primary", className)}
+      className={cx("inline text-body-medium text-text-primary", className)}
       {...props}
     >
       {text.slice(0, count)}

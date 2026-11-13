@@ -266,7 +266,7 @@ export type { SliderProps, RangeSliderProps } from "./components/base/slider/sli
 export type { SocialBrand, SocialButtonSize, SocialButtonAppearance, SocialBrandConfig, SocialButtonProps, SocialButtonLinkProps } from "./components/base/social-button/social-button";
 export type { SocialProvider } from "./components/base/social-button/social-providers";
 export type { SpinnerSize, SpinnerProps } from "./components/base/spinner/spinner";
-export type { SpotlightCardProps } from "./components/base/spotlight-card/spotlight-card";
+export type { SpotlightCardPadding, SpotlightCardProps } from "./components/base/spotlight-card/spotlight-card";
 export type { StepsOrientation, StepItem, StepsProps } from "./components/base/steps/steps";
 export type { SwitchCardProps } from "./components/base/switch/switch-card";
 export type { SwitchSize, SwitchShape, SwitchVisualState, SwitchProps } from "./components/base/switch/switch";
