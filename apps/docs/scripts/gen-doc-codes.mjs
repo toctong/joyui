@@ -487,23 +487,27 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
   ),
   "data-table": `import { DataTable } from "@/components/application/data-table/data-table-view";
 
-const rows = [
-  { id: "1", taskId: 12, fileName: "episode.mkv", renamedName: "S01E01.mkv", transferredAt: "2026-11-13T08:00:00Z" },
-  { id: "2", taskId: 12, fileName: "episode-2.mkv", renamedName: "", transferredAt: "2026-11-13T09:00:00Z" },
-];
-
-<DataTable
-  aria-label="Transfers"
-  data={rows}
-  getRowId={(row) => row.id}
-  emptyState="No transfers yet."
-  columns={[
-    { id: "taskId", header: "Task", accessorKey: "taskId" },
-    { id: "fileName", header: "Original", accessorKey: "fileName", meta: { isRowHeader: true } },
-    { id: "renamedName", header: "Renamed", cell: (row) => row.renamedName || "-" },
-    { id: "transferredAt", header: "Time", cell: (row) => new Date(row.transferredAt).toLocaleString() },
-  ]}
-/>`,
+export function Example() {
+  const rows = [
+    { id: "1", taskId: 12, fileName: "episode.mkv", renamedName: "S01E01.mkv", transferredAt: "2026-11-13T08:00:00Z" },
+    { id: "2", taskId: 12, fileName: "episode-2.mkv", renamedName: "", transferredAt: "2026-11-13T09:00:00Z" },
+  ];
+  return (
+    <DataTable
+      aria-label="Transfers"
+      data={rows}
+      getRowId={(row) => row.id}
+      emptyState="No transfers yet."
+      columns={[
+        { id: "taskId", header: "Task", accessorKey: "taskId" },
+        { id: "fileName", header: "Original", accessorKey: "fileName", meta: { isRowHeader: true } },
+        { id: "renamedName", header: "Renamed", cell: (row) => row.renamedName || "-" },
+        { id: "transferredAt", header: "Time", cell: (row) => new Date(row.transferredAt).toLocaleString() },
+      ]}
+    />
+  );
+}
+`,
 
   "notification-center": wrap(
     'import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";',

@@ -345,12 +345,11 @@ function Preview_data_grid() {
 }
 
 function Preview_data_table() {
+  const rows = [
+    { id: "1", taskId: 12, fileName: "episode.mkv", renamedName: "S01E01.mkv", transferredAt: "2026-11-13T08:00:00Z" },
+    { id: "2", taskId: 12, fileName: "episode-2.mkv", renamedName: "", transferredAt: "2026-11-13T09:00:00Z" },
+  ];
   return (
-    const rows = [
-      { id: "1", taskId: 12, fileName: "episode.mkv", renamedName: "S01E01.mkv", transferredAt: "2026-11-13T08:00:00Z" },
-      { id: "2", taskId: 12, fileName: "episode-2.mkv", renamedName: "", transferredAt: "2026-11-13T09:00:00Z" },
-    ];
-
     <DataTable
       aria-label="Transfers"
       data={rows}
