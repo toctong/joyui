@@ -30,13 +30,14 @@ import { SleepScoreCard } from "@/components/application/dashboard/sleep-score-c
 import { StageBarsCard } from "@/components/application/dashboard/stage-bars-card";
 import { StatCards } from "@/components/application/dashboard/stat-cards";
 import { StepsCard } from "@/components/application/dashboard/steps-card";
-import { DataTableExample } from "@/components/application/data-table/data-table";
+import { DataTable } from "@/components/application/data-table/data-table-view";
 import { DataGridExample } from "@/components/application/docs/examples/data-grid-example";
 import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";
 import { SettingsModal } from "@/components/application/settings/settings-modal";
 import { ThemeToggle } from "@/components/application/theme/theme-toggle";
 import { WebSearch } from "@/components/application/web-search/web-search";
 import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+import { Alert } from "@/components/base/alert/alert";
 import { Announcement } from "@/components/base/announcement/announcement";
 import { Avatar } from "@/components/base/avatar/avatar";
 import { Badge } from "@/components/base/badges/badge";
@@ -47,6 +48,7 @@ import { ButtonGroup, ButtonGroupItem } from "@/components/base/buttons/button-g
 import { CloseButton } from "@/components/base/buttons/close-button";
 import { IconButton } from "@/components/base/buttons/icon-button";
 import { LinkButton } from "@/components/base/buttons/link-button";
+import { Card } from "@/components/base/card/card";
 import { Carousel, CarouselItem } from "@/components/base/carousel/carousel";
 import { Checkbox } from "@/components/base/checkbox/checkbox";
 import { ColorPicker } from "@/components/base/color-picker/color-picker";
@@ -58,6 +60,7 @@ import { DatePicker } from "@/components/base/date-picker/date-picker";
 import { Divider } from "@/components/base/divider/divider";
 import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/base/drawer/drawer";
 import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";
+import { EmptyState } from "@/components/base/empty-state/empty-state";
 import { FileUpload } from "@/components/base/file-upload/file-upload";
 import { InputOtp } from "@/components/base/input-otp/input-otp";
 import { Input } from "@/components/base/input/input";
@@ -66,6 +69,7 @@ import { Meter } from "@/components/base/meter/meter";
 import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@/components/base/modal/modal";
 import { Notification } from "@/components/base/notification/notification";
 import { NumberField } from "@/components/base/number-field/number-field";
+import { PageHeader } from "@/components/base/page-header/page-header";
 import { Pagination } from "@/components/base/pagination/pagination";
 import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
 import { ProgressBar } from "@/components/base/progress/progress";
@@ -112,6 +116,15 @@ function Preview_admin_dashboard() {
   return (
     <div className="h-[720px] w-full overflow-hidden rounded-2xl border border-separator-border">
       <AdminDashboard />
+    </div>
+  );
+}
+
+function Preview_alert() {
+  return (
+    <div className="flex w-full max-w-lg flex-col gap-3">
+      <Alert tone="info" title="提示">可在设置中配置 Quark Cookie。</Alert>
+      <Alert tone="error" title="登录失败">用户名或密码不正确。</Alert>
     </div>
   );
 }
@@ -190,6 +203,15 @@ function Preview_button_group() {
       </ButtonGroupItem>
       <ButtonGroupItem id="right">右</ButtonGroupItem>
     </ButtonGroup>
+  );
+}
+
+function Preview_card() {
+  return (
+    <Card className="w-full max-w-md" variant="soft">
+      <p className="text-body-medium text-text-primary">Settings block</p>
+      <p className="mt-1 text-body-regular text-text-secondary">Tokenized surface for grouped content.</p>
+    </Card>
   );
 }
 
@@ -324,7 +346,23 @@ function Preview_data_grid() {
 
 function Preview_data_table() {
   return (
-    <DataTableExample showSizeToggle={false} pageSize={5} />
+    const rows = [
+      { id: "1", taskId: 12, fileName: "episode.mkv", renamedName: "S01E01.mkv", transferredAt: "2026-11-13T08:00:00Z" },
+      { id: "2", taskId: 12, fileName: "episode-2.mkv", renamedName: "", transferredAt: "2026-11-13T09:00:00Z" },
+    ];
+
+    <DataTable
+      aria-label="Transfers"
+      data={rows}
+      getRowId={(row) => row.id}
+      emptyState="No transfers yet."
+      columns={[
+        { id: "taskId", header: "Task", accessorKey: "taskId" },
+        { id: "fileName", header: "Original", accessorKey: "fileName", meta: { isRowHeader: true } },
+        { id: "renamedName", header: "Renamed", cell: (row) => row.renamedName || "-" },
+        { id: "transferredAt", header: "Time", cell: (row) => new Date(row.transferredAt).toLocaleString() },
+      ]}
+    />
   );
 }
 
@@ -373,6 +411,16 @@ function Preview_dropdown() {
 function Preview_earnings_chart_card() {
   return (
     <EarningsChartCard />
+  );
+}
+
+function Preview_empty_state() {
+  return (
+    <EmptyState
+      title="No transfers yet"
+      description="Add a Quark cookie in Settings, then run a task."
+      action={<Button size="small">Open settings</Button>}
+    />
   );
 }
 
@@ -492,6 +540,17 @@ function Preview_number_field() {
 function Preview_orders_chart_card() {
   return (
     <OrdersChartCard />
+  );
+}
+
+function Preview_page_header() {
+  return (
+    <PageHeader
+      className="w-full"
+      title="Transfer records"
+      description="History used for dedupe"
+      actions={<Button variant="secondary" size="small">Refresh</Button>}
+    />
   );
 }
 
@@ -774,6 +833,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "accordion": Preview_accordion,
   "activity-rings-card": Preview_activity_rings_card,
   "admin-dashboard": Preview_admin_dashboard,
+  "alert": Preview_alert,
   "announcement": Preview_announcement,
   "area-chart-card": Preview_area_chart_card,
   "auth-card": Preview_auth_card,
@@ -783,6 +843,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "breadcrumb": Preview_breadcrumb,
   "button": Preview_button,
   "button-group": Preview_button_group,
+  "card": Preview_card,
   "carousel": Preview_carousel,
   "checkbox": Preview_checkbox,
   "chip": Preview_chip,
@@ -805,6 +866,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "drawer": Preview_drawer,
   "dropdown": Preview_dropdown,
   "earnings-chart-card": Preview_earnings_chart_card,
+  "empty-state": Preview_empty_state,
   "file-upload": Preview_file_upload,
   "funnel-chart-card": Preview_funnel_chart_card,
   "heatmap-chart-card": Preview_heatmap_chart_card,
@@ -821,6 +883,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "notification-center": Preview_notification_center,
   "number-field": Preview_number_field,
   "orders-chart-card": Preview_orders_chart_card,
+  "page-header": Preview_page_header,
   "pagination": Preview_pagination,
   "popover": Preview_popover,
   "progress": Preview_progress,

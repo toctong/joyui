@@ -68,6 +68,13 @@ const codes = {
     'import { Announcement } from "@/components/base/announcement/announcement";',
     `<Announcement title="新功能" description="智能体技能已上线。" />`,
   ),
+  alert: wrap(
+    'import { Alert } from "@/components/base/alert/alert";',
+    `<div className="flex w-full max-w-lg flex-col gap-3">
+  <Alert tone="info" title="提示">可在设置中配置 Quark Cookie。</Alert>
+  <Alert tone="error" title="登录失败">用户名或密码不正确。</Alert>
+</div>`,
+  ),
   avatar: wrap(
     'import { Avatar } from "@/components/base/avatar/avatar";',
     `<div className="flex items-center gap-4">
@@ -75,6 +82,30 @@ const codes = {
   <Avatar size="lg" color="neutral" initials="M" />
   <Avatar size="md" initials="JP" />
 </div>`,
+  ),
+  card: wrap(
+    'import { Card } from "@/components/base/card/card";',
+    `<Card className="w-full max-w-md" variant="soft">
+  <p className="text-body-medium text-text-primary">Settings block</p>
+  <p className="mt-1 text-body-regular text-text-secondary">Tokenized surface for grouped content.</p>
+</Card>`,
+  ),
+  "empty-state": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { EmptyState } from "@/components/base/empty-state/empty-state";',
+    `<EmptyState
+  title="No transfers yet"
+  description="Add a Quark cookie in Settings, then run a task."
+  action={<Button size="small">Open settings</Button>}
+/>`,
+  ),
+  "page-header": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { PageHeader } from "@/components/base/page-header/page-header";',
+    `<PageHeader
+  className="w-full"
+  title="Transfer records"
+  description="History used for dedupe"
+  actions={<Button variant="secondary" size="small">Refresh</Button>}
+/>`,
   ),
   badge: wrap(
     'import { Badge } from "@/components/base/badges/badge";',
@@ -454,10 +485,26 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
     'import { DataGridExample } from "@/components/application/docs/examples/data-grid-example";',
     `<DataGridExample rowCount={24} showTitle height={520} />`,
   ),
-  "data-table": wrap(
-    'import { DataTableExample } from "@/components/application/data-table/data-table";',
-    `<DataTableExample showSizeToggle={false} pageSize={5} />`,
-  ),
+  "data-table": `import { DataTable } from "@/components/application/data-table/data-table-view";
+
+const rows = [
+  { id: "1", taskId: 12, fileName: "episode.mkv", renamedName: "S01E01.mkv", transferredAt: "2026-11-13T08:00:00Z" },
+  { id: "2", taskId: 12, fileName: "episode-2.mkv", renamedName: "", transferredAt: "2026-11-13T09:00:00Z" },
+];
+
+<DataTable
+  aria-label="Transfers"
+  data={rows}
+  getRowId={(row) => row.id}
+  emptyState="No transfers yet."
+  columns={[
+    { id: "taskId", header: "Task", accessorKey: "taskId" },
+    { id: "fileName", header: "Original", accessorKey: "fileName", meta: { isRowHeader: true } },
+    { id: "renamedName", header: "Renamed", cell: (row) => row.renamedName || "-" },
+    { id: "transferredAt", header: "Time", cell: (row) => new Date(row.transferredAt).toLocaleString() },
+  ]}
+/>`,
+
   "notification-center": wrap(
     'import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";',
     `<NotificationCenterDemo />`,

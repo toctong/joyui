@@ -227,6 +227,50 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
   "stat-cards": entry("StatCards", [
     { name: "items", description: "KPI 卡片数据（若组件支持传入）。", type: "StatItem[]", options: "—", defaultValue: "内置演示" },
   ]),
+  alert: entry("Alert", [
+    { name: "tone", description: "语义色。", type: '"info" | "success" | "warning" | "error"', options: "info · success · warning · error", defaultValue: "info" },
+    { name: "title", description: "标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "children", description: "正文。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "icon", description: "覆盖默认图标。", type: "ComponentType", options: "—", defaultValue: "按 tone" },
+  ]),
+  card: entry("Card", [
+    { name: "variant", description: "描边 / 柔和底 / 透明。", type: '"outline" | "soft" | "ghost"', options: "outline · soft · ghost", defaultValue: "outline" },
+    { name: "padding", description: "内边距。", type: '"none" | "sm" | "md" | "lg"', options: "none · sm · md · lg", defaultValue: "md" },
+    { name: "children", description: "内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "empty-state": entry("EmptyState", [
+    { name: "title", description: "主文案。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "description", description: "补充说明。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "icon", description: "Remix Icon 组件引用。", type: "ComponentType", options: "—", defaultValue: "RiInbox2Line" },
+    { name: "action", description: "CTA 插槽。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "size", description: "密度。", type: '"sm" | "md"', options: "sm · md", defaultValue: "md" },
+  ]),
+  "page-header": entry("PageHeader", [
+    { name: "title", description: "页面标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "description", description: "副标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "actions", description: "右侧操作区。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "data-table": entry(
+    "DataTable",
+    [
+      { name: "aria-label", description: "表格无障碍名称（必填）。", type: "string", options: "—", defaultValue: "—" },
+      { name: "data", description: "行数据。", type: "T[]", options: "—", defaultValue: "—" },
+      { name: "columns", description: "列定义。", type: "DataTableColumn<T>[]", options: "—", defaultValue: "—" },
+      { name: "getRowId", description: "稳定行 id。", type: "(row: T) => string", options: "—", defaultValue: "—" },
+      { name: "pageSize", description: "每页行数。", type: "number", options: "—", defaultValue: "10" },
+      { name: "emptyState", description: "空数据占位。", type: "ReactNode", options: "—", defaultValue: '"No results."' },
+      { name: "size", description: "行高。", type: '"sm" | "md"', options: "sm · md", defaultValue: "md" },
+    ],
+    {
+      caption: "DataTableColumn",
+      fields: [
+        { name: "id", description: "列 id。", type: "string", required: true, example: '"fileName"' },
+        { name: "header", description: "表头。", type: "ReactNode", required: true, example: '"Original"' },
+        { name: "accessorKey", description: "字段键。", type: "keyof T", required: false, example: '"fileName"' },
+        { name: "cell", description: "自定义单元格。", type: "(row: T) => ReactNode", required: false, example: "(r) => r.name" },
+      ],
+    },
+  ),
   "revenue-chart-card": entry("RevenueChartCard", [
     { name: "data", description: "月度营收序列。", type: "SeriesPoint[]", options: "—", defaultValue: "内置演示" },
   ]),
