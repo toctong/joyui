@@ -217,6 +217,91 @@ export function Example() {
     </div>
   );
 }`,
+  "thinking-orbs": wrap(
+    'import { ThinkingOrbs } from "@/components/base/thinking-orbs/thinking-orbs";',
+    `<div className="flex items-center gap-6">
+  <ThinkingOrbs size="sm" />
+  <ThinkingOrbs />
+  <ThinkingOrbs size="lg" />
+</div>`,
+  ),
+  citation: wrap(
+    'import { Citation } from "@/components/base/citation/citation";',
+    `<div className="flex flex-wrap gap-2">
+  <Citation index={1} title="JoyUI docs" href="https://www.joyui.top" />
+  <Citation index={2} title="Agent handbook" />
+  <Citation index={3} title="Internal wiki · RAG" href="#" />
+</div>`,
+  ),
+  "prompt-suggestions": wrap(
+    'import { PromptSuggestions } from "@/components/base/prompt-suggestions/prompt-suggestions";',
+    `<PromptSuggestions
+  label="试试问"
+  suggestions={["总结这段日志", "解释报错原因", "生成发布说明"]}
+  onSelect={(s) => console.log(s)}
+  className="max-w-md"
+/>`,
+  ),
+  "model-select": wrap(
+    'import { ModelSelect } from "@/components/base/model-select/model-select";',
+    `<ModelSelect
+  defaultValue="smart"
+  options={[
+    { id: "fast", label: "Fast" },
+    { id: "smart", label: "Smart" },
+    { id: "reason", label: "Reason", description: "更深推理" },
+  ]}
+/>`,
+  ),
+  "tag-input": wrap(
+    'import { TagInput } from "@/components/base/tag-input/tag-input";',
+    `<TagInput
+  label="标签"
+  hint="回车或逗号添加"
+  defaultValue={["Design", "AI"]}
+  className="w-full max-w-md"
+/>`,
+  ),
+  "inline-edit": wrap(
+    'import { InlineEdit } from "@/components/base/inline-edit/inline-edit";',
+    `<InlineEdit defaultValue="JoyUI" />`,
+  ),
+  "form-field": wrap(
+    'import { FormField } from "@/components/base/form-field/form-field";\nimport { InputBase } from "@/components/base/input/input";',
+    `<FormField label="项目名称" hint="对外显示名" isRequired htmlFor="proj" className="w-full max-w-md">
+  <InputBase id="proj" placeholder="MarHub" />
+</FormField>`,
+  ),
+  reveal: wrap(
+    'import { Card } from "@/components/base/card/card";\nimport { Reveal } from "@/components/base/reveal/reveal";',
+    `<div className="flex w-full max-w-md flex-col gap-3">
+  <Reveal delay={0}><Card className="p-4 text-body-medium">先显现</Card></Reveal>
+  <Reveal delay={120}><Card className="p-4 text-body-medium">再显现</Card></Reveal>
+  <Reveal delay={240} from="left"><Card className="p-4 text-body-medium">从左侧进入</Card></Reveal>
+</div>`,
+  ),
+  ripple: wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { Ripple } from "@/components/base/ripple/ripple";',
+    `<div className="flex items-center gap-4">
+  <Ripple className="rounded-2lg text-accent-500">
+    <Button>按我试试</Button>
+  </Ripple>
+  <Ripple className="rounded-2lg text-text-primary">
+    <Button variant="secondary">次要涟漪</Button>
+  </Ripple>
+</div>`,
+  ),
+  "voice-ring": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { VoiceRing } from "@/components/base/voice-ring/voice-ring";\nimport { RiMicLine } from "@remixicon/react";',
+    `<div className="flex items-center gap-8 py-4">
+  <VoiceRing>
+    <Button iconOnly leadingIcon={RiMicLine} aria-label="麦克风" variant="secondary" />
+  </VoiceRing>
+  <VoiceRing active>
+    <Button iconOnly leadingIcon={RiMicLine} aria-label="正在聆听" />
+  </VoiceRing>
+</div>`,
+  ),
   card: wrap(
     'import { Card } from "@/components/base/card/card";',
     `<Card className="w-full max-w-md" variant="soft">

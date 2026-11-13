@@ -55,6 +55,7 @@ import { LinkButton } from "@/components/base/buttons/link-button";
 import { Card } from "@/components/base/card/card";
 import { Carousel, CarouselItem } from "@/components/base/carousel/carousel";
 import { Checkbox } from "@/components/base/checkbox/checkbox";
+import { Citation } from "@/components/base/citation/citation";
 import { Collapsible } from "@/components/base/collapsible/collapsible";
 import { ColorPicker } from "@/components/base/color-picker/color-picker";
 import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
@@ -72,9 +73,11 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/ba
 import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";
 import { EmptyState } from "@/components/base/empty-state/empty-state";
 import { FileUpload } from "@/components/base/file-upload/file-upload";
+import { FormField } from "@/components/base/form-field/form-field";
 import { HoverCard } from "@/components/base/hover-card/hover-card";
+import { InlineEdit } from "@/components/base/inline-edit/inline-edit";
 import { InputOtp } from "@/components/base/input-otp/input-otp";
-import { Input } from "@/components/base/input/input";
+import { Input, InputBase } from "@/components/base/input/input";
 import { Kbd } from "@/components/base/kbd/kbd";
 import { List, ListItem } from "@/components/base/list/list";
 import { Magnetic } from "@/components/base/magnetic/magnetic";
@@ -82,6 +85,7 @@ import { Marquee } from "@/components/base/marquee/marquee";
 import { MediaCard } from "@/components/base/media-card/media-card";
 import { Meter } from "@/components/base/meter/meter";
 import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@/components/base/modal/modal";
+import { ModelSelect } from "@/components/base/model-select/model-select";
 import { Notification } from "@/components/base/notification/notification";
 import { NumberField } from "@/components/base/number-field/number-field";
 import { NumberTicker } from "@/components/base/number-ticker/number-ticker";
@@ -90,10 +94,13 @@ import { Pagination } from "@/components/base/pagination/pagination";
 import { PasswordStrength } from "@/components/base/password-strength/password-strength";
 import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
 import { ProgressBar } from "@/components/base/progress/progress";
+import { PromptSuggestions } from "@/components/base/prompt-suggestions/prompt-suggestions";
 import { QrCode } from "@/components/base/qr-code/qr-code";
 import { Radio, RadioGroup } from "@/components/base/radio/radio";
 import { Rating } from "@/components/base/rating/rating";
 import { RelativeTime } from "@/components/base/relative-time/relative-time";
+import { Reveal } from "@/components/base/reveal/reveal";
+import { Ripple } from "@/components/base/ripple/ripple";
 import { ScrollProgress } from "@/components/base/scroll-progress/scroll-progress";
 import { SearchField } from "@/components/base/search-field/search-field";
 import { SectionHeader } from "@/components/base/section-header/section-header";
@@ -110,16 +117,19 @@ import { Switch } from "@/components/base/switch/switch";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/base/table/table";
 import { Tab, TabList, Tabs } from "@/components/base/tabs/tabs";
 import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
+import { TagInput } from "@/components/base/tag-input/tag-input";
 import { TextLink } from "@/components/base/text-link/text-link";
 import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";
 import { Textarea } from "@/components/base/textarea/textarea";
+import { ThinkingOrbs } from "@/components/base/thinking-orbs/thinking-orbs";
 import { TimeField } from "@/components/base/time-field/time-field";
 import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";
 import { Toaster, toast } from "@/components/base/toast/toast";
 import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
 import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
 import { TypingText } from "@/components/base/typing-text/typing-text";
-import { RiAddLine, RiMailLine } from "@remixicon/react";
+import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
+import { RiAddLine, RiMailLine, RiMicLine } from "@remixicon/react";
 import { parseColor } from "react-aria-components";
 
 function Preview_accordion() {
@@ -307,6 +317,16 @@ function Preview_chip() {
     <div className="flex gap-2">
       <Chip>默认</Chip>
       <Chip color="lime">成功</Chip>
+    </div>
+  );
+}
+
+function Preview_citation() {
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Citation index={1} title="JoyUI docs" href="https://www.joyui.top" />
+      <Citation index={2} title="Agent handbook" />
+      <Citation index={3} title="Internal wiki · RAG" href="#" />
     </div>
   );
 }
@@ -561,6 +581,14 @@ function Preview_file_upload() {
   );
 }
 
+function Preview_form_field() {
+  return (
+    <FormField label="项目名称" hint="对外显示名" isRequired htmlFor="proj" className="w-full max-w-md">
+      <InputBase id="proj" placeholder="MarHub" />
+    </FormField>
+  );
+}
+
 function Preview_funnel_chart_card() {
   return (
     <FunnelChartCard />
@@ -594,6 +622,12 @@ function Preview_hover_card() {
 function Preview_icon_button() {
   return (
     <IconButton icon={RiAddLine} aria-label="添加" />
+  );
+}
+
+function Preview_inline_edit() {
+  return (
+    <InlineEdit defaultValue="JoyUI" />
   );
 }
 
@@ -720,6 +754,19 @@ function Preview_modal() {
   );
 }
 
+function Preview_model_select() {
+  return (
+    <ModelSelect
+      defaultValue="smart"
+      options={[
+        { id: "fast", label: "Fast" },
+        { id: "smart", label: "Smart" },
+        { id: "reason", label: "Reason", description: "更深推理" },
+      ]}
+    />
+  );
+}
+
 function Preview_most_active_days_card() {
   return (
     <MostActiveDaysCard />
@@ -813,6 +860,17 @@ function Preview_progress() {
   );
 }
 
+function Preview_prompt_suggestions() {
+  return (
+    <PromptSuggestions
+      label="试试问"
+      suggestions={["总结这段日志", "解释报错原因", "生成发布说明"]}
+      onSelect={(s) => console.log(s)}
+      className="max-w-md"
+    />
+  );
+}
+
 function Preview_qr_code() {
   return (
     <div className="flex flex-wrap items-end gap-4">
@@ -862,9 +920,32 @@ function Preview_relative_time() {
   );
 }
 
+function Preview_reveal() {
+  return (
+    <div className="flex w-full max-w-md flex-col gap-3">
+      <Reveal delay={0}><Card className="p-4 text-body-medium">先显现</Card></Reveal>
+      <Reveal delay={120}><Card className="p-4 text-body-medium">再显现</Card></Reveal>
+      <Reveal delay={240} from="left"><Card className="p-4 text-body-medium">从左侧进入</Card></Reveal>
+    </div>
+  );
+}
+
 function Preview_revenue_chart_card() {
   return (
     <RevenueChartCard />
+  );
+}
+
+function Preview_ripple() {
+  return (
+    <div className="flex items-center gap-4">
+      <Ripple className="rounded-2lg text-accent-500">
+        <Button>按我试试</Button>
+      </Ripple>
+      <Ripple className="rounded-2lg text-text-primary">
+        <Button variant="secondary">次要涟漪</Button>
+      </Ripple>
+    </div>
   );
 }
 
@@ -1082,6 +1163,17 @@ function Preview_tag_group() {
   );
 }
 
+function Preview_tag_input() {
+  return (
+    <TagInput
+      label="标签"
+      hint="回车或逗号添加"
+      defaultValue={["Design", "AI"]}
+      className="w-full max-w-md"
+    />
+  );
+}
+
 function Preview_text_link() {
   return (
     <p className="text-body-regular text-text-secondary">
@@ -1106,6 +1198,16 @@ function Preview_textarea() {
 function Preview_theme_toggle() {
   return (
     <ThemeToggle />
+  );
+}
+
+function Preview_thinking_orbs() {
+  return (
+    <div className="flex items-center gap-6">
+      <ThinkingOrbs size="sm" />
+      <ThinkingOrbs />
+      <ThinkingOrbs size="lg" />
+    </div>
   );
 }
 
@@ -1173,6 +1275,19 @@ function Preview_typing_text() {
   );
 }
 
+function Preview_voice_ring() {
+  return (
+    <div className="flex items-center gap-8 py-4">
+      <VoiceRing>
+        <Button iconOnly leadingIcon={RiMicLine} aria-label="麦克风" variant="secondary" />
+      </VoiceRing>
+      <VoiceRing active>
+        <Button iconOnly leadingIcon={RiMicLine} aria-label="正在聆听" />
+      </VoiceRing>
+    </div>
+  );
+}
+
 function Preview_web_search() {
   return (
     <WebSearch />
@@ -1204,6 +1319,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "carousel": Preview_carousel,
   "checkbox": Preview_checkbox,
   "chip": Preview_chip,
+  "citation": Preview_citation,
   "close-button": Preview_close_button,
   "collapsible": Preview_collapsible,
   "color-picker": Preview_color_picker,
@@ -1231,10 +1347,12 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "earnings-chart-card": Preview_earnings_chart_card,
   "empty-state": Preview_empty_state,
   "file-upload": Preview_file_upload,
+  "form-field": Preview_form_field,
   "funnel-chart-card": Preview_funnel_chart_card,
   "heatmap-chart-card": Preview_heatmap_chart_card,
   "hover-card": Preview_hover_card,
   "icon-button": Preview_icon_button,
+  "inline-edit": Preview_inline_edit,
   "input": Preview_input,
   "input-otp": Preview_input_otp,
   "kbd": Preview_kbd,
@@ -1246,6 +1364,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "media-card": Preview_media_card,
   "meter": Preview_meter,
   "modal": Preview_modal,
+  "model-select": Preview_model_select,
   "most-active-days-card": Preview_most_active_days_card,
   "notification": Preview_notification,
   "notification-center": Preview_notification_center,
@@ -1257,13 +1376,16 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "password-strength": Preview_password_strength,
   "popover": Preview_popover,
   "progress": Preview_progress,
+  "prompt-suggestions": Preview_prompt_suggestions,
   "qr-code": Preview_qr_code,
   "radar-chart-card": Preview_radar_chart_card,
   "radial-chart-card": Preview_radial_chart_card,
   "radio": Preview_radio,
   "rating": Preview_rating,
   "relative-time": Preview_relative_time,
+  "reveal": Preview_reveal,
   "revenue-chart-card": Preview_revenue_chart_card,
+  "ripple": Preview_ripple,
   "sankey-chart-card": Preview_sankey_chart_card,
   "scatter-chart-card": Preview_scatter_chart_card,
   "scroll-progress": Preview_scroll_progress,
@@ -1288,15 +1410,18 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "table": Preview_table,
   "tabs": Preview_tabs,
   "tag-group": Preview_tag_group,
+  "tag-input": Preview_tag_input,
   "text-link": Preview_text_link,
   "text-shimmer": Preview_text_shimmer,
   "textarea": Preview_textarea,
   "theme-toggle": Preview_theme_toggle,
+  "thinking-orbs": Preview_thinking_orbs,
   "time-field": Preview_time_field,
   "timeline": Preview_timeline,
   "toast": Preview_toast,
   "tooltip": Preview_tooltip,
   "tree-view": Preview_tree_view,
   "typing-text": Preview_typing_text,
+  "voice-ring": Preview_voice_ring,
   "web-search": Preview_web_search,
 };

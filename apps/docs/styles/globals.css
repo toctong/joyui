@@ -1224,3 +1224,113 @@ input[type="search"]::-webkit-search-cancel-button {
     opacity: 0.7;
   }
 }
+
+/* ThinkingOrbs */
+@keyframes bui-thinking-orbs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bui-thinking-orbs-breathe {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bui-thinking-orbs-ring {
+  animation: bui-thinking-orbs-spin 2.4s linear infinite;
+}
+
+.bui-thinking-orbs-core {
+  animation: bui-thinking-orbs-breathe 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-thinking-orbs-ring,
+  .bui-thinking-orbs-core {
+    animation: none;
+  }
+}
+
+/* Reveal */
+.bui-reveal {
+  opacity: 0;
+  transform: translate3d(var(--bui-reveal-x, 0), var(--bui-reveal-y, 12px), 0);
+  transition:
+    opacity var(--bui-reveal-duration, 480ms) cubic-bezier(0.22, 1, 0.36, 1),
+    transform var(--bui-reveal-duration, 480ms) cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--bui-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.bui-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Ripple */
+@keyframes bui-ripple-wave {
+  0% {
+    transform: scale(0);
+    opacity: 0.28;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.bui-ripple-wave {
+  animation: bui-ripple-wave 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-ripple-wave {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* VoiceRing */
+@keyframes bui-voice-ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+.bui-voice-ring-pulse-1 {
+  animation: bui-voice-ring-pulse 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.bui-voice-ring-pulse-2 {
+  animation: bui-voice-ring-pulse 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-voice-ring-pulse-1,
+  .bui-voice-ring-pulse-2 {
+    animation: none;
+    opacity: 0.25;
+    transform: scale(1.2);
+  }
+}
