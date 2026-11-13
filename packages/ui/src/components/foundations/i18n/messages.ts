@@ -290,7 +290,13 @@ export function resolveMessages(
     builtInLocales[normalized as BuiltInLocale] ??
     builtInLocales[normalized.split("-")[0] as BuiltInLocale] ??
     en;
-  return override ? { ...base, ...override } : { ...base };
+  if (!override) return { ...base };
+  // Partial values may be `undefined`; skip them so the result stays JoyMessages.
+  const next: JoyMessages = { ...base };
+  for (const [key, value] of Object.entries(override)) {
+    if (value !== undefined) next[key] = value;
+  }
+  return next;
 }
 
 /** Exact-match translator for TemplateCopyProvider. */

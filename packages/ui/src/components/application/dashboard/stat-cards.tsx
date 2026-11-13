@@ -128,7 +128,7 @@ const TILE_TONES: Record<StatTone, string> = {
 };
 
 const DELTA_STYLES: Record<
-  Stat["deltaColor"],
+  NonNullable<Stat["deltaColor"]>,
   { icon: IconComponent; className: string; pill: string }
 > = {
   lime: {
@@ -150,7 +150,13 @@ const DELTA_STYLES: Record<
 
 /** Tinted pill with a direction glyph — the footer band's delta readout, in
  *  the same lime and rose the chart cards use for their trend chips. */
-function DeltaPill({ delta, deltaColor }: Pick<Stat, "delta" | "deltaColor">) {
+function DeltaPill({
+  delta,
+  deltaColor = "neutral",
+}: {
+  delta: string;
+  deltaColor?: NonNullable<Stat["deltaColor"]>;
+}) {
   const localize = useTemplateCopy();
   const { icon: Icon, className, pill } = DELTA_STYLES[deltaColor];
   return localize((
