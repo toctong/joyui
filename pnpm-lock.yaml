@@ -175,16 +175,6 @@ importers:
 
   packages/ui:
     dependencies:
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      tailwind-merge:
-        specifier: ^3.3.1
-        version: 3.7.0
-      tailwindcss:
-        specifier: ^4.0.0
-        version: 4.3.5
-    devDependencies:
       '@internationalized/date':
         specifier: ^3.12.4
         version: 3.12.4
@@ -215,12 +205,9 @@ importers:
       '@tiptap/suggestion':
         specifier: ^3.33.1
         version: 3.33.1(@floating-ui/dom@1.8.0)(@tiptap/core@3.33.1(@tiptap/pm@3.33.1))(@tiptap/pm@3.33.1)
-      '@types/react':
-        specifier: ^19.1.8
-        version: 19.3.0
-      '@types/react-dom':
-        specifier: ^19.1.6
-        version: 19.3.0(@types/react@19.3.0)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       dayjs:
         specifier: ^1.11.13
         version: 1.11.23
@@ -230,21 +217,34 @@ importers:
       motion:
         specifier: ^12.43.0
         version: 12.43.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      react:
-        specifier: ^19.1.0
-        version: 19.3.1
       react-aria-components:
         specifier: ^1.22.1
         version: 1.22.1(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      react-dom:
-        specifier: ^19.1.0
-        version: 19.3.1(react@19.3.1)
       recharts:
         specifier: ^3.10.1
         version: 3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@18.3.1)(react@19.3.1)(redux@5.0.1)
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.7.0
       tippy.js:
         specifier: ^6.3.7
         version: 6.3.7
+    devDependencies:
+      '@types/react':
+        specifier: ^19.1.8
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.1.6
+        version: 19.3.0(@types/react@19.3.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.3.1
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.3.1(react@19.3.1)
+      tailwindcss:
+        specifier: ^4.0.0
+        version: 4.3.5
       tsup:
         specifier: ^8.5.0
         version: 8.5.1(jiti@2.7.0)(postcss@8.5.32)(typescript@5.9.3)(yaml@2.9.1)

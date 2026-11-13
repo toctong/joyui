@@ -6,24 +6,16 @@ description: 一次安装整个 JoyUI 组件库，引入主题后即可 import �
 ## 整库安装（推荐）
 
 ```bash
-pnpm add @joyui/react react-aria-components @remixicon/react
+pnpm add @joyui/react
 # 或 npm / yarn 等价命令
 ```
 
-按需再装可选 peer（图表、表格等）：
+只需安装 `@joyui/react`。表格、图表、图标、动画、日期、Composer（TipTap）等运行时依赖已作为包内 **dependencies** 随库安装，不必再单独 `pnpm add`。
 
-```bash
-pnpm add recharts @tanstack/react-table@^8 @tanstack/react-virtual motion@^12 dayjs
-```
+宿主应用仍需自己准备：
 
-`motion@14` 与 `@tanstack/react-table@9` 也兼容；上式只是锁定常见稳定区间。
-
-**Composer / TipTap 编辑器**走子路径，避免主入口硬依赖：
-
-```bash
-pnpm add @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/suggestion \
-  @tiptap/extension-mention @tiptap/extension-placeholder tippy.js
-```
+- `react` / `react-dom`（peer）
+- `tailwindcss` v4（样式构建）
 
 ```tsx
 import { Composer, ComposerPanel } from "@joyui/react/composer";
@@ -56,7 +48,15 @@ export function App() {
 ```
 
 > 带 `label` / `placeholder` / `hint` 的字段请用 **`Input`**（或 `Textarea`）。`TextField` 是 React Aria 组合容器，不接受这些 props。  
-> 演示表 `DataTableExample` 请按示例名导入；生产表格更推荐 `@tanstack/react-table`。
+> 业务表格用 **`DataTable`**（传入 `data` / `columns`）；`DataTableExample` 仅是文档演示。
+
+### 应用自己还要装什么？
+
+| 场景 | 是否额外安装 |
+|------|----------------|
+| 只用 JoyUI 组件 | 否 |
+| 业务代码里 `import { RiXxx } from "@remixicon/react"` | 是（图标给**你的**页面用） |
+| `@tanstack/react-query`、路由、axios 等业务库 | 是（与 JoyUI 无关） |
 
 ## 设计约定
 

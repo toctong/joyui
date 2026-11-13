@@ -11,8 +11,10 @@
 ## 业务项目安装
 
 ```bash
-pnpm add @joyui/react react-aria-components @remixicon/react
+pnpm add @joyui/react
 ```
+
+表格、图表、图标、动画、日期、Composer（TipTap）等已作为包内 dependencies 随库安装；只需再提供 `react` / `react-dom` 与 Tailwind CSS v4。
 
 ```css
 @import "tailwindcss";
