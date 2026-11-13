@@ -1,8 +1,8 @@
 "use client";
 
-import { useTemplateCopy, useTemplateLanguageSelector } from "@/components/foundations/template-copy/template-copy";
+import { useTemplateCopy, useTemplateLanguageSelector } from "../../foundations/template-copy/template-copy";
 
-import { useDirection } from "@/components/foundations/direction/direction";
+import { useDirection } from "../../foundations/direction/direction";
 import { useState, useSyncExternalStore, type ComponentType, type ReactNode } from "react";
 import {
   RiBankCardLine,
@@ -23,14 +23,14 @@ import {
   DialogTrigger as AriaDialogTrigger,
   Popover as AriaPopover,
 } from "react-aria-components";
-import { ThemeToggle } from "@/components/application/theme/theme-toggle";
-import { Avatar } from "@/components/base/avatar/avatar";
-import { Badge } from "@/components/base/badges/badge";
-import { ChevronDownSmall } from "@/components/foundations/icons/chevrons";
-import { cx } from "@/utils/cx";
+import { ThemeToggle } from "../theme/theme-toggle";
+import { Avatar } from "../../base/avatar/avatar";
+import { Badge } from "../../base/badges/badge";
+import { ChevronDownSmall } from "../../foundations/icons/chevrons";
+import { cx } from "../../../utils/cx";
 
 /**
- * Figma source: JoyUI â†?sidebar profile menu (node 3823:3699).
+ * Figma source: JoyUI ï¿½?sidebar profile menu (node 3823:3699).
  *
  * Dropdown opened from the sidebar's "JoyUI" card. Floats to the right of
  * the sidebar: white panel, 1px border/button/default, radius 16, p 10,
@@ -156,7 +156,7 @@ export function DashboardTeamMenu({
   const direction = useDirection();
   const [isOpen, setIsOpen] = useState(false);
   // "right" placement assumes room to the sidebar's right (true in-flow on
-  // desktop) â€?on mobile the sidebar can span the full viewport, so the
+  // desktop) ï¿½?on mobile the sidebar can span the full viewport, so the
   // 265px panel would render off-screen. Below sm, drop into a plain
   // dropdown under the trigger instead.
   const isMobile = useSyncExternalStore(subscribeMobile, mobileSnapshot, () => false);
