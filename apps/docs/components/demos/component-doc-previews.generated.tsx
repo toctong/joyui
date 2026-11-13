@@ -51,12 +51,15 @@ import { LinkButton } from "@/components/base/buttons/link-button";
 import { Card } from "@/components/base/card/card";
 import { Carousel, CarouselItem } from "@/components/base/carousel/carousel";
 import { Checkbox } from "@/components/base/checkbox/checkbox";
+import { Collapsible } from "@/components/base/collapsible/collapsible";
 import { ColorPicker } from "@/components/base/color-picker/color-picker";
 import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
 import { CommandPalette, CommandPaletteItem, CommandPaletteSection } from "@/components/base/command-palette/command-palette";
 import { ContextMenu, ContextMenuItem, ContextMenuTrigger } from "@/components/base/context-menu/context-menu";
+import { CopyButton } from "@/components/base/copy-button/copy-button";
 import { DateCalendar } from "@/components/base/date-picker/date-calendar";
 import { DatePicker } from "@/components/base/date-picker/date-picker";
+import { DescriptionItem, DescriptionList } from "@/components/base/description-list/description-list";
 import { Divider } from "@/components/base/divider/divider";
 import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/base/drawer/drawer";
 import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";
@@ -76,19 +79,24 @@ import { Pagination } from "@/components/base/pagination/pagination";
 import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
 import { ProgressBar } from "@/components/base/progress/progress";
 import { Radio, RadioGroup } from "@/components/base/radio/radio";
+import { Rating } from "@/components/base/rating/rating";
 import { SearchField } from "@/components/base/search-field/search-field";
+import { SectionHeader } from "@/components/base/section-header/section-header";
 import { SegmentedControl, SegmentedControlItem } from "@/components/base/segmented-control/segmented-control";
 import { Select, SelectItem } from "@/components/base/select/select";
 import { Skeleton } from "@/components/base/skeleton/skeleton";
 import { Slider } from "@/components/base/slider/slider";
 import { SocialButton } from "@/components/base/social-button/social-button";
 import { Spinner } from "@/components/base/spinner/spinner";
+import { Steps } from "@/components/base/steps/steps";
 import { Switch } from "@/components/base/switch/switch";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/base/table/table";
 import { Tab, TabList, Tabs } from "@/components/base/tabs/tabs";
 import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
+import { TextLink } from "@/components/base/text-link/text-link";
 import { Textarea } from "@/components/base/textarea/textarea";
 import { TimeField } from "@/components/base/time-field/time-field";
+import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";
 import { Toaster, toast } from "@/components/base/toast/toast";
 import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
 import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
@@ -253,6 +261,14 @@ function Preview_close_button() {
   );
 }
 
+function Preview_collapsible() {
+  return (
+    <Collapsible title="高级筛选" className="w-full max-w-md" defaultExpanded>
+      过滤预告片、花絮，以及自定义规则。
+    </Collapsible>
+  );
+}
+
 function Preview_color_picker() {
   const [color, setColor] = useState(parseColor("#6366f1"));
   return (
@@ -340,6 +356,15 @@ function Preview_contributions_card() {
   );
 }
 
+function Preview_copy_button() {
+  return (
+    <div className="flex w-full max-w-md items-end gap-2">
+      <Input label="分享链接" value="https://pan.quark.cn/s/demo" isReadOnly />
+      <CopyButton value="https://pan.quark.cn/s/demo" size="medium" />
+    </div>
+  );
+}
+
 function Preview_data_grid() {
   return (
     <DataGridExample rowCount={24} showTitle height={520} />
@@ -376,6 +401,19 @@ function Preview_date_calendar() {
 function Preview_date_picker() {
   return (
     <DatePicker aria-label="开始日期" />
+  );
+}
+
+function Preview_description_list() {
+  return (
+    <Card className="w-full max-w-md" padding="md">
+      <DescriptionList columns={2}>
+        <DescriptionItem term="账号">primary</DescriptionItem>
+        <DescriptionItem term="状态">ok</DescriptionItem>
+        <DescriptionItem term="保存路径">/Media</DescriptionItem>
+        <DescriptionItem term="模式">auto</DescriptionItem>
+      </DescriptionList>
+    </Card>
   );
 }
 
@@ -630,6 +668,15 @@ function Preview_radio() {
   );
 }
 
+function Preview_rating() {
+  return (
+    <div className="flex flex-col gap-3">
+      <Rating value={4} aria-label="只读评分" />
+      <Rating value={3} interactive aria-label="可点选评分" />
+    </div>
+  );
+}
+
 function Preview_revenue_chart_card() {
   return (
     <RevenueChartCard />
@@ -651,6 +698,17 @@ function Preview_scatter_chart_card() {
 function Preview_search_field() {
   return (
     <SearchField aria-label="搜索" placeholder="搜索组件…" />
+  );
+}
+
+function Preview_section_header() {
+  return (
+    <SectionHeader
+      title="运行中"
+      description="当前调度中的任务"
+      actions={<Button size="small" variant="secondary">全部查看</Button>}
+      className="w-full max-w-xl"
+    />
   );
 }
 
@@ -744,6 +802,20 @@ function Preview_stat_cards() {
   );
 }
 
+function Preview_steps() {
+  return (
+    <Steps
+      current={1}
+      className="w-full max-w-xl"
+      steps={[
+        { title: "账号", description: "Cookie" },
+        { title: "片源", description: "TMDB" },
+        { title: "完成" },
+      ]}
+    />
+  );
+}
+
 function Preview_steps_card() {
   return (
     <StepsCard />
@@ -793,6 +865,15 @@ function Preview_tag_group() {
   );
 }
 
+function Preview_text_link() {
+  return (
+    <p className="text-body-regular text-text-secondary">
+      打开 <TextLink href="https://www.joyui.top/docs">文档</TextLink> 或
+      <TextLink href="#" muted> 次级链接</TextLink>。
+    </p>
+  );
+}
+
 function Preview_textarea() {
   return (
     <Textarea label="备注" placeholder="补充说明…" rows={4} />
@@ -808,6 +889,16 @@ function Preview_theme_toggle() {
 function Preview_time_field() {
   return (
     <TimeField label="开始时间" />
+  );
+}
+
+function Preview_timeline() {
+  return (
+    <Timeline className="w-full max-w-md">
+      <TimelineItem title="任务已创建" description="Severance S01" time="刚刚" tone="info" />
+      <TimelineItem title="转存完成" description="E01.mkv" time="2 分钟前" tone="success" />
+      <TimelineItem title="Cookie 失效" description="请重新登录" time="1 小时前" tone="error" />
+    </Timeline>
   );
 }
 
@@ -881,6 +972,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "checkbox": Preview_checkbox,
   "chip": Preview_chip,
   "close-button": Preview_close_button,
+  "collapsible": Preview_collapsible,
   "color-picker": Preview_color_picker,
   "combo-chart-card": Preview_combo_chart_card,
   "combobox": Preview_combobox,
@@ -891,10 +983,12 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "composer-panel": Preview_composer_panel,
   "context-menu": Preview_context_menu,
   "contributions-card": Preview_contributions_card,
+  "copy-button": Preview_copy_button,
   "data-grid": Preview_data_grid,
   "data-table": Preview_data_table,
   "date-calendar": Preview_date_calendar,
   "date-picker": Preview_date_picker,
+  "description-list": Preview_description_list,
   "divider": Preview_divider,
   "drawer": Preview_drawer,
   "dropdown": Preview_dropdown,
@@ -925,10 +1019,12 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "radar-chart-card": Preview_radar_chart_card,
   "radial-chart-card": Preview_radial_chart_card,
   "radio": Preview_radio,
+  "rating": Preview_rating,
   "revenue-chart-card": Preview_revenue_chart_card,
   "sankey-chart-card": Preview_sankey_chart_card,
   "scatter-chart-card": Preview_scatter_chart_card,
   "search-field": Preview_search_field,
+  "section-header": Preview_section_header,
   "segmented-control": Preview_segmented_control,
   "select": Preview_select,
   "settings-modal": Preview_settings_modal,
@@ -940,14 +1036,17 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "spinner": Preview_spinner,
   "stage-bars-card": Preview_stage_bars_card,
   "stat-cards": Preview_stat_cards,
+  "steps": Preview_steps,
   "steps-card": Preview_steps_card,
   "switch": Preview_switch,
   "table": Preview_table,
   "tabs": Preview_tabs,
   "tag-group": Preview_tag_group,
+  "text-link": Preview_text_link,
   "textarea": Preview_textarea,
   "theme-toggle": Preview_theme_toggle,
   "time-field": Preview_time_field,
+  "timeline": Preview_timeline,
   "toast": Preview_toast,
   "tooltip": Preview_tooltip,
   "tree-view": Preview_tree_view,

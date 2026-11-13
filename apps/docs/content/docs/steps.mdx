@@ -1,0 +1,34 @@
+---
+title: "步骤条"
+description: "横向 / 纵向多步骤指示：向导与引导流程。"
+badge: "全新"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+用 `current`（从 0 起）标记当前步，已完成步骤显示勾选。
+
+<ComponentDocPreview slug="steps" />
+
+## 安装
+
+```bash
+npx @joyui/cli add steps --yes
+```
+
+```tsx
+import { Steps } from "@joyui/react";
+
+<Steps
+  current={1}
+  steps={[
+    { title: "Account", description: "Cookie" },
+    { title: "Sources", description: "TMDB" },
+    { title: "Done" },
+  ]}
+/>
+```
+
+## API
+
+<DocApiSection slug="steps" />

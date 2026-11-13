@@ -303,6 +303,73 @@ import { Input } from "@/components/base/input/input";
   <MediaCard title="Untitled" subtitle="No artwork" />
 </div>`,
   ),
+  steps: wrap(
+    'import { Steps } from "@/components/base/steps/steps";',
+    `<Steps
+  current={1}
+  className="w-full max-w-xl"
+  steps={[
+    { title: "账号", description: "Cookie" },
+    { title: "片源", description: "TMDB" },
+    { title: "完成" },
+  ]}
+/>`,
+  ),
+  timeline: wrap(
+    'import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";',
+    `<Timeline className="w-full max-w-md">
+  <TimelineItem title="任务已创建" description="Severance S01" time="刚刚" tone="info" />
+  <TimelineItem title="转存完成" description="E01.mkv" time="2 分钟前" tone="success" />
+  <TimelineItem title="Cookie 失效" description="请重新登录" time="1 小时前" tone="error" />
+</Timeline>`,
+  ),
+  "description-list": wrap(
+    'import { Card } from "@/components/base/card/card";\nimport { DescriptionItem, DescriptionList } from "@/components/base/description-list/description-list";',
+    `<Card className="w-full max-w-md" padding="md">
+  <DescriptionList columns={2}>
+    <DescriptionItem term="账号">primary</DescriptionItem>
+    <DescriptionItem term="状态">ok</DescriptionItem>
+    <DescriptionItem term="保存路径">/Media</DescriptionItem>
+    <DescriptionItem term="模式">auto</DescriptionItem>
+  </DescriptionList>
+</Card>`,
+  ),
+  "copy-button": wrap(
+    'import { CopyButton } from "@/components/base/copy-button/copy-button";\nimport { Input } from "@/components/base/input/input";',
+    `<div className="flex w-full max-w-md items-end gap-2">
+  <Input label="分享链接" value="https://pan.quark.cn/s/demo" isReadOnly />
+  <CopyButton value="https://pan.quark.cn/s/demo" size="medium" />
+</div>`,
+  ),
+  "section-header": wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { SectionHeader } from "@/components/base/section-header/section-header";',
+    `<SectionHeader
+  title="运行中"
+  description="当前调度中的任务"
+  actions={<Button size="small" variant="secondary">全部查看</Button>}
+  className="w-full max-w-xl"
+/>`,
+  ),
+  "text-link": wrap(
+    'import { TextLink } from "@/components/base/text-link/text-link";',
+    `<p className="text-body-regular text-text-secondary">
+  打开 <TextLink href="https://www.joyui.top/docs">文档</TextLink> 或
+  <TextLink href="#" muted> 次级链接</TextLink>。
+</p>`,
+  ),
+  rating: wrap(
+    'import { Rating } from "@/components/base/rating/rating";',
+    `<div className="flex flex-col gap-3">
+  <Rating value={4} aria-label="只读评分" />
+  <Rating value={3} interactive aria-label="可点选评分" />
+</div>`,
+  ),
+  collapsible: wrap(
+    'import { Collapsible } from "@/components/base/collapsible/collapsible";',
+    `<Collapsible title="高级筛选" className="w-full max-w-md" defaultExpanded>
+  过滤预告片、花絮，以及自定义规则。
+</Collapsible>`,
+  ),
   meter: wrap(
     'import { Meter } from "@/components/base/meter/meter";',
     `<Meter label="席位" value={19} maxValue={20} />`,

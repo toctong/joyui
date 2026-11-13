@@ -264,6 +264,51 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "action", description: "标题下操作区。", type: "ReactNode", options: "—", defaultValue: "—" },
     { name: "footer", description: "封面底部叠加内容。", type: "ReactNode", options: "—", defaultValue: "—" },
   ]),
+  steps: entry("Steps", [
+    { name: "steps", description: "步骤数组。", type: "StepItem[]", options: "—", defaultValue: "—" },
+    { name: "current", description: "当前步（从 0 起）。", type: "number", options: "—", defaultValue: "0" },
+    { name: "orientation", description: "方向。", type: '"horizontal" | "vertical"', options: "horizontal · vertical", defaultValue: "horizontal" },
+  ]),
+  timeline: entry("Timeline / TimelineItem", [
+    { name: "title", description: "主文案。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "description", description: "说明。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "time", description: "时间标签。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "tone", description: "圆点色。", type: '"neutral" | "success" | "warning" | "error" | "info"', options: "—", defaultValue: "neutral" },
+  ]),
+  "description-list": entry("DescriptionList", [
+    { name: "columns", description: "列数。", type: "1 | 2", options: "1 · 2", defaultValue: "1" },
+    { name: "term / children (Item)", description: "键与值。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "copy-button": entry("CopyButton", [
+    { name: "value", description: "要复制的文本。", type: "string", options: "—", defaultValue: "—" },
+    { name: "aria-label", description: "复制前无障碍名。", type: "string", options: "—", defaultValue: '"Copy"' },
+    { name: "copiedLabel", description: "复制成功后无障碍名。", type: "string", options: "—", defaultValue: '"Copied"' },
+    { name: "resetMs", description: "勾选态持续时间。", type: "number", options: "—", defaultValue: "1600" },
+  ]),
+  "section-header": entry("SectionHeader", [
+    { name: "title", description: "分区标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "description", description: "说明。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "actions", description: "右侧操作。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "level", description: "标题级别。", type: "2 | 3 | 4", options: "2 · 3 · 4", defaultValue: "2" },
+  ]),
+  "text-link": entry("TextLink", [
+    { name: "size", description: "字号。", type: '"sm" | "md"', options: "sm · md", defaultValue: "md" },
+    { name: "muted", description: "次级色，悬停变品牌色。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "href", description: "链接地址。", type: "string", options: "—", defaultValue: "—" },
+  ]),
+  rating: entry("Rating", [
+    { name: "value", description: "当前分值。", type: "number", options: "0–max", defaultValue: "0" },
+    { name: "max", description: "满分。", type: "number", options: "—", defaultValue: "5" },
+    { name: "interactive", description: "可点选。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "size", description: "星星尺寸。", type: '"sm" | "md"', options: "sm · md", defaultValue: "md" },
+    { name: "onChange", description: "interactive 时回调。", type: "(value: number) => void", options: "—", defaultValue: "—" },
+  ]),
+  collapsible: entry("Collapsible", [
+    { name: "title", description: "触发标题。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "children", description: "展开内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "defaultExpanded", description: "默认展开。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "isExpanded", description: "受控展开。", type: "boolean", options: "—", defaultValue: "—" },
+  ]),
   "data-table": entry(
     "DataTable",
     [

@@ -93,6 +93,10 @@ export const en: JoyMessages = {
   Filter: "Filter",
   Export: "Export",
   Refresh: "Refresh",
+  Copy: "Copy",
+  Copied: "Copied",
+  Progress: "Progress",
+  Rating: "Rating",
 };
 
 /** Simplified Chinese. */
@@ -167,6 +171,10 @@ export const zhCN: JoyMessages = {
   Filter: "筛选",
   Export: "导出",
   Refresh: "刷新",
+  Copy: "复制",
+  Copied: "已复制",
+  Progress: "进度",
+  Rating: "评分",
 };
 
 export const builtInLocales = {
