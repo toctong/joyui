@@ -1,21 +1,37 @@
 ﻿---
+title: "复制"
+description: "复制按钮与带尾部复制的输入字段。"
 status: new
-title: "复制按钮"
-description: "一键复制到剪贴板，成功后短暂显示勾选。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
+
+复制家族：图标按钮一键复制，以及带尾部复制动作的字段。
+
+## 复制按钮
 
 分享链接、Cookie、API Key 等场景。基于 `IconButton`。
 
 <ComponentDocPreview slug="copy-button" />
 
-## 安装
-
 ```bash
 npx @joyui/cli add copy-button --yes
 ```
 
-## API
+### API
 
 <DocApiSection slug="copy-button" />
+
+## 复制字段
+
+带尾部复制按钮的输入框 / 分享链接。
+
+<ComponentDocPreview slug="copy-field" />
+
+```bash
+npx @joyui/cli add copy-field --yes
+```
+
+### API
+
+<DocApiSection slug="copy-field" />

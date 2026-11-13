@@ -1,30 +1,36 @@
 ﻿---
-title: "标签组"
-description: "可选或可移除标签，键盘导航。"
+title: "标签"
+description: "标签组选择 / 移除，以及可输入添加的标签字段。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
+
+标签家族：可选可删的 `TagGroup`，以及回车添加的 `TagInput`。
+
+## 标签组
 
 可选或可移除标签，键盘导航。
 
 <ComponentDocPreview slug="tag-group" />
 
-## 安装
-
 ```bash
 npx @joyui/cli add tag-group --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
-
-
-## 应用场景
-
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
-
-## API
+### API
 
 <DocApiSection slug="tag-group" />
 
+## 标签输入
+
+回车 / 逗号添加标签，退格删除，输入壳对齐 Input。
+
+<ComponentDocPreview slug="tag-input" />
+
+```bash
+npx @joyui/cli add tag-input --yes
+```
+
+### API
+
+<DocApiSection slug="tag-input" />

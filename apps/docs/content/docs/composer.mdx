@@ -1,15 +1,17 @@
 ---
-title: "对话输入框"
-description: "胶囊输入：型号单选 + 努力滑条，状态栏挂在输入框下方。models / 状态文案均可配置。"
+title: "对话输入"
+description: "AI 输入家族：胶囊 Composer、附件条、虹彩加载、卡片 ComposerPanel。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-胶囊输入：通过 `models`、`defaultModelId`、`placeholder`、`branch` / `project` / `agentMode` / `contextPct` 配置型号菜单与状态栏。预览是同一 `Composer` 的不同 props，不是写死控件。
+一套对话输入表面：基础胶囊条、附件上传条、工作中虹彩光带、以及更完整的卡片面板。按需安装对应 slug，导航只保留本页。
+
+## 胶囊输入框
+
+通过 `models`、`defaultModelId`、`placeholder`、`branch` / `project` / `agentMode` / `contextPct` 配置型号菜单与状态栏。
 
 <ComponentDocPreview slug="composer" />
-
-## 安装
 
 整库使用时从子路径导入（需 TipTap peers，见 [安装](/docs/installation)）：
 
@@ -17,29 +19,52 @@ import { DocApiSection } from "@/components/docs-api-section";
 import { Composer } from "@joyui/react/composer";
 ```
 
-或拷贝源码：
-
 ```bash
 npx @joyui/cli add composer --yes
 ```
 
-## 应用场景
-
-AI 聊天页底部输入条：把 `models` 换成你们的网关型号列表，状态栏绑定当前 git 分支与项目名。
-
-```tsx
-<Composer
-  models={[
-    { id: "gpt-5.6-sol", name: "GPT-5.6 Sol" },
-    { id: "fable-5", name: "Fable 5" },
-  ]}
-  defaultModelId="fable-5"
-  branch="主要"
-  project="项目海"
-  contextPct={57}
-/>
-```
-
-## API
+### API
 
 <DocApiSection slug="composer" />
+
+## 输入框附件
+
+附件列表通过 `attachments` 传入；`progress: 0` 播上传环，到 `100` 显示「上传成功！」并切黄边。
+
+<ComponentDocPreview slug="composer-attachments" />
+
+```bash
+npx @joyui/cli add composer-attachments --yes
+```
+
+### API
+
+<DocApiSection slug="composer-attachments" />
+
+## 输入框加载状态
+
+智能体工作时环绕输入框的虹彩光带。
+
+<ComponentDocPreview slug="composer-loader" />
+
+```bash
+npx @joyui/cli add composer-loader --yes
+```
+
+### API
+
+<DocApiSection slug="composer-loader" />
+
+## 对话输入面板
+
+两行卡片输入：状态页签、厂商型号菜单、多行富文本与附件均可配置。
+
+<ComponentDocPreview slug="composer-panel" />
+
+```bash
+npx @joyui/cli add composer-panel --yes
+```
+
+### API
+
+<DocApiSection slug="composer-panel" />

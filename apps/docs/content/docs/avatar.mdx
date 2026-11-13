@@ -1,30 +1,36 @@
 ---
 title: "头像"
-description: "图片或首字母头像，多种尺寸与色调。"
+description: "单头像与叠放头像组：尺寸、色调、+N 溢出。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
+
+头像家族：单个 `Avatar`，以及协作场景的 `AvatarGroup`。
+
+## 头像
 
 图片或首字母头像，多种尺寸与色调。
 
 <ComponentDocPreview slug="avatar" />
 
-## 安装
-
 ```bash
 npx @joyui/cli add avatar --yes
 ```
 
-或通过 JoyUI MCP / CLI 安装。
-
-
-## 应用场景
-
-将上方预览中的 props 换成业务文案与状态即可用于表单、工具栏或设置页。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
-
-## API
+### API
 
 <DocApiSection slug="avatar" />
 
+## 头像组
+
+叠放头像与 `+N` 溢出，适合协作与指派人。超出 `max` 显示溢出计数。
+
+<ComponentDocPreview slug="avatar-group" />
+
+```bash
+npx @joyui/cli add avatar-group --yes
+```
+
+### API
+
+<DocApiSection slug="avatar-group" />
