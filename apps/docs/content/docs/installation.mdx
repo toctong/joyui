@@ -29,12 +29,15 @@ pnpm add @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/suggestion \
 import { Composer, ComposerPanel } from "@joyui/react/composer";
 ```
 
-在全局样式中引入 Tailwind 与 JoyUI token：
+在全局样式中引入 Tailwind 与 JoyUI token。**必须**用 `@source` 扫到包内 class（否则按钮/卡片会像未加载样式）：
 
 ```css
 @import "tailwindcss";
+@source "../node_modules/@joyui/react/dist";
 @import "@joyui/react/styles.css";
 ```
+
+`@source` 路径相对你的 CSS 文件；若包被 hoist 到仓库根 `node_modules`，改成对应相对路径。
 
 组件可直接从包导入，不必再逐个 `add`：
 
