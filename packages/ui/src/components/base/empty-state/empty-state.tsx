@@ -1,5 +1,8 @@
+"use client";
+
 import type { ComponentType, HTMLAttributes, ReactNode, Ref } from "react";
 import { RiInbox2Line } from "@remixicon/react";
+import { useTemplateCopy } from "../../foundations/template-copy/template-copy";
 import { cx, sortCx } from "../../../utils/cx";
 
 /**
@@ -49,7 +52,8 @@ export function EmptyState({
   ref,
   ...props
 }: EmptyStateProps) {
-  return (
+  const localize = useTemplateCopy();
+  return localize(
     <div ref={ref} className={cx(styles.root, styles.size[size], className)} {...props}>
       <span className={styles.iconWrap[size]}>
         <Icon className={styles.icon[size]} aria-hidden />
@@ -61,6 +65,6 @@ export function EmptyState({
         ) : null}
       </div>
       {action ? <div className="mt-1">{action}</div> : null}
-    </div>
+    </div>,
   );
 }

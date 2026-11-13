@@ -1,0 +1,74 @@
+---
+title: "国际化"
+description: "JoyUIProvider：locale、RTL 与内置中英文案。"
+badge: "全新"
+---
+
+JoyUI 用 **`JoyUIProvider`** 统一处理三件事：
+
+1. **Locale / RTL**（React Aria `I18nProvider` + `DirectionProvider`）
+2. **内置 UI 文案**（英文源文 → `zh-CN` 等目录，走现有 `TemplateCopyProvider`）
+3. **可覆盖字典**（`messages` / 自定义 `translate`）
+
+## 用法
+
+```tsx
+import { JoyUIProvider, Button, AuthCard } from "@joyui/react";
+
+export function App() {
+  return (
+    <JoyUIProvider locale="zh-CN">
+      <AuthCard />
+      <Button>Sign in</Button>
+    </JoyUIProvider>
+  );
+}
+```
+
+内置目录：`en` / `en-US`、`zh-CN` / `zh-Hans` / `zh`。未匹配时回退英文。
+
+## 覆盖文案
+
+键必须是组件里的**英文字符串**（与源码一致）：
+
+```tsx
+<JoyUIProvider
+  locale="zh-CN"
+  messages={{
+    "Sign in": "登录工作台",
+    "No results.": "还没有记录",
+  }}
+>
+  {children}
+</JoyUIProvider>
+```
+
+或完全自定义：
+
+```tsx
+<JoyUIProvider locale="ja" translate={(text) => myI18n.t(text)}>
+  {children}
+</JoyUIProvider>
+```
+
+## 在组件里读取
+
+```tsx
+import { useJoyI18n, useT } from "@joyui/react";
+
+function Tip() {
+  const { locale } = useJoyI18n();
+  const t = useT();
+  return <p>{t("Loading")} ({locale})</p>;
+}
+```
+
+已使用 `useTemplateCopy()` 的模板组件（AuthCard、Pagination、Sidebar 等）会自动吃到翻译，无需改调用方。
+
+## 与 RTL
+
+`locale="ar"` / `he` 等会自动切到 RTL；详见 [RTL 支持](/docs/rtl)。邮箱、OTP 等仍保持 LTR。
+
+## 数字与日期
+
+`@joyui/react` 的 `formatDate` / `formatNumber` 等接受 `locale` 参数；也可在业务侧用 `useJoyI18n().locale` 传入。

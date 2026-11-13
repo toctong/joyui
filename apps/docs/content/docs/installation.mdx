@@ -38,19 +38,19 @@ import { Composer, ComposerPanel } from "@joyui/react/composer";
 
 `styles.css` 会自动 `@source` 包内 `dist`，把组件用到的 utility 编进你的 CSS，无需再手写扫描路径。
 
-组件可直接从包导入，不必再逐个 `add`：
+根节点包一层 **`JoyUIProvider`**（locale / RTL / 内置文案，见 [国际化](/docs/i18n)）：
 
 ```tsx
-import { Button, Input, RevenueChartCard, AdminDashboard } from "@joyui/react";
+import { JoyUIProvider, Button, Input, RevenueChartCard, AdminDashboard } from "@joyui/react";
 
-export function Page() {
+export function App() {
   return (
-    <>
+    <JoyUIProvider locale="zh-CN">
       <Button variant="primary" isDisabled={false}>保存</Button>
       <Input label="邮箱" placeholder="you@company.com" />
       <RevenueChartCard />
       <AdminDashboard />
-    </>
+    </JoyUIProvider>
   );
 }
 ```

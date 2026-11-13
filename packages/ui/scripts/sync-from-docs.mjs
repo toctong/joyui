@@ -239,23 +239,46 @@ function syncTree(srcRoot, destRoot, filterFn) {
   return count;
 }
 
+/** Public hooks / utils that do not start with an uppercase letter. */
+const VALUE_EXPORT_ALLOW = new Set([
+  "useJoyI18n",
+  "useT",
+  "useTemplateCopy",
+  "useTemplateLanguageSelector",
+  "useDirection",
+  "useScrollFade",
+  "createMessageTranslator",
+  "resolveMessages",
+  "builtInLocales",
+  "en",
+  "zhCN",
+  "translateTemplateCopy",
+]);
+
 function collectExports(filePath) {
   const src = fs.readFileSync(filePath, "utf8");
   const names = new Set();
   for (const m of src.matchAll(
-    /export\s+(?:async\s+)?function\s+([A-Z][A-Za-z0-9]*)/g,
+    /export\s+(?:async\s+)?function\s+([A-Za-z][A-Za-z0-9]*)/g,
   )) {
-    names.add(m[1]);
+    const name = m[1];
+    if (/^[A-Z]/.test(name) || VALUE_EXPORT_ALLOW.has(name)) names.add(name);
   }
-  for (const m of src.matchAll(/export\s+const\s+([A-Z][A-Za-z0-9]*)\s*=/g)) {
-    names.add(m[1]);
+  for (const m of src.matchAll(/export\s+const\s+([A-Za-z][A-Za-z0-9]*)\s*=/g)) {
+    const name = m[1];
+    if (/^[A-Z]/.test(name) || VALUE_EXPORT_ALLOW.has(name)) names.add(name);
   }
   for (const m of src.matchAll(
     /export\s+\{([^}]+)\}/g,
   )) {
     for (const part of m[1].split(",")) {
       const cleaned = part.trim().split(/\s+as\s+/).pop()?.trim();
-      if (cleaned && /^[A-Z]/.test(cleaned)) names.add(cleaned);
+      if (
+        cleaned &&
+        (/^[A-Z]/.test(cleaned) || VALUE_EXPORT_ALLOW.has(cleaned))
+      ) {
+        names.add(cleaned);
+      }
     }
   }
   for (const m of src.matchAll(
