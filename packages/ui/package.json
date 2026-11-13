@@ -1,6 +1,6 @@
 {
   "name": "@joyui/react",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "JoyUI — React + Tailwind CSS v4 component library",
   "license": "MIT",
   "type": "module",

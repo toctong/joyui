@@ -1,0 +1,29 @@
+---
+title: "宽高比"
+description: "按比例锁定容器，适合封面、嵌入与骨架。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+媒体布局常用的比例盒，避免手写 padding hack。
+
+<ComponentDocPreview slug="aspect-ratio" />
+
+## 安装
+
+```bash
+npx @joyui/cli add aspect-ratio --yes
+```
+
+```tsx
+import { AspectRatio } from "@joyui/react";
+
+<AspectRatio ratio={16 / 9} className="rounded-2xl bg-background-secondary-default">
+  <img src="/cover.jpg" alt="" className="size-full object-cover" />
+</AspectRatio>
+```
+
+## API
+
+<DocApiSection slug="aspect-ratio" />

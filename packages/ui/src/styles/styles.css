@@ -96,3 +96,55 @@
     animation: none;
   }
 }
+
+/* SpotlightCard — pointer-follow wash. */
+.bui-spotlight-card-glow {
+  opacity: var(--bui-spotlight-opacity, 0);
+  transition: opacity 180ms ease;
+  background: radial-gradient(
+    var(--bui-spotlight-size, 280px) circle at var(--bui-spotlight-x, 0) var(--bui-spotlight-y, 0),
+    var(--bui-spotlight-color),
+    transparent 55%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-spotlight-card-glow {
+    opacity: 0;
+  }
+}
+
+/* ShimmerText — sweeping highlight across copy. */
+@keyframes bui-shimmer-text {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -100% center;
+  }
+}
+
+.bui-shimmer-text {
+  color: transparent;
+  background-image: linear-gradient(
+    100deg,
+    var(--color-text-secondary) 16%,
+    var(--color-text-secondary) 38%,
+    var(--color-text-primary) 50%,
+    var(--color-text-secondary) 62%,
+    var(--color-text-secondary) 84%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: bui-shimmer-text var(--bui-shimmer-duration, 2.4s) linear infinite;
+  will-change: background-position;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-shimmer-text {
+    color: var(--color-text-secondary);
+    background-image: none;
+    animation: none;
+  }
+}

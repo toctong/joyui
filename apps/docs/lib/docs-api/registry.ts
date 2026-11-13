@@ -346,6 +346,42 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "startOnView", description: "进入视口后开始。", type: "boolean", options: "true · false", defaultValue: "true" },
     { name: "locale", description: "数字本地化。", type: "string", options: "BCP 47", defaultValue: "运行时" },
   ]),
+  "avatar-group": entry("AvatarGroup", [
+    { name: "max", description: "可见头像上限，超出显示 +N。", type: "number", options: "—", defaultValue: "3" },
+    { name: "size", description: "统一尺寸。", type: '"xs" | "sm" | "md" | "lg"', options: "xs · sm · md · lg", defaultValue: "md" },
+    { name: "children", description: "Avatar 子节点。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "aspect-ratio": entry("AspectRatio", [
+    { name: "ratio", description: "宽 / 高。", type: "number", options: "—", defaultValue: "16/9" },
+    { name: "children", description: "填满比例盒的内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "spotlight-card": entry("SpotlightCard", [
+    { name: "size", description: "光斑半径。", type: "number", options: "px", defaultValue: "280" },
+    { name: "color", description: "光斑色。", type: "string", options: "CSS colour", defaultValue: "accent 28%" },
+    { name: "children", description: "卡片内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "text-shimmer": entry("TextShimmer", [
+    { name: "duration", description: "扫光周期。", type: "number", options: "秒", defaultValue: "2.4" },
+    { name: "children", description: "文案。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "password-strength": entry("PasswordStrength", [
+    { name: "value", description: "待评分密码。", type: "string", options: "—", defaultValue: '""' },
+    { name: "level", description: "受控等级 0–4。", type: "0 | 1 | 2 | 3 | 4", options: "—", defaultValue: "自动" },
+    { name: "showLabel", description: "显示文案。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "labels", description: "五档文案。", type: "[string×5]", options: "—", defaultValue: "输入密码…很强" },
+  ]),
+  "hover-card": entry("HoverCard", [
+    { name: "content", description: "预览内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "openDelay", description: "打开延迟。", type: "number", options: "ms", defaultValue: "160" },
+    { name: "closeDelay", description: "关闭延迟。", type: "number", options: "ms", defaultValue: "120" },
+    { name: "children", description: "触发元素。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "relative-time": entry("RelativeTime", [
+    { name: "date", description: "时间点。", type: "string | number | Date", options: "—", defaultValue: "—" },
+    { name: "locale", description: "本地化。", type: "string", options: "BCP 47", defaultValue: "运行时" },
+    { name: "refreshMs", description: "刷新间隔。", type: "number", options: "ms", defaultValue: "60000" },
+    { name: "showAbsoluteTitle", description: "title 显示绝对时间。", type: "boolean", options: "true · false", defaultValue: "true" },
+  ]),
   "data-table": entry(
     "DataTable",
     [

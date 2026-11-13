@@ -1,0 +1,32 @@
+---
+title: "头像组"
+description: "叠放头像与 +N 溢出，适合协作与指派人。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+beUI / Watermelon 常见的协作头像堆叠：超出 `max` 显示 `+N`。
+
+<ComponentDocPreview slug="avatar-group" />
+
+## 安装
+
+```bash
+npx @joyui/cli add avatar-group --yes
+```
+
+```tsx
+import { Avatar, AvatarGroup } from "@joyui/react";
+
+<AvatarGroup max={3}>
+  <Avatar initials="A" color="blue" />
+  <Avatar initials="B" color="lime" />
+  <Avatar initials="C" color="pink" />
+  <Avatar initials="D" />
+</AvatarGroup>
+```
+
+## API
+
+<DocApiSection slug="avatar-group" />

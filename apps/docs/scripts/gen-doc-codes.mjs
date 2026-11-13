@@ -83,6 +83,77 @@ const codes = {
   <Avatar size="md" initials="JP" />
 </div>`,
   ),
+  "avatar-group": wrap(
+    'import { Avatar } from "@/components/base/avatar/avatar";\nimport { AvatarGroup } from "@/components/base/avatar-group/avatar-group";',
+    `<AvatarGroup max={3} size="md">
+  <Avatar initials="A" color="blue" />
+  <Avatar initials="B" color="lime" />
+  <Avatar initials="C" color="pink" />
+  <Avatar initials="D" />
+  <Avatar initials="E" color="blue" />
+</AvatarGroup>`,
+  ),
+  "aspect-ratio": wrap(
+    'import { AspectRatio } from "@/components/base/aspect-ratio/aspect-ratio";',
+    `<AspectRatio ratio={16 / 9} className="w-full max-w-md rounded-2xl bg-background-secondary-default">
+  <div className="flex size-full items-center justify-center text-body-medium text-text-secondary">
+    16:9
+  </div>
+</AspectRatio>`,
+  ),
+  "spotlight-card": wrap(
+    'import { SpotlightCard } from "@/components/base/spotlight-card/spotlight-card";',
+    `<SpotlightCard className="w-full max-w-md">
+  <p className="text-body-medium text-text-primary">Realtime sync</p>
+  <p className="mt-1 text-body-regular text-text-secondary">移动指针，看光斑跟随。</p>
+</SpotlightCard>`,
+  ),
+  "text-shimmer": wrap(
+    'import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";',
+    `<TextShimmer className="text-title-3-medium">正在生成回复…</TextShimmer>`,
+  ),
+  "password-strength": `import { useState } from "react";
+import { Input } from "@/components/base/input/input";
+import { PasswordStrength } from "@/components/base/password-strength/password-strength";
+
+export function Example() {
+  const [pwd, setPwd] = useState("JoyUI!");
+  return (
+    <div className="flex w-full max-w-sm flex-col gap-3">
+      <Input
+        type="password"
+        label="密码"
+        value={pwd}
+        onChange={setPwd}
+      />
+      <PasswordStrength value={pwd} />
+    </div>
+  );
+}`,
+  "hover-card": wrap(
+    'import { Avatar } from "@/components/base/avatar/avatar";\nimport { HoverCard } from "@/components/base/hover-card/hover-card";',
+    `<HoverCard
+  content={
+    <div className="flex items-center gap-3">
+      <Avatar size="lg" initials="JL" color="blue" />
+      <div>
+        <p className="text-body-medium text-text-primary">Jordan Lee</p>
+        <p className="text-body-2-regular text-text-secondary">Design · @jordan</p>
+      </div>
+    </div>
+  }
+>
+  <Avatar initials="JL" color="blue" />
+</HoverCard>`,
+  ),
+  "relative-time": wrap(
+    'import { RelativeTime } from "@/components/base/relative-time/relative-time";',
+    `<div className="flex flex-col gap-2">
+  <RelativeTime date={Date.now() - 45_000} />
+  <RelativeTime date={Date.now() - 3_600_000 * 5} />
+  <RelativeTime date={Date.now() - 86_400_000 * 3} />
+</div>`,
+  ),
   card: wrap(
     'import { Card } from "@/components/base/card/card";',
     `<Card className="w-full max-w-md" variant="soft">

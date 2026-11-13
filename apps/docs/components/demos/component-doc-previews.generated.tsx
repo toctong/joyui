@@ -39,6 +39,8 @@ import { WebSearch } from "@/components/application/web-search/web-search";
 import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
 import { Alert } from "@/components/base/alert/alert";
 import { Announcement } from "@/components/base/announcement/announcement";
+import { AspectRatio } from "@/components/base/aspect-ratio/aspect-ratio";
+import { AvatarGroup } from "@/components/base/avatar-group/avatar-group";
 import { Avatar } from "@/components/base/avatar/avatar";
 import { Badge } from "@/components/base/badges/badge";
 import { Chip } from "@/components/base/badges/chip";
@@ -67,6 +69,7 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/ba
 import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";
 import { EmptyState } from "@/components/base/empty-state/empty-state";
 import { FileUpload } from "@/components/base/file-upload/file-upload";
+import { HoverCard } from "@/components/base/hover-card/hover-card";
 import { InputOtp } from "@/components/base/input-otp/input-otp";
 import { Input } from "@/components/base/input/input";
 import { Kbd } from "@/components/base/kbd/kbd";
@@ -80,11 +83,13 @@ import { NumberField } from "@/components/base/number-field/number-field";
 import { NumberTicker } from "@/components/base/number-ticker/number-ticker";
 import { PageHeader } from "@/components/base/page-header/page-header";
 import { Pagination } from "@/components/base/pagination/pagination";
+import { PasswordStrength } from "@/components/base/password-strength/password-strength";
 import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
 import { ProgressBar } from "@/components/base/progress/progress";
 import { QrCode } from "@/components/base/qr-code/qr-code";
 import { Radio, RadioGroup } from "@/components/base/radio/radio";
 import { Rating } from "@/components/base/rating/rating";
+import { RelativeTime } from "@/components/base/relative-time/relative-time";
 import { SearchField } from "@/components/base/search-field/search-field";
 import { SectionHeader } from "@/components/base/section-header/section-header";
 import { SegmentedControl, SegmentedControlItem } from "@/components/base/segmented-control/segmented-control";
@@ -93,12 +98,14 @@ import { Skeleton } from "@/components/base/skeleton/skeleton";
 import { Slider } from "@/components/base/slider/slider";
 import { SocialButton } from "@/components/base/social-button/social-button";
 import { Spinner } from "@/components/base/spinner/spinner";
+import { SpotlightCard } from "@/components/base/spotlight-card/spotlight-card";
 import { Steps } from "@/components/base/steps/steps";
 import { Switch } from "@/components/base/switch/switch";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/base/table/table";
 import { Tab, TabList, Tabs } from "@/components/base/tabs/tabs";
 import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
 import { TextLink } from "@/components/base/text-link/text-link";
+import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";
 import { Textarea } from "@/components/base/textarea/textarea";
 import { TimeField } from "@/components/base/time-field/time-field";
 import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";
@@ -156,6 +163,16 @@ function Preview_area_chart_card() {
   );
 }
 
+function Preview_aspect_ratio() {
+  return (
+    <AspectRatio ratio={16 / 9} className="w-full max-w-md rounded-2xl bg-background-secondary-default">
+      <div className="flex size-full items-center justify-center text-body-medium text-text-secondary">
+        16:9
+      </div>
+    </AspectRatio>
+  );
+}
+
 function Preview_auth_card() {
   return (
     <AuthCard />
@@ -169,6 +186,18 @@ function Preview_avatar() {
       <Avatar size="lg" color="neutral" initials="M" />
       <Avatar size="md" initials="JP" />
     </div>
+  );
+}
+
+function Preview_avatar_group() {
+  return (
+    <AvatarGroup max={3} size="md">
+      <Avatar initials="A" color="blue" />
+      <Avatar initials="B" color="lime" />
+      <Avatar initials="C" color="pink" />
+      <Avatar initials="D" />
+      <Avatar initials="E" color="blue" />
+    </AvatarGroup>
   );
 }
 
@@ -506,6 +535,24 @@ function Preview_heatmap_chart_card() {
   );
 }
 
+function Preview_hover_card() {
+  return (
+    <HoverCard
+      content={
+        <div className="flex items-center gap-3">
+          <Avatar size="lg" initials="JL" color="blue" />
+          <div>
+            <p className="text-body-medium text-text-primary">Jordan Lee</p>
+            <p className="text-body-2-regular text-text-secondary">Design · @jordan</p>
+          </div>
+        </div>
+      }
+    >
+      <Avatar initials="JL" color="blue" />
+    </HoverCard>
+  );
+}
+
 function Preview_icon_button() {
   return (
     <IconButton icon={RiAddLine} aria-label="添加" />
@@ -685,6 +732,21 @@ function Preview_pagination() {
   );
 }
 
+function Preview_password_strength() {
+  const [pwd, setPwd] = useState("JoyUI!");
+  return (
+    <div className="flex w-full max-w-sm flex-col gap-3">
+      <Input
+        type="password"
+        label="密码"
+        value={pwd}
+        onChange={setPwd}
+      />
+      <PasswordStrength value={pwd} />
+    </div>
+  );
+}
+
 function Preview_popover() {
   return (
     <PopoverTrigger>
@@ -735,6 +797,16 @@ function Preview_rating() {
     <div className="flex flex-col gap-3">
       <Rating value={4} aria-label="只读评分" />
       <Rating value={3} interactive aria-label="可点选评分" />
+    </div>
+  );
+}
+
+function Preview_relative_time() {
+  return (
+    <div className="flex flex-col gap-2">
+      <RelativeTime date={Date.now() - 45_000} />
+      <RelativeTime date={Date.now() - 3_600_000 * 5} />
+      <RelativeTime date={Date.now() - 86_400_000 * 3} />
     </div>
   );
 }
@@ -852,6 +924,15 @@ function Preview_spinner() {
   );
 }
 
+function Preview_spotlight_card() {
+  return (
+    <SpotlightCard className="w-full max-w-md">
+      <p className="text-body-medium text-text-primary">Realtime sync</p>
+      <p className="mt-1 text-body-regular text-text-secondary">移动指针，看光斑跟随。</p>
+    </SpotlightCard>
+  );
+}
+
 function Preview_stage_bars_card() {
   return (
     <StageBarsCard />
@@ -933,6 +1014,12 @@ function Preview_text_link() {
       打开 <TextLink href="https://www.joyui.top/docs">文档</TextLink> 或
       <TextLink href="#" muted> 次级链接</TextLink>。
     </p>
+  );
+}
+
+function Preview_text_shimmer() {
+  return (
+    <TextShimmer className="text-title-3-medium">正在生成回复…</TextShimmer>
   );
 }
 
@@ -1022,8 +1109,10 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "alert": Preview_alert,
   "announcement": Preview_announcement,
   "area-chart-card": Preview_area_chart_card,
+  "aspect-ratio": Preview_aspect_ratio,
   "auth-card": Preview_auth_card,
   "avatar": Preview_avatar,
+  "avatar-group": Preview_avatar_group,
   "badge": Preview_badge,
   "bar-list-card": Preview_bar_list_card,
   "barcode": Preview_barcode,
@@ -1061,6 +1150,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "file-upload": Preview_file_upload,
   "funnel-chart-card": Preview_funnel_chart_card,
   "heatmap-chart-card": Preview_heatmap_chart_card,
+  "hover-card": Preview_hover_card,
   "icon-button": Preview_icon_button,
   "input": Preview_input,
   "input-otp": Preview_input_otp,
@@ -1080,6 +1170,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "orders-chart-card": Preview_orders_chart_card,
   "page-header": Preview_page_header,
   "pagination": Preview_pagination,
+  "password-strength": Preview_password_strength,
   "popover": Preview_popover,
   "progress": Preview_progress,
   "qr-code": Preview_qr_code,
@@ -1087,6 +1178,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "radial-chart-card": Preview_radial_chart_card,
   "radio": Preview_radio,
   "rating": Preview_rating,
+  "relative-time": Preview_relative_time,
   "revenue-chart-card": Preview_revenue_chart_card,
   "sankey-chart-card": Preview_sankey_chart_card,
   "scatter-chart-card": Preview_scatter_chart_card,
@@ -1101,6 +1193,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "slider": Preview_slider,
   "social-button": Preview_social_button,
   "spinner": Preview_spinner,
+  "spotlight-card": Preview_spotlight_card,
   "stage-bars-card": Preview_stage_bars_card,
   "stat-cards": Preview_stat_cards,
   "steps": Preview_steps,
@@ -1110,6 +1203,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "tabs": Preview_tabs,
   "tag-group": Preview_tag_group,
   "text-link": Preview_text_link,
+  "text-shimmer": Preview_text_shimmer,
   "textarea": Preview_textarea,
   "theme-toggle": Preview_theme_toggle,
   "time-field": Preview_time_field,

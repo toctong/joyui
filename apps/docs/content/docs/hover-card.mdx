@@ -1,0 +1,36 @@
+---
+title: "悬停卡片"
+description: "悬停 / 聚焦预览层，适合指派人与提及。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+beUI Profile hover card：短延迟打开，移入面板可继续阅读。
+
+<ComponentDocPreview slug="hover-card" />
+
+## 安装
+
+```bash
+npx @joyui/cli add hover-card --yes
+```
+
+```tsx
+import { Avatar, HoverCard } from "@joyui/react";
+
+<HoverCard
+  content={
+    <div>
+      <p className="text-body-medium text-text-primary">Jordan Lee</p>
+      <p className="text-body-2-regular text-text-secondary">Design · @jordan</p>
+    </div>
+  }
+>
+  <Avatar initials="JL" color="blue" />
+</HoverCard>
+```
+
+## API
+
+<DocApiSection slug="hover-card" />

@@ -1,0 +1,30 @@
+---
+title: "光斑卡片"
+description: "指针跟随的径向柔光，适合功能磁贴与 Pro 展位。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+Bencho 式微交互：不改内容结构，只加一层可跟随的光斑。
+
+<ComponentDocPreview slug="spotlight-card" />
+
+## 安装
+
+```bash
+npx @joyui/cli add spotlight-card --yes
+```
+
+```tsx
+import { SpotlightCard } from "@joyui/react";
+
+<SpotlightCard>
+  <p className="text-body-medium text-text-primary">Realtime sync</p>
+  <p className="mt-1 text-body-regular text-text-secondary">光标与改动同步出现。</p>
+</SpotlightCard>
+```
+
+## API
+
+<DocApiSection slug="spotlight-card" />

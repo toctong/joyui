@@ -1,0 +1,27 @@
+---
+title: "相对时间"
+description: "日志 / 动态用的相对时间，定时刷新。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+仪表盘与活动流常见写法：`Intl.RelativeTimeFormat`，无额外依赖。
+
+<ComponentDocPreview slug="relative-time" />
+
+## 安装
+
+```bash
+npx @joyui/cli add relative-time --yes
+```
+
+```tsx
+import { RelativeTime } from "@joyui/react";
+
+<RelativeTime date={row.createdAt} />
+```
+
+## API
+
+<DocApiSection slug="relative-time" />

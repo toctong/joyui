@@ -1,0 +1,27 @@
+---
+title: "闪烁文案"
+description: "文案上扫过的高光，适合 AI 思考中 / 加载提示。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+Bencho / Watermelon 加载文案效果：无 spinner 也能表达「进行中」。
+
+<ComponentDocPreview slug="text-shimmer" />
+
+## 安装
+
+```bash
+npx @joyui/cli add text-shimmer --yes
+```
+
+```tsx
+import { TextShimmer } from "@joyui/react";
+
+<TextShimmer>正在生成回复…</TextShimmer>
+```
+
+## API
+
+<DocApiSection slug="text-shimmer" />
