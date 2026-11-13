@@ -1,8 +1,17 @@
+import { createElement } from "react";
+import { z } from "zod";
 import { llms, loader } from "fumadocs-core/source";
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons";
+import { statusBadgesPlugin } from "fumadocs-core/source/status-badges";
 import { defineDocs } from "fumadocs-mdx/macro";
-import { metaSchema, pageSchema } from "fumadocs-core/source/schema";
+import { metaSchema, pageSchema as basePageSchema } from "fumadocs-core/source/schema";
+import { DocsStatusBadge } from "@/components/docs-status-badge";
 import { docsRoute } from "./shared";
+
+const pageSchema = basePageSchema.extend({
+  /** Sidebar status: `new` | `beta` | `experimental` | `deprecated` */
+  status: z.string().optional(),
+});
 
 const docs = defineDocs({
   dir: "content/docs",
@@ -20,7 +29,12 @@ const docs = defineDocs({
 export const source = loader({
   baseUrl: docsRoute,
   source: docs.toFumadocsSource(),
-  plugins: [lucideIconsPlugin()],
+  plugins: [
+    lucideIconsPlugin(),
+    statusBadgesPlugin({
+      renderBadge: (status) => createElement(DocsStatusBadge, { status }),
+    }),
+  ],
 });
 
 export const docsLlms = llms(source, {

@@ -434,6 +434,39 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
   <Barcode value="5901234123457" format="EAN13" height={48} />
 </div>`,
   ),
+  "border-beam": wrap(
+    'import { BorderBeam } from "@/components/base/border-beam/border-beam";\nimport { Card } from "@/components/base/card/card";',
+    `<BorderBeam className="w-full max-w-md rounded-2xl">
+  <Card className="relative z-10 w-full" variant="soft">
+    <p className="text-body-medium text-text-primary">Showcase tile</p>
+    <p className="mt-1 text-body-regular text-text-secondary">Border light for landing / AI cards.</p>
+  </Card>
+</BorderBeam>`,
+  ),
+  marquee: wrap(
+    'import { Chip } from "@/components/base/badges/chip";\nimport { Marquee } from "@/components/base/marquee/marquee";',
+    `<Marquee className="w-full max-w-xl py-2" duration={18}>
+  <Chip color="soft">React</Chip>
+  <Chip color="soft">Tailwind</Chip>
+  <Chip color="soft">React Aria</Chip>
+  <Chip color="soft">JoyUI</Chip>
+  <Chip color="soft">MCP</Chip>
+  <Chip color="soft">Charts</Chip>
+</Marquee>`,
+  ),
+  "number-ticker": wrap(
+    'import { NumberTicker } from "@/components/base/number-ticker/number-ticker";',
+    `<div className="flex w-full max-w-md items-end gap-8">
+  <div>
+    <p className="text-caption-1-medium text-text-secondary">Transfers</p>
+    <NumberTicker value={1280} suffix="+" className="text-title-1-semibold" startOnView={false} />
+  </div>
+  <div>
+    <p className="text-caption-1-medium text-text-secondary">Uptime</p>
+    <NumberTicker value={99.9} precision={1} suffix="%" className="text-title-1-semibold" startOnView={false} />
+  </div>
+</div>`,
+  ),
   radio: wrap(
     'import { Radio, RadioGroup } from "@/components/base/radio/radio";',
     `<RadioGroup aria-label="计划" defaultValue="pro">

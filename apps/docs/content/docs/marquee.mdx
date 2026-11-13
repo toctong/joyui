@@ -1,0 +1,39 @@
+---
+title: "跑马灯"
+description: "无限横向滚动条，适合 Logo 墙、标签带与口碑条。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+HeroUI / beUI 落地页常见的社会证明条：内容复制两份无缝循环，可悬停暂停，边缘可淡出。
+
+<ComponentDocPreview slug="marquee" />
+
+## 安装
+
+```bash
+npx @joyui/cli add marquee --yes
+```
+
+整库：
+
+```tsx
+import { Chip, Marquee } from "@joyui/react";
+
+<Marquee pauseOnHover>
+  <Chip color="soft">React</Chip>
+  <Chip color="soft">Tailwind</Chip>
+  <Chip color="soft">React Aria</Chip>
+</Marquee>
+```
+
+## 应用场景
+
+- 合作品牌 Logo 墙  
+- 技术栈 / 集成标签带  
+- 短评滚动  
+
+## API
+
+<DocApiSection slug="marquee" />

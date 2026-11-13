@@ -1,0 +1,35 @@
+---
+title: "数字跳动"
+description: "进入视口后滚动到目标值的 KPI 数字。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+Bencho Rolling counter 一类的指标动效：轻量、无第三方动画库，支持前后缀与小数位。
+
+<ComponentDocPreview slug="number-ticker" />
+
+## 安装
+
+```bash
+npx @joyui/cli add number-ticker --yes
+```
+
+整库：
+
+```tsx
+import { NumberTicker } from "@joyui/react";
+
+<NumberTicker value={1280} suffix="+" className="text-title-1-semibold" />
+```
+
+## 应用场景
+
+- 仪表盘 KPI  
+- 落地页数据证明  
+- 用量 / 额度摘要  
+
+## API
+
+<DocApiSection slug="number-ticker" />

@@ -1023,3 +1023,83 @@ input[type="search"]::-webkit-search-cancel-button {
     box-shadow: inset 0 0 0 2px var(--color-border-button-hover);
   }
 }
+
+/* BorderBeam — soft accent light that rides the border via masked conic spin. */
+@keyframes bui-border-beam {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bui-border-beam-glow {
+  border-radius: inherit;
+  padding: var(--bui-border-beam-width, 1.5px);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+.bui-border-beam-glow::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 62%,
+    var(--bui-border-beam-from, var(--color-accent-300)) 72%,
+    var(--bui-border-beam-color, var(--color-accent-500)) 82%,
+    transparent 92%
+  );
+  animation: bui-border-beam var(--bui-border-beam-duration, 8s) linear infinite;
+  animation-delay: var(--bui-border-beam-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-border-beam-glow::before {
+    animation: none;
+    transform: rotate(28deg);
+    opacity: 0.7;
+  }
+}
+
+/* Marquee — infinite horizontal strip. */
+@keyframes bui-marquee {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -100% 0;
+  }
+}
+
+.bui-marquee-track {
+  animation: bui-marquee var(--bui-marquee-duration, 28s) linear infinite;
+  will-change: translate;
+}
+
+.bui-marquee-reverse {
+  animation-direction: reverse;
+}
+
+.bui-marquee-pause:hover .bui-marquee-track {
+  animation-play-state: paused;
+}
+
+.bui-marquee-fade {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bui-marquee-track {
+    animation: none;
+  }
+}

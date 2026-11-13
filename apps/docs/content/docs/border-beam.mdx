@@ -1,0 +1,37 @@
+---
+title: "边框光束"
+description: "沿卡片描边游走的柔光，适合落地页与 AI 展位。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+借鉴 [Libraries.dev](https://libraries.dev/) Border beam：把一点动效叠在已有 `Card` / 面板上，不改内容结构。
+
+<ComponentDocPreview slug="border-beam" />
+
+## 安装
+
+```bash
+npx @joyui/cli add border-beam --yes
+```
+
+整库：
+
+```tsx
+import { BorderBeam, Card } from "@joyui/react";
+
+<BorderBeam className="rounded-2xl">
+  <Card className="relative z-10">Showcase tile</Card>
+</BorderBeam>
+```
+
+## 应用场景
+
+- 落地页英雄旁的功能磁贴  
+- Agent / 模型切换器高亮  
+- 定价卡「推荐」方案  
+
+## API
+
+<DocApiSection slug="border-beam" />

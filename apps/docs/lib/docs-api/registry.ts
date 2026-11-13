@@ -181,11 +181,6 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
       ],
     },
   ),
-  "data-table": entry("DataTable", [
-    { name: "data", description: "行数据。", type: "T[]", options: "—", defaultValue: "—" },
-    { name: "columns", description: "列定义。", type: "ColumnDef<T>[]", options: "—", defaultValue: "—" },
-    { name: "pageSize", description: "分页大小。", type: "number", options: "—", defaultValue: "—" },
-  ]),
   composer: entry(
     "Composer",
     [
@@ -325,6 +320,31 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "width", description: "模块宽 px。", type: "number", options: "—", defaultValue: "2" },
     { name: "displayValue", description: "是否显示文字。", type: "boolean", options: "true · false", defaultValue: "true" },
     { name: "lineColor", description: "条色。", type: "string", options: "CSS colour", defaultValue: "currentColor" },
+  ]),
+  "border-beam": entry("BorderBeam", [
+    { name: "borderWidth", description: "描边厚度。", type: "number", options: "px", defaultValue: "1.5" },
+    { name: "duration", description: "一圈时长。", type: "number", options: "秒", defaultValue: "8" },
+    { name: "delay", description: "启动延迟。", type: "number", options: "秒", defaultValue: "0" },
+    { name: "color", description: "光束主色。", type: "string", options: "CSS colour", defaultValue: "accent-500" },
+    { name: "colorFrom", description: "光束尾色。", type: "string", options: "CSS colour", defaultValue: "accent-300" },
+    { name: "children", description: "被包裹的内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  marquee: entry("Marquee", [
+    { name: "duration", description: "一整圈时长。", type: "number", options: "秒", defaultValue: "28" },
+    { name: "reverse", description: "反向滚动。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "pauseOnHover", description: "悬停暂停。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "fade", description: "两端淡出。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "repeat", description: "内容复制次数（≥2）。", type: "number", options: "—", defaultValue: "2" },
+    { name: "children", description: "滚动内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "number-ticker": entry("NumberTicker", [
+    { name: "value", description: "目标数值。", type: "number", options: "—", defaultValue: "—" },
+    { name: "from", description: "起始值。", type: "number", options: "—", defaultValue: "0" },
+    { name: "duration", description: "动画时长。", type: "number", options: "ms", defaultValue: "1400" },
+    { name: "precision", description: "小数位。", type: "number", options: "—", defaultValue: "0" },
+    { name: "prefix / suffix", description: "前后缀。", type: "string", options: "—", defaultValue: '""' },
+    { name: "startOnView", description: "进入视口后开始。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "locale", description: "数字本地化。", type: "string", options: "BCP 47", defaultValue: "运行时" },
   ]),
   "data-table": entry(
     "DataTable",

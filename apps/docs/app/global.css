@@ -19,3 +19,55 @@ html {
     padding: 1.5rem;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Docs sidebar — denser nav, clearer section labels, status badges that
+ * pin to the trailing edge (HeroUI / beUI / Libraries.dev style).
+ * --------------------------------------------------------------------------- */
+#nd-sidebar,
+#nd-sidebar-mobile {
+  --joy-docs-nav-gap: 0.125rem;
+}
+
+#nd-sidebar [data-viewport] > div > div,
+#nd-sidebar-mobile [data-viewport] > div > div {
+  gap: var(--joy-docs-nav-gap);
+}
+
+#nd-sidebar a[data-active="true"],
+#nd-sidebar-mobile a[data-active="true"] {
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-fd-primary) 18%, transparent);
+}
+
+#nd-sidebar a,
+#nd-sidebar-mobile a {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  gap: 0.5rem;
+}
+
+#nd-sidebar p,
+#nd-sidebar-mobile p {
+  margin-top: 1.25rem;
+  margin-bottom: 0.375rem;
+  padding-inline: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-fd-muted-foreground);
+  opacity: 0.85;
+}
+
+#nd-sidebar p:first-child,
+#nd-sidebar-mobile p:first-child {
+  margin-top: 0;
+}
+
+/* Status badge sits flush right next to the title */
+#nd-sidebar a [data-status],
+#nd-sidebar-mobile a [data-status] {
+  margin-inline-start: auto;
+}

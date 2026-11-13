@@ -43,6 +43,7 @@ import { Avatar } from "@/components/base/avatar/avatar";
 import { Badge } from "@/components/base/badges/badge";
 import { Chip } from "@/components/base/badges/chip";
 import { Barcode } from "@/components/base/barcode/barcode";
+import { BorderBeam } from "@/components/base/border-beam/border-beam";
 import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
 import { Button } from "@/components/base/buttons/button";
 import { ButtonGroup, ButtonGroupItem } from "@/components/base/buttons/button-group";
@@ -70,11 +71,13 @@ import { InputOtp } from "@/components/base/input-otp/input-otp";
 import { Input } from "@/components/base/input/input";
 import { Kbd } from "@/components/base/kbd/kbd";
 import { List, ListItem } from "@/components/base/list/list";
+import { Marquee } from "@/components/base/marquee/marquee";
 import { MediaCard } from "@/components/base/media-card/media-card";
 import { Meter } from "@/components/base/meter/meter";
 import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@/components/base/modal/modal";
 import { Notification } from "@/components/base/notification/notification";
 import { NumberField } from "@/components/base/number-field/number-field";
+import { NumberTicker } from "@/components/base/number-ticker/number-ticker";
 import { PageHeader } from "@/components/base/page-header/page-header";
 import { Pagination } from "@/components/base/pagination/pagination";
 import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
@@ -191,6 +194,17 @@ function Preview_barcode() {
       <Barcode value="MH-2026-0312" format="CODE128" />
       <Barcode value="5901234123457" format="EAN13" height={48} />
     </div>
+  );
+}
+
+function Preview_border_beam() {
+  return (
+    <BorderBeam className="w-full max-w-md rounded-2xl">
+      <Card className="relative z-10 w-full" variant="soft">
+        <p className="text-body-medium text-text-primary">Showcase tile</p>
+        <p className="mt-1 text-body-regular text-text-secondary">Border light for landing / AI cards.</p>
+      </Card>
+    </BorderBeam>
   );
 }
 
@@ -555,6 +569,19 @@ function Preview_list() {
   );
 }
 
+function Preview_marquee() {
+  return (
+    <Marquee className="w-full max-w-xl py-2" duration={18}>
+      <Chip color="soft">React</Chip>
+      <Chip color="soft">Tailwind</Chip>
+      <Chip color="soft">React Aria</Chip>
+      <Chip color="soft">JoyUI</Chip>
+      <Chip color="soft">MCP</Chip>
+      <Chip color="soft">Charts</Chip>
+    </Marquee>
+  );
+}
+
 function Preview_media_card() {
   return (
     <div className="grid w-full max-w-sm grid-cols-2 gap-4">
@@ -616,6 +643,21 @@ function Preview_notification_center() {
 function Preview_number_field() {
   return (
     <NumberField label="数量" defaultValue={3} minValue={0} />
+  );
+}
+
+function Preview_number_ticker() {
+  return (
+    <div className="flex w-full max-w-md items-end gap-8">
+      <div>
+        <p className="text-caption-1-medium text-text-secondary">Transfers</p>
+        <NumberTicker value={1280} suffix="+" className="text-title-1-semibold" startOnView={false} />
+      </div>
+      <div>
+        <p className="text-caption-1-medium text-text-secondary">Uptime</p>
+        <NumberTicker value={99.9} precision={1} suffix="%" className="text-title-1-semibold" startOnView={false} />
+      </div>
+    </div>
   );
 }
 
@@ -985,6 +1027,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "badge": Preview_badge,
   "bar-list-card": Preview_bar_list_card,
   "barcode": Preview_barcode,
+  "border-beam": Preview_border_beam,
   "breadcrumb": Preview_breadcrumb,
   "button": Preview_button,
   "button-group": Preview_button_group,
@@ -1025,6 +1068,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "line-chart-card": Preview_line_chart_card,
   "link-button": Preview_link_button,
   "list": Preview_list,
+  "marquee": Preview_marquee,
   "media-card": Preview_media_card,
   "meter": Preview_meter,
   "modal": Preview_modal,
@@ -1032,6 +1076,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "notification": Preview_notification,
   "notification-center": Preview_notification_center,
   "number-field": Preview_number_field,
+  "number-ticker": Preview_number_ticker,
   "orders-chart-card": Preview_orders_chart_card,
   "page-header": Preview_page_header,
   "pagination": Preview_pagination,
