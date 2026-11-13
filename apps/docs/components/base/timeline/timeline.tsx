@@ -33,11 +33,7 @@ const tones = sortCx({
 
 export function Timeline({ className, ref, children, ...props }: TimelineProps) {
   return (
-    <ul
-      ref={ref}
-      className={cx("flex flex-col", className)}
-      {...props}
-    >
+    <ul ref={ref} className={cx("flex flex-col", className)} {...props}>
       {children}
     </ul>
   );
@@ -56,18 +52,23 @@ export function TimelineItem({
   return (
     <li
       ref={ref}
-      className={cx("group/item relative flex gap-3 pb-5 last:pb-0", className)}
+      className={cx(
+        "relative flex gap-3 pb-5 last:pb-0",
+        // Rail under the dot; hide on the last row (valid Tailwind, no arbitrary : in []).
+        "before:pointer-events-none before:absolute before:start-[7px] before:top-5 before:bottom-0 before:w-px before:bg-border-secondary-default before:content-['']",
+        "last:before:hidden",
+        className,
+      )}
       {...props}
     >
-      <div className="relative flex w-4 shrink-0 justify-center">
-        <span
-          aria-hidden
-          className="absolute top-5 bottom-0 w-px bg-border-secondary-default group-last/item:hidden"
-        />
+      <div className="relative z-10 flex w-4 shrink-0 justify-center">
         {indicator ?? (
           <span
             aria-hidden
-            className={cx("mt-1.5 size-2.5 rounded-full ring-4 ring-background-primary-default", tones[tone])}
+            className={cx(
+              "mt-1.5 size-2.5 rounded-full ring-4 ring-background-primary-default",
+              tones[tone],
+            )}
           />
         )}
       </div>
