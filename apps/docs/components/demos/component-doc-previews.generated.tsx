@@ -2,7 +2,7 @@
 "use client";
 
 import type { ReactElement } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AdminDashboard } from "@/components/application/admin/admin-dashboard";
 import { AuthCard } from "@/components/application/auth/auth-card";
 import { ComposerLoader } from "@/components/application/composer-loader/composer-loader";
@@ -60,11 +60,14 @@ import { ColorPicker } from "@/components/base/color-picker/color-picker";
 import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
 import { CommandPalette, CommandPaletteItem, CommandPaletteSection } from "@/components/base/command-palette/command-palette";
 import { ContextMenu, ContextMenuItem, ContextMenuTrigger } from "@/components/base/context-menu/context-menu";
+import { ContextMeter } from "@/components/base/context-meter/context-meter";
 import { CopyButton } from "@/components/base/copy-button/copy-button";
+import { CopyField } from "@/components/base/copy-field/copy-field";
 import { DateCalendar } from "@/components/base/date-picker/date-calendar";
 import { DatePicker } from "@/components/base/date-picker/date-picker";
 import { DescriptionItem, DescriptionList } from "@/components/base/description-list/description-list";
 import { Divider } from "@/components/base/divider/divider";
+import { DotLoader } from "@/components/base/dot-loader/dot-loader";
 import { Drawer, DrawerBody, DrawerHeader, DrawerTrigger } from "@/components/base/drawer/drawer";
 import { Dropdown, DropdownItem, DropdownPopover, DropdownTrigger } from "@/components/base/dropdown/dropdown";
 import { EmptyState } from "@/components/base/empty-state/empty-state";
@@ -74,6 +77,7 @@ import { InputOtp } from "@/components/base/input-otp/input-otp";
 import { Input } from "@/components/base/input/input";
 import { Kbd } from "@/components/base/kbd/kbd";
 import { List, ListItem } from "@/components/base/list/list";
+import { Magnetic } from "@/components/base/magnetic/magnetic";
 import { Marquee } from "@/components/base/marquee/marquee";
 import { MediaCard } from "@/components/base/media-card/media-card";
 import { Meter } from "@/components/base/meter/meter";
@@ -90,11 +94,13 @@ import { QrCode } from "@/components/base/qr-code/qr-code";
 import { Radio, RadioGroup } from "@/components/base/radio/radio";
 import { Rating } from "@/components/base/rating/rating";
 import { RelativeTime } from "@/components/base/relative-time/relative-time";
+import { ScrollProgress } from "@/components/base/scroll-progress/scroll-progress";
 import { SearchField } from "@/components/base/search-field/search-field";
 import { SectionHeader } from "@/components/base/section-header/section-header";
 import { SegmentedControl, SegmentedControlItem } from "@/components/base/segmented-control/segmented-control";
 import { Select, SelectItem } from "@/components/base/select/select";
 import { Skeleton } from "@/components/base/skeleton/skeleton";
+import { SlideToConfirm } from "@/components/base/slide-to-confirm/slide-to-confirm";
 import { Slider } from "@/components/base/slider/slider";
 import { SocialButton } from "@/components/base/social-button/social-button";
 import { Spinner } from "@/components/base/spinner/spinner";
@@ -112,6 +118,7 @@ import { Timeline, TimelineItem } from "@/components/base/timeline/timeline";
 import { Toaster, toast } from "@/components/base/toast/toast";
 import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
 import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
+import { TypingText } from "@/components/base/typing-text/typing-text";
 import { RiAddLine, RiMailLine } from "@remixicon/react";
 import { parseColor } from "react-aria-components";
 
@@ -404,6 +411,21 @@ function Preview_context_menu() {
   );
 }
 
+function Preview_context_meter() {
+  return (
+    <ContextMeter
+      className="w-full max-w-md"
+      capacity={100}
+      segments={[
+        { id: "system", label: "System", value: 12, tone: "neutral" },
+        { id: "tools", label: "Tools", value: 18, tone: "info" },
+        { id: "files", label: "Files", value: 22, tone: "warning" },
+        { id: "chat", label: "Chat", value: 28, tone: "accent" },
+      ]}
+    />
+  );
+}
+
 function Preview_contributions_card() {
   return (
     <ContributionsCard />
@@ -416,6 +438,12 @@ function Preview_copy_button() {
       <Input label="分享链接" value="https://pan.quark.cn/s/demo" isReadOnly />
       <CopyButton value="https://pan.quark.cn/s/demo" size="medium" />
     </div>
+  );
+}
+
+function Preview_copy_field() {
+  return (
+    <CopyField label="分享链接" value="https://www.joyui.top/docs" className="w-full max-w-md" />
   );
 }
 
@@ -474,6 +502,16 @@ function Preview_description_list() {
 function Preview_divider() {
   return (
     <Divider />
+  );
+}
+
+function Preview_dot_loader() {
+  return (
+    <div className="flex items-center gap-6">
+      <DotLoader size="sm" />
+      <DotLoader />
+      <DotLoader size="lg" />
+    </div>
   );
 }
 
@@ -613,6 +651,19 @@ function Preview_list() {
         trailing={<Chip color="neutral" variant="subtle">off</Chip>}
       />
     </List>
+  );
+}
+
+function Preview_magnetic() {
+  return (
+    <div className="flex items-center gap-6 py-6">
+      <Magnetic>
+        <Button>靠近我</Button>
+      </Magnetic>
+      <Magnetic strength={18}>
+        <Button variant="secondary">更强磁吸</Button>
+      </Magnetic>
+    </div>
   );
 }
 
@@ -829,6 +880,23 @@ function Preview_scatter_chart_card() {
   );
 }
 
+function Preview_scroll_progress() {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div className="relative h-48 w-full max-w-md overflow-hidden rounded-2xl border border-border-secondary-default">
+      <ScrollProgress target={ref} className="absolute" />
+      <div ref={ref} className="h-full overflow-y-auto p-4 text-body-regular text-text-secondary">
+        <p className="mb-3 text-body-medium text-text-primary">滚动此区域</p>
+        {Array.from({ length: 16 }, (_, i) => (
+          <p key={i} className="mb-2">
+            段落 {i + 1} — JoyUI scroll progress demo content for long reading surfaces.
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Preview_search_field() {
   return (
     <SearchField aria-label="搜索" placeholder="搜索组件…" />
@@ -896,6 +964,12 @@ function Preview_skeleton() {
 function Preview_sleep_score_card() {
   return (
     <SleepScoreCard />
+  );
+}
+
+function Preview_slide_to_confirm() {
+  return (
+    <SlideToConfirm label="滑动确认删除" confirmedLabel="已删除" />
   );
 }
 
@@ -1093,6 +1167,12 @@ function Preview_tree_view() {
   );
 }
 
+function Preview_typing_text() {
+  return (
+    <TypingText text="Build products you're proud to ship." className="text-title-2-semibold" />
+  );
+}
+
 function Preview_web_search() {
   return (
     <WebSearch />
@@ -1135,14 +1215,17 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "composer-loader": Preview_composer_loader,
   "composer-panel": Preview_composer_panel,
   "context-menu": Preview_context_menu,
+  "context-meter": Preview_context_meter,
   "contributions-card": Preview_contributions_card,
   "copy-button": Preview_copy_button,
+  "copy-field": Preview_copy_field,
   "data-grid": Preview_data_grid,
   "data-table": Preview_data_table,
   "date-calendar": Preview_date_calendar,
   "date-picker": Preview_date_picker,
   "description-list": Preview_description_list,
   "divider": Preview_divider,
+  "dot-loader": Preview_dot_loader,
   "drawer": Preview_drawer,
   "dropdown": Preview_dropdown,
   "earnings-chart-card": Preview_earnings_chart_card,
@@ -1158,6 +1241,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "line-chart-card": Preview_line_chart_card,
   "link-button": Preview_link_button,
   "list": Preview_list,
+  "magnetic": Preview_magnetic,
   "marquee": Preview_marquee,
   "media-card": Preview_media_card,
   "meter": Preview_meter,
@@ -1182,6 +1266,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "revenue-chart-card": Preview_revenue_chart_card,
   "sankey-chart-card": Preview_sankey_chart_card,
   "scatter-chart-card": Preview_scatter_chart_card,
+  "scroll-progress": Preview_scroll_progress,
   "search-field": Preview_search_field,
   "section-header": Preview_section_header,
   "segmented-control": Preview_segmented_control,
@@ -1190,6 +1275,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "sidebar": Preview_sidebar,
   "skeleton": Preview_skeleton,
   "sleep-score-card": Preview_sleep_score_card,
+  "slide-to-confirm": Preview_slide_to_confirm,
   "slider": Preview_slider,
   "social-button": Preview_social_button,
   "spinner": Preview_spinner,
@@ -1211,5 +1297,6 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "toast": Preview_toast,
   "tooltip": Preview_tooltip,
   "tree-view": Preview_tree_view,
+  "typing-text": Preview_typing_text,
   "web-search": Preview_web_search,
 };

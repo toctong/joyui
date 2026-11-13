@@ -154,6 +154,69 @@ export function Example() {
   <RelativeTime date={Date.now() - 86_400_000 * 3} />
 </div>`,
   ),
+  "slide-to-confirm": wrap(
+    'import { SlideToConfirm } from "@/components/base/slide-to-confirm/slide-to-confirm";',
+    `<SlideToConfirm label="滑动确认删除" confirmedLabel="已删除" />`,
+  ),
+  magnetic: wrap(
+    'import { Button } from "@/components/base/buttons/button";\nimport { Magnetic } from "@/components/base/magnetic/magnetic";',
+    `<div className="flex items-center gap-6 py-6">
+  <Magnetic>
+    <Button>靠近我</Button>
+  </Magnetic>
+  <Magnetic strength={18}>
+    <Button variant="secondary">更强磁吸</Button>
+  </Magnetic>
+</div>`,
+  ),
+  "dot-loader": wrap(
+    'import { DotLoader } from "@/components/base/dot-loader/dot-loader";',
+    `<div className="flex items-center gap-6">
+  <DotLoader size="sm" />
+  <DotLoader />
+  <DotLoader size="lg" />
+</div>`,
+  ),
+  "typing-text": wrap(
+    'import { TypingText } from "@/components/base/typing-text/typing-text";',
+    `<TypingText text="Build products you're proud to ship." className="text-title-2-semibold" />`,
+  ),
+  "copy-field": wrap(
+    'import { CopyField } from "@/components/base/copy-field/copy-field";',
+    `<CopyField label="分享链接" value="https://www.joyui.top/docs" className="w-full max-w-md" />`,
+  ),
+  "context-meter": wrap(
+    'import { ContextMeter } from "@/components/base/context-meter/context-meter";',
+    `<ContextMeter
+  className="w-full max-w-md"
+  capacity={100}
+  segments={[
+    { id: "system", label: "System", value: 12, tone: "neutral" },
+    { id: "tools", label: "Tools", value: 18, tone: "info" },
+    { id: "files", label: "Files", value: 22, tone: "warning" },
+    { id: "chat", label: "Chat", value: 28, tone: "accent" },
+  ]}
+/>`,
+  ),
+  "scroll-progress": `import { useRef } from "react";
+import { ScrollProgress } from "@/components/base/scroll-progress/scroll-progress";
+
+export function Example() {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div className="relative h-48 w-full max-w-md overflow-hidden rounded-2xl border border-border-secondary-default">
+      <ScrollProgress target={ref} className="absolute" />
+      <div ref={ref} className="h-full overflow-y-auto p-4 text-body-regular text-text-secondary">
+        <p className="mb-3 text-body-medium text-text-primary">滚动此区域</p>
+        {Array.from({ length: 16 }, (_, i) => (
+          <p key={i} className="mb-2">
+            段落 {i + 1} — JoyUI scroll progress demo content for long reading surfaces.
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}`,
   card: wrap(
     'import { Card } from "@/components/base/card/card";',
     `<Card className="w-full max-w-md" variant="soft">

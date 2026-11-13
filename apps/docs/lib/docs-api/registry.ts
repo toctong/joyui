@@ -382,6 +382,47 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "refreshMs", description: "刷新间隔。", type: "number", options: "ms", defaultValue: "60000" },
     { name: "showAbsoluteTitle", description: "title 显示绝对时间。", type: "boolean", options: "true · false", defaultValue: "true" },
   ]),
+  "slide-to-confirm": entry("SlideToConfirm", [
+    { name: "label", description: "未确认文案。", type: "string", options: "—", defaultValue: '"滑动确认"' },
+    { name: "confirmedLabel", description: "确认后文案。", type: "string", options: "—", defaultValue: '"已确认"' },
+    { name: "threshold", description: "触发确认的行程比例。", type: "number", options: "0–1", defaultValue: "0.92" },
+    { name: "onConfirm", description: "确认回调。", type: "() => void", options: "—", defaultValue: "—" },
+    { name: "resetMs", description: "确认后复位；0 保持。", type: "number", options: "ms", defaultValue: "1600" },
+    { name: "disabled", description: "禁用。", type: "boolean", options: "true · false", defaultValue: "false" },
+  ]),
+  magnetic: entry("Magnetic", [
+    { name: "strength", description: "最大吸力位移。", type: "number", options: "px", defaultValue: "12" },
+    { name: "radius", description: "生效半径。", type: "number", options: "px", defaultValue: "80" },
+    { name: "children", description: "被磁吸的内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "dot-loader": entry("DotLoader", [
+    { name: "size", description: "圆点尺寸。", type: '"sm" | "md" | "lg"', options: "sm · md · lg", defaultValue: "md" },
+    { name: "aria-label", description: "无障碍名称。", type: "string", options: "—", defaultValue: '"Loading"' },
+  ]),
+  "typing-text": entry("TypingText", [
+    { name: "text", description: "完整文案。", type: "string", options: "—", defaultValue: "—" },
+    { name: "speed", description: "每字间隔。", type: "number", options: "ms", defaultValue: "42" },
+    { name: "delay", description: "开始延迟。", type: "number", options: "ms", defaultValue: "0" },
+    { name: "loop", description: "循环打字/删除。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "caret", description: "显示光标。", type: "boolean", options: "true · false", defaultValue: "true" },
+  ]),
+  "copy-field": entry("CopyField", [
+    { name: "value", description: "字段值。", type: "string", options: "—", defaultValue: "—" },
+    { name: "isReadOnly", description: "只读。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "label", description: "标签（透传 Input）。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "onCopied", description: "复制成功回调。", type: "(value: string) => void", options: "—", defaultValue: "—" },
+  ]),
+  "context-meter": entry("ContextMeter", [
+    { name: "segments", description: "分段占用。", type: "ContextMeterSegment[]", options: "—", defaultValue: "—" },
+    { name: "capacity", description: "总容量。", type: "number", options: "—", defaultValue: "100" },
+    { name: "warnAt", description: "告警阈值。", type: "number", options: "0–1", defaultValue: "0.7" },
+    { name: "showLegend", description: "显示图例。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "action", description: "右侧操作。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "scroll-progress": entry("ScrollProgress", [
+    { name: "target", description: "滚动容器 ref；默认 window。", type: "RefObject<HTMLElement>", options: "—", defaultValue: "window" },
+    { name: "height", description: "条高度。", type: "number", options: "px", defaultValue: "2" },
+  ]),
   "data-table": entry(
     "DataTable",
     [
