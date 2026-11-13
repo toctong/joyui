@@ -5,7 +5,7 @@ import { NavBrand } from "@/components/foundations/brand/logo";
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: NavBrand,
+      title: <NavBrand />,
       url: "/",
     },
     i18n: false,

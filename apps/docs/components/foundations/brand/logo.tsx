@@ -1,6 +1,4 @@
-import type { ComponentProps } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { cx } from "@/utils/cx";
 
 /**
@@ -87,21 +85,22 @@ export function ProLogo({
   );
 }
 
-/** Compact nav title: mark + wordmark for fumadocs `nav.title`. */
+/**
+ * Compact nav title: mark + wordmark for fumadocs `nav.title`.
+ * Pass as a ReactNode (not a function) so Server → Client layouts can serialize it.
+ * Fumadocs wraps this in its own link.
+ */
 export function NavBrand({
   className,
   size = 22,
-  href = "/",
-  ...props
-}: ComponentProps<"a"> & { size?: number }) {
+}: {
+  className?: string;
+  size?: number;
+}) {
   return (
-    <Link
-      href={href ?? "/"}
-      className={cx("inline-flex items-center gap-2", className)}
-      {...props}
-    >
+    <span className={cx("inline-flex items-center gap-2", className)}>
       <Logo size={size} />
       <span className="tracking-tight">JoyUI</span>
-    </Link>
+    </span>
   );
 }
