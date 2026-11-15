@@ -1429,6 +1429,27 @@ export const CATALOG: JoyComponent[] = [
     "registryDependencies": []
   },
   {
+    "name": "sidebar",
+    "title": "Sidebar",
+    "description": "Sidebar component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "Sidebar",
+      "SidebarHeader",
+      "SidebarContent",
+      "SidebarFooter",
+      "SidebarBrand",
+      "SidebarCollapseButton",
+      "SidebarSection",
+      "SidebarItem",
+      "SidebarNav"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
     "name": "skeleton",
     "title": "Skeleton",
     "description": "Skeleton component from @joyui/react.",

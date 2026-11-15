@@ -22,21 +22,35 @@ function wrap(importLine, body) {
   return `${importLine}\n\n${body}`;
 }
 
-/** Resolve `@/…` imports under apps/docs; return null if the file is missing. */
+/** Resolve `@/…` imports under apps/docs or packages/ui (tsconfig path maps). */
 function resolveAliasImport(from) {
   if (!from.startsWith("@/")) return true; // package imports — assume ok
   const rel = from.slice(2);
-  const base = path.resolve(docsRoot, rel);
-  const candidates = [
-    base,
-    `${base}.tsx`,
-    `${base}.ts`,
-    `${base}.jsx`,
-    `${base}.js`,
-    path.join(base, "index.tsx"),
-    path.join(base, "index.ts"),
-  ];
-  return candidates.some((p) => fs.existsSync(p));
+  const pkgUi = path.resolve(docsRoot, "../../packages/ui/src");
+  const roots = [docsRoot, pkgUi];
+  // Docs maps @/components/{base,application,foundations}/* → packages/ui
+  const remapped = rel
+    .replace(/^components\/base\//, "components/base/")
+    .replace(/^components\/application\//, "components/application/")
+    .replace(/^components\/foundations\//, "components/foundations/")
+    .replace(/^utils\//, "utils/")
+    .replace(/^hooks\//, "hooks/");
+  for (const root of roots) {
+    for (const candidateRel of [rel, remapped]) {
+      const base = path.resolve(root, candidateRel);
+      const candidates = [
+        base,
+        `${base}.tsx`,
+        `${base}.ts`,
+        `${base}.jsx`,
+        `${base}.js`,
+        path.join(base, "index.tsx"),
+        path.join(base, "index.ts"),
+      ];
+      if (candidates.some((p) => fs.existsSync(p))) return true;
+    }
+  }
+  return false;
 }
 
 function snippetImportsExist(source) {
@@ -1248,12 +1262,43 @@ export function Example() {
     </>
   );
 }`,
-  sidebar: wrap(
-    'import { DashboardSidebar } from "@/components/application/dashboard/dashboard-sidebar";',
-    `<div className="mx-auto w-full max-w-[280px]">
-  <DashboardSidebar fluid showThemeToggle={false} className="h-auto" />
-</div>`,
-  ),
+  sidebar: `import { useState } from "react";
+import {
+  Sidebar,
+  SidebarBrand,
+  SidebarCollapseButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+} from "@/components/application/sidebar/sidebar";
+import { RiHomeLine, RiSettings4Line, RiSparklingLine } from "@remixicon/react";
+
+export function Example() {
+  const [selected, setSelected] = useState("home");
+  return (
+    <div className="mx-auto w-full max-w-[280px]">
+      <Sidebar variant="floating" className="h-[440px]">
+        <SidebarHeader>
+          <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+          <SidebarCollapseButton />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarNav
+            items={[{ key: "home", label: "概览", icon: RiHomeLine, badge: 3 }]}
+            selected={selected}
+            onSelect={setSelected}
+          />
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarItem icon={RiSettings4Line} label="设置" />
+        </SidebarFooter>
+      </Sidebar>
+    </div>
+  );
+}`,
+
   "stat-cards": wrap(
     'import { StatCards } from "@/components/application/dashboard/stat-cards";',
     `<StatCards />`,

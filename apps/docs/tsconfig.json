@@ -67,6 +67,9 @@
       "@/components/application/notification-center/*": [
         "../../packages/ui/src/components/application/notification-center/*"
       ],
+      "@/components/application/sidebar/*": [
+        "../../packages/ui/src/components/application/sidebar/*"
+      ],
       "@/components/application/settings/*": [
         "../../packages/ui/src/components/application/settings/*"
       ],

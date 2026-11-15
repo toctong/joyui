@@ -57,6 +57,7 @@ export { SettingsProfile } from "./components/application/settings/settings-prof
 export { SettingsCard, SettingsSectionLabel, SettingsRow, SettingsValueField } from "./components/application/settings/settings-rows";
 export { SettingsStorage } from "./components/application/settings/settings-storage";
 export { SettingsTools } from "./components/application/settings/settings-tools";
+export { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarBrand, SidebarCollapseButton, SidebarSection, SidebarItem, SidebarNav } from "./components/application/sidebar/sidebar";
 export { ThemeToggle } from "./components/application/theme/theme-toggle";
 export { WebSearch } from "./components/application/web-search/web-search";
 export { Accordion, AccordionItem } from "./components/base/accordion/accordion";
@@ -215,6 +216,7 @@ export type { DataGridColumn, DataGridProps } from "./components/application/dat
 export type { DataTableColumn, DataTableProps } from "./components/application/data-table/data-table-view";
 export type { NotificationCenterTab, NotificationCenterCategory, NotificationCenterStatus, NotificationCenterAction, NotificationCenterItem, NotificationCenterProps } from "./components/application/notification-center/notification-center";
 export type { SettingsPage, SettingsModalProps } from "./components/application/settings/settings-modal";
+export type { SidebarVariant, SidebarProps, SidebarItemProps, SidebarNavItem } from "./components/application/sidebar/sidebar";
 export type { ThemeMode, ThemeToggleProps } from "./components/application/theme/theme-toggle";
 export type { WebSearchSource, WebSearchStep } from "./components/application/web-search/web-search";
 export type { AccordionVariant, AccordionProps, AccordionItemProps } from "./components/base/accordion/accordion";

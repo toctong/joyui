@@ -14,7 +14,16 @@ import { AreaChartCard } from "@/components/application/dashboard/area-chart-car
 import { BarListCard } from "@/components/application/dashboard/bar-list-card";
 import { ComboChartCard } from "@/components/application/dashboard/combo-chart-card";
 import { ContributionsCard } from "@/components/application/dashboard/contributions-card";
-import { DashboardSidebar } from "@/components/application/dashboard/dashboard-sidebar";
+import {
+  Sidebar,
+  SidebarBrand,
+  SidebarCollapseButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+} from "@/components/application/sidebar/sidebar";
 import { EarningsChartCard } from "@/components/application/dashboard/earnings-chart-card";
 import { FunnelChartCard } from "@/components/application/dashboard/funnel-chart-card";
 import { HeatmapChartCard } from "@/components/application/dashboard/heatmap-chart-card";
@@ -152,7 +161,14 @@ import { TreeViewFiles, TreeViewFilesFile, TreeViewFilesFolder } from "@/compone
 import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
 import { TypingText } from "@/components/base/typing-text/typing-text";
 import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
-import { RiAddLine, RiMailLine, RiMicLine } from "@remixicon/react";
+import {
+  RiAddLine,
+  RiHomeLine,
+  RiMailLine,
+  RiMicLine,
+  RiSettings4Line,
+  RiSparklingLine,
+} from "@remixicon/react";
 import { parseColor } from "react-aria-components";
 
 function Preview_accordion() {
@@ -1331,9 +1347,25 @@ function Preview_settings_modal() {
 }
 
 function Preview_sidebar() {
+  const [selected, setSelected] = useState("home");
   return (
     <div className="mx-auto w-full max-w-[280px]">
-      <DashboardSidebar fluid showThemeToggle={false} className="h-auto" />
+      <Sidebar variant="floating" className="h-[440px]">
+        <SidebarHeader>
+          <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+          <SidebarCollapseButton />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarNav
+            items={[{ key: "home", label: "概览", icon: RiHomeLine, badge: 3 }]}
+            selected={selected}
+            onSelect={setSelected}
+          />
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarItem icon={RiSettings4Line} label="设置" />
+        </SidebarFooter>
+      </Sidebar>
     </div>
   );
 }

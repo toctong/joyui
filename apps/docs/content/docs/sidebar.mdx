@@ -1,11 +1,16 @@
 ---
 title: "侧边栏"
-description: "浮动仪表盘侧栏：团队菜单、导航与账户。"
+description: "可组合侧栏：floating / inset / rail / grouped，以及完整仪表盘模板。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  DocsSidebarVariantsPreview,
+  DocsDashboardSidebarPreview,
+} from "@/components/demos/sidebar-docs";
 import { DocApiSection } from "@/components/docs-api-section";
 
-浮动仪表盘侧栏：团队菜单、导航与账户。
+可组合侧栏壳：`Sidebar` + `SidebarHeader` / `Content` / `Footer` + `SidebarItem`。  
+另提供完整仪表盘模板 `DashboardSidebar`（搜索、主题、团队菜单）。
 
 <ComponentDocPreview slug="sidebar" />
 
@@ -16,20 +21,92 @@ pnpm add @joyui/react
 ```
 
 ```tsx
-import { /* … */ } from "@joyui/react";
+import {
+  Sidebar,
+  SidebarBrand,
+  SidebarCollapseButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+  SidebarSection,
+} from "@joyui/react";
 ```
 
-主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add sidebar --yes`。
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。
 
+## 形态
 
+四种常用形态：浮动卡片、贴边、图标栏、分组导航。点击项可切换选中态；floating / grouped 可折叠。
 
-## 应用场景
+<DocsSidebarVariantsPreview />
 
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
+## 基础用法
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+```tsx
+import { useState } from "react";
+import {
+  Sidebar,
+  SidebarBrand,
+  SidebarCollapseButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+} from "@joyui/react";
+import { RiHomeLine, RiSettings4Line, RiSparklingLine } from "@remixicon/react";
+
+export function Example() {
+  const [selected, setSelected] = useState("home");
+  return (
+    <Sidebar variant="floating" className="h-[440px]">
+      <SidebarHeader>
+        <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+        <SidebarCollapseButton />
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarNav
+          items={[
+            { key: "home", label: "概览", icon: RiHomeLine, badge: 3 },
+          ]}
+          selected={selected}
+          onSelect={setSelected}
+        />
+      </SidebarContent>
+      <SidebarFooter>
+        <SidebarItem icon={RiSettings4Line} label="设置" />
+      </SidebarFooter>
+    </Sidebar>
+  );
+}
+```
+
+## variant
+
+| 值 | 说明 |
+|----|------|
+| `floating` | 圆角卡片 + 阴影（默认） |
+| `inset` | 贴边，右侧分隔线 |
+| `rail` | 60px 图标栏（默认折叠） |
+
+折叠时 floating 会收成 rail 宽度；inset 保持贴边样式只收窄。
+
+## 仪表盘模板
+
+带 Quick Search、主题切换、团队卡片的完整侧栏（`DashboardSidebar`）。
+
+<div className="mx-auto w-full max-w-[280px]">
+  <DocsDashboardSidebarPreview />
+</div>
+
+```tsx
+import { DashboardSidebar } from "@joyui/react";
+
+<DashboardSidebar items={nav} selected="overview" />
+```
 
 ## API
 
 <DocApiSection slug="sidebar" />
-

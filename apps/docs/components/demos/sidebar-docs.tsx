@@ -1,14 +1,208 @@
 "use client";
 
+import { useState, type ReactNode } from "react";
+import {
+  RiBarChartBoxLine,
+  RiFileList3Line,
+  RiGroupLine,
+  RiHomeLine,
+  RiSettings4Line,
+  RiSparklingLine,
+} from "@remixicon/react";
+import {
+  Sidebar,
+  SidebarBrand,
+  SidebarCollapseButton,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+  SidebarSection,
+  type SidebarNavItem,
+} from "@/components/application/sidebar/sidebar";
+import { Avatar } from "@/components/base/avatar/avatar";
 import { DashboardSidebar } from "@/components/application/dashboard/dashboard-sidebar";
 import { cx } from "@/utils/cx";
 
-/**
- * Docs preview — in-flow, height follows content. The landing `SidebarPreview`
- * uses absolute + fixed `h-[732px]` + hover-scroll for the gallery card; inside
- * DemoFrame that left a tall empty canvas and a clipped nav.
- */
+const PRIMARY: SidebarNavItem[] = [
+  { key: "home", label: "概览", icon: RiHomeLine, badge: 3 },
+  { key: "team", label: "团队", icon: RiGroupLine },
+  { key: "docs", label: "文档", icon: RiFileList3Line },
+  { key: "insights", label: "洞察", icon: RiBarChartBoxLine },
+];
+
+function Frame({
+  label,
+  children,
+  className,
+}: {
+  label: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cx("flex flex-col gap-2", className)}>
+      <p className="text-caption-1-medium text-text-tertiary">{label}</p>
+      <div className="h-[420px] overflow-hidden rounded-2xl border border-separator-border bg-background-full p-3">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** Default docs hero — floating composable sidebar. */
 export function DocsSidebarPreview({ className }: { className?: string }) {
+  const [selected, setSelected] = useState("home");
+  return (
+    <div className={cx("mx-auto w-full max-w-[280px]", className)}>
+      <Sidebar variant="floating" className="h-[440px]">
+        <SidebarHeader>
+          <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+          <SidebarCollapseButton />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarNav
+            items={PRIMARY}
+            selected={selected}
+            onSelect={setSelected}
+          />
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarItem icon={RiSettings4Line} label="设置" />
+          <div className="flex items-center gap-2 rounded-2xl bg-background-tertiary-default p-2">
+            <Avatar size="sm" initials="LX" color="blue" />
+            <div className="min-w-0">
+              <p className="truncate text-body-2-medium text-text-primary">
+                刘晓迪
+              </p>
+              <p className="truncate text-caption-1-regular text-text-tertiary">
+                Admin
+              </p>
+            </div>
+          </div>
+        </SidebarFooter>
+      </Sidebar>
+    </div>
+  );
+}
+
+export function DocsSidebarVariantsPreview() {
+  const [selected, setSelected] = useState("home");
+  return (
+    <div className="grid w-full gap-4 lg:grid-cols-2">
+      <Frame label="floating · 可折叠">
+        <Sidebar variant="floating" className="h-full">
+          <SidebarHeader>
+            <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+            <SidebarCollapseButton />
+          </SidebarHeader>
+          <SidebarContent>
+            <SidebarNav
+              items={PRIMARY}
+              selected={selected}
+              onSelect={setSelected}
+            />
+          </SidebarContent>
+          <SidebarFooter>
+            <SidebarItem icon={RiSettings4Line} label="设置" />
+          </SidebarFooter>
+        </Sidebar>
+      </Frame>
+
+      <Frame label="inset · 贴边">
+        <div className="flex h-full overflow-hidden rounded-xl border border-separator-border bg-background-full">
+          <Sidebar variant="inset" className="h-full">
+            <SidebarHeader>
+              <SidebarBrand icon={RiSparklingLine} label="Workspace" />
+            </SidebarHeader>
+            <SidebarContent>
+              <SidebarNav
+                items={PRIMARY}
+                selected={selected}
+                onSelect={setSelected}
+              />
+            </SidebarContent>
+            <SidebarFooter>
+              <SidebarItem icon={RiSettings4Line} label="设置" />
+            </SidebarFooter>
+          </Sidebar>
+          <div className="flex flex-1 items-center justify-center text-body-regular text-text-tertiary">
+            主内容区
+          </div>
+        </div>
+      </Frame>
+
+      <Frame label="rail · 图标栏">
+        <Sidebar variant="rail" className="h-full">
+          <SidebarHeader>
+            <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+          </SidebarHeader>
+          <SidebarContent>
+            <SidebarNav
+              items={PRIMARY}
+              selected={selected}
+              onSelect={setSelected}
+            />
+          </SidebarContent>
+          <SidebarFooter>
+            <SidebarItem icon={RiSettings4Line} label="设置" />
+          </SidebarFooter>
+        </Sidebar>
+      </Frame>
+
+      <Frame label="grouped · 分组导航">
+        <Sidebar variant="floating" className="h-full">
+          <SidebarHeader>
+            <SidebarBrand icon={RiSparklingLine} label="Console" />
+            <SidebarCollapseButton />
+          </SidebarHeader>
+          <SidebarContent>
+            <SidebarSection title="工作区">
+              <SidebarItem
+                icon={RiHomeLine}
+                label="概览"
+                selected={selected === "home"}
+                onClick={() => setSelected("home")}
+                badge={3}
+              />
+              <SidebarItem
+                icon={RiGroupLine}
+                label="团队"
+                selected={selected === "team"}
+                onClick={() => setSelected("team")}
+              />
+            </SidebarSection>
+            <SidebarSection title="洞察">
+              <SidebarItem
+                icon={RiBarChartBoxLine}
+                label="报表"
+                selected={selected === "insights"}
+                onClick={() => setSelected("insights")}
+              />
+              <SidebarItem
+                icon={RiFileList3Line}
+                label="文档"
+                selected={selected === "docs"}
+                onClick={() => setSelected("docs")}
+              />
+            </SidebarSection>
+          </SidebarContent>
+          <SidebarFooter>
+            <SidebarItem icon={RiSettings4Line} label="设置" />
+          </SidebarFooter>
+        </Sidebar>
+      </Frame>
+    </div>
+  );
+}
+
+/** Full dashboard chrome (search / team / theme) — existing template. */
+export function DocsDashboardSidebarPreview({
+  className,
+}: {
+  className?: string;
+}) {
   return (
     <div className={cx("mx-auto w-full max-w-[280px]", className)}>
       <DashboardSidebar fluid showThemeToggle={false} className="h-auto" />

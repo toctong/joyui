@@ -118,6 +118,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `segmented-control` | base | `SegmentedControl, SegmentedControlItem` | `@joyui/react` |
 | `select` | base | `Select, SelectItem` | `@joyui/react` |
 | `settings-modal` | application | `SettingsGeneral, SettingsModal, SettingsProfile, SettingsCard, …` | `@joyui/react` |
+| `sidebar` | application | `Sidebar, SidebarHeader, SidebarContent, SidebarFooter, …` | `@joyui/react` |
 | `skeleton` | base | `Skeleton, SkeletonText` | `@joyui/react` |
 | `slide-to-confirm` | base | `SlideToConfirm` | `@joyui/react` |
 | `slider` | base | `Slider, RangeSlider` | `@joyui/react` |
