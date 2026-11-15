@@ -5,7 +5,9 @@
   "title": "Scroll Progress",
   "description": "Scroll Progress component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/scroll-progress/scroll-progress.tsx",

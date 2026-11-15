@@ -5,7 +5,9 @@
   "title": "Thinking Orbs",
   "description": "Thinking Orbs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/thinking-orbs/thinking-orbs.tsx",

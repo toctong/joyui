@@ -32,10 +32,10 @@ function buildHeatmap(seed: number) {
 
 const LEVEL_CLASS = [
   "bg-background-tertiary-default",
-  "bg-purple-200",
-  "bg-purple-300",
-  "bg-purple-400",
-  "bg-purple-500",
+  "bg-heatmap-1",
+  "bg-heatmap-2",
+  "bg-heatmap-3",
+  "bg-heatmap-4",
 ] as const;
 
 const MONTHS = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];

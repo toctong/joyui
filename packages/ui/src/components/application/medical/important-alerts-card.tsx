@@ -36,7 +36,7 @@ type Alert = { icon: IconComponent; iconBg: string; title: string; description: 
 const ALERTS: Alert[] = [
   {
     icon: RiHeartPulseFill,
-    iconBg: "bg-rose-600",
+    iconBg: "bg-notification-error-foreground",
     title: "High Heart rate",
     description:
       "Your heart rate rose above 120 BPM while you seemed to be inactive for 10 minutes starting at 8:59 AM, 12 June.",
@@ -44,35 +44,35 @@ const ALERTS: Alert[] = [
   },
   {
     icon: RiAsterisk,
-    iconBg: "bg-amber-400",
+    iconBg: "bg-status-orange-text",
     title: "Medical ID",
     description: "Your emergency contact and allergy information was updated in your Medical ID.",
     date: "June, 9",
   },
   {
     icon: RiTestTubeFill,
-    iconBg: "bg-emerald-500",
+    iconBg: "bg-chart-7-active",
     title: "Lab results ready",
     description: "Your latest blood panel ordered by Dr. Mattheus Clarkson is back — cholesterol and glucose are within the normal range.",
     date: "June, 9",
   },
   {
     icon: RiCapsuleFill,
-    iconBg: "bg-blue-400",
+    iconBg: "bg-chart-6",
     title: "Medication reminder",
     description: "You missed your 9:00 AM dose of Metoprolol. Take it as soon as possible unless your next dose is near.",
     date: "June, 8",
   },
   {
     icon: RiMoonClearFill,
-    iconBg: "bg-purple-400",
+    iconBg: "bg-chart-5",
     title: "Irregular sleep",
     description: "Your bedtime shifted by more than 2 hours on 3 of the last 7 nights, which can affect your sleep score.",
     date: "June, 6",
   },
   {
     icon: RiLungsFill,
-    iconBg: "bg-teal-400",
+    iconBg: "bg-chart-1",
     title: "Low blood oxygen",
     description: "Your blood oxygen dipped to 93% for a short period during sleep on the night of 4 June.",
     date: "June, 5",
@@ -122,7 +122,7 @@ export function ImportantAlertsCard({ className }: { className?: string } = {}) 
               className="relative flex w-full shrink-0 flex-col gap-2 rounded-2lg bg-background-inner-default p-2.5"
             >
               <span className={cx("flex size-8 shrink-0 items-center justify-center rounded-full", alert.iconBg)}>
-                <alert.icon className="size-[18px] text-white" aria-hidden />
+                <alert.icon className="size-[18px] text-text-white" aria-hidden />
               </span>
               <div className="flex flex-col gap-0.5">
                 <p className="text-body-medium whitespace-nowrap text-text-primary">{alert.title}</p>

@@ -5,7 +5,9 @@
   "title": "Typing Text",
   "description": "Typing Text component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/typing-text/typing-text.tsx",

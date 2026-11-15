@@ -5,7 +5,9 @@
   "title": "Media Card Landscape",
   "description": "Media Card Landscape component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/media-card-landscape/media-card-landscape.tsx",

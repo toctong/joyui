@@ -27,9 +27,9 @@ const styles = sortCx({
     indigo: "bg-status-dot-indigo-halo",
   },
   dot: {
-    green: "bg-green-500",
-    yellow: "bg-yellow-500",
-    indigo: "bg-indigo-500",
+    green: "bg-status-dot-green",
+    yellow: "bg-status-dot-yellow",
+    indigo: "bg-status-dot-indigo",
   },
 });
 

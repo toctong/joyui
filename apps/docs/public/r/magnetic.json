@@ -5,7 +5,9 @@
   "title": "Magnetic",
   "description": "Magnetic component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/magnetic/magnetic.tsx",

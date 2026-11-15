@@ -5,7 +5,9 @@
   "title": "Media Card Hover",
   "description": "Media Card Hover component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/media-card-hover/media-card-hover.tsx",

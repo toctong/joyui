@@ -357,6 +357,16 @@
   --color-status-dot-green-halo:    var(--color-green-100);
   --color-status-dot-yellow-halo:   var(--color-yellow-200);
   --color-status-dot-indigo-halo:   var(--color-indigo-100);
+  --color-status-dot-green:         var(--color-green-500);
+  --color-status-dot-yellow:        var(--color-yellow-500);
+  --color-status-dot-indigo:        var(--color-indigo-500);
+  --color-status-presence-online:   var(--color-lime-500);
+  --color-status-presence-busy:     var(--color-rose-500);
+  --color-badge-count:              var(--color-red-600);
+  --color-heatmap-1:                var(--color-purple-200);
+  --color-heatmap-2:                var(--color-purple-300);
+  --color-heatmap-3:                var(--color-purple-400);
+  --color-heatmap-4:                var(--color-purple-500);
 
   /* Date range selection: the connecting band and its start/end caps. */
   --color-date-range-background:      var(--color-accent-100);
@@ -598,6 +608,16 @@
   --color-status-dot-green-halo:    color-mix(in srgb, var(--color-green-800) 40%, transparent);
   --color-status-dot-yellow-halo:   color-mix(in srgb, var(--color-yellow-800) 40%, transparent);
   --color-status-dot-indigo-halo:   color-mix(in srgb, var(--color-indigo-800) 40%, transparent);
+  --color-status-dot-green:         var(--color-green-500);
+  --color-status-dot-yellow:        var(--color-yellow-500);
+  --color-status-dot-indigo:        var(--color-indigo-400);
+  --color-status-presence-online:   var(--color-lime-500);
+  --color-status-presence-busy:     var(--color-rose-500);
+  --color-badge-count:              var(--color-red-500);
+  --color-heatmap-1:                color-mix(in srgb, var(--color-purple-800) 50%, transparent);
+  --color-heatmap-2:                var(--color-purple-700);
+  --color-heatmap-3:                var(--color-purple-500);
+  --color-heatmap-4:                var(--color-purple-400);
 
   --color-date-range-background:                  var(--color-accent-900);
   --color-date-range-edge-background:   var(--color-accent-600);
@@ -800,6 +820,16 @@
   --color-status-dot-green-halo:    var(--color-status-dot-green-halo);
   --color-status-dot-yellow-halo:   var(--color-status-dot-yellow-halo);
   --color-status-dot-indigo-halo:   var(--color-status-dot-indigo-halo);
+  --color-status-dot-green:         var(--color-status-dot-green);
+  --color-status-dot-yellow:        var(--color-status-dot-yellow);
+  --color-status-dot-indigo:        var(--color-status-dot-indigo);
+  --color-status-presence-online:   var(--color-status-presence-online);
+  --color-status-presence-busy:     var(--color-status-presence-busy);
+  --color-badge-count:              var(--color-badge-count);
+  --color-heatmap-1:                var(--color-heatmap-1);
+  --color-heatmap-2:                var(--color-heatmap-2);
+  --color-heatmap-3:                var(--color-heatmap-3);
+  --color-heatmap-4:                var(--color-heatmap-4);
   --color-date-range-background:      var(--color-date-range-background);
   --color-date-range-edge-background: var(--color-date-range-edge-background);
   --color-calendar-event-blue-background:    var(--color-calendar-event-blue-background);

@@ -5,7 +5,9 @@
   "title": "Model Select",
   "description": "Model Select component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/model-select/model-select.tsx",

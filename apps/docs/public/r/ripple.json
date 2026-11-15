@@ -5,7 +5,9 @@
   "title": "Ripple",
   "description": "Ripple component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/ripple/ripple.tsx",

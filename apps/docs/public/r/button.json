@@ -5,7 +5,9 @@
   "title": "Button",
   "description": "Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/buttons/button-group.tsx",

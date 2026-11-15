@@ -5,7 +5,9 @@
   "title": "Dot Loader",
   "description": "Dot Loader component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/dot-loader/dot-loader.tsx",

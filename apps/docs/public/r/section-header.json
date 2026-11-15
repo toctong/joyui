@@ -5,7 +5,9 @@
   "title": "Section Header",
   "description": "Section Header component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/section-header/section-header.tsx",

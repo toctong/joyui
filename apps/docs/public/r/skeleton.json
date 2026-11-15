@@ -5,7 +5,9 @@
   "title": "Skeleton",
   "description": "Skeleton component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/skeleton/skeleton.tsx",

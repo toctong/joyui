@@ -63,7 +63,7 @@ const SERVERS: Record<string, McpServer> = {
     id: "figma",
     name: "Figma",
     initial: "F",
-    tileClass: "bg-pink-200 text-pink-700",
+    tileClass: "bg-status-rose-background text-status-rose-text",
     status: "connected",
     summary: "26 tools, 1 prompts, 104 resources enabled",
     tools: ["get_design_context", "get_metadata", "get_screenshot", "get_variable_defs", "create_new_file"],
@@ -72,14 +72,14 @@ const SERVERS: Record<string, McpServer> = {
     id: "paper",
     name: "paper",
     initial: "P",
-    tileClass: "bg-blue-200 text-blue-700",
+    tileClass: "bg-status-blue-background text-status-blue-text",
     status: "error",
   },
   posthog: {
     id: "posthog",
     name: "posthog",
     initial: "P",
-    tileClass: "bg-amber-200 text-amber-700",
+    tileClass: "bg-status-orange-background text-status-orange-text",
     status: "connected",
     summary: "521 tools, 173 resources enabled",
     tools: ["query_insights", "list_dashboards", "capture_event", "feature_flags", "session_recordings"],
@@ -88,7 +88,7 @@ const SERVERS: Record<string, McpServer> = {
     id: "vercel",
     name: "vercel",
     initial: "V",
-    tileClass: "bg-neutral-950 text-white",
+    tileClass: "bg-background-full text-text-white",
     status: "connected",
     summary: "30 tools, 13 prompts enabled",
     tools: ["list_deployments", "get_build_logs", "promote_deployment", "env_variables"],
@@ -128,7 +128,9 @@ function ServerTile({ server }: { server: McpServer }) {
         aria-hidden
         className={cx(
           "absolute -bottom-0.5 -start-0.5 size-2.5 rounded-full ring-2 ring-background-secondary-default",
-          server.status === "connected" ? "bg-green-500" : "bg-red-600",
+          server.status === "connected"
+            ? "bg-status-dot-green"
+            : "bg-badge-count",
         )}
       />
     </span>

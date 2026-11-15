@@ -5,7 +5,9 @@
   "title": "Media Card",
   "description": "Media Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/media-card/media-card.tsx",

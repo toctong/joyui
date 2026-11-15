@@ -185,13 +185,13 @@ export function MostActiveDaysCard({ className }: { className?: string }) {
           July {selected}, {DEMO_YEAR} 的活动
         </p>
         <div className="flex flex-wrap gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 py-1 text-body-2-medium text-rose-600 dark:bg-rose-950/40 dark:text-rose-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-status-rose-background px-2.5 py-1 text-body-2-medium text-status-rose-text">
             Move · 816 kcal
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-50 px-2.5 py-1 text-body-2-medium text-lime-700 dark:bg-lime-950/40 dark:text-lime-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-status-lime-background px-2.5 py-1 text-body-2-medium text-status-lime-text">
             Exercise · 1h 41m
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan-50 px-2.5 py-1 text-body-2-medium text-cyan-700 dark:bg-cyan-950/40 dark:text-cyan-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-status-cyan-background px-2.5 py-1 text-body-2-medium text-status-cyan-text">
             Stand · 5.2 km
           </span>
         </div>

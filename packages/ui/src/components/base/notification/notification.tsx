@@ -147,8 +147,8 @@ const styles = sortCx({
       "bg-notification-error-background text-notification-error-foreground",
   },
   presence: {
-    online: "bg-lime-500",
-    busy: "bg-rose-500",
+    online: "bg-status-presence-online",
+    busy: "bg-status-presence-busy",
     offline: "bg-background-quaternary-hover",
   },
 });

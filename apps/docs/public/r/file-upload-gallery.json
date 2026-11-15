@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "File Upload Gallery",
   "description": "File Upload Gallery component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/file-upload-gallery/file-upload-gallery.tsx",

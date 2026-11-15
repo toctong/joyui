@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const pkgRoot = path.join(root, "packages/ui");
+const srcRoot = path.join(pkgRoot, "src");
 const catalog = JSON.parse(
   fs.readFileSync(path.join(root, "packages/cli/src/catalog.json"), "utf8"),
 );
@@ -40,6 +41,43 @@ const FOLDER_MAP = {
   "template-copy": ["foundations/template-copy"],
 };
 
+/** First path segment under components/{layer}/ → catalog name */
+const FOLDER_TO_NAME = {
+  buttons: "button",
+  badges: "badge",
+  admin: "admin-dashboard",
+  theme: "theme-toggle",
+  auth: "auth-card",
+  settings: "settings-modal",
+  "app-shell": "notification-bell",
+  "data-table": "data-table",
+  "data-grid": "data-grid",
+  composer: "composer",
+  "composer-loader": "composer",
+  "composer-panel": "composer",
+};
+
+const NPM_DEP_RULES = [
+  [/@tanstack\/react-table/, "@tanstack/react-table"],
+  [/from\s+["']recharts["']/, "recharts"],
+  [/from\s+["']motion\/react["']/, "motion"],
+  [/from\s+["']jsbarcode["']/, "jsbarcode"],
+  [/from\s+["']qrcode["']/, "qrcode"],
+  [/from\s+["']tippy\.js["']/, "tippy.js"],
+  [/from\s+["']@tiptap\/react["']/, "@tiptap/react"],
+  [/from\s+["']@tiptap\/starter-kit["']/, "@tiptap/starter-kit"],
+  [/from\s+["']@tiptap\/extension-mention["']/, "@tiptap/extension-mention"],
+  [/from\s+["']@tiptap\/extension-placeholder["']/, "@tiptap/extension-placeholder"],
+  [/from\s+["']@tiptap\/suggestion["']/, "@tiptap/suggestion"],
+  [/from\s+["']@tiptap\/pm/, "@tiptap/pm"],
+  [/from\s+["']dayjs/, "dayjs"],
+  [/from\s+["']@remixicon\/react["']/, "@remixicon/react"],
+  [/from\s+["']react-aria-components["']/, "react-aria-components"],
+  [/from\s+["']@internationalized\/date["']/, "@internationalized/date"],
+  [/from\s+["']clsx["']/, "clsx"],
+  [/from\s+["']tailwind-merge["']/, "tailwind-merge"],
+];
+
 function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out;
   for (const name of fs.readdirSync(dir)) {
@@ -59,13 +97,12 @@ function resolveFolders(item) {
 }
 
 function toConsumerPath(absFile) {
-  const rel = path
-    .relative(path.join(pkgRoot, "src"), absFile)
-    .replace(/\\/g, "/");
-  // components/base/buttons/button.tsx → components/ui/button/button.tsx
-  // Keep structure under components/ui for shadcn-like installs
+  const rel = path.relative(srcRoot, absFile).replace(/\\/g, "/");
   if (rel.startsWith("components/")) {
-    return rel.replace(/^components\/(base|application|foundations)\//, "components/ui/");
+    return rel.replace(
+      /^components\/(base|application|foundations)\//,
+      "components/ui/",
+    );
   }
   if (rel.startsWith("lib/")) return rel;
   if (rel.startsWith("utils/")) return `lib/${path.basename(rel)}`;
@@ -73,49 +110,118 @@ function toConsumerPath(absFile) {
   return `components/ui/${path.basename(rel)}`;
 }
 
-function rewriteForConsumer(source) {
-  return source
-    .replaceAll(/from\s+["'](\.\.\/)+utils\/cx["']/g, 'from "@/lib/utils"')
-    .replaceAll(
-      /from\s+["'](\.\.\/)+utils\/directional-icon["']/g,
-      'from "@/lib/directional-icon"',
-    )
-    .replaceAll(
-      /from\s+["'](\.\.\/)+utils\/scroll-direction["']/g,
-      'from "@/lib/scroll-direction"',
-    )
-    .replaceAll(
-      /from\s+["'](\.\.\/)+utils\/use-dismiss-on-outside-press["']/g,
-      'from "@/lib/use-dismiss-on-outside-press"',
-    )
-    .replaceAll(/from\s+["'](\.\.\/)+lib\/utils["']/g, 'from "@/lib/utils"')
-    .replaceAll(/from\s+["'](\.\.\/)+lib\/format["']/g, 'from "@/lib/format"')
-    .replaceAll(
-      /from\s+["'](\.\.\/)+hooks\/([^"']+)["']/g,
-      'from "@/hooks/$2"',
-    )
-    // Sibling / relative component imports → @/components/ui/...
-    .replace(
-      /from\s+["']((?:\.\.\/)+components\/(?:base|application|foundations)\/[^"']+)["']/g,
-      (_m, p) => {
-        const cleaned = p
-          .replace(/^(\.\.\/)+components\/(base|application|foundations)\//, "")
-          .replace(/\.(tsx|ts)$/, "");
-        return `from "@/components/ui/${cleaned}"`;
-      },
+function toAliasFromSrcRel(relToSrc) {
+  const rel = relToSrc.replace(/\.(tsx|ts)$/, "");
+  if (rel.startsWith("utils/")) {
+    const base = path.basename(rel);
+    if (base === "cx") return "@/lib/utils";
+    return `@/lib/${base}`;
+  }
+  if (rel.startsWith("lib/")) return `@/lib/${path.basename(rel)}`;
+  if (rel.startsWith("hooks/")) return `@/hooks/${path.basename(rel)}`;
+  if (rel.startsWith("components/")) {
+    const cleaned = rel.replace(
+      /^components\/(base|application|foundations)\//,
+      "",
     );
+    return `@/components/ui/${cleaned}`;
+  }
+  return null;
+}
+
+function rewriteForConsumer(source, absFile) {
+  return source.replace(
+    /from\s+["']([^"']+)["']/g,
+    (match, spec) => {
+      if (spec.startsWith("@/")) {
+        // Normalize docs-style aliases that may appear if sources ever use them
+        if (spec.startsWith("@/components/base/")) {
+          return `from "${spec.replace("@/components/base/", "@/components/ui/")}"`;
+        }
+        if (spec.startsWith("@/components/application/")) {
+          return `from "${spec.replace("@/components/application/", "@/components/ui/")}"`;
+        }
+        if (spec.startsWith("@/components/foundations/")) {
+          return `from "${spec.replace("@/components/foundations/", "@/components/ui/")}"`;
+        }
+        if (spec.startsWith("@/utils/")) {
+          const base = spec.slice("@/utils/".length);
+          return `from "${base === "cx" ? "@/lib/utils" : `@/lib/${base}`}"`;
+        }
+        return match;
+      }
+      if (!spec.startsWith(".")) return match;
+
+      const resolved = path.resolve(path.dirname(absFile), spec);
+      const relToSrc = path.relative(srcRoot, resolved).replace(/\\/g, "/");
+      if (relToSrc.startsWith("..")) return match;
+      const alias = toAliasFromSrcRel(relToSrc);
+      return alias ? `from "${alias}"` : match;
+    },
+  );
+}
+
+function inferNpmDeps(files) {
+  const deps = new Set();
+  for (const f of files) {
+    for (const [re, pkg] of NPM_DEP_RULES) {
+      if (re.test(f.content)) deps.add(pkg);
+    }
+  }
+  return [...deps].sort();
+}
+
+function catalogNameFromUiImport(importPath) {
+  // @/components/ui/buttons/button → buttons
+  const rest = importPath.replace(/^@\/components\/ui\//, "");
+  const folder = rest.split("/")[0];
+  return FOLDER_TO_NAME[folder] ?? folder;
+}
+
+function inferRegistryDeps(files, selfName) {
+  const deps = new Set();
+  for (const f of files) {
+    for (const m of f.content.matchAll(
+      /from\s+["'](@\/(?:components\/ui|lib|hooks)\/[^"']+)["']/g,
+    )) {
+      const spec = m[1];
+      if (spec.startsWith("@/lib/utils")) deps.add("utils");
+      else if (spec.startsWith("@/lib/format")) deps.add("format");
+      else if (spec.startsWith("@/components/ui/")) {
+        const name = catalogNameFromUiImport(spec);
+        if (name && name !== selfName) deps.add(name);
+      }
+    }
+  }
+  return [...deps].sort();
 }
 
 function collectFiles(item) {
   if (item.name === "utils") {
     const abs = path.join(pkgRoot, "src/lib/utils.ts");
+    const cxAbs = path.join(pkgRoot, "src/utils/cx.ts");
     return [
       {
         path: "lib/utils.ts",
         type: "registry:lib",
         content: fs.readFileSync(abs, "utf8"),
       },
-    ];
+      {
+        path: "lib/cx.ts",
+        type: "registry:lib",
+        content: fs.readFileSync(cxAbs, "utf8"),
+      },
+    ].map((f) =>
+      f.path === "lib/utils.ts"
+        ? {
+            ...f,
+            content: f.content.replace(
+              /from\s+["']\.\.\/utils\/cx["']/,
+              'from "./cx"',
+            ),
+          }
+        : f,
+    );
   }
   if (item.name === "format") {
     const abs = path.join(pkgRoot, "src/lib/format.ts");
@@ -142,7 +248,7 @@ function collectFiles(item) {
       files.push({
         path: consumerPath,
         type: "registry:ui",
-        content: rewriteForConsumer(fs.readFileSync(abs, "utf8")),
+        content: rewriteForConsumer(fs.readFileSync(abs, "utf8"), abs),
       });
     }
   }
@@ -151,16 +257,25 @@ function collectFiles(item) {
 
 const items = catalog.map((c) => {
   const files = collectFiles(c);
+  const catalogDeps = Array.isArray(c.dependencies) ? c.dependencies : [];
+  const npmDeps = [
+    ...new Set([...catalogDeps, ...inferNpmDeps(files)]),
+  ].sort();
+  const regDeps = [
+    ...new Set([
+      ...(Array.isArray(c.registryDependencies) ? c.registryDependencies : []),
+      ...inferRegistryDeps(files, c.name),
+    ]),
+  ].sort();
+
   return {
     name: c.name,
     type: c.type === "lib" ? "registry:lib" : "registry:ui",
     title: c.title,
     description: `${c.description} Prefer npm: pnpm add @joyui/react`,
-    dependencies: c.dependencies,
-    registryDependencies: c.registryDependencies,
-    files: files.map(({ path: p, type }) => ({ path: p, type })),
-    // stash content for build-registry — written next to registry as .content map
-    _contents: files,
+    dependencies: npmDeps,
+    registryDependencies: regDeps,
+    files,
     meta: {
       importFrom: c.importFrom,
       exports: c.exports,
@@ -170,30 +285,21 @@ const items = catalog.map((c) => {
   };
 });
 
-// Write registry without _contents (schema clean)
-const registryItems = items.map(({ _contents, ...rest }) => ({
-  ...rest,
-  files: (_contents ?? []).map((f) => ({
-    path: f.path.replace(/^components\/ui\//, `src/components/`).replace(/^lib\//, "src/lib/"),
-    type: f.type,
-  })),
-}));
-
-// Simpler: store content-ready registry for build-registry
 const contentRegistry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "joyui",
   homepage: "https://joyui.dev",
-  items: items.map(({ _contents, ...rest }) => ({
-    ...rest,
-    files: _contents ?? [],
-  })),
+  items,
 };
 
 const out = path.join(pkgRoot, "registry.json");
 fs.writeFileSync(out, JSON.stringify(contentRegistry, null, 2));
 
 const withFiles = contentRegistry.items.filter((i) => i.files.length > 0).length;
+const stillRelative = contentRegistry.items.filter((i) =>
+  i.files.some((f) => /from\s+["']\.\.\//.test(f.content ?? "")),
+).length;
+
 console.log(
-  `Wrote ${contentRegistry.items.length} registry items (${withFiles} with source files) → ${out}`,
+  `Wrote ${contentRegistry.items.length} registry items (${withFiles} with source files, ${stillRelative} still have ../ imports) → ${out}`,
 );

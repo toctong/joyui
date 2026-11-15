@@ -5,7 +5,9 @@
   "title": "Marquee Paired",
   "description": "Marquee Paired component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/marquee-paired/marquee-paired.tsx",

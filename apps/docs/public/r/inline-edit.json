@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Inline Edit",
   "description": "Inline Edit component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/inline-edit/inline-edit.tsx",

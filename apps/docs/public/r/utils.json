@@ -13,7 +13,12 @@
     {
       "path": "lib/utils.ts",
       "type": "registry:lib",
-      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { cx as mergeCx } from \"../utils/cx\";\n\n/** Merge Tailwind classes the JoyUI way (clsx + typography-aware tailwind-merge). */\nexport function cn(...inputs: ClassValue[]) {\n  return mergeCx(clsx(inputs));\n}\n\n/** Alias used in agent rules / JoyUI docs. */\nexport const cx = cn;\n"
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { cx as mergeCx } from \"./cx\";\n\n/** Merge Tailwind classes the JoyUI way (clsx + typography-aware tailwind-merge). */\nexport function cn(...inputs: ClassValue[]) {\n  return mergeCx(clsx(inputs));\n}\n\n/** Alias used in agent rules / JoyUI docs. */\nexport const cx = cn;\n"
+    },
+    {
+      "path": "lib/cx.ts",
+      "type": "registry:lib",
+      "content": "import { extendTailwindMerge } from \"tailwind-merge\";\r\n\r\n/**\r\n * Text-style classes from styles/typography.css.\r\n *\r\n * IMPORTANT: every text-* utility we define via @theme (e.g. `text-body-medium`,\r\n * `text-title-1-semibold`) must be listed here. Otherwise tailwind-merge — which\r\n * has no view of our Tailwind theme — treats them as text-color utilities and\r\n * silently drops them when they appear in the same className as a real color\r\n * (`text-foreground-full`, `text-text-primary`, etc).\r\n */\r\nconst TEXT_FAMILIES = [\r\n  \"large-title\",\r\n  \"display-1\",\r\n  \"display-2\",\r\n  \"display-3\",\r\n  \"display-4\",\r\n  \"title-1\",\r\n  \"title-2\",\r\n  \"title-3\",\r\n  \"headline\",\r\n  \"body\",\r\n  \"body-2\",\r\n  \"caption-1\",\r\n  \"caption-2\",\r\n] as const;\r\n\r\nconst TEXT_WEIGHTS = [\"regular\", \"medium\", \"semibold\", \"bold\"] as const;\r\n\r\nconst TEXT_STYLE_SUFFIXES = TEXT_FAMILIES.flatMap((family) =>\r\n  TEXT_WEIGHTS.map((weight) => `${family}-${weight}`),\r\n);\r\n\r\nconst twMerge = extendTailwindMerge({\r\n  extend: {\r\n    classGroups: {\r\n      \"font-size\": [{ text: TEXT_STYLE_SUFFIXES }],\r\n    },\r\n  },\r\n});\r\n\r\n/** Merge Tailwind classes safely. Last-write-wins on conflicting utilities. */\r\nexport const cx = twMerge;\r\n\r\n/**\r\n * Identity helper that gives the Tailwind IntelliSense extension a hook for\r\n * sorting classes inside style objects.\r\n */\r\nexport function sortCx<\r\n  T extends Record<\r\n    string,\r\n    string | number | Record<string, string | number | Record<string, string | number>>\r\n  >,\r\n>(classes: T): T {\r\n  return classes;\r\n}\r\n"
     }
   ],
   "meta": {

@@ -25,6 +25,12 @@
       "@/components/foundations/*": [
         "../../packages/ui/src/components/foundations/*"
       ],
+      "@/components/application/app-shell/notification-bell": [
+        "../../packages/ui/src/components/application/app-shell/notification-bell.tsx"
+      ],
+      "@/components/application/app-shell/starter-notifications": [
+        "../../packages/ui/src/components/application/app-shell/starter-notifications.ts"
+      ],
       "@/components/application/admin/*": [
         "../../packages/ui/src/components/application/admin/*"
       ],

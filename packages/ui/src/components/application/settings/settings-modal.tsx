@@ -327,7 +327,7 @@ export function SettingsModal({
           savedPhase === "leaving" && "translate-y-[calc(50%-10px)] opacity-0 scale-90 blur-[2px]",
         )}
       >
-        <RiCheckboxCircleFill className="size-4 shrink-0 text-lime-600" aria-hidden />
+        <RiCheckboxCircleFill className="size-4 shrink-0 text-notification-success-foreground" aria-hidden />
         <span className="text-body-2-medium whitespace-nowrap text-text-primary">Saved</span>
       </div>
       </div>

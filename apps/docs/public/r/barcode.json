@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Barcode",
   "description": "Barcode component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "jsbarcode"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/barcode/barcode.tsx",

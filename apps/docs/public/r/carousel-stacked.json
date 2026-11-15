@@ -5,7 +5,9 @@
   "title": "Carousel Stacked",
   "description": "Carousel Stacked component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/carousel-stacked/carousel-stacked.tsx",

@@ -5,7 +5,9 @@
   "title": "Border Beam",
   "description": "Border Beam component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/border-beam/border-beam.tsx",

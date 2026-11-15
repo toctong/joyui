@@ -5,7 +5,9 @@
   "title": "Text Link",
   "description": "Text Link component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/text-link/text-link.tsx",

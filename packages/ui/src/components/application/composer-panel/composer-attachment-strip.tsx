@@ -158,7 +158,7 @@ function AttachmentTile({
           className={cx(
             "absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-px",
             "text-[10px] font-medium leading-3 whitespace-nowrap text-white tabular-nums",
-            done ? "bg-yellow-400" : "bg-accent-400",
+            done ? "bg-chart-8" : "bg-accent-400",
           )}
         >
           {progress}%

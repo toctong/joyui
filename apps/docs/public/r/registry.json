@@ -8,8 +8,13 @@
       "type": "registry:ui",
       "title": "Accordion",
       "description": "Accordion component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/accordion/accordion.tsx",
@@ -32,8 +37,18 @@
       "type": "registry:ui",
       "title": "Admin Dashboard",
       "description": "Admin Dashboard component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "breadcrumb",
+        "button",
+        "dashboard",
+        "data-table",
+        "notification-bell",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/admin/admin-dashboard.tsx",
@@ -55,8 +70,13 @@
       "type": "registry:ui",
       "title": "Agent Log",
       "description": "Agent Log component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "agent-thinking",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/agent-log/agent-log.tsx",
@@ -83,7 +103,10 @@
       "title": "Agent Thinking",
       "description": "Agent Thinking component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/agent-thinking/agent-thinking.tsx",
@@ -105,8 +128,12 @@
       "type": "registry:ui",
       "title": "Alert",
       "description": "Alert component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/alert/alert.tsx",
@@ -128,8 +155,14 @@
       "type": "registry:ui",
       "title": "Announcement",
       "description": "Announcement component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/announcement/announcement.tsx",
@@ -152,7 +185,9 @@
       "title": "Aspect Ratio",
       "description": "Aspect Ratio component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/aspect-ratio/aspect-ratio.tsx",
@@ -174,8 +209,20 @@
       "type": "registry:ui",
       "title": "Auth Card",
       "description": "Auth Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "direction",
+        "divider",
+        "input",
+        "input-otp",
+        "social-button",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/auth/auth-card.tsx",
@@ -203,7 +250,9 @@
       "title": "Avatar",
       "description": "Avatar component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/avatar/avatar.tsx",
@@ -226,7 +275,10 @@
       "title": "Avatar Group",
       "description": "Avatar Group component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "avatar",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/avatar-group/avatar-group.tsx",
@@ -249,7 +301,9 @@
       "title": "Badge",
       "description": "Badge component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/badges/badge.tsx",
@@ -281,8 +335,12 @@
       "type": "registry:ui",
       "title": "Barcode",
       "description": "Barcode component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "jsbarcode"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/barcode/barcode.tsx",
@@ -305,7 +363,9 @@
       "title": "Border Beam",
       "description": "Border Beam component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/border-beam/border-beam.tsx",
@@ -328,7 +388,9 @@
       "title": "Brand",
       "description": "Brand component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/brand/logo.tsx",
@@ -353,7 +415,10 @@
       "title": "Breadcrumb",
       "description": "Breadcrumb component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "icons",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/breadcrumb/breadcrumb.tsx",
@@ -377,7 +442,9 @@
       "title": "Button",
       "description": "Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/buttons/button-group.tsx",
@@ -423,7 +490,9 @@
       "title": "Card",
       "description": "Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/card/card.tsx",
@@ -445,8 +514,14 @@
       "type": "registry:ui",
       "title": "Carousel",
       "description": "Carousel component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "direction",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/carousel/carousel.tsx",
@@ -469,8 +544,13 @@
       "type": "registry:ui",
       "title": "Carousel Coverflow",
       "description": "Carousel Coverflow component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/carousel-coverflow/carousel-coverflow.tsx",
@@ -492,8 +572,13 @@
       "type": "registry:ui",
       "title": "Carousel Fade",
       "description": "Carousel Fade component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/carousel-fade/carousel-fade.tsx",
@@ -516,7 +601,9 @@
       "title": "Carousel Stacked",
       "description": "Carousel Stacked component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/carousel-stacked/carousel-stacked.tsx",
@@ -538,8 +625,13 @@
       "type": "registry:ui",
       "title": "Carousel Thumbs",
       "description": "Carousel Thumbs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/carousel-thumbs/carousel-thumbs.tsx",
@@ -561,8 +653,12 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "Checkbox component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/checkbox/checkbox-card.tsx",
@@ -594,8 +690,12 @@
       "type": "registry:ui",
       "title": "Citation",
       "description": "Citation component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/citation/citation.tsx",
@@ -617,8 +717,13 @@
       "type": "registry:ui",
       "title": "Collapsible",
       "description": "Collapsible component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/collapsible/collapsible.tsx",
@@ -640,8 +745,14 @@
       "type": "registry:ui",
       "title": "Color Picker",
       "description": "Color Picker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "popover",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/color-picker/color-picker.tsx",
@@ -664,8 +775,18 @@
       "type": "registry:ui",
       "title": "Combobox",
       "description": "Combobox component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "dropdown",
+        "icons",
+        "input",
+        "scroll-fade",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/combobox/combobox.tsx",
@@ -689,8 +810,17 @@
       "type": "registry:ui",
       "title": "Command Palette",
       "description": "Command Palette component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "kbd",
+        "scroll-fade",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/command-palette/command-palette.tsx",
@@ -714,8 +844,21 @@
       "type": "registry:ui",
       "title": "Composer",
       "description": "TipTap-backed composer surfaces. Import from @joyui/react/composer. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "@tiptap/extension-mention",
+        "@tiptap/extension-placeholder",
+        "@tiptap/react",
+        "@tiptap/starter-kit",
+        "@tiptap/suggestion",
+        "motion",
+        "tippy.js"
+      ],
+      "registryDependencies": [
+        "dropdown",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/composer/composer.tsx",
@@ -772,8 +915,17 @@
       "type": "registry:ui",
       "title": "Context Menu",
       "description": "Context Menu component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "dropdown",
+        "scroll-fade",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/context-menu/context-menu.tsx",
@@ -801,7 +953,10 @@
       "title": "Context Meter",
       "description": "Context Meter component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/context-meter/context-meter.tsx",
@@ -823,8 +978,13 @@
       "type": "registry:ui",
       "title": "Copy Button",
       "description": "Copy Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "template-copy"
+      ],
       "files": [
         {
           "path": "components/ui/copy-button/copy-button.tsx",
@@ -847,7 +1007,11 @@
       "title": "Copy Field",
       "description": "Copy Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "copy-button",
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/copy-field/copy-field.tsx",
@@ -869,8 +1033,26 @@
       "type": "registry:ui",
       "title": "Dashboard",
       "description": "Dashboard component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components",
+        "recharts"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "direction",
+        "icons",
+        "kbd",
+        "medical",
+        "segmented-control",
+        "settings-modal",
+        "template-copy",
+        "theme-toggle",
+        "tooltip",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/dashboard/activity-rings-card.tsx",
@@ -1003,8 +1185,22 @@
       "type": "registry:ui",
       "title": "Data Grid",
       "description": "Data Grid component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "motion",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "direction",
+        "dropdown",
+        "input",
+        "segmented-control",
+        "select",
+        "tooltip",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/data-grid/data-grid-utils.ts",
@@ -1030,8 +1226,28 @@
       "type": "registry:ui",
       "title": "Data Table",
       "description": "Data Table component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "@tanstack/react-table",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "checkbox",
+        "dropdown",
+        "empty-state",
+        "icons",
+        "input",
+        "pagination",
+        "segmented-control",
+        "select",
+        "table",
+        "template-copy",
+        "tooltip",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/data-table/data-table-view.tsx",
@@ -1045,8 +1261,7 @@
       "meta": {
         "importFrom": "@joyui/react",
         "exports": [
-          "DataTable",
-          "DataTableExample"
+          "DataTable"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -1058,8 +1273,19 @@
       "type": "registry:ui",
       "title": "Date Picker",
       "description": "Date Picker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@internationalized/date",
+        "@remixicon/react",
+        "motion",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "icons",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/date-picker/date-calendar.tsx",
@@ -1089,12 +1315,7 @@
           "DateRangeCalendar",
           "DatePicker",
           "DateRangePicker",
-          "MeetingScheduler",
-          "ChevronLeft16",
-          "ChevronRight16",
-          "DayCell",
-          "MonthPanel",
-          "DateChipInput"
+          "MeetingScheduler"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -1107,7 +1328,9 @@
       "title": "Description List",
       "description": "Description List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/description-list/description-list.tsx",
@@ -1132,8 +1355,12 @@
       "type": "registry:ui",
       "title": "Direction",
       "description": "Direction component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/direction/direction.tsx",
@@ -1156,7 +1383,9 @@
       "title": "Divider",
       "description": "Divider component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/divider/divider.tsx",
@@ -1179,7 +1408,9 @@
       "title": "Dot Loader",
       "description": "Dot Loader component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/dot-loader/dot-loader.tsx",
@@ -1201,8 +1432,14 @@
       "type": "registry:ui",
       "title": "Drawer",
       "description": "Drawer component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "modal",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/drawer/drawer.tsx",
@@ -1228,8 +1465,15 @@
       "type": "registry:ui",
       "title": "Drawer Form",
       "description": "Drawer Form component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "button",
+        "drawer",
+        "spinner",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/drawer-form/drawer-form.tsx",
@@ -1252,8 +1496,12 @@
       "type": "registry:ui",
       "title": "Dropdown",
       "description": "Dropdown component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/dropdown/dropdown.tsx",
@@ -1284,8 +1532,13 @@
       "type": "registry:ui",
       "title": "Empty State",
       "description": "Empty State component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/empty-state/empty-state.tsx",
@@ -1308,7 +1561,9 @@
       "title": "Empty State Illustrated",
       "description": "Empty State Illustrated component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/empty-state-illustrated/empty-state-illustrated.tsx",
@@ -1330,8 +1585,13 @@
       "type": "registry:ui",
       "title": "Empty State Search",
       "description": "Empty State Search component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/empty-state-search/empty-state-search.tsx",
@@ -1353,8 +1613,13 @@
       "type": "registry:ui",
       "title": "File Upload",
       "description": "File Upload component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/file-upload/file-upload.tsx",
@@ -1376,8 +1641,12 @@
       "type": "registry:ui",
       "title": "File Upload Gallery",
       "description": "File Upload Gallery component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/file-upload-gallery/file-upload-gallery.tsx",
@@ -1400,7 +1669,10 @@
       "title": "Form Field",
       "description": "Form Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/form-field/form-field.tsx",
@@ -1457,7 +1729,9 @@
       "title": "Hover Card",
       "description": "Hover Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/hover-card/hover-card.tsx",
@@ -1480,7 +1754,11 @@
       "title": "Hover Card Profile",
       "description": "Hover Card Profile component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "avatar",
+        "hover-card",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/hover-card-profile/hover-card-profile.tsx",
@@ -1503,7 +1781,10 @@
       "title": "I18n",
       "description": "I18n component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "direction",
+        "template-copy"
+      ],
       "files": [
         {
           "path": "components/ui/i18n/index.ts",
@@ -1534,7 +1815,9 @@
       "title": "Icons",
       "description": "Icons component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/icons/chevrons.tsx",
@@ -1559,8 +1842,12 @@
       "type": "registry:ui",
       "title": "Inline Edit",
       "description": "Inline Edit component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/inline-edit/inline-edit.tsx",
@@ -1582,8 +1869,13 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "Input component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/input/hint-text.tsx",
@@ -1619,7 +1911,9 @@
       "title": "Input Otp",
       "description": "Input Otp component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/input-otp/input-otp.tsx",
@@ -1642,7 +1936,9 @@
       "title": "Kbd",
       "description": "Kbd component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/kbd/kbd.tsx",
@@ -1665,7 +1961,9 @@
       "title": "List",
       "description": "List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/list/list.tsx",
@@ -1689,7 +1987,9 @@
       "title": "Magnetic",
       "description": "Magnetic component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/magnetic/magnetic.tsx",
@@ -1712,7 +2012,9 @@
       "title": "Marquee",
       "description": "Marquee component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/marquee/marquee.tsx",
@@ -1735,7 +2037,9 @@
       "title": "Marquee 3d",
       "description": "Marquee 3d component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/marquee-3d/marquee-3d.tsx",
@@ -1758,7 +2062,9 @@
       "title": "Marquee Paired",
       "description": "Marquee Paired component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/marquee-paired/marquee-paired.tsx",
@@ -1781,7 +2087,9 @@
       "title": "Marquee Vertical",
       "description": "Marquee Vertical component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/marquee-vertical/marquee-vertical.tsx",
@@ -1804,7 +2112,9 @@
       "title": "Media Card",
       "description": "Media Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/media-card/media-card.tsx",
@@ -1827,7 +2137,9 @@
       "title": "Media Card Hover",
       "description": "Media Card Hover component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/media-card-hover/media-card-hover.tsx",
@@ -1850,7 +2162,9 @@
       "title": "Media Card Landscape",
       "description": "Media Card Landscape component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/media-card-landscape/media-card-landscape.tsx",
@@ -1872,8 +2186,16 @@
       "type": "registry:ui",
       "title": "Medical",
       "description": "Medical component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "date-picker",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/medical/important-alerts-card.tsx",
@@ -1905,8 +2227,14 @@
       "type": "registry:ui",
       "title": "Meter",
       "description": "Meter component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "input",
+        "progress",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/meter/meter.tsx",
@@ -1928,8 +2256,18 @@
       "type": "registry:ui",
       "title": "Modal",
       "description": "Modal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "button",
+        "direction",
+        "scroll-fade",
+        "spinner",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/modal/modal.tsx",
@@ -1957,8 +2295,14 @@
       "type": "registry:ui",
       "title": "Modal Sheet",
       "description": "Modal Sheet component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "modal",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/modal-sheet/modal-sheet.tsx",
@@ -1985,7 +2329,9 @@
       "title": "Model Select",
       "description": "Model Select component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/model-select/model-select.tsx",
@@ -2007,8 +2353,16 @@
       "type": "registry:ui",
       "title": "Notification",
       "description": "Notification component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "direction",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/notification/notification.tsx",
@@ -2031,8 +2385,15 @@
       "type": "registry:ui",
       "title": "Notification Bell",
       "description": "Notification Bell component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "button",
+        "notification-center",
+        "template-copy"
+      ],
       "files": [
         {
           "path": "components/ui/app-shell/notification-bell.tsx",
@@ -2058,8 +2419,16 @@
       "type": "registry:ui",
       "title": "Notification Center",
       "description": "Notification Center component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "segmented-control",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/notification-center/notification-center-demo.tsx",
@@ -2073,7 +2442,6 @@
       "meta": {
         "importFrom": "@joyui/react",
         "exports": [
-          "NotificationCenterDemo",
           "NotificationCenter"
         ],
         "npm": "@joyui/react",
@@ -2086,8 +2454,14 @@
       "type": "registry:ui",
       "title": "Number Field",
       "description": "Number Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/number-field/number-field.tsx",
@@ -2110,7 +2484,9 @@
       "title": "Number Ticker",
       "description": "Number Ticker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/number-ticker/number-ticker.tsx",
@@ -2133,7 +2509,9 @@
       "title": "Page Header",
       "description": "Page Header component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/page-header/page-header.tsx",
@@ -2155,8 +2533,14 @@
       "type": "registry:ui",
       "title": "Pagination",
       "description": "Pagination component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/pagination/pagination.tsx",
@@ -2179,7 +2563,9 @@
       "title": "Password Strength",
       "description": "Password Strength component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/password-strength/password-strength.tsx",
@@ -2201,8 +2587,14 @@
       "type": "registry:ui",
       "title": "Popover",
       "description": "Popover component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "tooltip",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/popover/popover.tsx",
@@ -2227,8 +2619,15 @@
       "type": "registry:ui",
       "title": "Progress",
       "description": "Progress component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "input",
+        "spinner",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/progress/progress.tsx",
@@ -2252,8 +2651,12 @@
       "type": "registry:ui",
       "title": "Prompt Suggestions",
       "description": "Prompt Suggestions component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/prompt-suggestions/prompt-suggestions.tsx",
@@ -2275,8 +2678,12 @@
       "type": "registry:ui",
       "title": "Qr Code",
       "description": "Qr Code component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "qrcode"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/qr-code/qr-code.tsx",
@@ -2298,8 +2705,12 @@
       "type": "registry:ui",
       "title": "Radio",
       "description": "Radio component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/radio/radio-card.tsx",
@@ -2328,8 +2739,12 @@
       "type": "registry:ui",
       "title": "Rating",
       "description": "Rating component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/rating/rating.tsx",
@@ -2352,7 +2767,9 @@
       "title": "Rating Emoji",
       "description": "Rating Emoji component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/rating-emoji/rating-emoji.tsx",
@@ -2375,7 +2792,9 @@
       "title": "Relative Time",
       "description": "Relative Time component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/relative-time/relative-time.tsx",
@@ -2398,7 +2817,9 @@
       "title": "Reveal",
       "description": "Reveal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/reveal/reveal.tsx",
@@ -2421,7 +2842,10 @@
       "title": "Reveal Stagger",
       "description": "Reveal Stagger component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "reveal",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/reveal-stagger/reveal-stagger.tsx",
@@ -2444,7 +2868,9 @@
       "title": "Ripple",
       "description": "Ripple component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/ripple/ripple.tsx",
@@ -2467,7 +2893,9 @@
       "title": "Scroll Fade",
       "description": "Scroll Fade component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/scroll-fade/scroll-fade.tsx",
@@ -2490,7 +2918,9 @@
       "title": "Scroll Progress",
       "description": "Scroll Progress component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/scroll-progress/scroll-progress.tsx",
@@ -2512,8 +2942,17 @@
       "type": "registry:ui",
       "title": "Search Field",
       "description": "Search Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "spinner",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/search-field/search-field.tsx",
@@ -2536,7 +2975,9 @@
       "title": "Section Header",
       "description": "Section Header component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/section-header/section-header.tsx",
@@ -2558,8 +2999,13 @@
       "type": "registry:ui",
       "title": "Segmented Control",
       "description": "Segmented Control component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/segmented-control/segmented-control.tsx",
@@ -2582,8 +3028,15 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "Select component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "dropdown",
+        "icons",
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/select/select.tsx",
@@ -2606,8 +3059,29 @@
       "type": "registry:ui",
       "title": "Settings Modal",
       "description": "Settings Modal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@internationalized/date",
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "checkbox",
+        "date-picker",
+        "direction",
+        "dropdown",
+        "file-upload",
+        "icons",
+        "input",
+        "pagination",
+        "select",
+        "switch",
+        "tabs",
+        "template-copy",
+        "tooltip",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/settings/plan-art-flame.tsx",
@@ -2641,7 +3115,6 @@
       "meta": {
         "importFrom": "@joyui/react",
         "exports": [
-          "PlanArtFlame",
           "SettingsGeneral",
           "SettingsModal",
           "SettingsProfile",
@@ -2663,7 +3136,9 @@
       "title": "Skeleton",
       "description": "Skeleton component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/skeleton/skeleton.tsx",
@@ -2686,8 +3161,12 @@
       "type": "registry:ui",
       "title": "Slide To Confirm",
       "description": "Slide To Confirm component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/slide-to-confirm/slide-to-confirm.tsx",
@@ -2709,8 +3188,12 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "Slider component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/slider/slider.tsx",
@@ -2734,7 +3217,9 @@
       "title": "Social Button",
       "description": "Social Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/social-button/social-button.tsx",
@@ -2765,8 +3250,12 @@
       "type": "registry:ui",
       "title": "Spinner",
       "description": "Spinner component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/spinner/spinner.tsx",
@@ -2790,7 +3279,9 @@
       "title": "Spotlight Card",
       "description": "Spotlight Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/spotlight-card/spotlight-card.tsx",
@@ -2813,7 +3304,9 @@
       "title": "Spotlight Card Border",
       "description": "Spotlight Card Border component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/spotlight-card-border/spotlight-card-border.tsx",
@@ -2836,7 +3329,9 @@
       "title": "Spotlight Card Tilt",
       "description": "Spotlight Card Tilt component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/spotlight-card-tilt/spotlight-card-tilt.tsx",
@@ -2858,8 +3353,12 @@
       "type": "registry:ui",
       "title": "Steps",
       "description": "Steps component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/steps/steps.tsx",
@@ -2882,7 +3381,11 @@
       "title": "Steps Wizard",
       "description": "Steps Wizard component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "button",
+        "steps",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/steps-wizard/steps-wizard.tsx",
@@ -2904,8 +3407,12 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "Switch component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/switch/switch-card.tsx",
@@ -2933,8 +3440,13 @@
       "type": "registry:ui",
       "title": "Table",
       "description": "Table component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@tanstack/react-table",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/table/table.tsx",
@@ -2961,8 +3473,13 @@
       "type": "registry:ui",
       "title": "Tabs",
       "description": "Tabs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/tabs/pill-tab.tsx",
@@ -2993,8 +3510,15 @@
       "type": "registry:ui",
       "title": "Tag Group",
       "description": "Tag Group component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "badge",
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/tag-group/tag-group.tsx",
@@ -3017,8 +3541,13 @@
       "type": "registry:ui",
       "title": "Tag Input",
       "description": "Tag Input component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/tag-input/tag-input.tsx",
@@ -3065,7 +3594,9 @@
       "title": "Text Link",
       "description": "Text Link component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/text-link/text-link.tsx",
@@ -3088,7 +3619,9 @@
       "title": "Text Shimmer",
       "description": "Text Shimmer component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/text-shimmer/text-shimmer.tsx",
@@ -3110,8 +3643,13 @@
       "type": "registry:ui",
       "title": "Textarea",
       "description": "Textarea component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/textarea/textarea.tsx",
@@ -3134,8 +3672,15 @@
       "type": "registry:ui",
       "title": "Theme Toggle",
       "description": "Theme Toggle component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "switch",
+        "template-copy",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/theme/theme-toggle.tsx",
@@ -3158,7 +3703,9 @@
       "title": "Thinking Orbs",
       "description": "Thinking Orbs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/thinking-orbs/thinking-orbs.tsx",
@@ -3180,8 +3727,14 @@
       "type": "registry:ui",
       "title": "Time Field",
       "description": "Time Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "input",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/time-field/time-field.tsx",
@@ -3204,7 +3757,9 @@
       "title": "Timeline",
       "description": "Timeline component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/timeline/timeline.tsx",
@@ -3228,7 +3783,9 @@
       "title": "Timeline Horizontal",
       "description": "Timeline Horizontal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/timeline-horizontal/timeline-horizontal.tsx",
@@ -3252,7 +3809,10 @@
       "title": "Toast",
       "description": "Toast component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "notification",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/toast/toast.tsx",
@@ -3274,8 +3834,13 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "Tooltip component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/tooltip/tooltip.tsx",
@@ -3298,8 +3863,16 @@
       "type": "registry:ui",
       "title": "Tree View",
       "description": "Tree View component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "motion",
+        "react-aria-components"
+      ],
+      "registryDependencies": [
+        "direction",
+        "dropdown",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/tree-view/tree-view.tsx",
@@ -3323,8 +3896,13 @@
       "type": "registry:ui",
       "title": "Tree View Files",
       "description": "Tree View Files component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "tree-view",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/tree-view-files/tree-view-files.tsx",
@@ -3349,7 +3927,9 @@
       "title": "Typing Text",
       "description": "Typing Text component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/typing-text/typing-text.tsx",
@@ -3380,6 +3960,10 @@
         {
           "path": "lib/utils.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "lib/cx.ts",
+          "type": "registry:lib"
         }
       ],
       "meta": {
@@ -3399,7 +3983,9 @@
       "title": "Voice Ring",
       "description": "Voice Ring component from @joyui/react. Prefer npm: pnpm add @joyui/react",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/voice-ring/voice-ring.tsx",
@@ -3421,8 +4007,15 @@
       "type": "registry:ui",
       "title": "Web Search",
       "description": "Web Search component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@remixicon/react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "agent-log",
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/web-search/web-search.tsx",

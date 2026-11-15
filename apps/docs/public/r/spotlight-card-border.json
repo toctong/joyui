@@ -5,7 +5,9 @@
   "title": "Spotlight Card Border",
   "description": "Spotlight Card Border component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/spotlight-card-border/spotlight-card-border.tsx",

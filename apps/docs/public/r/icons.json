@@ -5,7 +5,9 @@
   "title": "Icons",
   "description": "Icons component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/icons/chevrons.tsx",

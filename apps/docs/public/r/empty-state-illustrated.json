@@ -5,7 +5,9 @@
   "title": "Empty State Illustrated",
   "description": "Empty State Illustrated component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/empty-state-illustrated/empty-state-illustrated.tsx",

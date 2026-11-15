@@ -5,7 +5,9 @@
   "title": "Number Ticker",
   "description": "Number Ticker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/number-ticker/number-ticker.tsx",

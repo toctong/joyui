@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Direction",
   "description": "Direction component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/direction/direction.tsx",

@@ -5,7 +5,9 @@
   "title": "Marquee",
   "description": "Marquee component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/marquee/marquee.tsx",

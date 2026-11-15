@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Slide To Confirm",
   "description": "Slide To Confirm component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/slide-to-confirm/slide-to-confirm.tsx",

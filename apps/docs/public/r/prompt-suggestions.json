@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Prompt Suggestions",
   "description": "Prompt Suggestions component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/prompt-suggestions/prompt-suggestions.tsx",

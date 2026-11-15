@@ -5,7 +5,9 @@
   "title": "Page Header",
   "description": "Page Header component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/page-header/page-header.tsx",

@@ -5,7 +5,9 @@
   "title": "Description List",
   "description": "Description List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/description-list/description-list.tsx",

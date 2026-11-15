@@ -5,7 +5,9 @@
   "title": "Text Shimmer",
   "description": "Text Shimmer component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/text-shimmer/text-shimmer.tsx",

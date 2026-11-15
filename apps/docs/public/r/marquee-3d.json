@@ -5,7 +5,9 @@
   "title": "Marquee 3d",
   "description": "Marquee 3d component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/marquee-3d/marquee-3d.tsx",

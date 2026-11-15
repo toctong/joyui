@@ -4,8 +4,13 @@
   "type": "registry:ui",
   "title": "Accordion",
   "description": "Accordion component from @joyui/react. Prefer npm: pnpm add @joyui/react",
-  "dependencies": [],
-  "registryDependencies": [],
+  "dependencies": [
+    "@remixicon/react",
+    "react-aria-components"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/accordion/accordion.tsx",

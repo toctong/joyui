@@ -5,7 +5,9 @@
   "title": "Input Otp",
   "description": "Input Otp component from @joyui/react. Prefer npm: pnpm add @joyui/react",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/input-otp/input-otp.tsx",
