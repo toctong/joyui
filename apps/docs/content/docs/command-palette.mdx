@@ -17,8 +17,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add command-palette --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { CommandPalette, CommandPaletteItem, CommandPaletteSection } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add command-palette --yes`。
 
 ## 按钮触发
 
@@ -28,8 +34,8 @@ npx @joyui/cli add command-palette --yes
   fileName="command-palette-trigger.tsx"
   code={`import { useState } from "react";
 import { RiHome5Line } from "@remixicon/react";
-import { Button } from "@/components/base/buttons/button";
-import { CommandPalette, CommandPaletteItem, CommandPaletteSection } from "@/components/base/command-palette/command-palette";
+import { Button } from "@joyui/react";
+import { CommandPalette, CommandPaletteItem, CommandPaletteSection } from "@joyui/react";
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -55,7 +61,7 @@ function Example() {
 
 <DemoFrame
   fileName="command-palette-empty.tsx"
-  code={`import { CommandPalette, CommandPaletteItem } from "@/components/base/command-palette/command-palette";
+  code={`import { CommandPalette, CommandPaletteItem } from "@joyui/react";
 
 <CommandPalette isOpen emptyState="没有匹配结果" footer={false} filter={null}>
   <CommandPaletteItem id="x">隐藏项</CommandPaletteItem>

@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add date-picker --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { DateCalendar, DateRangeCalendar, DatePicker, DateRangePicker } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add date-picker --yes`。
+
 
 ## 单日
 
@@ -30,7 +35,7 @@ npx @joyui/cli add date-picker --yes
 <DemoFrame
   fileName="date-picker-single.tsx"
   code={`import { parseDate } from "@internationalized/date";
-import { DatePicker } from "@/components/base/date-picker/date-picker";
+import { DatePicker } from "@joyui/react";
 
 <>
   <DatePicker aria-label="开始日期" defaultValue={parseDate("2026-11-13")} />
@@ -48,7 +53,7 @@ import { DatePicker } from "@/components/base/date-picker/date-picker";
 <DemoFrame
   fileName="date-picker-range.tsx"
   code={`import { parseDate } from "@internationalized/date";
-import { DateRangePicker } from "@/components/base/date-picker/date-range-picker";
+import { DateRangePicker } from "@joyui/react";
 
 <DateRangePicker
   aria-label="活动区间"
@@ -70,7 +75,7 @@ import { DateRangePicker } from "@/components/base/date-picker/date-range-picker
 <DemoFrame
   fileName="date-picker-filter.tsx"
   code={`import { parseDate } from "@internationalized/date";
-import { DatePicker } from "@/components/base/date-picker/date-picker";
+import { DatePicker } from "@joyui/react";
 
 <div className="rounded-2xl border p-4">
   <p>报表筛选</p>

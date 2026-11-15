@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "type": "registry:ui",
+  "title": "Scroll Progress",
+  "description": "Scroll Progress component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/scroll-progress/scroll-progress.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useEffect,\r\n  useState,\r\n  type CSSProperties,\r\n  type HTMLAttributes,\r\n  type Ref,\r\n  type RefObject,\r\n} from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Thin reading progress bar pinned to the top of the viewport (or a\r\n * container). Bencho / docs-site energy for long articles.\r\n *\r\n *   <ScrollProgress />\r\n */\r\n\r\nexport interface ScrollProgressProps extends HTMLAttributes<HTMLDivElement> {\r\n  /** Scroll container; defaults to `window`. */\r\n  target?: RefObject<HTMLElement | null>;\r\n  /** Track thickness. Default 2. */\r\n  height?: number;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function ScrollProgress({\r\n  target,\r\n  height = 2,\r\n  className,\r\n  style,\r\n  ref,\r\n  ...props\r\n}: ScrollProgressProps) {\r\n  const [progress, setProgress] = useState(0);\r\n\r\n  useEffect(() => {\r\n    const read = () => {\r\n      const el = target?.current;\r\n      if (el) {\r\n        const max = el.scrollHeight - el.clientHeight;\r\n        setProgress(max <= 0 ? 0 : el.scrollTop / max);\r\n        return;\r\n      }\r\n      const doc = document.documentElement;\r\n      const max = doc.scrollHeight - window.innerHeight;\r\n      setProgress(max <= 0 ? 0 : window.scrollY / max);\r\n    };\r\n\r\n    read();\r\n    const el = target?.current;\r\n    if (el) {\r\n      el.addEventListener(\"scroll\", read, { passive: true });\r\n      return () => el.removeEventListener(\"scroll\", read);\r\n    }\r\n    window.addEventListener(\"scroll\", read, { passive: true });\r\n    window.addEventListener(\"resize\", read);\r\n    return () => {\r\n      window.removeEventListener(\"scroll\", read);\r\n      window.removeEventListener(\"resize\", read);\r\n    };\r\n  }, [target]);\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role=\"progressbar\"\r\n      aria-valuemin={0}\r\n      aria-valuemax={100}\r\n      aria-valuenow={Math.round(progress * 100)}\r\n      aria-label=\"阅读进度\"\r\n      className={cx(\r\n        \"pointer-events-none inset-x-0 top-0 z-50 bg-border-button-default\",\r\n        // Default fixed for app chrome; pass `absolute` + a relative parent for demos.\r\n        !className?.includes(\"absolute\") && \"fixed\",\r\n        className,\r\n      )}\r\n      style={{ height, ...style } as CSSProperties}\r\n      {...props}\r\n    >\r\n      <div\r\n        className=\"h-full origin-left transition-transform duration-75 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none\"\r\n        style={{\r\n          transform: `scaleX(${Math.min(1, Math.max(0, progress))})`,\r\n          backgroundImage: \"var(--gradient-button-primary-default)\",\r\n        }}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "ScrollProgress"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

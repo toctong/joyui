@@ -105,7 +105,7 @@ const PATHS: {
   {
     href: "/docs/mcp",
     title: "MCP 服务器",
-    description: "连接 Cursor / VS Code，让智能体浏览并写入组件。",
+    description: "连接 Cursor / VS Code，智能体按 npm + 内置 CSS 路径使用组件。",
     icon: RiTerminalBoxLine,
   },
   {
@@ -159,8 +159,8 @@ const FEATURES: {
   tone: keyof typeof TONE;
 }[] = [
   {
-    title: "源代码由您掌握",
-    description: "可整库安装，也可 CLI 拷贝源码。没有黑盒 runtime，打开就能改。",
+    title: "npm 整库 + 内置样式",
+    description: "pnpm add 一次即可；styles.css 含 token 与组件规则。需要时再 CLI 拷源码。",
     icon: RiCodeSSlashLine,
     tone: "accent",
   },

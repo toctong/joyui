@@ -14,10 +14,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add badge --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Badge, Chip, StatusDot } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add badge --yes`。
+
 
 ## 颜色
 
@@ -25,7 +30,7 @@ npx @joyui/cli add badge --yes
 
 <DemoFrame
   fileName="badge-colors.tsx"
-  code={`import { Badge } from "@/components/base/badges/badge";
+  code={`import { Badge } from "@joyui/react";
 
 <>
   <Badge color="primary">12</Badge>
@@ -45,7 +50,7 @@ npx @joyui/cli add badge --yes
 
 <DemoFrame
   fileName="badge-nav.tsx"
-  code={`import { Badge } from "@/components/base/badges/badge";
+  code={`import { Badge } from "@joyui/react";
 
 <div className="flex items-center justify-between">
   <span>收件箱</span>

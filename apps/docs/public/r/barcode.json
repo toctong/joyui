@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "barcode",
+  "type": "registry:ui",
+  "title": "Barcode",
+  "description": "Barcode component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/barcode/barcode.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useEffect,\r\n  useId,\r\n  useRef,\r\n  type HTMLAttributes,\r\n  type Ref,\r\n} from \"react\";\r\nimport JsBarcode from \"jsbarcode\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * 1D barcode rendered to SVG via `jsbarcode` (JoyUI dependency).\r\n * Defaults to CODE128 — good for tickets, SKUs, and tracking numbers.\r\n */\r\n\r\nexport type BarcodeFormat =\r\n  | \"CODE128\"\r\n  | \"CODE128A\"\r\n  | \"CODE128B\"\r\n  | \"CODE128C\"\r\n  | \"EAN13\"\r\n  | \"EAN8\"\r\n  | \"EAN5\"\r\n  | \"EAN2\"\r\n  | \"UPC\"\r\n  | \"CODE39\"\r\n  | \"ITF14\"\r\n  | \"MSI\"\r\n  | \"pharmacode\"\r\n  | \"codabar\";\r\n\r\nexport interface BarcodeProps extends Omit<HTMLAttributes<HTMLDivElement>, \"children\"> {\r\n  value: string;\r\n  format?: BarcodeFormat;\r\n  /** Bar height in px. */\r\n  height?: number;\r\n  /** Module width in px. */\r\n  width?: number;\r\n  displayValue?: boolean;\r\n  /** Bar colour. */\r\n  lineColor?: string;\r\n  background?: string;\r\n  fontSize?: number;\r\n  /** Accessible name. */\r\n  \"aria-label\"?: string;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function Barcode({\r\n  value,\r\n  format = \"CODE128\",\r\n  height = 64,\r\n  width = 2,\r\n  displayValue = true,\r\n  lineColor = \"currentColor\",\r\n  background = \"transparent\",\r\n  fontSize = 14,\r\n  \"aria-label\": ariaLabel,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: BarcodeProps) {\r\n  const svgRef = useRef<SVGSVGElement>(null);\r\n  const reactId = useId();\r\n  const label = ariaLabel ?? (value ? `Barcode ${value}` : \"Empty barcode\");\r\n\r\n  useEffect(() => {\r\n    const svg = svgRef.current;\r\n    if (!svg) return;\r\n    // Clear previous drawing when value/format changes.\r\n    while (svg.firstChild) svg.removeChild(svg.firstChild);\r\n    if (!value) return;\r\n    try {\r\n      JsBarcode(svg, value, {\r\n        format,\r\n        height,\r\n        width,\r\n        displayValue,\r\n        lineColor,\r\n        background,\r\n        fontSize,\r\n        margin: 8,\r\n        xmlDocument: document,\r\n      });\r\n    } catch {\r\n      // Invalid value for the chosen format — leave SVG empty.\r\n    }\r\n  }, [background, displayValue, fontSize, format, height, lineColor, value, width]);\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role=\"img\"\r\n      aria-label={label}\r\n      className={cx(\r\n        \"inline-flex max-w-full overflow-x-auto rounded-xl border border-border-secondary-default\",\r\n        \"bg-background-primary-default p-3 text-text-primary\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      <svg ref={svgRef} id={reactId} aria-hidden className=\"max-w-full\" />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Barcode"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

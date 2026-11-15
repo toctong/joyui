@@ -14,8 +14,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add segmented-control --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { SegmentedControl, SegmentedControlItem } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add segmented-control --yes`。
 
 ## 变体
 
@@ -23,7 +29,7 @@ npx @joyui/cli add segmented-control --yes
 
 <DemoFrame
   fileName="segmented-control-variants.tsx"
-  code={`import { SegmentedControl, SegmentedControlItem } from "@/components/base/segmented-control/segmented-control";
+  code={`import { SegmentedControl, SegmentedControlItem } from "@joyui/react";
 
 <>
   <SegmentedControl aria-label="时间" defaultSelectedKeys={["day"]} variant="solid">

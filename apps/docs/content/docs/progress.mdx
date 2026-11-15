@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add progress --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { ProgressTrack, ProgressBar, ProgressCircle } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add progress --yes`。
+
 
 ## 尺寸
 
@@ -29,7 +34,7 @@ npx @joyui/cli add progress --yes
 
 <DemoFrame
   fileName="progress-sizes.tsx"
-  code={`import { ProgressBar } from "@/components/base/progress/progress";
+  code={`import { ProgressBar } from "@joyui/react";
 
 <>
   <ProgressBar label="上传 · sm" value={64} size="sm" />
@@ -47,7 +52,7 @@ npx @joyui/cli add progress --yes
 
 <DemoFrame
   fileName="progress-modes.tsx"
-  code={`import { ProgressBar, ProgressCircle } from "@/components/base/progress/progress";
+  code={`import { ProgressBar, ProgressCircle } from "@joyui/react";
 
 <>
   <ProgressBar label="准备导出" isIndeterminate description="正在打包文件…" />
@@ -65,7 +70,7 @@ npx @joyui/cli add progress --yes
 
 <DemoFrame
   fileName="progress-upload.tsx"
-  code={`import { ProgressBar, ProgressCircle } from "@/components/base/progress/progress";
+  code={`import { ProgressBar, ProgressCircle } from "@joyui/react";
 
 <div className="flex flex-col gap-3 rounded-2xl border p-4">
   <div className="flex items-center justify-between gap-3">

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "list",
+  "type": "registry:ui",
+  "title": "List",
+  "description": "List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/list/list.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Stacked list shell + row. Use for settings rows, search hits, log lines —\r\n * anything that was previously a hand-rolled `divide-y` border box.\r\n */\r\n\r\nexport interface ListProps extends HTMLAttributes<HTMLUListElement> {\r\n  /** Draw hairlines between rows (default true). */\r\n  divided?: boolean;\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLUListElement>;\r\n}\r\n\r\nconst listStyles = sortCx({\r\n  base: \"overflow-hidden rounded-2xl border border-border-secondary-default bg-background-primary-default dark:bg-background-secondary-default\",\r\n  divided: \"divide-y divide-border-secondary-default\",\r\n});\r\n\r\nexport function List({\r\n  divided = true,\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: ListProps) {\r\n  return (\r\n    <ul\r\n      ref={ref}\r\n      className={cx(listStyles.base, divided && listStyles.divided, className)}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </ul>\r\n  );\r\n}\r\n\r\nexport interface ListItemProps extends Omit<HTMLAttributes<HTMLLIElement>, \"title\"> {\r\n  title: ReactNode;\r\n  description?: ReactNode;\r\n  /** Leading icon / avatar / status. */\r\n  leading?: ReactNode;\r\n  /** Trailing meta / actions. */\r\n  trailing?: ReactNode;\r\n  /** Makes the row feel pressable (hover + cursor). */\r\n  interactive?: boolean;\r\n  ref?: Ref<HTMLLIElement>;\r\n}\r\n\r\nexport function ListItem({\r\n  title,\r\n  description,\r\n  leading,\r\n  trailing,\r\n  interactive = false,\r\n  className,\r\n  ref,\r\n  onClick,\r\n  ...props\r\n}: ListItemProps) {\r\n  const pressable = interactive || typeof onClick === \"function\";\r\n  return (\r\n    <li\r\n      ref={ref}\r\n      className={cx(\r\n        \"flex items-start gap-3 px-4 py-3 text-start\",\r\n        pressable &&\r\n          \"cursor-pointer transition-colors hover:bg-background-primary-hover\",\r\n        className,\r\n      )}\r\n      onClick={onClick}\r\n      {...props}\r\n    >\r\n      {leading ? <div className=\"mt-0.5 shrink-0\">{leading}</div> : null}\r\n      <div className=\"min-w-0 flex-1\">\r\n        <div className=\"text-body-medium text-text-primary\">{title}</div>\r\n        {description ? (\r\n          <div className=\"mt-0.5 text-body-regular text-text-tertiary\">{description}</div>\r\n        ) : null}\r\n      </div>\r\n      {trailing ? <div className=\"shrink-0 self-center\">{trailing}</div> : null}\r\n    </li>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "List",
+      "ListItem"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

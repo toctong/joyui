@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-link",
+  "type": "registry:ui",
+  "title": "Text Link",
+  "description": "Text Link component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/text-link/text-link.tsx",
+      "type": "registry:ui",
+      "content": "import type { AnchorHTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Inline text link with brand colour and underline-on-hover.\r\n * Prefer this over bare `<a className=\"text-text-brand-primary\">`.\r\n */\r\n\r\nexport type TextLinkSize = \"sm\" | \"md\";\r\n\r\nexport interface TextLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {\r\n  size?: TextLinkSize;\r\n  children?: ReactNode;\r\n  /** Soften the link (secondary text colour, brand on hover). */\r\n  muted?: boolean;\r\n  ref?: Ref<HTMLAnchorElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  base: \"inline underline-offset-2 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring rounded-sm\",\r\n  size: {\r\n    sm: \"text-body-2-regular\",\r\n    md: \"text-body-regular\",\r\n  },\r\n  tone: {\r\n    default: \"text-text-brand-primary\",\r\n    muted: \"text-text-secondary hover:text-text-brand-primary\",\r\n  },\r\n});\r\n\r\nexport function TextLink({\r\n  size = \"md\",\r\n  muted = false,\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: TextLinkProps) {\r\n  return (\r\n    <a\r\n      ref={ref}\r\n      className={cx(\r\n        styles.base,\r\n        styles.size[size],\r\n        muted ? styles.tone.muted : styles.tone.default,\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </a>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "TextLink"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

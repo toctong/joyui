@@ -19,8 +19,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 <ComponentDocPreview slug="tag-group" />
 
 ```bash
-npx @joyui/cli add tag-group --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TagGroup, Tag } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add tag-group --yes`。
 
 ### 尺寸
 
@@ -28,7 +34,7 @@ npx @joyui/cli add tag-group --yes
 
 <DemoFrame
   fileName="tag-group-sizes.tsx"
-  code={`import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
+  code={`import { Tag, TagGroup } from "@joyui/react";
 
 <TagGroup aria-label="技术栈" size="medium" selectionMode="multiple" defaultSelectedKeys={["react"]}>
   <Tag id="react" color="cyan">React</Tag>
@@ -45,7 +51,7 @@ npx @joyui/cli add tag-group --yes
 
 <DemoFrame
   fileName="tag-group-remove.tsx"
-  code={`import { Tag, TagGroup } from "@/components/base/tag-group/tag-group";
+  code={`import { Tag, TagGroup } from "@joyui/react";
 
 <TagGroup aria-label="团队" onRemove={() => undefined}>
   <Tag id="design" color="rose">设计</Tag>
@@ -67,8 +73,14 @@ npx @joyui/cli add tag-group --yes
 <ComponentDocPreview slug="tag-input" />
 
 ```bash
-npx @joyui/cli add tag-input --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TagGroup, Tag } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add tag-input --yes`。
 
 ### API
 

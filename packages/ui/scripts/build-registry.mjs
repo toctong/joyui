@@ -1,3 +1,7 @@
+/**
+ * Emit apps/docs/public/r/*.json from packages/ui/registry.json
+ * (files already contain rewritten consumer source).
+ */
 import { mkdir, readFile, writeFile, cp } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,7 +12,6 @@ const registryPath = path.join(root, "registry.json");
 const outDir = path.resolve(root, "../../apps/docs/public/r");
 
 const registry = JSON.parse(await readFile(registryPath, "utf8"));
-
 await mkdir(outDir, { recursive: true });
 
 const catalog = {
@@ -19,21 +22,13 @@ const catalog = {
 };
 
 for (const item of registry.items) {
-  const files = [];
-  for (const file of item.files ?? []) {
-    const abs = path.join(root, file.path);
-    const content = await readFile(abs, "utf8");
-    const target =
-      file.type === "registry:lib"
-        ? `lib/${path.basename(file.path)}`
-        : `components/ui/${path.basename(file.path)}`;
-    files.push({
-      path: target,
-      type: file.type,
-      content: rewriteImports(content),
-    });
-  }
+  const files = (item.files ?? []).map((file) => ({
+    path: file.path,
+    type: file.type,
+    content: file.content ?? "",
+  }));
 
+  const meta = item.meta ?? {};
   const payload = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: item.name,
@@ -43,6 +38,13 @@ for (const item of registry.items) {
     dependencies: item.dependencies ?? [],
     registryDependencies: item.registryDependencies ?? [],
     files,
+    meta: {
+      ...meta,
+      preferredInstall: "pnpm add @joyui/react",
+      styles: "@joyui/react/styles.css",
+      importFrom: meta.importFrom ?? "@joyui/react",
+      exports: meta.exports ?? [],
+    },
   };
 
   await writeFile(
@@ -57,13 +59,8 @@ for (const item of registry.items) {
     description: item.description,
     dependencies: item.dependencies ?? [],
     registryDependencies: item.registryDependencies ?? [],
-    files: (item.files ?? []).map((f) => ({
-      path:
-        f.type === "registry:lib"
-          ? `lib/${path.basename(f.path)}`
-          : `components/ui/${path.basename(f.path)}`,
-      type: f.type,
-    })),
+    files: files.map((f) => ({ path: f.path, type: f.type })),
+    meta: payload.meta,
   });
 }
 
@@ -72,20 +69,8 @@ await writeFile(
   JSON.stringify(catalog, null, 2),
 );
 
-// Also keep a copy next to the package for CLI offline use
 const localOut = path.join(root, "dist-registry");
 await mkdir(localOut, { recursive: true });
 await cp(outDir, localOut, { recursive: true });
 
 console.log(`Built ${catalog.items.length} registry items → ${outDir}`);
-
-function rewriteImports(source) {
-  return source
-    .replaceAll('../../lib/utils', '@/lib/utils')
-    .replaceAll('../../lib/format', '@/lib/format')
-    .replaceAll('../base/button', '@/components/ui/button')
-    .replaceAll('../base/input', '@/components/ui/input')
-    .replaceAll('../base/card', '@/components/ui/card')
-    .replaceAll('../base/badge', '@/components/ui/badge')
-    .replaceAll('../base/label', '@/components/ui/label');
-}

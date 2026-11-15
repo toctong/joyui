@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add theme-toggle --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { ThemeToggle } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add theme-toggle --yes`。
+
 
 ## 外观
 
@@ -29,7 +34,7 @@ npx @joyui/cli add theme-toggle --yes
 
 <DemoFrame
   fileName="theme-toggle-appearance.tsx"
-  code={`import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+  code={`import { ThemeToggle } from "@joyui/react";
 
 <>
   <ThemeToggle appearance="sidebar" />
@@ -47,7 +52,7 @@ npx @joyui/cli add theme-toggle --yes
 
 <DemoFrame
   fileName="theme-toggle-sizes.tsx"
-  code={`import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+  code={`import { ThemeToggle } from "@joyui/react";
 
 <>
   <ThemeToggle appearance="segmented" size="medium" />
@@ -65,7 +70,7 @@ npx @joyui/cli add theme-toggle --yes
 
 <DemoFrame
   fileName="theme-toggle-settings-row.tsx"
-  code={`import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+  code={`import { ThemeToggle } from "@joyui/react";
 
 <div className="flex items-center justify-between rounded-2xl border px-4 py-3">
   <div>

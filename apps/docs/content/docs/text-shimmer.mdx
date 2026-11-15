@@ -15,8 +15,14 @@ AI 生成中、同步中等等待文案。`duration` 控制一圈秒数。
 ## 安装
 
 ```bash
-npx @joyui/cli add text-shimmer --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TextShimmer } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add text-shimmer --yes`。
 
 ## 速度
 
@@ -24,7 +30,7 @@ npx @joyui/cli add text-shimmer --yes
 
 <DemoFrame
   fileName="text-shimmer-speed.tsx"
-  code={`import { TextShimmer } from "@/components/base/text-shimmer/text-shimmer";
+  code={`import { TextShimmer } from "@joyui/react";
 
 <>
   <TextShimmer duration={1.6}>生成中…</TextShimmer>

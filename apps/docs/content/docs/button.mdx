@@ -19,10 +19,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add button --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Button } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add button --yes`。
+
 
 ## 变体
 
@@ -30,7 +35,7 @@ npx @joyui/cli add button --yes
 
 <DemoFrame
   fileName="button-variants.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
+  code={`import { Button } from "@joyui/react";
 
 <>
   <Button variant="primary">Primary</Button>
@@ -49,7 +54,7 @@ npx @joyui/cli add button --yes
 
 <DemoFrame
   fileName="button-sizes.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
+  code={`import { Button } from "@joyui/react";
 
 <>
   <Button size="medium">Continue</Button>
@@ -68,7 +73,7 @@ npx @joyui/cli add button --yes
 <DemoFrame
   fileName="button-icons.tsx"
   code={`import { RiAddLine, RiArrowRightLine } from "@remixicon/react";
-import { Button } from "@/components/base/buttons/button";
+import { Button } from "@joyui/react";
 
 <>
   <Button leadingIcon={RiAddLine}>New project</Button>
@@ -87,7 +92,7 @@ import { Button } from "@/components/base/buttons/button";
 <DemoFrame
   fileName="button-toolbar.tsx"
   code={`import { RiArrowRightLine } from "@remixicon/react";
-import { Button } from "@/components/base/buttons/button";
+import { Button } from "@joyui/react";
 
 <div className="flex items-center gap-2">
   <Button variant="ghost" size="small">取消</Button>
@@ -110,8 +115,14 @@ import { Button } from "@/components/base/buttons/button";
 <ComponentDocPreview slug="icon-button" />
 
 ```bash
-npx @joyui/cli add icon-button --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ButtonGroup, ButtonGroupItem, Button, ButtonLink } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add icon-button --yes`。
 
 ### API
 
@@ -124,8 +135,14 @@ npx @joyui/cli add icon-button --yes
 <ComponentDocPreview slug="close-button" />
 
 ```bash
-npx @joyui/cli add close-button --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ButtonGroup, ButtonGroupItem, Button, ButtonLink } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add close-button --yes`。
 
 ### API
 
@@ -138,8 +155,14 @@ npx @joyui/cli add close-button --yes
 <ComponentDocPreview slug="link-button" />
 
 ```bash
-npx @joyui/cli add link-button --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ButtonGroup, ButtonGroupItem, Button, ButtonLink } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add link-button --yes`。
 
 ### API
 
@@ -152,8 +175,14 @@ npx @joyui/cli add link-button --yes
 <ComponentDocPreview slug="button-group" />
 
 ```bash
-npx @joyui/cli add button-group --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ButtonGroup, ButtonGroupItem, Button, ButtonLink } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add button-group --yes`。
 
 ### API
 
@@ -166,8 +195,14 @@ npx @joyui/cli add button-group --yes
 <ComponentDocPreview slug="social-button" />
 
 ```bash
-npx @joyui/cli add social-button --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ButtonGroup, ButtonGroupItem, Button, ButtonLink } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add social-button --yes`。
 
 ### API
 

@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@import "./theme.css";
-@import "./typography.css";
+/* Shippable tokens + type — SoT is @joyui/react (packages/ui/src/styles). */
+@import "@joyui/react/theme.css";
+@import "@joyui/react/typography.css";
 
 /* ---------------------------------------------------------------------------
  * Dark mode strategy
@@ -21,8 +22,8 @@
 @custom-variant rtl (&:dir(rtl));
 @custom-variant ltr (&:dir(ltr));
 
-/* Shippable component CSS (also published via @joyui/react/styles.css). */
-@import "./components.css";
+/* Shippable component CSS — SoT is @joyui/react/components.css. */
+@import "@joyui/react/components.css";
 
 /* The next theme is revealed by ThemeToggle from the exact interaction point.
  * Native view-transition crossfades are disabled so only the soft circular

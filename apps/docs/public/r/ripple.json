@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple",
+  "type": "registry:ui",
+  "title": "Ripple",
+  "description": "Ripple component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/ripple/ripple.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useCallback,\r\n  useRef,\r\n  useState,\r\n  type HTMLAttributes,\r\n  type PointerEvent,\r\n  type ReactNode,\r\n  type Ref,\r\n} from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Press ripple — Libraries.dev / Material energy on buttons and cards,\r\n * tinted with currentColor (set text-accent-500 on the host).\r\n *\r\n *   <Ripple className=\"text-accent-500\">\r\n *     <Button>Ripple</Button>\r\n *   </Ripple>\r\n */\r\n\r\ntype RippleWave = { id: number; x: number; y: number; size: number };\r\n\r\nexport interface RippleProps extends HTMLAttributes<HTMLDivElement> {\r\n  children: ReactNode;\r\n  /** Disable the effect. */\r\n  disabled?: boolean;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function Ripple({\r\n  children,\r\n  disabled = false,\r\n  className,\r\n  onPointerDown,\r\n  ref,\r\n  ...props\r\n}: RippleProps) {\r\n  const hostRef = useRef<HTMLDivElement | null>(null);\r\n  const [waves, setWaves] = useState<RippleWave[]>([]);\r\n  const seq = useRef(0);\r\n\r\n  const setRefs = useCallback(\r\n    (node: HTMLDivElement | null) => {\r\n      hostRef.current = node;\r\n      if (typeof ref === \"function\") ref(node);\r\n      else if (ref) ref.current = node;\r\n    },\r\n    [ref],\r\n  );\r\n\r\n  const spawn = (event: PointerEvent<HTMLDivElement>) => {\r\n    if (disabled) return;\r\n    const reduce =\r\n      typeof window !== \"undefined\" &&\r\n      window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches;\r\n    if (reduce) return;\r\n\r\n    const el = hostRef.current;\r\n    if (!el) return;\r\n    const rect = el.getBoundingClientRect();\r\n    const size = Math.max(rect.width, rect.height) * 2;\r\n    const id = ++seq.current;\r\n    setWaves((prev) => [\r\n      ...prev,\r\n      {\r\n        id,\r\n        x: event.clientX - rect.left - size / 2,\r\n        y: event.clientY - rect.top - size / 2,\r\n        size,\r\n      },\r\n    ]);\r\n    window.setTimeout(() => {\r\n      setWaves((prev) => prev.filter((w) => w.id !== id));\r\n    }, 520);\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={setRefs}\r\n      className={cx(\"bui-ripple relative isolate overflow-hidden\", className)}\r\n      onPointerDown={(event) => {\r\n        spawn(event);\r\n        onPointerDown?.(event);\r\n      }}\r\n      {...props}\r\n    >\r\n      {children}\r\n      <span aria-hidden className=\"pointer-events-none absolute inset-0\">\r\n        {waves.map((wave) => (\r\n          <span\r\n            key={wave.id}\r\n            className=\"bui-ripple-wave absolute rounded-full bg-current\"\r\n            style={{\r\n              left: wave.x,\r\n              top: wave.y,\r\n              width: wave.size,\r\n              height: wave.size,\r\n            }}\r\n          />\r\n        ))}\r\n      </span>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Ripple"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

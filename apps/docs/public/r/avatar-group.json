@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:ui",
+  "title": "Avatar Group",
+  "description": "Avatar Group component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/avatar-group/avatar-group.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactElement, ReactNode, Ref } from \"react\";\r\nimport { Children, cloneElement, isValidElement } from \"react\";\r\nimport type { AvatarProps } from \"../avatar/avatar\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Stacked avatars for teammates / assignees — ringed like notification\r\n * badges on JoyUI sidebar surfaces.\r\n *\r\n *   <AvatarGroup max={3}>\r\n *     <Avatar initials=\"A\" />\r\n *     <Avatar initials=\"B\" />\r\n *     <Avatar initials=\"C\" />\r\n *     <Avatar initials=\"D\" />\r\n *   </AvatarGroup>\r\n */\r\n\r\nexport type AvatarGroupSize = NonNullable<AvatarProps[\"size\"]>;\r\n\r\nexport interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {\r\n  children?: ReactNode;\r\n  /** How many faces to show before +N. Default 3. */\r\n  max?: number;\r\n  size?: AvatarGroupSize;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst ring = sortCx({\r\n  base: \"relative inline-flex items-center\",\r\n  size: {\r\n    xs: \"-space-x-1.5\",\r\n    sm: \"-space-x-2\",\r\n    md: \"-space-x-2.5\",\r\n    lg: \"-space-x-3\",\r\n  },\r\n});\r\n\r\nconst face = sortCx({\r\n  base: \"relative ring-2 ring-background-primary-default\",\r\n});\r\n\r\nconst overflow = sortCx({\r\n  // Soft chip on tertiary — matches Chip `soft` / avatar neutral fallback.\r\n  base: \"relative z-10 inline-flex shrink-0 items-center justify-center rounded-full bg-background-tertiary-default text-text-secondary ring-2 ring-background-primary-default\",\r\n  size: {\r\n    xs: \"size-5 text-[9px] font-semibold leading-none\",\r\n    sm: \"size-6 text-caption-1-semibold\",\r\n    md: \"size-8 text-caption-1-semibold\",\r\n    lg: \"size-9 text-headline-semibold\",\r\n  },\r\n});\r\n\r\nexport function AvatarGroup({\r\n  children,\r\n  max = 3,\r\n  size = \"md\",\r\n  className,\r\n  ref,\r\n  ...props\r\n}: AvatarGroupProps) {\r\n  const items = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarProps>[];\r\n  const visible = items.slice(0, Math.max(0, max));\r\n  const rest = Math.max(0, items.length - visible.length);\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role=\"group\"\r\n      className={cx(ring.base, ring.size[size], className)}\r\n      {...props}\r\n    >\r\n      {visible.map((child, i) =>\r\n        cloneElement(child, {\r\n          size: child.props.size ?? size,\r\n          className: cx(face.base, child.props.className),\r\n          style: { zIndex: visible.length - i, ...child.props.style },\r\n        }),\r\n      )}\r\n      {rest > 0 ? (\r\n        <span className={cx(overflow.base, overflow.size[size])} style={{ zIndex: 0 }}>\r\n          +{rest}\r\n        </span>\r\n      ) : null}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "AvatarGroup"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

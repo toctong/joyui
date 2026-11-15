@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-card",
+  "type": "registry:ui",
+  "title": "Media Card",
+  "description": "Media Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/media-card/media-card.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Poster / cover card for discovery grids (TV, movies). Image is optional —\r\n * without `src` a muted placeholder plane is shown.\r\n */\r\n\r\nexport interface MediaCardProps extends Omit<HTMLAttributes<HTMLElement>, \"title\"> {\r\n  title: ReactNode;\r\n  subtitle?: ReactNode;\r\n  /** Cover image URL. */\r\n  src?: string | null;\r\n  alt?: string;\r\n  /** Aspect ratio class, default portrait 2/3. */\r\n  aspectClassName?: string;\r\n  /** Optional badge / chip overlaid at the bottom of the media (not floating). */\r\n  footer?: ReactNode;\r\n  /** Trailing action under the titles. */\r\n  action?: ReactNode;\r\n  interactive?: boolean;\r\n  ref?: Ref<HTMLElement>;\r\n}\r\n\r\nexport function MediaCard({\r\n  title,\r\n  subtitle,\r\n  src,\r\n  alt = \"\",\r\n  aspectClassName = \"aspect-[2/3]\",\r\n  footer,\r\n  action,\r\n  interactive = false,\r\n  className,\r\n  ref,\r\n  onClick,\r\n  ...props\r\n}: MediaCardProps) {\r\n  const pressable = interactive || typeof onClick === \"function\";\r\n  return (\r\n    <article\r\n      ref={ref}\r\n      className={cx(\"flex min-w-0 flex-col gap-2\", className)}\r\n      onClick={onClick}\r\n      {...props}\r\n    >\r\n      <div\r\n        className={cx(\r\n          \"relative overflow-hidden rounded-xl bg-background-secondary-default\",\r\n          aspectClassName,\r\n          pressable && \"cursor-pointer\",\r\n        )}\r\n      >\r\n        {src ? (\r\n          <img\r\n            src={src}\r\n            alt={alt}\r\n            className=\"size-full object-cover\"\r\n            loading=\"lazy\"\r\n            referrerPolicy=\"no-referrer\"\r\n          />\r\n        ) : (\r\n          <div className=\"size-full bg-background-secondary-default\" aria-hidden />\r\n        )}\r\n        {footer ? (\r\n          <div className=\"absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 to-transparent p-2 pt-8\">\r\n            {footer}\r\n          </div>\r\n        ) : null}\r\n      </div>\r\n      <div className=\"min-w-0\">\r\n        <h3 className=\"truncate text-body-medium text-text-primary\">{title}</h3>\r\n        {subtitle ? (\r\n          <div className=\"mt-0.5 truncate text-caption-1-regular text-text-tertiary\">\r\n            {subtitle}\r\n          </div>\r\n        ) : null}\r\n        {action ? <div className=\"mt-2\">{action}</div> : null}\r\n      </div>\r\n    </article>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "MediaCard"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

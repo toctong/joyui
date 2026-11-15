@@ -5,13 +5,14 @@ alwaysApply: true
 
 # JoyUI design rules
 
-This project uses JoyUI (React + Tailwind CSS v4, source-owned components under `components/`). These rules always apply when writing UI code. MCP tools are on demand; these rules are not optional context.
+This project uses JoyUI (React + Tailwind CSS v4). Shippable UI lives in `packages/ui` (`@joyui/react`). These rules always apply when writing UI code.
 
 ## Components first
 
-- Before hand-building any UI element, check for an installed JoyUI component under `components/base/` and `components/application/`, and prefer it.
-- Missing a component? Install it (JoyUI MCP `install_components`, or `npx @joyui/cli@latest add <name>`) instead of writing a lookalike.
-- Import through the `@/` alias, e.g. `import { Button } from "@/components/base/buttons/button"`.
+- Edit shippable components in `packages/ui/src/components/**` (docs maps `@/components/base|foundations|…` there). Prefer them over lookalikes.
+- Consumer apps: `pnpm add @joyui/react` then `import { Button } from "@joyui/react"` — CSS via `@import "@joyui/react/styles.css"`.
+- Optional source copy: `npx @joyui/cli@latest add <name>`.
+- Docs-only code (demos, agent-chat, landing) stays under `apps/docs`.
 
 ## Color: semantic tokens only
 
@@ -26,7 +27,7 @@ This project uses JoyUI (React + Tailwind CSS v4, source-owned components under 
 ## Typography: composite utilities only
 
 - Use JoyUI's composite type utilities: `text-title-1-medium`, `text-title-2-medium`, `text-title-3-semibold`, `text-headline-medium`, `text-body-medium`, `text-body-regular`, `text-body-2-*`, `text-caption-1-semibold`, and friends. Each sets size, weight, line-height, and letter-spacing together.
-- Never rebuild type by stacking `text-sm font-medium leading-5`; if a style seems missing, look in `styles/typography.css` before inventing one.
+- Never rebuild type by stacking `text-sm font-medium leading-5`; if a style seems missing, look in `packages/ui/src/styles/typography.css` before inventing one.
 
 ## Spacing and shape
 

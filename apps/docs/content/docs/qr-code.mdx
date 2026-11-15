@@ -18,8 +18,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add qr-code --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { QrCode } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add qr-code --yes`。
 
 ## 纠错级别
 
@@ -27,7 +33,7 @@ npx @joyui/cli add qr-code --yes
 
 <DemoFrame
   fileName="qr-code-levels.tsx"
-  code={`import { QrCode } from "@/components/base/qr-code/qr-code";
+  code={`import { QrCode } from "@joyui/react";
 
 <>
   <QrCode value="https://www.joyui.top" size={120} level="L" />
@@ -44,7 +50,7 @@ npx @joyui/cli add qr-code --yes
 
 <DemoFrame
   fileName="qr-code-overlay.tsx"
-  code={`import { QrCode } from "@/components/base/qr-code/qr-code";
+  code={`import { QrCode } from "@joyui/react";
 
 <QrCode
   value="https://www.joyui.top"

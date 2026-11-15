@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-vertical",
+  "type": "registry:ui",
+  "title": "Marquee Vertical",
+  "description": "Marquee Vertical component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/marquee-vertical/marquee-vertical.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { CSSProperties, HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Vertical infinite strip — logos / chips rising continuously.\r\n *\r\n *   <MarqueeVertical className=\"h-48\">\r\n *     <Chip>React</Chip>\r\n *     <Chip>Tailwind</Chip>\r\n *   </MarqueeVertical>\r\n */\r\n\r\nexport interface MarqueeVerticalProps extends HTMLAttributes<HTMLDivElement> {\r\n  children?: ReactNode;\r\n  /** Seconds for one full pass of the duplicated track. */\r\n  duration?: number;\r\n  /** Reverse direction (descend instead of rise). */\r\n  reverse?: boolean;\r\n  /** Pause the loop while hovered. */\r\n  pauseOnHover?: boolean;\r\n  /** Fade the top/bottom edges. */\r\n  fade?: boolean;\r\n  /** How many times to repeat children for a seamless loop (min 2). */\r\n  repeat?: number;\r\n  /** Gap between items (CSS length). Default `1rem`. */\r\n  gap?: string | number;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function MarqueeVertical({\r\n  children,\r\n  className,\r\n  duration = 28,\r\n  reverse = false,\r\n  pauseOnHover = true,\r\n  fade = true,\r\n  repeat = 2,\r\n  gap = \"1rem\",\r\n  style,\r\n  ref,\r\n  ...props\r\n}: MarqueeVerticalProps) {\r\n  const copies = Math.max(2, repeat);\r\n  const gapValue = typeof gap === \"number\" ? `${gap}px` : gap;\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      className={cx(\r\n        \"bui-marquee-vertical group relative flex h-full w-full flex-col overflow-hidden\",\r\n        fade && \"bui-marquee-vertical-fade\",\r\n        pauseOnHover && \"bui-marquee-pause\",\r\n        className,\r\n      )}\r\n      style={\r\n        {\r\n          \"--bui-marquee-duration\": `${duration}s`,\r\n          \"--bui-marquee-gap\": gapValue,\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      {Array.from({ length: copies }, (_, i) => (\r\n        <div\r\n          key={i}\r\n          aria-hidden={i > 0 || undefined}\r\n          className={cx(\r\n            \"bui-marquee-vertical-track flex shrink-0 flex-col items-center\",\r\n            reverse && \"bui-marquee-reverse\",\r\n          )}\r\n          style={{ gap: gapValue, paddingBottom: gapValue }}\r\n        >\r\n          {children}\r\n        </div>\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "MarqueeVertical"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

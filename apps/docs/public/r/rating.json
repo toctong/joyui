@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating",
+  "type": "registry:ui",
+  "title": "Rating",
+  "description": "Rating component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/rating/rating.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, Ref } from \"react\";\r\nimport { RiStarFill, RiStarLine } from \"@remixicon/react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Read-only or interactive star rating. Discovery grids and review cards.\r\n */\r\n\r\nexport interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, \"onChange\"> {\r\n  /** Current value (0 … max). */\r\n  value?: number;\r\n  max?: number;\r\n  /** Allow clicking a star to change value. */\r\n  interactive?: boolean;\r\n  size?: \"sm\" | \"md\";\r\n  /** Accessible name, e.g. \"Rating\". */\r\n  \"aria-label\"?: string;\r\n  onChange?: (value: number) => void;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  star: {\r\n    sm: \"size-3.5\",\r\n    md: \"size-4\",\r\n  },\r\n});\r\n\r\nexport function Rating({\r\n  value = 0,\r\n  max = 5,\r\n  interactive = false,\r\n  size = \"md\",\r\n  \"aria-label\": ariaLabel = \"Rating\",\r\n  onChange,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: RatingProps) {\r\n  const clamped = Math.max(0, Math.min(max, value));\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role={interactive ? \"radiogroup\" : \"img\"}\r\n      aria-label={ariaLabel}\r\n      className={cx(\"inline-flex items-center gap-0.5 text-status-yellow-text\", className)}\r\n      {...props}\r\n    >\r\n      {Array.from({ length: max }, (_, i) => {\r\n        const n = i + 1;\r\n        const filled = n <= Math.round(clamped);\r\n        const Icon = filled ? RiStarFill : RiStarLine;\r\n        if (!interactive) {\r\n          return <Icon key={n} className={styles.star[size]} aria-hidden />;\r\n        }\r\n        return (\r\n          <button\r\n            key={n}\r\n            type=\"button\"\r\n            role=\"radio\"\r\n            aria-checked={n === Math.round(clamped)}\r\n            aria-label={`${n}`}\r\n            className=\"rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring\"\r\n            onClick={() => onChange?.(n)}\r\n          >\r\n            <Icon className={styles.star[size]} aria-hidden />\r\n          </button>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Rating"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

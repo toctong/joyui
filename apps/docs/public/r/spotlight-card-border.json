@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-card-border",
+  "type": "registry:ui",
+  "title": "Spotlight Card Border",
+  "description": "Spotlight Card Border component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/spotlight-card-border/spotlight-card-border.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useCallback,\r\n  useRef,\r\n  useState,\r\n  type CSSProperties,\r\n  type HTMLAttributes,\r\n  type MouseEvent,\r\n  type ReactNode,\r\n  type Ref,\r\n} from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Spotlight card with a soft conic border beam chasing the edge.\r\n * Combines pointer-follow wash + BorderBeam-style masked spin — no purple glow.\r\n *\r\n *   <SpotlightCardBorder>\r\n *     <p className=\"text-body-medium\">Pro feature</p>\r\n *   </SpotlightCardBorder>\r\n */\r\n\r\nexport type SpotlightCardBorderPadding = \"sm\" | \"md\" | \"lg\";\r\n\r\nexport interface SpotlightCardBorderProps\r\n  extends HTMLAttributes<HTMLDivElement> {\r\n  children?: ReactNode;\r\n  /** Spotlight radius in px. */\r\n  size?: number;\r\n  /** Spotlight colour (defaults to accent at low alpha). */\r\n  color?: string;\r\n  /** Border beam thickness in px. */\r\n  borderWidth?: number;\r\n  /** Full lap duration in seconds. */\r\n  duration?: number;\r\n  /** Beam colour; defaults to accent. */\r\n  beamColor?: string;\r\n  /** Soft trailing colour. */\r\n  beamFrom?: string;\r\n  padding?: SpotlightCardBorderPadding;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  base: \"bui-spotlight-card relative isolate overflow-hidden rounded-2xl border border-border-secondary-default bg-background-primary-default dark:bg-background-secondary-default\",\r\n  padding: {\r\n    sm: \"p-3\",\r\n    md: \"p-4\",\r\n    lg: \"p-6 sm:p-8\",\r\n  },\r\n});\r\n\r\nexport function SpotlightCardBorder({\r\n  children,\r\n  className,\r\n  size = 240,\r\n  color,\r\n  borderWidth = 1.5,\r\n  duration = 9,\r\n  beamColor,\r\n  beamFrom,\r\n  padding = \"md\",\r\n  style,\r\n  onMouseMove,\r\n  onMouseLeave,\r\n  ref,\r\n  ...props\r\n}: SpotlightCardBorderProps) {\r\n  const localRef = useRef<HTMLDivElement | null>(null);\r\n  const [pos, setPos] = useState({ x: 0, y: 0, on: false });\r\n\r\n  const setRefs = useCallback(\r\n    (node: HTMLDivElement | null) => {\r\n      localRef.current = node;\r\n      if (typeof ref === \"function\") ref(node);\r\n      else if (ref) ref.current = node;\r\n    },\r\n    [ref],\r\n  );\r\n\r\n  const handleMove = (event: MouseEvent<HTMLDivElement>) => {\r\n    const el = localRef.current;\r\n    if (el) {\r\n      const rect = el.getBoundingClientRect();\r\n      setPos({\r\n        x: event.clientX - rect.left,\r\n        y: event.clientY - rect.top,\r\n        on: true,\r\n      });\r\n    }\r\n    onMouseMove?.(event);\r\n  };\r\n\r\n  const handleLeave = (event: MouseEvent<HTMLDivElement>) => {\r\n    setPos((p) => ({ ...p, on: false }));\r\n    onMouseLeave?.(event);\r\n  };\r\n\r\n  const spotColor =\r\n    color ?? \"color-mix(in oklab, var(--color-accent-500) 14%, transparent)\";\r\n\r\n  return (\r\n    <div\r\n      ref={setRefs}\r\n      onMouseMove={handleMove}\r\n      onMouseLeave={handleLeave}\r\n      className={cx(\r\n        \"bui-border-beam relative isolate overflow-hidden rounded-2xl\",\r\n        className,\r\n      )}\r\n      style={\r\n        {\r\n          \"--bui-spotlight-x\": `${pos.x}px`,\r\n          \"--bui-spotlight-y\": `${pos.y}px`,\r\n          \"--bui-spotlight-size\": `${size}px`,\r\n          \"--bui-spotlight-color\": spotColor,\r\n          \"--bui-spotlight-opacity\": pos.on ? \"1\" : \"0\",\r\n          \"--bui-border-beam-width\": `${borderWidth}px`,\r\n          \"--bui-border-beam-duration\": `${duration}s`,\r\n          \"--bui-border-beam-color\": beamColor ?? \"var(--color-accent-500)\",\r\n          \"--bui-border-beam-from\": beamFrom ?? \"var(--color-accent-300)\",\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      <div className={cx(styles.base, styles.padding[padding], \"border-0\")}>\r\n        <span\r\n          aria-hidden\r\n          className=\"bui-spotlight-card-glow pointer-events-none absolute inset-0\"\r\n        />\r\n        <div className=\"relative z-10 min-w-0\">{children}</div>\r\n      </div>\r\n      <span\r\n        aria-hidden\r\n        className=\"bui-border-beam-glow pointer-events-none absolute inset-0 rounded-[inherit]\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "SpotlightCardBorder"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

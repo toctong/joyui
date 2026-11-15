@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add dot-loader --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { DotLoader } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add dot-loader --yes`。
 
 ## 尺寸
 
@@ -24,7 +30,7 @@ npx @joyui/cli add dot-loader --yes
 
 <DemoFrame
   fileName="dot-loader-sizes.tsx"
-  code={`import { DotLoader } from "@/components/base/dot-loader/dot-loader";
+  code={`import { DotLoader } from "@joyui/react";
 
 <>
   <DotLoader size="sm" />

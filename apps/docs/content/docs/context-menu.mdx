@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add context-menu --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { ContextMenuTrigger, ContextMenu, ContextMenuItem, ContextMenuSubmenu } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add context-menu --yes`。
+
 
 ## 图标与危险项
 
@@ -32,7 +37,7 @@ npx @joyui/cli add context-menu --yes
   code={`import { RiDeleteBinLine, RiEditLine, RiShareLine } from "@remixicon/react";
 import {
   ContextMenu, ContextMenuItem, ContextMenuSeparator, ContextMenuTrigger,
-} from "@/components/base/context-menu/context-menu";
+} from "@joyui/react";
 
 <ContextMenuTrigger>
   <div>右键打开</div>
@@ -57,7 +62,7 @@ import {
   code={`import { RiEditLine, RiFolderTransferLine } from "@remixicon/react";
 import {
   ContextMenu, ContextMenuItem, ContextMenuSubmenu, ContextMenuTrigger,
-} from "@/components/base/context-menu/context-menu";
+} from "@joyui/react";
 
 <ContextMenuTrigger>
   <div>含子菜单</div>
@@ -83,7 +88,7 @@ import {
   code={`import { RiDeleteBinLine, RiEditLine, RiShareLine } from "@remixicon/react";
 import {
   ContextMenu, ContextMenuItem, ContextMenuSeparator, ContextMenuTrigger,
-} from "@/components/base/context-menu/context-menu";
+} from "@joyui/react";
 
 <ContextMenuTrigger>
   {({ isOpen }) => (

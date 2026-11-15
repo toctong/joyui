@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-meter",
+  "type": "registry:ui",
+  "title": "Context Meter",
+  "description": "Context Meter component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/context-meter/context-meter.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { Label } from \"../input/label\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Segmented context-window meter — beUI Context meter for AI composers.\r\n * Track matches Progress / Meter; segment colours use chart + accent tokens.\r\n *\r\n *   <ContextMeter\r\n *     segments={[\r\n *       { id: \"system\", label: \"System\", value: 12, tone: \"neutral\" },\r\n *       { id: \"tools\", label: \"Tools\", value: 18, tone: \"info\" },\r\n *       { id: \"chat\", label: \"Chat\", value: 40, tone: \"accent\" },\r\n *     ]}\r\n *     capacity={100}\r\n *   />\r\n */\r\n\r\nexport type ContextMeterTone = \"neutral\" | \"accent\" | \"info\" | \"warning\" | \"danger\";\r\n\r\nexport interface ContextMeterSegment {\r\n  id: string;\r\n  label: string;\r\n  value: number;\r\n  tone?: ContextMeterTone;\r\n}\r\n\r\nexport interface ContextMeterProps extends HTMLAttributes<HTMLDivElement> {\r\n  segments: ContextMeterSegment[];\r\n  /** Total budget. Default 100. */\r\n  capacity?: number;\r\n  /** Warn when used/capacity crosses this ratio. Default 0.7. */\r\n  warnAt?: number;\r\n  showLegend?: boolean;\r\n  /** Optional trailing action (e.g. Compact). */\r\n  action?: ReactNode;\r\n  /** Header label. Default 「上下文」. */\r\n  label?: ReactNode;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst toneFill = sortCx({\r\n  neutral: \"bg-text-secondary/40\",\r\n  accent: \"bg-accent-500\",\r\n  info: \"bg-chart-1-active\",\r\n  warning: \"bg-chart-8-active\",\r\n  danger: \"bg-notification-error-foreground\",\r\n});\r\n\r\nexport function ContextMeter({\r\n  segments,\r\n  capacity = 100,\r\n  warnAt = 0.7,\r\n  showLegend = true,\r\n  action,\r\n  label = \"上下文\",\r\n  className,\r\n  ref,\r\n  ...props\r\n}: ContextMeterProps) {\r\n  const used = segments.reduce((sum, s) => sum + Math.max(0, s.value), 0);\r\n  const ratio = capacity <= 0 ? 0 : used / capacity;\r\n  const warn = ratio >= warnAt;\r\n\r\n  return (\r\n    <div ref={ref} className={cx(\"flex w-full flex-col gap-1.5\", className)} {...props}>\r\n      <div className=\"flex items-baseline justify-between gap-3\">\r\n        <div className=\"flex min-w-0 items-baseline gap-2\">\r\n          <Label className=\"min-w-0 truncate\">{label}</Label>\r\n          <span\r\n            className={cx(\r\n              \"shrink-0 text-body-medium tabular-nums\",\r\n              warn ? \"text-chart-8-active\" : \"text-text-secondary\",\r\n            )}\r\n          >\r\n            {Math.round(ratio * 100)}%\r\n          </span>\r\n        </div>\r\n        {action}\r\n      </div>\r\n      <div\r\n        role=\"meter\"\r\n        aria-valuemin={0}\r\n        aria-valuemax={capacity}\r\n        aria-valuenow={Math.min(used, capacity)}\r\n        aria-label=\"上下文窗口占用\"\r\n        className=\"flex h-1.5 w-full overflow-hidden rounded-full bg-border-button-default\"\r\n      >\r\n        {segments.map((seg) => {\r\n          const width = capacity <= 0 ? 0 : (Math.max(0, seg.value) / capacity) * 100;\r\n          if (width <= 0) return null;\r\n          return (\r\n            <span\r\n              key={seg.id}\r\n              title={`${seg.label}: ${seg.value}`}\r\n              className={cx(\r\n                \"h-full transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none\",\r\n                toneFill[seg.tone ?? \"accent\"],\r\n              )}\r\n              style={{ width: `${width}%` }}\r\n            />\r\n          );\r\n        })}\r\n      </div>\r\n      {showLegend ? (\r\n        <ul className=\"flex flex-wrap gap-x-3 gap-y-1 pt-0.5\">\r\n          {segments.map((seg) => (\r\n            <li\r\n              key={seg.id}\r\n              className=\"inline-flex items-center gap-1.5 text-caption-1-medium text-text-secondary\"\r\n            >\r\n              <span\r\n                className={cx(\"size-1.5 shrink-0 rounded-full\", toneFill[seg.tone ?? \"accent\"])}\r\n              />\r\n              {seg.label}\r\n              <span className=\"tabular-nums text-text-primary\">{seg.value}</span>\r\n            </li>\r\n          ))}\r\n        </ul>\r\n      ) : null}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "ContextMeter"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-emoji",
+  "type": "registry:ui",
+  "title": "Rating Emoji",
+  "description": "Rating Emoji component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/rating-emoji/rating-emoji.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { useState, type HTMLAttributes, type Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Emoji rating scale — for NPS / mood feedback where stars feel too formal.\r\n *\r\n *   <RatingEmoji value={4} interactive onChange={setValue} aria-label=\"满意度\" />\r\n */\r\n\r\nconst DEFAULT_EMOJIS = [\"😠\", \"😕\", \"😐\", \"🙂\", \"🤩\"] as const;\r\n\r\nexport interface RatingEmojiProps\r\n  extends Omit<HTMLAttributes<HTMLDivElement>, \"onChange\"> {\r\n  /** Current value (1 … emojis.length). 0 / undefined = none selected. */\r\n  value?: number;\r\n  defaultValue?: number;\r\n  /** Override the emoji sequence (length becomes max). */\r\n  emojis?: readonly string[];\r\n  interactive?: boolean;\r\n  size?: \"sm\" | \"md\" | \"lg\";\r\n  \"aria-label\"?: string;\r\n  onChange?: (value: number) => void;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  emoji: {\r\n    sm: \"text-title-3-medium size-8\",\r\n    md: \"text-title-2-medium size-10\",\r\n    lg: \"text-title-1-medium size-12\",\r\n  },\r\n});\r\n\r\nexport function RatingEmoji({\r\n  value,\r\n  defaultValue = 0,\r\n  emojis = DEFAULT_EMOJIS,\r\n  interactive = false,\r\n  size = \"md\",\r\n  \"aria-label\": ariaLabel = \"表情评分\",\r\n  onChange,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: RatingEmojiProps) {\r\n  const [uncontrolled, setUncontrolled] = useState(defaultValue);\r\n  const current = value ?? uncontrolled;\r\n  const clamped = Math.max(0, Math.min(emojis.length, current));\r\n\r\n  const select = (n: number) => {\r\n    if (value === undefined) setUncontrolled(n);\r\n    onChange?.(n);\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role={interactive ? \"radiogroup\" : \"img\"}\r\n      aria-label={ariaLabel}\r\n      className={cx(\"inline-flex items-center gap-1.5\", className)}\r\n      {...props}\r\n    >\r\n      {emojis.map((emoji, index) => {\r\n        const n = index + 1;\r\n        const selected = n === clamped;\r\n        const dimmed = clamped > 0 && !selected;\r\n\r\n        if (!interactive) {\r\n          return (\r\n            <span\r\n              key={n}\r\n              aria-hidden\r\n              className={cx(\r\n                \"inline-flex items-center justify-center transition-opacity\",\r\n                styles.emoji[size],\r\n                dimmed && \"opacity-55\",\r\n              )}\r\n            >\r\n              {emoji}\r\n            </span>\r\n          );\r\n        }\r\n\r\n        return (\r\n          <button\r\n            key={n}\r\n            type=\"button\"\r\n            role=\"radio\"\r\n            aria-checked={selected}\r\n            aria-label={`${n}`}\r\n            className={cx(\r\n              \"inline-flex items-center justify-center rounded-xl outline-none transition-[transform,opacity,background-color]\",\r\n              \"hover:bg-background-secondary-default focus-visible:ring-2 focus-visible:ring-border-focus-ring\",\r\n              styles.emoji[size],\r\n              dimmed && \"opacity-55\",\r\n              selected && \"scale-110 bg-background-secondary-default\",\r\n            )}\r\n            onClick={() => select(n)}\r\n          >\r\n            <span aria-hidden>{emoji}</span>\r\n          </button>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "RatingEmoji"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

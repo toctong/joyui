@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add announcement --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Announcement } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add announcement --yes`。
+
 
 ## 操作与关闭
 
@@ -29,7 +34,7 @@ npx @joyui/cli add announcement --yes
 
 <DemoFrame
   fileName="announcement-action.tsx"
-  code={`import { Announcement } from "@/components/base/announcement/announcement";
+  code={`import { Announcement } from "@joyui/react";
 
 <Announcement
   title="新功能"
@@ -49,7 +54,7 @@ npx @joyui/cli add announcement --yes
 <DemoFrame
   fileName="announcement-icon.tsx"
   code={`import { RiSparklingFill } from "@remixicon/react";
-import { Announcement } from "@/components/base/announcement/announcement";
+import { Announcement } from "@joyui/react";
 
 <Announcement
   title="试用 Pro"
@@ -68,7 +73,7 @@ import { Announcement } from "@/components/base/announcement/announcement";
 
 <DemoFrame
   fileName="announcement-sidebar.tsx"
-  code={`import { Announcement } from "@/components/base/announcement/announcement";
+  code={`import { Announcement } from "@joyui/react";
 
 <Announcement
   title="完成设置"

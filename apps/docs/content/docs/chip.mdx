@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add chip --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { /* … */ } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add chip --yes`。
+
 
 ## 颜色
 
@@ -29,7 +34,7 @@ npx @joyui/cli add chip --yes
 
 <DemoFrame
   fileName="chip-colors.tsx"
-  code={`import { Chip } from "@/components/base/badges/chip";
+  code={`import { Chip } from "@joyui/react";
 
 <>
   <Chip color="lime">lime</Chip>
@@ -48,7 +53,7 @@ npx @joyui/cli add chip --yes
 
 <DemoFrame
   fileName="chip-variants.tsx"
-  code={`import { Chip } from "@/components/base/badges/chip";
+  code={`import { Chip } from "@joyui/react";
 
 <>
   <Chip variant="bold" color="lime">进行中</Chip>
@@ -66,7 +71,7 @@ npx @joyui/cli add chip --yes
 
 <DemoFrame
   fileName="chip-file-row.tsx"
-  code={`import { Chip } from "@/components/base/badges/chip";
+  code={`import { Chip } from "@joyui/react";
 
 <>
   <Chip color="lime" variant="bold">已完成</Chip>

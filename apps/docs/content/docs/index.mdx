@@ -68,7 +68,7 @@ import {
 
 ## MCP 与智能体
 
-JoyUI 支持 MCP：连接一次，智能体即可浏览组件目录、真实用法，并写入源文件。
+JoyUI 支持 MCP：连接一次，智能体即可浏览组件目录、按 **npm + 内置 CSS** 路径给出用法。
 
 ```json
 {
@@ -81,7 +81,7 @@ JoyUI 支持 MCP：连接一次，智能体即可浏览组件目录、真实用�
 }
 ```
 
-配置后可让 Agent 执行 `list_components`。详见 [MCP 服务器](/docs/mcp) 与 [智能体技能](/docs/skill)。
+配置后可让 Agent 执行 `list_components` / `install_components`（会优先推荐 `pnpm add @joyui/react`）。详见 [MCP 服务器](/docs/mcp) 与 [智能体技能](/docs/skill)。
 
 ## 颜色与字体
 

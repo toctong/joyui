@@ -19,8 +19,14 @@ React Aria 管理键盘与选择；提供稳定 `id` 与 `aria-label`。
 <ComponentDocPreview slug="tree-view" />
 
 ```bash
-npx @joyui/cli add tree-view --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TreeView, TreeViewItem, TreeViewCollection } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add tree-view --yes`。
 
 ### 尺寸
 
@@ -28,7 +34,7 @@ npx @joyui/cli add tree-view --yes
 
 <DemoFrame
   fileName="tree-view-sizes.tsx"
-  code={`import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
+  code={`import { TreeView, TreeViewItem } from "@joyui/react";
 
 <>
   <TreeView aria-label="小" size="sm" defaultExpandedKeys={["src"]}>
@@ -53,7 +59,7 @@ npx @joyui/cli add tree-view --yes
 
 <DemoFrame
   fileName="tree-view-guides.tsx"
-  code={`import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
+  code={`import { TreeView, TreeViewItem } from "@joyui/react";
 
 <TreeView aria-label="文档" showGuides={false} defaultExpandedKeys={["docs"]}>
   <TreeViewItem id="docs" label="docs">
@@ -76,8 +82,14 @@ npx @joyui/cli add tree-view --yes
 <ComponentDocPreview slug="tree-view-files" />
 
 ```bash
-npx @joyui/cli add tree-view-files --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TreeView, TreeViewItem, TreeViewCollection } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add tree-view-files --yes`。
 
 ### API
 

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,11 +19,87 @@
     "jsx": "react-jsx",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"],
-      "@joyui/react": ["../../packages/ui/src/index.ts"],
-      "@joyui/react/*": ["../../packages/ui/src/*"]
+      "@/components/base/*": [
+        "../../packages/ui/src/components/base/*"
+      ],
+      "@/components/foundations/*": [
+        "../../packages/ui/src/components/foundations/*"
+      ],
+      "@/components/application/admin/*": [
+        "../../packages/ui/src/components/application/admin/*"
+      ],
+      "@/components/application/agent-log/*": [
+        "../../packages/ui/src/components/application/agent-log/*"
+      ],
+      "@/components/application/agent-thinking/*": [
+        "../../packages/ui/src/components/application/agent-thinking/*"
+      ],
+      "@/components/application/auth/*": [
+        "../../packages/ui/src/components/application/auth/*"
+      ],
+      "@/components/application/composer/*": [
+        "../../packages/ui/src/components/application/composer/*"
+      ],
+      "@/components/application/composer-loader/*": [
+        "../../packages/ui/src/components/application/composer-loader/*"
+      ],
+      "@/components/application/composer-panel/*": [
+        "../../packages/ui/src/components/application/composer-panel/*"
+      ],
+      "@/components/application/dashboard/*": [
+        "../../packages/ui/src/components/application/dashboard/*"
+      ],
+      "@/components/application/data-grid/*": [
+        "../../packages/ui/src/components/application/data-grid/*"
+      ],
+      "@/components/application/data-table/*": [
+        "../../packages/ui/src/components/application/data-table/*"
+      ],
+      "@/components/application/medical/*": [
+        "../../packages/ui/src/components/application/medical/*"
+      ],
+      "@/components/application/notification-center/*": [
+        "../../packages/ui/src/components/application/notification-center/*"
+      ],
+      "@/components/application/settings/*": [
+        "../../packages/ui/src/components/application/settings/*"
+      ],
+      "@/components/application/theme/*": [
+        "../../packages/ui/src/components/application/theme/*"
+      ],
+      "@/components/application/web-search/*": [
+        "../../packages/ui/src/components/application/web-search/*"
+      ],
+      "@/utils/cx": [
+        "../../packages/ui/src/utils/cx.ts"
+      ],
+      "@/utils/directional-icon": [
+        "../../packages/ui/src/utils/directional-icon.ts"
+      ],
+      "@/utils/scroll-direction": [
+        "../../packages/ui/src/utils/scroll-direction.ts"
+      ],
+      "@/utils/use-dismiss-on-outside-press": [
+        "../../packages/ui/src/utils/use-dismiss-on-outside-press.ts"
+      ],
+      "@/hooks/use-count-up": [
+        "../../packages/ui/src/hooks/use-count-up.ts"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "@joyui/react": [
+        "../../packages/ui/src/index.ts"
+      ],
+      "@joyui/react/*": [
+        "../../packages/ui/src/*"
+      ]
     },
-    "plugins": [{ "name": "next" }]
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -28,5 +108,7 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

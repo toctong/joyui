@@ -1,9 +1,9 @@
 ﻿---
 title: "智能体技能"
-description: "安装 JoyUI Agent Skill，让编码智能体始终加载设计规则与目录。"
+description: "安装 JoyUI Agent Skill，让编码智能体始终加载 npm 用法与设计规则。"
 ---
 
-JoyUI 提供标准 Agent Skill（`SKILL.md`），覆盖完整组件目录、主题与页面模式。
+JoyUI 提供标准 Agent Skill（`SKILL.md`）：完整组件目录、**npm 整库 + 内置 CSS** 用法、语义 token 与页面模式。
 
 ## 安装
 
@@ -15,3 +15,11 @@ npx @joyui/cli@latest skill
 其他客户端：`--client codex` 或 `--path <dir>`
 
 也可通过 MCP：`install_skill`。
+
+## Skill 会强调什么
+
+1. `pnpm add @joyui/react`
+2. `@import "@joyui/react/styles.css"`
+3. `import { Button, … } from "@joyui/react"`
+4. 语义 token + `cn`/`cx`；禁止 raw palette
+5. CLI `add` 仅作可选源码拷贝

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-loader",
+  "type": "registry:ui",
+  "title": "Dot Loader",
+  "description": "Dot Loader component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/dot-loader/dot-loader.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Three bouncing dots — Watermelon / Bencho loading without a spinner ring.\r\n *\r\n *   <DotLoader aria-label=\"加载中\" />\r\n */\r\n\r\nexport type DotLoaderSize = \"sm\" | \"md\" | \"lg\";\r\n\r\nexport interface DotLoaderProps extends HTMLAttributes<HTMLSpanElement> {\r\n  size?: DotLoaderSize;\r\n  ref?: Ref<HTMLSpanElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  // Spinner / Progress use accent via currentColor — keep the same cue.\r\n  root: \"bui-dot-loader inline-flex items-center gap-1.5 text-accent-500\",\r\n  size: {\r\n    sm: \"[&>span]:size-1\",\r\n    md: \"[&>span]:size-1.5\",\r\n    lg: \"[&>span]:size-2\",\r\n  },\r\n});\r\n\r\nexport function DotLoader({\r\n  size = \"md\",\r\n  className,\r\n  ref,\r\n  \"aria-label\": ariaLabel = \"Loading\",\r\n  ...props\r\n}: DotLoaderProps) {\r\n  return (\r\n    <span\r\n      ref={ref}\r\n      role=\"status\"\r\n      aria-label={ariaLabel}\r\n      className={cx(styles.root, styles.size[size], className)}\r\n      {...props}\r\n    >\r\n      <span aria-hidden className=\"bui-dot-loader-dot rounded-full bg-current\" />\r\n      <span aria-hidden className=\"bui-dot-loader-dot rounded-full bg-current\" />\r\n      <span aria-hidden className=\"bui-dot-loader-dot rounded-full bg-current\" />\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "DotLoader"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-shimmer",
+  "type": "registry:ui",
+  "title": "Text Shimmer",
+  "description": "Text Shimmer component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/text-shimmer/text-shimmer.tsx",
+      "type": "registry:ui",
+      "content": "import type { CSSProperties, HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Sweeping highlight across text — Bencho / Watermelon loading copy and\r\n * AI “thinking” labels without a spinner.\r\n *\r\n *   <TextShimmer>Generating reply…</TextShimmer>\r\n *\r\n * Note: agent-log also exports a private-style `ShimmerText` helper; prefer\r\n * this base `TextShimmer` for product UI.\r\n */\r\n\r\nexport interface TextShimmerProps extends HTMLAttributes<HTMLSpanElement> {\r\n  children?: ReactNode;\r\n  /** Full sweep duration in seconds. */\r\n  duration?: number;\r\n  ref?: Ref<HTMLSpanElement>;\r\n}\r\n\r\nexport function TextShimmer({\r\n  children,\r\n  className,\r\n  duration = 2.4,\r\n  style,\r\n  ref,\r\n  ...props\r\n}: TextShimmerProps) {\r\n  return (\r\n    <span\r\n      ref={ref}\r\n      className={cx(\"bui-shimmer-text inline-block text-body-medium text-text-secondary\", className)}\r\n      style={\r\n        {\r\n          \"--bui-shimmer-duration\": `${duration}s`,\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      {children}\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "TextShimmer"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

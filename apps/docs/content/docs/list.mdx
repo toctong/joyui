@@ -18,8 +18,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add list --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { List, ListItem } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add list --yes`。
 
 ## 可点击行
 
@@ -27,8 +33,8 @@ npx @joyui/cli add list --yes
 
 <DemoFrame
   fileName="list-interactive.tsx"
-  code={`import { Chip } from "@/components/base/badges/chip";
-import { List, ListItem } from "@/components/base/list/list";
+  code={`import { Chip } from "@joyui/react";
+import { List, ListItem } from "@joyui/react";
 
 <List className="w-full max-w-md">
   <ListItem title="CloudSaver" description="插件端点" interactive trailing={<Chip color="neutral" variant="subtle">off</Chip>} />
@@ -44,7 +50,7 @@ import { List, ListItem } from "@/components/base/list/list";
 
 <DemoFrame
   fileName="list-leading.tsx"
-  code={`import { List, ListItem } from "@/components/base/list/list";
+  code={`import { List, ListItem } from "@joyui/react";
 
 <List divided={false}>
   <ListItem leading={<span>A</span>} title="账号同步" description="每 15 分钟" />

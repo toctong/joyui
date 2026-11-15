@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add form-field --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { FormField } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add form-field --yes`。
 
 ## 提示与错误
 
@@ -24,8 +30,8 @@ npx @joyui/cli add form-field --yes
 
 <DemoFrame
   fileName="form-field-states.tsx"
-  code={`import { FormField } from "@/components/base/form-field/form-field";
-import { InputBase } from "@/components/base/input/input";
+  code={`import { FormField } from "@joyui/react";
+import { InputBase } from "@joyui/react";
 
 <>
   <FormField label="项目名称" hint="对外显示名" isRequired htmlFor="ok">

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-field",
+  "type": "registry:ui",
+  "title": "Copy Field",
+  "description": "Copy Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/copy-field/copy-field.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { Ref } from \"react\";\r\nimport { CopyButton } from \"../copy-button/copy-button\";\r\nimport { Input, type InputProps } from \"../input/input\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Field with a trailing copy control — Bencho Copy field / share-link pattern.\r\n *\r\n *   <CopyField label=\"分享链接\" value=\"https://joyui.top\" />\r\n */\r\n\r\nexport interface CopyFieldProps\r\n  extends Omit<InputProps, \"trailingIcon\" | \"trailingAddon\" | \"ref\"> {\r\n  value: string;\r\n  /** Make the field read-only. Default true. */\r\n  isReadOnly?: boolean;\r\n  copyLabel?: string;\r\n  copiedLabel?: string;\r\n  onCopied?: (value: string) => void;\r\n  ref?: Ref<HTMLInputElement>;\r\n}\r\n\r\nexport function CopyField({\r\n  value,\r\n  isReadOnly = true,\r\n  copyLabel,\r\n  copiedLabel,\r\n  onCopied,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: CopyFieldProps) {\r\n  return (\r\n    <Input\r\n      ref={ref}\r\n      value={value}\r\n      isReadOnly={isReadOnly}\r\n      className={cx(className)}\r\n      trailingAddon={\r\n        <CopyButton\r\n          value={value}\r\n          size=\"small\"\r\n          aria-label={copyLabel}\r\n          copiedLabel={copiedLabel}\r\n          onCopied={onCopied}\r\n          className=\"-me-1\"\r\n        />\r\n      }\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "CopyField"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

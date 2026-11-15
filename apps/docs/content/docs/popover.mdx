@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add popover --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { PopoverTrigger, Popover, PopoverHeader, PopoverFooter } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add popover --yes`。
+
 
 ## 箭头
 
@@ -29,8 +34,8 @@ npx @joyui/cli add popover --yes
 
 <DemoFrame
   fileName="popover-arrow.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
+  code={`import { Button } from "@joyui/react";
+import { Popover, PopoverTrigger } from "@joyui/react";
 
 <>
   <PopoverTrigger>
@@ -57,8 +62,8 @@ import { Popover, PopoverTrigger } from "@/components/base/popover/popover";
 
 <DemoFrame
   fileName="popover-header.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@/components/base/popover/popover";
+  code={`import { Button } from "@joyui/react";
+import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@joyui/react";
 
 <PopoverTrigger>
   <Button variant="secondary" size="small">分享</Button>
@@ -81,8 +86,8 @@ import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@/compone
 
 <DemoFrame
   fileName="popover-share.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@/components/base/popover/popover";
+  code={`import { Button } from "@joyui/react";
+import { Popover, PopoverFooter, PopoverHeader, PopoverTrigger } from "@joyui/react";
 
 <PopoverTrigger>
   <Button variant="secondary" size="small">分享</Button>

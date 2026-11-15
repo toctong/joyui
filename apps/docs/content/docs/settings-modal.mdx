@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add settings-modal --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { PlanArtFlame, SettingsGeneral, SettingsModal, SettingsProfile } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add settings-modal --yes`。
+
 
 ## 打开到通用
 
@@ -30,8 +35,8 @@ npx @joyui/cli add settings-modal --yes
 <DemoFrame
   fileName="settings-modal-general.tsx"
   code={`import { useState } from "react";
-import { Button } from "@/components/base/buttons/button";
-import { SettingsModal } from "@/components/application/settings/settings-modal";
+import { Button } from "@joyui/react";
+import { SettingsModal } from "@joyui/react";
 
 function Example() {
   const [open, setOpen] = useState(false);

@@ -16,8 +16,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 <ComponentDocPreview slug="file-upload" />
 
 ```bash
-npx @joyui/cli add file-upload --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { FileUpload } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add file-upload --yes`。
 
 ### 限制类型与大小
 
@@ -25,7 +31,7 @@ npx @joyui/cli add file-upload --yes
 
 <DemoFrame
   fileName="file-upload-restrict.tsx"
-  code={`import { FileUpload } from "@/components/base/file-upload/file-upload";
+  code={`import { FileUpload } from "@joyui/react";
 
 <FileUpload
   allowedExtensions={["png", "jpg", "jpeg"]}
@@ -48,8 +54,14 @@ npx @joyui/cli add file-upload --yes
 <ComponentDocPreview slug="file-upload-gallery" />
 
 ```bash
-npx @joyui/cli add file-upload-gallery --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { FileUpload } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add file-upload-gallery --yes`。
 
 ### API
 

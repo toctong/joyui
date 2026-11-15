@@ -15,8 +15,14 @@ CTA 或图标按钮的微交互；`strength` / `radius` 控制吸力与作用半
 ## 安装
 
 ```bash
-npx @joyui/cli add magnetic --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Magnetic } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add magnetic --yes`。
 
 ## 吸力
 
@@ -24,8 +30,8 @@ npx @joyui/cli add magnetic --yes
 
 <DemoFrame
   fileName="magnetic-strength.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Magnetic } from "@/components/base/magnetic/magnetic";
+  code={`import { Button } from "@joyui/react";
+import { Magnetic } from "@joyui/react";
 
 <>
   <Magnetic strength={12} radius={80}><Button variant="secondary">轻吸力</Button></Magnetic>

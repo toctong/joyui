@@ -29,7 +29,7 @@ npx @joyui/cli add empty-state --yes
 <DemoFrame
   fileName="empty-state-sizes.tsx"
   code={`import { RiFolderOpenLine, RiInbox2Line } from "@remixicon/react";
-import { EmptyState } from "@/components/base/empty-state/empty-state";
+import { EmptyState } from "@joyui/react";
 
 <>
   <EmptyState size="sm" icon={RiFolderOpenLine} title="暂无日志" description="表格内紧凑空态（sm）。" />
@@ -46,8 +46,8 @@ import { EmptyState } from "@/components/base/empty-state/empty-state";
 
 <DemoFrame
   fileName="empty-state-action.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { EmptyState } from "@/components/base/empty-state/empty-state";
+  code={`import { Button } from "@joyui/react";
+import { EmptyState } from "@joyui/react";
 
 <EmptyState
   title="还没有任务"

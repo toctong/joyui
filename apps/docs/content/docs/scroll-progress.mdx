@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add scroll-progress --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ScrollProgress } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add scroll-progress --yes`。
 
 ## 绑定容器
 
@@ -25,7 +31,7 @@ npx @joyui/cli add scroll-progress --yes
 <DemoFrame
   fileName="scroll-progress-target.tsx"
   code={`import { useRef } from "react";
-import { ScrollProgress } from "@/components/base/scroll-progress/scroll-progress";
+import { ScrollProgress } from "@joyui/react";
 
 function Example() {
   const ref = useRef(null);

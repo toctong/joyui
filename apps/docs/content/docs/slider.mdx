@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add slider --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Slider, RangeSlider } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add slider --yes`。
+
 
 ## 单值
 
@@ -29,7 +34,7 @@ npx @joyui/cli add slider --yes
 
 <DemoFrame
   fileName="slider-value.tsx"
-  code={`import { Slider } from "@/components/base/slider/slider";
+  code={`import { Slider } from "@joyui/react";
 
 <>
   <Slider label="音量" defaultValue={40} thumbLabel="音量" />
@@ -46,7 +51,7 @@ npx @joyui/cli add slider --yes
 
 <DemoFrame
   fileName="slider-range.tsx"
-  code={`import { RangeSlider } from "@/components/base/slider/slider";
+  code={`import { RangeSlider } from "@joyui/react";
 
 <RangeSlider
   label="价格区间"
@@ -65,7 +70,7 @@ npx @joyui/cli add slider --yes
 
 <DemoFrame
   fileName="slider-filter.tsx"
-  code={`import { RangeSlider } from "@/components/base/slider/slider";
+  code={`import { RangeSlider } from "@joyui/react";
 
 <RangeSlider
   label="预算"

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "description-list",
+  "type": "registry:ui",
+  "title": "Description List",
+  "description": "Description List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/description-list/description-list.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Key / value detail list for settings summaries, account cards, and\r\n * transfer metadata. Prefer this over hand-rolled two-column grids.\r\n */\r\n\r\nexport type DescriptionListColumns = 1 | 2;\r\n\r\nexport interface DescriptionListProps extends HTMLAttributes<HTMLDListElement> {\r\n  columns?: DescriptionListColumns;\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLDListElement>;\r\n}\r\n\r\nexport interface DescriptionTermProps extends HTMLAttributes<HTMLElement> {\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLElement>;\r\n}\r\n\r\nexport interface DescriptionDetailsProps extends HTMLAttributes<HTMLElement> {\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  list: {\r\n    1: \"grid grid-cols-1 gap-x-6 gap-y-3\",\r\n    2: \"grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2\",\r\n  },\r\n});\r\n\r\nexport function DescriptionList({\r\n  columns = 1,\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: DescriptionListProps) {\r\n  return (\r\n    <dl ref={ref} className={cx(styles.list[columns], className)} {...props}>\r\n      {children}\r\n    </dl>\r\n  );\r\n}\r\n\r\nexport function DescriptionTerm({\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: DescriptionTermProps) {\r\n  return (\r\n    <dt\r\n      ref={ref}\r\n      className={cx(\"text-caption-1-medium text-text-secondary\", className)}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </dt>\r\n  );\r\n}\r\n\r\nexport function DescriptionDetails({\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: DescriptionDetailsProps) {\r\n  return (\r\n    <dd\r\n      ref={ref}\r\n      className={cx(\"mt-0.5 text-body-medium text-text-primary break-words\", className)}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </dd>\r\n  );\r\n}\r\n\r\n/** Convenience row: term + details as one visual unit. */\r\nexport function DescriptionItem({\r\n  term,\r\n  children,\r\n  className,\r\n}: {\r\n  term: ReactNode;\r\n  children: ReactNode;\r\n  className?: string;\r\n}) {\r\n  return (\r\n    <div className={cx(\"min-w-0\", className)}>\r\n      <DescriptionTerm>{term}</DescriptionTerm>\r\n      <DescriptionDetails>{children}</DescriptionDetails>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "DescriptionList",
+      "DescriptionTerm",
+      "DescriptionDetails",
+      "DescriptionItem"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

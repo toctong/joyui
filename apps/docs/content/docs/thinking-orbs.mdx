@@ -15,8 +15,14 @@ Agent / Composer 等待回复时的品牌动效。
 ## 安装
 
 ```bash
-npx @joyui/cli add thinking-orbs --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ThinkingOrbs } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add thinking-orbs --yes`。
 
 ## 尺寸
 
@@ -24,7 +30,7 @@ npx @joyui/cli add thinking-orbs --yes
 
 <DemoFrame
   fileName="thinking-orbs-sizes.tsx"
-  code={`import { ThinkingOrbs } from "@/components/base/thinking-orbs/thinking-orbs";
+  code={`import { ThinkingOrbs } from "@joyui/react";
 
 <>
   <ThinkingOrbs size="sm" />

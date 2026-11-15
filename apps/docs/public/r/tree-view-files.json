@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-view-files",
+  "type": "registry:ui",
+  "title": "Tree View Files",
+  "description": "Tree View Files component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/tree-view-files/tree-view-files.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { ComponentProps, ReactNode, Ref } from \"react\";\r\nimport {\r\n  RiFileCodeLine,\r\n  RiFileTextLine,\r\n  RiFolder3Line,\r\n  RiFolderOpenLine,\r\n  RiSearchLine,\r\n} from \"@remixicon/react\";\r\nimport { TreeView, TreeViewItem } from \"../tree-view/tree-view\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * File-explorer chrome around TreeView — toolbar, path crumb, icon defaults.\r\n *\r\n *   <TreeViewFiles path=\"src / components\" aria-label=\"项目文件\">\r\n *     <TreeViewFiles.Folder id=\"src\" label=\"src\">\r\n *       <TreeViewFiles.File id=\"button\" label=\"button.tsx\" />\r\n *     </TreeViewFiles.Folder>\r\n *   </TreeViewFiles>\r\n */\r\n\r\nexport interface TreeViewFilesProps\r\n  extends Omit<ComponentProps<typeof TreeView>, \"children\" | \"className\"> {\r\n  /** Breadcrumb / path shown above the tree. */\r\n  path?: ReactNode;\r\n  /** Optional leading toolbar actions (search, new file…). */\r\n  toolbar?: ReactNode;\r\n  /** Panel title beside the path. */\r\n  title?: ReactNode;\r\n  /** Classes for the outer panel (not the inner TreeView). */\r\n  className?: string;\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function TreeViewFiles({\r\n  path,\r\n  toolbar,\r\n  title = \"资源管理器\",\r\n  className,\r\n  children,\r\n  size = \"sm\",\r\n  showGuides = true,\r\n  ...props\r\n}: TreeViewFilesProps) {\r\n  return (\r\n    <div\r\n      className={cx(\r\n        \"flex w-full flex-col overflow-hidden rounded-3xl border border-border-button-default bg-background-primary-default\",\r\n        className,\r\n      )}\r\n    >\r\n      <div className=\"flex items-center justify-between gap-3 border-b border-separator-border px-3 py-2.5\">\r\n        <div className=\"min-w-0\">\r\n          <p className=\"text-caption-1-medium text-text-tertiary\">{title}</p>\r\n          {path ? (\r\n            <p className=\"truncate text-body-2-regular text-text-secondary\">{path}</p>\r\n          ) : null}\r\n        </div>\r\n        {toolbar ?? (\r\n          <span className=\"flex size-8 items-center justify-center rounded-xl text-foreground-icon-secondary\">\r\n            <RiSearchLine className=\"size-4\" aria-hidden />\r\n          </span>\r\n        )}\r\n      </div>\r\n      <TreeView\r\n        {...props}\r\n        size={size}\r\n        showGuides={showGuides}\r\n        className=\"rounded-none border-0\"\r\n      >\r\n        {children}\r\n      </TreeView>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport interface TreeViewFilesFolderProps\r\n  extends Omit<ComponentProps<typeof TreeViewItem>, \"icon\" | \"expandedIcon\"> {\r\n  icon?: ComponentProps<typeof TreeViewItem>[\"icon\"];\r\n  expandedIcon?: ComponentProps<typeof TreeViewItem>[\"expandedIcon\"];\r\n}\r\n\r\nexport function TreeViewFilesFolder({\r\n  icon = RiFolder3Line,\r\n  expandedIcon = RiFolderOpenLine,\r\n  iconClassName = \"text-chart-8-active\",\r\n  ...props\r\n}: TreeViewFilesFolderProps) {\r\n  return (\r\n    <TreeViewItem\r\n      {...props}\r\n      icon={icon}\r\n      expandedIcon={expandedIcon}\r\n      iconClassName={iconClassName}\r\n    />\r\n  );\r\n}\r\n\r\nexport interface TreeViewFilesFileProps\r\n  extends Omit<ComponentProps<typeof TreeViewItem>, \"icon\" | \"children\"> {\r\n  /** Prefer code glyph for .ts/.tsx/.js; text otherwise. */\r\n  kind?: \"code\" | \"text\";\r\n}\r\n\r\nexport function TreeViewFilesFile({\r\n  kind,\r\n  label,\r\n  iconClassName,\r\n  ...props\r\n}: TreeViewFilesFileProps) {\r\n  const inferred =\r\n    kind ??\r\n    (/\\.(tsx?|jsx?|mjs|cjs|css|json)$/i.test(String(label)) ? \"code\" : \"text\");\r\n  const Icon = inferred === \"code\" ? RiFileCodeLine : RiFileTextLine;\r\n  return (\r\n    <TreeViewItem\r\n      {...props}\r\n      label={label}\r\n      icon={Icon}\r\n      iconClassName={\r\n        iconClassName ??\r\n        (inferred === \"code\" ? \"text-accent-700\" : \"text-chart-1-active\")\r\n      }\r\n    />\r\n  );\r\n}\r\n\r\nObject.assign(TreeViewFiles, {\r\n  Folder: TreeViewFilesFolder,\r\n  File: TreeViewFilesFile,\r\n});\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "TreeViewFiles",
+      "TreeViewFilesFolder",
+      "TreeViewFilesFile"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

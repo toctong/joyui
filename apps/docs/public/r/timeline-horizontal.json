@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-horizontal",
+  "type": "registry:ui",
+  "title": "Timeline Horizontal",
+  "description": "Timeline Horizontal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/timeline-horizontal/timeline-horizontal.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Horizontal process rail — steps across a workflow (onboarding, transfer\r\n * pipeline, approval chain). Pair with TimelineHorizontalItem.\r\n *\r\n *   <TimelineHorizontal aria-label=\"转存进度\">\r\n *     <TimelineHorizontalItem title=\"创建\" tone=\"success\" />\r\n *     <TimelineHorizontalItem title=\"转存中\" tone=\"info\" />\r\n *     <TimelineHorizontalItem title=\"完成\" />\r\n *   </TimelineHorizontal>\r\n */\r\n\r\nexport type TimelineHorizontalItemTone =\r\n  | \"neutral\"\r\n  | \"success\"\r\n  | \"warning\"\r\n  | \"error\"\r\n  | \"info\";\r\n\r\nexport type TimelineHorizontalItemStatus = \"complete\" | \"current\" | \"upcoming\";\r\n\r\nexport interface TimelineHorizontalItemProps\r\n  extends Omit<HTMLAttributes<HTMLLIElement>, \"title\"> {\r\n  title: ReactNode;\r\n  description?: ReactNode;\r\n  tone?: TimelineHorizontalItemTone;\r\n  /** Visual weight: completed, active, or upcoming. Default inferred from tone. */\r\n  status?: TimelineHorizontalItemStatus;\r\n  /** Leading glyph; defaults to a filled / ringed dot. */\r\n  indicator?: ReactNode;\r\n  ref?: Ref<HTMLLIElement>;\r\n}\r\n\r\nexport interface TimelineHorizontalProps extends HTMLAttributes<HTMLOListElement> {\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLOListElement>;\r\n}\r\n\r\nconst tones = sortCx({\r\n  neutral: \"bg-foreground-icon-quaternary\",\r\n  success: \"bg-status-lime-text\",\r\n  warning: \"bg-status-yellow-text\",\r\n  error: \"bg-status-rose-text\",\r\n  info: \"bg-status-blue-text\",\r\n});\r\n\r\nconst ringByStatus = sortCx({\r\n  complete: \"ring-4 ring-background-primary-default\",\r\n  current: \"ring-4 ring-status-blue-background\",\r\n  upcoming: \"ring-4 ring-background-primary-default\",\r\n});\r\n\r\nfunction resolveStatus(\r\n  status: TimelineHorizontalItemStatus | undefined,\r\n  tone: TimelineHorizontalItemTone,\r\n): TimelineHorizontalItemStatus {\r\n  if (status) return status;\r\n  if (tone === \"success\") return \"complete\";\r\n  if (tone === \"info\" || tone === \"warning\" || tone === \"error\") return \"current\";\r\n  return \"upcoming\";\r\n}\r\n\r\nexport function TimelineHorizontal({\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: TimelineHorizontalProps) {\r\n  return (\r\n    <ol\r\n      ref={ref}\r\n      className={cx(\"flex w-full list-none items-start gap-0 p-0\", className)}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </ol>\r\n  );\r\n}\r\n\r\nexport function TimelineHorizontalItem({\r\n  title,\r\n  description,\r\n  tone = \"neutral\",\r\n  status,\r\n  indicator,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: TimelineHorizontalItemProps) {\r\n  const resolved = resolveStatus(status, tone);\r\n  const upcoming = resolved === \"upcoming\";\r\n\r\n  return (\r\n    <li\r\n      ref={ref}\r\n      className={cx(\r\n        \"relative flex min-w-0 flex-1 flex-col items-center text-center\",\r\n        \"last:[&>[data-timeline-rail]]:hidden\",\r\n        className,\r\n      )}\r\n      data-status={resolved}\r\n      {...props}\r\n    >\r\n      {/* Real rail — `after:bg-border-secondary-*` is transparent in docs theme. */}\r\n      <span\r\n        data-timeline-rail\r\n        aria-hidden\r\n        className=\"pointer-events-none absolute start-[calc(50%+10px)] end-[calc(-50%+10px)] top-[11px] h-px bg-separator-border\"\r\n      />\r\n      <div className=\"relative z-10 flex h-6 w-6 shrink-0 items-center justify-center\">\r\n        {indicator ?? (\r\n          <span\r\n            aria-hidden\r\n            className={cx(\r\n              \"size-2.5 rounded-full\",\r\n              ringByStatus[resolved],\r\n              upcoming ? \"bg-background-tertiary-default\" : tones[tone],\r\n            )}\r\n          />\r\n        )}\r\n      </div>\r\n      <div className=\"mt-2 min-w-0 px-1\">\r\n        <div\r\n          className={cx(\r\n            \"text-body-medium\",\r\n            upcoming ? \"text-text-tertiary\" : \"text-text-primary\",\r\n          )}\r\n        >\r\n          {title}\r\n        </div>\r\n        {description ? (\r\n          <div className=\"mt-0.5 text-caption-1-regular text-text-tertiary\">{description}</div>\r\n        ) : null}\r\n      </div>\r\n    </li>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "TimelineHorizontal",
+      "TimelineHorizontalItem"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

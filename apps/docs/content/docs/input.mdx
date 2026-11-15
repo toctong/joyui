@@ -19,10 +19,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add input --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Input } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add input --yes`。
+
 
 ## 状态
 
@@ -31,7 +36,7 @@ npx @joyui/cli add input --yes
 <DemoFrame
   fileName="input-states.tsx"
   code={`import { RiMailLine } from "@remixicon/react";
-import { Input } from "@/components/base/input/input";
+import { Input } from "@joyui/react";
 
 <>
   <Input label="邮箱" placeholder="you@company.com" leadingIcon={RiMailLine} />
@@ -51,7 +56,7 @@ import { Input } from "@/components/base/input/input";
 <DemoFrame
   fileName="input-login.tsx"
   code={`import { RiMailLine } from "@remixicon/react";
-import { Input } from "@/components/base/input/input";
+import { Input } from "@joyui/react";
 
 <form className="flex flex-col gap-4">
   <Input label="邮箱" type="email" leadingIcon={RiMailLine} isRequired />
