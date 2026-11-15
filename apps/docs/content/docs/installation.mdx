@@ -59,11 +59,14 @@ export function App() {
 }
 ```
 
-Composer（TipTap）走子路径，避免无谓打包：
+AI 套件（`AiChat` / `useChat`）已内置在主入口；`ai` 与 `@ai-sdk/react` 随包安装。TipTap Composer 仍走子路径：
 
 ```tsx
+import { AiChat, useChat } from "@joyui/react";
 import { Composer, ComposerPanel } from "@joyui/react/composer";
 ```
+
+详见 [AI](/docs/ai)。
 
 ### 3. 一键初始化（可选）
 
@@ -77,7 +80,8 @@ npx @joyui/cli@latest init --yes
 
 | 场景 | 是否额外安装 |
 |------|----------------|
-| 只用 JoyUI 组件 | 否 |
+| 只用 JoyUI 组件（含 AiChat / useChat） | 否 |
+| TipTap 胶囊 Composer | 是：TipTap peers（见 Composer 文档） |
 | 业务代码里 `import { RiXxx } from "@remixicon/react"` | 是（图标给**你的**页面用） |
 | `@tanstack/react-query`、路由、axios 等业务库 | 是（与 JoyUI 无关） |
 

@@ -10,6 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const indexPath = path.join(root, "packages/ui/src/index.ts");
 const composerPath = path.join(root, "packages/ui/src/composer.ts");
+const aiPath = path.join(root, "packages/ui/src/ai.ts");
 
 const MANUAL = [
   {
@@ -126,9 +127,9 @@ function parseBarrel(filePath, importFrom = "@joyui/react") {
   return [...byName.values()];
 }
 
-function parseComposer() {
-  if (!fs.existsSync(composerPath)) return [];
-  const src = fs.readFileSync(composerPath, "utf8");
+function parseSubpathBarrel(filePath, meta) {
+  if (!fs.existsSync(filePath)) return [];
+  const src = fs.readFileSync(filePath, "utf8");
   const exports = [];
   for (const m of src.matchAll(
     /export\s+\{([^}]+)\}\s+from\s+["']([^"']+)["']/g,
@@ -141,25 +142,50 @@ function parseComposer() {
     }
   }
   if (!exports.length) return [];
-  return [
-    {
-      name: "composer",
-      title: "Composer",
-      description:
-        "TipTap-backed composer surfaces. Import from @joyui/react/composer.",
-      type: "component",
-      layer: "application",
-      exports,
-      importFrom: "@joyui/react/composer",
-      dependencies: [],
-      registryDependencies: [],
-    },
-  ];
+  return [{ ...meta, exports }];
+}
+
+function parseComposer() {
+  return parseSubpathBarrel(composerPath, {
+    name: "composer",
+    title: "Composer",
+    description:
+      "TipTap-backed composer surfaces. Import from @joyui/react/composer.",
+    type: "component",
+    layer: "application",
+    importFrom: "@joyui/react/composer",
+    dependencies: [],
+    registryDependencies: [],
+  });
+}
+
+function parseAi() {
+  // Prefer main entry: AI SDK ships inside @joyui/react. Keep /ai as alias.
+  return parseSubpathBarrel(aiPath, {
+    name: "ai-kit",
+    title: "AI Kit",
+    description:
+      "Built-in AI SDK chat kit (AiChat / AiConversation / AiMessage / useChat).",
+    type: "component",
+    layer: "application",
+    importFrom: "@joyui/react",
+    dependencies: [],
+    registryDependencies: [
+      "chat-message",
+      "message-actions",
+      "reasoning-block",
+      "tool-call",
+      "citation",
+      "prompt-suggestions",
+      "agent-thinking",
+    ],
+  });
 }
 
 function main() {
   const components = [
     ...MANUAL,
+    ...parseAi(),
     ...parseBarrel(indexPath),
     ...parseComposer(),
   ].sort((a, b) => a.name.localeCompare(b.name));

@@ -23,6 +23,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `admin-dashboard` | application | `AdminDashboard` | `@joyui/react` |
 | `agent-log` | application | `ShimmerText, RowConnector, GuideBridge, WorkingRow, …` | `@joyui/react` |
 | `agent-thinking` | application | `AgentThinking` | `@joyui/react` |
+| `ai-kit` | application | `AiChat, AiComposer, AiConversation, AiMessage, …` | `@joyui/react` |
 | `alert` | base | `Alert` | `@joyui/react` |
 | `announcement` | base | `Announcement` | `@joyui/react` |
 | `aspect-ratio` | base | `AspectRatio` | `@joyui/react` |

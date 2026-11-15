@@ -1,0 +1,52 @@
+---
+title: "AI 对话"
+description: "内置 useChat 的对话壳：transcript + 轻量输入，可换 TipTap Composer。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+`AiChat` / `AiConversation` / `AiMessage` 随 `@joyui/react` 发布；`ai` 与 `@ai-sdk/react` 已是包依赖。
+
+<ComponentDocPreview slug="ai-chat" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiChat, AiConversation, AiMessage, useChat } from "@joyui/react";
+// 或
+import { AiChat } from "@joyui/react/ai";
+```
+
+主题 CSS：`@import "@joyui/react/styles.css"`。
+
+## 用法
+
+```tsx
+<AiChat api="/api/chat" suggestions={["解释这段报错"]} />
+```
+
+带完整 Composer：
+
+```tsx
+import { Composer, ComposerLoader } from "@joyui/react/composer";
+
+<AiChat
+  api="/api/chat"
+  renderComposer={({ busy, send, stop }) => (
+    <ComposerLoader active={busy}>
+      <Composer busy={busy} onStop={stop} onSubmit={send} />
+    </ComposerLoader>
+  )}
+/>
+```
+
+预览区用静态 `AiConversation` 演示 transcript 映射；真实流式请接你的 `/api/chat`。
+
+## API
+
+<DocApiSection slug="ai-chat" />

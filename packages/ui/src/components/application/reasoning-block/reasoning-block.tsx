@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type HTMLAttributes, type ReactNode } from "react";
+import { useEffect, useState, type HTMLAttributes, type ReactNode } from "react";
 import { RiArrowDownSLine, RiBrainLine } from "@remixicon/react";
 import { TextShimmer } from "../../base/text-shimmer/text-shimmer";
 import { cx } from "../../../utils/cx";
@@ -36,7 +36,9 @@ export function ReasoningBlock({
   children,
   ...props
 }: ReasoningBlockProps) {
-  const [uncontrolled, setUncontrolled] = useState(defaultOpen);
+  const [uncontrolled, setUncontrolled] = useState(
+    defaultOpen || status === "streaming",
+  );
   const open = openProp ?? uncontrolled;
   const streaming = status === "streaming";
   const label =
@@ -46,6 +48,12 @@ export function ReasoningBlock({
     ) : (
       "Thought"
     ));
+
+  // Keep the block open while tokens stream in (uncontrolled only).
+  useEffect(() => {
+    if (openProp !== undefined) return;
+    if (status === "streaming") setUncontrolled(true);
+  }, [status, openProp]);
 
   const setOpen = (next: boolean) => {
     onOpenChange?.(next);

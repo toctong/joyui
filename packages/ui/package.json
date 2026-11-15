@@ -51,6 +51,11 @@
       "import": "./dist/composer.js",
       "require": "./dist/composer.cjs"
     },
+    "./ai": {
+      "types": "./dist/ai.d.ts",
+      "import": "./dist/ai.js",
+      "require": "./dist/ai.cjs"
+    },
     "./styles.css": "./src/styles/styles.css",
     "./theme.css": "./src/styles/theme.css",
     "./typography.css": "./src/styles/typography.css",
@@ -71,37 +76,61 @@
     "registry:build": "node ./scripts/build-registry.mjs"
   },
   "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
-    "tailwindcss": "^4.0.0",
     "@tiptap/extension-mention": "^3.0.0",
     "@tiptap/extension-placeholder": "^3.0.0",
     "@tiptap/pm": "^3.0.0",
     "@tiptap/react": "^3.0.0",
     "@tiptap/starter-kit": "^3.0.0",
     "@tiptap/suggestion": "^3.0.0",
-    "tippy.js": "^6.0.0",
-    "recharts": "^3.0.0",
     "jsbarcode": "^3.0.0",
-    "qrcode": "^1.5.0"
+    "qrcode": "^1.5.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "recharts": "^3.0.0",
+    "tailwindcss": "^4.0.0",
+    "tippy.js": "^6.0.0"
   },
   "peerDependenciesMeta": {
-    "tailwindcss": { "optional": true },
-    "@tiptap/extension-mention": { "optional": true },
-    "@tiptap/extension-placeholder": { "optional": true },
-    "@tiptap/pm": { "optional": true },
-    "@tiptap/react": { "optional": true },
-    "@tiptap/starter-kit": { "optional": true },
-    "@tiptap/suggestion": { "optional": true },
-    "tippy.js": { "optional": true },
-    "recharts": { "optional": true },
-    "jsbarcode": { "optional": true },
-    "qrcode": { "optional": true }
+    "tailwindcss": {
+      "optional": true
+    },
+    "@tiptap/extension-mention": {
+      "optional": true
+    },
+    "@tiptap/extension-placeholder": {
+      "optional": true
+    },
+    "@tiptap/pm": {
+      "optional": true
+    },
+    "@tiptap/react": {
+      "optional": true
+    },
+    "@tiptap/starter-kit": {
+      "optional": true
+    },
+    "@tiptap/suggestion": {
+      "optional": true
+    },
+    "tippy.js": {
+      "optional": true
+    },
+    "recharts": {
+      "optional": true
+    },
+    "jsbarcode": {
+      "optional": true
+    },
+    "qrcode": {
+      "optional": true
+    }
   },
   "dependencies": {
+    "@ai-sdk/react": "^4.0.174",
     "@internationalized/date": "^3.12.4",
     "@remixicon/react": "^4.9.0",
     "@tanstack/react-table": "^8.21.3",
+    "ai": "^7.0.170",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "motion": "^12.43.0",

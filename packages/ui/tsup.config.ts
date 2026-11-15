@@ -24,6 +24,8 @@ const externals = [
   "tippy.js",
   "qrcode",
   "jsbarcode",
+  "ai",
+  "@ai-sdk/react",
   "next",
   "next/image",
   "next/link",
@@ -43,6 +45,7 @@ export default defineConfig([
   {
     entry: {
       composer: "src/composer.ts",
+      ai: "src/ai.ts",
       "lib/format": "src/lib/format.ts",
       "lib/utils": "src/lib/utils.ts",
     },

@@ -16,10 +16,17 @@ export { cx as mergeCx, sortCx } from "./utils/cx";
 
 /**
  * TipTap-backed Composer lives at `@joyui/react/composer`.
+ * AI kit also re-exports from `@joyui/react/ai` for a slim import path.
  */
 export { AdminDashboard } from "./components/application/admin/admin-dashboard";
 export { useRevealMask, ShimmerText, useRevealTicker, RowConnector, GuideBridge, WorkingRow, useLogMotion, LogRow } from "./components/application/agent-log/agent-log";
 export { AgentThinking } from "./components/application/agent-thinking/agent-thinking";
+export { AiChat } from "./components/application/ai-kit/ai-chat";
+export { AiComposer } from "./components/application/ai-kit/ai-composer";
+export { AiConversation } from "./components/application/ai-kit/ai-conversation";
+export { AiMessage } from "./components/application/ai-kit/ai-message";
+export { useChat, DefaultChatTransport } from "./components/application/ai-kit/ai-sdk";
+export { isChatBusy, getUIMessageText, shouldShowThinking, mapToolStateToStatus, summarizeToolInput, formatToolOutput, getUIMessageSources, getToolName, isReasoningUIPart, isToolUIPart } from "./components/application/ai-kit/message-parts";
 export { NotificationBell } from "./components/application/app-shell/notification-bell";
 export { AuthCard, AuthMediaCarousel } from "./components/application/auth/auth-card";
 export { ChatMessage } from "./components/application/chat-message/chat-message";
@@ -198,6 +205,10 @@ export { useScrollFade, ScrollFade } from "./components/foundations/scroll-fade/
 export { TemplateMenuProvider, useTemplateLanguageSelector, TemplateCopyProvider, translateTemplateCopy, useTemplateCopy } from "./components/foundations/template-copy/template-copy";
 export type { RevealTickerOptions } from "./components/application/agent-log/agent-log";
 export type { AgentThinkingVariant, AgentThinkingTone, AgentThinkingProps } from "./components/application/agent-thinking/agent-thinking";
+export type { AiChatProps } from "./components/application/ai-kit/ai-chat";
+export type { AiConversationProps } from "./components/application/ai-kit/ai-conversation";
+export type { AiMessageProps } from "./components/application/ai-kit/ai-message";
+export type { AiSource } from "./components/application/ai-kit/message-parts";
 export type { AuthLayout, AuthMode, AuthCardProps } from "./components/application/auth/auth-card";
 export type { AuthMediaSlide } from "./components/application/auth/auth-media-carousel";
 export type { ChatMessageRole, ChatMessageProps } from "./components/application/chat-message/chat-message";

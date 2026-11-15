@@ -67,6 +67,7 @@ const REGISTRY_NAMES = new Set([
   "admin-dashboard",
   "agent-log",
   "agent-thinking",
+  "ai-chat",
   "chat-message",
   "message-actions",
   "reasoning-block",

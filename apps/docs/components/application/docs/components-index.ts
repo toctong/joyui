@@ -81,6 +81,7 @@ const components: Entry[] = [
 ];
 
 const ai: Entry[] = [
+  { name: "AI Chat", href: "/docs/ai-chat", description: "Built-in useChat shell: transcript + composer.", tier: "free", status: "shipped", isNew: true },
   { name: "Composer", href: "/docs/composer", description: "AI input: capsule, attachments, loader, and panel.", tier: "pro", status: "shipped", isNew: true },
   { name: "Chat Message", href: "/docs/chat-message", description: "User bubble and assistant transcript turn.", tier: "free", status: "shipped", isNew: true },
   { name: "Message Actions", href: "/docs/message-actions", description: "Copy / regenerate row under a reply.", tier: "free", status: "shipped", isNew: true },

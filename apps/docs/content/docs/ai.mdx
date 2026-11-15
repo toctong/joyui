@@ -1,11 +1,11 @@
 ---
 title: AI
-description: Composer、思考态、流式日志与模型选择等 AI 界面积木。
+description: 内置 AI SDK 的对话积木：AiChat、消息、思考态、工具轨迹与 Composer。
 ---
 
 import { SectionCatalog } from "@/components/docs/section-catalog";
 
-面向智能体 / 对话产品的组件：输入区、思考指示、流式日志、搜索轨迹与上下文仪表。
+面向智能体 / 对话产品的组件。`ai` 与 `@ai-sdk/react` **随 `@joyui/react` 内置**，直接拼 transcript + 输入即可。
 
 ```bash
 pnpm add @joyui/react
@@ -13,30 +13,114 @@ pnpm add @joyui/react
 
 ```tsx
 import {
+  AiChat,
+  AiConversation,
+  AiMessage,
+  useChat,
   AgentThinking,
-  ContextMeter,
   PromptSuggestions,
-  WebSearch,
 } from "@joyui/react";
-import { Composer } from "@joyui/react/composer";
+import { Composer, ComposerLoader } from "@joyui/react/composer";
 ```
 
-主题 CSS 已内置：`@import "@joyui/react/styles.css"`。Composer 走独立入口 `@joyui/react/composer`（需 TipTap peers）。
+主题 CSS：`@import "@joyui/react/styles.css"`。完整 TipTap Composer 仍走 `@joyui/react/composer`（需 TipTap peers）。
 
-## 怎么拼
+## 开箱对话
 
-| 场景 | 推荐组合 |
-|------|----------|
-| 空态对话 | `PromptSuggestions` → 填入 `Composer` |
-| 一轮对话 | `ChatMessage`（user / assistant） |
-| 思考披露 | `ReasoningBlock` 嵌在助手消息内 |
-| 工具 / MCP | `ToolCall`；搜索专用用 `WebSearch` |
-| 消息操作 | `MessageActions`（父级 `group/message`） |
-| 生成中 | `AgentThinking` / `ThinkingOrbs` 叠在 Composer 上方 |
-| 流式日志行 | `agent-log` 的 `LogRow` / `WorkingRow` |
-| 上下文预算 | `ContextMeter` 或 Composer 内置环 |
-| 引用回答 | `Citation` 行挂在消息下方 |
-| 模型切换 | `ModelSelect` 放工具条 |
+`AiChat` 内置 `useChat` + 对话区 + 轻量输入（发送 / 停止）：
+
+```tsx
+import { AiChat } from "@joyui/react";
+
+export function ChatPage() {
+  return (
+    <AiChat
+      api="/api/chat"
+      suggestions={["解释这段报错", "总结这个 PR"]}
+    />
+  );
+}
+```
+
+后端仍是你的 `/api/chat`（`streamText` + UI message stream）。文档站示例：`apps/docs/app/api/chat`。
+
+想用胶囊 Composer 时：
+
+```tsx
+import { Composer, ComposerLoader } from "@joyui/react/composer";
+
+<AiChat
+  api="/api/chat"
+  renderComposer={({ busy, send, stop }) => (
+    <ComposerLoader active={busy}>
+      <Composer busy={busy} onStop={stop} onSubmit={send} />
+    </ComposerLoader>
+  )}
+/>
+```
+
+也可从 `@joyui/react/ai` 导入同一套导出（树摇友好别名）。
+
+## 自己拼 useChat
+
+```tsx
+"use client";
+
+import {
+  useChat,
+  DefaultChatTransport,
+  AiConversation,
+  isChatBusy,
+} from "@joyui/react";
+import { Composer, ComposerLoader } from "@joyui/react/composer";
+
+export function Chat() {
+  const { messages, sendMessage, status, stop, error, regenerate } = useChat({
+    transport: new DefaultChatTransport({ api: "/api/chat" }),
+  });
+  const busy = isChatBusy(status);
+
+  return (
+    <div className="flex h-dvh flex-col gap-3 p-4">
+      <AiConversation
+        messages={messages}
+        status={status}
+        error={error}
+        onSend={(text) => sendMessage({ text })}
+        onRegenerate={() => regenerate()}
+        suggestions={["帮我起五个产品名"]}
+      />
+      <ComposerLoader active={busy}>
+        <Composer
+          busy={busy}
+          onStop={stop}
+          onSubmit={(text) => sendMessage({ text })}
+        />
+      </ComposerLoader>
+    </div>
+  );
+}
+```
+
+`AiMessage` 把 `reasoning` / `tool-*` / `source-*` parts 映射到 `ReasoningBlock`、`ToolCall`、`Citation`，并带复制 / 重生成。
+
+## 积木怎么拼
+
+| 场景 | 推荐 |
+|------|------|
+| 整页对话 | `AiChat` |
+| 空态 | `PromptSuggestions` → `onSend` / Composer |
+| 一轮消息 | `AiMessage` 或 `ChatMessage` |
+| 思考披露 | `ReasoningBlock`（`AiMessage` 自动渲染） |
+| 工具 / MCP | `ToolCall`；演示轨迹用 `WebSearch` |
+| 消息操作 | `MessageActions` |
+| 生成中 | `AgentThinking` / `ThinkingOrbs` |
+| 流式日志 | `agent-log` |
+| 上下文 | `ContextMeter` |
+| 引用 | `Citation` |
+| 模型切换 | `ModelSelect` |
+| 语音态 | `VoiceRing` |
+| 流式文案 | `TypingText` / `TextShimmer` |
 
 `Task List` / `Questionnaire` 仍为文档演示形态。
 

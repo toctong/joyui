@@ -6,6 +6,8 @@ import { useRef, useState } from "react";
 import { AdminDashboard } from "@/components/application/admin/admin-dashboard";
 import { LogRow, ShimmerText, WorkingRow, useLogMotion } from "@/components/application/agent-log/agent-log";
 import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
+import { AiComposer } from "@/components/application/ai-kit/ai-composer";
+import { AiConversation } from "@/components/application/ai-kit/ai-conversation";
 import { NotificationBell } from "@/components/application/app-shell/notification-bell";
 import { AuthCard } from "@/components/application/auth/auth-card";
 import { ChatMessage } from "@/components/application/chat-message/chat-message";
@@ -218,6 +220,46 @@ function Preview_agent_thinking() {
       <AgentThinking variant="spin" label="Planning" />
       <AgentThinking variant="stars" label="Searching" tone="subtle" />
       <AgentThinking variant="infinity" label="Writing" tone="accent" showTimer={false} />
+    </div>
+  );
+}
+
+function Preview_ai_chat() {
+  const demoMessages = [
+    {
+      id: "u1",
+      role: "user",
+      parts: [{ type: "text", text: "帮我解释这次构建失败的原因" }],
+    },
+    {
+      id: "a1",
+      role: "assistant",
+      parts: [
+        { type: "reasoning", text: "先看 TypeScript 报错，再对照 barrel 导出。", state: "done" },
+        {
+          type: "tool-read_file",
+          toolCallId: "t1",
+          state: "output-available",
+          input: { path: "apps/docs/tsconfig.json" },
+          output: { ok: true },
+        },
+        { type: "text", text: "根因是 docs 预览里缺少命名导出，补上后 typecheck 即可通过。" },
+        { type: "source-url", sourceId: "s1", url: "https://joyui.dev", title: "JoyUI docs" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="flex w-full max-w-lg flex-col gap-3 rounded-2xl border border-separator-border bg-background-secondary-default p-4">
+      <AiConversation
+        className="max-h-80"
+        messages={demoMessages as never}
+        status="ready"
+        suggestions={["解释这段报错", "总结这个 PR"]}
+        onSend={() => {}}
+        autoScroll={false}
+      />
+      <AiComposer onSubmit={() => {}} placeholder="接入 /api/chat 后即可流式对话" />
     </div>
   );
 }
@@ -1900,6 +1942,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "admin-dashboard": Preview_admin_dashboard,
   "agent-log": Preview_agent_log,
   "agent-thinking": Preview_agent_thinking,
+  "ai-chat": Preview_ai_chat,
   "alert": Preview_alert,
   "announcement": Preview_announcement,
   "area-chart-card": Preview_area_chart_card,

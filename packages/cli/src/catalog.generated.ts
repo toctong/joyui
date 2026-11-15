@@ -70,6 +70,31 @@ export const CATALOG: JoyComponent[] = [
     "registryDependencies": []
   },
   {
+    "name": "ai-kit",
+    "title": "AI Kit",
+    "description": "Built-in AI SDK chat kit (AiChat / AiConversation / AiMessage / useChat).",
+    "type": "component",
+    "layer": "application",
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": [
+      "chat-message",
+      "message-actions",
+      "reasoning-block",
+      "tool-call",
+      "citation",
+      "prompt-suggestions",
+      "agent-thinking"
+    ],
+    "exports": [
+      "AiChat",
+      "AiComposer",
+      "AiConversation",
+      "AiMessage",
+      "DefaultChatTransport"
+    ]
+  },
+  {
     "name": "alert",
     "title": "Alert",
     "description": "Alert component from @joyui/react.",
@@ -421,6 +446,9 @@ export const CATALOG: JoyComponent[] = [
     "description": "TipTap-backed composer surfaces. Import from @joyui/react/composer.",
     "type": "component",
     "layer": "application",
+    "importFrom": "@joyui/react/composer",
+    "dependencies": [],
+    "registryDependencies": [],
     "exports": [
       "ComposerLoader",
       "ComposerAttachmentStrip",
@@ -430,10 +458,7 @@ export const CATALOG: JoyComponent[] = [
       "ProviderIcon",
       "Composer",
       "EffortSlider"
-    ],
-    "importFrom": "@joyui/react/composer",
-    "dependencies": [],
-    "registryDependencies": []
+    ]
   },
   {
     "name": "context-menu",

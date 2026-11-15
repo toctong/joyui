@@ -25,6 +25,8 @@ pnpm add @joyui/react
 import { JoyUIProvider, Button, DataTable } from "@joyui/react";
 ```
 
+子路径：`@joyui/react/composer`（TipTap）、`@joyui/react/ai`（AI 套件别名；`ai` + `@ai-sdk/react` 已是包依赖，也可从主入口导入）。
+
 CLI `npx @joyui/cli add <name>` 仅在需要把源码拷进业务仓库时使用。
 
 ## Source of truth

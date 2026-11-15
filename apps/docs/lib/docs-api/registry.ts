@@ -235,6 +235,11 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
       { name: "branch", description: "分支名。", type: "string", options: "—", defaultValue: "主要" },
       { name: "project", description: "项目名。", type: "string", options: "—", defaultValue: "项目海" },
       { name: "contextPct", description: "上下文占比。", type: "number", options: "0–100", defaultValue: "57" },
+      { name: "busy", description: "流式中；主按钮变为停止。", type: "boolean", options: "—", defaultValue: "false" },
+      { name: "onSubmit", description: "发送回调；有文本才触发。", type: "(text: string) => void", options: "—", defaultValue: "—" },
+      { name: "onStop", description: "busy 时点击停止。", type: "() => void", options: "—", defaultValue: "—" },
+      { name: "onAttachPress", description: "点击添加附件。", type: "() => void", options: "—", defaultValue: "—" },
+      { name: "onMicPress", description: "切换麦克风时回调。", type: "() => void", options: "—", defaultValue: "—" },
     ],
     {
       caption: "ComposerModel",
@@ -250,6 +255,10 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "contextPct", description: "上下文占比。", type: "number", options: "0–100", defaultValue: "57" },
     { name: "attachments", description: "附件。", type: "ComposerAttachment[]", options: "—", defaultValue: "—" },
     { name: "mentions", description: "@ 候选项。", type: "MentionItem[]", options: "—", defaultValue: "内置" },
+    { name: "busy", description: "流式中；主按钮变为停止。", type: "boolean", options: "—", defaultValue: "false" },
+    { name: "onSubmit", description: "发送回调。", type: "(text: string) => void", options: "—", defaultValue: "—" },
+    { name: "onStop", description: "busy 时停止。", type: "() => void", options: "—", defaultValue: "—" },
+    { name: "onAttachPress / onMicPress", description: "附件与麦克风回调。", type: "() => void", options: "—", defaultValue: "—" },
   ]),
   "composer-attachments": entry(
     "ComposerWithAttachments",
@@ -716,6 +725,15 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
   ),
   "revenue-chart-card": entry("RevenueChartCard", [
     { name: "data", description: "月度营收序列。", type: "SeriesPoint[]", options: "—", defaultValue: "内置演示" },
+  ]),
+  "ai-chat": entry("AiChat", [
+    { name: "api", description: "Chat 接口，默认 /api/chat。", type: "string", options: "—", defaultValue: '"/api/chat"' },
+    { name: "transport", description: "自定义 ChatTransport。", type: "ChatTransport", options: "—", defaultValue: "DefaultChatTransport" },
+    { name: "chatOptions", description: "透传 useChat 选项。", type: "UseChatOptions", options: "—", defaultValue: "—" },
+    { name: "suggestions", description: "空态建议。", type: "string[]", options: "—", defaultValue: "内置" },
+    { name: "thinkingVariant / thinkingLabel", description: "等待首 token 时的 AgentThinking。", type: "string", options: "wave · spin · stars · infinity", defaultValue: "wave / Thinking" },
+    { name: "renderComposer", description: "自定义输入（可接 TipTap Composer）。", type: "(ctx) => ReactNode", options: "—", defaultValue: "AiComposer" },
+    { name: "placeholder", description: "轻量输入占位。", type: "string", options: "—", defaultValue: "有什么问题就问我" },
   ]),
   "chat-message": entry("ChatMessage", [
     { name: "role", description: "消息角色。", type: '"user" | "assistant" | "system"', options: "user · assistant · system", defaultValue: "—" },

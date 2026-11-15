@@ -79,6 +79,9 @@
       "@/components/application/web-search/*": [
         "../../packages/ui/src/components/application/web-search/*"
       ],
+      "@/components/application/ai-kit/*": [
+        "../../packages/ui/src/components/application/ai-kit/*"
+      ],
       "@/components/application/chat-message/*": [
         "../../packages/ui/src/components/application/chat-message/*"
       ],
