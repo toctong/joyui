@@ -1363,13 +1363,10 @@ export function Example() {
 </div>`,
   ),
   medical: wrap(
-    'import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";\nimport { PatientInfoCard } from "@/components/application/medical/patient-info-card";\nimport { WeekRangePill } from "@/components/application/medical/week-range-pill";',
-    `<div className="grid w-full max-w-3xl gap-4 lg:grid-cols-[240px_1fr]">
+    'import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";\nimport { PatientInfoCard } from "@/components/application/medical/patient-info-card";',
+    `<div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
   <PatientInfoCard />
-  <div className="flex flex-col gap-3">
-    <WeekRangePill label="29 Jun - 5 Jul" />
-    <ImportantAlertsCard />
-  </div>
+  <ImportantAlertsCard />
 </div>`,
   ),
   brand: wrap(

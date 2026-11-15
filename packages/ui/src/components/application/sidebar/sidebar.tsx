@@ -53,7 +53,7 @@ const shellStyles = sortCx({
     rail:
       "h-full flex-col rounded-3xl border border-border-button-white bg-background-secondary-default shadow-sidebar transition-[width] duration-300 ease-in-out",
     horizontal:
-      "h-14 w-full flex-row items-center gap-3 border-b border-separator-border bg-background-primary-default px-3",
+      "min-h-14 h-14 w-full flex-row items-center gap-3 border-b border-separator-border bg-background-primary-default px-4",
   },
 });
 
@@ -223,18 +223,29 @@ export function SidebarBrand({
   return (
     <div
       className={cx(
-        "flex min-w-0 items-center gap-2 overflow-hidden px-1",
+        "flex min-w-0 items-center gap-2 overflow-hidden",
+        horizontal ? "px-0" : "px-1",
         !horizontal && collapsed && "justify-center px-0",
         className,
       )}
     >
       {Icon ? (
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-accent-500 text-text-white shadow-xs">
-          <Icon className="size-4" aria-hidden />
+        <span
+          className={cx(
+            "flex shrink-0 items-center justify-center rounded-xl bg-accent-500 text-text-white shadow-xs",
+            horizontal ? "size-7" : "size-8",
+          )}
+        >
+          <Icon className={horizontal ? "size-3.5" : "size-4"} aria-hidden />
         </span>
       ) : null}
       {showLabel ? (
-        <span className="truncate text-title-3-medium text-text-primary">
+        <span
+          className={cx(
+            "truncate text-text-primary",
+            horizontal ? "text-body-medium" : "text-title-3-medium",
+          )}
+        >
           {label}
         </span>
       ) : null}
@@ -299,9 +310,12 @@ export function SidebarSection({
         </p>
       ) : null}
       {title && horizontal ? (
-        <span className="me-1 hidden px-2 text-caption-1-semibold tracking-wide text-text-tertiary uppercase sm:inline">
-          {title}
-        </span>
+        <>
+          <span className="mx-1 hidden h-4 w-px shrink-0 bg-separator-border first:hidden sm:block" aria-hidden />
+          <span className="me-1 hidden shrink-0 text-caption-1-medium text-text-tertiary sm:inline">
+            {title}
+          </span>
+        </>
       ) : null}
       <nav
         className={cx(
@@ -332,12 +346,12 @@ function sidebarItemClass(
   className?: string,
 ) {
   return cx(
-    "flex items-center overflow-hidden rounded-2lg p-2 text-start transition-[width,background-color] duration-300 ease-in-out",
+    "flex items-center overflow-hidden rounded-2lg text-start transition-[width,background-color] duration-300 ease-in-out",
     horizontal
-      ? "w-auto shrink-0 gap-2"
+      ? "h-9 w-auto shrink-0 gap-1.5 px-2.5"
       : collapsed
-        ? "w-9 justify-center"
-        : "w-full justify-between gap-2",
+        ? "w-9 justify-center p-2"
+        : "w-full justify-between gap-2 p-2",
     selected
       ? "bg-linear-to-b from-accent-500 to-accent-600 shadow-nav-selected"
       : "hover:bg-background-secondary-hover",
@@ -372,7 +386,8 @@ function SidebarItemInner({
         {Icon ? (
           <Icon
             className={cx(
-              "size-5 shrink-0",
+              "shrink-0",
+              horizontal ? "size-4" : "size-5",
               selected ? "text-text-white" : "text-foreground-icon-secondary",
             )}
             aria-hidden
@@ -381,7 +396,8 @@ function SidebarItemInner({
         {showLabel ? (
           <span
             className={cx(
-              "truncate text-body-medium",
+              "truncate",
+              horizontal ? "text-body-2-medium" : "text-body-medium",
               selected ? "text-text-white" : "text-text-secondary",
             )}
           >
@@ -390,7 +406,12 @@ function SidebarItemInner({
         ) : null}
       </span>
       {showLabel && badge !== undefined ? (
-        <Badge color={selected ? "primary" : "neutral"}>{badge}</Badge>
+        <Badge
+          color={selected ? "primary" : "neutral"}
+          className={selected ? "bg-white/25 text-text-white" : undefined}
+        >
+          {badge}
+        </Badge>
       ) : null}
     </>
   );

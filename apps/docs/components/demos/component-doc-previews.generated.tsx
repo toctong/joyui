@@ -36,7 +36,6 @@ import { DataTable } from "@/components/application/data-table/data-table-view";
 import { DataGridExample } from "@/components/application/docs/examples/data-grid-example";
 import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";
 import { PatientInfoCard } from "@/components/application/medical/patient-info-card";
-import { WeekRangePill } from "@/components/application/medical/week-range-pill";
 import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";
 import { SettingsModal } from "@/components/application/settings/settings-modal";
 import { Sidebar, SidebarBrand, SidebarCollapseButton, SidebarContent, SidebarFooter, SidebarHeader, SidebarItem, SidebarNav } from "@/components/application/sidebar/sidebar";
@@ -1036,12 +1035,9 @@ function Preview_media_card_landscape() {
 
 function Preview_medical() {
   return (
-    <div className="grid w-full max-w-3xl gap-4 lg:grid-cols-[240px_1fr]">
+    <div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
       <PatientInfoCard />
-      <div className="flex flex-col gap-3">
-        <WeekRangePill label="29 Jun - 5 Jul" />
-        <ImportantAlertsCard />
-      </div>
+      <ImportantAlertsCard />
     </div>
   );
 }

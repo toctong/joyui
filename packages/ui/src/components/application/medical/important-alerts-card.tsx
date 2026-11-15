@@ -119,16 +119,16 @@ export function ImportantAlertsCard({ className }: { className?: string } = {}) 
           {ALERTS.map((alert, index) => (
             <div
               key={`${alert.title}-${index}`}
-              className="relative flex w-full shrink-0 flex-col gap-2 rounded-2lg bg-background-inner-default p-2.5"
+              className="relative flex w-full shrink-0 gap-2.5 rounded-2lg bg-background-inner-default p-2.5 pe-16"
             >
-              <span className={cx("flex size-8 shrink-0 items-center justify-center rounded-full", alert.iconBg)}>
+              <span className={cx("mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full", alert.iconBg)}>
                 <alert.icon className="size-[18px] text-text-white" aria-hidden />
               </span>
-              <div className="flex flex-col gap-0.5">
-                <p className="text-body-medium whitespace-nowrap text-text-primary">{alert.title}</p>
+              <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                <p className="text-body-medium text-text-primary">{alert.title}</p>
                 <p className="text-body-2-regular text-text-secondary">{alert.description}</p>
               </div>
-              <span className="absolute top-2.5 end-2.5 rounded-md bg-background-secondary-default px-1.5 py-px text-body-medium whitespace-nowrap text-text-secondary">
+              <span className="absolute top-2.5 end-2.5 rounded-md bg-background-secondary-default px-1.5 py-px text-caption-1-medium whitespace-nowrap text-text-secondary">
                 {alert.date}
               </span>
             </div>

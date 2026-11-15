@@ -9,7 +9,12 @@ const commonClass: DocsApiEntry["props"][number] = {
 };
 
 function entry(caption: string, props: DocsApiEntry["props"], data?: DocsApiEntry["data"]): DocsApiEntry {
-  return { caption, props: [...props, commonClass], data };
+  const hasClassName = props.some((p) => p.name === "className");
+  return {
+    caption,
+    props: hasClassName ? props : [...props, commonClass],
+    data,
+  };
 }
 
 /** Central API + data-item catalog for component docs. */
@@ -729,7 +734,8 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
     { name: "notifications", description: "通知列表；默认 starter 数据。", type: "NotificationCenterItem[]", options: "—", defaultValue: "STARTER_NOTIFICATIONS" },
   ]),
   medical: entry("PatientInfoCard / WeekRangePill / ImportantAlertsCard", [
-    { name: "className", description: "根节点类名。", type: "string", options: "—", defaultValue: "—" },
+    { name: "label (WeekRangePill)", description: "周/月范围文案。", type: "string", options: "—", defaultValue: "—" },
+    { name: "onPrev / onNext", description: "周切换回调；省略则为装饰态。", type: "() => void", options: "—", defaultValue: "—" },
   ]),
   brand: entry("Logo / ProLogo / NavBrand", [
     { name: "size", description: "标记边长（px）。", type: "number", options: "—", defaultValue: "32 / 36 / 22" },

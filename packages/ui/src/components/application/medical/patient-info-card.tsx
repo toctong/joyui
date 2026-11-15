@@ -54,15 +54,17 @@ export function PatientInfoCard({ className }: { className?: string } = {}) {
         {DETAILS.map((detail) => (
           <div
             key={detail.label}
-            className="flex w-full items-center justify-between rounded-2lg bg-background-inner-default px-2.5 py-2"
+            className="flex w-full items-center gap-2 rounded-2lg bg-background-inner-default px-2.5 py-2"
           >
-            <div className="flex items-center gap-1.5">
+            <div className="flex min-w-0 flex-1 items-center gap-1.5">
               <detail.icon className="size-4 shrink-0 text-text-secondary" aria-hidden />
-              <span className="text-body-regular whitespace-nowrap text-text-secondary">
+              <span className="truncate text-body-regular text-text-secondary">
                 {detail.label}
               </span>
             </div>
-            <span className="text-body-medium whitespace-nowrap text-text-primary">{detail.value}</span>
+            <span className="shrink-0 text-end text-body-medium text-text-primary">
+              {detail.value}
+            </span>
           </div>
         ))}
       </div>

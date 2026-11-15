@@ -41,9 +41,9 @@ export function DocsPropsTable({
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
+          {rows.map((row, index) => (
             <tr
-              key={row.name}
+              key={`${row.name}-${index}`}
               className="border-t border-fd-border align-top text-fd-foreground"
             >
               <td className="px-4 py-2.5 font-mono text-xs text-fd-foreground">

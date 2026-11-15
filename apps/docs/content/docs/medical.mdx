@@ -29,16 +29,13 @@ import {
 ## 组合
 
 ```tsx
-<div className="grid gap-4 lg:grid-cols-[240px_1fr]">
+<div className="grid gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
   <PatientInfoCard />
-  <div className="flex flex-col gap-3">
-    <WeekRangePill label="29 Jun - 5 Jul" />
-    <ImportantAlertsCard />
-  </div>
+  <ImportantAlertsCard /> {/* 内含 WeekRangePill */}
 </div>
 ```
 
-演示文案经 `useTemplateCopy` 本地化；接入业务时替换卡片内数据源或 fork 源码。
+`ImportantAlertsCard` 顶栏已带 `WeekRangePill`；单独使用周切换时再引入 `WeekRangePill`。演示文案经 `useTemplateCopy` 本地化。
 
 ## API
 
