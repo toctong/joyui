@@ -1,35 +1,36 @@
 ---
 title: "任务列表"
-description: "逐步揭示的智能体任务流日志。"
+description: "逐步揭示的智能体任务流日志（演示）。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-逐步揭示的智能体任务流日志。
+逐步揭示的智能体任务流演示。生产流式行请用 [`agent-log`](/docs/agent-log) 原语自组。
 
 <ProComponentDoc slug="task-list" name="任务列表" />
 
 ## 安装
+
+当前为文档演示形态，尚无独立 registry 包导出。推荐：
 
 ```bash
 pnpm add @joyui/react
 ```
 
 ```tsx
-import { /* … */ } from "@joyui/react";
+import { LogRow, WorkingRow, useLogMotion } from "@joyui/react";
 ```
 
-主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add task-list --yes`。
+或 `npx @joyui/cli add agent-log --yes` 拷贝源码后按业务组装。
 
+## 与 agent-log
 
-
-## 应用场景
-
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+| 需求 | 用法 |
+|------|------|
+| 完成行 | `<LogRow first last reduce={…}>…</LogRow>` |
+| 进行中 | `<WorkingRow label="…" reduce={…} />` |
+| 节奏 | `useRevealTicker({ total, revealed? })` |
 
 ## API
 
 <DocApiSection slug="task-list" />
-

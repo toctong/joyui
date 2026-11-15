@@ -90,7 +90,7 @@ export function ModelSelect({
             className={cx(
               "inline-flex items-center justify-center rounded-md whitespace-nowrap",
               "transition-[background-color,color,box-shadow] duration-200 ease",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring",
               "disabled:cursor-not-allowed disabled:opacity-40",
               styles.option[size],
               isSelected

@@ -4,7 +4,7 @@
 import type { ReactElement } from "react";
 import { useRef, useState } from "react";
 import { AdminDashboard } from "@/components/application/admin/admin-dashboard";
-import { LogRow, ShimmerText, WorkingRow } from "@/components/application/agent-log/agent-log";
+import { LogRow, ShimmerText, WorkingRow, useLogMotion } from "@/components/application/agent-log/agent-log";
 import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
 import { NotificationBell } from "@/components/application/app-shell/notification-bell";
 import { AuthCard } from "@/components/application/auth/auth-card";
@@ -190,7 +190,7 @@ function Preview_admin_dashboard() {
 }
 
 function Preview_agent_log() {
-  const reduce = true;
+  const reduce = useLogMotion();
   return (
     <ul className="relative w-full max-w-md list-none space-y-1 ps-3">
       <LogRow first last={false} reduce={reduce}>
@@ -209,9 +209,11 @@ function Preview_agent_log() {
 
 function Preview_agent_thinking() {
   return (
-    <div className="flex w-full max-w-sm flex-col gap-4">
+    <div className="grid w-full max-w-lg grid-cols-1 gap-4 sm:grid-cols-2">
       <AgentThinking variant="wave" label="Thinking" />
-      <AgentThinking variant="stars" label="Searching docs" tone="subtle" />
+      <AgentThinking variant="spin" label="Planning" />
+      <AgentThinking variant="stars" label="Searching" tone="subtle" />
+      <AgentThinking variant="infinity" label="Writing" tone="accent" showTimer={false} />
     </div>
   );
 }

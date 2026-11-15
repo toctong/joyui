@@ -105,7 +105,9 @@ function SourceStack({
       <button
         type="button"
         onClick={onToggle}
-        className="inline-flex items-center gap-2 text-start outline-none"
+        aria-expanded={open}
+        aria-label={`来源，共 ${sources.length} 个`}
+        className="inline-flex items-center gap-2 rounded-md text-start outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring"
       >
         <span className="text-caption-1-medium text-text-tertiary">来源</span>
         <span className="flex items-center -space-x-1.5">

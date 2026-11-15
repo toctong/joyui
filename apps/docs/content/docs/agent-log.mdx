@@ -17,7 +17,13 @@ pnpm add @joyui/react
 ```
 
 ```tsx
-import { LogRow, ShimmerText, WorkingRow } from "@joyui/react";
+import {
+  LogRow,
+  ShimmerText,
+  WorkingRow,
+  useLogMotion,
+  useRevealTicker,
+} from "@joyui/react";
 ```
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add agent-log --yes`。
@@ -25,16 +31,22 @@ import { LogRow, ShimmerText, WorkingRow } from "@joyui/react";
 ## 用法
 
 ```tsx
+const reduce = useLogMotion();
+
 <ul className="relative list-none space-y-1 ps-3">
-  <LogRow first last={false} reduce={false}>
+  <LogRow first last={false} reduce={reduce}>
     已解析仓库结构
   </LogRow>
-  <WorkingRow label="正在生成回复" reduce={false} />
+  <WorkingRow label="正在生成回复" reduce={reduce} />
   <ShimmerText>Streaming…</ShimmerText>
 </ul>
 ```
 
-`reduce` 对应该尊重 `prefers-reduced-motion`；生产中可用 `useReducedMotion()` 传入。
+- `useLogMotion()` → 尊重 `prefers-reduced-motion`
+- `useRevealTicker({ total })` → 按间隔揭示行（或传 `revealed` 接真实事件）
+- `ShimmerText` 内部使用 [`TextShimmer`](/docs/text-shimmer)
+
+成品块见 [`web-search`](/docs/web-search)；任务流演示见 [`task-list`](/docs/task-list)。
 
 ## API
 

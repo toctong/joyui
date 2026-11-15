@@ -23,6 +23,10 @@ import { Composer } from "@/components/application/composer/composer";
 import { ComposerWithAttachments } from "@/components/application/composer-panel/composer-attachments";
 import { ComposerPanel } from "@/components/application/composer-panel/composer-panel";
 import { WebSearch } from "@/components/application/web-search/web-search";
+import {
+  LogRow,
+  WorkingRow,
+} from "@/components/application/agent-log/agent-log";
 import { Chip } from "@/components/base/badges/chip";
 import { Button } from "@/components/base/buttons/button";
 import { ProgressBar } from "@/components/base/progress/progress";
@@ -169,32 +173,20 @@ function AgentLimitsMock() {
 }
 
 function TaskListMock() {
-  const items = [
-    { title: "扫描依赖图", state: "完成" },
-    { title: "生成迁移计划", state: "进行中" },
-    { title: "写入组件源码", state: "等待" },
-  ];
   return (
-    <Shell className="max-w-md mx-auto">
-      <div className="mb-4 flex items-center gap-2">
+    <Shell className="mx-auto max-w-md">
+      <div className="mb-3 flex items-center justify-between gap-2">
         <p className="text-headline-medium text-text-primary">任务列表</p>
+        <Chip color="blue">进行中</Chip>
       </div>
-      <ul className="space-y-2">
-        {items.map((item, i) => (
-          <li
-            key={item.title}
-            className="rounded-xl border border-separator-border bg-background-primary-default px-3 py-2.5"
-          >
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-body-1-medium text-text-primary">
-                {i + 1}. {item.title}
-              </span>
-              <Chip color={item.state === "完成" ? "lime" : item.state === "进行中" ? "blue" : "neutral"}>
-                {item.state}
-              </Chip>
-            </div>
-          </li>
-        ))}
+      <ul className="relative list-none space-y-1 ps-1">
+        <LogRow first last={false} reduce>
+          <span className="text-body-regular text-text-secondary">扫描依赖图</span>
+        </LogRow>
+        <LogRow first={false} last={false} reduce>
+          <span className="text-body-regular text-text-secondary">生成迁移计划</span>
+        </LogRow>
+        <WorkingRow label="写入组件源码" reduce />
       </ul>
     </Shell>
   );
@@ -259,7 +251,7 @@ function QuestionnaireMock() {
             2 / 4
           </span>
         </div>
-        <p className="text-body-1-medium text-text-primary">
+        <p className="text-body-medium text-text-primary">
           你更希望智能体默认如何处理工具调用？
         </p>
         <div className="space-y-2">
@@ -269,9 +261,10 @@ function QuestionnaireMock() {
                 key={opt}
                 type="button"
                 className={cx(
-                  "flex w-full items-center gap-3 rounded-2xl border px-3 py-2.5 text-start text-body-1-medium transition-colors",
+                  "flex w-full items-center gap-3 rounded-2xl border px-3 py-2.5 text-start text-body-medium transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring",
                   i === 1
-                    ? "border-accent-400 bg-accent-50 text-text-primary"
+                    ? "border-accent-400 bg-button-ghost-background text-text-primary"
                     : "border-separator-border bg-background-secondary-default text-text-secondary hover:bg-background-secondary-hover",
                 )}
               >
@@ -279,7 +272,7 @@ function QuestionnaireMock() {
                   className={cx(
                     "inline-flex size-6 items-center justify-center rounded-lg text-caption-1-semibold",
                     i === 1
-                      ? "bg-accent-500 text-white"
+                      ? "bg-accent-500 text-text-white"
                       : "border border-separator-border bg-background-primary-default text-text-tertiary",
                   )}
                 >

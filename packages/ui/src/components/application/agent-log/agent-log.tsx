@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { AgentThinking } from "../agent-thinking/agent-thinking";
+import { TextShimmer } from "../../base/text-shimmer/text-shimmer";
 import { cx } from "../../../utils/cx";
 
 /**
@@ -88,12 +89,12 @@ export function useRevealMask(reduce: boolean) {
   };
 }
 
-/** A line the agent is still working on, with a highlight travelling across it. */
+/** A line the agent is still working on — prefers shared TextShimmer. */
 export function ShimmerText({ children }: { children: string }) {
   return (
-    <span aria-label={children} className="agent-progress-loading-text">
+    <TextShimmer aria-label={children} className="text-body-regular">
       {children}
-    </span>
+    </TextShimmer>
   );
 }
 

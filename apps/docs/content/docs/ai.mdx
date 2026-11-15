@@ -12,10 +12,28 @@ pnpm add @joyui/react
 ```
 
 ```tsx
-import { AgentThinking, WebSearch } from "@joyui/react";
+import {
+  AgentThinking,
+  ContextMeter,
+  PromptSuggestions,
+  WebSearch,
+} from "@joyui/react";
 import { Composer } from "@joyui/react/composer";
 ```
 
 主题 CSS 已内置：`@import "@joyui/react/styles.css"`。Composer 走独立入口 `@joyui/react/composer`（需 TipTap peers）。
+
+## 怎么拼
+
+| 场景 | 推荐组合 |
+|------|----------|
+| 空态对话 | `PromptSuggestions` → 填入 `Composer` |
+| 生成中 | `AgentThinking` 或 `ThinkingOrbs` 叠在 Composer 上方 |
+| 工具轨迹 | `WebSearch` / `Task List`（基于 `agent-log` 原语） |
+| 上下文预算 | `ContextMeter` 或 Composer 内置环 |
+| 引用回答 | `Citation` 行挂在消息下方 |
+| 模型切换 | `ModelSelect` 放工具条 |
+
+`Task List` / `Questionnaire` 目前为文档演示形态；流式行请用 [`agent-log`](/docs/agent-log) 的 `LogRow` / `WorkingRow` 自组。
 
 <SectionCatalog section="ai" />

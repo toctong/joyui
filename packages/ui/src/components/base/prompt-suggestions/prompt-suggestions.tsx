@@ -51,14 +51,13 @@ export function PromptSuggestions({
               "group inline-flex max-w-full items-center gap-2 rounded-xl px-3.5 py-2.5",
               "border border-separator-border bg-background-full text-body-medium text-text-primary shadow-xs",
               "transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease",
-              "hover:border-accent-300 hover:bg-accent-50 hover:text-accent-700",
-              "hover:shadow-sm dark:hover:bg-accent-900/30 dark:hover:text-accent-200",
-              "active:scale-[0.98]",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
+              "hover:border-accent-300 hover:bg-button-ghost-background hover:text-button-ghost-foreground",
+              "hover:shadow-sm active:scale-[0.98]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring focus-visible:ring-offset-2",
             )}
           >
             <RiSparklingLine
-              className="size-4 shrink-0 text-accent-500 transition-colors group-hover:text-accent-600 dark:group-hover:text-accent-300"
+              className="size-4 shrink-0 text-accent-500 transition-colors group-hover:text-button-ghost-foreground"
               aria-hidden
             />
             <span className="truncate">{item}</span>

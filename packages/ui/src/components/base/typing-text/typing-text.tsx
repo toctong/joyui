@@ -76,13 +76,16 @@ export function TypingText({
     setPhase("idle");
   }, [text]);
 
+  const complete = count >= text.length;
+
   return (
     <span
       ref={ref}
+      aria-label={text}
       className={cx("inline text-body-medium text-text-primary", className)}
       {...props}
     >
-      {text.slice(0, count)}
+      <span aria-hidden={!complete || undefined}>{text.slice(0, count)}</span>
       {caret ? (
         <span
           aria-hidden

@@ -35,6 +35,7 @@ export function VoiceRing({
     <div
       ref={ref}
       data-active={active || undefined}
+      aria-busy={active || undefined}
       className={cx(styles.root, className)}
       {...props}
     >

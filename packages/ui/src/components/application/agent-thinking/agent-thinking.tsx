@@ -41,7 +41,7 @@ const TONE_COLORS: Record<AgentThinkingTone, string> = {
   subtle: "var(--color-text-tertiary)",
   default: "var(--color-text-secondary)",
   primary: "var(--color-text-primary)",
-  accent: "var(--color-blue-500)",
+  accent: "var(--color-accent-500)",
 };
 
 const VARIANT_TONE: Record<AgentThinkingVariant, AgentThinkingTone> = {

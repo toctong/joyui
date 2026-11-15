@@ -22,14 +22,21 @@ import { AgentThinking } from "@joyui/react";
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add agent-thinking --yes`。
 
-## 用法
+## 变体
+
+| variant | 说明 | 默认 tone |
+|---------|------|-----------|
+| `wave` | 对角波前扫过点阵 | default |
+| `spin` | 亮点绕阵旋转 | default |
+| `stars` | 闪烁星点 | subtle |
+| `infinity` | 8 字轨迹彗星 | default |
 
 ```tsx
 <AgentThinking variant="wave" label="Thinking" showTimer />
-<AgentThinking variant="stars" label="Searching docs" tone="subtle" />
+<AgentThinking variant="infinity" label="Running tools" tone="accent" />
 ```
 
-`prefers-reduced-motion` 下动画会降级为静态帧。
+`prefers-reduced-motion` 下降级为静态帧。扫光文案与 [`TextShimmer`](/docs/text-shimmer) 同源。
 
 ## API
 

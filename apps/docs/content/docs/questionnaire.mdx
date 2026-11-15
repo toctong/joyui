@@ -1,35 +1,28 @@
 ---
 title: "问卷"
-description: "计划模式问答卡：逐步问题与高度动画。"
+description: "计划模式问答卡演示：逐步问题与选项。"
 ---
 import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-计划模式问答卡：逐步问题与高度动画。
+计划模式问答卡演示。正式接入时用 `Radio` / `Button` / `Card` 自组，或等待独立导出。
 
 <ProComponentDoc slug="questionnaire" name="问卷" />
 
 ## 安装
+
+当前为文档演示形态：
 
 ```bash
 pnpm add @joyui/react
 ```
 
 ```tsx
-import { /* … */ } from "@joyui/react";
+import { Button, Radio, RadioGroup } from "@joyui/react";
 ```
 
-主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add questionnaire --yes`。
-
-
-
-## 应用场景
-
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+可用基础组件拼逐步问卷；高度动画可用 `Collapsible` 或 `motion`。
 
 ## API
 
 <DocApiSection slug="questionnaire" />
-

@@ -5,6 +5,11 @@ status: new
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+import { ContextMeter } from "@/components/base/context-meter/context-meter";
+import { Button } from "@/components/base/buttons/button";
+
+分段展示 system / tools / chat 等占用；超过 `warnAt` 时百分比转警告色。
 
 <ComponentDocPreview slug="context-meter" />
 
@@ -19,6 +24,44 @@ import { ContextMeter } from "@joyui/react";
 ```
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add context-meter --yes`。
+
+## 警告阈值与操作
+
+`warnAt` 默认 `0.7`；`action` 可挂「压缩」等操作。
+
+<DemoFrame
+  fileName="context-meter-warn.tsx"
+  code={`import { ContextMeter, Button } from "@joyui/react";
+
+<ContextMeter
+  warnAt={0.6}
+  capacity={100}
+  action={<Button size="xs" variant="ghost">压缩</Button>}
+  segments={[
+    { id: "system", label: "System", value: 18, tone: "neutral" },
+    { id: "tools", label: "Tools", value: 22, tone: "info" },
+    { id: "chat", label: "Chat", value: 48, tone: "accent" },
+  ]}
+/>`}
+  canvasClassName="min-h-32 items-center justify-center bg-background-primary-default p-6"
+>
+  <div className="w-full max-w-md">
+    <ContextMeter
+      warnAt={0.6}
+      capacity={100}
+      action={
+        <Button size="xs" variant="ghost">
+          压缩
+        </Button>
+      }
+      segments={[
+        { id: "system", label: "System", value: 18, tone: "neutral" },
+        { id: "tools", label: "Tools", value: 22, tone: "info" },
+        { id: "chat", label: "Chat", value: 48, tone: "accent" },
+      ]}
+    />
+  </div>
+</DemoFrame>
 
 ## API
 

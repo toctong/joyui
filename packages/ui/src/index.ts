@@ -18,7 +18,7 @@ export { cx as mergeCx, sortCx } from "./utils/cx";
  * TipTap-backed Composer lives at `@joyui/react/composer`.
  */
 export { AdminDashboard } from "./components/application/admin/admin-dashboard";
-export { ShimmerText, RowConnector, GuideBridge, WorkingRow, LogRow } from "./components/application/agent-log/agent-log";
+export { useRevealMask, ShimmerText, useRevealTicker, RowConnector, GuideBridge, WorkingRow, useLogMotion, LogRow } from "./components/application/agent-log/agent-log";
 export { AgentThinking } from "./components/application/agent-thinking/agent-thinking";
 export { NotificationBell } from "./components/application/app-shell/notification-bell";
 export { AuthCard, AuthMediaCarousel } from "./components/application/auth/auth-card";

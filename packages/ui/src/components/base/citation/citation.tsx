@@ -32,7 +32,7 @@ const styles = sortCx({
   index: [
     "inline-flex size-4 shrink-0 items-center justify-center",
     "rounded-sm bg-background-tertiary-default",
-    "text-[10px] font-semibold leading-none text-text-tertiary",
+    "text-caption-1-semibold leading-none text-text-tertiary",
   ].join(" "),
   title: "min-w-0 truncate",
   icon: "size-3 shrink-0 text-foreground-icon-quaternary",
@@ -49,11 +49,7 @@ export function Citation({
 }: CitationProps) {
   const content = (
     <>
-      {index != null ? (
-        <span aria-hidden className={styles.index}>
-          {index}
-        </span>
-      ) : null}
+      {index != null ? <span className={styles.index}>{index}</span> : null}
       <span className={styles.title}>{title}</span>
       {href && showIcon ? (
         <RiExternalLinkLine className={styles.icon} aria-hidden />
@@ -69,7 +65,11 @@ export function Citation({
         href={href}
         target="_blank"
         rel="noreferrer noopener"
-        className={cx(styles.root, "no-underline", className)}
+        className={cx(
+          styles.root,
+          "no-underline outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring focus-visible:ring-offset-2",
+          className,
+        )}
         {...anchorProps}
       >
         {content}
