@@ -258,4 +258,5 @@ alwaysApply: true
 - Merge classes with cn()/cx() from @joyui/react.
 - Icons: @remixicon/react as component references (leadingIcon={RiAddLine}).
 - Dark mode via .dark class; do not hardcode hex colors.
+- Optional peers: Composer → @joyui/react/composer + TipTap; charts → recharts; barcode/qrcode peers as needed.
 `;

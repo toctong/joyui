@@ -3,7 +3,7 @@ title: MCP 服务器
 description: 连接 Cursor / VS Code，让智能体按 npm 整库方式使用 JoyUI。
 ---
 
-JoyUI MCP 让智能体浏览完整组件目录、读取用法示例，并给出**正确的安装路径**（优先 `pnpm add @joyui/react`，样式内置）。
+JoyUI MCP 让智能体浏览完整组件目录、模糊搜索、读取用法示例，并给出**正确的安装路径**（优先 `pnpm add @joyui/react`，样式内置）。
 
 ## Cursor / VS Code
 
@@ -22,14 +22,17 @@ JoyUI MCP 让智能体浏览完整组件目录、读取用法示例，并给出*
 
 | 工具 | 用途 |
 |------|------|
-| `get_started` | npm + 内置 CSS 工作流 |
+| `get_started` | npm + 内置 CSS + optional peers 工作流 |
+| `search_components` | 按名称 / 导出模糊搜索（记不清 slug 时用） |
 | `list_components` | 浏览目录（base / application / lib） |
-| `get_component` / `get_usage_examples` | 导出名、import 路径与示例 |
-| `install_components` | 返回 `pnpm add @joyui/react` + import 片段 |
-| `init_joyui` | 初始化样式入口与 agent rules |
-| `get_theme` | JoyUI 语义 token（非 shadcn 默认名） |
-| `install_skill` | 安装 Agent Skill |
+| `get_component` | 导出名、peers、pitfalls、import 路径 |
+| `get_usage_examples` | 可运行示例（含 peer 提示） |
+| `install_components` | 返回 `pnpm add @joyui/react` + 所需 optional peers |
+| `init_joyui` / `setup_agent` | 初始化样式入口、rules 与 skill |
+| `get_theme` | JoyUI 语义 token（含 status / heatmap） |
+
+兼容别名：`install_skill`、`install_rules`、`get_skill` → 指向 `setup_agent` 同类说明。
 
 ## 示例提示
 
-> 用 JoyUI 安装依赖并做一个带 `StatCards` 和 `RevenueChartCard` 的收入仪表盘。记得引入 `@joyui/react/styles.css`，用语义 token，不要手写灰色色板。
+> 用 JoyUI 做一个带 `StatCards` 和 `RevenueChartCard` 的收入仪表盘。先 `search_components` 确认名称，安装 `@joyui/react` 和 `recharts`，引入 `@joyui/react/styles.css`，用语义 token，不要手写灰色色板。

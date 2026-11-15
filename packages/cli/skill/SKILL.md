@@ -7,7 +7,7 @@ description: >-
   instead of lookalikes; style with semantic tokens; merge classes with cn()/cx().
 metadata:
   author: JoyUI
-  version: 0.4.0
+  version: "0.2.0"
 ---
 
 # Building UIs with JoyUI
@@ -27,19 +27,33 @@ Theme + component CSS are **built into** `@joyui/react/styles.css`.
 Optional (shadcn-style source copy into the app):
 `npx @joyui/cli@latest add <name> --yes`
 
-Exact names: [references/components.md](references/components.md) or `npx @joyui/cli list`.
+Exact names: [references/components.md](references/components.md) or MCP `search_components`.
+
+## Optional peers
+
+Some surfaces need extra packages (not installed with `@joyui/react` by default):
+
+| Surface | Import | Peers |
+|---------|--------|-------|
+| Composer | `@joyui/react/composer` | `@tiptap/*`, `tippy.js` |
+| Charts | `@joyui/react` | `recharts` |
+| Barcode / QR | `@joyui/react` | `jsbarcode` / `qrcode` |
+
+Details: [references/peers.md](references/peers.md)
 
 ## Design rules
 
 - Colors: `text-text-primary`, `bg-background-primary-default`, `bg-background-full`, `border-border-button-default`, `border-separator-border`, `accent-*`, `chart-1`…`chart-5`
-- Type: composite only — `text-title-2-medium`, `text-body-regular`, `text-caption-1-semibold` (never stack `text-sm font-medium`)
+- Status: `bg-status-*-background`, `bg-status-dot-*`, `bg-badge-count`, `bg-heatmap-1`…`4`
+- Type: composite only — `text-title-2-medium`, `text-body-regular` (never stack `text-sm font-medium`)
 - Dark mode: `.dark` class flips tokens — do not invent `dark:` palette overrides
 - Icons: `@remixicon/react` as **component references** (`leadingIcon={RiAddLine}`)
 - Formatters: `formatDate` / `formatCurrency` / `formatCompact` from `@joyui/react`
-- Composer (TipTap): `import { Composer } from "@joyui/react/composer"`
+
+Pitfalls: [references/pitfalls.md](references/pitfalls.md)
 
 ## Going deeper
 
-- MCP: `npx -y @joyui/cli@latest mcp`
+- MCP: `npx -y @joyui/cli@latest mcp` — use `search_components`, `get_component`, `get_usage_examples`
 - Theme notes: [references/theming.md](references/theming.md)
 - Init agent rules: `npx @joyui/cli@latest init --yes`

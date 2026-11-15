@@ -27,6 +27,10 @@ npx @joyui/cli@latest skill          # 安装 Agent Skill
 }
 ```
 
+常用工具：`search_components`、`get_component`、`get_usage_examples`、`install_components`、`setup_agent`、`get_theme`。
+
+Composer / charts / barcode / QR 为 **optional peers**；MCP 会在 `get_component` / `install_components` 中提示。
+
 ## Registry
 
 配置 shadcn registry 后可：

@@ -1,7 +1,7 @@
 {
   "name": "@joyui/cli",
   "version": "0.2.0",
-  "description": "JoyUI CLI — npm-first init, optional source add, MCP server, and agent skill",
+  "description": "JoyUI CLI ? npm-first init, optional source add, MCP server, and agent skill",
   "license": "MIT",
   "author": "JoyUI",
   "homepage": "https://joyui.dev",
@@ -32,7 +32,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "prebuild": "node ../../scripts/generate-catalog.mjs",
+    "prebuild": "node ../../scripts/generate-catalog.mjs && node ../../scripts/generate-cli-examples.mjs",
     "build": "tsup",
     "prepack": "pnpm run build",
     "dev": "tsup --watch",
