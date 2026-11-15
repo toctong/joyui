@@ -24,14 +24,19 @@ git add .changeset && git commit -m "chore: add changeset"
    - 开 **Version Packages** PR（升版本 + CHANGELOG），或
    - 在 Version PR 合并后执行 `pnpm release:publish` 发到 npm
 
-### Secrets
+### Secrets / 权限
 
 | Secret | 说明 |
 |--------|------|
-| `NPM_TOKEN` | npm **Automation** token（不要用 Publish，会要 OTP） |
+| `NPM_TOKEN` | npm **Automation** token（不要用 Publish，会要 OTP）。**仅真正 publish 时必需**；没有它仍可开 Version PR |
 | `GITHUB_TOKEN` | Actions 自带，用于开 PR / GitHub Release |
 
-在 GitHub → Settings → Actions → General，开启 **Allow GitHub Actions to create and approve pull requests**。
+在 GitHub → Settings → Actions → General：
+
+1. Workflow permissions → **Read and write**
+2. 开启 **Allow GitHub Actions to create and approve pull requests**
+
+Release job 会把 `//registry.npmjs.org/:_authToken=…` 写入 runner 的 `.npmrc`，避免仓库内中国镜像干扰发布。
 
 ## 手动发布（应急）
 

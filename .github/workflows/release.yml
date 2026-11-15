@@ -1,5 +1,5 @@
-# Changesets：自动开 Version PR，合并后发布到 npm
-# Secrets: NPM_TOKEN（Automation 类型）
+# Changesets：有 changeset 时开 Version PR；合并后发布到 npm
+# Secrets: NPM_TOKEN（npm Automation token；仅 publish 必需）
 name: Release
 
 on:
@@ -44,6 +44,18 @@ jobs:
           pnpm --filter @joyui/react build
           pnpm --filter @joyui/cli build
           pnpm registry:build
+
+      # Local .npmrc points at a China mirror; pin auth for the publish registry.
+      - name: Configure npm auth for publish
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::warning::NPM_TOKEN secret is empty. Version Packages PRs still work; npm publish will fail until you add an Automation token."
+          else
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+            echo "always-auth=true" >> .npmrc
+          fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Release PR or Publish
         uses: changesets/action@v1
