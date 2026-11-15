@@ -1,13 +1,17 @@
+import { createRequire } from "node:module";
 import { Command } from "commander";
 import { cmdAdd, cmdInit, cmdList, cmdSkill } from "./commands.js";
 import { startMcpServer } from "./mcp.js";
+
+const require = createRequire(import.meta.url);
+const { version } = require("../package.json") as { version: string };
 
 const program = new Command();
 
 program
   .name("joyui")
   .description("JoyUI CLI — components, MCP, and agent skill")
-  .version("0.1.0");
+  .version(version);
 
 program
   .command("list")
@@ -45,7 +49,7 @@ program
   .description("Install the JoyUI agent skill")
   .option("-g, --global", "Install to ~/.claude/skills/joyui")
   .option("-c, --client <client>", "codex → ~/.agents/skills/joyui")
-  .option("-p, --path <dir>", "Custom install directory")
+  .option("-p, --path <dir>", "Custom install directory (must be under cwd)")
   .option("-f, --force", "Overwrite existing skill", true)
   .action(
     async (opts: {

@@ -54,7 +54,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `copy-field` | base | `CopyField` | `@joyui/react` |
 | `dashboard` | application | `ActivityRingsCard, AreaChartCard, BarListCard, ComboChartCard, …` | `@joyui/react` |
 | `data-grid` | application | `DataGrid` | `@joyui/react` |
-| `data-table` | application | `DataTable, DataTableExample` | `@joyui/react` |
+| `data-table` | application | `DataTable` | `@joyui/react` |
 | `date-picker` | base | `DateCalendar, DateRangeCalendar, DatePicker, DateRangePicker, …` | `@joyui/react` |
 | `description-list` | base | `DescriptionList, DescriptionTerm, DescriptionDetails, DescriptionItem` | `@joyui/react` |
 | `direction` | foundation | `DirectionProvider` | `@joyui/react` |
@@ -94,7 +94,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `model-select` | base | `ModelSelect` | `@joyui/react` |
 | `notification` | base | `Notification, NotificationViewport` | `@joyui/react` |
 | `notification-bell` | application | `NotificationBell` | `@joyui/react` |
-| `notification-center` | application | `NotificationCenterDemo, NotificationCenter` | `@joyui/react` |
+| `notification-center` | application | `NotificationCenter` | `@joyui/react` |
 | `number-field` | base | `NumberField` | `@joyui/react` |
 | `number-ticker` | base | `NumberTicker` | `@joyui/react` |
 | `page-header` | base | `PageHeader` | `@joyui/react` |
@@ -117,7 +117,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `section-header` | base | `SectionHeader` | `@joyui/react` |
 | `segmented-control` | base | `SegmentedControl, SegmentedControlItem` | `@joyui/react` |
 | `select` | base | `Select, SelectItem` | `@joyui/react` |
-| `settings-modal` | application | `PlanArtFlame, SettingsGeneral, SettingsModal, SettingsProfile, …` | `@joyui/react` |
+| `settings-modal` | application | `SettingsGeneral, SettingsModal, SettingsProfile, SettingsCard, …` | `@joyui/react` |
 | `skeleton` | base | `Skeleton, SkeletonText` | `@joyui/react` |
 | `slide-to-confirm` | base | `SlideToConfirm` | `@joyui/react` |
 | `slider` | base | `Slider, RangeSlider` | `@joyui/react` |

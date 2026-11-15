@@ -8,7 +8,15 @@ JoyUI — React + Tailwind CSS v4 组件库。主题与组件 CSS **内置**，�
 pnpm add @joyui/react
 ```
 
-Peer：`react` / `react-dom`。另需宿主项目安装 **Tailwind CSS v4**。
+Peer：`react` / `react-dom`。另需宿主安装 **Tailwind CSS v4**（optional peer，未装时样式管线会缺）。
+
+可选 peer（按需安装，不装则对应组件不可用）：
+
+| 能力 | 包 |
+|------|-----|
+| Composer（`@joyui/react/composer`） | `@tiptap/*`、`tippy.js` |
+| Charts | `recharts` |
+| Barcode / QR | `jsbarcode`、`qrcode` |
 
 ## Styles（必做一次）
 

@@ -535,8 +535,7 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "application",
     "exports": [
-      "DataTable",
-      "DataTableExample"
+      "DataTable"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -553,12 +552,7 @@ export const CATALOG: JoyComponent[] = [
       "DateRangeCalendar",
       "DatePicker",
       "DateRangePicker",
-      "MeetingScheduler",
-      "ChevronLeft16",
-      "ChevronRight16",
-      "DayCell",
-      "MonthPanel",
-      "DateChipInput"
+      "MeetingScheduler"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1111,7 +1105,6 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "application",
     "exports": [
-      "NotificationCenterDemo",
       "NotificationCenter"
     ],
     "importFrom": "@joyui/react",
@@ -1421,7 +1414,6 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "application",
     "exports": [
-      "PlanArtFlame",
       "SettingsGeneral",
       "SettingsModal",
       "SettingsProfile",

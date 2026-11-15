@@ -17,40 +17,24 @@ pnpm changeset          # 选择 bump + 写摘要 → .changeset/*.md
 git add .changeset && git commit -m "chore: add changeset"
 ```
 
-## CI 自动发布
+## 推荐：主分支手动发布
 
-1. 合并含 changeset 的 PR 到 `main`
-2. **Release** workflow（`.github/workflows/release.yml`）会：
-   - 开 **Version Packages** PR（升版本 + CHANGELOG），或
-   - 在 Version PR 合并后执行 `pnpm release:publish` 发到 npm
-
-### Secrets / 权限
-
-| Secret | 说明 |
-|--------|------|
-| `NPM_TOKEN` | npm **Automation** token（不要用 Publish，会要 OTP）。**仅真正 publish 时必需**；没有它仍可开 Version PR |
-| `GITHUB_TOKEN` | Actions 自带，用于开 PR / GitHub Release |
-
-在 GitHub → Settings → Actions → General：
-
-1. Workflow permissions → **Read and write**
-2. 开启 **Allow GitHub Actions to create and approve pull requests**
-
-Release job 会把 `//registry.npmjs.org/:_authToken=…` 写入 runner 的 `.npmrc`，避免仓库内中国镜像干扰发布。
-
-## 手动发布（应急）
+本仓库默认在 `main` 直接改与发布（不依赖 Version PR）。
 
 ```bash
 pnpm install
-pnpm catalog:gen
+pnpm typecheck && pnpm test
 pnpm --filter @joyui/react build
 pnpm --filter @joyui/cli build
+# 有未消费的 .changeset 时：
 pnpm version-packages
-# 确认 CHANGELOG / package.json 版本
+# 登录 npm 后发布（linked：react + cli 同版本）
 pnpm release:publish
 ```
 
-`release:publish` 使用官方 `registry.npmjs.org`（与本地 `.npmrc` 镜像无关）。
+`release:publish` 强制走 `registry.npmjs.org`（与本地 `.npmrc` 中国镜像无关）。
+
+可选：配置 GitHub `NPM_TOKEN` + Actions 写权限后，`.github/workflows/release.yml` 也可自动 publish；未配置时请用上面的手动流程。
 
 ## 发布后核对
 

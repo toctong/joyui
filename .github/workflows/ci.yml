@@ -37,6 +37,9 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Lint (token contracts)
+        run: pnpm --filter @joyui/react lint
+
       - name: Test
         run: pnpm test
 

@@ -7,6 +7,8 @@ import {
   importSnippet,
   resolveRegistryUrl,
 } from "./catalog.js";
+import { resolveInsideCwd } from "./fs-safe.js";
+import { UTILS_TS } from "./utils-template.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -21,8 +23,8 @@ export async function cmdList() {
 }
 
 export async function cmdInit(cwd: string, yes: boolean) {
-  const stylesDir = path.join(cwd, "styles");
-  const rulesDir = path.join(cwd, ".cursor", "rules");
+  const stylesDir = resolveInsideCwd(cwd, "styles");
+  const rulesDir = resolveInsideCwd(cwd, ".cursor/rules");
   await mkdir(stylesDir, { recursive: true });
   await mkdir(rulesDir, { recursive: true });
 
@@ -77,7 +79,14 @@ export async function cmdAdd(names: string[], cwd: string, yes: boolean) {
     const item = getComponent(name)!;
     console.log(`${name}:`);
     console.log(`  npm:    ${importSnippet(item)}`);
-    const url = resolveRegistryUrl(name);
+    let url: string;
+    try {
+      url = resolveRegistryUrl(name);
+    } catch (err) {
+      console.error(`  ${err instanceof Error ? err.message : err}`);
+      process.exitCode = 1;
+      continue;
+    }
     console.log(`  fetch:  ${url}`);
     try {
       const res = await fetch(url);
@@ -93,35 +102,31 @@ export async function cmdAdd(names: string[], cwd: string, yes: boolean) {
         );
         console.log(`  then:  ${importSnippet(item)}`);
       } else {
-        // Ensure cn/cx helper exists when copying sources
         const needsUtils = files.some((f) =>
           (f.content ?? "").includes("@/lib/utils"),
         );
         if (needsUtils) {
-          const utilsPath = path.join(cwd, "lib/utils.ts");
+          const utilsPath = resolveInsideCwd(cwd, "lib/utils.ts");
           try {
             await readFile(utilsPath, "utf8");
           } catch {
             await mkdir(path.dirname(utilsPath), { recursive: true });
-            await writeFile(
-              utilsPath,
-              `import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
-export const cx = cn
-`,
-            );
+            await writeFile(utilsPath, UTILS_TS);
             console.log("  wrote  lib/utils.ts");
           }
         }
       }
       for (const file of files) {
         if (!file.content) continue;
-        const target = path.join(cwd, file.path.replace(/^\//, ""));
+        if (
+          !file.path ||
+          file.path.includes("..") ||
+          path.isAbsolute(file.path)
+        ) {
+          console.warn(`  skip   unsafe path: ${file.path}`);
+          continue;
+        }
+        const target = resolveInsideCwd(cwd, file.path.replace(/^\//, ""));
         await mkdir(path.dirname(target), { recursive: true });
         await writeFile(target, file.content, "utf8");
         console.log(`  wrote  ${file.path}`);
@@ -152,8 +157,11 @@ export async function cmdSkill(opts: {
 }) {
   const skillRoot = path.resolve(__dirname, "../skill");
   let target: string;
-  if (opts.dest) target = path.resolve(opts.dest);
-  else if (opts.global)
+  if (opts.dest) {
+    const abs = path.resolve(opts.dest);
+    const rel = path.relative(path.resolve(opts.cwd), abs);
+    target = resolveInsideCwd(opts.cwd, rel || "joyui-skill");
+  } else if (opts.global)
     target = path.join(
       process.env.HOME || process.env.USERPROFILE || "",
       ".claude",
@@ -167,7 +175,7 @@ export async function cmdSkill(opts: {
       "skills",
       "joyui",
     );
-  else target = path.join(opts.cwd, ".claude", "skills", "joyui");
+  else target = resolveInsideCwd(opts.cwd, ".claude/skills/joyui");
 
   await mkdir(target, { recursive: true });
   await cp(skillRoot, target, { recursive: true, force: opts.force ?? true });
@@ -176,10 +184,10 @@ export async function cmdSkill(opts: {
 }
 
 async function writeComponentsJson(cwd: string) {
-  const target = path.join(cwd, "components.json");
+  const target = resolveInsideCwd(cwd, "components.json");
   try {
     await readFile(target, "utf8");
-    return; // don't overwrite existing
+    return;
   } catch {
     // create
   }
@@ -216,7 +224,7 @@ async function writeComponentsJson(cwd: string) {
 }
 
 async function appendAgents(cwd: string) {
-  const agentsPath = path.join(cwd, "AGENTS.md");
+  const agentsPath = resolveInsideCwd(cwd, "AGENTS.md");
   const block = `\n\n## JoyUI\n\n${AGENTS_SNIPPET}\n`;
   try {
     const existing = await readFile(agentsPath, "utf8");

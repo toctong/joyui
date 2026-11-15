@@ -522,8 +522,7 @@
     "type": "component",
     "layer": "application",
     "exports": [
-      "DataTable",
-      "DataTableExample"
+      "DataTable"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -540,12 +539,7 @@
       "DateRangeCalendar",
       "DatePicker",
       "DateRangePicker",
-      "MeetingScheduler",
-      "ChevronLeft16",
-      "ChevronRight16",
-      "DayCell",
-      "MonthPanel",
-      "DateChipInput"
+      "MeetingScheduler"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1098,7 +1092,6 @@
     "type": "component",
     "layer": "application",
     "exports": [
-      "NotificationCenterDemo",
       "NotificationCenter"
     ],
     "importFrom": "@joyui/react",
@@ -1408,7 +1401,6 @@
     "type": "component",
     "layer": "application",
     "exports": [
-      "PlanArtFlame",
       "SettingsGeneral",
       "SettingsModal",
       "SettingsProfile",

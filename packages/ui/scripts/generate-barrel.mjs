@@ -30,6 +30,24 @@ const VALUE_EXPORT_ALLOW = new Set([
   "toastPromise",
 ]);
 
+/** Demos / internals — keep out of the public @joyui/react barrel. */
+const VALUE_EXPORT_DENY = new Set([
+  "DataTableExample",
+  "NotificationCenterDemo",
+  "PlanArtFlame",
+  "DayCell",
+  "MonthPanel",
+  "DateChipInput",
+  "ChevronLeft16",
+  "ChevronRight16",
+]);
+
+function isDeniedExport(name) {
+  if (VALUE_EXPORT_DENY.has(name)) return true;
+  if (/Example$|Demo$/.test(name)) return true;
+  return false;
+}
+
 const COMPOSER_DIR_RE =
   /[/\\]components[/\\]application[/\\]composer(?:-loader|-panel)?[/\\]/;
 
@@ -98,6 +116,7 @@ function generateExportsForFiles(files, barrelFile, reservedValues = []) {
     const rel = relativeImport(barrelFile, file);
     const values = names
       .filter((n) => !n.startsWith("type:"))
+      .filter((n) => !isDeniedExport(n))
       .filter((n) => {
         if (seenValues.has(n)) return false;
         seenValues.add(n);
@@ -106,6 +125,7 @@ function generateExportsForFiles(files, barrelFile, reservedValues = []) {
     const types = names
       .filter((n) => n.startsWith("type:"))
       .map((n) => n.slice(5))
+      .filter((n) => !isDeniedExport(n))
       .filter((n) => {
         if (seenTypes.has(n) || seenValues.has(n)) return false;
         seenTypes.add(n);
