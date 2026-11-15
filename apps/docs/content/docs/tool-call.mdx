@@ -1,0 +1,38 @@
+---
+title: "工具调用"
+description: "通用工具 / MCP 调用卡：pending · running · done · error。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+比 `WebSearch` 更通用的工具轨迹卡；可嵌参数、stdout 或 `agent-log` 行。
+
+<ComponentDocPreview slug="tool-call" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { ToolCall } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add tool-call --yes`。
+
+## 用法
+
+```tsx
+<ToolCall name="bash" status="running" summary="pnpm test" />
+<ToolCall name="read_file" status="done" summary="page.tsx" defaultOpen>
+  {source}
+</ToolCall>
+```
+
+领域专用搜索轨迹仍用 [`web-search`](/docs/web-search)。
+
+## API
+
+<DocApiSection slug="tool-call" />

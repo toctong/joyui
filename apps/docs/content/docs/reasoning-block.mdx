@@ -1,0 +1,34 @@
+---
+title: "推理块"
+description: "助手回合内的可折叠思考过程（CoT），区别于 AgentThinking 加载态。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+放在 `ChatMessage role="assistant"` 内：流式时 `status="streaming"`，结束后折叠为「Thought for Ns」。
+
+<ComponentDocPreview slug="reasoning-block" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { ReasoningBlock } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add reasoning-block --yes`。
+
+## 与 AgentThinking
+
+| 组件 | 时机 |
+|------|------|
+| `AgentThinking` | 回复尚未开始 / Composer 上方 |
+| `ReasoningBlock` | 回复正文内的思考披露 |
+
+## API
+
+<DocApiSection slug="reasoning-block" />

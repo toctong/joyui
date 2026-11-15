@@ -318,6 +318,19 @@ export const CATALOG: JoyComponent[] = [
     "registryDependencies": []
   },
   {
+    "name": "chat-message",
+    "title": "Chat Message",
+    "description": "Chat Message component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ChatMessage"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
     "name": "checkbox",
     "title": "Checkbox",
     "description": "Checkbox component from @joyui/react.",
@@ -1010,6 +1023,19 @@ export const CATALOG: JoyComponent[] = [
     "registryDependencies": []
   },
   {
+    "name": "message-actions",
+    "title": "Message Actions",
+    "description": "Message Actions component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "MessageActions"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
     "name": "meter",
     "title": "Meter",
     "description": "Meter component from @joyui/react.",
@@ -1270,6 +1296,19 @@ export const CATALOG: JoyComponent[] = [
     "layer": "base",
     "exports": [
       "RatingEmoji"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "reasoning-block",
+    "title": "Reasoning Block",
+    "description": "Reasoning Block component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ReasoningBlock"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1790,6 +1829,19 @@ export const CATALOG: JoyComponent[] = [
     "layer": "base",
     "exports": [
       "Toaster"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tool-call",
+    "title": "Tool Call",
+    "description": "Tool Call component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ToolCall"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],

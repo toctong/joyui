@@ -717,6 +717,41 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
   "revenue-chart-card": entry("RevenueChartCard", [
     { name: "data", description: "月度营收序列。", type: "SeriesPoint[]", options: "—", defaultValue: "内置演示" },
   ]),
+  "chat-message": entry("ChatMessage", [
+    { name: "role", description: "消息角色。", type: '"user" | "assistant" | "system"', options: "user · assistant · system", defaultValue: "—" },
+    { name: "streaming", description: "助手列显示流式光标。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "children", description: "正文、ReasoningBlock、ToolCall、MessageActions 等。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "message-actions": entry(
+    "MessageActions",
+    [
+      { name: "actions", description: "操作列表。", type: "MessageActionItem[]", options: "—", defaultValue: "—" },
+      { name: "hidden", description: "流式时隐藏（仍挂载）。", type: "boolean", options: "true · false", defaultValue: "false" },
+      { name: "trailing", description: "右侧附加（如相对时间）。", type: "ReactNode", options: "—", defaultValue: "—" },
+    ],
+    {
+      caption: "MessageActionItem",
+      fields: [
+        { name: "id", description: "键。", type: "string", required: true, example: '"copy"' },
+        { name: "label", description: "无障碍名称。", type: "string", required: true, example: '"Copy"' },
+        { name: "icon", description: "Remix 图标组件。", type: "ComponentType", required: true, example: "RiFileCopyLine" },
+        { name: "onPress", description: "点击回调。", type: "() => void", required: false, example: "() => {}" },
+      ],
+    },
+  ),
+  "reasoning-block": entry("ReasoningBlock", [
+    { name: "title", description: "折叠条标题。", type: "ReactNode", options: "—", defaultValue: "Thinking… / Thought" },
+    { name: "status", description: "流式或完成。", type: '"streaming" | "done"', options: "streaming · done", defaultValue: "done" },
+    { name: "open / defaultOpen", description: "受控 / 非受控展开。", type: "boolean", options: "true · false", defaultValue: "false" },
+    { name: "children", description: "思考正文。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "tool-call": entry("ToolCall", [
+    { name: "name", description: "工具名。", type: "string", options: "—", defaultValue: "—" },
+    { name: "status", description: "调用状态。", type: '"pending" | "running" | "done" | "error"', options: "pending · running · done · error", defaultValue: "pending" },
+    { name: "summary", description: "一行摘要（路径 / 命令）。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "error", description: "错误文案。", type: "ReactNode", options: "—", defaultValue: "—" },
+    { name: "children", description: "展开区内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
   "agent-thinking": entry("AgentThinking", [
     { name: "variant", description: "动效形态。", type: '"wave" | "spin" | "stars" | "infinity"', options: "wave · spin · stars · infinity", defaultValue: "wave" },
     { name: "label", description: "状态文案。", type: "string", options: "—", defaultValue: "Thinking" },

@@ -1,0 +1,43 @@
+---
+title: "消息操作"
+description: "助手消息下的复制 / 重生成等操作条：悬停与焦点可见。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+始终挂载、默认透明；父级加 `group/message` 后悬停或焦点内显示。
+
+<ComponentDocPreview slug="message-actions" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { MessageActions } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add message-actions --yes`。
+
+## 用法
+
+```tsx
+<div className="group/message">
+  <p>…</p>
+  <MessageActions
+    hidden={streaming}
+    actions={[
+      { id: "copy", label: "Copy", icon: RiFileCopyLine, onPress },
+      { id: "regen", label: "Regenerate", icon: RiRefreshLine, onPress },
+    ]}
+    trailing="刚刚"
+  />
+</div>
+```
+
+## API
+
+<DocApiSection slug="message-actions" />

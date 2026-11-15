@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tool-call",
+  "type": "registry:ui",
+  "title": "Tool Call",
+  "description": "Tool Call component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "text-shimmer",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tool-call/tool-call.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { useState, type ComponentType, type HTMLAttributes, type ReactNode } from \"react\";\r\nimport {\r\n  RiArrowDownSLine,\r\n  RiCheckboxCircleFill,\r\n  RiCloseCircleFill,\r\n  RiLoader4Line,\r\n  RiTerminalBoxLine,\r\n} from \"@remixicon/react\";\r\nimport { TextShimmer } from \"@/components/ui/text-shimmer/text-shimmer\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\ntype IconComponent = ComponentType<{\r\n  className?: string;\r\n  \"aria-hidden\"?: boolean | \"true\" | \"false\";\r\n}>;\r\n\r\n/**\r\n * Generic expandable tool / MCP call card inside a transcript.\r\n *\r\n *   <ToolCall name=\"read_file\" status=\"done\" summary=\"src/index.ts\">\r\n *     <pre>{args}</pre>\r\n *   </ToolCall>\r\n */\r\n\r\nexport type ToolCallStatus = \"pending\" | \"running\" | \"done\" | \"error\";\r\n\r\nexport interface ToolCallProps\r\n  extends Omit<HTMLAttributes<HTMLDivElement>, \"title\"> {\r\n  name: string;\r\n  status?: ToolCallStatus;\r\n  summary?: ReactNode;\r\n  icon?: IconComponent;\r\n  open?: boolean;\r\n  defaultOpen?: boolean;\r\n  onOpenChange?: (open: boolean) => void;\r\n  error?: ReactNode;\r\n  children?: ReactNode;\r\n}\r\n\r\nconst statusStyles = sortCx({\r\n  pending: \"text-text-tertiary\",\r\n  running: \"text-accent-500\",\r\n  done: \"text-status-lime-text\",\r\n  error: \"text-notification-error-foreground\",\r\n});\r\n\r\nfunction StatusIcon({ status }: { status: ToolCallStatus }) {\r\n  if (status === \"running\") {\r\n    return (\r\n      <RiLoader4Line\r\n        className=\"size-4 shrink-0 animate-spin text-accent-500\"\r\n        aria-hidden\r\n      />\r\n    );\r\n  }\r\n  if (status === \"done\") {\r\n    return (\r\n      <RiCheckboxCircleFill\r\n        className=\"size-4 shrink-0 text-status-lime-text\"\r\n        aria-hidden\r\n      />\r\n    );\r\n  }\r\n  if (status === \"error\") {\r\n    return (\r\n      <RiCloseCircleFill\r\n        className=\"size-4 shrink-0 text-notification-error-foreground\"\r\n        aria-hidden\r\n      />\r\n    );\r\n  }\r\n  return (\r\n    <span\r\n      className=\"size-4 shrink-0 rounded-full border border-separator-border\"\r\n      aria-hidden\r\n    />\r\n  );\r\n}\r\n\r\nexport function ToolCall({\r\n  name,\r\n  status = \"pending\",\r\n  summary,\r\n  icon: Icon = RiTerminalBoxLine,\r\n  open: openProp,\r\n  defaultOpen = false,\r\n  onOpenChange,\r\n  error,\r\n  className,\r\n  children,\r\n  ...props\r\n}: ToolCallProps) {\r\n  const [uncontrolled, setUncontrolled] = useState(\r\n    defaultOpen || status === \"error\",\r\n  );\r\n  const open = openProp ?? uncontrolled;\r\n  const setOpen = (next: boolean) => {\r\n    onOpenChange?.(next);\r\n    if (openProp === undefined) setUncontrolled(next);\r\n  };\r\n  const expandable = Boolean(children || error);\r\n\r\n  return (\r\n    <div\r\n      data-status={status}\r\n      className={cx(\r\n        \"overflow-hidden rounded-xl border border-separator-border bg-background-primary-default\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      <button\r\n        type=\"button\"\r\n        disabled={!expandable}\r\n        aria-expanded={expandable ? open : undefined}\r\n        onClick={() => expandable && setOpen(!open)}\r\n        className={cx(\r\n          \"flex w-full items-center gap-2 px-3 py-2 text-start\",\r\n          \"outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-border-focus-ring\",\r\n          expandable && \"cursor-pointer hover:bg-background-secondary-hover\",\r\n          !expandable && \"cursor-default\",\r\n        )}\r\n      >\r\n        <StatusIcon status={status} />\r\n        <Icon\r\n          className={cx(\"size-4 shrink-0\", statusStyles[status])}\r\n          aria-hidden\r\n        />\r\n        <span className=\"min-w-0 flex-1 truncate\">\r\n          {status === \"running\" ? (\r\n            <TextShimmer className=\"text-body-2-medium\">{name}</TextShimmer>\r\n          ) : (\r\n            <span className=\"text-body-2-medium text-text-primary\">{name}</span>\r\n          )}\r\n          {summary ? (\r\n            <span className=\"ms-2 text-caption-1-regular text-text-tertiary\">\r\n              {summary}\r\n            </span>\r\n          ) : null}\r\n        </span>\r\n        {expandable ? (\r\n          <RiArrowDownSLine\r\n            aria-hidden\r\n            className={cx(\r\n              \"size-4 shrink-0 text-foreground-icon-quaternary transition-transform duration-200\",\r\n              open && \"rotate-180\",\r\n            )}\r\n          />\r\n        ) : null}\r\n      </button>\r\n      {open && expandable ? (\r\n        <div className=\"space-y-2 border-t border-separator-border bg-background-secondary-default px-3 py-2.5\">\r\n          {error ? (\r\n            <p className=\"text-body-2-regular text-notification-error-foreground\">\r\n              {error}\r\n            </p>\r\n          ) : null}\r\n          {children ? (\r\n            <div className=\"overflow-x-auto text-caption-1-regular whitespace-pre-wrap text-text-secondary\">\r\n              {children}\r\n            </div>\r\n          ) : null}\r\n        </div>\r\n      ) : null}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "ToolCall"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

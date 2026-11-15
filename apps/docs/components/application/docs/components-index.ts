@@ -82,6 +82,10 @@ const components: Entry[] = [
 
 const ai: Entry[] = [
   { name: "Composer", href: "/docs/composer", description: "AI input: capsule, attachments, loader, and panel.", tier: "pro", status: "shipped", isNew: true },
+  { name: "Chat Message", href: "/docs/chat-message", description: "User bubble and assistant transcript turn.", tier: "free", status: "shipped", isNew: true },
+  { name: "Message Actions", href: "/docs/message-actions", description: "Copy / regenerate row under a reply.", tier: "free", status: "shipped", isNew: true },
+  { name: "Reasoning Block", href: "/docs/reasoning-block", description: "Collapsible chain-of-thought in a turn.", tier: "free", status: "shipped", isNew: true },
+  { name: "Tool Call", href: "/docs/tool-call", description: "Expandable tool / MCP call card.", tier: "free", status: "shipped", isNew: true },
   { name: "Agent Thinking", href: "/docs/agent-thinking", description: "Thinking indicator above the composer.", tier: "free", status: "shipped", isNew: true },
   { name: "Agent Log", href: "/docs/agent-log", description: "Streaming transcript primitives for agent rows.", tier: "free", status: "shipped", isNew: true },
   { name: "Thinking Orbs", href: "/docs/thinking-orbs", description: "Brand orbs while the model thinks.", tier: "free", status: "shipped", isNew: true },

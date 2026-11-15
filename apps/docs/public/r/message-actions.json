@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message-actions",
+  "type": "registry:ui",
+  "title": "Message Actions",
+  "description": "Message Actions component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/message-actions/message-actions.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { ComponentType, HTMLAttributes, ReactNode } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\ntype IconComponent = ComponentType<{\r\n  className?: string;\r\n  \"aria-hidden\"?: boolean | \"true\" | \"false\";\r\n}>;\r\n\r\nexport interface MessageActionItem {\r\n  id: string;\r\n  label: string;\r\n  icon: IconComponent;\r\n  onPress?: () => void;\r\n  disabled?: boolean;\r\n}\r\n\r\n/**\r\n * Hover / focus-visible action row under an assistant message.\r\n * Always mounted (opacity-gated) so keyboard users can reach it.\r\n *\r\n *   <div className=\"group/message\">\r\n *     …\r\n *     <MessageActions\r\n *       actions={[\r\n *         { id: \"copy\", label: \"Copy\", icon: RiFileCopyLine, onPress },\r\n *         { id: \"regen\", label: \"Regenerate\", icon: RiRefreshLine, onPress },\r\n *       ]}\r\n *     />\r\n *   </div>\r\n */\r\n\r\nexport interface MessageActionsProps extends HTMLAttributes<HTMLDivElement> {\r\n  actions: MessageActionItem[];\r\n  /** Hide while streaming (still in DOM). */\r\n  hidden?: boolean;\r\n  trailing?: ReactNode;\r\n}\r\n\r\nexport function MessageActions({\r\n  actions,\r\n  hidden = false,\r\n  trailing,\r\n  className,\r\n  ...props\r\n}: MessageActionsProps) {\r\n  return (\r\n    <div\r\n      className={cx(\r\n        \"flex items-center gap-0.5 transition-opacity duration-150\",\r\n        hidden\r\n          ? \"pointer-events-none opacity-0\"\r\n          : \"opacity-0 group-hover/message:opacity-100 focus-within:opacity-100\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {actions.map((action) => {\r\n        const Icon = action.icon;\r\n        return (\r\n          <button\r\n            key={action.id}\r\n            type=\"button\"\r\n            disabled={action.disabled}\r\n            aria-label={action.label}\r\n            title={action.label}\r\n            onClick={action.onPress}\r\n            className={cx(\r\n              \"flex size-7 cursor-pointer items-center justify-center rounded-md\",\r\n              \"text-foreground-icon-tertiary transition-colors\",\r\n              \"hover:bg-background-secondary-hover hover:text-foreground-icon-secondary\",\r\n              \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring\",\r\n              \"disabled:cursor-not-allowed disabled:opacity-40\",\r\n            )}\r\n          >\r\n            <Icon className=\"size-4\" aria-hidden />\r\n          </button>\r\n        );\r\n      })}\r\n      {trailing ? (\r\n        <div className=\"ms-1 text-caption-1-regular text-text-tertiary\">\r\n          {trailing}\r\n        </div>\r\n      ) : null}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "MessageActions"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -41,6 +41,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `carousel-fade` | base | `CarouselFade` | `@joyui/react` |
 | `carousel-stacked` | base | `CarouselStacked` | `@joyui/react` |
 | `carousel-thumbs` | base | `CarouselThumbs` | `@joyui/react` |
+| `chat-message` | application | `ChatMessage` | `@joyui/react` |
 | `checkbox` | base | `CheckboxCard, CheckboxGlyph, Checkbox` | `@joyui/react` |
 | `citation` | base | `Citation` | `@joyui/react` |
 | `collapsible` | base | `Collapsible` | `@joyui/react` |
@@ -88,6 +89,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `media-card-hover` | base | `MediaCardHover` | `@joyui/react` |
 | `media-card-landscape` | base | `MediaCardLandscape` | `@joyui/react` |
 | `medical` | application | `ImportantAlertsCard, PatientInfoCard, WeekRangePill` | `@joyui/react` |
+| `message-actions` | base | `MessageActions` | `@joyui/react` |
 | `meter` | base | `Meter` | `@joyui/react` |
 | `modal` | base | `ModalTrigger, Modal, ModalDialog, ModalHeader, …` | `@joyui/react` |
 | `modal-sheet` | base | `ModalSheet, ModalSheetBody, ModalSheetFooter, ModalSheetHeader, …` | `@joyui/react` |
@@ -107,6 +109,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `radio` | base | `RadioCard, RadioDot, RadioGroup, Radio` | `@joyui/react` |
 | `rating` | base | `Rating` | `@joyui/react` |
 | `rating-emoji` | base | `RatingEmoji` | `@joyui/react` |
+| `reasoning-block` | application | `ReasoningBlock` | `@joyui/react` |
 | `relative-time` | base | `RelativeTime` | `@joyui/react` |
 | `reveal` | base | `Reveal` | `@joyui/react` |
 | `reveal-stagger` | base | `RevealStagger` | `@joyui/react` |
@@ -144,6 +147,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `timeline` | base | `Timeline, TimelineItem` | `@joyui/react` |
 | `timeline-horizontal` | base | `TimelineHorizontal, TimelineHorizontalItem` | `@joyui/react` |
 | `toast` | base | `Toaster` | `@joyui/react` |
+| `tool-call` | application | `ToolCall` | `@joyui/react` |
 | `tooltip` | base | `Tooltip, TooltipTrigger` | `@joyui/react` |
 | `tree-view` | base | `TreeView, TreeViewItem, TreeViewCollection` | `@joyui/react` |
 | `tree-view-files` | base | `TreeViewFiles, TreeViewFilesFolder, TreeViewFilesFile` | `@joyui/react` |

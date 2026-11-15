@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-message",
+  "type": "registry:ui",
+  "title": "Chat Message",
+  "description": "Chat Message component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/chat-message/chat-message.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { HTMLAttributes, ReactNode } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * One transcript turn — user bubble vs assistant column.\r\n *\r\n *   <ChatMessage role=\"user\">Summarize this PR</ChatMessage>\r\n *   <ChatMessage role=\"assistant\" streaming>\r\n *     <ReasoningBlock … />\r\n *     <p>…</p>\r\n *     <MessageActions … />\r\n *   </ChatMessage>\r\n */\r\n\r\nexport type ChatMessageRole = \"user\" | \"assistant\" | \"system\";\r\n\r\nexport interface ChatMessageProps extends HTMLAttributes<HTMLElement> {\r\n  role: ChatMessageRole;\r\n  /** Soften actions / hide caret while tokens arrive. */\r\n  streaming?: boolean;\r\n  children?: ReactNode;\r\n}\r\n\r\nexport function ChatMessage({\r\n  role,\r\n  streaming = false,\r\n  className,\r\n  children,\r\n  ...props\r\n}: ChatMessageProps) {\r\n  if (role === \"user\") {\r\n    return (\r\n      <div\r\n        data-role=\"user\"\r\n        data-streaming={streaming || undefined}\r\n        className={cx(\r\n          \"ms-auto flex w-fit max-w-[min(75%,36rem)] flex-col\",\r\n          \"rounded-2xl bg-background-primary-default px-3 py-2.5\",\r\n          \"text-start text-body-regular break-words whitespace-pre-wrap text-text-primary shadow-card\",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        {children}\r\n      </div>\r\n    );\r\n  }\r\n\r\n  if (role === \"system\") {\r\n    return (\r\n      <div\r\n        data-role=\"system\"\r\n        data-streaming={streaming || undefined}\r\n        className={cx(\r\n          \"mx-auto max-w-md rounded-xl border border-separator-border bg-background-secondary-default px-3 py-2\",\r\n          \"text-center text-caption-1-medium text-text-tertiary\",\r\n          className,\r\n        )}\r\n        {...props}\r\n      >\r\n        {children}\r\n      </div>\r\n    );\r\n  }\r\n\r\n  return (\r\n    <div\r\n      data-role=\"assistant\"\r\n      data-streaming={streaming || undefined}\r\n      className={cx(\r\n        \"group/message flex w-full max-w-3xl flex-col gap-2 px-1\",\r\n        \"text-body-regular break-words text-text-primary\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {children}\r\n      {streaming ? (\r\n        <span\r\n          aria-hidden\r\n          className=\"bui-typing-caret inline-block h-[1em] w-[2px] translate-y-[0.1em] bg-accent-500 align-baseline\"\r\n        />\r\n      ) : null}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "ChatMessage"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

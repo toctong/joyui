@@ -1,0 +1,40 @@
+---
+title: "对话消息"
+description: "Transcript 一轮：user 气泡 / assistant 列 / system 提示。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+对话中间层：用户气泡、助手列（可嵌 Reasoning / ToolCall / Citation / MessageActions）。
+
+<ComponentDocPreview slug="chat-message" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { ChatMessage } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add chat-message --yes`。
+
+## 用法
+
+```tsx
+<ChatMessage role="user">Summarize this PR</ChatMessage>
+<ChatMessage role="assistant" streaming={false}>
+  <ReasoningBlock title="Thought for 8s">…</ReasoningBlock>
+  <p>Here's what changed…</p>
+  <MessageActions actions={[…]} />
+</ChatMessage>
+```
+
+`streaming` 时助手列显示光标；动作行建议 `hidden={streaming}`。
+
+## API
+
+<DocApiSection slug="chat-message" />

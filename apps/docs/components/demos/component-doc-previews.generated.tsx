@@ -8,6 +8,7 @@ import { LogRow, ShimmerText, WorkingRow, useLogMotion } from "@/components/appl
 import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
 import { NotificationBell } from "@/components/application/app-shell/notification-bell";
 import { AuthCard } from "@/components/application/auth/auth-card";
+import { ChatMessage } from "@/components/application/chat-message/chat-message";
 import { ComposerLoader } from "@/components/application/composer-loader/composer-loader";
 import { ComposerWithAttachments } from "@/components/application/composer-panel/composer-attachments";
 import { ComposerPanel } from "@/components/application/composer-panel/composer-panel";
@@ -37,9 +38,11 @@ import { DataGridExample } from "@/components/application/docs/examples/data-gri
 import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";
 import { PatientInfoCard } from "@/components/application/medical/patient-info-card";
 import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";
+import { ReasoningBlock } from "@/components/application/reasoning-block/reasoning-block";
 import { SettingsModal } from "@/components/application/settings/settings-modal";
 import { Sidebar, SidebarBrand, SidebarCollapseButton, SidebarContent, SidebarFooter, SidebarHeader, SidebarItem, SidebarNav } from "@/components/application/sidebar/sidebar";
 import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+import { ToolCall } from "@/components/application/tool-call/tool-call";
 import { WebSearch, type WebSearchStep } from "@/components/application/web-search/web-search";
 import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
 import { Alert } from "@/components/base/alert/alert";
@@ -102,6 +105,7 @@ import { Marquee } from "@/components/base/marquee/marquee";
 import { MediaCardHover } from "@/components/base/media-card-hover/media-card-hover";
 import { MediaCardLandscape } from "@/components/base/media-card-landscape/media-card-landscape";
 import { MediaCard } from "@/components/base/media-card/media-card";
+import { MessageActions } from "@/components/base/message-actions/message-actions";
 import { Meter } from "@/components/base/meter/meter";
 import { ModalSheet, ModalSheetBody, ModalSheetFooter, ModalSheetHeader, ModalSheetTrigger } from "@/components/base/modal-sheet/modal-sheet";
 import { Modal, ModalBody, ModalFooter, ModalHeader, ModalTrigger } from "@/components/base/modal/modal";
@@ -159,7 +163,7 @@ import { TypingText } from "@/components/base/typing-text/typing-text";
 import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
 import { Logo, NavBrand, ProLogo } from "@/components/foundations/brand/logo";
 import { ScrollFade, useScrollFade } from "@/components/foundations/scroll-fade/scroll-fade";
-import { RiAddLine, RiHomeLine, RiMailLine, RiMicLine, RiSettings4Line, RiSparklingLine } from "@remixicon/react";
+import { RiAddLine, RiFileCopyLine, RiHomeLine, RiMailLine, RiMicLine, RiRefreshLine, RiSettings4Line, RiSparklingLine, RiThumbUpLine } from "@remixicon/react";
 import { parseColor } from "react-aria-components";
 
 function Preview_accordion() {
@@ -445,6 +449,33 @@ function Preview_carousel_thumbs() {
         { id: "4", label: "Vending", content: <img src="/carousel/vending-machine.webp" alt="" className="size-full object-cover" />, thumb: <img src="/carousel/vending-machine.webp" alt="" className="size-full object-cover" /> },
       ]}
     />
+  );
+}
+
+function Preview_chat_message() {
+  return (
+    <div className="flex w-full max-w-lg flex-col gap-4">
+      <ChatMessage role="user">帮我解释这次构建失败的原因</ChatMessage>
+      <ChatMessage role="assistant">
+        <ReasoningBlock title="Thought for 8s" defaultOpen status="done">
+          先看 CI 日志里的 TypeScript 报错，再对照最近改动的 barrel 导出。
+        </ReasoningBlock>
+        <ToolCall name="read_file" status="done" summary="apps/docs/tsconfig.json" defaultOpen>
+          {'{ "compilerOptions": { "strict": true } }'}
+        </ToolCall>
+        <p>根因是 docs 预览里缺少命名导出，补上后 typecheck 即可通过。</p>
+        <div className="flex flex-wrap gap-1.5">
+          <Citation index={1} title="JoyUI docs" href="https://joyui.dev" />
+        </div>
+        <MessageActions
+          actions={[
+            { id: "copy", label: "Copy", icon: RiFileCopyLine },
+            { id: "regen", label: "Regenerate", icon: RiRefreshLine },
+          ]}
+          trailing="刚刚"
+        />
+      </ChatMessage>
+    </div>
   );
 }
 
@@ -1044,6 +1075,29 @@ function Preview_medical() {
   );
 }
 
+function Preview_message_actions() {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className="group/message w-full max-w-sm rounded-xl border border-separator-border bg-background-primary-default p-4">
+      <p className="mb-3 text-body-regular text-text-primary">这里是一条助手回复。</p>
+      <MessageActions
+        className="opacity-100"
+        actions={[
+          {
+            id: "copy",
+            label: copied ? "Copied" : "Copy",
+            icon: RiFileCopyLine,
+            onPress: () => setCopied(true),
+          },
+          { id: "regen", label: "Regenerate", icon: RiRefreshLine },
+          { id: "like", label: "Helpful", icon: RiThumbUpLine },
+        ]}
+        trailing="2 分钟前"
+      />
+    </div>
+  );
+}
+
 function Preview_meter() {
   return (
     <Meter label="席位" value={19} maxValue={20} />
@@ -1261,6 +1315,19 @@ function Preview_rating_emoji() {
     <div className="flex flex-col items-center gap-4">
       <RatingEmoji value={4} aria-label="只读表情评分" />
       <RatingEmoji interactive defaultValue={3} aria-label="可点选表情评分" />
+    </div>
+  );
+}
+
+function Preview_reasoning_block() {
+  return (
+    <div className="flex w-full max-w-md flex-col gap-3">
+      <ReasoningBlock status="streaming" defaultOpen>
+        正在核对失败用例与最近的 API 变更…
+      </ReasoningBlock>
+      <ReasoningBlock title="Thought for 12s" status="done" defaultOpen>
+        结论：导出遗漏导致 MDX 预览拿到 undefined。
+      </ReasoningBlock>
     </div>
   );
 }
@@ -1717,6 +1784,18 @@ function Preview_toast_promise() {
   );
 }
 
+function Preview_tool_call() {
+  return (
+    <div className="flex w-full max-w-md flex-col gap-2">
+      <ToolCall name="bash" status="running" summary="pnpm typecheck" />
+      <ToolCall name="read_file" status="done" summary="sidebar.tsx" defaultOpen>
+        path: packages/ui/src/components/application/sidebar/sidebar.tsx
+      </ToolCall>
+      <ToolCall name="apply_patch" status="error" summary="conflict" error="Hunk failed to apply at line 88." />
+    </div>
+  );
+}
+
 function Preview_tooltip() {
   return (
     <TooltipTrigger>
@@ -1842,6 +1921,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "carousel-fade": Preview_carousel_fade,
   "carousel-stacked": Preview_carousel_stacked,
   "carousel-thumbs": Preview_carousel_thumbs,
+  "chat-message": Preview_chat_message,
   "checkbox": Preview_checkbox,
   "chip": Preview_chip,
   "citation": Preview_citation,
@@ -1898,6 +1978,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "media-card-hover": Preview_media_card_hover,
   "media-card-landscape": Preview_media_card_landscape,
   "medical": Preview_medical,
+  "message-actions": Preview_message_actions,
   "meter": Preview_meter,
   "modal": Preview_modal,
   "modal-sheet": Preview_modal_sheet,
@@ -1921,6 +2002,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "radio": Preview_radio,
   "rating": Preview_rating,
   "rating-emoji": Preview_rating_emoji,
+  "reasoning-block": Preview_reasoning_block,
   "relative-time": Preview_relative_time,
   "reveal": Preview_reveal,
   "reveal-stagger": Preview_reveal_stagger,
@@ -1965,6 +2047,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "timeline-horizontal": Preview_timeline_horizontal,
   "toast": Preview_toast,
   "toast-promise": Preview_toast_promise,
+  "tool-call": Preview_tool_call,
   "tooltip": Preview_tooltip,
   "tree-view": Preview_tree_view,
   "tree-view-files": Preview_tree_view_files,

@@ -75,6 +75,7 @@
       ],
       "registryDependencies": [
         "agent-thinking",
+        "text-shimmer",
         "utils"
       ],
       "files": [
@@ -642,6 +643,31 @@
         "importFrom": "@joyui/react",
         "exports": [
           "CarouselThumbs"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "chat-message",
+      "type": "registry:ui",
+      "title": "Chat Message",
+      "description": "Chat Message component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/chat-message/chat-message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ChatMessage"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -2223,6 +2249,31 @@
       }
     },
     {
+      "name": "message-actions",
+      "type": "registry:ui",
+      "title": "Message Actions",
+      "description": "Message Actions component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/message-actions/message-actions.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "MessageActions"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
       "name": "meter",
       "type": "registry:ui",
       "title": "Meter",
@@ -2780,6 +2831,34 @@
         "importFrom": "@joyui/react",
         "exports": [
           "RatingEmoji"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "reasoning-block",
+      "type": "registry:ui",
+      "title": "Reasoning Block",
+      "description": "Reasoning Block component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "text-shimmer",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/reasoning-block/reasoning-block.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ReasoningBlock"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -3859,6 +3938,34 @@
         "importFrom": "@joyui/react",
         "exports": [
           "Toaster"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tool-call",
+      "type": "registry:ui",
+      "title": "Tool Call",
+      "description": "Tool Call component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "text-shimmer",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/tool-call/tool-call.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ToolCall"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",

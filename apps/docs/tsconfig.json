@@ -79,6 +79,15 @@
       "@/components/application/web-search/*": [
         "../../packages/ui/src/components/application/web-search/*"
       ],
+      "@/components/application/chat-message/*": [
+        "../../packages/ui/src/components/application/chat-message/*"
+      ],
+      "@/components/application/reasoning-block/*": [
+        "../../packages/ui/src/components/application/reasoning-block/*"
+      ],
+      "@/components/application/tool-call/*": [
+        "../../packages/ui/src/components/application/tool-call/*"
+      ],
       "@/utils/cx": [
         "../../packages/ui/src/utils/cx.ts"
       ],
