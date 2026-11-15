@@ -3,7 +3,8 @@ import path from "node:path";
 /** Resolve `candidate` under `cwd` and reject path escapes (`..`, absolute). */
 export function resolveInsideCwd(cwd: string, candidate: string): string {
   const root = path.resolve(cwd);
-  if (path.isAbsolute(candidate)) {
+  // Reject POSIX absolutes and Windows drive/UNC paths (even on Linux CI).
+  if (path.isAbsolute(candidate) || path.win32.isAbsolute(candidate)) {
     throw new Error(`Refusing absolute write path: ${candidate}`);
   }
   const cleaned = candidate.replace(/^[/\\]+/, "");

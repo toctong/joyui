@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import { RiAlarmLine, RiMoonClearFill, RiNotification3Line } from "@remixicon/react";
 
-import { WeekRangePill } from "../medical/week-range-pill";
+import { WeekRangePill } from "../../base/week-range-pill/week-range-pill";
 import { Chip } from "../../base/badges/chip";
 import { useCountUp } from "../../../hooks/use-count-up";
 import { cx } from "../../../utils/cx";

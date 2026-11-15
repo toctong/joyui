@@ -1,11 +1,17 @@
-﻿---
-title: "身份验证卡片"
-description: "登录/注册与第三方登录按钮。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+title: "身份验证卡片"
+description: "登录 / 注册 / OTP 校验，支持社交按钮布局与媒体分栏。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import {
+  AuthCardMediaPreview,
+  AuthCardModesPreview,
+  AuthCardVerifyPreview,
+} from "@/components/demos/auth-card-docs";
 import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-内置 `signin` / `signup` / `verify` 模板；也可传 `children` 自定义表单，只保留卡片外壳。
+内置 `signin` / `signup` / `verify`；也可传 `children` 自定义表单，只保留卡片外壳。
 
 <ComponentDocPreview slug="auth-card" />
 
@@ -21,10 +27,57 @@ import { AuthCard, AuthMediaCarousel } from "@joyui/react";
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add auth-card --yes`。
 
+## 登录与注册
+
+<DemoFrame
+  fileName="auth-card-modes.tsx"
+  code={`import { AuthCard } from "@joyui/react";
+
+<>
+  <AuthCard mode="signin" />
+  <AuthCard mode="signup" />
+</>`}
+  canvasClassName="min-h-[520px] items-start justify-center bg-background-secondary-default p-6"
+>
+  <AuthCardModesPreview />
+</DemoFrame>
+
+## OTP 校验
+
+<DemoFrame
+  fileName="auth-card-verify.tsx"
+  code={`import { AuthCard } from "@joyui/react";
+
+<AuthCard mode="verify" email="you@joyui.dev" />`}
+  canvasClassName="min-h-[420px] items-center justify-center bg-background-secondary-default p-6"
+>
+  <AuthCardVerifyPreview />
+</DemoFrame>
+
+## 媒体分栏
+
+`media` 打开双栏；`layout="inline"` 压缩社交按钮。可传自定义节点，或 `AuthMediaCarousel`（需 `slides`）。
+
+<DemoFrame
+  fileName="auth-card-media.tsx"
+  code={`import { AuthCard } from "@joyui/react";
+
+<AuthCard
+  mode="signin"
+  layout="inline"
+  providers={["google", "github", "apple"]}
+  media={
+    <div className="flex size-full items-end bg-linear-to-br from-accent-500 to-accent-800 p-6">
+      <p className="text-title-2-medium text-white">Welcome back</p>
+    </div>
+  }
+/>`}
+  canvasClassName="min-h-[480px] items-center justify-center bg-background-secondary-default p-6"
+>
+  <AuthCardMediaPreview />
+</DemoFrame>
 
 ## 自定义表单（`children`）
-
-需要对接自有 JWT / OAuth 时，把字段放进 `children`，内置邮箱密码表单与社交区会被替换：
 
 ```tsx
 import { AuthCard, Button, Input } from "@joyui/react";
@@ -38,13 +91,6 @@ import { AuthCard, Button, Input } from "@joyui/react";
 </AuthCard>
 ```
 
-## 应用场景
-
-登录 / 注册落地页或设置里的账号接入：社交按钮提供商、邮箱字段与 CTA 文案均可配置；复杂登录流用 `children` 自建字段。
-
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
-
 ## API
 
 <DocApiSection slug="auth-card" />
-

@@ -1,0 +1,27 @@
+---
+title: "登录页模板"
+description: "全屏 AuthCard，默认媒体分栏。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+<ComponentDocPreview slug="auth-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AuthTemplate } from "@joyui/react";
+
+<AuthTemplate mode="signin" />
+```
+
+默认单栏；传 `media` / `mediaSlot` + `withMedia` 开启分栏。可选：`npx @joyui/cli add auth-template --yes`。
+
+## API
+
+<DocApiSection slug="auth-template" />

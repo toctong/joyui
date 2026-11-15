@@ -3,6 +3,7 @@
 import { parseDate } from "@internationalized/date";
 import { DatePicker } from "@/components/base/date-picker/date-picker";
 import { DateRangePicker } from "@/components/base/date-picker/date-range-picker";
+import { MeetingScheduler } from "@/components/base/date-picker/meeting-scheduler";
 import { cx } from "@/utils/cx";
 
 export function DatePickerSinglePreview({ className }: { className?: string }) {
@@ -33,7 +34,7 @@ export function DatePickerFilterScenario({ className }: { className?: string }) 
   return (
     <div
       className={cx(
-        "flex w-full max-w-lg flex-col gap-3 rounded-2xl border border-separator-border bg-background-primary-default p-4 shadow-xs",
+        "flex w-full max-w-lg flex-col gap-3 rounded-2xl border border-border-button-default bg-background-primary-default p-4 shadow-xs",
         className,
       )}
     >
@@ -43,6 +44,14 @@ export function DatePickerFilterScenario({ className }: { className?: string }) 
         <span className="text-body-regular text-text-tertiary">至</span>
         <DatePicker aria-label="结束日" defaultValue={parseDate("2026-11-30")} />
       </div>
+    </div>
+  );
+}
+
+export function MeetingSchedulerPreview({ className }: { className?: string }) {
+  return (
+    <div className={cx("flex w-full justify-center", className)}>
+      <MeetingScheduler />
     </div>
   );
 }

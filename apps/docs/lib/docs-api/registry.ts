@@ -786,9 +786,25 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
   "notification-bell": entry("NotificationBell", [
     { name: "notifications", description: "通知列表；默认 starter 数据。", type: "NotificationCenterItem[]", options: "—", defaultValue: "STARTER_NOTIFICATIONS" },
   ]),
-  medical: entry("PatientInfoCard / WeekRangePill / ImportantAlertsCard", [
-    { name: "label (WeekRangePill)", description: "周/月范围文案。", type: "string", options: "—", defaultValue: "—" },
-    { name: "onPrev / onNext", description: "周切换回调；省略则为装饰态。", type: "() => void", options: "—", defaultValue: "—" },
+  "ai-chat-template": entry("AiChatTemplate", [
+    { name: "title / description", description: "页眉文案。", type: "ReactNode", options: "—", defaultValue: "AI 对话" },
+    { name: "api / transport", description: "透传 AiChat。", type: "string · ChatTransport", options: "—", defaultValue: "/api/chat" },
+  ]),
+  "auth-template": entry("AuthTemplate", [
+    { name: "withMedia", description: "是否展示媒体分栏。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "mode / layout", description: "透传 AuthCard。", type: "AuthMode · AuthLayout", options: "—", defaultValue: "signin · inline" },
+  ]),
+  "workspace-template": entry("WorkspaceTemplate", [
+    { name: "selected", description: "侧栏选中项。", type: "string", options: "—", defaultValue: "home" },
+    { name: "profile / feed", description: "替换默认档案卡 / 动态流。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "profile-cards": entry("ProfileInfoCard / AlertFeedCard / WeekRangePill", [
+    { name: "name / initials / details", description: "ProfileInfoCard 资料与行项目。", type: "string · ProfileInfoDetail[]", options: "—", defaultValue: "演示数据" },
+    { name: "items / title / count", description: "AlertFeedCard 动态列表与顶栏计数。", type: "AlertFeedItem[] · string · number", options: "—", defaultValue: "演示数据" },
+    { name: "label / onPrev / onNext", description: "WeekRangePill 文案与切换。", type: "string · () => void", options: "—", defaultValue: "—" },
+  ]),
+  medical: entry("PatientInfoCard / WeekRangePill / ImportantAlertsCard（已弃用，见 profile-cards）", [
+    { name: "—", description: "请改用 ProfileInfoCard / AlertFeedCard。", type: "—", options: "—", defaultValue: "—" },
   ]),
   brand: entry("Logo / ProLogo / NavBrand", [
     { name: "size", description: "标记边长（px）。", type: "number", options: "—", defaultValue: "32 / 36 / 22" },

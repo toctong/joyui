@@ -21,8 +21,8 @@ import { Accordion, AccordionItem } from "@/components/base/accordion/accordion"
 import { StatCards } from "@/components/application/dashboard/stat-cards";
 import { RevenueChartCard } from "@/components/application/dashboard/revenue-chart-card";
 import { OrdersChartCard } from "@/components/application/dashboard/orders-chart-card";
-import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";
-import { PatientInfoCard } from "@/components/application/medical/patient-info-card";
+import { AlertFeedCard } from "@/components/application/profile-cards/alert-feed-card";
+import { ProfileInfoCard } from "@/components/application/profile-cards/profile-info-card";
 import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
 import { ComposerLoader } from "@/components/application/composer-loader/composer-loader";
 import { AuthCard } from "@/components/application/auth/auth-card";
@@ -150,7 +150,7 @@ export function CompoundShowcase() {
         <div className="space-y-3">
           <h3 className="text-label-1-medium text-text-secondary">Composer loader</h3>
           <ComposerLoader active className="rounded-[1.25rem]">
-            <div className="rounded-[1.25rem] border border-separator-border bg-background-primary-default px-4 py-3">
+            <div className="rounded-[1.25rem] px-4 py-3">
               <p className="text-body-1-regular text-text-secondary">
                 Ask the agent to compose a dashboard…
               </p>
@@ -159,8 +159,8 @@ export function CompoundShowcase() {
         </div>
       </div>
       <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-        <PatientInfoCard />
-        <ImportantAlertsCard />
+        <ProfileInfoCard />
+        <AlertFeedCard />
       </div>
       <div className="max-w-md">
         <AuthCard mode="signin" headingLevel={2} />

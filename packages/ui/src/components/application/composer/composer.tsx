@@ -118,14 +118,11 @@ export function Composer({
       <div className="flex w-full flex-col gap-2.5">
         <form
           className={cx(
-            "group/composer flex w-full items-end gap-1.5 p-2",
-            "bg-background-primary-default transition-[border-radius,box-shadow,ring-color] duration-200 ease-out",
+            "bui-composer-shell group/composer flex w-full items-end gap-1.5 p-2",
+            "bg-background-primary-default transition-[border-radius,box-shadow] duration-200 ease-out",
             expanded ? "rounded-[28px]" : "rounded-full",
-            "ring-1 ring-border-button-default/55 shadow-xs",
-            "hover:shadow-sm hover:ring-border-button-default/80",
-            focused &&
-              "shadow-md ring-2 ring-border-focus-ring/55 hover:ring-border-focus-ring/55",
           )}
+          data-focused={focused || undefined}
           onSubmit={(e) => {
             e.preventDefault();
             submit();

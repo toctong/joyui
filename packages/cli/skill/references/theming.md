@@ -9,6 +9,51 @@ JoyUI tokens ship inside `@joyui/react/styles.css` (theme + typography + compone
 
 Consumers do **not** need to copy token files. The package entry also `@source`s its `dist/` so Tailwind v4 scans component class names automatically.
 
+## Light / dark / system
+
+```tsx
+import { ThemeToggle, applyThemePreference } from "@joyui/react";
+
+// Segmented control: light · system · dark
+<ThemeToggle appearance="segmented" />
+
+// Programmatic
+applyThemePreference("system");
+```
+
+Preference is stored under `JoyUI:theme`. `system` follows `prefers-color-scheme` and updates live.
+
+Boot before paint (optional anti-FOUC):
+
+```html
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("JoyUI:theme");
+      var dark =
+        t === "dark" ||
+        (t === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", dark);
+    } catch (e) {}
+  })();
+</script>
+```
+
+## Accent (brand hue)
+
+Accent surfaces (`button-primary`, focus ring, selected nav, etc.) read `--color-accent-*`. Switch the whole ramp with presets:
+
+```tsx
+import { setAccent, AccentSwitcher, ACCENT_PRESETS } from "@joyui/react";
+
+setAccent("violet"); // blue | violet | teal | orange | rose | mono
+
+<AccentSwitcher />
+```
+
+`setAccent` writes `data-accent` on `<html>` (omitted for default blue) and persists `JoyUI:accent`.
+
 ## Token families
 
 | Role | Examples |

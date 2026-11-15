@@ -1,20 +1,40 @@
 ---
 title: 模板
-description: 完整页面模板：后台管理控制台。
+description: 可安装的整页模板：后台、AI 对话、登录页、工作台；另有 Pro 垂直预览。
 ---
 
 import { SectionCatalog } from "@/components/docs/section-catalog";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-整页装配：侧栏、KPI、图表与数据表已串好，可直接改成你们的后台。
+整页装配，对标 shadcn blocks / Figma Community kits：侧栏、KPI、图表、对话与鉴权已串好，可 `cli add` 进业务仓库。画廊卡片会**新开窗口**打开全屏预览（`/templates/preview/<slug>`）。
+
+## 可安装（OSS）
+
+| 模板 | 说明 | 安装 |
+|------|------|------|
+| [后台管理](/docs/admin-dashboard) | 侧栏 + KPI + 图表 + 表 | `npx @joyui/cli add admin-dashboard --yes` |
+| [AI 对话](/docs/ai-chat-template) | `AiChat` 全页壳 | `npx @joyui/cli add ai-chat-template --yes` |
+| [登录页](/docs/auth-template) | `AuthCard` 媒体分栏 | `npx @joyui/cli add auth-template --yes` |
+| [工作台](/docs/workspace-template) | 档案卡 + 动态流 + 侧栏 | `npx @joyui/cli add workspace-template --yes` |
 
 ```bash
 pnpm add @joyui/react
 ```
 
 ```tsx
-import { /* … */ } from "@joyui/react";
+import {
+  AdminDashboard,
+  AiChatTemplate,
+  AuthTemplate,
+  WorkspaceTemplate,
+} from "@joyui/react";
 ```
 
-主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add sidebar data-table stat-cards revenue-chart-card orders-chart-card --yes`。
+主题 CSS：`@import "@joyui/react/styles.css"`。
 
 <SectionCatalog section="templates" />
+
+## Pro 垂直预览
+
+Finance / marketing / healthcare 等完整垂直页仍为 Pro 嵌入预览（非开源组件）。Healthcare 是**行业模板**，与通用 [档案卡片](/docs/profile-cards) 无关。

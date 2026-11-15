@@ -68,11 +68,8 @@ export function AiComposer({
     <form
       onSubmit={submit}
       className={cx(
-        "flex w-full items-end gap-2 rounded-[28px] p-2",
-        "bg-background-primary-default shadow-xs",
-        "ring-1 ring-border-button-default/55",
-        "transition-[box-shadow,ring-color] duration-200",
-        "focus-within:shadow-md focus-within:ring-2 focus-within:ring-border-focus-ring/55",
+        "bui-composer-shell flex w-full items-end gap-2 rounded-[28px] p-2",
+        "bg-background-primary-default transition-[box-shadow] duration-200",
         className,
       )}
       {...props}

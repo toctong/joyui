@@ -70,6 +70,19 @@ export const CATALOG: JoyComponent[] = [
     "registryDependencies": []
   },
   {
+    "name": "ai-chat-template",
+    "title": "Ai Chat Template",
+    "description": "Ai Chat Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AiChatTemplate"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
     "name": "ai-kit",
     "title": "AI Kit",
     "description": "Built-in AI SDK chat kit (AiChat / AiConversation / AiMessage / useChat).",
@@ -142,6 +155,19 @@ export const CATALOG: JoyComponent[] = [
     "exports": [
       "AuthCard",
       "AuthMediaCarousel"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "auth-template",
+    "title": "Auth Template",
+    "description": "Auth Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AuthTemplate"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1040,8 +1066,7 @@ export const CATALOG: JoyComponent[] = [
     "layer": "application",
     "exports": [
       "ImportantAlertsCard",
-      "PatientInfoCard",
-      "WeekRangePill"
+      "PatientInfoCard"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1238,6 +1263,20 @@ export const CATALOG: JoyComponent[] = [
       "Popover",
       "PopoverHeader",
       "PopoverFooter"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "profile-cards",
+    "title": "Profile Cards",
+    "description": "Profile Cards component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AlertFeedCard",
+      "ProfileInfoCard"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1786,6 +1825,8 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "application",
     "exports": [
+      "AccentSwitcher",
+      "ACCENT_PRESETS",
       "ThemeToggle"
     ],
     "importFrom": "@joyui/react",
@@ -1967,6 +2008,32 @@ export const CATALOG: JoyComponent[] = [
     "layer": "application",
     "exports": [
       "WebSearch"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "week-range-pill",
+    "title": "Week Range Pill",
+    "description": "Week Range Pill component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "WeekRangePill"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "workspace-template",
+    "title": "Workspace Template",
+    "description": "Workspace Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "WorkspaceTemplate"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],

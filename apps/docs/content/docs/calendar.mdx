@@ -1,6 +1,6 @@
 ---
 title: "日历"
-description: "含事件芯片与详情弹出的月历。"
+description: "含事件芯片与详情弹出的月历（Pro 预览）；选日请用 DateCalendar / DatePicker。"
 ---
 import { ProComponentDoc } from "@/components/demos/component-doc-preview";
 import {
@@ -11,22 +11,21 @@ import { DatePickerFilterScenario } from "@/components/demos/date-picker-docs";
 import { DocApiSection } from "@/components/docs-api-section";
 import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-含事件芯片与详情弹出的月历（完整模板预览见下）。若只要选日 / 选区间，优先用 `DateCalendar` / `DatePicker`。
+带事件芯片与详情弹出的完整月历为 **Pro 模板预览**。开源侧请用 `DateCalendar` / `DatePicker` / `MeetingScheduler` 做选日与预约。
 
 <ProComponentDoc slug="calendar" name="日历" />
 
-## 安装
+## 安装（选日组件）
 
 ```bash
 pnpm add @joyui/react
 ```
 
 ```tsx
-import { /* … */ } from "@joyui/react";
+import { DateCalendar, DatePicker, MeetingScheduler } from "@joyui/react";
 ```
 
-主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add calendar --yes`。
-
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add date-picker --yes`。
 
 ## 相关：页面内区间
 
@@ -38,11 +37,9 @@ import { /* … */ } from "@joyui/react";
 import { DateRangeCalendar } from "@joyui/react";
 
 <DateRangeCalendar
-  aria-label="入住区间"
-  visibleMonths={2}
   defaultValue={{
-    start: parseDate("2026-11-10"),
-    end: parseDate("2026-11-16"),
+    start: parseDate("2026-06-02"),
+    end: parseDate("2026-06-12"),
   }}
 />`}
   canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
@@ -50,38 +47,25 @@ import { DateRangeCalendar } from "@joyui/react";
   <DateCalendarRangePreview />
 </DemoFrame>
 
-## 相关：表单内嵌
-
-移动端表单里的单月区间。
-
-<DemoFrame
-  fileName="calendar-related-booking.tsx"
-  code={`import { parseDate } from "@internationalized/date";
-import { DateRangeCalendar } from "@joyui/react";
-
-<DateRangeCalendar aria-label="入住区间" visibleMonths={1} />`}
-  canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
->
-  <DateCalendarBookingScenario />
-</DemoFrame>
-
-## 相关：弹出筛选
-
-工具栏用 `DatePicker` 拼起止日。
+## 相关：筛选条
 
 <DemoFrame
   fileName="calendar-related-filter.tsx"
-  code={`import { DatePicker } from "@joyui/react";
+  code={`import { parseDate } from "@internationalized/date";
+import { DatePicker } from "@joyui/react";
 
-<>
-  <DatePicker aria-label="起始日" />
-  <DatePicker aria-label="结束日" />
-</>`}
+<div className="rounded-2xl border border-border-button-default p-4 shadow-xs">
+  <DatePicker aria-label="起始日" defaultValue={parseDate("2026-11-01")} />
+</div>`}
   canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
 >
   <DatePickerFilterScenario />
 </DemoFrame>
 
+## 相关：预约卡片
+
+见 [日期选择器](/docs/date-picker) 中的 `MeetingScheduler`。
+
 ## API
 
-<DocApiSection slug="calendar" />
+<DocApiSection slug="date-calendar" />

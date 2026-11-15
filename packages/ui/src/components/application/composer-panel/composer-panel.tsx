@@ -144,13 +144,10 @@ export function ComposerPanel({
 
       <div
         className={cx(
-          "rounded-[24px] bg-background-primary-default p-3.5 pt-6 shadow-xs",
-          "ring-1 ring-border-button-default/60",
-          "transition-[box-shadow,ring-color] duration-200 ease-out",
-          "hover:shadow-sm hover:ring-border-button-default/85",
-          focused &&
-            "shadow-md ring-2 ring-border-focus-ring/50 hover:ring-border-focus-ring/50",
+          "bui-composer-shell rounded-[24px] bg-background-primary-default p-3.5 pt-6",
+          "transition-[box-shadow] duration-200 ease-out",
         )}
+        data-focused={focused || undefined}
         onFocusCapture={() => setFocused(true)}
         onBlurCapture={(e) => {
           if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
@@ -414,7 +411,7 @@ function StatusPill({
     <span
       className={cx(
         "pointer-events-auto inline-flex items-center gap-1 rounded-full px-2.5 py-1",
-        "border border-border-button-default/80 bg-background-primary-default",
+        "border border-border-button-default bg-background-primary-default",
         "text-caption-1-medium text-text-secondary shadow-xs",
         "transition-[box-shadow,transform] duration-150",
         "hover:-translate-y-px hover:shadow-sm",

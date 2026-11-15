@@ -50,6 +50,7 @@ const TEMPLATE_EMBEDS: Record<string, string> = {
   "ai-image-generation": "image",
   "ai-profile": "profile",
   "home-dashboard": "analytics",
+  // Pro vertical template (not the OSS profile-cards family)
   "medical-profile": "healthcare",
   "marketing-dashboard": "marketing",
   "finance-dashboard": "finance",
@@ -114,7 +115,24 @@ function ScaledPane({ children }: { children: ReactNode }) {
   );
 }
 
-function PreviewCard({ entry }: { entry: Entry }) {
+const OSS_TEMPLATE_SLUGS = new Set([
+  "admin-dashboard",
+  "ai-chat-template",
+  "auth-template",
+  "workspace-template",
+]);
+
+function templatePreviewHref(slug: string) {
+  return `/templates/preview/${slug}`;
+}
+
+function PreviewCard({
+  entry,
+  openInNewWindow = false,
+}: {
+  entry: Entry;
+  openInNewWindow?: boolean;
+}) {
   const href = previewHref(entry);
   const Preview = FREE_COMPONENT_PREVIEWS[href];
   const slug = slugOf(entry);
@@ -124,10 +142,17 @@ function PreviewCard({ entry }: { entry: Entry }) {
   const useEmbed = !Preview && !useDoc && Boolean(embed);
   // Local mock beats remote captures — joyui.dev/previews often 404 offline.
   const useProMock = !Preview && !useDoc && !useEmbed;
+  const cardHref =
+    openInNewWindow && OSS_TEMPLATE_SLUGS.has(slug)
+      ? templatePreviewHref(slug)
+      : openInNewWindow && embed
+        ? `${SITE}/embed/templates/${embed}`
+        : docsHref(entry);
 
   return (
     <ShowcaseCard
-      href={docsHref(entry)}
+      href={cardHref}
+      external={openInNewWindow}
       title={entry.name}
       description={entry.description}
       {...(Preview ? (FREE_PREVIEW_OPTIONS[href] ?? {}) : {})}
@@ -152,10 +177,24 @@ function PreviewCard({ entry }: { entry: Entry }) {
 }
 
 /** Text-only fallback when no live preview or capture exists. */
-function TextCard({ entry }: { entry: Entry }) {
+function TextCard({
+  entry,
+  openInNewWindow = false,
+}: {
+  entry: Entry;
+  openInNewWindow?: boolean;
+}) {
+  const slug = slugOf(entry);
+  const href =
+    openInNewWindow && OSS_TEMPLATE_SLUGS.has(slug)
+      ? templatePreviewHref(slug)
+      : docsHref(entry);
   return (
     <a
-      href={docsHref(entry)}
+      href={href}
+      {...(openInNewWindow
+        ? { target: "_blank", rel: "noreferrer noopener" }
+        : {})}
       className={cx(
         "group relative flex flex-col gap-1 rounded-[28px] border border-border-button-default bg-background-primary-default p-5",
         "transition-[background-color,box-shadow] duration-150 ease",
@@ -201,7 +240,11 @@ export function SectionCatalog({
         )}
       >
         {withPreview.map((entry) => (
-          <PreviewCard key={entry.href} entry={entry} />
+          <PreviewCard
+            key={entry.href}
+            entry={entry}
+            openInNewWindow={section === "templates"}
+          />
         ))}
       </div>
       {withoutPreview.length > 0 ? (
@@ -212,7 +255,11 @@ export function SectionCatalog({
           )}
         >
           {withoutPreview.map((entry) => (
-            <TextCard key={entry.href} entry={entry} />
+            <TextCard
+              key={entry.href}
+              entry={entry}
+              openInNewWindow={section === "templates"}
+            />
           ))}
         </div>
       ) : null}

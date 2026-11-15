@@ -1,7 +1,23 @@
 "use client";
 
+import { AccentSwitcher } from "@/components/application/theme/accent-switcher";
 import { ThemeToggle } from "@/components/application/theme/theme-toggle";
+import { Button } from "@/components/base/buttons/button";
 import { cx } from "@/utils/cx";
+
+export function AccentSwitcherPreview({ className }: { className?: string }) {
+  return (
+    <div className={cx("flex flex-col items-center gap-4", className)}>
+      <AccentSwitcher />
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Button size="small">Primary</Button>
+        <Button size="small" variant="secondary">
+          Secondary
+        </Button>
+      </div>
+    </div>
+  );
+}
 
 export function ThemeToggleAppearancePreview({ className }: { className?: string }) {
   return (

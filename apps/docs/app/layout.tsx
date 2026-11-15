@@ -52,6 +52,13 @@ export default async function Layout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${sans.variable} ${display.variable} ${inter.className} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var a=localStorage.getItem("JoyUI:accent");if(a&&a!=="blue")document.documentElement.setAttribute("data-accent",a);}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <DirectionProvider locale={directionLocale}>
           <Providers locale={locale}>{children}</Providers>

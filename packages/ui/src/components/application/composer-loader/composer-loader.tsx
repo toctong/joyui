@@ -17,11 +17,12 @@ import { cx } from "../../../utils/cx";
  * with the sharp line leading and every soft layer's head pulled back behind
  * the tip.
  *
- * The component paints the pill surface itself and layers the light above
- * it, so the wrapped composer must not paint its own background:
+ * The component paints the pill surface (and idle border) itself and layers
+ * the light above it. The wrapped composer must not paint its own
+ * background, border, or shadow — those stack into a double rim:
  *
  *   <ComposerLoader active={isWaitingForReply}>
- *     <Composer className="bg-transparent shadow-none" />
+ *     <Composer className="border-0 bg-transparent shadow-none" />
  *   </ComposerLoader>
  *
  * `active` fades the whole effect in and out (450ms), so toggling it on
@@ -207,7 +208,13 @@ export function ComposerLoader({
       {surface && (
         <span
           aria-hidden
-          className="absolute inset-0 bg-background-primary-default shadow-xs"
+          className={cx(
+            "absolute inset-0 bg-background-primary-default",
+            "transition-[border-color,box-shadow] duration-[450ms] ease",
+            // Idle: soft translucent rim. Active: no rim — the iridescent
+            // band is the only edge (avoids gray+rainbow stack).
+            active ? "shadow-none" : "bui-composer-shell",
+          )}
           style={{ borderRadius: cornerRadius }}
         />
       )}

@@ -1,0 +1,78 @@
+---
+title: "档案卡片"
+description: "通用资料卡、动态流与周范围切换——人事、项目、健康等场景均可复用。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+import {
+  ProfileCardsHrPreview,
+  ProfileCardsProjectPreview,
+} from "@/components/demos/profile-cards-docs";
+
+通用档案积木：`ProfileInfoCard`、`AlertFeedCard`、`WeekRangePill`。数据全部可注入，不再绑定医疗文案。
+
+<ComponentDocPreview slug="profile-cards" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import {
+  AlertFeedCard,
+  ProfileInfoCard,
+  WeekRangePill,
+} from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add profile-cards --yes`。
+
+旧名 `PatientInfoCard` / `ImportantAlertsCard` / slug `medical` 仍可导入，建议迁移到新名。
+
+## 人事示例
+
+<DemoFrame
+  fileName="profile-cards-hr.tsx"
+  code={`import { ProfileInfoCard, AlertFeedCard } from "@joyui/react";
+import { RiBriefcaseLine, RiMailLine, RiMapPinLine, RiUserLine } from "@remixicon/react";
+
+<div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
+  <ProfileInfoCard
+    name="Alex Chen"
+    initials="AC"
+    details={[
+      { icon: RiUserLine, label: "角色", value: "产品设计师" },
+      { icon: RiBriefcaseLine, label: "团队", value: "Growth" },
+      { icon: RiMailLine, label: "邮箱", value: "alex@joyui.dev" },
+      { icon: RiMapPinLine, label: "地点", value: "上海" },
+    ]}
+  />
+  <AlertFeedCard />
+</div>`}
+  canvasClassName="min-h-[380px] items-stretch justify-center bg-background-primary-default p-6"
+>
+  <ProfileCardsHrPreview />
+</DemoFrame>
+
+## 项目示例
+
+<DemoFrame
+  fileName="profile-cards-project.tsx"
+  code={`import { AlertFeedCard, WeekRangePill } from "@joyui/react";
+
+<>
+  <WeekRangePill label="Sprint 14" />
+  <AlertFeedCard title="项目动态" count={5} countLabel="本迭代" rangeLabel="Sprint 14" />
+</>`}
+  canvasClassName="min-h-[380px] flex-col items-stretch justify-center gap-4 bg-background-primary-default p-6"
+>
+  <ProfileCardsProjectPreview />
+</DemoFrame>
+
+## API
+
+<DocApiSection slug="profile-cards" />

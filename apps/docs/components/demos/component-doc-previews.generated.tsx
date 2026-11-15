@@ -6,9 +6,11 @@ import { useRef, useState } from "react";
 import { AdminDashboard } from "@/components/application/admin/admin-dashboard";
 import { LogRow, ShimmerText, WorkingRow, useLogMotion } from "@/components/application/agent-log/agent-log";
 import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
+import { AiChatTemplate } from "@/components/application/ai-chat-template/ai-chat-template";
 import { AiComposer } from "@/components/application/ai-kit/ai-composer";
 import { AiConversation } from "@/components/application/ai-kit/ai-conversation";
 import { NotificationBell } from "@/components/application/app-shell/notification-bell";
+import { AuthTemplate } from "@/components/application/auth-template/auth-template";
 import { AuthCard } from "@/components/application/auth/auth-card";
 import { ChatMessage } from "@/components/application/chat-message/chat-message";
 import { ComposerLoader } from "@/components/application/composer-loader/composer-loader";
@@ -37,15 +39,16 @@ import { StatCards } from "@/components/application/dashboard/stat-cards";
 import { StepsCard } from "@/components/application/dashboard/steps-card";
 import { DataTable } from "@/components/application/data-table/data-table-view";
 import { DataGridExample } from "@/components/application/docs/examples/data-grid-example";
-import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";
-import { PatientInfoCard } from "@/components/application/medical/patient-info-card";
 import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";
+import { AlertFeedCard } from "@/components/application/profile-cards/alert-feed-card";
+import { ProfileInfoCard } from "@/components/application/profile-cards/profile-info-card";
 import { ReasoningBlock } from "@/components/application/reasoning-block/reasoning-block";
 import { SettingsModal } from "@/components/application/settings/settings-modal";
 import { Sidebar, SidebarBrand, SidebarCollapseButton, SidebarContent, SidebarFooter, SidebarHeader, SidebarItem, SidebarNav } from "@/components/application/sidebar/sidebar";
 import { ThemeToggle } from "@/components/application/theme/theme-toggle";
 import { ToolCall } from "@/components/application/tool-call/tool-call";
 import { WebSearch, type WebSearchStep } from "@/components/application/web-search/web-search";
+import { WorkspaceTemplate } from "@/components/application/workspace-template/workspace-template";
 import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
 import { Alert } from "@/components/base/alert/alert";
 import { Announcement } from "@/components/base/announcement/announcement";
@@ -264,6 +267,12 @@ function Preview_ai_chat() {
   );
 }
 
+function Preview_ai_chat_template() {
+  return (
+    <AiChatTemplate className="h-[560px] w-full max-w-lg" />
+  );
+}
+
 function Preview_alert() {
   return (
     <div className="flex w-full max-w-lg flex-col gap-3">
@@ -298,6 +307,12 @@ function Preview_aspect_ratio() {
 function Preview_auth_card() {
   return (
     <AuthCard />
+  );
+}
+
+function Preview_auth_template() {
+  return (
+    <AuthTemplate mode="signin" withMedia={false} />
   );
 }
 
@@ -623,7 +638,7 @@ function Preview_composer_attachments() {
 function Preview_composer_loader() {
   return (
     <ComposerLoader active>
-      <div className="rounded-full border border-separator-border px-4 py-3">Ask anything…</div>
+      <div className="rounded-full px-4 py-3 text-body-regular text-text-tertiary">Ask anything…</div>
     </ComposerLoader>
   );
 }
@@ -1111,8 +1126,8 @@ function Preview_media_card_landscape() {
 function Preview_medical() {
   return (
     <div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
-      <PatientInfoCard />
-      <ImportantAlertsCard />
+      <ProfileInfoCard />
+      <AlertFeedCard />
     </div>
   );
 }
@@ -1293,6 +1308,15 @@ function Preview_popover() {
       <Button>打开</Button>
       <Popover>弹出内容</Popover>
     </PopoverTrigger>
+  );
+}
+
+function Preview_profile_cards() {
+  return (
+    <div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
+      <ProfileInfoCard />
+      <AlertFeedCard />
+    </div>
   );
 }
 
@@ -1933,6 +1957,14 @@ function Preview_web_search() {
   return <WebSearch steps={steps} className="w-full max-w-md" />;
 }
 
+function Preview_workspace_template() {
+  return (
+    <div className="h-[640px] w-full overflow-hidden rounded-2xl border border-separator-border">
+      <WorkspaceTemplate />
+    </div>
+  );
+}
+
 export const GENERATED_DOC_PREVIEWS: Record<
   string,
   () => ReactElement
@@ -1943,11 +1975,13 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "agent-log": Preview_agent_log,
   "agent-thinking": Preview_agent_thinking,
   "ai-chat": Preview_ai_chat,
+  "ai-chat-template": Preview_ai_chat_template,
   "alert": Preview_alert,
   "announcement": Preview_announcement,
   "area-chart-card": Preview_area_chart_card,
   "aspect-ratio": Preview_aspect_ratio,
   "auth-card": Preview_auth_card,
+  "auth-template": Preview_auth_template,
   "avatar": Preview_avatar,
   "avatar-group": Preview_avatar_group,
   "badge": Preview_badge,
@@ -2037,6 +2071,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "pagination": Preview_pagination,
   "password-strength": Preview_password_strength,
   "popover": Preview_popover,
+  "profile-cards": Preview_profile_cards,
   "progress": Preview_progress,
   "prompt-suggestions": Preview_prompt_suggestions,
   "qr-code": Preview_qr_code,
@@ -2097,4 +2132,5 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "typing-text": Preview_typing_text,
   "voice-ring": Preview_voice_ring,
   "web-search": Preview_web_search,
+  "workspace-template": Preview_workspace_template,
 };

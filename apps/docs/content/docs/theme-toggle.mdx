@@ -1,17 +1,18 @@
 ---
-title: "主题切换"
-description: "手动明暗切换，本地持久化。"
+title: "主题"
+description: "浅色 / 深色 / 跟随系统，以及 accent 主色换肤。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import {
   ThemeToggleAppearancePreview,
   ThemeToggleSidebarScenario,
   ThemeToggleSizePreview,
+  AccentSwitcherPreview,
 } from "@/components/demos/theme-toggle-docs";
 import { DocApiSection } from "@/components/docs-api-section";
 import { DemoFrame } from "@/components/demos/sandpack-preview";
 
-手动切换浅色 / 深色，写入本地存储；不跟随系统偏好。
+浅色 · 系统 · 深色，写入本地存储；`system` 跟随 `prefers-color-scheme`。用 `AccentSwitcher` / `setAccent` 切换品牌主色。
 
 <ComponentDocPreview slug="theme-toggle" />
 
@@ -22,15 +23,16 @@ pnpm add @joyui/react
 ```
 
 ```tsx
-import { ThemeToggle } from "@joyui/react";
+import { ThemeToggle, AccentSwitcher, setAccent } from "@joyui/react";
+
+setAccent("violet");
 ```
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add theme-toggle --yes`。
 
-
 ## 外观
 
-`sidebar` · `segmented` · `glass-segmented`（着陆页玻璃肤）。
+`sidebar` · `segmented`（含 system）· `glass-segmented`。
 
 <DemoFrame
   fileName="theme-toggle-appearance.tsx"
@@ -44,6 +46,23 @@ import { ThemeToggle } from "@joyui/react";
   canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
 >
   <ThemeToggleAppearancePreview />
+</DemoFrame>
+
+## Accent 换肤
+
+预设：`blue` · `violet` · `teal` · `orange` · `rose` · `mono`。写入 `data-accent` 与 `JoyUI:accent`。
+
+<DemoFrame
+  fileName="accent-switcher.tsx"
+  code={`import { AccentSwitcher, setAccent } from "@joyui/react";
+
+<>
+  <AccentSwitcher />
+  <button type="button" onClick={() => setAccent("teal")}>Teal</button>
+</>`}
+  canvasClassName="min-h-32 items-center justify-center bg-background-primary-default p-8"
+>
+  <AccentSwitcherPreview />
 </DemoFrame>
 
 ## 尺寸
@@ -75,7 +94,7 @@ import { ThemeToggle } from "@joyui/react";
 <div className="flex items-center justify-between rounded-2xl border px-4 py-3">
   <div>
     <p>外观</p>
-    <p>仅手动切换，不跟随系统。</p>
+    <p>浅色、深色或跟随系统。</p>
   </div>
   <ThemeToggle appearance="sidebar-segmented" size="small" />
 </div>`}

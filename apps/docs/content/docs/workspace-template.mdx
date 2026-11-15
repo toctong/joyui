@@ -1,0 +1,29 @@
+---
+title: "工作台模板"
+description: "侧栏 + KPI + 档案卡 + 动态流。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+<ComponentDocPreview slug="workspace-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { WorkspaceTemplate } from "@joyui/react";
+
+<div className="h-[720px]">
+  <WorkspaceTemplate />
+</div>
+```
+
+可选：`npx @joyui/cli add workspace-template --yes`。
+
+## API
+
+<DocApiSection slug="workspace-template" />

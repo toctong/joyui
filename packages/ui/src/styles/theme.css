@@ -159,6 +159,18 @@
  * Figma. Direction inferred — confirm visually against Figma.
  * --------------------------------------------------------------------------- */
 :root {
+  /* Composer shells — also mirrored in @theme; :root ensures light mode
+   * even when Turbopack skips new @theme shadow keys. */
+  --shadow-composer:
+    0 0 0 1px rgb(0 0 0 / 0.06),
+    0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-composer-hover:
+    0 0 0 1px rgb(0 0 0 / 0.1),
+    0 1px 3px 0 rgb(0 0 0 / 0.06);
+  --shadow-composer-focus:
+    0 0 0 1.5px var(--color-accent-500),
+    0 4px 12px 0 rgb(0 0 0 / 0.08);
+
   /* Foreground (icons + on-fill content) */
   --color-foreground-full:               var(--color-white);
   --color-foreground-icon-primary:       var(--color-neutral-950);
@@ -538,6 +550,15 @@
   --shadow-lg: 0 4px 6px -2px rgb(0 0 0 / 0.10), 0 10px 15px -3px rgb(0 0 0 / 0.18);
   --shadow-xl: 0 10px 10px -5px rgb(0 0 0 / 0.08), 0 20px 25px -5px rgb(0 0 0 / 0.20);
   --shadow-card: 0 1px 1px 0 rgb(0 0 0 / 0.14);
+  --shadow-composer:
+    0 0 0 1px rgb(255 255 255 / 0.1),
+    0 1px 2px 0 rgb(0 0 0 / 0.28);
+  --shadow-composer-hover:
+    0 0 0 1px rgb(255 255 255 / 0.16),
+    0 1px 3px 0 rgb(0 0 0 / 0.35);
+  --shadow-composer-focus:
+    0 0 0 1.5px var(--color-accent-500),
+    0 4px 12px 0 rgb(0 0 0 / 0.4);
   --shadow-dropdown:
     0 0 0 1px rgb(0 0 0 / 0.35),
     0 8px 24px 0 rgb(0 0 0 / 0.45),
@@ -662,9 +683,76 @@
   --color-chart-agents-bar-active: var(--color-purple-600);
 }
 
-/* Non-default accents (data-accent set by the accent engine) can land on a
- * /950 that glows too loudly against the dark sidebar; halve the NEW badge
- * fill there. Light mode keeps the solid /100 surface. */
+/* Accent presets — set by components/application/theme/accent.ts via
+ * `data-accent` on <html>. Blue is the @theme default (no attribute). */
+[data-accent="violet"] {
+  --color-accent-50:  var(--color-violet-50);
+  --color-accent-100: var(--color-violet-100);
+  --color-accent-200: var(--color-violet-200);
+  --color-accent-300: var(--color-violet-300);
+  --color-accent-400: var(--color-violet-400);
+  --color-accent-500: var(--color-violet-500);
+  --color-accent-600: var(--color-violet-600);
+  --color-accent-700: var(--color-violet-700);
+  --color-accent-800: var(--color-violet-800);
+  --color-accent-900: var(--color-violet-900);
+  --color-accent-950: var(--color-violet-950);
+}
+[data-accent="teal"] {
+  --color-accent-50:  var(--color-teal-50);
+  --color-accent-100: var(--color-teal-100);
+  --color-accent-200: var(--color-teal-200);
+  --color-accent-300: var(--color-teal-300);
+  --color-accent-400: var(--color-teal-400);
+  --color-accent-500: var(--color-teal-500);
+  --color-accent-600: var(--color-teal-600);
+  --color-accent-700: var(--color-teal-700);
+  --color-accent-800: var(--color-teal-800);
+  --color-accent-900: var(--color-teal-900);
+  --color-accent-950: var(--color-teal-950);
+}
+[data-accent="orange"] {
+  --color-accent-50:  var(--color-orange-50);
+  --color-accent-100: var(--color-orange-100);
+  --color-accent-200: var(--color-orange-200);
+  --color-accent-300: var(--color-orange-300);
+  --color-accent-400: var(--color-orange-400);
+  --color-accent-500: var(--color-orange-500);
+  --color-accent-600: var(--color-orange-600);
+  --color-accent-700: var(--color-orange-700);
+  --color-accent-800: var(--color-orange-800);
+  --color-accent-900: var(--color-orange-900);
+  --color-accent-950: var(--color-orange-950);
+}
+[data-accent="rose"] {
+  --color-accent-50:  var(--color-rose-50);
+  --color-accent-100: var(--color-rose-100);
+  --color-accent-200: var(--color-rose-200);
+  --color-accent-300: var(--color-rose-300);
+  --color-accent-400: var(--color-rose-400);
+  --color-accent-500: var(--color-rose-500);
+  --color-accent-600: var(--color-rose-600);
+  --color-accent-700: var(--color-rose-700);
+  --color-accent-800: var(--color-rose-800);
+  --color-accent-900: var(--color-rose-900);
+  --color-accent-950: var(--color-rose-950);
+}
+[data-accent="mono"] {
+  --color-accent-50:  var(--color-zinc-50);
+  --color-accent-100: var(--color-zinc-100);
+  --color-accent-200: var(--color-zinc-200);
+  --color-accent-300: var(--color-zinc-300);
+  --color-accent-400: var(--color-zinc-400);
+  --color-accent-500: var(--color-zinc-500);
+  --color-accent-600: var(--color-zinc-600);
+  --color-accent-700: var(--color-zinc-700);
+  --color-accent-800: var(--color-zinc-800);
+  --color-accent-900: var(--color-zinc-900);
+  --color-accent-950: var(--color-zinc-950);
+}
+
+/* Non-default accents can land on a /950 that glows too loudly against the
+ * dark sidebar; halve the NEW badge fill there. */
 .dark[data-accent] {
   --color-badge-new-background: color-mix(in srgb, var(--color-accent-950) 50%, transparent);
 }

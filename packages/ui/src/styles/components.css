@@ -710,9 +710,22 @@ input[type="search"]::-webkit-search-cancel-button {
   color: inherit;
 }
 
+/* Soft composer rim — translucent hairline via --shadow-composer tokens.
+ * Prefer this over a solid border (reads as a hard black edge on white). */
+.bui-composer-shell {
+  box-shadow: var(--shadow-composer);
+}
+.bui-composer-shell:hover {
+  box-shadow: var(--shadow-composer-hover);
+}
+.bui-composer-shell[data-focused="true"],
+.bui-composer-shell:focus-within {
+  box-shadow: var(--shadow-composer-focus);
+}
+
 /* Composer Loader (components/application/composer-loader): the light band
  * orbiting the composer while the agent works. Dash segments on a
- * pathLength-normalized SVG stroke �?the offset laps once per duration. */
+ * pathLength-normalized SVG stroke — the offset laps once per duration. */
 @keyframes bui-composer-loader-dash {
   from {
     stroke-dashoffset: 0;

@@ -23,11 +23,13 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `admin-dashboard` | application | `AdminDashboard` | `@joyui/react` |
 | `agent-log` | application | `ShimmerText, RowConnector, GuideBridge, WorkingRow, …` | `@joyui/react` |
 | `agent-thinking` | application | `AgentThinking` | `@joyui/react` |
+| `ai-chat-template` | application | `AiChatTemplate` | `@joyui/react` |
 | `ai-kit` | application | `AiChat, AiComposer, AiConversation, AiMessage, …` | `@joyui/react` |
 | `alert` | base | `Alert` | `@joyui/react` |
 | `announcement` | base | `Announcement` | `@joyui/react` |
 | `aspect-ratio` | base | `AspectRatio` | `@joyui/react` |
 | `auth-card` | application | `AuthCard, AuthMediaCarousel` | `@joyui/react` |
+| `auth-template` | application | `AuthTemplate` | `@joyui/react` |
 | `avatar` | base | `Avatar` | `@joyui/react` |
 | `avatar-group` | base | `AvatarGroup` | `@joyui/react` |
 | `badge` | base | `Badge, Chip, StatusDot` | `@joyui/react` |
@@ -89,7 +91,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `media-card` | base | `MediaCard` | `@joyui/react` |
 | `media-card-hover` | base | `MediaCardHover` | `@joyui/react` |
 | `media-card-landscape` | base | `MediaCardLandscape` | `@joyui/react` |
-| `medical` | application | `ImportantAlertsCard, PatientInfoCard, WeekRangePill` | `@joyui/react` |
+| `medical` | application | `ImportantAlertsCard, PatientInfoCard` | `@joyui/react` |
 | `message-actions` | base | `MessageActions` | `@joyui/react` |
 | `meter` | base | `Meter` | `@joyui/react` |
 | `modal` | base | `ModalTrigger, Modal, ModalDialog, ModalHeader, …` | `@joyui/react` |
@@ -104,6 +106,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `pagination` | base | `Pagination` | `@joyui/react` |
 | `password-strength` | base | `PasswordStrength` | `@joyui/react` |
 | `popover` | base | `PopoverTrigger, Popover, PopoverHeader, PopoverFooter` | `@joyui/react` |
+| `profile-cards` | application | `AlertFeedCard, ProfileInfoCard` | `@joyui/react` |
 | `progress` | base | `ProgressTrack, ProgressBar, ProgressCircle` | `@joyui/react` |
 | `prompt-suggestions` | base | `PromptSuggestions` | `@joyui/react` |
 | `qr-code` | base | `QrCode` | `@joyui/react` |
@@ -142,7 +145,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `text-link` | base | `TextLink` | `@joyui/react` |
 | `text-shimmer` | base | `TextShimmer` | `@joyui/react` |
 | `textarea` | base | `TextareaBase, Textarea` | `@joyui/react` |
-| `theme-toggle` | application | `ThemeToggle` | `@joyui/react` |
+| `theme-toggle` | application | `AccentSwitcher, ACCENT_PRESETS, ThemeToggle` | `@joyui/react` |
 | `thinking-orbs` | base | `ThinkingOrbs` | `@joyui/react` |
 | `time-field` | base | `TimeField` | `@joyui/react` |
 | `timeline` | base | `Timeline, TimelineItem` | `@joyui/react` |
@@ -156,3 +159,5 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `utils` | lib | `cn, cx` | `@joyui/react` |
 | `voice-ring` | base | `VoiceRing` | `@joyui/react` |
 | `web-search` | application | `WebSearch` | `@joyui/react` |
+| `week-range-pill` | base | `WeekRangePill` | `@joyui/react` |
+| `workspace-template` | application | `WorkspaceTemplate` | `@joyui/react` |

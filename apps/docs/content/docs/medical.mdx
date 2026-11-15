@@ -1,42 +1,8 @@
 ---
 title: "医疗卡片"
-description: "患者资料、周范围切换与重要告警卡片家族。"
-status: new
+description: "已更名为「档案卡片」。请前往通用资料 / 动态卡文档。"
 ---
-import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
-import { DocApiSection } from "@/components/docs-api-section";
 
-医疗档案仪表盘积木：`PatientInfoCard`、`WeekRangePill`、`ImportantAlertsCard`。
+本页已迁移为 **[档案卡片](/docs/profile-cards)**。
 
-<ComponentDocPreview slug="medical" />
-
-## 安装
-
-```bash
-pnpm add @joyui/react
-```
-
-```tsx
-import {
-  ImportantAlertsCard,
-  PatientInfoCard,
-  WeekRangePill,
-} from "@joyui/react";
-```
-
-主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add medical --yes`。
-
-## 组合
-
-```tsx
-<div className="grid gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
-  <PatientInfoCard />
-  <ImportantAlertsCard /> {/* 内含 WeekRangePill */}
-</div>
-```
-
-`ImportantAlertsCard` 顶栏已带 `WeekRangePill`；单独使用周切换时再引入 `WeekRangePill`。演示文案经 `useTemplateCopy` 本地化。
-
-## API
-
-<DocApiSection slug="medical" />
+`PatientInfoCard` → `ProfileInfoCard`，`ImportantAlertsCard` → `AlertFeedCard`；`WeekRangePill` 仍可用。旧导出名短期保留兼容。

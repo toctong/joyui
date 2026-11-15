@@ -1,0 +1,27 @@
+---
+title: "AI 对话模板"
+description: "全页 AiChat 壳：标题栏 + transcript + composer。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+<ComponentDocPreview slug="ai-chat-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiChatTemplate } from "@joyui/react";
+
+<AiChatTemplate api="/api/chat" className="h-[640px]" />
+```
+
+可选：`npx @joyui/cli add ai-chat-template --yes`。
+
+## API
+
+<DocApiSection slug="ai-chat-template" />

@@ -1189,10 +1189,30 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
     'import { AuthCard } from "@/components/application/auth/auth-card";',
     `<AuthCard />`,
   ),
+  "ai-chat-template": wrap(
+    'import { AiChatTemplate } from "@/components/application/ai-chat-template/ai-chat-template";',
+    `<AiChatTemplate className="h-[560px] w-full max-w-lg" />`,
+  ),
+  "auth-template": wrap(
+    'import { AuthTemplate } from "@/components/application/auth-template/auth-template";',
+    `<AuthTemplate mode="signin" withMedia={false} />`,
+  ),
+  "workspace-template": wrap(
+    'import { WorkspaceTemplate } from "@/components/application/workspace-template/workspace-template";',
+    `<div className="h-[640px] w-full overflow-hidden rounded-2xl border border-separator-border">
+  <WorkspaceTemplate />
+</div>`,
+  ),
+  "admin-dashboard": wrap(
+    'import { AdminDashboard } from "@/components/application/admin/admin-dashboard";',
+    `<div className="h-[720px] w-full overflow-hidden rounded-2xl border border-separator-border">
+  <AdminDashboard />
+</div>`,
+  ),
   "composer-loader": wrap(
     'import { ComposerLoader } from "@/components/application/composer-loader/composer-loader";',
     `<ComposerLoader active>
-  <div className="rounded-full border border-separator-border px-4 py-3">Ask anything…</div>
+  <div className="rounded-full px-4 py-3 text-body-regular text-text-tertiary">Ask anything…</div>
 </ComposerLoader>`,
   ),
   composer: wrap(
@@ -1491,11 +1511,18 @@ export function Example() {
   <NotificationBell />
 </div>`,
   ),
-  medical: wrap(
-    'import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";\nimport { PatientInfoCard } from "@/components/application/medical/patient-info-card";',
+  "profile-cards": wrap(
+    'import { AlertFeedCard } from "@/components/application/profile-cards/alert-feed-card";\nimport { ProfileInfoCard } from "@/components/application/profile-cards/profile-info-card";',
     `<div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
-  <PatientInfoCard />
-  <ImportantAlertsCard />
+  <ProfileInfoCard />
+  <AlertFeedCard />
+</div>`,
+  ),
+  medical: wrap(
+    'import { AlertFeedCard } from "@/components/application/profile-cards/alert-feed-card";\nimport { ProfileInfoCard } from "@/components/application/profile-cards/profile-info-card";',
+    `<div className="grid w-full max-w-3xl gap-4 sm:grid-cols-[220px_minmax(0,1fr)]">
+  <ProfileInfoCard />
+  <AlertFeedCard />
 </div>`,
   ),
   brand: wrap(
@@ -1523,13 +1550,24 @@ export function Example() {
     </div>
   );
 }`,
-  calendar: `import { Calendar } from "@joyui/react";
+  calendar: `import { DateCalendar, DateRangeCalendar } from "@joyui/react";
+import { parseDate } from "@internationalized/date";
 
 export function Example() {
-  return <Calendar />;
+  return (
+    <div className="flex flex-wrap gap-6">
+      <DateCalendar showToday />
+      <DateRangeCalendar
+        defaultValue={{
+          start: parseDate("2026-06-02"),
+          end: parseDate("2026-06-12"),
+        }}
+      />
+    </div>
+  );
 }
 
-// 安装: npx @joyui/cli add calendar --yes`,
+// 事件月历完整模板见 Pro；选日请用 DateCalendar / DatePicker`,
   questionnaire: `import { Questionnaire } from "@joyui/react";
 
 export function Example() {
@@ -1544,12 +1582,6 @@ export function Example() {
 }
 
 // 安装: npx @joyui/cli add task-list --yes`,
-  "admin-dashboard": wrap(
-    'import { AdminDashboard } from "@/components/application/admin/admin-dashboard";',
-    `<div className="h-[720px] w-full overflow-hidden rounded-2xl border border-separator-border">
-  <AdminDashboard />
-</div>`,
-  ),
 };
 
 const charts = [

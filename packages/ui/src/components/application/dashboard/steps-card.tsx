@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { WeekRangePill } from "../medical/week-range-pill";
+import { WeekRangePill } from "../../base/week-range-pill/week-range-pill";
 import { useCountUp } from "../../../hooks/use-count-up";
 import { cx } from "../../../utils/cx";
 

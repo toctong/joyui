@@ -69,6 +69,8 @@ const TITLE_OVERRIDES = {
   "data-table": "Data Table",
   "data-grid": "Data Grid",
   "revenue-chart-card": "Revenue Chart Card",
+  "profile-cards": "Profile Cards",
+  "week-range-pill": "Week Range Pill",
 };
 
 function titleCase(slug) {

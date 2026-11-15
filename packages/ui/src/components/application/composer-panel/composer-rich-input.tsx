@@ -300,7 +300,7 @@ export const ComposerRichInput = forwardRef<
       Mention.configure({
         HTMLAttributes: {
           class:
-            "mention inline-flex items-baseline rounded-md bg-background-tertiary-default px-1.5 py-0.5 text-body-2-medium text-text-primary ring-1 ring-border-button-default/60",
+            "mention inline-flex items-baseline rounded-md border border-border-button-default bg-background-tertiary-default px-1.5 py-0.5 text-body-2-medium text-text-primary",
         },
         deleteTriggerWithBackspace: true,
         suggestion,

@@ -7,6 +7,7 @@ import {
   DatePickerFilterScenario,
   DatePickerRangePreview,
   DatePickerSinglePreview,
+  MeetingSchedulerPreview,
 } from "@/components/demos/date-picker-docs";
 import { DocApiSection } from "@/components/docs-api-section";
 import { DemoFrame } from "@/components/demos/sandpack-preview";
@@ -86,6 +87,20 @@ import { DatePicker } from "@joyui/react";
   canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"
 >
   <DatePickerFilterScenario />
+</DemoFrame>
+
+## 会议预约
+
+`MeetingScheduler`：主持人卡片 + 月历 + 时区 / 时段侧栏（Calendly 风格，同属 `date-picker` 导出）。
+
+<DemoFrame
+  fileName="meeting-scheduler.tsx"
+  code={`import { MeetingScheduler } from "@joyui/react";
+
+<MeetingScheduler />`}
+  canvasClassName="min-h-48 items-center justify-center bg-background-secondary-default p-8"
+>
+  <MeetingSchedulerPreview />
 </DemoFrame>
 
 ## API

@@ -4,12 +4,15 @@ import { useTemplateCopy } from "../../foundations/template-copy/template-copy";
 
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
-import { RiMoonLine, RiSunLine } from "@remixicon/react";
+import { RiComputerLine, RiMoonLine, RiSunLine } from "@remixicon/react";
 import { Switch as AriaSwitch } from "react-aria-components";
 import { SwitchTrack } from "../../base/switch/switch";
 import { cx } from "../../../utils/cx";
 
+/** Resolved appearance applied to `<html class="dark">`. */
 export type ThemeMode = "light" | "dark";
+/** Stored preference — `system` follows `prefers-color-scheme`. */
+export type ThemePreference = "light" | "dark" | "system";
 
 export const THEME_STORAGE_KEY = "JoyUI:theme";
 export const THEME_CHANGE_EVENT = "JoyUI:theme-change";
@@ -30,6 +33,7 @@ type ViewTransitionDocument = Document & {
 };
 
 let themeTransitionRunning = false;
+let mediaQueryListenerAttached = false;
 
 function createBlurCircleMask() {
   const svg = [
@@ -86,26 +90,84 @@ function installThemeTransitionStyle(
   return style;
 }
 
-function storedTheme(): ThemeMode {
+function systemTheme(): ThemeMode {
+  if (typeof window === "undefined") return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function parsePreference(raw: string | null): ThemePreference {
+  if (raw === "dark" || raw === "system" || raw === "light") return raw;
+  return "light";
+}
+
+export function storedThemePreference(): ThemePreference {
   if (typeof window === "undefined") return "light";
   try {
-    return window.localStorage.getItem(THEME_STORAGE_KEY) === "dark" ? "dark" : "light";
+    return parsePreference(window.localStorage.getItem(THEME_STORAGE_KEY));
   } catch {
     return "light";
   }
 }
 
-export function applyTheme(theme: ThemeMode, { persist = true }: { persist?: boolean } = {}) {
+/** @deprecated Prefer `storedThemePreference`. Kept for older call sites. */
+export function storedTheme(): ThemeMode {
+  const pref = storedThemePreference();
+  return pref === "system" ? systemTheme() : pref;
+}
+
+export function resolveTheme(preference: ThemePreference): ThemeMode {
+  return preference === "system" ? systemTheme() : preference;
+}
+
+function ensureSystemListener() {
+  if (typeof window === "undefined" || mediaQueryListenerAttached) return;
+  mediaQueryListenerAttached = true;
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const onChange = () => {
+    if (storedThemePreference() !== "system") return;
+    applyResolvedTheme(systemTheme(), { persist: false, preference: "system" });
+  };
+  mq.addEventListener("change", onChange);
+}
+
+function applyResolvedTheme(
+  theme: ThemeMode,
+  {
+    persist = true,
+    preference,
+  }: { persist?: boolean; preference?: ThemePreference } = {},
+) {
   if (typeof document === "undefined") return;
   document.documentElement.classList.toggle("dark", theme === "dark");
+  const stored = preference ?? theme;
   if (persist) {
     try {
-      window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+      window.localStorage.setItem(THEME_STORAGE_KEY, stored);
     } catch {
-      // The control remains usable when storage is blocked or unavailable.
+      // storage blocked
     }
   }
-  window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: theme }));
+  window.dispatchEvent(
+    new CustomEvent(THEME_CHANGE_EVENT, {
+      detail: { theme, preference: stored },
+    }),
+  );
+}
+
+/**
+ * Apply a resolved light/dark class. Prefer `applyThemePreference` when the
+ * user may choose `system`.
+ */
+export function applyTheme(theme: ThemeMode, { persist = true }: { persist?: boolean } = {}) {
+  applyResolvedTheme(theme, { persist, preference: theme });
+}
+
+export function applyThemePreference(
+  preference: ThemePreference,
+  { persist = true }: { persist?: boolean } = {},
+) {
+  ensureSystemListener();
+  applyResolvedTheme(resolveTheme(preference), { persist, preference });
 }
 
 function elementCenter(element: HTMLElement | null): ThemeTransitionOrigin {
@@ -129,11 +191,6 @@ function normalizedOrigin(
   };
 }
 
-/**
- * Reveals the next theme from the interaction point using the View Transition
- * API. Keyboard activation starts at the control's center. Unsupported
- * browsers and reduced-motion users receive the same immediate theme change.
- */
 export async function applyThemeWithTransition(
   theme: ThemeMode,
   {
@@ -173,8 +230,55 @@ export async function applyThemeWithTransition(
     await transition.ready;
     await transition.finished;
   } catch {
-    // If the browser aborts a transition mid-flight, the theme still changes.
     if (currentTheme() !== theme) applyTheme(theme);
+  } finally {
+    transitionStyle.remove();
+    document.documentElement.classList.remove("theme-transitioning");
+    themeTransitionRunning = false;
+  }
+}
+
+export async function applyThemePreferenceWithTransition(
+  preference: ThemePreference,
+  {
+    origin = null,
+    element = null,
+    duration = THEME_TRANSITION_DURATION,
+  }: {
+    origin?: ThemeTransitionOrigin | null;
+    element?: HTMLElement | null;
+    duration?: number;
+  } = {},
+) {
+  if (typeof document === "undefined") return;
+  const next = resolveTheme(preference);
+  if (currentThemePreference() === preference && currentTheme() === next) return;
+
+  const transitionDocument = document as ViewTransitionDocument;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!transitionDocument.startViewTransition || reduceMotion) {
+    applyThemePreference(preference);
+    return;
+  }
+  if (themeTransitionRunning) return;
+
+  const { x, y } = normalizedOrigin(origin, element);
+  const radius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y),
+  );
+
+  themeTransitionRunning = true;
+  document.documentElement.classList.add("theme-transitioning");
+  const transitionStyle = installThemeTransitionStyle({ x, y }, radius, duration);
+  try {
+    const transition = transitionDocument.startViewTransition(() => {
+      flushSync(() => applyThemePreference(preference));
+    });
+    await transition.ready;
+    await transition.finished;
+  } catch {
+    applyThemePreference(preference);
   } finally {
     transitionStyle.remove();
     document.documentElement.classList.remove("theme-transitioning");
@@ -187,11 +291,16 @@ function currentTheme(): ThemeMode {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 
+function currentThemePreference(): ThemePreference {
+  return storedThemePreference();
+}
+
 function subscribe(onStoreChange: () => void) {
+  ensureSystemListener();
   const onThemeChange = () => onStoreChange();
   const onStorage = (event: StorageEvent) => {
     if (event.key !== THEME_STORAGE_KEY) return;
-    applyTheme(event.newValue === "dark" ? "dark" : "light", { persist: false });
+    applyThemePreference(parsePreference(event.newValue), { persist: false });
   };
   window.addEventListener(THEME_CHANGE_EVENT, onThemeChange);
   window.addEventListener("storage", onStorage);
@@ -201,45 +310,47 @@ function subscribe(onStoreChange: () => void) {
   };
 }
 
+/** Resolved light/dark currently on `<html>`. */
 export function useThemeMode(): ThemeMode {
   return useSyncExternalStore(subscribe, currentTheme, () => "light");
 }
 
-export interface ThemeToggleProps {
-  /** Compact icon-only treatment for a collapsed sidebar rail. */
-  collapsed?: boolean;
-  /**
-   * Visual treatment for the control. `glass-segmented` is the landing nav's
-   * skin: literal black/white rather than theme tokens, because it sits on the
-   * hero shader's near-white band in both themes and a token that follows the
-   * page would invert out of sight in dark mode.
-   */
-  appearance?: "sidebar" | "segmented" | "sidebar-segmented" | "glass-segmented";
-  className?: string;
-  /** Size of segmented controls; small fits inside dropdown rows. */
-  size?: "small" | "medium";
-  /** Circular reveal duration in milliseconds. */
-  transitionDuration?: number;
+/** Stored preference including `system`. */
+export function useThemePreference(): ThemePreference {
+  return useSyncExternalStore(subscribe, currentThemePreference, () => "light");
 }
 
-/** Manual light/dark control. It never reads the operating-system theme. */
+export interface ThemeToggleProps {
+  collapsed?: boolean;
+  appearance?: "sidebar" | "segmented" | "sidebar-segmented" | "glass-segmented";
+  className?: string;
+  size?: "small" | "medium";
+  transitionDuration?: number;
+  /**
+   * When true (default for segmented appearances), show light / system / dark.
+   * Sidebar switch stays a binary dark-mode toggle of the resolved theme.
+   */
+  showSystem?: boolean;
+}
+
+/** Light / dark / system control with optional circular view-transition. */
 export function ThemeToggle({
   collapsed = false,
   appearance = "sidebar",
   className,
   size = "medium",
   transitionDuration = THEME_TRANSITION_DURATION,
+  showSystem = true,
 }: ThemeToggleProps) {
   const localize = useTemplateCopy();
   const theme = useThemeMode();
+  const preference = useThemePreference();
   const dark = theme === "dark";
   const switchRef = useRef<HTMLLabelElement | null>(null);
   const pointerOriginRef = useRef<ThemeTransitionOrigin | null>(null);
 
-  // Makes the component self-contained in customer projects. JoyUI itself
-  // also runs the same lookup before hydration to avoid a first-paint flash.
   useEffect(() => {
-    applyTheme(storedTheme(), { persist: false });
+    applyThemePreference(storedThemePreference(), { persist: false });
   }, []);
 
   if (
@@ -250,10 +361,22 @@ export function ThemeToggle({
     const glass = appearance === "glass-segmented";
     const small = size === "small" && !glass;
     const sidebarSurface = appearance === "sidebar-segmented";
-    const options = [
-      { mode: "light" as const, label: "Use light mode", Icon: RiSunLine },
-      { mode: "dark" as const, label: "Use dark mode", Icon: RiMoonLine },
-    ];
+    const options = showSystem
+      ? ([
+          { mode: "light" as const, label: "Use light mode", Icon: RiSunLine },
+          { mode: "system" as const, label: "Use system theme", Icon: RiComputerLine },
+          { mode: "dark" as const, label: "Use dark mode", Icon: RiMoonLine },
+        ] as const)
+      : ([
+          { mode: "light" as const, label: "Use light mode", Icon: RiSunLine },
+          { mode: "dark" as const, label: "Use dark mode", Icon: RiMoonLine },
+        ] as const);
+
+    const selectedIndex = Math.max(
+      0,
+      options.findIndex((o) => o.mode === preference),
+    );
+    const step = small ? 26 : glass ? 32 : 36;
 
     return localize((
       <div
@@ -261,15 +384,10 @@ export function ThemeToggle({
         aria-label="Theme"
         className={cx(
           "relative inline-flex w-fit items-center gap-1 rounded-full p-1",
-          // Mobile: 2px padding + 28px segments = 32px tall, matching the
-          // small icon buttons beside it. Desktop keeps the roomier 40px.
           glass && "p-0.5 sm:p-1",
           small && "gap-0.5 p-0.5",
           glass
-            ? // No track of its own: the host supplies the surface. A fill
-              // here would paint over it. Kept registry-safe — this component
-              // never imports the landing page's glass.
-              "z-10 bg-transparent"
+            ? "z-10 bg-transparent"
             : sidebarSurface
               ? "bg-theme-toggle-sidebar-background"
               : "bg-background-secondary-default",
@@ -288,26 +406,27 @@ export function ThemeToggle({
               : sidebarSurface
                 ? "bg-theme-toggle-sidebar-selected-background"
                 : "bg-background-primary-default",
-            // Segment width + the 4px gap: 28+4 on mobile, 32+4 above it.
-            dark && (small ? "translate-x-6.5 rtl:-translate-x-6.5" : glass ? "translate-x-8 rtl:-translate-x-8 sm:translate-x-9 sm:rtl:-translate-x-9" : "translate-x-9 rtl:-translate-x-9"),
           )}
+          style={{
+            transform: `translateX(${selectedIndex * step}px)`,
+          }}
         />
         {options.map(({ mode, label, Icon }) => {
-          const selected = theme === mode;
+          const selected = preference === mode;
           return (
             <button
               key={mode}
               type="button"
               aria-label={label}
               aria-pressed={selected}
-              title={mode === "light" ? "Light mode" : "Dark mode"}
+              title={mode === "system" ? "System" : mode === "light" ? "Light mode" : "Dark mode"}
               onClick={(event) => {
                 if (selected) return;
                 const pointerOrigin =
                   event.clientX === 0 && event.clientY === 0
                     ? null
                     : { x: event.clientX, y: event.clientY };
-                void applyThemeWithTransition(mode, {
+                void applyThemePreferenceWithTransition(mode, {
                   origin: pointerOrigin,
                   element: event.currentTarget,
                   duration: transitionDuration,
@@ -321,9 +440,7 @@ export function ThemeToggle({
                 "focus-visible:ring-2 focus-visible:ring-border-focus-ring",
                 glass
                   ? selected
-                    ? // Reads against the selected pill, which is white in
-                      // light and dark grey in dark — so it flips with it.
-                      "text-black dark:text-white"
+                    ? "text-black dark:text-white"
                     : "text-black/45 hover:text-black/70 dark:text-white/45 dark:hover:text-white/70"
                   : selected
                     ? "text-foreground-icon-primary"
@@ -351,7 +468,7 @@ export function ThemeToggle({
             event.clientX === 0 && event.clientY === 0
               ? null
               : { x: event.clientX, y: event.clientY };
-          void applyThemeWithTransition(dark ? "light" : "dark", {
+          void applyThemePreferenceWithTransition(dark ? "light" : "dark", {
             origin: pointerOrigin,
             element: event.currentTarget,
             duration: transitionDuration,
@@ -380,7 +497,7 @@ export function ThemeToggle({
       onChange={(selected) => {
         const origin = pointerOriginRef.current;
         pointerOriginRef.current = null;
-        void applyThemeWithTransition(selected ? "dark" : "light", {
+        void applyThemePreferenceWithTransition(selected ? "dark" : "light", {
           origin,
           element: switchRef.current,
           duration: transitionDuration,

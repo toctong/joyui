@@ -280,7 +280,8 @@ export function DashboardSidebar({
 
   useEffect(() => {
     const onShortcut = (event: KeyboardEvent) => {
-      if (event.key.toLocaleLowerCase() === "l" && (event.metaKey || event.ctrlKey)) {
+      const key = event.key?.toLocaleLowerCase();
+      if (key === "l" && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         activateSearch();
       }

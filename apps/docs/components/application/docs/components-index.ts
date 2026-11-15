@@ -107,12 +107,12 @@ const blocks: Entry[] = [
   { name: "Calendar", href: "/components/calendar", description: "Full month view with event pills.", tier: "pro", status: "shipped" },
   { name: "Data Grid", href: "/components/data-grid", description: "Editable spreadsheet with selection, filters, and live summaries.", tier: "free", status: "shipped", isNew: true },
   { name: "Data Table", href: "/components/data-table", description: "Filters, selection, and pagination wired up.", tier: "free", status: "shipped" },
-  { name: "Medical", href: "/docs/medical", description: "Patient profile, week range, and alert cards.", tier: "free", status: "shipped", isNew: true },
+  { name: "Profile cards", href: "/docs/profile-cards", description: "Reusable profile, alert feed, and week-range cards.", tier: "free", status: "shipped", isNew: true },
   { name: "Notification Bell", href: "/docs/notification-bell", description: "Header bell with unread badge and center popover.", tier: "free", status: "shipped", isNew: true },
   { name: "Settings Modal", href: "/components/settings-modal", description: "Multi-page settings in a controlled dialog.", tier: "free", status: "shipped" },
   { name: "Sidebar", href: "/components/sidebar", description: "Floating app navigation with teams menu.", tier: "free", status: "shipped" },
   { name: "Stat Cards", href: "/components/stat-cards", description: "KPI cards with delta chips or a footer band.", tier: "free", status: "shipped", isNew: true },
-  { name: "Theme Toggle", href: "/docs/theme-toggle", description: "Light / dark switch for the shell.", tier: "free", status: "shipped" },
+  { name: "Theme", href: "/docs/theme-toggle", description: "Light / system / dark plus accent skins.", tier: "free", status: "shipped" },
 ];
 
 const charts: Entry[] = [
@@ -139,8 +139,32 @@ const charts: Entry[] = [
 const templates: Entry[] = [
   {
     name: "后台管理",
-    href: "/components/admin-dashboard",
+    href: "/docs/admin-dashboard",
     description: "侧栏、KPI、收入/订单图表与数据表组装的后台控制台。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "AI 对话",
+    href: "/docs/ai-chat-template",
+    description: "全页 AiChat：标题栏 + transcript + composer。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "登录页",
+    href: "/docs/auth-template",
+    description: "全屏 AuthCard，默认媒体分栏。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "工作台",
+    href: "/docs/workspace-template",
+    description: "侧栏 + KPI + 档案卡 + 动态流。",
     tier: "free",
     status: "shipped",
     isNew: true,

@@ -131,34 +131,52 @@ function AttachmentTile({
           preserveAspectRatio="none"
           className="pointer-events-none absolute inset-0 size-full"
         >
-          <rect
-            x={1}
-            y={1}
-            width={box.width - 2}
-            height={box.height - 2}
-            rx={11}
-            fill="none"
-            stroke="var(--color-border-button-default)"
-            strokeWidth={1.5}
-          />
-          <path
-            d={path}
-            fill="none"
-            stroke={done ? "var(--color-yellow-400)" : "var(--color-accent-400)"}
-            strokeWidth={1.5}
-            strokeLinecap="round"
-            pathLength={100}
-            strokeDasharray={`${done ? 102 : progress} 200`}
-            className="transition-[stroke-dasharray] duration-200 ease-linear"
-          />
+          {done ? (
+            // Single soft success edge — avoid dashed path + round caps (reads as thick yellow).
+            <rect
+              x={1.25}
+              y={1.25}
+              width={box.width - 2.5}
+              height={box.height - 2.5}
+              rx={11}
+              fill="none"
+              stroke="color-mix(in srgb, var(--color-chart-8) 28%, var(--color-border-button-default))"
+              strokeWidth={1}
+            />
+          ) : (
+            <>
+              <rect
+                x={1}
+                y={1}
+                width={box.width - 2}
+                height={box.height - 2}
+                rx={11}
+                fill="none"
+                stroke="var(--color-border-button-default)"
+                strokeWidth={1.25}
+              />
+              <path
+                d={path}
+                fill="none"
+                stroke="var(--color-accent-400)"
+                strokeWidth={1.25}
+                strokeLinecap="round"
+                pathLength={100}
+                strokeDasharray={`${progress} 200`}
+                className="transition-[stroke-dasharray] duration-200 ease-linear"
+              />
+            </>
+          )}
         </svg>
 
         <div
           aria-hidden
           className={cx(
             "absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-px",
-            "text-[10px] font-medium leading-3 whitespace-nowrap text-white tabular-nums",
-            done ? "bg-chart-8" : "bg-accent-400",
+            "text-[10px] font-medium leading-3 whitespace-nowrap tabular-nums",
+            done
+              ? "border border-border-button-default bg-background-primary-default text-text-secondary"
+              : "bg-accent-400 text-white",
           )}
         >
           {progress}%
@@ -186,9 +204,9 @@ function AttachmentTile({
             aria-label={`移除 ${file.name}`}
             onClick={() => onRemove(file.id)}
             className={cx(
-              "absolute -end-1 -top-1 z-20 flex size-4 cursor-pointer items-center justify-center rounded-full",
-              "bg-background-primary-default text-foreground-icon-secondary shadow-xs",
-              "ring-1 ring-border-button-default opacity-0 transition-opacity group-hover:opacity-100",
+              "absolute -end-1.5 -top-1.5 z-20 flex size-4 cursor-pointer items-center justify-center rounded-full",
+              "border border-border-button-default bg-background-primary-default text-foreground-icon-secondary shadow-xs",
+              "opacity-0 transition-opacity group-hover:opacity-100",
             )}
           >
             <RiCloseLine className="size-3" aria-hidden />

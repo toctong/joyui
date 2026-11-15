@@ -121,6 +121,7 @@
     "calendar",
     "data-grid",
     "data-table",
+    "profile-cards",
     "medical",
     "notification-bell",
     "settings-modal",
@@ -150,6 +151,9 @@
     "steps-card",
     "---模板---",
     "templates",
-    "admin-dashboard"
+    "admin-dashboard",
+    "ai-chat-template",
+    "auth-template",
+    "workspace-template"
   ]
 }

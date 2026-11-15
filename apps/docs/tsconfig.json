@@ -64,6 +64,21 @@
       "@/components/application/medical/*": [
         "../../packages/ui/src/components/application/medical/*"
       ],
+      "@/components/application/profile-cards/*": [
+        "../../packages/ui/src/components/application/profile-cards/*"
+      ],
+      "@/components/application/ai-chat-template/*": [
+        "../../packages/ui/src/components/application/ai-chat-template/*"
+      ],
+      "@/components/application/auth-template/*": [
+        "../../packages/ui/src/components/application/auth-template/*"
+      ],
+      "@/components/application/workspace-template/*": [
+        "../../packages/ui/src/components/application/workspace-template/*"
+      ],
+      "@/components/base/week-range-pill/*": [
+        "../../packages/ui/src/components/base/week-range-pill/*"
+      ],
       "@/components/application/notification-center/*": [
         "../../packages/ui/src/components/application/notification-center/*"
       ],

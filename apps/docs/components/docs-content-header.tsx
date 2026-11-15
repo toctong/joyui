@@ -9,6 +9,7 @@ import {
 } from "fumadocs-ui/layouts/shared/slots/language-select";
 import { ThemeSwitch } from "fumadocs-ui/layouts/shared/slots/theme-switch";
 import { buttonVariants } from "fumadocs-ui/components/ui/button";
+import { AccentSwitcher } from "@/components/application/theme/accent-switcher";
 import { cn } from "@/lib/cn";
 import { Logo } from "@/components/foundations/brand/logo";
 import { appName, gitConfig } from "@/lib/shared";
@@ -53,7 +54,9 @@ export function DocsContentHeader({ ...breadcrumbProps }: DocsContentHeaderProps
           <ChevronDown className="size-3.5 text-fd-muted-foreground" />
         </LanguageSelect>
 
-        <ThemeSwitch mode="light-dark" className="ms-0.5" />
+        <AccentSwitcher size="small" className="ms-1 hidden sm:inline-flex" />
+
+        <ThemeSwitch className="ms-0.5" />
 
         <a
           href={githubUrl}

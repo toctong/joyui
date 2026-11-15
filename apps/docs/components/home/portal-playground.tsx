@@ -30,7 +30,7 @@ import { RevenueChartCard } from "@/components/application/dashboard/revenue-cha
 import { SleepScoreCard } from "@/components/application/dashboard/sleep-score-card";
 import { StatCards } from "@/components/application/dashboard/stat-cards";
 import { StepsCard } from "@/components/application/dashboard/steps-card";
-import { PatientInfoCard } from "@/components/application/medical/patient-info-card";
+import { ProfileInfoCard } from "@/components/application/profile-cards/profile-info-card";
 import { Announcement } from "@/components/base/announcement/announcement";
 import { Avatar } from "@/components/base/avatar/avatar";
 import { AvatarGroup } from "@/components/base/avatar-group/avatar-group";
@@ -276,7 +276,7 @@ export function PortalPlayground() {
         {/* Row 1: health / profile cards float full-bleed */}
         <div className="flex w-full gap-3 overflow-x-auto px-4 pb-3 sm:px-6 lg:gap-4 lg:overflow-visible lg:px-10 xl:px-14">
           <div className="w-[min(280px,78vw)] shrink-0 lg:w-auto lg:min-w-0 lg:flex-[0.9]">
-            <PatientInfoCard />
+            <ProfileInfoCard />
           </div>
           <div className="w-[min(340px,82vw)] shrink-0 lg:w-auto lg:min-w-0 lg:flex-[1.15]">
             <StepsCard />
@@ -385,7 +385,7 @@ export function PortalPlayground() {
           </MarqueeTile>
           <MarqueeTile className="w-[min(320px,76vw)] p-3">
             <ComposerLoader active className="rounded-[1.25rem]">
-              <div className="rounded-[1.25rem] border border-separator-border bg-background-primary-default px-3.5 py-3">
+              <div className="rounded-[1.25rem] px-3.5 py-3">
                 <p className="text-body-regular text-text-secondary">Ask JoyUI to scaffold…</p>
                 <div className="mt-2.5">
                   <AgentThinking variant="wave" label="Thinking" showTimer />
@@ -536,7 +536,7 @@ export function PortalPlayground() {
           </MarqueeTile>
 
           <MarqueeTile className="w-[min(300px,74vw)] p-2">
-            <PatientInfoCard />
+            <ProfileInfoCard />
           </MarqueeTile>
         </Marquee>
       </section>
