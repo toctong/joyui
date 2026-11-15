@@ -54,7 +54,7 @@ export function DescriptionTerm({
   return (
     <dt
       ref={ref}
-      className={cx("text-caption-1-medium text-text-tertiary", className)}
+      className={cx("text-caption-1-medium text-text-secondary", className)}
       {...props}
     >
       {children}

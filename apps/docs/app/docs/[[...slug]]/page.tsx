@@ -39,6 +39,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         markdownUrl={markdownUrl}
         githubUrl={githubUrl}
         title={page.data.title}
+        description={page.data.description}
         component={component}
       >
         <div className="mb-2 flex flex-wrap items-start justify-between gap-3">

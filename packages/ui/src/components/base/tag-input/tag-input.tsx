@@ -115,11 +115,12 @@ export function TagInput({
         className={cx(
           "flex w-full flex-wrap items-center gap-1.5 rounded-2lg",
           "bg-background-tertiary-default text-foreground-icon-tertiary",
-          "ring-2 ring-inset ring-transparent",
+          // Match Input well: secondary idle ring, button hover/focus, error.
+          "ring-2 ring-inset ring-border-secondary-default",
           "transition-[background-color,box-shadow] duration-[var(--input-transition-ms)] ease",
-          "focus-within:ring-accent-500",
-          "data-invalid:ring-notification-error-foreground",
-          "data-disabled:cursor-not-allowed data-disabled:opacity-60",
+          "hover:ring-border-button-hover focus-within:ring-border-button-active",
+          "data-invalid:bg-background-tertiary-error data-invalid:ring-border-error-default",
+          "data-disabled:cursor-not-allowed data-disabled:bg-input-disabled-background data-disabled:opacity-60",
           size === "medium" ? "min-h-9 p-2" : "min-h-8 px-1.5 py-1.5",
         )}
       >

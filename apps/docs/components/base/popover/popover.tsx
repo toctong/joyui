@@ -126,7 +126,7 @@ export function Popover({
       offset={offset ?? (showArrow ? 10 : 8)}
       className={cx(
         "z-110 w-80 max-w-[calc(100vw-32px)]",
-        "rounded-[20px] border border-border-button-default bg-background-primary-default p-1.5 shadow-dropdown",
+        "rounded-[20px] border border-border-button-default bg-background-primary-default p-1.5 shadow-dropdown dark:bg-background-quaternary-default",
         "origin-(--trigger-anchor-point) transition-[opacity,scale,filter] duration-150 ease-out",
         "data-[entering]:opacity-0 data-[exiting]:opacity-0",
         "motion-safe:data-[entering]:scale-95 motion-safe:data-[entering]:blur-[2px]",

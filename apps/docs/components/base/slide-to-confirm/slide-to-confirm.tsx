@@ -133,8 +133,10 @@ export function SlideToConfirm({
       role="group"
       aria-disabled={disabled || undefined}
       className={cx(
-        // Switch-off track: tertiary fill, no hard outline.
-        "relative flex h-11 w-full max-w-sm select-none items-center overflow-hidden rounded-full bg-background-tertiary-default",
+        // Switch-off track: recessed tertiary fill + quiet ring so the track
+        // stays visible on dark cards that also use background-* surfaces.
+        "relative flex h-11 w-full max-w-sm select-none items-center overflow-hidden rounded-full",
+        "bg-background-tertiary-default ring-2 ring-inset ring-border-secondary-default",
         disabled && "pointer-events-none opacity-60",
         className,
       )}
@@ -155,7 +157,7 @@ export function SlideToConfirm({
       />
       <span
         className={cx(
-          "pointer-events-none absolute inset-0 flex items-center justify-center px-12 text-body-medium text-text-secondary transition-opacity duration-150",
+          "pointer-events-none absolute inset-0 flex items-center justify-center px-12 text-body-medium text-text-primary transition-opacity duration-150",
           ratio > 0.12 || done ? "opacity-0" : "opacity-100",
         )}
       >
@@ -178,9 +180,11 @@ export function SlideToConfirm({
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
         className={cx(
-          // Switch thumb: white disc + contact shadow.
+          // Thumb sits above the recessed track — elevated surface + border
+          // so it doesn't dissolve into dark tertiary fills.
           "absolute top-1 z-10 flex size-9 items-center justify-center rounded-full touch-none",
-          "bg-background-primary-default text-foreground-icon-primary shadow-xs",
+          "bg-background-secondary-default text-foreground-icon-primary shadow-xs",
+          "ring-1 ring-border-secondary-default",
           "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-border-focus-ring",
           !dragging && cx("transition-transform duration-150", EASE),
           done && "text-accent-600",

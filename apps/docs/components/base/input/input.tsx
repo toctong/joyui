@@ -113,8 +113,16 @@ TextField.displayName = "TextField";
 /*  InputBase                                                                  */
 /* -------------------------------------------------------------------------- */
 
+export type InputSurface = "well" | "outline";
+
 export interface InputBaseProps extends Omit<AriaInputProps, "size" | "className"> {
   size?: InputSize;
+  /**
+   * Field chrome:
+   * - `well` (default) — recessed tertiary fill (Input / SearchField)
+   * - `outline` — primary fill + button border, matches Select (ComboBox)
+   */
+  surface?: InputSurface;
   className?: string;
   leadingIcon?: IconComponent;
   trailingIcon?: IconComponent;
@@ -132,12 +140,22 @@ export interface InputBaseProps extends Omit<AriaInputProps, "size" | "className
 }
 
 const inputStyles = sortCx({
-  field: [
+  // Recessed tertiary well — default for Input / TextField / SearchField.
+  fieldWell: [
     "relative flex w-full items-center",
     "rounded-2lg",
     "bg-background-tertiary-default text-foreground-icon-tertiary",
-    "ring-2 ring-inset ring-transparent",
-    "transition-[background-color,box-shadow,color] duration-[var(--input-transition-ms)] ease",
+    // 2px inset ring so recessed wells stay readable on dark primary cards.
+    "ring-2 ring-inset ring-border-secondary-default",
+    "transition-[background-color,box-shadow,border-color,color] duration-[var(--input-transition-ms)] ease",
+  ].join(" "),
+
+  // Select-matched surface — white/primary fill + button border (ComboBox).
+  fieldOutline: [
+    "relative flex w-full items-center",
+    "rounded-2lg",
+    "border border-border-button-default bg-background-primary-default text-foreground-icon-tertiary shadow-xs",
+    "transition-[background-color,box-shadow,border-color,color] duration-[var(--input-transition-ms)] ease",
   ].join(" "),
 
   fieldSize: {
@@ -183,23 +201,43 @@ export function inputFieldClassName(
   { isFocusWithin, isHovered, isDisabled, isInvalid }: InputFieldState,
   size: InputSize = "medium",
   hasAddon = false,
+  surface: InputSurface = "well",
 ) {
+  const outline = surface === "outline";
   return cx(
-    inputStyles.field,
+    outline ? inputStyles.fieldOutline : inputStyles.fieldWell,
     hasAddon ? inputStyles.fieldWithAddonSize[size] : inputStyles.fieldSize[size],
-    // Hover: idle, no focus, no disabled, no invalid
-    isHovered && !isFocusWithin && !isDisabled && !isInvalid && "ring-border-button-hover",
+    // Hover
+    isHovered &&
+      !isFocusWithin &&
+      !isDisabled &&
+      !isInvalid &&
+      (outline
+        ? "border-border-button-hover bg-background-primary-hover"
+        : "ring-2 ring-border-button-hover"),
     // Focus wins over hover
-    isFocusWithin && !isDisabled && !isInvalid && "ring-border-button-active",
+    isFocusWithin &&
+      !isDisabled &&
+      !isInvalid &&
+      (outline
+        ? "border-border-button-active ring-2 ring-border-button-active"
+        : "ring-2 ring-border-button-active"),
     // Disabled
-    isDisabled && "bg-input-disabled-background text-input-disabled-foreground",
+    isDisabled &&
+      (outline
+        ? "border-border-secondary-default bg-background-primary-disabled text-input-disabled-foreground shadow-none"
+        : "bg-input-disabled-background text-input-disabled-foreground ring-border-secondary-default/70"),
     // Invalid
-    isInvalid && "bg-background-tertiary-error text-foreground-icon-error",
+    isInvalid &&
+      (outline
+        ? "border-border-error-default bg-background-tertiary-error text-foreground-icon-error ring-2 ring-border-error-default"
+        : "bg-background-tertiary-error text-foreground-icon-error ring-2 ring-border-error-default"),
   );
 }
 
 export function InputBase({
   size: sizeProp,
+  surface = "well",
   leadingIcon: Leading,
   trailingIcon: Trailing,
   leadingAddon,
@@ -218,7 +256,9 @@ export function InputBase({
   return (
     <AriaGroup
       ref={groupRef}
-      className={(state) => cx(inputFieldClassName(state, size, hasAddon), ctx.fieldClassName, fieldClassName)}
+      className={(state) =>
+        cx(inputFieldClassName(state, size, hasAddon, surface), ctx.fieldClassName, fieldClassName)
+      }
     >
       <div className={inputStyles.content}>
         <div className={inputStyles.leftSection}>

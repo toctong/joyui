@@ -12,5 +12,5 @@
       "@joyui/react/*": ["./src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "vitest.config.ts"]
 }

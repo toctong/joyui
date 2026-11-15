@@ -17,6 +17,9 @@ import {
   PopoverTrigger,
 } from "fumadocs-ui/components/ui/popover";
 import { cn } from "@/lib/cn";
+import { buildDocsPrompt } from "@/lib/build-docs-prompt";
+import { COMPONENT_DOC_CODES } from "@/components/demos/component-doc-codes";
+import { DOCS_API } from "@/lib/docs-api/registry";
 
 const markdownCache = new Map<string, string>();
 
@@ -37,13 +40,10 @@ function toPascalCase(name: string) {
     .join("");
 }
 
-function buildPrompt(pageUrl: string, title: string) {
-  return `我正在查看 JoyUI「${title}」文档：${pageUrl}
-请帮我理解如何使用。准备好解释概念、给出示例，或基于它帮我调试。`;
-}
-
 function buildUsageExample(component: string) {
-  const exportName = toPascalCase(component);
+  const demo = COMPONENT_DOC_CODES[component];
+  if (demo) return demo;
+  const exportName = DOCS_API[component]?.caption ?? toPascalCase(component);
   return `import { ${exportName} } from "@joyui/react";
 
 export function Example() {
@@ -169,6 +169,7 @@ function MenuRow({
 export type CopyPageMenuProps = {
   markdownUrl: string;
   title: string;
+  description?: string;
   component?: string;
   className?: string;
 };
@@ -195,6 +196,7 @@ const pillClass =
 export function CopyPageMenu({
   markdownUrl,
   title,
+  description,
   component,
   className,
 }: CopyPageMenuProps) {
@@ -202,6 +204,7 @@ export function CopyPageMenu({
   const [copiedKind, setCopiedKind] = React.useState<"prompt" | "markdown" | null>(
     null,
   );
+  const [busy, setBusy] = React.useState(false);
 
   const pageUrl =
     typeof window === "undefined" ? "" : window.location.href;
@@ -215,14 +218,46 @@ export function CopyPageMenu({
     setOpen(false);
   }
 
+  async function resolvePrompt() {
+    const url = pageUrl || markdownUrl;
+    let markdown = "";
+    try {
+      markdown = await fetchText(markdownUrl);
+    } catch {
+      markdown = "";
+    }
+    return buildDocsPrompt({
+      pageUrl: url,
+      title,
+      description,
+      component,
+      markdown,
+    });
+  }
+
   async function copyMarkdown() {
     const text = await fetchText(markdownUrl);
     await copyText(text, "markdown");
   }
 
   async function copyPrompt() {
-    const url = pageUrl || markdownUrl;
-    await copyText(buildPrompt(url, title), "prompt");
+    setBusy(true);
+    try {
+      await copyText(await resolvePrompt(), "prompt");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function openWithPrompt(buildUrl: (prompt: string) => string) {
+    setBusy(true);
+    try {
+      const prompt = await resolvePrompt();
+      window.open(buildUrl(prompt), "_blank", "noopener,noreferrer");
+      setOpen(false);
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function copyUsage() {
@@ -249,19 +284,16 @@ export function CopyPageMenu({
     await copyText(MCP_JSON);
   }
 
-  const prompt = buildPrompt(pageUrl || markdownUrl, title);
-  const chatgptUrl = `https://chatgpt.com/?${new URLSearchParams({
-    prompt,
-    hints: "search",
-  })}`;
-  const claudeUrl = `https://claude.ai/new?${new URLSearchParams({ q: prompt })}`;
-  const v0Url = `https://v0.dev/chat?${new URLSearchParams({ q: prompt })}`;
-
   return (
     <div className={cn("flex flex-wrap items-center gap-2", className)}>
-      <button type="button" onClick={() => void copyPrompt()} className={pillClass}>
+      <button
+        type="button"
+        disabled={busy}
+        onClick={() => void copyPrompt()}
+        className={pillClass}
+      >
         <PromptBrandStack />
-        {copiedKind === "prompt" ? "已复制" : "复制提示词"}
+        {copiedKind === "prompt" ? "已复制" : busy ? "生成中…" : "复制提示词"}
       </button>
 
       <div className="inline-flex h-8 overflow-hidden rounded-full border border-fd-border bg-fd-secondary/60">
@@ -347,22 +379,37 @@ export function CopyPageMenu({
                 branded
                 icon={<ChatGptIcon />}
                 label="在 ChatGPT 中打开"
-                href={chatgptUrl}
-                external
+                onSelect={() =>
+                  openWithPrompt(
+                    (prompt) =>
+                      `https://chatgpt.com/?${new URLSearchParams({
+                        prompt,
+                        hints: "search",
+                      })}`,
+                  )
+                }
               />
               <MenuRow
                 branded
                 icon={<ClaudeIcon />}
                 label="在 Claude 中打开"
-                href={claudeUrl}
-                external
+                onSelect={() =>
+                  openWithPrompt(
+                    (prompt) =>
+                      `https://claude.ai/new?${new URLSearchParams({ q: prompt })}`,
+                  )
+                }
               />
               <MenuRow
                 branded
                 icon={<V0Icon />}
                 label="在 v0 中打开"
-                href={v0Url}
-                external
+                onSelect={() =>
+                  openWithPrompt(
+                    (prompt) =>
+                      `https://v0.dev/chat?${new URLSearchParams({ q: prompt })}`,
+                  )
+                }
               />
             </div>
           </PopoverContent>

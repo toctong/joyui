@@ -6,11 +6,12 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "registry:build": "pnpm --filter @joyui/react registry:build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm test && pnpm build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",

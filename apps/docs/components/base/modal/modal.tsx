@@ -26,6 +26,7 @@ import { CloseButton } from "@/components/base/buttons/close-button";
 import { SpinnerGlyph } from "@/components/base/spinner/spinner";
 import { useDirection } from "@/components/foundations/direction/direction";
 import { ScrollFade, useScrollFade } from "@/components/foundations/scroll-fade/scroll-fade";
+import { useTemplateCopy } from "@/components/foundations/template-copy/template-copy";
 import { cx, sortCx } from "@/utils/cx";
 
 /**
@@ -216,7 +217,7 @@ export interface ModalHeaderProps {
   title: ReactNode;
   /** Supporting copy under the title; announced as the dialog's description. */
   description?: ReactNode;
-  /** Remix Icon shown in a 40px circle above the title. */
+  /** Remix Icon shown in a 40px circle beside the title. */
   icon?: IconComponent;
   /** `danger` tints the icon circle for destructive dialogs. */
   tone?: "default" | "danger";
@@ -238,6 +239,7 @@ export function ModalHeader({
   className,
   children,
 }: ModalHeaderProps) {
+  const localize = useTemplateCopy();
   const context = useContext(ModalContext);
   const close = useModalClose();
   const setDescribed = context?.setDescribed;
@@ -249,14 +251,21 @@ export function ModalHeader({
     return () => setDescribed(false);
   }, [hasDescription, setDescribed]);
 
-  return (
+  // Icon sits beside the title (not stacked above) so AlertDialog / sheet
+  // headers don't leave a large empty column on the trailing side.
+  return localize(
     <div className={cx("flex shrink-0 items-start gap-3 px-6", className)}>
+      {Icon ? (
+        <span
+          className={cx(
+            "mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full",
+            styles.icon[tone],
+          )}
+        >
+          <Icon className="size-5" aria-hidden />
+        </span>
+      ) : null}
       <div className="flex min-w-0 flex-1 flex-col">
-        {Icon ? (
-          <span className={cx("mb-4 flex size-10 shrink-0 items-center justify-center rounded-full", styles.icon[tone])}>
-            <Icon className="size-5" aria-hidden />
-          </span>
-        ) : null}
         <AriaHeading slot="title" className="text-title-3-medium text-text-primary">
           {title}
         </AriaHeading>
@@ -268,9 +277,14 @@ export function ModalHeader({
         {children}
       </div>
       {showCloseButton ? (
-        <CloseButton size="sm" aria-label={closeLabel} onClick={close} className="-me-1 shrink-0" />
+        <CloseButton
+          size="sm"
+          aria-label={closeLabel}
+          onClick={close}
+          className="-me-1 -mt-0.5 shrink-0 bg-transparent hover:bg-background-tertiary-default"
+        />
       ) : null}
-    </div>
+    </div>,
   );
 }
 
@@ -369,10 +383,17 @@ export function AlertDialog({
   children,
   ...props
 }: AlertDialogProps) {
+  const localize = useTemplateCopy();
   const [pending, setPending] = useState(false);
 
-  return (
-    <Modal {...props} size={size} role="alertdialog" isDismissable={isDismissable && !pending} isKeyboardDismissDisabled={pending}>
+  return localize(
+    <Modal
+      {...props}
+      size={size}
+      role="alertdialog"
+      isDismissable={isDismissable && !pending}
+      isKeyboardDismissDisabled={pending}
+    >
       {({ close }) => {
         const confirm = async () => {
           if (pending) return;
@@ -426,6 +447,6 @@ export function AlertDialog({
           </>
         );
       }}
-    </Modal>
+    </Modal>,
   );
 }

@@ -83,7 +83,7 @@ export function StepsWizard({
       <div className="min-h-40 flex-1 px-5 py-5">{children}</div>
       {hideFooter ? null : (
         <div className="flex items-center justify-between gap-3 border-t border-separator-border bg-background-secondary-default px-5 py-3">
-          <Button variant="ghost" size="small" onClick={goBack} disabled={isFirst}>
+          <Button variant="secondary" size="small" onClick={goBack} disabled={isFirst}>
             {backLabel}
           </Button>
           <Button size="small" onClick={goNext} disabled={nextDisabled}>

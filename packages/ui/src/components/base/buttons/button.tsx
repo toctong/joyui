@@ -122,21 +122,22 @@ const styles = sortCx({
   variant: {
     primary: [
       "bg-button-primary text-text-white shadow-xs",
-      "disabled:text-button-primary-disabled-foreground disabled:shadow-none",
-      "aria-disabled:text-button-primary-disabled-foreground aria-disabled:shadow-none",
+      "disabled:bg-background-primary-disabled disabled:text-button-primary-disabled-foreground disabled:shadow-none",
+      "aria-disabled:bg-background-primary-disabled aria-disabled:text-button-primary-disabled-foreground aria-disabled:shadow-none",
     ].join(" "),
     danger: [
       "bg-button-danger text-text-white shadow-xs",
-      "disabled:text-foreground-disabled-danger disabled:shadow-none",
-      "aria-disabled:text-foreground-disabled-danger aria-disabled:shadow-none",
+      "disabled:bg-background-primary-disabled disabled:text-foreground-disabled-danger disabled:shadow-none",
+      "aria-disabled:bg-background-primary-disabled aria-disabled:text-foreground-disabled-danger aria-disabled:shadow-none",
     ].join(" "),
     secondary: [
-      "bg-background-primary-default text-text-primary",
+      // Dark: quaternary fill so Cancel/secondary doesn't vanish on primary panels.
+      "bg-background-primary-default text-text-primary dark:bg-background-quaternary-default",
       "border border-border-button-default shadow-xs",
-      "hover:bg-background-primary-hover  hover:border-border-button-hover",
+      "hover:bg-background-primary-hover hover:border-border-button-hover dark:hover:bg-background-quaternary-hover",
       "active:bg-background-primary-active active:border-border-button-active",
-      "disabled:bg-background-primary-disabled disabled:border-border-button-default disabled:text-text-tertiary disabled:shadow-none",
-      "aria-disabled:bg-background-primary-disabled aria-disabled:border-border-button-default aria-disabled:text-text-tertiary aria-disabled:shadow-none",
+      "disabled:bg-background-primary-disabled disabled:border-border-secondary-default disabled:text-text-tertiary disabled:shadow-none",
+      "aria-disabled:bg-background-primary-disabled aria-disabled:border-border-secondary-default aria-disabled:text-text-tertiary aria-disabled:shadow-none",
     ].join(" "),
     ghost: [
       "bg-button-ghost-background text-button-ghost-foreground",

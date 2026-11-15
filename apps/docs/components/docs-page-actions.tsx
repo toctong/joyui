@@ -7,6 +7,7 @@ type DocsPageActionsValue = {
   markdownUrl: string;
   githubUrl: string;
   title: string;
+  description?: string;
   component?: string;
   subscribe: (listener: (claimed: boolean) => void) => () => void;
   claim: () => boolean;
@@ -21,12 +22,14 @@ export function DocsPageActionsProvider({
   markdownUrl,
   githubUrl,
   title,
+  description,
   component,
   children,
 }: {
   markdownUrl: string;
   githubUrl: string;
   title: string;
+  description?: string;
   component?: string;
   children: React.ReactNode;
 }) {
@@ -43,6 +46,7 @@ export function DocsPageActionsProvider({
       markdownUrl,
       githubUrl,
       title,
+      description,
       component,
       subscribe: (listener) => {
         listeners.current.add(listener);
@@ -62,7 +66,7 @@ export function DocsPageActionsProvider({
       },
       isClaimed: () => claimCount.current > 0,
     }),
-    [markdownUrl, githubUrl, title, component, notify],
+    [markdownUrl, githubUrl, title, description, component, notify],
   );
 
   return (
@@ -80,6 +84,7 @@ function ActionButtons() {
     <CopyPageMenu
       markdownUrl={ctx.markdownUrl}
       title={ctx.title}
+      description={ctx.description}
       component={ctx.component}
     />
   );

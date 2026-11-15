@@ -39,6 +39,13 @@ import "@joyui/react/styles.css";
 import { Button, DataTable } from "@joyui/react";
 ```
 
+Consumer apps only need that one CSS import — Table / Skeleton / AgentThinking / chart
+animations / effects ship inside it. Do **not** re-implement `.bui-*` rules in apps.
+
+Shippable CSS source of truth: `apps/docs/styles/components.css`  
+Docs-only chrome (landing glass, showcase, html/body): `apps/docs/styles/globals.css`  
+`pnpm --filter @joyui/react sync` copies `components.css` into the package.
+
 CLI `npx @joyui/cli add <name>` 仅在需要把源码拷进业务仓库时使用。
 
 ## Build

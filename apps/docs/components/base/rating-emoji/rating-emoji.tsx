@@ -75,7 +75,7 @@ export function RatingEmoji({
               className={cx(
                 "inline-flex items-center justify-center transition-opacity",
                 styles.emoji[size],
-                dimmed && "opacity-35",
+                dimmed && "opacity-55",
               )}
             >
               {emoji}
@@ -94,7 +94,7 @@ export function RatingEmoji({
               "inline-flex items-center justify-center rounded-xl outline-none transition-[transform,opacity,background-color]",
               "hover:bg-background-secondary-default focus-visible:ring-2 focus-visible:ring-border-focus-ring",
               styles.emoji[size],
-              dimmed && "opacity-40",
+              dimmed && "opacity-55",
               selected && "scale-110 bg-background-secondary-default",
             )}
             onClick={() => select(n)}

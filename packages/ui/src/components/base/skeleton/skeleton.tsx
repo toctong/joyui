@@ -28,7 +28,8 @@ import { cx, sortCx } from "../../../utils/cx";
 export type SkeletonShape = "rect" | "text" | "circle";
 
 const styles = sortCx({
-  block: "bui-skeleton block bg-text-primary/8",
+  // 14% keeps bones visible on dark primary-800 cards (8% vanished).
+  block: "bui-skeleton block bg-text-primary/14",
   shape: {
     rect: "rounded-xl",
     text: "rounded-md",

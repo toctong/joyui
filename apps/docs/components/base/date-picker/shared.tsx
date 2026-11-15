@@ -318,11 +318,12 @@ export const triggerButtonClassName = cx(
   "disabled:cursor-not-allowed disabled:bg-background-primary-disabled disabled:text-text-tertiary disabled:shadow-none",
 );
 
-/** Shared popover chrome (Figma's rounded/3xl, background/secondary/default
- *  "Calendar component" surface) for both pickers. */
+/** Shared popover chrome for both pickers.
+ *  Primary surface (not secondary): in dark, secondary sinks to 900 and
+ *  blends into the page/sidebar; primary 800 + border lifts the panel. */
 export const popoverClassName = cx(
   // Above the modal layer (z-100), like the menu surfaces.
-  "z-110 origin-top rounded-3xl bg-background-secondary-default shadow-dropdown",
+  "z-110 origin-top rounded-3xl border border-border-button-default bg-background-primary-default shadow-dropdown dark:bg-background-quaternary-default",
   "transition duration-150 ease-out",
   "data-[entering]:opacity-0 data-[entering]:scale-95 data-[entering]:blur-[2px]",
   "data-[exiting]:opacity-0 data-[exiting]:scale-95 data-[exiting]:blur-[2px]",

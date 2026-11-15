@@ -52,10 +52,13 @@ const styles = sortCx({
     "motion-reduce:data-[entering]:opacity-0 motion-reduce:data-[exiting]:opacity-0",
   ].join(" "),
   dialog: [
-    "flex max-h-[min(92dvh,920px)] min-h-0 flex-col gap-4 overflow-clip pb-6 outline-none",
+    // Tighter gap under the drag handle so the title sits with the sheet chrome
+    // instead of floating halfway down the panel.
+    "flex max-h-[min(92dvh,920px)] min-h-0 flex-col gap-3 overflow-clip pb-6 outline-none",
     "rounded-t-3xl border border-separator-border bg-background-full shadow-xs sm:rounded-3xl",
   ].join(" "),
-  handle: "mx-auto mt-3 mb-1 h-1 w-10 shrink-0 rounded-full bg-border-secondary-default",
+  handle:
+    "mx-auto mt-2.5 mb-0.5 h-1 w-10 shrink-0 rounded-full bg-border-secondary-default",
   size: {
     sm: "max-w-[400px]",
     md: "max-w-[480px]",

@@ -75,7 +75,8 @@ const textareaStyles = sortCx({
     "relative flex w-full flex-col",
     "rounded-2lg",
     "bg-background-tertiary-default text-foreground-icon-tertiary",
-    "ring-2 ring-inset ring-transparent",
+    // Same idle ring as Input well so stacked fields share one grey.
+    "ring-2 ring-inset ring-border-secondary-default",
     "transition-[background-color,box-shadow,color] duration-[var(--input-transition-ms)] ease",
   ].join(" "),
 

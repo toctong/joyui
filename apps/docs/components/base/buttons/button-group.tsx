@@ -34,17 +34,19 @@ type IconComponent = ComponentType<{
 const styles = sortCx({
   group: [
     "inline-flex items-stretch isolate",
-    "rounded-2lg border border-border-button-group bg-background-primary-default shadow-xs",
+    // Secondary fill so the group stays visible on primary/default cards
+    // (common in dark kitchen-sink / settings surfaces).
+    "rounded-2lg border border-border-button-group bg-background-secondary-default shadow-xs",
     // Hairlines between items, outer corners rounded on the first/last item
     "divide-x divide-border-button-default overflow-hidden",
   ].join(" "),
 
   item: [
     "inline-flex items-center justify-center gap-1 whitespace-nowrap",
-    "bg-background-primary-default text-text-primary font-sans select-none cursor-pointer",
+    "bg-background-secondary-default text-text-primary font-sans select-none cursor-pointer",
     "transition-[background-color,color] duration-150 ease",
     "outline-none focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-border-focus-ring",
-    "hover:bg-background-primary-hover active:bg-background-primary-active",
+    "hover:bg-background-secondary-hover active:bg-background-primary-hover",
     "disabled:cursor-not-allowed disabled:bg-background-primary-disabled disabled:text-text-tertiary",
   ].join(" "),
 
@@ -63,7 +65,7 @@ const styles = sortCx({
     small: "size-[18px] shrink-0",
   },
 
-  selected: "bg-background-primary-hover",
+  selected: "bg-background-secondary-hover",
 });
 
 /* ------------------------------------------------------------------- group */

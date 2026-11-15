@@ -108,6 +108,8 @@ export function ComboBox<T extends object>({
           <InputBase
             groupRef={fieldRef}
             size={size}
+            // Match Select trigger: primary fill + button border (not Input well).
+            surface="outline"
             placeholder={placeholder}
             leadingIcon={leadingIcon}
             trailingAddon={

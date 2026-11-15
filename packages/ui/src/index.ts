@@ -278,7 +278,7 @@ export type { HoverCardProps } from "./components/base/hover-card/hover-card";
 export type { InlineEditProps } from "./components/base/inline-edit/inline-edit";
 export type { InputOtpProps } from "./components/base/input-otp/input-otp";
 export type { HintTextProps } from "./components/base/input/hint-text";
-export type { InputSize, TextFieldContextValue, TextFieldProps, InputBaseProps, InputFieldState, InputProps } from "./components/base/input/input";
+export type { InputSize, InputSurface, TextFieldContextValue, TextFieldProps, InputBaseProps, InputFieldState, InputProps } from "./components/base/input/input";
 export type { LabelProps } from "./components/base/input/label";
 export type { KbdProps } from "./components/base/kbd/kbd";
 export type { ListProps, ListItemProps } from "./components/base/list/list";

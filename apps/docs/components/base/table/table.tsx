@@ -20,10 +20,11 @@ import { cx } from "@/utils/cx";
  * *collection* components: React Aria introspects them at build time, so they
  * can't be wrapped in custom components without losing that behaviour. We
  * therefore re-export them as-is and apply JoyUI styling through scoped CSS
- * keyed on `.bui-table` (see styles/globals.css). Only the root `<Table>` is
- * wrapped — to add the scroll container and the size flag.
+ * keyed on `.bui-table` (see styles/components.css, published via
+ * `@joyui/react/styles.css`). Only the root `<Table>` is wrapped — to add the
+ * scroll container and the size flag.
  *
- * Sizes: `md` (h-16 rows) and `sm` (h-12 rows), set once via `data-size`.
+ * Sizes: `md` (default padding) and `sm` (`.bui-table-sm`), set via `size`.
  *
  * Pair with @tanstack/react-table when you need sorting / filtering /
  * pagination logic (see the advanced Data Table example).

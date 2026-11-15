@@ -22,8 +22,8 @@ import { cx } from "../../../utils/cx";
  *
  * Input's field (surface, hover and focus rings, invalid and disabled states,
  * two sizes) with a search icon and a small clear button that fades in once
- * there is text. It is a pill by default, like the tables' and the docs
- * sidebar's search; `shape="rounded"` matches Input in a form. `isLoading`
+ * there is text. Defaults to Input's `rounded-2lg` corners; pass
+ * `shape="pill"` for fully rounded search (tables / sidebar). `isLoading`
  * turns the icon into Spinner's orbiting light while results load.
  *
  * Built on React Aria's SearchField: Escape clears the text, Enter calls
@@ -39,7 +39,7 @@ export interface SearchFieldProps extends Omit<AriaSearchFieldProps, "className"
   placeholder?: string;
   /** 36px (default) or 32px. */
   size?: InputSize;
-  /** `pill` (default) or `rounded`, Input's corners. */
+  /** `rounded` (default, Input's corners) or `pill` (fully rounded). */
   shape?: "pill" | "rounded";
   /** Show Spinner's light in place of the icon while results load. */
   isLoading?: boolean;
@@ -56,7 +56,7 @@ export function SearchField({
   hint,
   placeholder,
   size = "medium",
-  shape = "pill",
+  shape = "rounded",
   isLoading = false,
   icon: Icon = RiSearchLine,
   clearLabel = "Clear search",
