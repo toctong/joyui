@@ -10,6 +10,11 @@ import {
   GettingStartedStep,
   GettingStartedSteps,
 } from "@/components/docs/getting-started";
+import {
+  DocsDashboardSidebarPreview,
+  DocsSidebarHorizontalPreview,
+  DocsSidebarVariantsPreview,
+} from "@/components/demos/sidebar-docs";
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -22,6 +27,9 @@ export function getMDXComponents(components?: MDXComponents) {
     GettingStartedFoundations,
     GettingStartedNext,
     GettingStartedLead,
+    DocsSidebarVariantsPreview,
+    DocsSidebarHorizontalPreview,
+    DocsDashboardSidebarPreview,
     ...components,
   } satisfies MDXComponents;
 }
