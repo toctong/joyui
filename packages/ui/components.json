@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "joyui",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/styles.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "remixicon",
+  "aliases": {
+    "components": "@joyui/react/components",
+    "utils": "@joyui/react",
+    "hooks": "@joyui/react/hooks",
+    "lib": "@joyui/react",
+    "ui": "@joyui/react"
+  },
+  "registries": {
+    "@joyui": "https://joyui.dev/r/{name}.json"
+  }
+}

@@ -19,8 +19,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 <ComponentDocPreview slug="notification" />
 
 ```bash
-npx @joyui/cli add notification --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Notification, NotificationViewport } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add notification --yes`。
 
 ### 状态
 
@@ -28,7 +34,7 @@ npx @joyui/cli add notification --yes
 
 <DemoFrame
   fileName="notification-status.tsx"
-  code={`import { Notification } from "@/components/base/notification/notification";
+  code={`import { Notification } from "@joyui/react";
 
 <div className="flex w-full max-w-md flex-col gap-3">
   <Notification status="information" title="同步已开始" description="正在拉取最新剧集元数据。" timestamp="刚刚" dismissible={false} />
@@ -46,7 +52,7 @@ npx @joyui/cli add notification --yes
 
 <DemoFrame
   fileName="notification-actions.tsx"
-  code={`import { Notification } from "@/components/base/notification/notification";
+  code={`import { Notification } from "@joyui/react";
 
 <div className="flex w-full max-w-md flex-col gap-3">
   <Notification
@@ -86,8 +92,14 @@ npx @joyui/cli add notification --yes
 <ComponentDocPreview slug="notification-center" />
 
 ```bash
-npx @joyui/cli add notification-center --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Notification, NotificationViewport } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add notification-center --yes`。
 
 ### API
 

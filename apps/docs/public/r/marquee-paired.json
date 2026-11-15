@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-paired",
+  "type": "registry:ui",
+  "title": "Marquee Paired",
+  "description": "Marquee Paired component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/marquee-paired/marquee-paired.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  Children,\r\n  type CSSProperties,\r\n  type HTMLAttributes,\r\n  type ReactNode,\r\n  type Ref,\r\n} from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Two opposing horizontal tracks — top L→R, bottom R→L.\r\n *\r\n *   <MarqueePaired\r\n *     topChildren={<><Chip>A</Chip><Chip>B</Chip></>}\r\n *     bottomChildren={<><Chip>C</Chip><Chip>D</Chip></>}\r\n *   />\r\n *\r\n * Or pass `children` and they will be split across the two rails.\r\n */\r\n\r\nexport interface MarqueePairedProps\r\n  extends Omit<HTMLAttributes<HTMLDivElement>, \"children\"> {\r\n  children?: ReactNode;\r\n  /** Explicit top-rail content (overrides the first half of `children`). */\r\n  topChildren?: ReactNode;\r\n  /** Explicit bottom-rail content (overrides the second half of `children`). */\r\n  bottomChildren?: ReactNode;\r\n  /** Seconds for one full pass. */\r\n  duration?: number;\r\n  /** Pause both rails while hovered. */\r\n  pauseOnHover?: boolean;\r\n  /** Fade the start/end edges. */\r\n  fade?: boolean;\r\n  /** How many times to repeat each rail (min 2). */\r\n  repeat?: number;\r\n  /** Gap between items (CSS length). Default `1rem`. */\r\n  gap?: string | number;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nfunction MarqueeRail({\r\n  children,\r\n  reverse,\r\n  copies,\r\n  gapValue,\r\n}: {\r\n  children: ReactNode;\r\n  reverse?: boolean;\r\n  copies: number;\r\n  gapValue: string;\r\n}) {\r\n  return (\r\n    <div className=\"relative flex w-full overflow-hidden\">\r\n      {Array.from({ length: copies }, (_, i) => (\r\n        <div\r\n          key={i}\r\n          aria-hidden={i > 0 || undefined}\r\n          className={cx(\r\n            \"bui-marquee-track flex shrink-0 items-center\",\r\n            reverse && \"bui-marquee-reverse\",\r\n          )}\r\n          style={{ gap: gapValue, paddingInlineEnd: gapValue }}\r\n        >\r\n          {children}\r\n        </div>\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport function MarqueePaired({\r\n  children,\r\n  topChildren,\r\n  bottomChildren,\r\n  className,\r\n  duration = 28,\r\n  pauseOnHover = true,\r\n  fade = true,\r\n  repeat = 2,\r\n  gap = \"1rem\",\r\n  style,\r\n  ref,\r\n  ...props\r\n}: MarqueePairedProps) {\r\n  const copies = Math.max(2, repeat);\r\n  const gapValue = typeof gap === \"number\" ? `${gap}px` : gap;\r\n\r\n  const childArray = Children.toArray(children);\r\n  const mid = Math.ceil(childArray.length / 2);\r\n  const top = topChildren ?? childArray.slice(0, mid);\r\n  const bottom = bottomChildren ?? childArray.slice(mid);\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      className={cx(\r\n        \"bui-marquee group relative flex w-full flex-col gap-3 overflow-hidden\",\r\n        fade && \"bui-marquee-fade\",\r\n        pauseOnHover && \"bui-marquee-pause\",\r\n        className,\r\n      )}\r\n      style={\r\n        {\r\n          \"--bui-marquee-duration\": `${duration}s`,\r\n          \"--bui-marquee-gap\": gapValue,\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      <MarqueeRail copies={copies} gapValue={gapValue}>\r\n        {top}\r\n      </MarqueeRail>\r\n      <MarqueeRail copies={copies} gapValue={gapValue} reverse>\r\n        {bottom}\r\n      </MarqueeRail>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "MarqueePaired"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

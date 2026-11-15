@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button",
+  "type": "registry:ui",
+  "title": "Copy Button",
+  "description": "Copy Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/copy-button/copy-button.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { useCallback, useEffect, useState, type Ref } from \"react\";\r\nimport { RiCheckLine, RiFileCopyLine } from \"@remixicon/react\";\r\nimport { IconButton, type IconButtonProps } from \"../buttons/icon-button\";\r\nimport { useTemplateCopy } from \"../../foundations/template-copy/template-copy\";\r\n\r\n/**\r\n * Icon button that copies `value` to the clipboard and briefly shows a check.\r\n */\r\n\r\nexport interface CopyButtonProps\r\n  extends Omit<IconButtonProps, \"icon\" | \"aria-label\" | \"onClick\"> {\r\n  value: string;\r\n  /** Accessible name before copy. */\r\n  \"aria-label\"?: string;\r\n  /** Accessible name after a successful copy. */\r\n  copiedLabel?: string;\r\n  /** How long the check stays (ms). */\r\n  resetMs?: number;\r\n  onCopied?: (value: string) => void;\r\n  ref?: Ref<HTMLButtonElement>;\r\n}\r\n\r\nexport function CopyButton({\r\n  value,\r\n  \"aria-label\": ariaLabel = \"Copy\",\r\n  copiedLabel = \"Copied\",\r\n  resetMs = 1600,\r\n  onCopied,\r\n  disabled,\r\n  ref,\r\n  ...props\r\n}: CopyButtonProps) {\r\n  const localize = useTemplateCopy();\r\n  const [copied, setCopied] = useState(false);\r\n\r\n  useEffect(() => {\r\n    if (!copied) return;\r\n    const id = window.setTimeout(() => setCopied(false), resetMs);\r\n    return () => window.clearTimeout(id);\r\n  }, [copied, resetMs]);\r\n\r\n  const onClick = useCallback(async () => {\r\n    try {\r\n      await navigator.clipboard.writeText(value);\r\n      setCopied(true);\r\n      onCopied?.(value);\r\n    } catch {\r\n      setCopied(false);\r\n    }\r\n  }, [onCopied, value]);\r\n\r\n  return localize(\r\n    <IconButton\r\n      ref={ref}\r\n      icon={copied ? RiCheckLine : RiFileCopyLine}\r\n      aria-label={copied ? copiedLabel : ariaLabel}\r\n      disabled={disabled}\r\n      onClick={onClick}\r\n      {...props}\r\n    />,\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "CopyButton"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

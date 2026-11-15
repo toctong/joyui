@@ -17,10 +17,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add divider --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Divider } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add divider --yes`。
+
 
 ## 变体
 
@@ -28,7 +33,7 @@ npx @joyui/cli add divider --yes
 
 <DemoFrame
   fileName="divider-variants.tsx"
-  code={`import { Divider } from "@/components/base/divider/divider";
+  code={`import { Divider } from "@joyui/react";
 
 <>
   <Divider variant="single" />
@@ -46,8 +51,8 @@ npx @joyui/cli add divider --yes
 
 <DemoFrame
   fileName="divider-content.tsx"
-  code={`import { Divider } from "@/components/base/divider/divider";
-import { Button } from "@/components/base/buttons/button";
+  code={`import { Divider } from "@joyui/react";
+import { Button } from "@joyui/react";
 
 <>
   <Divider variant="single" align="center">或</Divider>

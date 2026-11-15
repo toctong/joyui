@@ -18,8 +18,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add accordion --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Accordion, AccordionItem } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add accordion --yes`。
 
 ## 分割
 
@@ -27,7 +33,7 @@ npx @joyui/cli add accordion --yes
 
 <DemoFrame
   fileName="accordion-divided.tsx"
-  code={`import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+  code={`import { Accordion, AccordionItem } from "@joyui/react";
 
 <Accordion variant="divided" defaultExpandedKeys={["billing"]} className="w-full max-w-xl">
   <AccordionItem id="billing" title="如何计费？">
@@ -51,7 +57,7 @@ npx @joyui/cli add accordion --yes
 
 <DemoFrame
   fileName="accordion-contained.tsx"
-  code={`import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+  code={`import { Accordion, AccordionItem } from "@joyui/react";
 
 <Accordion
   variant="contained"
@@ -78,7 +84,7 @@ npx @joyui/cli add accordion --yes
 <DemoFrame
   fileName="accordion-separated.tsx"
   code={`import { RiCoupon3Line, RiSecurePaymentLine, RiSettings3Line } from "@remixicon/react";
-import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
+import { Accordion, AccordionItem } from "@joyui/react";
 
 <Accordion variant="separated" defaultExpandedKeys={["security"]} className="w-full max-w-xl">
   <AccordionItem

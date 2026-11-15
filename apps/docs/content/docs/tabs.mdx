@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add tabs --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { PillTabList, PillTab, Tabs, TabList } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add tabs --yes`。
+
 
 ## 图标与计数
 
@@ -30,7 +35,7 @@ npx @joyui/cli add tabs --yes
 <DemoFrame
   fileName="tabs-count.tsx"
   code={`import { RiFolder3Line, RiSettings3Line, RiTeamLine } from "@remixicon/react";
-import { Tab, TabList, TabPanel, Tabs } from "@/components/base/tabs/tabs";
+import { Tab, TabList, TabPanel, Tabs } from "@joyui/react";
 
 <Tabs defaultSelectedKey="files">
   <TabList aria-label="工作区">
@@ -51,7 +56,7 @@ import { Tab, TabList, TabPanel, Tabs } from "@/components/base/tabs/tabs";
 
 <DemoFrame
   fileName="tabs-pill.tsx"
-  code={`import { PillTab, PillTabList } from "@/components/base/tabs/pill-tab";
+  code={`import { PillTab, PillTabList } from "@joyui/react";
 
 <PillTabList aria-label="视图切换">
   <PillTab variant="blue" isSelected onSelect={() => {}}>变更</PillTab>
@@ -68,7 +73,7 @@ import { Tab, TabList, TabPanel, Tabs } from "@/components/base/tabs/tabs";
 
 <DemoFrame
   fileName="tabs-settings.tsx"
-  code={`import { Tab, TabList, TabPanel, Tabs } from "@/components/base/tabs/tabs";
+  code={`import { Tab, TabList, TabPanel, Tabs } from "@joyui/react";
 
 <Tabs defaultSelectedKey="general">
   <TabList aria-label="设置分区">

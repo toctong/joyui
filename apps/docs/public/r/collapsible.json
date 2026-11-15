@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "Collapsible component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/collapsible/collapsible.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { ReactNode } from \"react\";\r\nimport {\r\n  Button as AriaButton,\r\n  Disclosure as AriaDisclosure,\r\n  DisclosurePanel as AriaDisclosurePanel,\r\n  Heading as AriaHeading,\r\n} from \"react-aria-components\";\r\nimport type { DisclosureProps as AriaDisclosureProps } from \"react-aria-components\";\r\nimport { RiArrowDownSLine } from \"@remixicon/react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Single expand/collapse block — lighter than Accordion when you only need\r\n * one disclosure (advanced settings, filter panel, spoiler).\r\n */\r\n\r\nconst EASE = \"ease-[cubic-bezier(0.22,1,0.36,1)]\";\r\n\r\nexport interface CollapsibleProps extends Omit<AriaDisclosureProps, \"className\" | \"children\"> {\r\n  title: ReactNode;\r\n  children?: ReactNode;\r\n  className?: string;\r\n}\r\n\r\nexport function Collapsible({ title, children, className, ...props }: CollapsibleProps) {\r\n  return (\r\n    <AriaDisclosure\r\n      className={cx(\r\n        \"rounded-xl border border-border-secondary-default bg-background-primary-default dark:bg-background-secondary-default\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {({ isExpanded }) => (\r\n        <>\r\n          <AriaHeading>\r\n            <AriaButton\r\n              slot=\"trigger\"\r\n              className={cx(\r\n                \"flex w-full items-center justify-between gap-3 px-4 py-3 text-start\",\r\n                \"text-body-medium text-text-primary outline-none\",\r\n                \"focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-border-focus-ring\",\r\n                \"cursor-pointer hover:bg-background-primary-hover rounded-xl\",\r\n              )}\r\n            >\r\n              <span className=\"min-w-0 flex-1\">{title}</span>\r\n              <RiArrowDownSLine\r\n                aria-hidden\r\n                className={cx(\r\n                  \"size-5 shrink-0 text-foreground-icon-primary transition-transform duration-300\",\r\n                  EASE,\r\n                  isExpanded && \"rotate-180\",\r\n                )}\r\n              />\r\n            </AriaButton>\r\n          </AriaHeading>\r\n          <AriaDisclosurePanel\r\n            className={cx(\r\n              \"overflow-hidden transition-[height,opacity] duration-300 motion-reduce:transition-none\",\r\n              EASE,\r\n            )}\r\n          >\r\n            <div className=\"border-t border-border-secondary-default px-4 py-3 text-body-regular text-text-secondary\">\r\n              {children}\r\n            </div>\r\n          </AriaDisclosurePanel>\r\n        </>\r\n      )}\r\n    </AriaDisclosure>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Collapsible"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

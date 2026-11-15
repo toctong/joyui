@@ -14,8 +14,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add text-link --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TextLink } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add text-link --yes`。
 
 ## 色调与尺寸
 
@@ -23,7 +29,7 @@ npx @joyui/cli add text-link --yes
 
 <DemoFrame
   fileName="text-link-tones.tsx"
-  code={`import { TextLink } from "@/components/base/text-link/text-link";
+  code={`import { TextLink } from "@joyui/react";
 
 <>
   <TextLink href="#docs">查看文档</TextLink>

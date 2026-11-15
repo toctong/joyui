@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic",
+  "type": "registry:ui",
+  "title": "Magnetic",
+  "description": "Magnetic component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/magnetic/magnetic.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useCallback,\r\n  useRef,\r\n  useState,\r\n  type CSSProperties,\r\n  type HTMLAttributes,\r\n  type MouseEvent,\r\n  type ReactNode,\r\n  type Ref,\r\n} from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Soft magnetic pull toward the cursor — Libraries.dev Magnetic UI energy\r\n * for icon buttons, CTAs, and dock items.\r\n *\r\n *   <Magnetic>\r\n *     <IconButton icon={RiAddLine} aria-label=\"Add\" />\r\n *   </Magnetic>\r\n */\r\n\r\nexport interface MagneticProps extends HTMLAttributes<HTMLDivElement> {\r\n  children?: ReactNode;\r\n  /** Max pull distance in px. Default 12. */\r\n  strength?: number;\r\n  /** How far the pointer can be and still pull (px). Default 80. */\r\n  radius?: number;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function Magnetic({\r\n  children,\r\n  className,\r\n  strength = 12,\r\n  radius = 80,\r\n  style,\r\n  onMouseMove,\r\n  onMouseLeave,\r\n  ref,\r\n  ...props\r\n}: MagneticProps) {\r\n  const localRef = useRef<HTMLDivElement | null>(null);\r\n  const [offset, setOffset] = useState({ x: 0, y: 0 });\r\n\r\n  const setRefs = useCallback(\r\n    (node: HTMLDivElement | null) => {\r\n      localRef.current = node;\r\n      if (typeof ref === \"function\") ref(node);\r\n      else if (ref) ref.current = node;\r\n    },\r\n    [ref],\r\n  );\r\n\r\n  const handleMove = (event: MouseEvent<HTMLDivElement>) => {\r\n    const el = localRef.current;\r\n    if (el) {\r\n      const rect = el.getBoundingClientRect();\r\n      const cx0 = rect.left + rect.width / 2;\r\n      const cy0 = rect.top + rect.height / 2;\r\n      const dx = event.clientX - cx0;\r\n      const dy = event.clientY - cy0;\r\n      const dist = Math.hypot(dx, dy);\r\n      if (dist < radius) {\r\n        const t = 1 - dist / radius;\r\n        setOffset({\r\n          x: (dx / (dist || 1)) * strength * t,\r\n          y: (dy / (dist || 1)) * strength * t,\r\n        });\r\n      } else {\r\n        setOffset({ x: 0, y: 0 });\r\n      }\r\n    }\r\n    onMouseMove?.(event);\r\n  };\r\n\r\n  const handleLeave = (event: MouseEvent<HTMLDivElement>) => {\r\n    setOffset({ x: 0, y: 0 });\r\n    onMouseLeave?.(event);\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={setRefs}\r\n      onMouseMove={handleMove}\r\n      onMouseLeave={handleLeave}\r\n      className={cx(\"bui-magnetic inline-flex will-change-transform\", className)}\r\n      style={\r\n        {\r\n          transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Magnetic"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

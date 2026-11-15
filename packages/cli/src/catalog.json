@@ -1,0 +1,1872 @@
+[
+  {
+    "name": "accordion",
+    "title": "Accordion",
+    "description": "Accordion component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Accordion",
+      "AccordionItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "admin-dashboard",
+    "title": "Admin Dashboard",
+    "description": "Admin Dashboard component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AdminDashboard"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "agent-log",
+    "title": "Agent Log",
+    "description": "Agent Log component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ShimmerText",
+      "RowConnector",
+      "GuideBridge",
+      "WorkingRow",
+      "LogRow"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "agent-thinking",
+    "title": "Agent Thinking",
+    "description": "Agent Thinking component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AgentThinking"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "alert",
+    "title": "Alert",
+    "description": "Alert component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Alert"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "announcement",
+    "title": "Announcement",
+    "description": "Announcement component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Announcement"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "Aspect Ratio component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "AspectRatio"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "auth-card",
+    "title": "Auth Card",
+    "description": "Auth Card component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AuthCard",
+      "AuthMediaCarousel"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "avatar",
+    "title": "Avatar",
+    "description": "Avatar component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Avatar"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "avatar-group",
+    "title": "Avatar Group",
+    "description": "Avatar Group component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "AvatarGroup"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "badge",
+    "title": "Badge",
+    "description": "Badge component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Badge",
+      "Chip",
+      "StatusDot"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "barcode",
+    "title": "Barcode",
+    "description": "Barcode component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Barcode"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "border-beam",
+    "title": "Border Beam",
+    "description": "Border Beam component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "BorderBeam"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "brand",
+    "title": "Brand",
+    "description": "Brand component from @joyui/react.",
+    "type": "component",
+    "layer": "foundation",
+    "exports": [
+      "Logo",
+      "ProLogo",
+      "NavBrand"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Breadcrumb component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Breadcrumb",
+      "BreadcrumbItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "button",
+    "title": "Button",
+    "description": "Button component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ButtonGroup",
+      "ButtonGroupItem",
+      "Button",
+      "ButtonLink",
+      "CloseButton",
+      "IconButton",
+      "IconLinkButton",
+      "LinkButton"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "card",
+    "title": "Card",
+    "description": "Card component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Card"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "carousel",
+    "title": "Carousel",
+    "description": "Carousel component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CarouselItem",
+      "Carousel"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "carousel-coverflow",
+    "title": "Carousel Coverflow",
+    "description": "Carousel Coverflow component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CarouselCoverflow"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "carousel-fade",
+    "title": "Carousel Fade",
+    "description": "Carousel Fade component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CarouselFade"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "carousel-stacked",
+    "title": "Carousel Stacked",
+    "description": "Carousel Stacked component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CarouselStacked"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "carousel-thumbs",
+    "title": "Carousel Thumbs",
+    "description": "Carousel Thumbs component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CarouselThumbs"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "checkbox",
+    "title": "Checkbox",
+    "description": "Checkbox component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CheckboxCard",
+      "CheckboxGlyph",
+      "Checkbox"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "citation",
+    "title": "Citation",
+    "description": "Citation component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Citation"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "collapsible",
+    "title": "Collapsible",
+    "description": "Collapsible component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Collapsible"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "color-picker",
+    "title": "Color Picker",
+    "description": "Color Picker component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ColorPicker",
+      "ColorWell"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "combobox",
+    "title": "Combobox",
+    "description": "Combobox component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ComboBox",
+      "ComboBoxItem",
+      "ComboBoxSection"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "command-palette",
+    "title": "Command Palette",
+    "description": "Command Palette component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CommandPalette",
+      "CommandPaletteItem",
+      "CommandPaletteSection"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "composer",
+    "title": "Composer",
+    "description": "TipTap-backed composer surfaces. Import from @joyui/react/composer.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ComposerLoader",
+      "ComposerAttachmentStrip",
+      "ComposerWithAttachments",
+      "ComposerPanel",
+      "ComposerRichInput",
+      "ProviderIcon",
+      "Composer",
+      "EffortSlider"
+    ],
+    "importFrom": "@joyui/react/composer",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "context-menu",
+    "title": "Context Menu",
+    "description": "Context Menu component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ContextMenuTrigger",
+      "ContextMenu",
+      "ContextMenuItem",
+      "ContextMenuSubmenu",
+      "ContextMenuSection",
+      "ContextMenuSeparator"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "context-meter",
+    "title": "Context Meter",
+    "description": "Context Meter component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ContextMeter"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "copy-button",
+    "title": "Copy Button",
+    "description": "Copy Button component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CopyButton"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "copy-field",
+    "title": "Copy Field",
+    "description": "Copy Field component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "CopyField"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "dashboard",
+    "title": "Dashboard",
+    "description": "Dashboard component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ActivityRingsCard",
+      "AreaChartCard",
+      "BarListCard",
+      "ComboChartCard",
+      "ContributionsCard",
+      "DashboardSidebar",
+      "DashboardTeamMenu",
+      "AccountMenuContent",
+      "DashboardUserMenu",
+      "EarningsChartCard",
+      "FunnelChartCard",
+      "HeatmapChartCard",
+      "LineChartCard",
+      "MostActiveDaysCard",
+      "OrdersChartCard",
+      "RadarChartCard",
+      "RadialChartCard",
+      "RevenueChartCard",
+      "SankeyChartCard",
+      "ScatterChartCard",
+      "SleepScoreCard",
+      "StageBarsCard",
+      "StatCards",
+      "StepsCard"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "data-grid",
+    "title": "Data Grid",
+    "description": "Data Grid component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "DataGrid"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "data-table",
+    "title": "Data Table",
+    "description": "Data Table component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "DataTable",
+      "DataTableExample"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "date-picker",
+    "title": "Date Picker",
+    "description": "Date Picker component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "DateCalendar",
+      "DateRangeCalendar",
+      "DatePicker",
+      "DateRangePicker",
+      "MeetingScheduler",
+      "ChevronLeft16",
+      "ChevronRight16",
+      "DayCell",
+      "MonthPanel",
+      "DateChipInput"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "description-list",
+    "title": "Description List",
+    "description": "Description List component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "DescriptionList",
+      "DescriptionTerm",
+      "DescriptionDetails",
+      "DescriptionItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "direction",
+    "title": "Direction",
+    "description": "Direction component from @joyui/react.",
+    "type": "component",
+    "layer": "foundation",
+    "exports": [
+      "DirectionProvider"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "divider",
+    "title": "Divider",
+    "description": "Divider component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Divider"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "dot-loader",
+    "title": "Dot Loader",
+    "description": "Dot Loader component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "DotLoader"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "drawer",
+    "title": "Drawer",
+    "description": "Drawer component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Drawer",
+      "DrawerBody",
+      "DrawerFooter",
+      "DrawerHeader",
+      "DrawerTrigger"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "drawer-form",
+    "title": "Drawer Form",
+    "description": "Drawer Form component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "DrawerForm",
+      "DrawerFormTrigger"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "dropdown",
+    "title": "Dropdown",
+    "description": "Dropdown component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Dropdown",
+      "DropdownTrigger",
+      "DropdownPopover",
+      "DropdownGroup",
+      "DropdownItem",
+      "DropdownDivider"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "empty-state",
+    "title": "Empty State",
+    "description": "Empty State component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "EmptyState"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "empty-state-illustrated",
+    "title": "Empty State Illustrated",
+    "description": "Empty State Illustrated component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "EmptyStateIllustrated"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "empty-state-search",
+    "title": "Empty State Search",
+    "description": "Empty State Search component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "EmptyStateSearch"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "file-upload",
+    "title": "File Upload",
+    "description": "File Upload component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "FileUpload"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "file-upload-gallery",
+    "title": "File Upload Gallery",
+    "description": "File Upload Gallery component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "FileUploadGallery"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "form-field",
+    "title": "Form Field",
+    "description": "Form Field component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "FormField"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "format",
+    "title": "Formatters",
+    "description": "dayjs-based date helpers plus Intl formatters.",
+    "type": "lib",
+    "layer": "lib",
+    "exports": [
+      "dayjs",
+      "toDayjs",
+      "formatDate",
+      "fromNow",
+      "toNativeDate",
+      "formatNumber",
+      "formatPercent",
+      "formatCurrency",
+      "formatCompact",
+      "formatBytes"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [
+      "dayjs"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "hover-card",
+    "title": "Hover Card",
+    "description": "Hover Card component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "HoverCard"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "hover-card-profile",
+    "title": "Hover Card Profile",
+    "description": "Hover Card Profile component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "HoverCardProfile"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "i18n",
+    "title": "I18n",
+    "description": "I18n component from @joyui/react.",
+    "type": "component",
+    "layer": "foundation",
+    "exports": [
+      "JoyUIProvider"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "icons",
+    "title": "Icons",
+    "description": "Icons component from @joyui/react.",
+    "type": "component",
+    "layer": "foundation",
+    "exports": [
+      "ChevronDownSmall",
+      "ChevronRightSmall",
+      "ChevronUpDownSmall",
+      "ChevronSortDown"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "inline-edit",
+    "title": "Inline Edit",
+    "description": "Inline Edit component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "InlineEdit"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "input",
+    "title": "Input",
+    "description": "Input component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "HintText",
+      "TextField",
+      "InputBase",
+      "Input",
+      "TextFieldContext",
+      "Label"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "input-otp",
+    "title": "Input Otp",
+    "description": "Input Otp component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "InputOtp"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "kbd",
+    "title": "Kbd",
+    "description": "Kbd component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Kbd"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "list",
+    "title": "List",
+    "description": "List component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "List",
+      "ListItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "magnetic",
+    "title": "Magnetic",
+    "description": "Magnetic component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Magnetic"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "marquee",
+    "title": "Marquee",
+    "description": "Marquee component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Marquee"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "marquee-3d",
+    "title": "Marquee 3d",
+    "description": "Marquee 3d component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Marquee3d"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "marquee-paired",
+    "title": "Marquee Paired",
+    "description": "Marquee Paired component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "MarqueePaired"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "marquee-vertical",
+    "title": "Marquee Vertical",
+    "description": "Marquee Vertical component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "MarqueeVertical"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "media-card",
+    "title": "Media Card",
+    "description": "Media Card component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "MediaCard"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "media-card-hover",
+    "title": "Media Card Hover",
+    "description": "Media Card Hover component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "MediaCardHover"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "media-card-landscape",
+    "title": "Media Card Landscape",
+    "description": "Media Card Landscape component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "MediaCardLandscape"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "medical",
+    "title": "Medical",
+    "description": "Medical component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ImportantAlertsCard",
+      "PatientInfoCard",
+      "WeekRangePill"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "meter",
+    "title": "Meter",
+    "description": "Meter component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Meter"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "modal",
+    "title": "Modal",
+    "description": "Modal component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ModalTrigger",
+      "Modal",
+      "ModalDialog",
+      "ModalHeader",
+      "ModalBody",
+      "ModalFooter",
+      "AlertDialog"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "modal-sheet",
+    "title": "Modal Sheet",
+    "description": "Modal Sheet component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ModalSheet",
+      "ModalSheetBody",
+      "ModalSheetFooter",
+      "ModalSheetHeader",
+      "ModalSheetTrigger"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "model-select",
+    "title": "Model Select",
+    "description": "Model Select component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ModelSelect"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "notification",
+    "title": "Notification",
+    "description": "Notification component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Notification",
+      "NotificationViewport"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "notification-bell",
+    "title": "Notification Bell",
+    "description": "Notification Bell component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "NotificationBell"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "notification-center",
+    "title": "Notification Center",
+    "description": "Notification Center component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "NotificationCenterDemo",
+      "NotificationCenter"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "number-field",
+    "title": "Number Field",
+    "description": "Number Field component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "NumberField"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "number-ticker",
+    "title": "Number Ticker",
+    "description": "Number Ticker component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "NumberTicker"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "page-header",
+    "title": "Page Header",
+    "description": "Page Header component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "PageHeader"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "pagination",
+    "title": "Pagination",
+    "description": "Pagination component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Pagination"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "password-strength",
+    "title": "Password Strength",
+    "description": "Password Strength component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "PasswordStrength"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "popover",
+    "title": "Popover",
+    "description": "Popover component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "PopoverTrigger",
+      "Popover",
+      "PopoverHeader",
+      "PopoverFooter"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "progress",
+    "title": "Progress",
+    "description": "Progress component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ProgressTrack",
+      "ProgressBar",
+      "ProgressCircle"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "prompt-suggestions",
+    "title": "Prompt Suggestions",
+    "description": "Prompt Suggestions component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "PromptSuggestions"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "qr-code",
+    "title": "Qr Code",
+    "description": "Qr Code component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "QrCode"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "radio",
+    "title": "Radio",
+    "description": "Radio component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "RadioCard",
+      "RadioDot",
+      "RadioGroup",
+      "Radio"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "rating",
+    "title": "Rating",
+    "description": "Rating component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Rating"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "rating-emoji",
+    "title": "Rating Emoji",
+    "description": "Rating Emoji component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "RatingEmoji"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "relative-time",
+    "title": "Relative Time",
+    "description": "Relative Time component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "RelativeTime"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "reveal",
+    "title": "Reveal",
+    "description": "Reveal component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Reveal"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "reveal-stagger",
+    "title": "Reveal Stagger",
+    "description": "Reveal Stagger component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "RevealStagger"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "ripple",
+    "title": "Ripple",
+    "description": "Ripple component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Ripple"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "scroll-fade",
+    "title": "Scroll Fade",
+    "description": "Scroll Fade component from @joyui/react.",
+    "type": "component",
+    "layer": "foundation",
+    "exports": [
+      "ScrollFade"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "scroll-progress",
+    "title": "Scroll Progress",
+    "description": "Scroll Progress component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ScrollProgress"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "search-field",
+    "title": "Search Field",
+    "description": "Search Field component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SearchField"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "section-header",
+    "title": "Section Header",
+    "description": "Section Header component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SectionHeader"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "segmented-control",
+    "title": "Segmented Control",
+    "description": "Segmented Control component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SegmentedControl",
+      "SegmentedControlItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "select",
+    "title": "Select",
+    "description": "Select component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Select",
+      "SelectItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "settings-modal",
+    "title": "Settings Modal",
+    "description": "Settings Modal component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "PlanArtFlame",
+      "SettingsGeneral",
+      "SettingsModal",
+      "SettingsProfile",
+      "SettingsCard",
+      "SettingsSectionLabel",
+      "SettingsRow",
+      "SettingsValueField",
+      "SettingsStorage",
+      "SettingsTools"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "skeleton",
+    "title": "Skeleton",
+    "description": "Skeleton component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Skeleton",
+      "SkeletonText"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "slide-to-confirm",
+    "title": "Slide To Confirm",
+    "description": "Slide To Confirm component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SlideToConfirm"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "slider",
+    "title": "Slider",
+    "description": "Slider component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Slider",
+      "RangeSlider"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "social-button",
+    "title": "Social Button",
+    "description": "Social Button component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SocialButton",
+      "SOCIAL_PROVIDERS"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "spinner",
+    "title": "Spinner",
+    "description": "Spinner component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SpinnerGlyph",
+      "Spinner"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "spotlight-card",
+    "title": "Spotlight Card",
+    "description": "Spotlight Card component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SpotlightCard"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "spotlight-card-border",
+    "title": "Spotlight Card Border",
+    "description": "Spotlight Card Border component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SpotlightCardBorder"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "spotlight-card-tilt",
+    "title": "Spotlight Card Tilt",
+    "description": "Spotlight Card Tilt component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SpotlightCardTilt"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "steps",
+    "title": "Steps",
+    "description": "Steps component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Steps"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "steps-wizard",
+    "title": "Steps Wizard",
+    "description": "Steps Wizard component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "StepsWizard"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "switch",
+    "title": "Switch",
+    "description": "Switch component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "SwitchCard",
+      "SwitchTrack",
+      "Switch"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "table",
+    "title": "Table",
+    "description": "Table component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Table",
+      "TableHeader",
+      "TableColumn",
+      "TableBody",
+      "TableRow",
+      "TableCell"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tabs",
+    "title": "Tabs",
+    "description": "Tabs component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "PillTabList",
+      "PillTab",
+      "Tabs",
+      "TabList",
+      "Tab",
+      "TabPanel"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tag-group",
+    "title": "Tag Group",
+    "description": "Tag Group component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TagGroup",
+      "Tag"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tag-input",
+    "title": "Tag Input",
+    "description": "Tag Input component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TagInput"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "template-copy",
+    "title": "Template Copy",
+    "description": "Template Copy component from @joyui/react.",
+    "type": "component",
+    "layer": "foundation",
+    "exports": [
+      "TemplateMenuProvider",
+      "TemplateCopyProvider"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "text-link",
+    "title": "Text Link",
+    "description": "Text Link component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TextLink"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "text-shimmer",
+    "title": "Text Shimmer",
+    "description": "Text Shimmer component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TextShimmer"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "textarea",
+    "title": "Textarea",
+    "description": "Textarea component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TextareaBase",
+      "Textarea"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "theme-toggle",
+    "title": "Theme Toggle",
+    "description": "Theme Toggle component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "ThemeToggle"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "thinking-orbs",
+    "title": "Thinking Orbs",
+    "description": "Thinking Orbs component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "ThinkingOrbs"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "time-field",
+    "title": "Time Field",
+    "description": "Time Field component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TimeField"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "timeline",
+    "title": "Timeline",
+    "description": "Timeline component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Timeline",
+      "TimelineItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "timeline-horizontal",
+    "title": "Timeline Horizontal",
+    "description": "Timeline Horizontal component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TimelineHorizontal",
+      "TimelineHorizontalItem"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "toast",
+    "title": "Toast",
+    "description": "Toast component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Toaster"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tooltip",
+    "title": "Tooltip",
+    "description": "Tooltip component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "Tooltip",
+      "TooltipTrigger"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tree-view",
+    "title": "Tree View",
+    "description": "Tree View component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TreeView",
+      "TreeViewItem",
+      "TreeViewCollection"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "tree-view-files",
+    "title": "Tree View Files",
+    "description": "Tree View Files component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TreeViewFiles",
+      "TreeViewFilesFolder",
+      "TreeViewFilesFile"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "typing-text",
+    "title": "Typing Text",
+    "description": "Typing Text component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "TypingText"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "utils",
+    "title": "Utils",
+    "description": "cn/cx class merge helpers.",
+    "type": "lib",
+    "layer": "lib",
+    "exports": [
+      "cn",
+      "cx"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "registryDependencies": []
+  },
+  {
+    "name": "voice-ring",
+    "title": "Voice Ring",
+    "description": "Voice Ring component from @joyui/react.",
+    "type": "component",
+    "layer": "base",
+    "exports": [
+      "VoiceRing"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "web-search",
+    "title": "Web Search",
+    "description": "Web Search component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "WebSearch"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  }
+]

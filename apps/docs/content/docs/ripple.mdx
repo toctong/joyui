@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add ripple --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Ripple } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add ripple --yes`。
 
 ## 色调与关闭
 
@@ -24,8 +30,8 @@ npx @joyui/cli add ripple --yes
 
 <DemoFrame
   fileName="ripple-tones.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Ripple } from "@/components/base/ripple/ripple";
+  code={`import { Button } from "@joyui/react";
+import { Ripple } from "@joyui/react";
 
 <>
   <Ripple className="rounded-2lg text-accent-500"><Button>主色涟漪</Button></Ripple>

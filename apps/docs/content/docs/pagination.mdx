@@ -17,10 +17,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add pagination --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Pagination } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add pagination --yes`。
+
 
 ## 相邻页数
 
@@ -28,7 +33,7 @@ npx @joyui/cli add pagination --yes
 
 <DemoFrame
   fileName="pagination-siblings.tsx"
-  code={`import { Pagination } from "@/components/base/pagination/pagination";
+  code={`import { Pagination } from "@joyui/react";
 
 <>
   <Pagination page={5} totalPages={20} onChange={() => {}} siblingCount={1} previousLabel="上一页" nextLabel="下一页" />
@@ -45,7 +50,7 @@ npx @joyui/cli add pagination --yes
 
 <DemoFrame
   fileName="pagination-table.tsx"
-  code={`import { Pagination } from "@/components/base/pagination/pagination";
+  code={`import { Pagination } from "@joyui/react";
 
 <div>
   <p>转存记录 · 第 1 页</p>

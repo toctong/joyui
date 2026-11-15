@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thinking-orbs",
+  "type": "registry:ui",
+  "title": "Thinking Orbs",
+  "description": "Thinking Orbs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/thinking-orbs/thinking-orbs.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { HTMLAttributes, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Orbiting orbs — Libraries.dev “thinking orbs” energy for AI wait states,\r\n * drawn with JoyUI accent tokens (same cue as DotLoader / Progress).\r\n *\r\n *   <ThinkingOrbs aria-label=\"思考中\" />\r\n */\r\n\r\nexport type ThinkingOrbsSize = \"sm\" | \"md\" | \"lg\";\r\n\r\nexport interface ThinkingOrbsProps extends HTMLAttributes<HTMLSpanElement> {\r\n  size?: ThinkingOrbsSize;\r\n  ref?: Ref<HTMLSpanElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  root: \"bui-thinking-orbs relative inline-flex shrink-0 text-accent-500\",\r\n  size: {\r\n    sm: \"size-6\",\r\n    md: \"size-8\",\r\n    lg: \"size-10\",\r\n  },\r\n});\r\n\r\nexport function ThinkingOrbs({\r\n  size = \"md\",\r\n  className,\r\n  ref,\r\n  \"aria-label\": ariaLabel = \"Thinking\",\r\n  ...props\r\n}: ThinkingOrbsProps) {\r\n  return (\r\n    <span\r\n      ref={ref}\r\n      role=\"status\"\r\n      aria-label={ariaLabel}\r\n      className={cx(styles.root, styles.size[size], className)}\r\n      {...props}\r\n    >\r\n      <span aria-hidden className=\"bui-thinking-orbs-core absolute inset-[34%] rounded-full bg-current opacity-90\" />\r\n      <span aria-hidden className=\"bui-thinking-orbs-ring absolute inset-0\">\r\n        <span className=\"bui-thinking-orbs-orb absolute left-1/2 top-0 size-[28%] -translate-x-1/2 rounded-full bg-current\" />\r\n        <span className=\"bui-thinking-orbs-orb absolute bottom-[8%] left-[8%] size-[22%] rounded-full bg-current opacity-75\" />\r\n        <span className=\"bui-thinking-orbs-orb absolute bottom-[8%] right-[8%] size-[18%] rounded-full bg-current opacity-55\" />\r\n      </span>\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "ThinkingOrbs"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

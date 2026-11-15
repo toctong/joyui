@@ -1,15 +1,35 @@
 {
   "name": "@joyui/cli",
-  "version": "0.1.0",
-  "description": "JoyUI CLI — init, add components, MCP server, and agent skill",
+  "version": "0.2.0",
+  "description": "JoyUI CLI — npm-first init, optional source add, MCP server, and agent skill",
   "license": "MIT",
+  "author": "JoyUI",
+  "homepage": "https://joyui.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toctong/joyui.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/toctong/joyui/issues"
+  },
+  "keywords": [
+    "joyui",
+    "cli",
+    "mcp",
+    "shadcn",
+    "react",
+    "components"
+  ],
   "type": "module",
   "bin": {
     "joyui": "./dist/index.js"
   },
-  "files": ["dist", "skill"],
+  "files": ["dist", "skill", "README.md", "LICENSE"],
   "scripts": {
+    "prebuild": "node ../../scripts/generate-catalog.mjs",
     "build": "tsup",
+    "prepack": "pnpm run build",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit"
   },
@@ -24,6 +44,7 @@
     "typescript": "^5.8.3"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

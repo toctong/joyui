@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add dropdown --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Dropdown, DropdownTrigger, DropdownPopover, DropdownGroup } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add dropdown --yes`。
+
 
 ## 分组与分割线
 
@@ -31,7 +36,7 @@ npx @joyui/cli add dropdown --yes
   fileName="dropdown-groups.tsx"
   code={`import {
   Dropdown, DropdownDivider, DropdownGroup, DropdownItem, DropdownPopover, DropdownTrigger,
-} from "@/components/base/dropdown/dropdown";
+} from "@joyui/react";
 
 <Dropdown>
   <DropdownTrigger>添加</DropdownTrigger>
@@ -59,7 +64,7 @@ npx @joyui/cli add dropdown --yes
   fileName="dropdown-selected.tsx"
   code={`import {
   Dropdown, DropdownItem, DropdownPopover, DropdownTrigger,
-} from "@/components/base/dropdown/dropdown";
+} from "@joyui/react";
 
 <Dropdown>
   <DropdownTrigger>视图</DropdownTrigger>
@@ -82,7 +87,7 @@ npx @joyui/cli add dropdown --yes
   fileName="dropdown-toolbar.tsx"
   code={`import {
   Dropdown, DropdownDivider, DropdownItem, DropdownPopover, DropdownTrigger,
-} from "@/components/base/dropdown/dropdown";
+} from "@joyui/react";
 
 <Dropdown>
   <DropdownTrigger>更多</DropdownTrigger>

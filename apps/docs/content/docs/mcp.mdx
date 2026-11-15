@@ -1,9 +1,9 @@
 ---
 title: MCP 服务器
-description: 连接 Cursor / VS Code，让智能体浏览并安装 JoyUI 组件。
+description: 连接 Cursor / VS Code，让智能体按 npm 整库方式使用 JoyUI。
 ---
 
-JoyUI 提供 MCP：一次连接即可浏览全部组件、读取真实用法示例、配置项目并写入源码。
+JoyUI MCP 让智能体浏览完整组件目录、读取用法示例，并给出**正确的安装路径**（优先 `pnpm add @joyui/react`，样式内置）。
 
 ## Cursor / VS Code
 
@@ -22,12 +22,14 @@ JoyUI 提供 MCP：一次连接即可浏览全部组件、读取真实用法示�
 
 | 工具 | 用途 |
 |------|------|
-| `list_components` | 浏览目录 |
-| `get_component` / `get_usage_examples` | 源码与示例 |
-| `install_components` | 写入源码并安装依赖 |
-| `init_joyui` | 初始化主题与 utils |
-| `install_skill` | 安装智能体技能 |
+| `get_started` | npm + 内置 CSS 工作流 |
+| `list_components` | 浏览目录（base / application / lib） |
+| `get_component` / `get_usage_examples` | 导出名、import 路径与示例 |
+| `install_components` | 返回 `pnpm add @joyui/react` + import 片段 |
+| `init_joyui` | 初始化样式入口与 agent rules |
+| `get_theme` | JoyUI 语义 token（非 shadcn 默认名） |
+| `install_skill` | 安装 Agent Skill |
 
 ## 示例提示
 
-> 初始化 JoyUI 并构建带有统计卡和面积图的收入仪表盘。
+> 用 JoyUI 安装依赖并做一个带 `StatCards` 和 `RevenueChartCard` 的收入仪表盘。记得引入 `@joyui/react/styles.css`，用语义 token，不要手写灰色色板。

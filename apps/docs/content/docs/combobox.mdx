@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add combobox --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { ComboBox, ComboBoxItem, ComboBoxSection } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add combobox --yes`。
+
 
 ## 基础选项
 
@@ -29,7 +34,7 @@ npx @joyui/cli add combobox --yes
 
 <DemoFrame
   fileName="combobox-basic.tsx"
-  code={`import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
+  code={`import { ComboBox, ComboBoxItem } from "@joyui/react";
 
 <ComboBox label="负责人" placeholder="搜索成员" defaultSelectedKey="maya">
   <ComboBoxItem id="maya" textValue="Maya Chen">Maya Chen</ComboBoxItem>
@@ -46,7 +51,7 @@ npx @joyui/cli add combobox --yes
 
 <DemoFrame
   fileName="combobox-sections.tsx"
-  code={`import { ComboBox, ComboBoxItem, ComboBoxSection } from "@/components/base/combobox/combobox";
+  code={`import { ComboBox, ComboBoxItem, ComboBoxSection } from "@joyui/react";
 
 <ComboBox label="时区" placeholder="搜索时区" defaultSelectedKey="sha">
   <ComboBoxSection title="亚洲">
@@ -67,7 +72,7 @@ npx @joyui/cli add combobox --yes
 
 <DemoFrame
   fileName="combobox-assign.tsx"
-  code={`import { ComboBox, ComboBoxItem } from "@/components/base/combobox/combobox";
+  code={`import { ComboBox, ComboBoxItem } from "@joyui/react";
 
 <ComboBox aria-label="指派人" placeholder="搜索同事…" size="small" emptyMessage="没有匹配的成员">
   <ComboBoxItem id="lin" textValue="林晓">林晓</ComboBoxItem>

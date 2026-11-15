@@ -17,8 +17,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add section-header --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { SectionHeader } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add section-header --yes`。
 
 ## 标题级别
 
@@ -26,7 +32,7 @@ npx @joyui/cli add section-header --yes
 
 <DemoFrame
   fileName="section-header-levels.tsx"
-  code={`import { SectionHeader } from "@/components/base/section-header/section-header";
+  code={`import { SectionHeader } from "@joyui/react";
 
 <>
   <SectionHeader level={2} title="概览" description="本周转存" />
@@ -43,8 +49,8 @@ npx @joyui/cli add section-header --yes
 
 <DemoFrame
   fileName="section-header-actions.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { SectionHeader } from "@/components/base/section-header/section-header";
+  code={`import { Button } from "@joyui/react";
+import { SectionHeader } from "@joyui/react";
 
 <SectionHeader
   title="最近任务"

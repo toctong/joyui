@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add date-calendar --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { /* … */ } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add date-calendar --yes`。
+
 
 ## 单日
 
@@ -30,7 +35,7 @@ npx @joyui/cli add date-calendar --yes
 <DemoFrame
   fileName="date-calendar-single.tsx"
   code={`import { parseDate } from "@internationalized/date";
-import { DateCalendar } from "@/components/base/date-picker/date-calendar";
+import { DateCalendar } from "@joyui/react";
 
 <DateCalendar
   aria-label="交货日期"
@@ -49,7 +54,7 @@ import { DateCalendar } from "@/components/base/date-picker/date-calendar";
 <DemoFrame
   fileName="date-calendar-range.tsx"
   code={`import { parseDate } from "@internationalized/date";
-import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
+import { DateRangeCalendar } from "@joyui/react";
 
 <DateRangeCalendar
   aria-label="入住区间"
@@ -71,7 +76,7 @@ import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
 <DemoFrame
   fileName="date-calendar-booking.tsx"
   code={`import { parseDate } from "@internationalized/date";
-import { DateRangeCalendar } from "@/components/base/date-picker/date-calendar";
+import { DateRangeCalendar } from "@joyui/react";
 
 <div className="rounded-2xl border p-4">
   <p>选择入住日期</p>

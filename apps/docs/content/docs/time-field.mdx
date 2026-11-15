@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add time-field --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { TimeField } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add time-field --yes`。
+
 
 ## 尺寸
 
@@ -30,7 +35,7 @@ npx @joyui/cli add time-field --yes
 <DemoFrame
   fileName="time-field-sizes.tsx"
   code={`import { Time } from "@internationalized/date";
-import { TimeField } from "@/components/base/time-field/time-field";
+import { TimeField } from "@joyui/react";
 
 <>
   <TimeField label="开始时间" size="medium" defaultValue={new Time(9, 30)} />
@@ -48,7 +53,7 @@ import { TimeField } from "@/components/base/time-field/time-field";
 <DemoFrame
   fileName="time-field-format.tsx"
   code={`import { Time } from "@internationalized/date";
-import { TimeField } from "@/components/base/time-field/time-field";
+import { TimeField } from "@joyui/react";
 
 <>
   <TimeField label="24 小时制" hourCycle={24} defaultValue={new Time(14, 5)} />
@@ -66,7 +71,7 @@ import { TimeField } from "@/components/base/time-field/time-field";
 <DemoFrame
   fileName="time-field-meeting.tsx"
   code={`import { Time } from "@internationalized/date";
-import { TimeField } from "@/components/base/time-field/time-field";
+import { TimeField } from "@joyui/react";
 
 <div className="rounded-2xl border p-4">
   <p>会议时间</p>

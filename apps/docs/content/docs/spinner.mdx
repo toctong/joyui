@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add spinner --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { SpinnerGlyph, Spinner } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add spinner --yes`。
+
 
 ## 尺寸
 
@@ -29,7 +34,7 @@ npx @joyui/cli add spinner --yes
 
 <DemoFrame
   fileName="spinner-sizes.tsx"
-  code={`import { Spinner } from "@/components/base/spinner/spinner";
+  code={`import { Spinner } from "@joyui/react";
 
 <>
   <Spinner size="xs" aria-label="加载 xs" />
@@ -49,7 +54,7 @@ npx @joyui/cli add spinner --yes
 
 <DemoFrame
   fileName="spinner-track.tsx"
-  code={`import { Spinner } from "@/components/base/spinner/spinner";
+  code={`import { Spinner } from "@joyui/react";
 
 <>
   <Spinner size="lg" track aria-label="带轨道" />
@@ -67,8 +72,8 @@ npx @joyui/cli add spinner --yes
 
 <DemoFrame
   fileName="spinner-button.tsx"
-  code={`import { Spinner } from "@/components/base/spinner/spinner";
-import { Button } from "@/components/base/buttons/button";
+  code={`import { Spinner } from "@joyui/react";
+import { Button } from "@joyui/react";
 
 <>
   <Button isDisabled className="gap-2">

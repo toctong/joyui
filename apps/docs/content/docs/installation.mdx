@@ -1,54 +1,77 @@
 ---
 title: 安装
-description: 一次安装整个 JoyUI 组件库，引入主题后即可 import 使用。
+description: 像接入成熟组件库一样：npm 安装、引入内置样式、Provider 后直接 import。
 ---
 
-## 整库安装（推荐）
+参考 [shadcn/ui Installation](https://ui.shadcn.com/docs/installation) 与 [Monorepo](https://ui.shadcn.com/docs/monorepo) 的「按起点选路径」思路：JoyUI 的**默认路径是整库 npm**（样式已打进包），CLI / Registry 只是可选的源码拷贝。本仓库自身也按 monorepo 布局：`packages/ui` 为权威组件包，`apps/docs` 为文档应用。
+
+## 推荐：整库 npm
+
+适合新项目和绝大多数业务应用。
 
 ```bash
 pnpm add @joyui/react
-# 或 npm / yarn 等价命令
+# npm i @joyui/react / yarn add @joyui/react / bun add @joyui/react
 ```
 
-只需安装 `@joyui/react`。表格、图表、图标、动画、日期、二维码（`qrcode`）、条形码（`jsbarcode`）、Composer（TipTap）等运行时依赖已作为包内 **dependencies** 随库安装，不必再单独 `pnpm add`。
+只需安装 `@joyui/react`。表格、图表、图标、动画、日期、二维码、条形码、Composer（TipTap）等运行时依赖已作为包内 **dependencies** 随库安装。
 
 宿主应用仍需自己准备：
 
 - `react` / `react-dom`（peer）
 - `tailwindcss` v4（样式构建）
 
-```tsx
-import { Composer, ComposerPanel } from "@joyui/react/composer";
-```
+### 1. 引入内置样式
 
-在全局样式中引入 Tailwind 与 JoyUI token：
+在全局 CSS 中：
 
 ```css
 @import "tailwindcss";
 @import "@joyui/react/styles.css";
 ```
 
-`styles.css` 会自动 `@source` 包内 `dist`，把组件用到的 utility 编进你的 CSS，无需再手写扫描路径。
+或在入口 JS：
 
-根节点包一层 **`JoyUIProvider`**（locale / RTL / 内置文案，见 [国际化](/docs/i18n)）：
+```ts
+import "@joyui/react/styles.css";
+```
+
+`styles.css` 内含：
+
+- 设计 token（`theme.css`）
+- 复合字阶（`typography.css`）
+- 组件专用规则（表格 / Skeleton / AgentThinking / 图表动画等）
+- `@source` 扫描包内 `dist`，无需再手写 Tailwind content 路径
+
+### 2. Provider + 使用
 
 ```tsx
-import { JoyUIProvider, Button, Input, RevenueChartCard, AdminDashboard } from "@joyui/react";
+import { JoyUIProvider, Button, Input, RevenueChartCard } from "@joyui/react";
 
 export function App() {
   return (
     <JoyUIProvider locale="zh-CN">
-      <Button variant="primary" isDisabled={false}>保存</Button>
+      <Button variant="primary">保存</Button>
       <Input label="邮箱" placeholder="you@company.com" />
       <RevenueChartCard />
-      <AdminDashboard />
     </JoyUIProvider>
   );
 }
 ```
 
-> 带 `label` / `placeholder` / `hint` 的字段请用 **`Input`**（或 `Textarea`）。`TextField` 是 React Aria 组合容器，不接受这些 props。  
-> 业务表格用 **`DataTable`**（传入 `data` / `columns`）；`DataTableExample` 仅是文档演示。
+Composer（TipTap）走子路径，避免无谓打包：
+
+```tsx
+import { Composer, ComposerPanel } from "@joyui/react/composer";
+```
+
+### 3. 一键初始化（可选）
+
+写入 `styles/joyui.css`、`components.json`、Cursor rules、`AGENTS.md`：
+
+```bash
+npx @joyui/cli@latest init --yes
+```
 
 ### 应用自己还要装什么？
 
@@ -67,13 +90,41 @@ export function App() {
 - 按钮禁用：`disabled` 与 `isDisabled` 均可
 - 深色：`.dark` 翻转 token，禁止手写 `dark:` 调色板
 
-## 可选：拷贝源码到本地
+> 带 `label` / `placeholder` / `hint` 的字段请用 **`Input`**（或 `Textarea`）。`TextField` 是 React Aria 组合容器，不接受这些 props。  
+> 业务表格用 **`DataTable`**（传入 `data` / `columns`）；`DataTableExample` 仅是文档演示。
 
-若需要把组件源码写进项目再改，仍可用 CLI：
+## 可选：CLI 拷贝源码（shadcn 风格）
+
+需要把单个组件源码写进业务仓库再改时：
 
 ```bash
-npx @joyui/cli@latest init
+npx @joyui/cli@latest init --yes
 npx @joyui/cli add button data-table --yes
 ```
 
-整库使用优先 `pnpm add @joyui/react`。
+或配置 shadcn registry 后：
+
+```bash
+npx shadcn@latest add @joyui/button
+```
+
+`components.json` 示例（`joyui init` 会写入）：
+
+```json
+{
+  "registries": {
+    "@joyui": "https://joyui.dev/r/{name}.json"
+  }
+}
+```
+
+整库使用仍优先 `pnpm add @joyui/react`。
+
+## 智能体接入
+
+| 方式 | 命令 / 配置 |
+|------|-------------|
+| MCP | `npx -y @joyui/cli@latest mcp` |
+| Skill | `npx @joyui/cli@latest skill` |
+
+详见 [MCP 服务器](/docs/mcp) 与 [智能体技能](/docs/skill)。

@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add prompt-suggestions --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { PromptSuggestions } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add prompt-suggestions --yes`。
 
 ## 选择回调
 
@@ -24,7 +30,7 @@ npx @joyui/cli add prompt-suggestions --yes
 
 <DemoFrame
   fileName="prompt-suggestions-select.tsx"
-  code={`import { PromptSuggestions } from "@/components/base/prompt-suggestions/prompt-suggestions";
+  code={`import { PromptSuggestions } from "@joyui/react";
 
 <PromptSuggestions
   label="试试问"

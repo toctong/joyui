@@ -3,7 +3,7 @@
   "name": "utils",
   "type": "registry:lib",
   "title": "Utils",
-  "description": "cn/cx class merge helpers.",
+  "description": "cn/cx class merge helpers. Prefer npm: pnpm add @joyui/react",
   "dependencies": [
     "clsx",
     "tailwind-merge"
@@ -15,5 +15,15 @@
       "type": "registry:lib",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { cx as mergeCx } from \"../utils/cx\";\n\n/** Merge Tailwind classes the JoyUI way (clsx + typography-aware tailwind-merge). */\nexport function cn(...inputs: ClassValue[]) {\n  return mergeCx(clsx(inputs));\n}\n\n/** Alias used in agent rules / JoyUI docs. */\nexport const cx = cn;\n"
     }
-  ]
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "cn",
+      "cx"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
 }

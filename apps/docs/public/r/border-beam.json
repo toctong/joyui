@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam",
+  "type": "registry:ui",
+  "title": "Border Beam",
+  "description": "Border Beam component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/border-beam/border-beam.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { CSSProperties, HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Soft light that rides the border of a card — landing / AI showcase energy\r\n * without leaving JoyUI tokens. Wrap any surface; the beam is decorative\r\n * (`aria-hidden`) and respects reduced motion.\r\n *\r\n *   <BorderBeam className=\"rounded-2xl\">\r\n *     <Card className=\"relative z-10\">…</Card>\r\n *   </BorderBeam>\r\n */\r\n\r\nexport interface BorderBeamProps extends HTMLAttributes<HTMLDivElement> {\r\n  children?: ReactNode;\r\n  /** Border thickness in px. */\r\n  borderWidth?: number;\r\n  /** Full lap duration in seconds. */\r\n  duration?: number;\r\n  /** Delay before the first lap (seconds). */\r\n  delay?: number;\r\n  /** Beam colour; defaults to accent. */\r\n  color?: string;\r\n  /** Soft trailing colour; defaults to a lighter accent mix. */\r\n  colorFrom?: string;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function BorderBeam({\r\n  children,\r\n  className,\r\n  borderWidth = 1.5,\r\n  duration = 8,\r\n  delay = 0,\r\n  color,\r\n  colorFrom,\r\n  style,\r\n  ref,\r\n  ...props\r\n}: BorderBeamProps) {\r\n  const vars = {\r\n    \"--bui-border-beam-width\": `${borderWidth}px`,\r\n    \"--bui-border-beam-duration\": `${duration}s`,\r\n    \"--bui-border-beam-delay\": `${delay}s`,\r\n    \"--bui-border-beam-color\": color ?? \"var(--color-accent-500)\",\r\n    \"--bui-border-beam-from\": colorFrom ?? \"var(--color-accent-300)\",\r\n    ...style,\r\n  } as CSSProperties;\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      className={cx(\r\n        // Default to Card radius when the wrapper isn't given one.\r\n        \"bui-border-beam relative isolate overflow-hidden rounded-2xl\",\r\n        className,\r\n      )}\r\n      style={vars}\r\n      {...props}\r\n    >\r\n      {children}\r\n      <span\r\n        aria-hidden\r\n        className=\"bui-border-beam-glow pointer-events-none absolute inset-0 rounded-[inherit]\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "BorderBeam"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

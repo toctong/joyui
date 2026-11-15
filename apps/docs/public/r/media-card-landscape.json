@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-card-landscape",
+  "type": "registry:ui",
+  "title": "Media Card Landscape",
+  "description": "Media Card Landscape component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/media-card-landscape/media-card-landscape.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Wide landscape media row — episode stills, continue-watching, related clips.\r\n * Image sits left; titles / meta / action stack on the right.\r\n *\r\n *   <MediaCardLandscape\r\n *     title=\"S01E01 · Good News About Hell\"\r\n *     subtitle=\"53 min\"\r\n *     src=\"…\"\r\n *   />\r\n */\r\n\r\nexport interface MediaCardLandscapeProps\r\n  extends Omit<HTMLAttributes<HTMLElement>, \"title\"> {\r\n  title: ReactNode;\r\n  subtitle?: ReactNode;\r\n  /** Still / thumb image URL. */\r\n  src?: string | null;\r\n  alt?: string;\r\n  /** Thumb aspect; default 16/9 landscape. */\r\n  aspectClassName?: string;\r\n  /** Thumb width utility class. Default w-40 sm:w-48. */\r\n  mediaClassName?: string;\r\n  /** Optional badge / chip overlaid at the bottom of the still. */\r\n  footer?: ReactNode;\r\n  /** Trailing action under the titles. */\r\n  action?: ReactNode;\r\n  /** Leading meta (episode index, progress, etc.). */\r\n  meta?: ReactNode;\r\n  interactive?: boolean;\r\n  ref?: Ref<HTMLElement>;\r\n}\r\n\r\nexport function MediaCardLandscape({\r\n  title,\r\n  subtitle,\r\n  src,\r\n  alt = \"\",\r\n  aspectClassName = \"aspect-video\",\r\n  mediaClassName = \"w-40 shrink-0 sm:w-48\",\r\n  footer,\r\n  action,\r\n  meta,\r\n  interactive = false,\r\n  className,\r\n  ref,\r\n  onClick,\r\n  ...props\r\n}: MediaCardLandscapeProps) {\r\n  const pressable = interactive || typeof onClick === \"function\";\r\n  return (\r\n    <article\r\n      ref={ref}\r\n      className={cx(\r\n        \"flex min-w-0 items-stretch gap-3 rounded-2xl border border-border-secondary-default bg-background-primary-default p-2 dark:bg-background-secondary-default\",\r\n        pressable &&\r\n          \"cursor-pointer transition-colors hover:bg-background-primary-hover\",\r\n        className,\r\n      )}\r\n      onClick={onClick}\r\n      {...props}\r\n    >\r\n      <div\r\n        className={cx(\r\n          \"relative overflow-hidden rounded-xl bg-background-secondary-default\",\r\n          aspectClassName,\r\n          mediaClassName,\r\n        )}\r\n      >\r\n        {src ? (\r\n          <img\r\n            src={src}\r\n            alt={alt}\r\n            className=\"size-full object-cover\"\r\n            loading=\"lazy\"\r\n            referrerPolicy=\"no-referrer\"\r\n          />\r\n        ) : (\r\n          <div className=\"size-full bg-background-secondary-default\" aria-hidden />\r\n        )}\r\n        {footer ? (\r\n          <div className=\"absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 to-transparent p-1.5 pt-6\">\r\n            {footer}\r\n          </div>\r\n        ) : null}\r\n      </div>\r\n      <div className=\"flex min-w-0 flex-1 flex-col justify-center gap-1 py-0.5 pr-1\">\r\n        {meta ? (\r\n          <div className=\"text-caption-1-regular text-text-tertiary\">{meta}</div>\r\n        ) : null}\r\n        <h3 className=\"line-clamp-2 text-body-medium text-text-primary\">{title}</h3>\r\n        {subtitle ? (\r\n          <div className=\"truncate text-caption-1-regular text-text-tertiary\">\r\n            {subtitle}\r\n          </div>\r\n        ) : null}\r\n        {action ? <div className=\"mt-1.5\">{action}</div> : null}\r\n      </div>\r\n    </article>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "MediaCardLandscape"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

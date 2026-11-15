@@ -8,10 +8,15 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "registry:build": "pnpm --filter @joyui/react registry:build",
+    "catalog:gen": "node ./scripts/generate-catalog.mjs",
+    "registry:gen": "node ./scripts/generate-catalog.mjs && node ./scripts/generate-registry.mjs",
+    "docs:npm-imports": "node ./scripts/rewrite-docs-npm.mjs && node ./scripts/rewrite-docs-npm-pass2.mjs && node ./scripts/rewrite-docs-imports-fill.mjs",
+    "sot:flip": "node ./scripts/flip-source-of-truth.mjs",
+    "registry:build": "pnpm registry:gen && pnpm --filter @joyui/react registry:build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm test && pnpm build && changeset publish"
+    "release": "pnpm test && pnpm build && changeset publish",
+    "release:publish": "pnpm catalog:gen && pnpm --filter @joyui/react build && pnpm --filter @joyui/cli build && changeset publish --registry https://registry.npmjs.org"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",

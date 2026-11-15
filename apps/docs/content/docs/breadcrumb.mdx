@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add breadcrumb --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Breadcrumb, BreadcrumbItem } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add breadcrumb --yes`。
+
 
 ## 图标
 
@@ -30,7 +35,7 @@ npx @joyui/cli add breadcrumb --yes
 <DemoFrame
   fileName="breadcrumb-icons.tsx"
   code={`import { RiFolder3Line, RiHomeLine, RiSettings3Line } from "@remixicon/react";
-import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
+import { Breadcrumb, BreadcrumbItem } from "@joyui/react";
 
 <Breadcrumb aria-label="带图标面包屑">
   <BreadcrumbItem icon={RiHomeLine} href="#">工作区</BreadcrumbItem>
@@ -48,7 +53,7 @@ import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcr
 
 <DemoFrame
   fileName="breadcrumb-deep.tsx"
-  code={`import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
+  code={`import { Breadcrumb, BreadcrumbItem } from "@joyui/react";
 
 <Breadcrumb aria-label="深层路径">
   <BreadcrumbItem href="#">首页</BreadcrumbItem>
@@ -67,7 +72,7 @@ import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcr
 
 <DemoFrame
   fileName="breadcrumb-page.tsx"
-  code={`import { Breadcrumb, BreadcrumbItem } from "@/components/base/breadcrumb/breadcrumb";
+  code={`import { Breadcrumb, BreadcrumbItem } from "@joyui/react";
 
 <div>
   <Breadcrumb aria-label="设置路径">

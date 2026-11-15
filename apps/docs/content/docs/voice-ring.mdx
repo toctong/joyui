@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add voice-ring --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { VoiceRing } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add voice-ring --yes`。
 
 ## 聆听态
 
@@ -25,8 +31,8 @@ npx @joyui/cli add voice-ring --yes
 <DemoFrame
   fileName="voice-ring-active.tsx"
   code={`import { RiMicLine } from "@remixicon/react";
-import { Button } from "@/components/base/buttons/button";
-import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
+import { Button } from "@joyui/react";
+import { VoiceRing } from "@joyui/react";
 
 <>
   <VoiceRing>

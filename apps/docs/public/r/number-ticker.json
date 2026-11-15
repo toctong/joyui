@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-ticker",
+  "type": "registry:ui",
+  "title": "Number Ticker",
+  "description": "Number Ticker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/number-ticker/number-ticker.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useEffect,\r\n  useRef,\r\n  useState,\r\n  type HTMLAttributes,\r\n  type Ref,\r\n} from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Rolling counter for KPIs and hero stats — Bencho / dashboard energy\r\n * without a heavy animation library. Counts from `from` to `value` once\r\n * the element enters the viewport (or immediately when `startOnView` is false).\r\n *\r\n *   <NumberTicker value={1280} suffix=\"+\" />\r\n */\r\n\r\nexport interface NumberTickerProps extends Omit<HTMLAttributes<HTMLSpanElement>, \"children\"> {\r\n  value: number;\r\n  from?: number;\r\n  /** Animation length in ms. */\r\n  duration?: number;\r\n  /** Decimal places. */\r\n  precision?: number;\r\n  prefix?: string;\r\n  suffix?: string;\r\n  /** Start when scrolled into view. Default true. */\r\n  startOnView?: boolean;\r\n  /** Locale for `toLocaleString`. */\r\n  locale?: string;\r\n  ref?: Ref<HTMLSpanElement>;\r\n}\r\n\r\nfunction easeOutCubic(t: number) {\r\n  return 1 - (1 - t) ** 3;\r\n}\r\n\r\nexport function NumberTicker({\r\n  value,\r\n  from = 0,\r\n  duration = 1400,\r\n  precision = 0,\r\n  prefix = \"\",\r\n  suffix = \"\",\r\n  startOnView = true,\r\n  locale,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: NumberTickerProps) {\r\n  const localRef = useRef<HTMLSpanElement | null>(null);\r\n  const [display, setDisplay] = useState(from);\r\n  const [started, setStarted] = useState(!startOnView);\r\n\r\n  useEffect(() => {\r\n    if (!startOnView) {\r\n      setStarted(true);\r\n      return;\r\n    }\r\n    const el = localRef.current;\r\n    if (!el) return;\r\n    const io = new IntersectionObserver(\r\n      ([entry]) => {\r\n        if (entry?.isIntersecting) {\r\n          setStarted(true);\r\n          io.disconnect();\r\n        }\r\n      },\r\n      { threshold: 0.35 },\r\n    );\r\n    io.observe(el);\r\n    return () => io.disconnect();\r\n  }, [startOnView]);\r\n\r\n  useEffect(() => {\r\n    if (!started) return;\r\n    const reduce =\r\n      typeof window !== \"undefined\" &&\r\n      window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches;\r\n    if (reduce) {\r\n      setDisplay(value);\r\n      return;\r\n    }\r\n\r\n    let raf = 0;\r\n    const start = performance.now();\r\n    const tick = (now: number) => {\r\n      const t = Math.min(1, (now - start) / duration);\r\n      const next = from + (value - from) * easeOutCubic(t);\r\n      setDisplay(next);\r\n      if (t < 1) raf = requestAnimationFrame(tick);\r\n    };\r\n    raf = requestAnimationFrame(tick);\r\n    return () => cancelAnimationFrame(raf);\r\n  }, [duration, from, started, value]);\r\n\r\n  const formatted = Number(display.toFixed(precision)).toLocaleString(locale, {\r\n    minimumFractionDigits: precision,\r\n    maximumFractionDigits: precision,\r\n  });\r\n\r\n  return (\r\n    <span\r\n      ref={(node) => {\r\n        localRef.current = node;\r\n        if (typeof ref === \"function\") ref(node);\r\n        else if (ref) ref.current = node;\r\n      }}\r\n      className={cx(\r\n        \"inline-block tabular-nums tracking-tight text-title-1-semibold text-text-primary\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {prefix}\r\n      {formatted}\r\n      {suffix}\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "NumberTicker"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

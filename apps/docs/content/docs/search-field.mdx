@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add search-field --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { SearchField } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add search-field --yes`。
+
 
 ## 形状
 
@@ -29,7 +34,7 @@ npx @joyui/cli add search-field --yes
 
 <DemoFrame
   fileName="search-field-shapes.tsx"
-  code={`import { SearchField } from "@/components/base/search-field/search-field";
+  code={`import { SearchField } from "@joyui/react";
 
 <>
   <SearchField aria-label="胶囊搜索" placeholder="搜索（pill）" shape="pill" />
@@ -46,7 +51,7 @@ npx @joyui/cli add search-field --yes
 
 <DemoFrame
   fileName="search-field-loading.tsx"
-  code={`import { SearchField } from "@/components/base/search-field/search-field";
+  code={`import { SearchField } from "@joyui/react";
 
 <SearchField aria-label="加载中搜索" placeholder="正在搜索…" defaultValue="JoyUI" isLoading />`}
   canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"
@@ -60,7 +65,7 @@ npx @joyui/cli add search-field --yes
 
 <DemoFrame
   fileName="search-field-filter.tsx"
-  code={`import { SearchField } from "@/components/base/search-field/search-field";
+  code={`import { SearchField } from "@joyui/react";
 
 <SearchField aria-label="筛选成员" placeholder="筛选成员…" size="small" />`}
   canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"

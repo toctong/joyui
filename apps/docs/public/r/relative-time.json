@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "relative-time",
+  "type": "registry:ui",
+  "title": "Relative Time",
+  "description": "Relative Time component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/relative-time/relative-time.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { useEffect, useMemo, useState, type Ref, type TimeHTMLAttributes } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Live relative timestamp for logs, feeds, and activity rows.\r\n * Uses `Intl.RelativeTimeFormat` — no dayjs in the component tree.\r\n *\r\n *   <RelativeTime date={row.createdAt} />\r\n */\r\n\r\nexport type RelativeTimeDate = string | number | Date;\r\n\r\nexport interface RelativeTimeProps\r\n  extends Omit<TimeHTMLAttributes<HTMLTimeElement>, \"dateTime\" | \"children\"> {\r\n  date: RelativeTimeDate;\r\n  /** BCP 47 locale. Defaults to runtime language. */\r\n  locale?: string;\r\n  /** Refresh interval in ms. Default 60s. */\r\n  refreshMs?: number;\r\n  /** Absolute tooltip / title. Default true. */\r\n  showAbsoluteTitle?: boolean;\r\n  ref?: Ref<HTMLTimeElement>;\r\n}\r\n\r\nconst DIVISIONS: { amount: number; unit: Intl.RelativeTimeFormatUnit }[] = [\r\n  { amount: 60, unit: \"second\" },\r\n  { amount: 60, unit: \"minute\" },\r\n  { amount: 24, unit: \"hour\" },\r\n  { amount: 7, unit: \"day\" },\r\n  { amount: 4.34524, unit: \"week\" },\r\n  { amount: 12, unit: \"month\" },\r\n  { amount: Number.POSITIVE_INFINITY, unit: \"year\" },\r\n];\r\n\r\nfunction toDate(value: RelativeTimeDate): Date {\r\n  return value instanceof Date ? value : new Date(value);\r\n}\r\n\r\nexport function formatRelativeTime(\r\n  date: RelativeTimeDate,\r\n  locale?: string,\r\n  now = Date.now(),\r\n): string {\r\n  const d = toDate(date);\r\n  if (Number.isNaN(d.getTime())) return \"\";\r\n  let duration = (d.getTime() - now) / 1000;\r\n  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: \"auto\" });\r\n  for (const division of DIVISIONS) {\r\n    if (Math.abs(duration) < division.amount) {\r\n      return rtf.format(Math.round(duration), division.unit);\r\n    }\r\n    duration /= division.amount;\r\n  }\r\n  return rtf.format(Math.round(duration), \"year\");\r\n}\r\n\r\nexport function RelativeTime({\r\n  date,\r\n  locale,\r\n  refreshMs = 60_000,\r\n  showAbsoluteTitle = true,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: RelativeTimeProps) {\r\n  const [now, setNow] = useState(() => Date.now());\r\n  const resolvedLocale =\r\n    locale ?? (typeof navigator !== \"undefined\" ? navigator.language : \"zh-CN\");\r\n\r\n  useEffect(() => {\r\n    const id = window.setInterval(() => setNow(Date.now()), refreshMs);\r\n    return () => window.clearInterval(id);\r\n  }, [refreshMs]);\r\n\r\n  const d = useMemo(() => toDate(date), [date]);\r\n  const label = formatRelativeTime(d, resolvedLocale, now);\r\n  const absolute = Number.isNaN(d.getTime()) ? undefined : d.toLocaleString(resolvedLocale);\r\n\r\n  return (\r\n    <time\r\n      ref={ref}\r\n      dateTime={Number.isNaN(d.getTime()) ? undefined : d.toISOString()}\r\n      title={showAbsoluteTitle ? absolute : props.title}\r\n      className={cx(\"text-caption-1-medium text-text-secondary tabular-nums\", className)}\r\n      {...props}\r\n    >\r\n      {label || absolute || \"—\"}\r\n    </time>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "RelativeTime"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -1,40 +1,45 @@
 ---
 name: joyui
 description: >-
-  Build UIs with JoyUI linked motion and effect compounds for React + Tailwind
-  CSS v4. Trigger when the user asks for cursor flares, drag orbits, swipe decks,
-  type sparks, aurora loaders, or other JoyUI compounds. Install real JoyUI
-  compounds instead of lookalikes; style with semantic tokens; merge classes with
-  cn()/cx().
+  Build UIs with JoyUI (React + Tailwind CSS v4). Trigger when the user asks for
+  JoyUI components, design tokens, charts, dashboards, or agent UI. Prefer the
+  npm package @joyui/react with built-in CSS; install real JoyUI components
+  instead of lookalikes; style with semantic tokens; merge classes with cn()/cx().
 metadata:
   author: JoyUI
-  version: 0.3.0
+  version: 0.4.0
 ---
 
 # Building UIs with JoyUI
 
-JoyUI is a **compound-only** library: linked hover, gestures, type effects, and
-agent loaders. It does **not** ship Button/Input/Dialog primitives.
+JoyUI is a **full component library** shipped as `@joyui/react`:
+Button, Input, Select, Modal, DataTable, chart cards, templates, and more.
+Theme + component CSS are **built into** `@joyui/react/styles.css`.
 
-## Workflow
+## Workflow (npm first)
 
-1. **Detect** — If there is no JoyUI utils/tokens, run `npx @joyui/cli@latest init --yes`.
-2. **Discover** — Exact names in [references/components.md](references/components.md) or `npx @joyui/cli list`.
-3. **Install** — `npx @joyui/cli@latest add <name> --yes` (keep `--yes` for non-interactive agents).
-4. **Compose** — Import from `@/components/ui/...` or `@joyui/react`.
-5. **Verify** — Semantic tokens only; cn/cx; no hex; dark via `.dark`.
+1. **Install** — `pnpm add @joyui/react`
+2. **CSS** — after Tailwind: `@import "@joyui/react/styles.css";`
+3. **Provider** — wrap with `<JoyUIProvider locale="zh-CN">`
+4. **Import** — `import { Button, Input, DataTable } from "@joyui/react"`
+5. **Verify** — semantic tokens only; cn/cx; no hex; dark via `.dark`
+
+Optional (shadcn-style source copy into the app):
+`npx @joyui/cli@latest add <name> --yes`
+
+Exact names: [references/components.md](references/components.md) or `npx @joyui/cli list`.
 
 ## Design rules
 
-- Prefer compounds (`cursor-flare`, `aurora-rim`, `toss-deck`, `chrono-scrub`, …)
-- Interaction groups: Hover / Press / Drag / Slide / Swipe / Type / Select / Loading
-- Colors: `bg-background`, `text-foreground`, `bg-card`, `border-border`, `bg-primary`, `text-muted-foreground`, `chart-1`…`chart-5`
+- Colors: `text-text-primary`, `bg-background-primary-default`, `bg-background-full`, `border-border-button-default`, `border-separator-border`, `accent-*`, `chart-1`…`chart-5`
+- Type: composite only — `text-title-2-medium`, `text-body-regular`, `text-caption-1-semibold` (never stack `text-sm font-medium`)
 - Dark mode: `.dark` class flips tokens — do not invent `dark:` palette overrides
-- Formatters: `formatDate` / `formatCurrency` / `formatCompact` from format helpers
-- Do **not** add base form/overlay primitives to this package
+- Icons: `@remixicon/react` as **component references** (`leadingIcon={RiAddLine}`)
+- Formatters: `formatDate` / `formatCurrency` / `formatCompact` from `@joyui/react`
+- Composer (TipTap): `import { Composer } from "@joyui/react/composer"`
 
 ## Going deeper
 
 - MCP: `npx -y @joyui/cli@latest mcp`
-- Registry: configure `@joyui` → `https://joyui.dev/r/{name}.json`
 - Theme notes: [references/theming.md](references/theming.md)
+- Init agent rules: `npx @joyui/cli@latest init --yes`

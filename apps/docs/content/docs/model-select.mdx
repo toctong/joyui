@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add model-select --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ModelSelect } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add model-select --yes`。
 
 ## 尺寸
 
@@ -24,7 +30,7 @@ npx @joyui/cli add model-select --yes
 
 <DemoFrame
   fileName="model-select-sizes.tsx"
-  code={`import { ModelSelect } from "@/components/base/model-select/model-select";
+  code={`import { ModelSelect } from "@joyui/react";
 
 const options = [
   { id: "fable-5", label: "Fable 5", description: "均衡" },

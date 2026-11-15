@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "Hover Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/hover-card/hover-card.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useEffect,\r\n  useId,\r\n  useRef,\r\n  useState,\r\n  type ReactNode,\r\n} from \"react\";\r\nimport { createPortal } from \"react-dom\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Hover / focus preview card — beUI Profile hover card on JoyUI Popover chrome\r\n * (`rounded-[20px]`, `border-button`, `shadow-dropdown`).\r\n *\r\n *   <HoverCard content={<div>…profile…</div>}>\r\n *     <Avatar initials=\"JL\" />\r\n *   </HoverCard>\r\n */\r\n\r\nexport interface HoverCardProps {\r\n  children: ReactNode;\r\n  content: ReactNode;\r\n  /** Delay before open (ms). */\r\n  openDelay?: number;\r\n  /** Delay before close (ms). */\r\n  closeDelay?: number;\r\n  className?: string;\r\n  contentClassName?: string;\r\n}\r\n\r\nexport function HoverCard({\r\n  children,\r\n  content,\r\n  openDelay = 160,\r\n  closeDelay = 120,\r\n  className,\r\n  contentClassName,\r\n}: HoverCardProps) {\r\n  const id = useId();\r\n  const triggerRef = useRef<HTMLSpanElement>(null);\r\n  const panelRef = useRef<HTMLDivElement>(null);\r\n  const timer = useRef<number | null>(null);\r\n  const [open, setOpen] = useState(false);\r\n  const [coords, setCoords] = useState({ top: 0, left: 0 });\r\n  const [mounted, setMounted] = useState(false);\r\n  const [visible, setVisible] = useState(false);\r\n\r\n  useEffect(() => {\r\n    setMounted(true);\r\n  }, []);\r\n\r\n  useEffect(() => {\r\n    if (!open) {\r\n      setVisible(false);\r\n      return;\r\n    }\r\n    const id = requestAnimationFrame(() => setVisible(true));\r\n    return () => cancelAnimationFrame(id);\r\n  }, [open]);\r\n\r\n  const clear = () => {\r\n    if (timer.current != null) {\r\n      window.clearTimeout(timer.current);\r\n      timer.current = null;\r\n    }\r\n  };\r\n\r\n  const place = () => {\r\n    const el = triggerRef.current;\r\n    if (!el) return;\r\n    const rect = el.getBoundingClientRect();\r\n    setCoords({\r\n      top: rect.bottom + 8 + window.scrollY,\r\n      left: rect.left + window.scrollX,\r\n    });\r\n  };\r\n\r\n  const scheduleOpen = () => {\r\n    clear();\r\n    timer.current = window.setTimeout(() => {\r\n      place();\r\n      setOpen(true);\r\n    }, openDelay);\r\n  };\r\n\r\n  const scheduleClose = () => {\r\n    clear();\r\n    timer.current = window.setTimeout(() => setOpen(false), closeDelay);\r\n  };\r\n\r\n  useEffect(() => () => clear(), []);\r\n\r\n  return (\r\n    <>\r\n      <span\r\n        ref={triggerRef}\r\n        className={cx(\"inline-flex\", className)}\r\n        aria-describedby={open ? id : undefined}\r\n        onMouseEnter={scheduleOpen}\r\n        onMouseLeave={scheduleClose}\r\n        onFocus={scheduleOpen}\r\n        onBlur={scheduleClose}\r\n      >\r\n        {children}\r\n      </span>\r\n      {mounted && open\r\n        ? createPortal(\r\n            <div\r\n              ref={panelRef}\r\n              id={id}\r\n              role=\"tooltip\"\r\n              className={cx(\r\n                // Same surface recipe as Popover.\r\n                \"z-110 w-72 max-w-[calc(100vw-32px)] rounded-[20px] border border-border-button-default bg-background-primary-default p-1.5 shadow-dropdown\",\r\n                \"transition-[opacity,transform,filter] duration-150 ease-out\",\r\n                visible\r\n                  ? \"opacity-100 scale-100 blur-0\"\r\n                  : \"opacity-0 scale-95 blur-[2px] motion-reduce:scale-100 motion-reduce:blur-0\",\r\n                contentClassName,\r\n              )}\r\n              style={{ position: \"absolute\", top: coords.top, left: coords.left }}\r\n              onMouseEnter={clear}\r\n              onMouseLeave={scheduleClose}\r\n            >\r\n              <div className=\"rounded-[14px] p-2.5\">{content}</div>\r\n            </div>,\r\n            document.body,\r\n          )\r\n        : null}\r\n    </>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "HoverCard"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

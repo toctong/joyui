@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add skeleton --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Skeleton, SkeletonText } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add skeleton --yes`。
+
 
 ## 形状
 
@@ -29,7 +34,7 @@ npx @joyui/cli add skeleton --yes
 
 <DemoFrame
   fileName="skeleton-shapes.tsx"
-  code={`import { Skeleton } from "@/components/base/skeleton/skeleton";
+  code={`import { Skeleton } from "@joyui/react";
 
 <>
   <Skeleton shape="rect" className="h-16 w-28" />
@@ -47,7 +52,7 @@ npx @joyui/cli add skeleton --yes
 
 <DemoFrame
   fileName="skeleton-text.tsx"
-  code={`import { SkeletonText } from "@/components/base/skeleton/skeleton";
+  code={`import { SkeletonText } from "@joyui/react";
 
 <>
   <SkeletonText lines={2} />
@@ -64,7 +69,7 @@ npx @joyui/cli add skeleton --yes
 
 <DemoFrame
   fileName="skeleton-card.tsx"
-  code={`import { Skeleton, SkeletonText } from "@/components/base/skeleton/skeleton";
+  code={`import { Skeleton, SkeletonText } from "@joyui/react";
 
 <div className="flex gap-3 rounded-2xl border p-4" aria-busy>
   <Skeleton shape="circle" className="size-10 shrink-0" />

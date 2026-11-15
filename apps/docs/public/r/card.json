@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "type": "registry:ui",
+  "title": "Card",
+  "description": "Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/card/card.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Surface container for grouped content — settings blocks, list shells,\r\n * form panels. Prefer this over hand-rolled `rounded-* border` boxes so\r\n * radius / border / background stay on JoyUI tokens.\r\n */\r\n\r\nexport type CardPadding = \"none\" | \"sm\" | \"md\" | \"lg\";\r\nexport type CardVariant = \"outline\" | \"soft\" | \"ghost\";\r\n\r\nexport interface CardProps extends HTMLAttributes<HTMLDivElement> {\r\n  variant?: CardVariant;\r\n  padding?: CardPadding;\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  base: \"min-w-0 rounded-2xl\",\r\n  variant: {\r\n    outline:\r\n      \"border border-border-secondary-default bg-background-primary-default dark:bg-background-secondary-default\",\r\n    soft: \"border border-border-secondary-default bg-background-secondary-default/40\",\r\n    ghost: \"bg-transparent\",\r\n  },\r\n  padding: {\r\n    none: \"\",\r\n    sm: \"p-3\",\r\n    md: \"p-4\",\r\n    lg: \"p-6 sm:p-8\",\r\n  },\r\n});\r\n\r\nexport function Card({\r\n  variant = \"outline\",\r\n  padding = \"md\",\r\n  className,\r\n  ref,\r\n  children,\r\n  ...props\r\n}: CardProps) {\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      className={cx(styles.base, styles.variant[variant], styles.padding[padding], className)}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Card"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

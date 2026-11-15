@@ -14,8 +14,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add meter --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Meter } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add meter --yes`。
 
 ## 色调
 
@@ -23,7 +29,7 @@ npx @joyui/cli add meter --yes
 
 <DemoFrame
   fileName="meter-tones.tsx"
-  code={`import { Meter } from "@/components/base/meter/meter";
+  code={`import { Meter } from "@joyui/react";
 
 <>
   <Meter label="品牌" value={72} tone="accent" />
@@ -42,7 +48,7 @@ npx @joyui/cli add meter --yes
 
 <DemoFrame
   fileName="meter-sizes.tsx"
-  code={`import { Meter } from "@/components/base/meter/meter";
+  code={`import { Meter } from "@joyui/react";
 
 <>
   <Meter label="小" value={40} size="sm" description="紧凑进度" />

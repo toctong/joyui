@@ -21,8 +21,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 <ComponentDocPreview slug="rating" />
 
 ```bash
-npx @joyui/cli add rating --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Rating } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add rating --yes`。
 
 ### 尺寸
 
@@ -30,7 +36,7 @@ npx @joyui/cli add rating --yes
 
 <DemoFrame
   fileName="rating-sizes.tsx"
-  code={`import { Rating } from "@/components/base/rating/rating";
+  code={`import { Rating } from "@joyui/react";
 
 <>
   <Rating value={4} size="sm" aria-label="小尺寸评分" />
@@ -49,7 +55,7 @@ npx @joyui/cli add rating --yes
 <DemoFrame
   fileName="rating-interactive.tsx"
   code={`import { useState } from "react";
-import { Rating } from "@/components/base/rating/rating";
+import { Rating } from "@joyui/react";
 
 function Example() {
   const [value, setValue] = useState(3);
@@ -66,7 +72,7 @@ function Example() {
 
 <DemoFrame
   fileName="rating-review.tsx"
-  code={`import { Rating } from "@/components/base/rating/rating";
+  code={`import { Rating } from "@joyui/react";
 
 <div className="flex flex-col gap-2 rounded-2xl border p-4">
   <div className="flex items-center justify-between gap-3">
@@ -90,8 +96,14 @@ function Example() {
 <ComponentDocPreview slug="rating-emoji" />
 
 ```bash
-npx @joyui/cli add rating-emoji --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Rating } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add rating-emoji --yes`。
 
 ### API
 

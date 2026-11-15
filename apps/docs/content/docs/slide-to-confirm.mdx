@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add slide-to-confirm --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { SlideToConfirm } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add slide-to-confirm --yes`。
 
 ## 文案
 
@@ -24,7 +30,7 @@ npx @joyui/cli add slide-to-confirm --yes
 
 <DemoFrame
   fileName="slide-to-confirm-labels.tsx"
-  code={`import { SlideToConfirm } from "@/components/base/slide-to-confirm/slide-to-confirm";
+  code={`import { SlideToConfirm } from "@joyui/react";
 
 <SlideToConfirm label="滑动以发布" confirmedLabel="已发布" onConfirm={() => {}} />`}
   canvasClassName="min-h-40 items-center justify-center bg-background-primary-default p-8"

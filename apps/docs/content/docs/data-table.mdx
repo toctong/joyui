@@ -19,8 +19,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add data-table --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { DataTable } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add data-table --yes`。
 
 ## 尺寸
 
@@ -28,7 +34,7 @@ npx @joyui/cli add data-table --yes
 
 <DemoFrame
   fileName="data-table-sizes.tsx"
-  code={`import { DataTable } from "@/components/application/data-table/data-table-view";
+  code={`import { DataTable } from "@joyui/react";
 
 <DataTable
   aria-label="转存表"

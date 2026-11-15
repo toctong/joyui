@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add number-field --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { NumberField } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add number-field --yes`。
+
 
 ## 尺寸
 
@@ -29,7 +34,7 @@ npx @joyui/cli add number-field --yes
 
 <DemoFrame
   fileName="number-field-sizes.tsx"
-  code={`import { NumberField } from "@/components/base/number-field/number-field";
+  code={`import { NumberField } from "@joyui/react";
 
 <>
   <NumberField label="席位 · medium" defaultValue={5} minValue={1} maxValue={50} size="medium" />
@@ -46,7 +51,7 @@ npx @joyui/cli add number-field --yes
 
 <DemoFrame
   fileName="number-field-format.tsx"
-  code={`import { NumberField } from "@/components/base/number-field/number-field";
+  code={`import { NumberField } from "@joyui/react";
 
 <>
   <NumberField label="价格" defaultValue={49} formatOptions={{ style: "currency", currency: "CNY" }} />
@@ -64,7 +69,7 @@ npx @joyui/cli add number-field --yes
 
 <DemoFrame
   fileName="number-field-cart.tsx"
-  code={`import { NumberField } from "@/components/base/number-field/number-field";
+  code={`import { NumberField } from "@joyui/react";
 
 <NumberField aria-label="数量" defaultValue={2} minValue={1} maxValue={99} size="small" />`}
   canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"

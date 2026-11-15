@@ -10,3 +10,4 @@ dist
 coverage
 .vercel
 *.tsbuildinfo
+packages/ui/dist-registry

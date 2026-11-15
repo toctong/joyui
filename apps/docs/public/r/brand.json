@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brand",
+  "type": "registry:ui",
+  "title": "Brand",
+  "description": "Brand component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/brand/logo.tsx",
+      "type": "registry:ui",
+      "content": "import { cx } from \"@/lib/utils\";\n\n/**\n * JoyUI sprout mark. Default is theme-aware mono (black in light / white in\n * dark). Pass `mono={false}` for the fixed light-mode asset only.\n */\nexport function Logo({\n  size = 32,\n  mono = true,\n  className,\n}: {\n  size?: number;\n  mono?: boolean;\n  className?: string;\n}) {\n  if (mono) {\n    return (\n      <>\n        <img\n          src=\"/brand/JoyUI_logo_blackandwhite.png\"\n          alt=\"JoyUI\"\n          width={size}\n          height={size}\n          className={cx(\"theme-logo-light shrink-0 object-contain\", className)}\n        />\n        <img\n          src=\"/brand/JoyUI_logo_blackandwhite_dark.png\"\n          alt=\"JoyUI\"\n          width={size}\n          height={size}\n          className={cx(\"theme-logo-dark shrink-0 object-contain\", className)}\n        />\n      </>\n    );\n  }\n\n  return (\n    <img\n      src=\"/brand/JoyUI_logo.png\"\n      alt=\"JoyUI\"\n      width={size}\n      height={size}\n      className={cx(\"shrink-0 object-contain\", className)}\n    />\n  );\n}\n\n/** Theme-aware metallic JoyUI Pro mark. */\nexport function ProLogo({\n  size = 36,\n  className,\n  decorative = false,\n  priority = false,\n}: {\n  size?: number;\n  className?: string;\n  decorative?: boolean;\n  priority?: boolean;\n}) {\n  const alt = decorative ? \"\" : \"JoyUI Pro\";\n\n  return (\n    <>\n      <img\n        src=\"/brand/JoyUI_pro.png\"\n        alt={alt}\n        width={size}\n        height={size}\n        className={cx(\"theme-logo-light shrink-0 object-contain\", className)}\n      />\n      <img\n        src=\"/brand/JoyUI_pro_dark.png\"\n        alt={alt}\n        width={size}\n        height={size}\n        className={cx(\"theme-logo-dark shrink-0 object-contain\", className)}\n      />\n    </>\n  );\n}\n\n/**\n * Compact nav title: mark + wordmark for fumadocs `nav.title`.\n * Pass as a ReactNode (not a function) so Server → Client layouts can serialize it.\n * Fumadocs wraps this in its own link.\n */\nexport function NavBrand({\n  className,\n  size = 22,\n}: {\n  className?: string;\n  size?: number;\n}) {\n  return (\n    <span className={cx(\"inline-flex items-center gap-2\", className)}>\n      <Logo size={size} />\n      <span className=\"tracking-tight\">JoyUI</span>\n    </span>\n  );\n}\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Logo",
+      "ProLogo",
+      "NavBrand"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "model-select",
+  "type": "registry:ui",
+  "title": "Model Select",
+  "description": "Model Select component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/model-select/model-select.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { useState, type HTMLAttributes, type ReactNode, type Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Compact AI model picker — SegmentedControl track + selected thumb recipe,\r\n * sized for chat toolbars next to Composer.\r\n *\r\n *   <ModelSelect\r\n *     value={model}\r\n *     onChange={setModel}\r\n *     options={[\r\n *       { id: \"fast\", label: \"Fast\" },\r\n *       { id: \"smart\", label: \"Smart\" },\r\n *     ]}\r\n *   />\r\n */\r\n\r\nexport interface ModelSelectOption {\r\n  id: string;\r\n  label: ReactNode;\r\n  description?: string;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport interface ModelSelectProps\r\n  extends Omit<HTMLAttributes<HTMLDivElement>, \"onChange\"> {\r\n  options: ModelSelectOption[];\r\n  value?: string;\r\n  defaultValue?: string;\r\n  onChange?: (id: string) => void;\r\n  /** Accessible name for the group. */\r\n  \"aria-label\"?: string;\r\n  size?: \"small\" | \"medium\";\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  track: [\r\n    \"inline-flex items-center gap-0.5 rounded-2lg p-1\",\r\n    \"bg-segmented-control-background\",\r\n  ].join(\" \"),\r\n  option: {\r\n    medium: \"h-7 px-2.5 text-body-medium\",\r\n    small: \"h-6 px-2 text-caption-1-medium\",\r\n  },\r\n});\r\n\r\nexport function ModelSelect({\r\n  options,\r\n  value,\r\n  defaultValue,\r\n  onChange,\r\n  size = \"medium\",\r\n  className,\r\n  ref,\r\n  \"aria-label\": ariaLabel = \"Model\",\r\n  ...props\r\n}: ModelSelectProps) {\r\n  const fallback =\r\n    defaultValue ?? options.find((o) => !o.disabled)?.id ?? options[0]?.id;\r\n  const [uncontrolled, setUncontrolled] = useState(fallback);\r\n  const selected = value ?? uncontrolled;\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role=\"radiogroup\"\r\n      aria-label={ariaLabel}\r\n      className={cx(styles.track, className)}\r\n      {...props}\r\n    >\r\n      {options.map((option) => {\r\n        const isSelected = option.id === selected;\r\n        return (\r\n          <button\r\n            key={option.id}\r\n            type=\"button\"\r\n            role=\"radio\"\r\n            aria-checked={isSelected}\r\n            aria-disabled={option.disabled || undefined}\r\n            title={option.description}\r\n            disabled={option.disabled}\r\n            onClick={() => {\r\n              if (option.disabled) return;\r\n              if (value === undefined) setUncontrolled(option.id);\r\n              onChange?.(option.id);\r\n            }}\r\n            className={cx(\r\n              \"inline-flex items-center justify-center rounded-md whitespace-nowrap\",\r\n              \"transition-[background-color,color,box-shadow] duration-200 ease\",\r\n              \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500\",\r\n              \"disabled:cursor-not-allowed disabled:opacity-40\",\r\n              styles.option[size],\r\n              isSelected\r\n                ? \"bg-segmented-control-selected-background text-text-primary shadow-2xs\"\r\n                : \"bg-transparent text-text-secondary hover:text-text-primary\",\r\n            )}\r\n          >\r\n            {option.label}\r\n          </button>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "ModelSelect"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

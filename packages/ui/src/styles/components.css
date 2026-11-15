@@ -1,11 +1,10 @@
 /**
  * JoyUI component styles shared by docs and the npm package.
  *
- * Source of truth for Table, Skeleton, AgentThinking, charts, effects, etc.
- * Copied into @joyui/react by packages/ui/scripts/sync-from-docs.mjs.
+ * JoyUI shippable component CSS (source of truth).
  *
- * Docs-only chrome (landing glass, showcase cards, html/body shell) stays in
- * globals.css and is never published.
+ * Published via @joyui/react/styles.css / components.css.
+ * Docs imports these files; do not re-introduce copies under apps/docs/styles.
  */
 
 @keyframes ai-chat-text-shimmer {

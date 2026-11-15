@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "Alert component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/alert/alert.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentType, HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport {\r\n  RiCheckboxCircleFill,\r\n  RiErrorWarningFill,\r\n  RiInformationFill,\r\n} from \"@remixicon/react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Inline feedback banner for forms and page-level messages.\r\n * Prefer Toast for transient success; Alert stays in layout until dismissed\r\n * or the condition clears.\r\n */\r\n\r\ntype IconComponent = ComponentType<{\r\n  className?: string;\r\n  \"aria-hidden\"?: boolean | \"true\" | \"false\";\r\n}>;\r\n\r\nexport type AlertTone = \"info\" | \"success\" | \"warning\" | \"error\";\r\n\r\nexport interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, \"title\"> {\r\n  tone?: AlertTone;\r\n  title?: ReactNode;\r\n  children?: ReactNode;\r\n  icon?: IconComponent;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst ICONS: Record<AlertTone, IconComponent> = {\r\n  info: RiInformationFill,\r\n  success: RiCheckboxCircleFill,\r\n  warning: RiErrorWarningFill,\r\n  error: RiErrorWarningFill,\r\n};\r\n\r\nconst styles = sortCx({\r\n  root: \"flex w-full gap-2.5 rounded-xl border px-3.5 py-3 text-start\",\r\n  tone: {\r\n    info: \"border-border-secondary-default bg-background-secondary-default text-text-primary\",\r\n    success: \"border-status-lime-background bg-status-lime-background text-status-lime-text\",\r\n    warning: \"border-status-yellow-background bg-status-yellow-background text-status-yellow-text\",\r\n    error: \"border-status-rose-background bg-status-rose-background text-status-rose-text\",\r\n  },\r\n  icon: \"size-5 shrink-0\",\r\n});\r\n\r\nexport function Alert({\r\n  tone = \"info\",\r\n  title,\r\n  children,\r\n  icon,\r\n  className,\r\n  ref,\r\n  role = \"status\",\r\n  ...props\r\n}: AlertProps) {\r\n  const Icon = icon ?? ICONS[tone];\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      role={role}\r\n      className={cx(styles.root, styles.tone[tone], className)}\r\n      {...props}\r\n    >\r\n      <Icon className={styles.icon} aria-hidden />\r\n      <div className=\"min-w-0 flex-1 flex flex-col gap-0.5\">\r\n        {title ? <p className=\"text-body-medium\">{title}</p> : null}\r\n        {children ? <div className=\"text-body-regular opacity-90\">{children}</div> : null}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Alert"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -19,8 +19,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 <ComponentDocPreview slug="toast" />
 
 ```bash
-npx @joyui/cli add toast --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Toaster } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add toast --yes`。
 
 ### 状态
 
@@ -28,7 +34,7 @@ npx @joyui/cli add toast --yes
 
 <DemoFrame
   fileName="toast-status.tsx"
-  code={`import { Notification } from "@/components/base/notification/notification";
+  code={`import { Notification } from "@joyui/react";
 
 <div className="flex w-full max-w-sm flex-col gap-3">
   <Notification status="information" title="正在同步账号" description="请稍候。" />
@@ -47,8 +53,8 @@ npx @joyui/cli add toast --yes
 
 <DemoFrame
   fileName="toast-triggers.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { toast, Toaster } from "@/components/base/toast/toast";
+  code={`import { Button } from "@joyui/react";
+import { toast, Toaster } from "@joyui/react";
 
 <>
   <Toaster />
@@ -74,8 +80,14 @@ import { toast, Toaster } from "@/components/base/toast/toast";
 <ComponentDocPreview slug="toast-promise" />
 
 ```bash
-npx @joyui/cli add toast-promise --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Toaster } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add toast-promise --yes`。
 
 ### API
 

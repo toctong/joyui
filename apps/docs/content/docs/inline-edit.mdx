@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add inline-edit --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { InlineEdit } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add inline-edit --yes`。
 
 ## 受控保存
 
@@ -25,7 +31,7 @@ npx @joyui/cli add inline-edit --yes
 <DemoFrame
   fileName="inline-edit-save.tsx"
   code={`import { useState } from "react";
-import { InlineEdit } from "@/components/base/inline-edit/inline-edit";
+import { InlineEdit } from "@joyui/react";
 
 function Example() {
   const [value, setValue] = useState("季度报告");

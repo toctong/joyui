@@ -17,8 +17,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add page-header --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { PageHeader } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add page-header --yes`。
 
 ## 带操作
 
@@ -26,9 +32,9 @@ npx @joyui/cli add page-header --yes
 
 <DemoFrame
   fileName="page-header-actions.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Input } from "@/components/base/input/input";
-import { PageHeader } from "@/components/base/page-header/page-header";
+  code={`import { Button } from "@joyui/react";
+import { Input } from "@joyui/react";
+import { PageHeader } from "@joyui/react";
 
 <PageHeader
   title="任务"
@@ -51,7 +57,7 @@ import { PageHeader } from "@/components/base/page-header/page-header";
 
 <DemoFrame
   fileName="page-header-minimal.tsx"
-  code={`import { PageHeader } from "@/components/base/page-header/page-header";
+  code={`import { PageHeader } from "@joyui/react";
 
 <PageHeader title="设置" description="账号、插件与通知偏好" />`}
   canvasClassName="min-h-40 items-center justify-center bg-background-secondary-default p-8"

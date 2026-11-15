@@ -14,8 +14,14 @@ import { DocApiSection } from "@/components/docs-api-section";
 <ComponentDocPreview slug="modal" />
 
 ```bash
-npx @joyui/cli add modal --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Modal, ModalTrigger, Button } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add modal --yes`。
 
 ### Trigger 模式（非受控）
 
@@ -92,8 +98,14 @@ export function EditTaskDialog() {
 <ComponentDocPreview slug="modal-sheet" />
 
 ```bash
-npx @joyui/cli add modal-sheet --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { ModalTrigger, Modal, ModalDialog, ModalHeader } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add modal-sheet --yes`。
 
 ### API
 

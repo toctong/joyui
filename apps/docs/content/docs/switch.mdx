@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add switch --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { SwitchCard, SwitchTrack, Switch } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add switch --yes`。
+
 
 ## 尺寸
 
@@ -29,7 +34,7 @@ npx @joyui/cli add switch --yes
 
 <DemoFrame
   fileName="switch-sizes.tsx"
-  code={`import { Switch } from "@/components/base/switch/switch";
+  code={`import { Switch } from "@joyui/react";
 
 <>
   <Switch size="sm" defaultSelected>sm</Switch>
@@ -47,7 +52,7 @@ npx @joyui/cli add switch --yes
 
 <DemoFrame
   fileName="switch-shapes.tsx"
-  code={`import { Switch } from "@/components/base/switch/switch";
+  code={`import { Switch } from "@joyui/react";
 
 <>
   <Switch shape="pill" defaultSelected>胶囊</Switch>
@@ -65,7 +70,7 @@ npx @joyui/cli add switch --yes
 
 <DemoFrame
   fileName="switch-cards.tsx"
-  code={`import { SwitchCard } from "@/components/base/switch/switch-card";
+  code={`import { SwitchCard } from "@joyui/react";
 
 <>
   <SwitchCard title="桌面通知" description="任务完成时提醒" defaultSelected />

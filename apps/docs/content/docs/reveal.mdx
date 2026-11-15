@@ -17,8 +17,14 @@ IntersectionObserver 触发；尊重减少动效偏好。
 <ComponentDocPreview slug="reveal" />
 
 ```bash
-npx @joyui/cli add reveal --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Reveal } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add reveal --yes`。
 
 ### 方向
 
@@ -26,8 +32,8 @@ npx @joyui/cli add reveal --yes
 
 <DemoFrame
   fileName="reveal-from.tsx"
-  code={`import { Card } from "@/components/base/card/card";
-import { Reveal } from "@/components/base/reveal/reveal";
+  code={`import { Card } from "@joyui/react";
+import { Reveal } from "@joyui/react";
 
 <>
   <Reveal from="up"><Card className="p-4">up</Card></Reveal>
@@ -44,8 +50,8 @@ import { Reveal } from "@/components/base/reveal/reveal";
 
 <DemoFrame
   fileName="reveal-delay.tsx"
-  code={`import { Card } from "@/components/base/card/card";
-import { Reveal } from "@/components/base/reveal/reveal";
+  code={`import { Card } from "@joyui/react";
+import { Reveal } from "@joyui/react";
 
 <>
   <Reveal delay={0}><Card className="p-4">0ms</Card></Reveal>
@@ -67,8 +73,14 @@ import { Reveal } from "@/components/base/reveal/reveal";
 <ComponentDocPreview slug="reveal-stagger" />
 
 ```bash
-npx @joyui/cli add reveal-stagger --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Reveal } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add reveal-stagger --yes`。
 
 ### API
 

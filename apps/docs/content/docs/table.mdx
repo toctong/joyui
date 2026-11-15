@@ -14,8 +14,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add table --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Table, TableHeader, TableColumn, TableBody } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add table --yes`。
 
 ## 尺寸
 
@@ -23,7 +29,7 @@ npx @joyui/cli add table --yes
 
 <DemoFrame
   fileName="table-sizes.tsx"
-  code={`import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/components/base/table/table";
+  code={`import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@joyui/react";
 
 <Table aria-label="任务" size="sm">
   <TableHeader>

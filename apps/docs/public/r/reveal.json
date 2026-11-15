@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reveal",
+  "type": "registry:ui",
+  "title": "Reveal",
+  "description": "Reveal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/reveal/reveal.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport {\r\n  useEffect,\r\n  useRef,\r\n  useState,\r\n  type CSSProperties,\r\n  type HTMLAttributes,\r\n  type ReactNode,\r\n  type Ref,\r\n} from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Mount / scroll reveal — fade + slight rise, Progress ease. Respects\r\n * prefers-reduced-motion (instant show).\r\n *\r\n *   <Reveal><Card>…</Card></Reveal>\r\n */\r\n\r\nexport type RevealFrom = \"up\" | \"down\" | \"left\" | \"right\" | \"none\";\r\n\r\nexport interface RevealProps extends HTMLAttributes<HTMLDivElement> {\r\n  children: ReactNode;\r\n  /** Delay before animating in (ms). */\r\n  delay?: number;\r\n  /** Animation duration (ms). */\r\n  duration?: number;\r\n  from?: RevealFrom;\r\n  /** Distance of the entrance offset (px). */\r\n  offset?: number;\r\n  /** Observe once and stay visible. Default true. */\r\n  once?: boolean;\r\n  /** Root margin for IntersectionObserver. */\r\n  rootMargin?: string;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nconst styles = sortCx({\r\n  root: \"bui-reveal\",\r\n  visible: \"bui-reveal-visible\",\r\n});\r\n\r\nexport function Reveal({\r\n  children,\r\n  delay = 0,\r\n  duration = 480,\r\n  from = \"up\",\r\n  offset = 12,\r\n  once = true,\r\n  rootMargin = \"0px 0px -8% 0px\",\r\n  className,\r\n  style,\r\n  ref,\r\n  ...props\r\n}: RevealProps) {\r\n  const localRef = useRef<HTMLDivElement | null>(null);\r\n  const [visible, setVisible] = useState(false);\r\n\r\n  const setRefs = (node: HTMLDivElement | null) => {\r\n    localRef.current = node;\r\n    if (typeof ref === \"function\") ref(node);\r\n    else if (ref) ref.current = node;\r\n  };\r\n\r\n  useEffect(() => {\r\n    const el = localRef.current;\r\n    if (!el) return;\r\n\r\n    const reduce =\r\n      typeof window !== \"undefined\" &&\r\n      window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches;\r\n    if (reduce) {\r\n      setVisible(true);\r\n      return;\r\n    }\r\n\r\n    const io = new IntersectionObserver(\r\n      ([entry]) => {\r\n        if (entry?.isIntersecting) {\r\n          setVisible(true);\r\n          if (once) io.disconnect();\r\n        } else if (!once) {\r\n          setVisible(false);\r\n        }\r\n      },\r\n      { rootMargin, threshold: 0.12 },\r\n    );\r\n    io.observe(el);\r\n    return () => io.disconnect();\r\n  }, [once, rootMargin]);\r\n\r\n  const axis: CSSProperties = (() => {\r\n    switch (from) {\r\n      case \"up\":\r\n        return { \"--bui-reveal-x\": \"0px\", \"--bui-reveal-y\": `${offset}px` } as CSSProperties;\r\n      case \"down\":\r\n        return { \"--bui-reveal-x\": \"0px\", \"--bui-reveal-y\": `-${offset}px` } as CSSProperties;\r\n      case \"left\":\r\n        return { \"--bui-reveal-x\": `${offset}px`, \"--bui-reveal-y\": \"0px\" } as CSSProperties;\r\n      case \"right\":\r\n        return { \"--bui-reveal-x\": `-${offset}px`, \"--bui-reveal-y\": \"0px\" } as CSSProperties;\r\n      default:\r\n        return { \"--bui-reveal-x\": \"0px\", \"--bui-reveal-y\": \"0px\" } as CSSProperties;\r\n    }\r\n  })();\r\n\r\n  return (\r\n    <div\r\n      ref={setRefs}\r\n      className={cx(styles.root, visible && styles.visible, className)}\r\n      style={\r\n        {\r\n          ...axis,\r\n          \"--bui-reveal-delay\": `${delay}ms`,\r\n          \"--bui-reveal-duration\": `${duration}ms`,\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Reveal"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

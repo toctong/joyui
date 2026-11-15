@@ -17,10 +17,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add radio --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { RadioCard, RadioDot, RadioGroup, Radio } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add radio --yes`。
+
 
 ## 尺寸
 
@@ -28,7 +33,7 @@ npx @joyui/cli add radio --yes
 
 <DemoFrame
   fileName="radio-sizes.tsx"
-  code={`import { Radio, RadioGroup } from "@/components/base/radio/radio";
+  code={`import { Radio, RadioGroup } from "@joyui/react";
 
 <>
   <RadioGroup defaultValue="a" aria-label="中号单选">
@@ -51,8 +56,8 @@ npx @joyui/cli add radio --yes
 
 <DemoFrame
   fileName="radio-cards.tsx"
-  code={`import { RadioGroup } from "@/components/base/radio/radio";
-import { RadioCard } from "@/components/base/radio/radio-card";
+  code={`import { RadioGroup } from "@joyui/react";
+import { RadioCard } from "@joyui/react";
 
 <RadioGroup defaultValue="balanced" aria-label="命名策略" className="grid gap-2">
   <RadioCard value="balanced" title="智能命名" description="优先剧集元数据" />

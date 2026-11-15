@@ -22,10 +22,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add avatar --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Avatar } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add avatar --yes`。
+
 
 ## 尺寸
 
@@ -33,7 +38,7 @@ npx @joyui/cli add avatar --yes
 
 <DemoFrame
   fileName="avatar-sizes.tsx"
-  code={`import { Avatar } from "@/components/base/avatar/avatar";
+  code={`import { Avatar } from "@joyui/react";
 
 <>
   <Avatar size="xs" color="blue" initials="AJ" />
@@ -52,7 +57,7 @@ npx @joyui/cli add avatar --yes
 
 <DemoFrame
   fileName="avatar-colors.tsx"
-  code={`import { Avatar } from "@/components/base/avatar/avatar";
+  code={`import { Avatar } from "@joyui/react";
 
 <>
   <Avatar color="neutral" initials="N" />
@@ -71,7 +76,7 @@ npx @joyui/cli add avatar --yes
 
 <DemoFrame
   fileName="avatar-row.tsx"
-  code={`import { Avatar } from "@/components/base/avatar/avatar";
+  code={`import { Avatar } from "@joyui/react";
 
 <div className="flex items-center gap-3 rounded-2xl border p-4">
   <Avatar size="lg" color="lime" initials="林" />
@@ -96,8 +101,14 @@ npx @joyui/cli add avatar --yes
 <ComponentDocPreview slug="avatar-group" />
 
 ```bash
-npx @joyui/cli add avatar-group --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { Avatar } from "@joyui/react";
+```
+
+主题 CSS 已内置：`@import "@joyui/react/styles.css"`。可选：`npx @joyui/cli add avatar-group --yes`。
 
 ### API
 

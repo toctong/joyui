@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add tooltip --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { Tooltip, TooltipTrigger } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add tooltip --yes`。
+
 
 ## 尺寸与箭头
 
@@ -29,8 +34,8 @@ npx @joyui/cli add tooltip --yes
 
 <DemoFrame
   fileName="tooltip-sizes.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+  code={`import { Button } from "@joyui/react";
+import { Tooltip, TooltipTrigger } from "@joyui/react";
 
 <>
   <TooltipTrigger delay={0}>
@@ -53,8 +58,8 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
 
 <DemoFrame
   fileName="tooltip-placement.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+  code={`import { Button } from "@joyui/react";
+import { Tooltip, TooltipTrigger } from "@joyui/react";
 
 <TooltipTrigger delay={0}>
   <Button variant="ghost" size="small">上方</Button>
@@ -71,8 +76,8 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
 
 <DemoFrame
   fileName="tooltip-toolbar.tsx"
-  code={`import { Button } from "@/components/base/buttons/button";
-import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
+  code={`import { Button } from "@joyui/react";
+import { Tooltip, TooltipTrigger } from "@joyui/react";
 
 <>
   <TooltipTrigger delay={0}>

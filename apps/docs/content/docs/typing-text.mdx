@@ -15,8 +15,14 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add typing-text --yes
+pnpm add @joyui/react
 ```
+
+```tsx
+import { TypingText } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add typing-text --yes`。
 
 ## 循环与光标
 
@@ -24,7 +30,7 @@ npx @joyui/cli add typing-text --yes
 
 <DemoFrame
   fileName="typing-text-loop.tsx"
-  code={`import { TypingText } from "@/components/base/typing-text/typing-text";
+  code={`import { TypingText } from "@joyui/react";
 
 <>
   <TypingText text="正在连接模型…" speed={36} caret />

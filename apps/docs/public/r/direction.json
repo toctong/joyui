@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "type": "registry:ui",
+  "title": "Direction",
+  "description": "Direction component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/direction/direction.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport type { HTMLAttributes, ReactNode } from \"react\";\nimport { I18nProvider, useLocale } from \"react-aria-components\";\nimport { cx } from \"@/lib/utils\";\n\nexport type Direction = \"ltr\" | \"rtl\";\n\nexport interface DirectionProviderProps extends Omit<HTMLAttributes<HTMLDivElement>, \"dir\" | \"lang\" | \"children\"> {\n  /** BCP 47 language tag. Arabic and Hebrew resolve to RTL; Chinese to LTR. */\n  locale: string;\n  children: ReactNode;\n}\n\n/** Keeps CSS direction, React Aria keyboard behavior and portalled menus in sync.\n * Use at the app root, or nest providers for regions in another language.\n * The default display: contents boundary preserves the surrounding layout.\n */\nexport function DirectionProvider({ locale, ...props }: DirectionProviderProps) {\n  return (\n    <I18nProvider locale={locale}>\n      <DirectionBoundary {...props} />\n    </I18nProvider>\n  );\n}\n\nfunction DirectionBoundary({ children, className, ...props }: Omit<DirectionProviderProps, \"locale\">) {\n  const { locale, direction } = useLocale();\n  return <div {...props} lang={locale} dir={direction} className={cx(\"contents\", className)}>{children}</div>;\n}\n\n/** Also works inside a React Aria I18nProvider. */\nexport function useDirection(): Direction {\n  return useLocale().direction;\n}\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "DirectionProvider"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

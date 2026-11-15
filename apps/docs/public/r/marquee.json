@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:ui",
+  "title": "Marquee",
+  "description": "Marquee component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/marquee/marquee.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport type { CSSProperties, HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Infinite horizontal strip for logos, chips, or short testimonials —\r\n * the kind of motion strip HeroUI / beUI landings use for social proof.\r\n *\r\n *   <Marquee pauseOnHover>\r\n *     <Chip>React</Chip>\r\n *     <Chip>Tailwind</Chip>\r\n *   </Marquee>\r\n */\r\n\r\nexport interface MarqueeProps extends HTMLAttributes<HTMLDivElement> {\r\n  children?: ReactNode;\r\n  /** Seconds for one full pass of the duplicated track. */\r\n  duration?: number;\r\n  /** Reverse direction (RTL-friendly default still mirrors via CSS). */\r\n  reverse?: boolean;\r\n  /** Pause the loop while hovered. */\r\n  pauseOnHover?: boolean;\r\n  /** Fade the start/end edges. */\r\n  fade?: boolean;\r\n  /** How many times to repeat children for a seamless loop (min 2). */\r\n  repeat?: number;\r\n  ref?: Ref<HTMLDivElement>;\r\n}\r\n\r\nexport function Marquee({\r\n  children,\r\n  className,\r\n  duration = 28,\r\n  reverse = false,\r\n  pauseOnHover = true,\r\n  fade = true,\r\n  repeat = 2,\r\n  style,\r\n  ref,\r\n  ...props\r\n}: MarqueeProps) {\r\n  const copies = Math.max(2, repeat);\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      className={cx(\r\n        \"bui-marquee group relative flex w-full overflow-hidden\",\r\n        fade && \"bui-marquee-fade\",\r\n        pauseOnHover && \"bui-marquee-pause\",\r\n        className,\r\n      )}\r\n      style={\r\n        {\r\n          \"--bui-marquee-duration\": `${duration}s`,\r\n          ...style,\r\n        } as CSSProperties\r\n      }\r\n      {...props}\r\n    >\r\n      {Array.from({ length: copies }, (_, i) => (\r\n        <div\r\n          key={i}\r\n          aria-hidden={i > 0 || undefined}\r\n          className={cx(\r\n            \"bui-marquee-track flex shrink-0 items-center gap-4 pe-4\",\r\n            reverse && \"bui-marquee-reverse\",\r\n          )}\r\n        >\r\n          {children}\r\n        </div>\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Marquee"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

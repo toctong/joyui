@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline",
+  "type": "registry:ui",
+  "title": "Timeline",
+  "description": "Timeline component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/timeline/timeline.tsx",
+      "type": "registry:ui",
+      "content": "import type { HTMLAttributes, ReactNode, Ref } from \"react\";\r\nimport { cx, sortCx } from \"@/lib/utils\";\r\n\r\n/**\r\n * Vertical activity timeline for logs, audits, and transfer history.\r\n */\r\n\r\nexport type TimelineItemTone = \"neutral\" | \"success\" | \"warning\" | \"error\" | \"info\";\r\n\r\nexport interface TimelineItemProps extends Omit<HTMLAttributes<HTMLLIElement>, \"title\"> {\r\n  title: ReactNode;\r\n  description?: ReactNode;\r\n  /** Relative or absolute time label. */\r\n  time?: ReactNode;\r\n  tone?: TimelineItemTone;\r\n  /** Leading glyph; defaults to a filled dot. */\r\n  indicator?: ReactNode;\r\n  ref?: Ref<HTMLLIElement>;\r\n}\r\n\r\nexport interface TimelineProps extends HTMLAttributes<HTMLUListElement> {\r\n  children?: ReactNode;\r\n  ref?: Ref<HTMLUListElement>;\r\n}\r\n\r\nconst tones = sortCx({\r\n  neutral: \"bg-foreground-icon-quaternary\",\r\n  success: \"bg-status-lime-text\",\r\n  warning: \"bg-status-yellow-text\",\r\n  error: \"bg-status-rose-text\",\r\n  info: \"bg-status-blue-text\",\r\n});\r\n\r\nexport function Timeline({ className, ref, children, ...props }: TimelineProps) {\r\n  return (\r\n    <ul ref={ref} className={cx(\"flex flex-col\", className)} {...props}>\r\n      {children}\r\n    </ul>\r\n  );\r\n}\r\n\r\nexport function TimelineItem({\r\n  title,\r\n  description,\r\n  time,\r\n  tone = \"neutral\",\r\n  indicator,\r\n  className,\r\n  ref,\r\n  ...props\r\n}: TimelineItemProps) {\r\n  return (\r\n    <li\r\n      ref={ref}\r\n      className={cx(\r\n        \"relative flex gap-3 pb-5 last:pb-0\",\r\n        // Hide the rail on the final item (same idea as former last:before:hidden).\r\n        \"last:[&>[data-timeline-rail]]:hidden\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {/* Real rail — docs theme has no bg-border-secondary-* (transparent); separator works. */}\r\n      <span\r\n        data-timeline-rail\r\n        aria-hidden\r\n        className=\"pointer-events-none absolute start-[7px] top-5 bottom-0 w-px bg-separator-border\"\r\n      />\r\n      <div className=\"relative z-10 flex w-4 shrink-0 justify-center\">\r\n        {indicator ?? (\r\n          <span\r\n            aria-hidden\r\n            className={cx(\r\n              \"mt-1.5 size-2.5 rounded-full ring-4 ring-background-primary-default\",\r\n              tones[tone],\r\n            )}\r\n          />\r\n        )}\r\n      </div>\r\n      <div className=\"min-w-0 flex-1 pt-0.5\">\r\n        <div className=\"flex flex-wrap items-baseline justify-between gap-2\">\r\n          <div className=\"text-body-medium text-text-primary\">{title}</div>\r\n          {time ? (\r\n            <time className=\"shrink-0 text-caption-1-regular text-text-tertiary\">{time}</time>\r\n          ) : null}\r\n        </div>\r\n        {description ? (\r\n          <div className=\"mt-0.5 text-body-regular text-text-tertiary\">{description}</div>\r\n        ) : null}\r\n      </div>\r\n    </li>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "Timeline",
+      "TimelineItem"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

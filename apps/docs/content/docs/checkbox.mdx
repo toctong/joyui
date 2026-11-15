@@ -17,10 +17,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add checkbox --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { CheckboxCard, CheckboxGlyph, Checkbox } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add checkbox --yes`。
+
 
 ## 状态
 
@@ -28,7 +33,7 @@ npx @joyui/cli add checkbox --yes
 
 <DemoFrame
   fileName="checkbox-states.tsx"
-  code={`import { Checkbox } from "@/components/base/checkbox/checkbox";
+  code={`import { Checkbox } from "@joyui/react";
 
 <>
   <Checkbox>未选中</Checkbox>
@@ -48,7 +53,7 @@ npx @joyui/cli add checkbox --yes
 
 <DemoFrame
   fileName="checkbox-cards.tsx"
-  code={`import { CheckboxCard } from "@/components/base/checkbox/checkbox-card";
+  code={`import { CheckboxCard } from "@joyui/react";
 
 <>
   <CheckboxCard title="包含字幕" description="下载外挂字幕文件（若有）" defaultSelected />

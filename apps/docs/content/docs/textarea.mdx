@@ -18,10 +18,15 @@ import { DemoFrame } from "@/components/demos/sandpack-preview";
 ## 安装
 
 ```bash
-npx @joyui/cli add textarea --yes
+pnpm add @joyui/react
 ```
 
-或通过 JoyUI MCP / CLI 安装。
+```tsx
+import { TextareaBase, Textarea } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add textarea --yes`。
+
 
 ## 尺寸
 
@@ -29,7 +34,7 @@ npx @joyui/cli add textarea --yes
 
 <DemoFrame
   fileName="textarea-sizes.tsx"
-  code={`import { Textarea } from "@/components/base/textarea/textarea";
+  code={`import { Textarea } from "@joyui/react";
 
 <>
   <Textarea size="medium" label="中号" placeholder="补充说明…" rows={3} />
@@ -46,7 +51,7 @@ npx @joyui/cli add textarea --yes
 
 <DemoFrame
   fileName="textarea-autoresize.tsx"
-  code={`import { Textarea } from "@/components/base/textarea/textarea";
+  code={`import { Textarea } from "@joyui/react";
 
 <Textarea
   label="反馈"
@@ -67,7 +72,7 @@ npx @joyui/cli add textarea --yes
 
 <DemoFrame
   fileName="textarea-form.tsx"
-  code={`import { Textarea } from "@/components/base/textarea/textarea";
+  code={`import { Textarea } from "@joyui/react";
 
 <Textarea
   label="问题描述"

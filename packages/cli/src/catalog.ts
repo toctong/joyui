@@ -1,39 +1,21 @@
-export type JoyComponent = {
-  name: string;
-  title: string;
-  description: string;
-  type: "compound" | "lib";
-  dependencies: string[];
-  registryDependencies: string[];
-  category?: string;
-};
+export type { JoyComponent } from "./catalog.generated.js";
+export { CATALOG } from "./catalog.generated.js";
 
-/** Built-in catalog (kept in sync with packages/ui/registry.json). */
-export const CATALOG: JoyComponent[] = [
-  {
-    name: "utils",
-    title: "Utils",
-    description: "cn/cx class merge helpers.",
-    type: "lib",
-    dependencies: ["clsx", "tailwind-merge"],
-    registryDependencies: [],
-  },
-  {
-    name: "format",
-    title: "Formatters",
-    description: "dayjs-based date helpers plus Intl formatters.",
-    type: "lib",
-    dependencies: ["dayjs"],
-    registryDependencies: [],
-  },
-];
+import { CATALOG, type JoyComponent } from "./catalog.generated.js";
 
-export function getComponent(name: string) {
-  return CATALOG.find((c) => c.name === name);
+export function getComponent(name: string): JoyComponent | undefined {
+  const key = name.trim().toLowerCase();
+  return CATALOG.find((c) => c.name === key);
 }
 
 export function resolveRegistryUrl(name: string) {
   const base =
     process.env.JOYUI_REGISTRY_URL?.replace(/\/$/, "") ?? "https://joyui.dev/r";
   return `${base}/${name}.json`;
+}
+
+export function importSnippet(item: JoyComponent) {
+  const names = item.exports.slice(0, 6).join(", ");
+  const more = item.exports.length > 6 ? ", /* … */" : "";
+  return `import { ${names}${more} } from "${item.importFrom}"`;
 }

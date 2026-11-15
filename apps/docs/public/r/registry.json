@@ -4,10 +4,3373 @@
   "homepage": "https://joyui.dev",
   "items": [
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Accordion component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/accordion/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Accordion",
+          "AccordionItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "admin-dashboard",
+      "type": "registry:ui",
+      "title": "Admin Dashboard",
+      "description": "Admin Dashboard component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/admin/admin-dashboard.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AdminDashboard"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "agent-log",
+      "type": "registry:ui",
+      "title": "Agent Log",
+      "description": "Agent Log component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/agent-log/agent-log.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ShimmerText",
+          "RowConnector",
+          "GuideBridge",
+          "WorkingRow",
+          "LogRow"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "agent-thinking",
+      "type": "registry:ui",
+      "title": "Agent Thinking",
+      "description": "Agent Thinking component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/agent-thinking/agent-thinking.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AgentThinking"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/alert/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Alert"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "announcement",
+      "type": "registry:ui",
+      "title": "Announcement",
+      "description": "Announcement component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/announcement/announcement.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Announcement"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Aspect Ratio component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/aspect-ratio/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AspectRatio"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "auth-card",
+      "type": "registry:ui",
+      "title": "Auth Card",
+      "description": "Auth Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/auth/auth-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/auth/auth-media-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AuthCard",
+          "AuthMediaCarousel"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/avatar/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Avatar"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "Avatar Group component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/avatar-group/avatar-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AvatarGroup"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/badges/badge.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/badges/chip.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/badges/status-dot.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Badge",
+          "Chip",
+          "StatusDot"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "barcode",
+      "type": "registry:ui",
+      "title": "Barcode",
+      "description": "Barcode component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/barcode/barcode.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Barcode"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "Border Beam component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/border-beam/border-beam.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "BorderBeam"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "brand",
+      "type": "registry:ui",
+      "title": "Brand",
+      "description": "Brand component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/brand/logo.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Logo",
+          "ProLogo",
+          "NavBrand"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Breadcrumb component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/breadcrumb/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Breadcrumb",
+          "BreadcrumbItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/buttons/button-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/buttons/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/buttons/close-button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/buttons/icon-button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/buttons/link-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ButtonGroup",
+          "ButtonGroupItem",
+          "Button",
+          "ButtonLink",
+          "CloseButton",
+          "IconButton",
+          "IconLinkButton",
+          "LinkButton"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/card/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Card"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Carousel component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/carousel/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CarouselItem",
+          "Carousel"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "carousel-coverflow",
+      "type": "registry:ui",
+      "title": "Carousel Coverflow",
+      "description": "Carousel Coverflow component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/carousel-coverflow/carousel-coverflow.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CarouselCoverflow"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "carousel-fade",
+      "type": "registry:ui",
+      "title": "Carousel Fade",
+      "description": "Carousel Fade component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/carousel-fade/carousel-fade.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CarouselFade"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "carousel-stacked",
+      "type": "registry:ui",
+      "title": "Carousel Stacked",
+      "description": "Carousel Stacked component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/carousel-stacked/carousel-stacked.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CarouselStacked"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "carousel-thumbs",
+      "type": "registry:ui",
+      "title": "Carousel Thumbs",
+      "description": "Carousel Thumbs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/carousel-thumbs/carousel-thumbs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CarouselThumbs"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/checkbox/checkbox-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/checkbox/checkbox-glyph.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/checkbox/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CheckboxCard",
+          "CheckboxGlyph",
+          "Checkbox"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "citation",
+      "type": "registry:ui",
+      "title": "Citation",
+      "description": "Citation component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/citation/citation.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Citation"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Collapsible component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/collapsible/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Collapsible"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "Color Picker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/color-picker/color-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ColorPicker",
+          "ColorWell"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Combobox component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/combobox/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ComboBox",
+          "ComboBoxItem",
+          "ComboBoxSection"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:ui",
+      "title": "Command Palette",
+      "description": "Command Palette component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/command-palette/command-palette.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CommandPalette",
+          "CommandPaletteItem",
+          "CommandPaletteSection"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "composer",
+      "type": "registry:ui",
+      "title": "Composer",
+      "description": "TipTap-backed composer surfaces. Import from @joyui/react/composer. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/composer/composer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer/effort-slider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer-loader/composer-loader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer-panel/composer-attachment-strip.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer-panel/composer-attachments.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer-panel/composer-panel.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer-panel/composer-rich-input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/composer-panel/provider-icons.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react/composer",
+        "exports": [
+          "ComposerLoader",
+          "ComposerAttachmentStrip",
+          "ComposerWithAttachments",
+          "ComposerPanel",
+          "ComposerRichInput",
+          "ProviderIcon",
+          "Composer",
+          "EffortSlider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Context Menu component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/context-menu/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ContextMenuTrigger",
+          "ContextMenu",
+          "ContextMenuItem",
+          "ContextMenuSubmenu",
+          "ContextMenuSection",
+          "ContextMenuSeparator"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "context-meter",
+      "type": "registry:ui",
+      "title": "Context Meter",
+      "description": "Context Meter component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/context-meter/context-meter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ContextMeter"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "Copy Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/copy-button/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CopyButton"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "copy-field",
+      "type": "registry:ui",
+      "title": "Copy Field",
+      "description": "Copy Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/copy-field/copy-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "CopyField"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "dashboard",
+      "type": "registry:ui",
+      "title": "Dashboard",
+      "description": "Dashboard component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/dashboard/activity-rings-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/area-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/bar-list-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/combo-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/contributions-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/dashboard-sidebar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/dashboard-team-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/dashboard-user-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/earnings-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/funnel-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/heatmap-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/line-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/most-active-days-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/orders-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/radar-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/radial-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/revenue-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/sankey-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/scatter-chart-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/sleep-score-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/stage-bars-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/stat-cards.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dashboard/steps-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ActivityRingsCard",
+          "AreaChartCard",
+          "BarListCard",
+          "ComboChartCard",
+          "ContributionsCard",
+          "DashboardSidebar",
+          "DashboardTeamMenu",
+          "AccountMenuContent",
+          "DashboardUserMenu",
+          "EarningsChartCard",
+          "FunnelChartCard",
+          "HeatmapChartCard",
+          "LineChartCard",
+          "MostActiveDaysCard",
+          "OrdersChartCard",
+          "RadarChartCard",
+          "RadialChartCard",
+          "RevenueChartCard",
+          "SankeyChartCard",
+          "ScatterChartCard",
+          "SleepScoreCard",
+          "StageBarsCard",
+          "StatCards",
+          "StepsCard"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "data-grid",
+      "type": "registry:ui",
+      "title": "Data Grid",
+      "description": "Data Grid component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/data-grid/data-grid-utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/data-grid/data-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DataGrid"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Data Table component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/data-table/data-table-view.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/data-table/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DataTable",
+          "DataTableExample"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Date Picker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/date-picker/date-calendar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/date-picker/date-picker.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/date-picker/date-range-picker.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/date-picker/meeting-scheduler.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/date-picker/shared.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DateCalendar",
+          "DateRangeCalendar",
+          "DatePicker",
+          "DateRangePicker",
+          "MeetingScheduler",
+          "ChevronLeft16",
+          "ChevronRight16",
+          "DayCell",
+          "MonthPanel",
+          "DateChipInput"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "description-list",
+      "type": "registry:ui",
+      "title": "Description List",
+      "description": "Description List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/description-list/description-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DescriptionList",
+          "DescriptionTerm",
+          "DescriptionDetails",
+          "DescriptionItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "Direction component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/direction/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DirectionProvider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "title": "Divider",
+      "description": "Divider component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/divider/divider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Divider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "dot-loader",
+      "type": "registry:ui",
+      "title": "Dot Loader",
+      "description": "Dot Loader component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/dot-loader/dot-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DotLoader"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Drawer component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/drawer/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Drawer",
+          "DrawerBody",
+          "DrawerFooter",
+          "DrawerHeader",
+          "DrawerTrigger"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "drawer-form",
+      "type": "registry:ui",
+      "title": "Drawer Form",
+      "description": "Drawer Form component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/drawer-form/drawer-form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "DrawerForm",
+          "DrawerFormTrigger"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "title": "Dropdown",
+      "description": "Dropdown component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/dropdown/dropdown.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/dropdown/menu-styles.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Dropdown",
+          "DropdownTrigger",
+          "DropdownPopover",
+          "DropdownGroup",
+          "DropdownItem",
+          "DropdownDivider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "description": "Empty State component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/empty-state/empty-state.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "EmptyState"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "empty-state-illustrated",
+      "type": "registry:ui",
+      "title": "Empty State Illustrated",
+      "description": "Empty State Illustrated component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/empty-state-illustrated/empty-state-illustrated.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "EmptyStateIllustrated"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "empty-state-search",
+      "type": "registry:ui",
+      "title": "Empty State Search",
+      "description": "Empty State Search component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/empty-state-search/empty-state-search.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "EmptyStateSearch"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "File Upload",
+      "description": "File Upload component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/file-upload/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "FileUpload"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "file-upload-gallery",
+      "type": "registry:ui",
+      "title": "File Upload Gallery",
+      "description": "File Upload Gallery component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/file-upload-gallery/file-upload-gallery.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "FileUploadGallery"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "form-field",
+      "type": "registry:ui",
+      "title": "Form Field",
+      "description": "Form Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/form-field/form-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "FormField"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "format",
+      "type": "registry:lib",
+      "title": "Formatters",
+      "description": "dayjs-based date helpers plus Intl formatters. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "dayjs"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "lib/format.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "dayjs",
+          "toDayjs",
+          "formatDate",
+          "fromNow",
+          "toNativeDate",
+          "formatNumber",
+          "formatPercent",
+          "formatCurrency",
+          "formatCompact",
+          "formatBytes"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Hover Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/hover-card/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "HoverCard"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "hover-card-profile",
+      "type": "registry:ui",
+      "title": "Hover Card Profile",
+      "description": "Hover Card Profile component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/hover-card-profile/hover-card-profile.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "HoverCardProfile"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "i18n",
+      "type": "registry:ui",
+      "title": "I18n",
+      "description": "I18n component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/i18n/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/i18n/joy-ui-provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/i18n/messages.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "JoyUIProvider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "icons",
+      "type": "registry:ui",
+      "title": "Icons",
+      "description": "Icons component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/icons/chevrons.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ChevronDownSmall",
+          "ChevronRightSmall",
+          "ChevronUpDownSmall",
+          "ChevronSortDown"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "inline-edit",
+      "type": "registry:ui",
+      "title": "Inline Edit",
+      "description": "Inline Edit component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/inline-edit/inline-edit.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "InlineEdit"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/input/hint-text.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/input/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/input/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "HintText",
+          "TextField",
+          "InputBase",
+          "Input",
+          "TextFieldContext",
+          "Label"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Input Otp component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/input-otp/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "InputOtp"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Kbd component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/kbd/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Kbd"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "title": "List",
+      "description": "List component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/list/list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "List",
+          "ListItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:ui",
+      "title": "Magnetic",
+      "description": "Magnetic component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/magnetic/magnetic.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Magnetic"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "Marquee component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/marquee/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Marquee"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "marquee-3d",
+      "type": "registry:ui",
+      "title": "Marquee 3d",
+      "description": "Marquee 3d component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/marquee-3d/marquee-3d.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Marquee3d"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "marquee-paired",
+      "type": "registry:ui",
+      "title": "Marquee Paired",
+      "description": "Marquee Paired component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/marquee-paired/marquee-paired.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "MarqueePaired"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "marquee-vertical",
+      "type": "registry:ui",
+      "title": "Marquee Vertical",
+      "description": "Marquee Vertical component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/marquee-vertical/marquee-vertical.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "MarqueeVertical"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "media-card",
+      "type": "registry:ui",
+      "title": "Media Card",
+      "description": "Media Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/media-card/media-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "MediaCard"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "media-card-hover",
+      "type": "registry:ui",
+      "title": "Media Card Hover",
+      "description": "Media Card Hover component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/media-card-hover/media-card-hover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "MediaCardHover"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "media-card-landscape",
+      "type": "registry:ui",
+      "title": "Media Card Landscape",
+      "description": "Media Card Landscape component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/media-card-landscape/media-card-landscape.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "MediaCardLandscape"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "medical",
+      "type": "registry:ui",
+      "title": "Medical",
+      "description": "Medical component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/medical/important-alerts-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/medical/patient-info-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/medical/week-range-pill.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ImportantAlertsCard",
+          "PatientInfoCard",
+          "WeekRangePill"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "Meter component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/meter/meter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Meter"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "title": "Modal",
+      "description": "Modal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/modal/modal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ModalTrigger",
+          "Modal",
+          "ModalDialog",
+          "ModalHeader",
+          "ModalBody",
+          "ModalFooter",
+          "AlertDialog"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "modal-sheet",
+      "type": "registry:ui",
+      "title": "Modal Sheet",
+      "description": "Modal Sheet component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/modal-sheet/modal-sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ModalSheet",
+          "ModalSheetBody",
+          "ModalSheetFooter",
+          "ModalSheetHeader",
+          "ModalSheetTrigger"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "model-select",
+      "type": "registry:ui",
+      "title": "Model Select",
+      "description": "Model Select component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/model-select/model-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ModelSelect"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "notification",
+      "type": "registry:ui",
+      "title": "Notification",
+      "description": "Notification component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/notification/notification.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Notification",
+          "NotificationViewport"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "notification-bell",
+      "type": "registry:ui",
+      "title": "Notification Bell",
+      "description": "Notification Bell component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/app-shell/notification-bell.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/app-shell/starter-notifications.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "NotificationBell"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "notification-center",
+      "type": "registry:ui",
+      "title": "Notification Center",
+      "description": "Notification Center component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/notification-center/notification-center-demo.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/notification-center/notification-center.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "NotificationCenterDemo",
+          "NotificationCenter"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "Number Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/number-field/number-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "NumberField"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "title": "Number Ticker",
+      "description": "Number Ticker component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/number-ticker/number-ticker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "NumberTicker"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "page-header",
+      "type": "registry:ui",
+      "title": "Page Header",
+      "description": "Page Header component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/page-header/page-header.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "PageHeader"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/pagination/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Pagination"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "password-strength",
+      "type": "registry:ui",
+      "title": "Password Strength",
+      "description": "Password Strength component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/password-strength/password-strength.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "PasswordStrength"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/popover/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "PopoverTrigger",
+          "Popover",
+          "PopoverHeader",
+          "PopoverFooter"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/progress/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ProgressTrack",
+          "ProgressBar",
+          "ProgressCircle"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "prompt-suggestions",
+      "type": "registry:ui",
+      "title": "Prompt Suggestions",
+      "description": "Prompt Suggestions component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/prompt-suggestions/prompt-suggestions.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "PromptSuggestions"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "qr-code",
+      "type": "registry:ui",
+      "title": "Qr Code",
+      "description": "Qr Code component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/qr-code/qr-code.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "QrCode"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "title": "Radio",
+      "description": "Radio component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/radio/radio-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/radio/radio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "RadioCard",
+          "RadioDot",
+          "RadioGroup",
+          "Radio"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "title": "Rating",
+      "description": "Rating component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/rating/rating.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Rating"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "rating-emoji",
+      "type": "registry:ui",
+      "title": "Rating Emoji",
+      "description": "Rating Emoji component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/rating-emoji/rating-emoji.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "RatingEmoji"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "relative-time",
+      "type": "registry:ui",
+      "title": "Relative Time",
+      "description": "Relative Time component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/relative-time/relative-time.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "RelativeTime"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "reveal",
+      "type": "registry:ui",
+      "title": "Reveal",
+      "description": "Reveal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/reveal/reveal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Reveal"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "reveal-stagger",
+      "type": "registry:ui",
+      "title": "Reveal Stagger",
+      "description": "Reveal Stagger component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/reveal-stagger/reveal-stagger.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "RevealStagger"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "ripple",
+      "type": "registry:ui",
+      "title": "Ripple",
+      "description": "Ripple component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/ripple/ripple.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Ripple"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "scroll-fade",
+      "type": "registry:ui",
+      "title": "Scroll Fade",
+      "description": "Scroll Fade component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/scroll-fade/scroll-fade.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ScrollFade"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "Scroll Progress component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/scroll-progress/scroll-progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ScrollProgress"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "search-field",
+      "type": "registry:ui",
+      "title": "Search Field",
+      "description": "Search Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/search-field/search-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SearchField"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "section-header",
+      "type": "registry:ui",
+      "title": "Section Header",
+      "description": "Section Header component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/section-header/section-header.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SectionHeader"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control",
+      "description": "Segmented Control component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/segmented-control/segmented-control.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SegmentedControl",
+          "SegmentedControlItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/select/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Select",
+          "SelectItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "settings-modal",
+      "type": "registry:ui",
+      "title": "Settings Modal",
+      "description": "Settings Modal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/settings/plan-art-flame.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/settings/settings-general.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/settings/settings-modal.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/settings/settings-profile.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/settings/settings-rows.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/settings/settings-storage.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/settings/settings-tools.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "PlanArtFlame",
+          "SettingsGeneral",
+          "SettingsModal",
+          "SettingsProfile",
+          "SettingsCard",
+          "SettingsSectionLabel",
+          "SettingsRow",
+          "SettingsValueField",
+          "SettingsStorage",
+          "SettingsTools"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Skeleton component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/skeleton/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Skeleton",
+          "SkeletonText"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "slide-to-confirm",
+      "type": "registry:ui",
+      "title": "Slide To Confirm",
+      "description": "Slide To Confirm component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/slide-to-confirm/slide-to-confirm.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SlideToConfirm"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/slider/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Slider",
+          "RangeSlider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "social-button",
+      "type": "registry:ui",
+      "title": "Social Button",
+      "description": "Social Button component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/social-button/social-button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/social-button/social-color-logos.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/social-button/social-providers.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SocialButton",
+          "SOCIAL_PROVIDERS"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Spinner component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/spinner/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SpinnerGlyph",
+          "Spinner"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "title": "Spotlight Card",
+      "description": "Spotlight Card component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/spotlight-card/spotlight-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SpotlightCard"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "spotlight-card-border",
+      "type": "registry:ui",
+      "title": "Spotlight Card Border",
+      "description": "Spotlight Card Border component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/spotlight-card-border/spotlight-card-border.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SpotlightCardBorder"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "spotlight-card-tilt",
+      "type": "registry:ui",
+      "title": "Spotlight Card Tilt",
+      "description": "Spotlight Card Tilt component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/spotlight-card-tilt/spotlight-card-tilt.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SpotlightCardTilt"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "steps",
+      "type": "registry:ui",
+      "title": "Steps",
+      "description": "Steps component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/steps/steps.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Steps"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "steps-wizard",
+      "type": "registry:ui",
+      "title": "Steps Wizard",
+      "description": "Steps Wizard component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/steps-wizard/steps-wizard.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "StepsWizard"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Switch component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/switch/switch-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/switch/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "SwitchCard",
+          "SwitchTrack",
+          "Switch"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Table component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/table/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Table",
+          "TableHeader",
+          "TableColumn",
+          "TableBody",
+          "TableRow",
+          "TableCell"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/tabs/pill-tab.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tabs/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "PillTabList",
+          "PillTab",
+          "Tabs",
+          "TabList",
+          "Tab",
+          "TabPanel"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tag-group",
+      "type": "registry:ui",
+      "title": "Tag Group",
+      "description": "Tag Group component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/tag-group/tag-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TagGroup",
+          "Tag"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "title": "Tag Input",
+      "description": "Tag Input component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/tag-input/tag-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TagInput"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "template-copy",
+      "type": "registry:ui",
+      "title": "Template Copy",
+      "description": "Template Copy component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/template-copy/template-copy.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TemplateMenuProvider",
+          "TemplateCopyProvider"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "text-link",
+      "type": "registry:ui",
+      "title": "Text Link",
+      "description": "Text Link component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/text-link/text-link.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TextLink"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "text-shimmer",
+      "type": "registry:ui",
+      "title": "Text Shimmer",
+      "description": "Text Shimmer component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/text-shimmer/text-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TextShimmer"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Textarea component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/textarea/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TextareaBase",
+          "Textarea"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "theme-toggle",
+      "type": "registry:ui",
+      "title": "Theme Toggle",
+      "description": "Theme Toggle component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/theme/theme-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ThemeToggle"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "thinking-orbs",
+      "type": "registry:ui",
+      "title": "Thinking Orbs",
+      "description": "Thinking Orbs component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/thinking-orbs/thinking-orbs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "ThinkingOrbs"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "time-field",
+      "type": "registry:ui",
+      "title": "Time Field",
+      "description": "Time Field component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/time-field/time-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TimeField"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "Timeline component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/timeline/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Timeline",
+          "TimelineItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "timeline-horizontal",
+      "type": "registry:ui",
+      "title": "Timeline Horizontal",
+      "description": "Timeline Horizontal component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/timeline-horizontal/timeline-horizontal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TimelineHorizontal",
+          "TimelineHorizontalItem"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toast component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/toast/toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Toaster"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/tooltip/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Tooltip",
+          "TooltipTrigger"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tree-view",
+      "type": "registry:ui",
+      "title": "Tree View",
+      "description": "Tree View component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/tree-view/tree-view.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TreeView",
+          "TreeViewItem",
+          "TreeViewCollection"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "tree-view-files",
+      "type": "registry:ui",
+      "title": "Tree View Files",
+      "description": "Tree View Files component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/tree-view-files/tree-view-files.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TreeViewFiles",
+          "TreeViewFilesFolder",
+          "TreeViewFilesFile"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "typing-text",
+      "type": "registry:ui",
+      "title": "Typing Text",
+      "description": "Typing Text component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/typing-text/typing-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "TypingText"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
-      "description": "cn/cx class merge helpers.",
+      "description": "cn/cx class merge helpers. Prefer npm: pnpm add @joyui/react",
       "dependencies": [
         "clsx",
         "tailwind-merge"
@@ -18,23 +3381,63 @@
           "path": "lib/utils.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "cn",
+          "cx"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
     },
     {
-      "name": "format",
-      "type": "registry:lib",
-      "title": "Formatters",
-      "description": "dayjs-based date helpers plus Intl formatters.",
-      "dependencies": [
-        "dayjs"
-      ],
+      "name": "voice-ring",
+      "type": "registry:ui",
+      "title": "Voice Ring",
+      "description": "Voice Ring component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "path": "lib/format.ts",
-          "type": "registry:lib"
+          "path": "components/ui/voice-ring/voice-ring.tsx",
+          "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "VoiceRing"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "web-search",
+      "type": "registry:ui",
+      "title": "Web Search",
+      "description": "Web Search component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/ui/web-search/web-search.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "WebSearch"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
     }
   ]
 }
