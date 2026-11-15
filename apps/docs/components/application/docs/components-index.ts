@@ -80,18 +80,34 @@ const components: Entry[] = [
   { name: "Tooltip", href: "/components/tooltip", description: "Positioned hints on hover and focus.", tier: "free", status: "shipped" },
 ];
 
-const blocks: Entry[] = [
+const ai: Entry[] = [
   { name: "Composer", href: "/docs/composer", description: "AI input: capsule, attachments, loader, and panel.", tier: "pro", status: "shipped", isNew: true },
+  { name: "Agent Thinking", href: "/docs/agent-thinking", description: "Thinking indicator above the composer.", tier: "free", status: "shipped", isNew: true },
+  { name: "Agent Log", href: "/docs/agent-log", description: "Streaming transcript primitives for agent rows.", tier: "free", status: "shipped", isNew: true },
+  { name: "Thinking Orbs", href: "/docs/thinking-orbs", description: "Brand orbs while the model thinks.", tier: "free", status: "shipped", isNew: true },
+  { name: "Web Search", href: "/docs/web-search", description: "Research trail with the sources an agent opened.", tier: "pro", status: "shipped", isNew: true },
+  { name: "Task List", href: "/docs/task-list", description: "Streaming agent log that reveals step by step.", tier: "pro", status: "shipped", isNew: true },
+  { name: "Prompt Suggestions", href: "/docs/prompt-suggestions", description: "Suggested prompts under an empty composer.", tier: "free", status: "shipped" },
+  { name: "Citation", href: "/docs/citation", description: "Inline source chips for grounded answers.", tier: "free", status: "shipped" },
+  { name: "Context Meter", href: "/docs/context-meter", description: "Segmented context-window usage bar.", tier: "free", status: "shipped", isNew: true },
+  { name: "Model Select", href: "/docs/model-select", description: "Pick a chat model from a compact menu.", tier: "free", status: "shipped" },
+  { name: "Voice Ring", href: "/docs/voice-ring", description: "Listening / speaking ring for voice mode.", tier: "free", status: "shipped" },
+  { name: "Typing Text", href: "/docs/typing-text", description: "Typewriter effect for streaming copy.", tier: "free", status: "shipped" },
+  { name: "Text Shimmer", href: "/docs/text-shimmer", description: "Sweeping highlight for loading labels.", tier: "free", status: "shipped" },
+  { name: "Questionnaire", href: "/docs/questionnaire", description: "Plan-mode questions, one step at a time.", tier: "pro", status: "shipped", isNew: true },
+];
+
+const blocks: Entry[] = [
   { name: "Auth Card", href: "/components/auth-card", description: "Sign-in and sign-up blocks with social login.", tier: "free", status: "shipped", isNew: true },
-  { name: "Web Search", href: "/components/web-search", description: "Research trail with the sources an agent opened.", tier: "pro", status: "shipped", isNew: true },
-  { name: "Task List", href: "/components/task-list", description: "Streaming agent log that reveals step by step.", tier: "pro", status: "shipped", isNew: true },
-  { name: "Questionnaire", href: "/components/questionnaire", description: "Plan-mode questions, one step at a time.", tier: "pro", status: "shipped", isNew: true },
   { name: "Calendar", href: "/components/calendar", description: "Full month view with event pills.", tier: "pro", status: "shipped" },
   { name: "Data Grid", href: "/components/data-grid", description: "Editable spreadsheet with selection, filters, and live summaries.", tier: "free", status: "shipped", isNew: true },
   { name: "Data Table", href: "/components/data-table", description: "Filters, selection, and pagination wired up.", tier: "free", status: "shipped" },
+  { name: "Medical", href: "/docs/medical", description: "Patient profile, week range, and alert cards.", tier: "free", status: "shipped", isNew: true },
+  { name: "Notification Bell", href: "/docs/notification-bell", description: "Header bell with unread badge and center popover.", tier: "free", status: "shipped", isNew: true },
   { name: "Settings Modal", href: "/components/settings-modal", description: "Multi-page settings in a controlled dialog.", tier: "free", status: "shipped" },
   { name: "Sidebar", href: "/components/sidebar", description: "Floating app navigation with teams menu.", tier: "free", status: "shipped" },
   { name: "Stat Cards", href: "/components/stat-cards", description: "KPI cards with delta chips or a footer band.", tier: "free", status: "shipped", isNew: true },
+  { name: "Theme Toggle", href: "/docs/theme-toggle", description: "Light / dark switch for the shell.", tier: "free", status: "shipped" },
 ];
 
 const charts: Entry[] = [
@@ -133,6 +149,7 @@ const templates: Entry[] = [
 export const COMPONENT_SECTIONS: { title: string; blurb: string; entries: Entry[]; wide?: boolean }[] = [
   { title: "Foundations", blurb: "The tokens everything else is built on.", entries: foundations },
   { title: "Base", blurb: "The everyday building blocks.", entries: components },
+  { title: "AI", blurb: "Composer, thinking states, and agent trails.", entries: ai },
   { title: "Blocks", blurb: "Larger assemblies, ready to drop in.", entries: blocks },
   { title: "Charts", blurb: "Data cards for dashboards.", entries: charts },
   { title: "Templates", blurb: "Complete screens, wired together.", entries: templates, wide: true },

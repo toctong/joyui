@@ -21,6 +21,7 @@ import { cx } from "@/utils/cx";
 
 const SECTION_KEY = {
   base: "Base",
+  ai: "AI",
   compounds: "Blocks",
   charts: "Charts",
   templates: "Templates",
