@@ -36,15 +36,22 @@ function Frame({
   label,
   children,
   className,
+  tall = true,
 }: {
   label: string;
   children: ReactNode;
   className?: string;
+  tall?: boolean;
 }) {
   return (
     <div className={cx("flex flex-col gap-2", className)}>
       <p className="text-caption-1-medium text-text-tertiary">{label}</p>
-      <div className="h-[420px] overflow-hidden rounded-2xl border border-separator-border bg-background-full p-3">
+      <div
+        className={cx(
+          "overflow-hidden rounded-2xl border border-separator-border bg-background-full p-3",
+          tall ? "h-[420px]" : "min-h-0",
+        )}
+      >
         {children}
       </div>
     </div>
@@ -192,6 +199,85 @@ export function DocsSidebarVariantsPreview() {
             <SidebarItem icon={RiSettings4Line} label="设置" />
           </SidebarFooter>
         </Sidebar>
+      </Frame>
+    </div>
+  );
+}
+
+/** Top navigation bar morphologies. */
+export function DocsSidebarHorizontalPreview() {
+  const [selected, setSelected] = useState("home");
+  return (
+    <div className="flex w-full flex-col gap-4">
+      <Frame label="horizontal · 顶栏导航" tall={false}>
+        <div className="overflow-hidden rounded-xl border border-separator-border bg-background-full">
+          <Sidebar variant="horizontal">
+            <SidebarHeader>
+              <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+            </SidebarHeader>
+            <SidebarContent>
+              <SidebarNav
+                items={PRIMARY}
+                selected={selected}
+                onSelect={setSelected}
+              />
+            </SidebarContent>
+            <SidebarFooter>
+              <SidebarItem icon={RiSettings4Line} label="设置" />
+              <Avatar size="sm" initials="LX" color="blue" />
+            </SidebarFooter>
+          </Sidebar>
+          <div className="flex h-40 items-center justify-center text-body-regular text-text-tertiary">
+            主内容区
+          </div>
+        </div>
+      </Frame>
+
+      <Frame label="horizontal · 分组顶栏" tall={false}>
+        <div className="overflow-hidden rounded-xl border border-separator-border bg-background-full">
+          <Sidebar variant="horizontal">
+            <SidebarHeader>
+              <SidebarBrand icon={RiSparklingLine} label="Console" />
+            </SidebarHeader>
+            <SidebarContent>
+              <SidebarSection title="工作区">
+                <SidebarItem
+                  icon={RiHomeLine}
+                  label="概览"
+                  selected={selected === "home"}
+                  onClick={() => setSelected("home")}
+                  badge={3}
+                />
+                <SidebarItem
+                  icon={RiGroupLine}
+                  label="团队"
+                  selected={selected === "team"}
+                  onClick={() => setSelected("team")}
+                />
+              </SidebarSection>
+              <SidebarSection title="洞察">
+                <SidebarItem
+                  icon={RiBarChartBoxLine}
+                  label="报表"
+                  selected={selected === "insights"}
+                  onClick={() => setSelected("insights")}
+                />
+                <SidebarItem
+                  icon={RiFileList3Line}
+                  label="文档"
+                  selected={selected === "docs"}
+                  onClick={() => setSelected("docs")}
+                />
+              </SidebarSection>
+            </SidebarContent>
+            <SidebarFooter>
+              <Avatar size="sm" initials="LX" color="blue" />
+            </SidebarFooter>
+          </Sidebar>
+          <div className="flex h-40 items-center justify-center text-body-regular text-text-tertiary">
+            主内容区
+          </div>
+        </div>
       </Frame>
     </div>
   );

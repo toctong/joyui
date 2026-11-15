@@ -1,16 +1,17 @@
 ---
 title: "侧边栏"
-description: "可组合侧栏：floating / inset / rail / grouped，以及完整仪表盘模板。"
+description: "可组合侧栏 / 顶栏：floating、inset、rail、grouped、horizontal。"
 ---
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import {
   DocsSidebarVariantsPreview,
+  DocsSidebarHorizontalPreview,
   DocsDashboardSidebarPreview,
 } from "@/components/demos/sidebar-docs";
 import { DocApiSection } from "@/components/docs-api-section";
 
 可组合侧栏壳：`Sidebar` + `SidebarHeader` / `Content` / `Footer` + `SidebarItem`。  
-另提供完整仪表盘模板 `DashboardSidebar`（搜索、主题、团队菜单）。
+支持纵向与 **horizontal 顶栏**；另提供完整仪表盘模板 `DashboardSidebar`。
 
 <ComponentDocPreview slug="sidebar" />
 
@@ -36,11 +37,32 @@ import {
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。
 
-## 形态
+## 纵向形态
 
-四种常用形态：浮动卡片、贴边、图标栏、分组导航。点击项可切换选中态；floating / grouped 可折叠。
+浮动卡片、贴边、图标栏、分组导航。点击项可切换选中态；floating / grouped 可折叠。
 
 <DocsSidebarVariantsPreview />
+
+## 横向顶栏
+
+`variant="horizontal"`：品牌在左、导航横排、操作在右。
+
+<DocsSidebarHorizontalPreview />
+
+```tsx
+<Sidebar variant="horizontal">
+  <SidebarHeader>
+    <SidebarBrand icon={RiSparklingLine} label="JoyUI" />
+  </SidebarHeader>
+  <SidebarContent>
+    <SidebarNav items={nav} selected={selected} onSelect={setSelected} />
+  </SidebarContent>
+  <SidebarFooter>
+    <SidebarItem icon={RiSettings4Line} label="设置" />
+  </SidebarFooter>
+</Sidebar>
+```
+
 
 ## 基础用法
 
@@ -90,8 +112,9 @@ export function Example() {
 | `floating` | 圆角卡片 + 阴影（默认） |
 | `inset` | 贴边，右侧分隔线 |
 | `rail` | 60px 图标栏（默认折叠） |
+| `horizontal` | 顶栏横向导航 |
 
-折叠时 floating 会收成 rail 宽度；inset 保持贴边样式只收窄。
+折叠时 floating 会收成 rail 宽度；inset 保持贴边样式只收窄。`horizontal` 忽略折叠。
 
 ## 仪表盘模板
 

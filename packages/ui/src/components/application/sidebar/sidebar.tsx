@@ -19,11 +19,16 @@ type IconComponent = ComponentType<{
   "aria-hidden"?: boolean | "true" | "false";
 }>;
 
-/** Visual shell. `rail` forces icon-only width. */
-export type SidebarVariant = "floating" | "inset" | "rail";
+/**
+ * Visual shell.
+ * - `floating` / `inset` / `rail` — vertical
+ * - `horizontal` — top navigation bar
+ */
+export type SidebarVariant = "floating" | "inset" | "rail" | "horizontal";
 
 type SidebarContextValue = {
   variant: SidebarVariant;
+  horizontal: boolean;
   collapsed: boolean;
   setCollapsed: (next: boolean) => void;
 };
@@ -39,20 +44,22 @@ function useSidebar() {
 }
 
 const shellStyles = sortCx({
-  base: "flex h-full shrink-0 flex-col overflow-hidden transition-[width] duration-300 ease-in-out",
+  base: "flex shrink-0 overflow-hidden",
   variant: {
     floating:
-      "rounded-3xl border border-border-button-white bg-background-secondary-default shadow-sidebar",
+      "h-full flex-col rounded-3xl border border-border-button-white bg-background-secondary-default shadow-sidebar transition-[width] duration-300 ease-in-out",
     inset:
-      "border-e border-separator-border bg-background-primary-default",
+      "h-full flex-col border-e border-separator-border bg-background-primary-default transition-[width] duration-300 ease-in-out",
     rail:
-      "rounded-3xl border border-border-button-white bg-background-secondary-default shadow-sidebar",
+      "h-full flex-col rounded-3xl border border-border-button-white bg-background-secondary-default shadow-sidebar transition-[width] duration-300 ease-in-out",
+    horizontal:
+      "h-14 w-full flex-row items-center gap-3 border-b border-separator-border bg-background-primary-default px-3",
   },
 });
 
 export interface SidebarProps extends HTMLAttributes<HTMLElement> {
   variant?: SidebarVariant;
-  /** Controlled collapse. Omit for uncontrolled (starts expanded unless variant is rail). */
+  /** Controlled collapse (vertical only). */
   collapsed?: boolean;
   defaultCollapsed?: boolean;
   onCollapsedChange?: (collapsed: boolean) => void;
@@ -60,15 +67,13 @@ export interface SidebarProps extends HTMLAttributes<HTMLElement> {
 }
 
 /**
- * Composable app sidebar shell.
+ * Composable app sidebar / top-nav shell.
  *
  * Variants:
- * - `floating` — rounded card with elevation (dashboard default)
+ * - `floating` — rounded card with elevation
  * - `inset` — flush edge, hairline separator
  * - `rail` — icon-only 60px column
- *
- * Compose with `SidebarHeader` / `SidebarContent` / `SidebarFooter`,
- * `SidebarSection`, and `SidebarItem`.
+ * - `horizontal` — top navigation bar
  */
 export function Sidebar({
   variant = "floating",
@@ -79,44 +84,53 @@ export function Sidebar({
   children,
   ...props
 }: SidebarProps) {
+  const horizontal = variant === "horizontal";
   const initial = defaultCollapsed ?? variant === "rail";
   const [uncontrolled, setUncontrolled] = useState(initial);
-  const collapsed = collapsedProp ?? uncontrolled;
+  const collapsed = horizontal ? false : (collapsedProp ?? uncontrolled);
   const setCollapsed = useCallback(
     (next: boolean) => {
+      if (horizontal) return;
       onCollapsedChange?.(next);
       if (collapsedProp === undefined) setUncontrolled(next);
     },
-    [collapsedProp, onCollapsedChange],
+    [collapsedProp, horizontal, onCollapsedChange],
   );
 
-  const effectiveVariant: SidebarVariant =
-    collapsed && variant !== "inset" ? "rail" : variant;
+  const effectiveVariant: SidebarVariant = horizontal
+    ? "horizontal"
+    : collapsed && variant !== "inset"
+      ? "rail"
+      : variant;
 
-  const widthClass = collapsed
-    ? "w-[60px] px-[11px] py-3"
-    : variant === "inset"
-      ? "w-[260px] px-3 py-4"
-      : "w-[260px] p-3";
+  const sizeClass = horizontal
+    ? undefined
+    : collapsed
+      ? "w-[60px] px-[11px] py-3"
+      : variant === "inset"
+        ? "w-[260px] px-3 py-4"
+        : "w-[260px] p-3";
 
   const value = useMemo<SidebarContextValue>(
     () => ({
       variant: effectiveVariant,
+      horizontal,
       collapsed,
       setCollapsed,
     }),
-    [effectiveVariant, collapsed, setCollapsed],
+    [effectiveVariant, horizontal, collapsed, setCollapsed],
   );
 
   return (
     <SidebarContext.Provider value={value}>
       <aside
         data-variant={effectiveVariant}
+        data-orientation={horizontal ? "horizontal" : "vertical"}
         data-collapsed={collapsed || undefined}
         className={cx(
           shellStyles.base,
-          shellStyles.variant[variant === "rail" ? "rail" : variant],
-          widthClass,
+          shellStyles.variant[horizontal ? "horizontal" : variant === "rail" ? "rail" : variant],
+          sizeClass,
           className,
         )}
         {...props}
@@ -132,14 +146,16 @@ export function SidebarHeader({
   children,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
-  const { collapsed } = useSidebar();
+  const { collapsed, horizontal } = useSidebar();
   return (
     <div
       className={cx(
-        "flex w-full shrink-0",
-        collapsed
-          ? "flex-col items-center gap-2"
-          : "flex-row items-center justify-between gap-2",
+        "flex shrink-0",
+        horizontal
+          ? "items-center gap-2"
+          : collapsed
+            ? "w-full flex-col items-center gap-2"
+            : "w-full flex-row items-center justify-between gap-2",
         className,
       )}
       {...props}
@@ -154,10 +170,14 @@ export function SidebarContent({
   children,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
+  const { horizontal } = useSidebar();
   return (
     <div
       className={cx(
-        "flex min-h-0 w-full flex-1 flex-col gap-3 overflow-y-auto py-3 [scrollbar-width:none]",
+        "flex min-w-0",
+        horizontal
+          ? "flex-1 flex-row items-center gap-1 overflow-x-auto [scrollbar-width:none]"
+          : "min-h-0 w-full flex-1 flex-col gap-3 overflow-y-auto py-3 [scrollbar-width:none]",
         className,
       )}
       {...props}
@@ -172,9 +192,16 @@ export function SidebarFooter({
   children,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
+  const { horizontal } = useSidebar();
   return (
     <div
-      className={cx("mt-auto flex w-full shrink-0 flex-col gap-2", className)}
+      className={cx(
+        "flex shrink-0",
+        horizontal
+          ? "ms-auto flex-row items-center gap-2"
+          : "mt-auto w-full flex-col gap-2",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -191,12 +218,13 @@ export function SidebarBrand({
   label: string;
   className?: string;
 }) {
-  const { collapsed } = useSidebar();
+  const { collapsed, horizontal } = useSidebar();
+  const showLabel = horizontal || !collapsed;
   return (
     <div
       className={cx(
         "flex min-w-0 items-center gap-2 overflow-hidden px-1",
-        collapsed && "justify-center px-0",
+        !horizontal && collapsed && "justify-center px-0",
         className,
       )}
     >
@@ -205,7 +233,7 @@ export function SidebarBrand({
           <Icon className="size-4" aria-hidden />
         </span>
       ) : null}
-      {!collapsed ? (
+      {showLabel ? (
         <span className="truncate text-title-3-medium text-text-primary">
           {label}
         </span>
@@ -219,7 +247,8 @@ export function SidebarCollapseButton({
 }: {
   className?: string;
 }) {
-  const { collapsed, setCollapsed } = useSidebar();
+  const { collapsed, setCollapsed, horizontal } = useSidebar();
+  if (horizontal) return null;
   return (
     <button
       type="button"
@@ -253,15 +282,35 @@ export function SidebarSection({
   children?: ReactNode;
   className?: string;
 }) {
-  const { collapsed } = useSidebar();
+  const { collapsed, horizontal } = useSidebar();
   return (
-    <div className={cx("flex w-full flex-col gap-1", className)}>
-      {title && !collapsed ? (
+    <div
+      className={cx(
+        "flex",
+        horizontal
+          ? "flex-row items-center gap-1"
+          : "w-full flex-col gap-1",
+        className,
+      )}
+    >
+      {title && !collapsed && !horizontal ? (
         <p className="px-2 pb-1 text-caption-1-semibold tracking-wide text-text-tertiary uppercase">
           {title}
         </p>
       ) : null}
-      <nav className="flex w-full flex-col gap-1">{children}</nav>
+      {title && horizontal ? (
+        <span className="me-1 hidden px-2 text-caption-1-semibold tracking-wide text-text-tertiary uppercase sm:inline">
+          {title}
+        </span>
+      ) : null}
+      <nav
+        className={cx(
+          "flex",
+          horizontal ? "flex-row items-center gap-1" : "w-full flex-col gap-1",
+        )}
+      >
+        {children}
+      </nav>
     </div>
   );
 }
@@ -279,11 +328,16 @@ export interface SidebarItemProps {
 function sidebarItemClass(
   collapsed: boolean,
   selected: boolean,
+  horizontal: boolean,
   className?: string,
 ) {
   return cx(
     "flex items-center overflow-hidden rounded-2lg p-2 text-start transition-[width,background-color] duration-300 ease-in-out",
-    collapsed ? "w-9 justify-center" : "w-full justify-between gap-2",
+    horizontal
+      ? "w-auto shrink-0 gap-2"
+      : collapsed
+        ? "w-9 justify-center"
+        : "w-full justify-between gap-2",
     selected
       ? "bg-linear-to-b from-accent-500 to-accent-600 shadow-nav-selected"
       : "hover:bg-background-secondary-hover",
@@ -297,19 +351,22 @@ function SidebarItemInner({
   badge,
   selected,
   collapsed,
+  horizontal,
 }: {
   icon?: IconComponent;
   label: string;
   badge?: string | number;
   selected: boolean;
   collapsed: boolean;
+  horizontal: boolean;
 }) {
+  const showLabel = horizontal || !collapsed;
   return (
     <>
       <span
         className={cx(
           "flex min-w-0 items-center",
-          collapsed ? "justify-center" : "gap-2",
+          !horizontal && collapsed ? "justify-center" : "gap-2",
         )}
       >
         {Icon ? (
@@ -321,7 +378,7 @@ function SidebarItemInner({
             aria-hidden
           />
         ) : null}
-        {!collapsed ? (
+        {showLabel ? (
           <span
             className={cx(
               "truncate text-body-medium",
@@ -332,7 +389,7 @@ function SidebarItemInner({
           </span>
         ) : null}
       </span>
-      {!collapsed && badge !== undefined ? (
+      {showLabel && badge !== undefined ? (
         <Badge color={selected ? "primary" : "neutral"}>{badge}</Badge>
       ) : null}
     </>
@@ -348,12 +405,12 @@ export function SidebarItem({
   onClick,
   className,
 }: SidebarItemProps) {
-  const { collapsed } = useSidebar();
+  const { collapsed, horizontal } = useSidebar();
   const shared = {
     "aria-current": selected ? ("page" as const) : undefined,
     "aria-label": label,
-    title: collapsed ? label : undefined,
-    className: sidebarItemClass(collapsed, selected, className),
+    title: !horizontal && collapsed ? label : undefined,
+    className: sidebarItemClass(collapsed, selected, horizontal, className),
   };
   const inner = (
     <SidebarItemInner
@@ -362,6 +419,7 @@ export function SidebarItem({
       badge={badge}
       selected={selected}
       collapsed={collapsed}
+      horizontal={horizontal}
     />
   );
 
@@ -400,8 +458,15 @@ export function SidebarNav({
   onSelect?: (key: string) => void;
   className?: string;
 }) {
+  const { horizontal } = useSidebar();
   return (
-    <nav className={cx("flex w-full flex-col gap-1", className)}>
+    <nav
+      className={cx(
+        "flex",
+        horizontal ? "flex-row items-center gap-1" : "w-full flex-col gap-1",
+        className,
+      )}
+    >
       {items.map((item) => (
         <SidebarItem
           key={item.key}
@@ -410,11 +475,7 @@ export function SidebarNav({
           href={item.href}
           badge={item.badge}
           selected={selected === item.key}
-          onClick={
-            onSelect
-              ? () => onSelect(item.key)
-              : undefined
-          }
+          onClick={onSelect ? () => onSelect(item.key) : undefined}
         />
       ))}
     </nav>
