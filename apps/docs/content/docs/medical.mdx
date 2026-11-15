@@ -1,0 +1,45 @@
+---
+title: "医疗卡片"
+description: "患者资料、周范围切换与重要告警卡片家族。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+医疗档案仪表盘积木：`PatientInfoCard`、`WeekRangePill`、`ImportantAlertsCard`。
+
+<ComponentDocPreview slug="medical" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import {
+  ImportantAlertsCard,
+  PatientInfoCard,
+  WeekRangePill,
+} from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add medical --yes`。
+
+## 组合
+
+```tsx
+<div className="grid gap-4 lg:grid-cols-[240px_1fr]">
+  <PatientInfoCard />
+  <div className="flex flex-col gap-3">
+    <WeekRangePill label="29 Jun - 5 Jul" />
+    <ImportantAlertsCard />
+  </div>
+</div>
+```
+
+演示文案经 `useTemplateCopy` 本地化；接入业务时替换卡片内数据源或 fork 源码。
+
+## API
+
+<DocApiSection slug="medical" />

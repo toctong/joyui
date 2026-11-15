@@ -65,6 +65,13 @@ const REGISTRY_NAMES = new Set([
   "orders-chart-card",
   "revenue-chart-card",
   "admin-dashboard",
+  "agent-log",
+  "agent-thinking",
+  "notification-bell",
+  "medical",
+  "brand",
+  "scroll-fade",
+  "web-search",
   "utils",
   "format",
 ]);

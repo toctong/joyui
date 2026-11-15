@@ -3131,6 +3131,42 @@
       }
     },
     {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sidebar/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "Sidebar",
+          "SidebarHeader",
+          "SidebarContent",
+          "SidebarFooter",
+          "SidebarBrand",
+          "SidebarCollapseButton",
+          "SidebarSection",
+          "SidebarItem",
+          "SidebarNav"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",

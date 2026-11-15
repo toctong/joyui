@@ -6,7 +6,7 @@ description: "侧栏导航、KPI、收入/订单图表与数据表组装的后�
 import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-用 JoyUI 现有组件拼出的后台管理页：浮动侧栏、顶栏操作、KPI 卡片、收入/订单图表与可筛选数据表。
+用 JoyUI 现有组件拼出的后台管理页：浮动侧栏、顶栏面包屑、KPI、收入/订单图表与可筛选数据表。
 
 <ComponentDocPreview slug="admin-dashboard" />
 
@@ -22,11 +22,30 @@ import { AdminDashboard } from "@joyui/react";
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add admin-dashboard --yes`。
 
-页面入口见本页「代码」选项卡中的 `AdminDashboard`。
+## 组成
 
-## 应用场景
+| 区域 | 组件 |
+|------|------|
+| 左侧导航 | `DashboardSidebar`（搜索 / 主题 / 团队） |
+| 顶栏 | `Breadcrumb` + `headerActions` 插槽 |
+| KPI | `StatCards` |
+| 图表 | `RevenueChartCard` / `OrdersChartCard` |
+| 表格 | `DataTable` |
 
-适合运营后台、CRM、订单与内容管理等控制台首页。替换导航项、面包屑与表格数据源即可接入业务。
+父容器需给出高度（预览用 `h-[720px]`）；生产里通常铺满 `AppShell` 主区。
+
+## 接入业务
+
+```tsx
+<AdminDashboard
+  selected="orders"
+  headerActions={<Button size="small">导出</Button>}
+/>
+```
+
+- 导航项：改 `AdminDashboard` 内 `ADMIN_NAV`，或 fork 后接路由。
+- 表格 / 图表：替换各卡片的演示 data。
+- 主题与通知：侧栏已内嵌 `ThemeToggle`；铃铛可用 [`NotificationBell`](/docs/notification-bell)。
 
 ## API
 

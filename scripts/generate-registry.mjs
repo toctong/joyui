@@ -24,6 +24,7 @@ const FOLDER_MAP = {
   "auth-card": ["application/auth"],
   "settings-modal": ["application/settings"],
   "notification-bell": ["application/app-shell"],
+  sidebar: ["application/sidebar"],
   "data-table": ["application/data-table"],
   "data-grid": ["application/data-grid"],
   composer: [

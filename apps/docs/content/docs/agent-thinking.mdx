@@ -1,0 +1,36 @@
+---
+title: "智能体思考"
+description: "Composer 上方的思考态：wave / spin / stars / infinity。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+Agent / Composer 等待回复时的思考指示：动效点阵 + 闪烁文案 + 可选计时。
+
+<ComponentDocPreview slug="agent-thinking" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AgentThinking } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add agent-thinking --yes`。
+
+## 用法
+
+```tsx
+<AgentThinking variant="wave" label="Thinking" showTimer />
+<AgentThinking variant="stars" label="Searching docs" tone="subtle" />
+```
+
+`prefers-reduced-motion` 下动画会降级为静态帧。
+
+## API
+
+<DocApiSection slug="agent-thinking" />

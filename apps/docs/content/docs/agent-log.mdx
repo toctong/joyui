@@ -1,0 +1,41 @@
+---
+title: "智能体日志"
+description: "流式 transcript 原语：WorkingRow / LogRow / ShimmerText。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+Task List、Web Search 等共用的流式日志底座：逐行揭示、模糊入场、树状引导线与进行中闪烁文案。
+
+<ComponentDocPreview slug="agent-log" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { LogRow, ShimmerText, WorkingRow } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add agent-log --yes`。
+
+## 用法
+
+```tsx
+<ul className="relative list-none space-y-1 ps-3">
+  <LogRow first last={false} reduce={false}>
+    已解析仓库结构
+  </LogRow>
+  <WorkingRow label="正在生成回复" reduce={false} />
+  <ShimmerText>Streaming…</ShimmerText>
+</ul>
+```
+
+`reduce` 对应该尊重 `prefers-reduced-motion`；生产中可用 `useReducedMotion()` 传入。
+
+## API
+
+<DocApiSection slug="agent-log" />

@@ -4,6 +4,9 @@
 import type { ReactElement } from "react";
 import { useRef, useState } from "react";
 import { AdminDashboard } from "@/components/application/admin/admin-dashboard";
+import { LogRow, ShimmerText, WorkingRow } from "@/components/application/agent-log/agent-log";
+import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
+import { NotificationBell } from "@/components/application/app-shell/notification-bell";
 import { AuthCard } from "@/components/application/auth/auth-card";
 import { ComposerLoader } from "@/components/application/composer-loader/composer-loader";
 import { ComposerWithAttachments } from "@/components/application/composer-panel/composer-attachments";
@@ -14,16 +17,6 @@ import { AreaChartCard } from "@/components/application/dashboard/area-chart-car
 import { BarListCard } from "@/components/application/dashboard/bar-list-card";
 import { ComboChartCard } from "@/components/application/dashboard/combo-chart-card";
 import { ContributionsCard } from "@/components/application/dashboard/contributions-card";
-import {
-  Sidebar,
-  SidebarBrand,
-  SidebarCollapseButton,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarItem,
-  SidebarNav,
-} from "@/components/application/sidebar/sidebar";
 import { EarningsChartCard } from "@/components/application/dashboard/earnings-chart-card";
 import { FunnelChartCard } from "@/components/application/dashboard/funnel-chart-card";
 import { HeatmapChartCard } from "@/components/application/dashboard/heatmap-chart-card";
@@ -41,10 +34,14 @@ import { StatCards } from "@/components/application/dashboard/stat-cards";
 import { StepsCard } from "@/components/application/dashboard/steps-card";
 import { DataTable } from "@/components/application/data-table/data-table-view";
 import { DataGridExample } from "@/components/application/docs/examples/data-grid-example";
+import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";
+import { PatientInfoCard } from "@/components/application/medical/patient-info-card";
+import { WeekRangePill } from "@/components/application/medical/week-range-pill";
 import { NotificationCenterDemo } from "@/components/application/notification-center/notification-center-demo";
 import { SettingsModal } from "@/components/application/settings/settings-modal";
+import { Sidebar, SidebarBrand, SidebarCollapseButton, SidebarContent, SidebarFooter, SidebarHeader, SidebarItem, SidebarNav } from "@/components/application/sidebar/sidebar";
 import { ThemeToggle } from "@/components/application/theme/theme-toggle";
-import { WebSearch } from "@/components/application/web-search/web-search";
+import { WebSearch, type WebSearchStep } from "@/components/application/web-search/web-search";
 import { Accordion, AccordionItem } from "@/components/base/accordion/accordion";
 import { Alert } from "@/components/base/alert/alert";
 import { Announcement } from "@/components/base/announcement/announcement";
@@ -161,14 +158,9 @@ import { TreeViewFiles, TreeViewFilesFile, TreeViewFilesFolder } from "@/compone
 import { TreeView, TreeViewItem } from "@/components/base/tree-view/tree-view";
 import { TypingText } from "@/components/base/typing-text/typing-text";
 import { VoiceRing } from "@/components/base/voice-ring/voice-ring";
-import {
-  RiAddLine,
-  RiHomeLine,
-  RiMailLine,
-  RiMicLine,
-  RiSettings4Line,
-  RiSparklingLine,
-} from "@remixicon/react";
+import { Logo, NavBrand, ProLogo } from "@/components/foundations/brand/logo";
+import { ScrollFade, useScrollFade } from "@/components/foundations/scroll-fade/scroll-fade";
+import { RiAddLine, RiHomeLine, RiMailLine, RiMicLine, RiSettings4Line, RiSparklingLine } from "@remixicon/react";
 import { parseColor } from "react-aria-components";
 
 function Preview_accordion() {
@@ -194,6 +186,33 @@ function Preview_admin_dashboard() {
   return (
     <div className="h-[720px] w-full overflow-hidden rounded-2xl border border-separator-border">
       <AdminDashboard />
+    </div>
+  );
+}
+
+function Preview_agent_log() {
+  const reduce = true;
+  return (
+    <ul className="relative w-full max-w-md list-none space-y-1 ps-3">
+      <LogRow first last={false} reduce={reduce}>
+        <span className="text-body-regular text-text-secondary">已解析仓库结构</span>
+      </LogRow>
+      <LogRow first={false} last={false} reduce={reduce}>
+        <span className="text-body-regular text-text-secondary">匹配相关组件 12 个</span>
+      </LogRow>
+      <WorkingRow label="正在生成回复" reduce={reduce} />
+      <li className="ps-0 text-body-regular text-text-tertiary">
+        <ShimmerText>Streaming…</ShimmerText>
+      </li>
+    </ul>
+  );
+}
+
+function Preview_agent_thinking() {
+  return (
+    <div className="flex w-full max-w-sm flex-col gap-4">
+      <AgentThinking variant="wave" label="Thinking" />
+      <AgentThinking variant="stars" label="Searching docs" tone="subtle" />
     </div>
   );
 }
@@ -290,6 +309,16 @@ function Preview_border_beam() {
         <p className="mt-1 text-body-regular text-text-secondary">Border light for landing / AI cards.</p>
       </Card>
     </BorderBeam>
+  );
+}
+
+function Preview_brand() {
+  return (
+    <div className="flex flex-wrap items-center gap-8">
+      <Logo size={40} />
+      <ProLogo size={40} />
+      <NavBrand />
+    </div>
   );
 }
 
@@ -1005,6 +1034,18 @@ function Preview_media_card_landscape() {
   );
 }
 
+function Preview_medical() {
+  return (
+    <div className="grid w-full max-w-3xl gap-4 lg:grid-cols-[240px_1fr]">
+      <PatientInfoCard />
+      <div className="flex flex-col gap-3">
+        <WeekRangePill label="29 Jun - 5 Jul" />
+        <ImportantAlertsCard />
+      </div>
+    </div>
+  );
+}
+
 function Preview_meter() {
   return (
     <Meter label="席位" value={19} maxValue={20} />
@@ -1075,6 +1116,14 @@ function Preview_most_active_days_card() {
 function Preview_notification() {
   return (
     <Notification status="success" title="已保存更改" />
+  );
+}
+
+function Preview_notification_bell() {
+  return (
+    <div className="flex items-center justify-center p-6">
+      <NotificationBell />
+    </div>
   );
 }
 
@@ -1276,6 +1325,22 @@ function Preview_sankey_chart_card() {
 function Preview_scatter_chart_card() {
   return (
     <ScatterChartCard />
+  );
+}
+
+function Preview_scroll_fade() {
+  const fade = useScrollFade();
+  return (
+    <div className="relative h-48 w-full max-w-md overflow-hidden rounded-2xl border border-separator-border bg-background-primary-default">
+      <div onScroll={fade.onScroll} className="h-full overflow-y-auto p-4">
+        {Array.from({ length: 16 }, (_, i) => (
+          <p key={i} className="mb-3 text-body-regular text-text-secondary">
+            滚动内容行 {i + 1} — 顶部会出现柔和模糊渐隐。
+          </p>
+        ))}
+      </div>
+      <ScrollFade progress={fade.progress} />
+    </div>
   );
 }
 
@@ -1727,10 +1792,26 @@ function Preview_voice_ring() {
   );
 }
 
+const steps: WebSearchStep[] = [
+  {
+    id: "q1",
+    kind: "query",
+    label: "搜索组件库定价",
+    resultLabel: "3 个结果",
+    sources: [
+      { id: "gh", label: "GitHub", color: "#24292F", mark: "⌘" },
+      { id: "npm", label: "npm", color: "#CB3837", mark: "n" },
+    ],
+  },
+  {
+    id: "q2",
+    kind: "read",
+    label: "阅读定价页与 README",
+  },
+];
+
 function Preview_web_search() {
-  return (
-    <WebSearch />
-  );
+  return <WebSearch steps={steps} className="w-full max-w-md" />;
 }
 
 export const GENERATED_DOC_PREVIEWS: Record<
@@ -1740,6 +1821,8 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "accordion": Preview_accordion,
   "activity-rings-card": Preview_activity_rings_card,
   "admin-dashboard": Preview_admin_dashboard,
+  "agent-log": Preview_agent_log,
+  "agent-thinking": Preview_agent_thinking,
   "alert": Preview_alert,
   "announcement": Preview_announcement,
   "area-chart-card": Preview_area_chart_card,
@@ -1751,6 +1834,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "bar-list-card": Preview_bar_list_card,
   "barcode": Preview_barcode,
   "border-beam": Preview_border_beam,
+  "brand": Preview_brand,
   "breadcrumb": Preview_breadcrumb,
   "button": Preview_button,
   "button-group": Preview_button_group,
@@ -1815,12 +1899,14 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "media-card": Preview_media_card,
   "media-card-hover": Preview_media_card_hover,
   "media-card-landscape": Preview_media_card_landscape,
+  "medical": Preview_medical,
   "meter": Preview_meter,
   "modal": Preview_modal,
   "modal-sheet": Preview_modal_sheet,
   "model-select": Preview_model_select,
   "most-active-days-card": Preview_most_active_days_card,
   "notification": Preview_notification,
+  "notification-bell": Preview_notification_bell,
   "notification-center": Preview_notification_center,
   "number-field": Preview_number_field,
   "number-ticker": Preview_number_ticker,
@@ -1844,6 +1930,7 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "ripple": Preview_ripple,
   "sankey-chart-card": Preview_sankey_chart_card,
   "scatter-chart-card": Preview_scatter_chart_card,
+  "scroll-fade": Preview_scroll_fade,
   "scroll-progress": Preview_scroll_progress,
   "search-field": Preview_search_field,
   "section-header": Preview_section_header,

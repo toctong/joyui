@@ -1,0 +1,38 @@
+---
+title: "品牌标识"
+description: "Logo / ProLogo / NavBrand：主题感知的 JoyUI 标记。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+站点与导航用的品牌资产：浅色 / 深色自动切换。
+
+<ComponentDocPreview slug="brand" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { Logo, NavBrand, ProLogo } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add brand --yes`。
+
+消费端需托管 `/brand/*` 静态资源（与 docs `public/brand` 同名），或改用自有 SVG。
+
+## 用法
+
+```tsx
+<Logo size={32} />
+<ProLogo size={36} />
+<NavBrand /> {/* mark + wordmark，适合导航标题 */}
+```
+
+`Logo` 默认 `mono`（黑白主题对）；`mono={false}` 使用固定浅色资产。
+
+## API
+
+<DocApiSection slug="brand" />

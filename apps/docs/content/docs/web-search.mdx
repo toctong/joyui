@@ -2,10 +2,10 @@
 title: "网页搜索"
 description: "展示智能体执行的搜索与访问来源。"
 ---
-import { ComponentDocPreview, ProComponentDoc } from "@/components/demos/component-doc-preview";
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
 import { DocApiSection } from "@/components/docs-api-section";
 
-展示智能体执行的搜索与访问来源。
+流式展示智能体搜索步骤：查询行、来源徽章、阅读进度；基于 `agent-log` 原语。
 
 <ComponentDocPreview slug="web-search" />
 
@@ -21,15 +21,30 @@ import { WebSearch } from "@joyui/react";
 
 主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add web-search --yes`。
 
+## 自定义步骤
 
+```tsx
+import { WebSearch, type WebSearchStep } from "@joyui/react";
 
-## 应用场景
+const steps: WebSearchStep[] = [
+  {
+    id: "q1",
+    kind: "query",
+    label: "搜索组件库定价",
+    resultLabel: "3 个结果",
+    sources: [
+      { id: "gh", label: "GitHub", color: "#24292F", mark: "⌘" },
+      { id: "npm", label: "npm", color: "#CB3837", mark: "n" },
+    ],
+  },
+  { id: "q2", kind: "read", label: "阅读定价页与 README" },
+];
 
-组合块可直接嵌入应用壳：通过 props / data 接入业务状态，勿写死文案。
+<WebSearch steps={steps} />
+```
 
-上方预览中的文案、选项与数据均可替换为业务配置；不要复制写死的演示常量到生产。
+`kind`：`query`（灯泡 + 来源）、`x` / `reddit`（站点标记）、`read`（阅读）。组件内置重播按钮，便于演示。
 
 ## API
 
 <DocApiSection slug="web-search" />
-

@@ -712,6 +712,56 @@ export const DOCS_API: Record<string, DocsApiEntry> = {
   "revenue-chart-card": entry("RevenueChartCard", [
     { name: "data", description: "月度营收序列。", type: "SeriesPoint[]", options: "—", defaultValue: "内置演示" },
   ]),
+  "agent-thinking": entry("AgentThinking", [
+    { name: "variant", description: "动效形态。", type: '"wave" | "spin" | "stars" | "infinity"', options: "wave · spin · stars · infinity", defaultValue: "wave" },
+    { name: "label", description: "状态文案。", type: "string", options: "—", defaultValue: "Thinking" },
+    { name: "tone", description: "指示器与文案色调。", type: '"subtle" | "default" | "primary" | "accent"', options: "subtle · default · primary · accent", defaultValue: "按 variant" },
+    { name: "shimmer", description: "文案扫光。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "showTimer", description: "显示挂载后经过秒数。", type: "boolean", options: "true · false", defaultValue: "true" },
+  ]),
+  "agent-log": entry("WorkingRow / LogRow / ShimmerText", [
+    { name: "label (WorkingRow)", description: "进行中行文案。", type: "string", options: "—", defaultValue: "—" },
+    { name: "reduce", description: "关闭入场动效（应对 reduced-motion）。", type: "boolean", options: "true · false", defaultValue: "—" },
+    { name: "first / last (LogRow)", description: "树状引导线端点。", type: "boolean", options: "true · false", defaultValue: "—" },
+    { name: "children (LogRow)", description: "已完成行内容。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
+  "notification-bell": entry("NotificationBell", [
+    { name: "notifications", description: "通知列表；默认 starter 数据。", type: "NotificationCenterItem[]", options: "—", defaultValue: "STARTER_NOTIFICATIONS" },
+  ]),
+  medical: entry("PatientInfoCard / WeekRangePill / ImportantAlertsCard", [
+    { name: "className", description: "根节点类名。", type: "string", options: "—", defaultValue: "—" },
+  ]),
+  brand: entry("Logo / ProLogo / NavBrand", [
+    { name: "size", description: "标记边长（px）。", type: "number", options: "—", defaultValue: "32 / 36 / 22" },
+    { name: "mono (Logo)", description: "主题感知黑白对；false 用浅色资产。", type: "boolean", options: "true · false", defaultValue: "true" },
+    { name: "decorative (ProLogo)", description: "装饰性时 alt 为空。", type: "boolean", options: "true · false", defaultValue: "false" },
+  ]),
+  "scroll-fade": entry("ScrollFade / useScrollFade", [
+    { name: "progress", description: "0–1，由 useScrollFade 提供。", type: "number", options: "0 … 1", defaultValue: "—" },
+    { name: "surfaceClassName", description: "表面色 from-* 类（需完整写出供 Tailwind 扫描）。", type: "string", options: "—", defaultValue: "from-background-primary-default" },
+    { name: "distance (hook)", description: "淡入完成所需滚动距离。", type: "number", options: "—", defaultValue: "24" },
+  ]),
+  "web-search": entry(
+    "WebSearch",
+    [
+      { name: "steps", description: "搜索步骤序列。", type: "WebSearchStep[]", options: "—", defaultValue: "内置演示" },
+      { name: "autoPlay", description: "自动播放（保留位）。", type: "boolean", options: "true · false", defaultValue: "—" },
+    ],
+    {
+      caption: "WebSearchStep / WebSearchSource",
+      fields: [
+        { name: "id", description: "步骤或来源 id。", type: "string", required: true, example: '"q1"' },
+        { name: "kind", description: "步骤类型。", type: '"query" | "x" | "reddit" | "read"', required: true, example: '"query"' },
+        { name: "label", description: "步骤文案。", type: "string", required: true, example: '"搜索组件库定价"' },
+        { name: "resultLabel", description: "结果摘要。", type: "string", required: false, example: '"3 个结果"' },
+        { name: "sources", description: "来源徽章。", type: "WebSearchSource[]", required: false, example: "[{ id, label, color, mark }]" },
+      ],
+    },
+  ),
+  "admin-dashboard": entry("AdminDashboard", [
+    { name: "selected", description: "侧栏选中项 key。", type: "string", options: "—", defaultValue: "overview" },
+    { name: "headerActions", description: "顶栏右侧自定义操作。", type: "ReactNode", options: "—", defaultValue: "—" },
+  ]),
 };
 
 /** Pascal-ish caption from slug for fallback tables. */

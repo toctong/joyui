@@ -1,0 +1,44 @@
+---
+title: "滚动渐隐"
+description: "内部滚动区顶部的柔和模糊遮罩：ScrollFade + useScrollFade。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+给可滚动面板加顶部渐隐：滚动时淡入 backdrop blur + 表面色洗，避免内容被硬切。
+
+<ComponentDocPreview slug="scroll-fade" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { ScrollFade, useScrollFade } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add scroll-fade --yes`。
+
+## 用法
+
+```tsx
+const fade = useScrollFade();
+
+<div className="relative min-h-0 flex-1">
+  <div onScroll={fade.onScroll} className="h-full overflow-y-auto">
+    …
+  </div>
+  <ScrollFade
+    progress={fade.progress}
+    surfaceClassName="from-background-primary-default"
+  />
+</div>
+```
+
+`ScrollFade` 必须叠在 scroller **外侧**（absolute），opacity 加在各层而非父级，以免 backdrop-filter 失效。
+
+## API
+
+<DocApiSection slug="scroll-fade" />

@@ -1,0 +1,35 @@
+---
+title: "通知铃铛"
+description: "应用壳顶栏铃铛：未读角标 + NotificationCenter 弹出层。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+Header 铃铛：未读计数叠在图标上，点击弹出 [`NotificationCenter`](/docs/notification)。
+
+<ComponentDocPreview slug="notification-bell" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { NotificationBell } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。可选源码拷贝：`npx @joyui/cli add notification-bell --yes`。
+
+## 用法
+
+```tsx
+<NotificationBell notifications={items} />
+```
+
+不传 `notifications` 时使用内置 starter 数据，便于脚手架预览。正式接入时替换为业务通知列表（同 `NotificationCenterItem`）。
+
+## API
+
+<DocApiSection slug="notification-bell" />

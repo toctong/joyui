@@ -1307,10 +1307,96 @@ export function Example() {
     'import { ThemeToggle } from "@/components/application/theme/theme-toggle";',
     `<ThemeToggle />`,
   ),
-  "web-search": wrap(
-    'import { WebSearch } from "@/components/application/web-search/web-search";',
-    `<WebSearch />`,
+  "web-search": `import { WebSearch, type WebSearchStep } from "@/components/application/web-search/web-search";
+
+const steps: WebSearchStep[] = [
+  {
+    id: "q1",
+    kind: "query",
+    label: "搜索组件库定价",
+    resultLabel: "3 个结果",
+    sources: [
+      { id: "gh", label: "GitHub", color: "#24292F", mark: "⌘" },
+      { id: "npm", label: "npm", color: "#CB3837", mark: "n" },
+    ],
+  },
+  {
+    id: "q2",
+    kind: "read",
+    label: "阅读定价页与 README",
+  },
+];
+
+export function Example() {
+  return <WebSearch steps={steps} className="w-full max-w-md" />;
+}`,
+  "agent-thinking": wrap(
+    'import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";',
+    `<div className="flex w-full max-w-sm flex-col gap-4">
+  <AgentThinking variant="wave" label="Thinking" />
+  <AgentThinking variant="stars" label="Searching docs" tone="subtle" />
+</div>`,
   ),
+  "agent-log": `import { LogRow, ShimmerText, WorkingRow } from "@/components/application/agent-log/agent-log";
+
+export function Example() {
+  const reduce = true;
+  return (
+    <ul className="relative w-full max-w-md list-none space-y-1 ps-3">
+      <LogRow first last={false} reduce={reduce}>
+        <span className="text-body-regular text-text-secondary">已解析仓库结构</span>
+      </LogRow>
+      <LogRow first={false} last={false} reduce={reduce}>
+        <span className="text-body-regular text-text-secondary">匹配相关组件 12 个</span>
+      </LogRow>
+      <WorkingRow label="正在生成回复" reduce={reduce} />
+      <li className="ps-0 text-body-regular text-text-tertiary">
+        <ShimmerText>Streaming…</ShimmerText>
+      </li>
+    </ul>
+  );
+}`,
+  "notification-bell": wrap(
+    'import { NotificationBell } from "@/components/application/app-shell/notification-bell";',
+    `<div className="flex items-center justify-center p-6">
+  <NotificationBell />
+</div>`,
+  ),
+  medical: wrap(
+    'import { ImportantAlertsCard } from "@/components/application/medical/important-alerts-card";\nimport { PatientInfoCard } from "@/components/application/medical/patient-info-card";\nimport { WeekRangePill } from "@/components/application/medical/week-range-pill";',
+    `<div className="grid w-full max-w-3xl gap-4 lg:grid-cols-[240px_1fr]">
+  <PatientInfoCard />
+  <div className="flex flex-col gap-3">
+    <WeekRangePill label="29 Jun - 5 Jul" />
+    <ImportantAlertsCard />
+  </div>
+</div>`,
+  ),
+  brand: wrap(
+    'import { Logo, NavBrand, ProLogo } from "@/components/foundations/brand/logo";',
+    `<div className="flex flex-wrap items-center gap-8">
+  <Logo size={40} />
+  <ProLogo size={40} />
+  <NavBrand />
+</div>`,
+  ),
+  "scroll-fade": `import { ScrollFade, useScrollFade } from "@/components/foundations/scroll-fade/scroll-fade";
+
+export function Example() {
+  const fade = useScrollFade();
+  return (
+    <div className="relative h-48 w-full max-w-md overflow-hidden rounded-2xl border border-separator-border bg-background-primary-default">
+      <div onScroll={fade.onScroll} className="h-full overflow-y-auto p-4">
+        {Array.from({ length: 16 }, (_, i) => (
+          <p key={i} className="mb-3 text-body-regular text-text-secondary">
+            滚动内容行 {i + 1} — 顶部会出现柔和模糊渐隐。
+          </p>
+        ))}
+      </div>
+      <ScrollFade progress={fade.progress} />
+    </div>
+  );
+}`,
   calendar: `import { Calendar } from "@joyui/react";
 
 export function Example() {
