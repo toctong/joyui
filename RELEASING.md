@@ -1,14 +1,17 @@
 # Releasing
 
-发布流程对齐 [Changesets](https://github.com/changesets/changesets) + [Turborepo design-system](https://github.com/vercel/turborepo/tree/main/examples/design-system)。
+npm 发布为**本地手动**流程（不走 GitHub Actions）。文档站由 Vercel workflows 部署：
+
+- `vercel-production.yml` — `main` 推送后更新生产文档站
+- `vercel-preview.yml` — PR 预览
 
 ## 包
 
 | Package | 发布 |
 |---------|------|
-| `@joyui/react` | ✅ |
-| `@joyui/cli` | ✅ |
-| `@joyui/docs` | ❌（private，changeset ignore） |
+| `@joyui/react` | ✅ 手动 |
+| `@joyui/cli` | ✅ 手动 |
+| `@joyui/docs` | ❌（private；走 Vercel） |
 
 ## 本地准备
 
@@ -17,9 +20,7 @@ pnpm changeset          # 选择 bump + 写摘要 → .changeset/*.md
 git add .changeset && git commit -m "chore: add changeset"
 ```
 
-## 推荐：主分支手动发布
-
-本仓库默认在 `main` 直接改与发布（不依赖 Version PR）。
+## 主分支手动发布
 
 ```bash
 pnpm install
@@ -28,22 +29,27 @@ pnpm --filter @joyui/react build
 pnpm --filter @joyui/cli build
 # 有未消费的 .changeset 时：
 pnpm version-packages
-# 登录 npm 后发布（linked：react + cli 同版本）
-pnpm release:publish
+git add packages/*/package.json packages/*/CHANGELOG.md .changeset
+git commit -m "chore: release"
 ```
 
-本地若 `.npmrc` 指向国内镜像，发布前可临时：
+然后任选一种发布方式：
 
 ```bash
-npm_config_registry=https://registry.npmjs.org pnpm release:publish
+# 方式 A：changeset（推荐）
+npm_config_registry=https://registry.npmjs.org pnpm exec changeset publish
+
+# 方式 B：直接 npm（需 OTP 时加 --otp=******）
+cd packages/ui && npm publish --access public
+cd ../cli && npm publish --access public
 ```
 
-（`changeset publish` 不支持 `--registry` 参数。）CI 的 `release.yml` 会写入 `registry.npmjs.org` 的 auth，无需该 flag。
+`changeset publish` 不支持 `--registry`；本地若 `.npmrc` 指向国内镜像，用上面的 `npm_config_registry=...` 或临时改 registry。
 
-可选：配置 GitHub `NPM_TOKEN` + Actions 写权限后，`.github/workflows/release.yml` 也可自动 publish；未配置时请用上面的手动流程。
+发布后：`git push origin main --follow-tags`
 
 ## 发布后核对
 
 - https://www.npmjs.com/package/@joyui/react
 - https://www.npmjs.com/package/@joyui/cli
-- GitHub Releases 标签
+- 文档站 Vercel 生产部署

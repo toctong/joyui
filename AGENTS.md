@@ -60,4 +60,4 @@ pnpm registry:build
 pnpm --filter @joyui/docs dev
 ```
 
-发版见 `RELEASING.md`；贡献见 `CONTRIBUTING.md`。CI：`.github/workflows/ci.yml` + Changesets `release.yml`。
+发版见 `RELEASING.md`（本地手动 npm）；贡献见 `CONTRIBUTING.md`。CI：`ci.yml`（检查）+ `vercel-*.yml`（文档站）。

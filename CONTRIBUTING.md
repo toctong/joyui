@@ -44,7 +44,7 @@ pnpm --filter @joyui/cli build
 pnpm changeset
 ```
 
-提交 PR 时附带 changeset；合并到 `main` 后 Release workflow 会开 Version PR 或发布 npm。
+提交 PR 时附带 changeset；合并到 `main` 后由维护者按 [RELEASING.md](./RELEASING.md) **本地手动**发版（CI 不自动 publish）。文档站由 Vercel workflow 部署。
 
 ## 设计约定
 
