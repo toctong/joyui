@@ -1,5 +1,11 @@
 # @joyui/react
 
+## 0.3.1
+
+### Patch Changes
+
+- Fix token ring opacity black borders, null-safe keyboard handlers, and registry coverage for profile-cards / week-range-pill.
+
 ## 0.3.0
 
 ### Minor Changes

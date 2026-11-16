@@ -1,6 +1,6 @@
 {
   "name": "@joyui/cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "JoyUI CLI ? npm-first init, optional source add, MCP server, and agent skill",
   "license": "MIT",
   "author": "JoyUI",
