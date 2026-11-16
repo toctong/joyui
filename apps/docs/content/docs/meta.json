@@ -97,6 +97,8 @@
     "---AI---",
     "ai",
     "ai-chat",
+    "image-generation",
+    "video-generation",
     "composer",
     "chat-message",
     "message-actions",
@@ -153,6 +155,11 @@
     "templates",
     "admin-dashboard",
     "ai-chat-template",
+    "ai-assistant-template",
+    "ai-image-template",
+    "ai-video-template",
+    "ai-playground-template",
+    "ai-agent-template",
     "auth-template",
     "workspace-template"
   ]

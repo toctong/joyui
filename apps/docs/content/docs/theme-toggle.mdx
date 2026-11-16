@@ -50,17 +50,18 @@ setAccent("violet");
 
 ## Accent 换肤
 
-预设：`blue` · `violet` · `teal` · `orange` · `rose` · `mono`。写入 `data-accent` 与 `JoyUI:accent`。
+预设：`blue` · `violet` · `teal` · `orange` · `rose` · `mono`。写入 `data-accent` 与 `JoyUI:accent`。设置页用 `appearance="cards"`（色块 + 中文名）；页头紧凑色点用默认 `plain`。
 
 <DemoFrame
   fileName="accent-switcher.tsx"
   code={`import { AccentSwitcher, setAccent } from "@joyui/react";
 
 <>
-  <AccentSwitcher />
+  <AccentSwitcher appearance="cards" />
+  <AccentSwitcher size="small" />
   <button type="button" onClick={() => setAccent("teal")}>Teal</button>
 </>`}
-  canvasClassName="min-h-32 items-center justify-center bg-background-primary-default p-8"
+  canvasClassName="min-h-32 items-center justify-center gap-4 bg-background-primary-default p-8"
 >
   <AccentSwitcherPreview />
 </DemoFrame>

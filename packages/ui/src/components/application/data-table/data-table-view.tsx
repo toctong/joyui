@@ -36,7 +36,14 @@ export type DataTableColumn<T extends object> = {
   accessorKey?: keyof T & string;
   cell?: (row: T) => ReactNode;
   enableSorting?: boolean;
-  meta?: { className?: string; isRowHeader?: boolean };
+  meta?: {
+    className?: string;
+    isRowHeader?: boolean;
+    /** Sticky trailing actions column while the table scrolls horizontally. */
+    stickyActions?: boolean;
+    /** Clip long text with ellipsis. Default true for accessor cells. */
+    truncate?: boolean;
+  };
 };
 
 export interface DataTableProps<T extends object> {
@@ -78,7 +85,17 @@ export function DataTable<T extends object>({
           col.cell
             ? col.cell(ctx.row.original)
             : col.accessorKey
-              ? String(ctx.row.original[col.accessorKey] ?? "")
+              ? (
+                  <span
+                    className={cx(
+                      "bui-table-cell-text",
+                      col.meta?.truncate === false && "overflow-visible text-clip",
+                    )}
+                    title={String(ctx.row.original[col.accessorKey] ?? "")}
+                  >
+                    {String(ctx.row.original[col.accessorKey] ?? "")}
+                  </span>
+                )
               : null,
         enableSorting: col.enableSorting ?? Boolean(col.accessorKey),
         meta: col.meta,
@@ -118,7 +135,7 @@ export function DataTable<T extends object>({
         <TableHeader>
           {headers.map((header) => {
             const meta = header.column.columnDef.meta as
-              | { className?: string; isRowHeader?: boolean }
+              | { className?: string; isRowHeader?: boolean; stickyActions?: boolean }
               | undefined;
             const canSort = header.column.getCanSort();
             const labelNode = flexRender(
@@ -130,7 +147,7 @@ export function DataTable<T extends object>({
                 key={header.id}
                 id={header.id}
                 isRowHeader={meta?.isRowHeader}
-                className={meta?.className}
+                className={cx(meta?.className, meta?.stickyActions && "bui-table-actions")}
               >
                 {canSort ? (
                   <button
@@ -160,10 +177,13 @@ export function DataTable<T extends object>({
             <TableRow key={row.id} id={row.id}>
               {row.getVisibleCells().map((cell) => {
                 const meta = cell.column.columnDef.meta as
-                  | { className?: string }
+                  | { className?: string; stickyActions?: boolean }
                   | undefined;
                 return (
-                  <TableCell key={cell.id} className={meta?.className}>
+                  <TableCell
+                    key={cell.id}
+                    className={cx(meta?.className, meta?.stickyActions && "bui-table-actions")}
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 );

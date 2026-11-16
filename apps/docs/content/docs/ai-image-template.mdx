@@ -1,0 +1,32 @@
+---
+title: "图像生成模板"
+description: "Creative 工作室整页壳：ImageGeneration + 页眉。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+对标常见 creative suite / 生图产品壳。底层仍是可扩展的 [`ImageGeneration`](/docs/image-generation)。
+
+<ComponentDocPreview slug="ai-image-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiImageTemplate } from "@joyui/react";
+
+<AiImageTemplate
+  className="h-[640px]"
+  onSubmit={(prompt, meta) => generate(prompt, meta)}
+/>
+```
+
+可选：`npx @joyui/cli add ai-image-template --yes`。
+
+## API
+
+<DocApiSection slug="ai-image-template" />

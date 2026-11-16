@@ -7,8 +7,15 @@ import { cx } from "@/utils/cx";
 
 export function AccentSwitcherPreview({ className }: { className?: string }) {
   return (
-    <div className={cx("flex flex-col items-center gap-4", className)}>
-      <AccentSwitcher />
+    <div className={cx("flex w-full max-w-lg flex-col items-stretch gap-4", className)}>
+      <div className="flex flex-col gap-2">
+        <AccentSwitcher appearance="cards" />
+        <span className="text-center text-caption-1-medium text-text-tertiary">cards</span>
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <AccentSwitcher size="small" />
+        <span className="text-caption-1-medium text-text-tertiary">plain</span>
+      </div>
       <div className="flex flex-wrap items-center justify-center gap-2">
         <Button size="small">Primary</Button>
         <Button size="small" variant="secondary">

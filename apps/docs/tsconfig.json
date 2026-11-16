@@ -67,8 +67,23 @@
       "@/components/application/profile-cards/*": [
         "../../packages/ui/src/components/application/profile-cards/*"
       ],
+      "@/components/application/ai-agent-template/*": [
+        "../../packages/ui/src/components/application/ai-agent-template/*"
+      ],
+      "@/components/application/ai-assistant-template/*": [
+        "../../packages/ui/src/components/application/ai-assistant-template/*"
+      ],
       "@/components/application/ai-chat-template/*": [
         "../../packages/ui/src/components/application/ai-chat-template/*"
+      ],
+      "@/components/application/ai-image-template/*": [
+        "../../packages/ui/src/components/application/ai-image-template/*"
+      ],
+      "@/components/application/ai-playground-template/*": [
+        "../../packages/ui/src/components/application/ai-playground-template/*"
+      ],
+      "@/components/application/ai-video-template/*": [
+        "../../packages/ui/src/components/application/ai-video-template/*"
       ],
       "@/components/application/auth-template/*": [
         "../../packages/ui/src/components/application/auth-template/*"

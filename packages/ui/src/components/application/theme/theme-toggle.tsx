@@ -457,6 +457,7 @@ export function ThemeToggle({
 
   if (collapsed) {
     const Icon = dark ? RiSunLine : RiMoonLine;
+    const compact = size === "small";
     return localize((
       <button
         type="button"
@@ -475,17 +476,20 @@ export function ThemeToggle({
           });
         }}
         className={cx(
-          "flex size-9 cursor-pointer items-center justify-center rounded-2lg",
+          "flex cursor-pointer items-center justify-center rounded-2lg",
+          compact ? "size-8" : "size-9",
           "text-foreground-icon-secondary transition-colors duration-150 ease",
           "hover:bg-background-secondary-hover hover:text-foreground-icon-primary",
           "outline-none focus-visible:ring-2 focus-visible:ring-border-focus-ring",
           className,
         )}
       >
-        <Icon className="size-5" aria-hidden />
+        <Icon className={compact ? "size-4" : "size-5"} aria-hidden />
       </button>
     ));
   }
+
+  const compact = size === "small";
 
   return localize((
     <AriaSwitch
@@ -506,7 +510,8 @@ export function ThemeToggle({
       aria-label="Dark mode"
       className={({ isFocusVisible }) =>
         cx(
-          "flex w-full cursor-pointer items-center justify-between rounded-2lg p-2",
+          "flex w-full cursor-pointer items-center justify-between rounded-2lg",
+          compact ? "gap-2 px-1.5 py-1" : "p-2",
           "transition-colors duration-150 ease hover:bg-background-secondary-hover",
           isFocusVisible && "ring-2 ring-inset ring-border-focus-ring",
           className,
@@ -516,8 +521,16 @@ export function ThemeToggle({
       {(state) => (
         <>
           <span className="flex min-w-0 items-center gap-2">
-            <RiMoonLine className="size-5 shrink-0 text-foreground-icon-secondary" aria-hidden />
-            <span className="text-body-medium text-text-secondary">Dark mode</span>
+            <RiMoonLine
+              className={cx(
+                "shrink-0 text-foreground-icon-secondary",
+                compact ? "size-4" : "size-5",
+              )}
+              aria-hidden
+            />
+            {!compact ? (
+              <span className="text-body-medium text-text-secondary">Dark mode</span>
+            ) : null}
           </span>
           <SwitchTrack state={state} size="sm" shape="pill" />
         </>

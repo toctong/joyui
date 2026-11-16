@@ -23,8 +23,13 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `admin-dashboard` | application | `AdminDashboard` | `@joyui/react` |
 | `agent-log` | application | `ShimmerText, RowConnector, GuideBridge, WorkingRow, …` | `@joyui/react` |
 | `agent-thinking` | application | `AgentThinking` | `@joyui/react` |
+| `ai-agent-template` | application | `AiAgentTemplate` | `@joyui/react` |
+| `ai-assistant-template` | application | `AiAssistantTemplate` | `@joyui/react` |
 | `ai-chat-template` | application | `AiChatTemplate` | `@joyui/react` |
+| `ai-image-template` | application | `AiImageTemplate` | `@joyui/react` |
 | `ai-kit` | application | `AiChat, AiComposer, AiConversation, AiMessage, …` | `@joyui/react` |
+| `ai-playground-template` | application | `AiPlaygroundTemplate` | `@joyui/react` |
+| `ai-video-template` | application | `AiVideoTemplate` | `@joyui/react` |
 | `alert` | base | `Alert` | `@joyui/react` |
 | `announcement` | base | `Announcement` | `@joyui/react` |
 | `aspect-ratio` | base | `AspectRatio` | `@joyui/react` |
@@ -72,7 +77,7 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `empty-state-search` | base | `EmptyStateSearch` | `@joyui/react` |
 | `file-upload` | base | `FileUpload` | `@joyui/react` |
 | `file-upload-gallery` | base | `FileUploadGallery` | `@joyui/react` |
-| `form-field` | base | `FormField` | `@joyui/react` |
+| `form-field` | base | `FormField, FormSection` | `@joyui/react` |
 | `format` | lib | `dayjs, toDayjs, formatDate, fromNow, …` | `@joyui/react` |
 | `hover-card` | base | `HoverCard` | `@joyui/react` |
 | `hover-card-profile` | base | `HoverCardProfile` | `@joyui/react` |
@@ -98,11 +103,11 @@ Optional source copy (shadcn-style): `npx @joyui/cli add <name> --yes`.
 | `modal-sheet` | base | `ModalSheet, ModalSheetBody, ModalSheetFooter, ModalSheetHeader, …` | `@joyui/react` |
 | `model-select` | base | `ModelSelect` | `@joyui/react` |
 | `notification` | base | `Notification, NotificationViewport` | `@joyui/react` |
-| `notification-bell` | application | `NotificationBell` | `@joyui/react` |
+| `notification-bell` | application | `AppShell, AppHeader, NotificationBell` | `@joyui/react` |
 | `notification-center` | application | `NotificationCenter` | `@joyui/react` |
 | `number-field` | base | `NumberField` | `@joyui/react` |
 | `number-ticker` | base | `NumberTicker` | `@joyui/react` |
-| `page-header` | base | `PageHeader` | `@joyui/react` |
+| `page-header` | base | `PageHeader, PageToolbar` | `@joyui/react` |
 | `pagination` | base | `Pagination` | `@joyui/react` |
 | `password-strength` | base | `PasswordStrength` | `@joyui/react` |
 | `popover` | base | `PopoverTrigger, Popover, PopoverHeader, PopoverFooter` | `@joyui/react` |

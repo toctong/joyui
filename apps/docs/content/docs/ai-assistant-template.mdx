@@ -1,0 +1,36 @@
+---
+title: "AI 助手模板"
+description: "多会话侧栏 + AiChat，对标 ChatGPT / vercel/chatbot。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+可折叠会话列表、搜索、新建 / 删除，主区接 AI SDK `useChat`（`api` / `transport`）。
+
+<ComponentDocPreview slug="ai-assistant-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiAssistantTemplate } from "@joyui/react";
+
+<AiAssistantTemplate
+  api="/api/chat"
+  className="h-[640px]"
+  threads={threads}
+  activeThreadId={id}
+  onActiveThreadChange={setId}
+  onNewThread={createThread}
+/>
+```
+
+可选：`npx @joyui/cli add ai-assistant-template --yes`。
+
+## API
+
+<DocApiSection slug="ai-assistant-template" />

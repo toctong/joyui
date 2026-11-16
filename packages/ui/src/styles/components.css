@@ -581,11 +581,11 @@ input[type="search"]::-webkit-search-cancel-button {
  * React Aria renders real <table>/<thead>/<th>/<tr>/<td> elements.
  * --------------------------------------------------------------------------- */
 .bui-table {
-  /* Fixed layout keeps header columns evenly distributed when the body is
-   * empty (renderEmptyState) — without it, whitespace-nowrap headers shrink
-   * and pile up on the left with no body cells to establish column widths. */
+  /* auto: columns size to content. Prefer meta.className min-w-* over w-* —
+   * under the old table-layout:fixed, pinning every column with w-* left the
+   * remaining column ~20px wide and text looked stacked / garbled. */
   @apply w-full border-collapse text-start;
-  table-layout: fixed;
+  table-layout: auto;
 }
 .bui-table tbody td[colspan] {
   @apply w-full;
@@ -595,15 +595,43 @@ input[type="search"]::-webkit-search-cancel-button {
  * Backgrounds/borders are set with explicit CSS (theme vars) rather than
  * @apply, which drops border-width/bg on these row-group cells. */
 .bui-table th {
-  @apply px-3 py-2.5 text-start align-middle text-body-medium text-text-tertiary whitespace-nowrap outline-none;
+  /* overflow-hidden so whitespace-nowrap labels can't paint over the next
+   * column under table-layout:fixed (looks like stacked / garbled headers). */
+  @apply overflow-hidden px-3 py-2 text-start align-middle text-body-medium text-text-tertiary whitespace-nowrap outline-none;
   background-color: var(--color-background-secondary-default);
   border-top: 1px solid var(--color-separator-border);
   border-bottom: 1px solid var(--color-separator-border);
   transition: padding 200ms ease, font-size 200ms ease;
 }
 .bui-table td {
-  @apply px-3 py-2.5 align-middle text-body-medium text-text-primary outline-none;
+  /* Clip cell paint so long emails / roles don't bleed into the next column. */
+  @apply overflow-hidden px-3 py-2 align-middle text-body-medium text-text-primary outline-none;
   transition: padding 200ms ease, font-size 200ms ease;
+}
+.bui-table td .bui-table-cell-text {
+  @apply block min-w-0 truncate;
+}
+.bui-table td .bui-table-cell-text.overflow-visible {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+/* Keep the trailing actions column visible while the table scrolls horizontally. */
+.bui-table th.bui-table-actions,
+.bui-table td.bui-table-actions {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  box-shadow: -8px 0 12px -12px rgb(0 0 0 / 0.35);
+}
+.bui-table th.bui-table-actions {
+  background-color: var(--color-background-secondary-default);
+}
+.bui-table td.bui-table-actions {
+  background-color: var(--color-background-primary-default);
+}
+.dark .bui-table td.bui-table-actions {
+  background-color: var(--color-background-secondary-default);
 }
 /* Separators sit *between* rows only: the trailing row's boundary is drawn by
  * whatever follows the table (the container's bottom edge, or the pagination

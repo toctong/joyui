@@ -118,6 +118,11 @@ function ScaledPane({ children }: { children: ReactNode }) {
 const OSS_TEMPLATE_SLUGS = new Set([
   "admin-dashboard",
   "ai-chat-template",
+  "ai-assistant-template",
+  "ai-image-template",
+  "ai-video-template",
+  "ai-playground-template",
+  "ai-agent-template",
   "auth-template",
   "workspace-template",
 ]);

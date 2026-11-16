@@ -70,6 +70,32 @@ export const CATALOG: JoyComponent[] = [
     "registryDependencies": []
   },
   {
+    "name": "ai-agent-template",
+    "title": "Ai Agent Template",
+    "description": "Ai Agent Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AiAgentTemplate"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "ai-assistant-template",
+    "title": "Ai Assistant Template",
+    "description": "Ai Assistant Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AiAssistantTemplate"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
     "name": "ai-chat-template",
     "title": "Ai Chat Template",
     "description": "Ai Chat Template component from @joyui/react.",
@@ -77,6 +103,19 @@ export const CATALOG: JoyComponent[] = [
     "layer": "application",
     "exports": [
       "AiChatTemplate"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "ai-image-template",
+    "title": "Ai Image Template",
+    "description": "Ai Image Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AiImageTemplate"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -104,8 +143,39 @@ export const CATALOG: JoyComponent[] = [
       "AiComposer",
       "AiConversation",
       "AiMessage",
-      "DefaultChatTransport"
+      "DefaultChatTransport",
+      "ImageGeneration",
+      "MediaComposer",
+      "MediaStudio",
+      "VideoGeneration",
+      "VideoProduction"
     ]
+  },
+  {
+    "name": "ai-playground-template",
+    "title": "Ai Playground Template",
+    "description": "Ai Playground Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AiPlaygroundTemplate"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
+  },
+  {
+    "name": "ai-video-template",
+    "title": "Ai Video Template",
+    "description": "Ai Video Template component from @joyui/react.",
+    "type": "component",
+    "layer": "application",
+    "exports": [
+      "AiVideoTemplate"
+    ],
+    "importFrom": "@joyui/react",
+    "dependencies": [],
+    "registryDependencies": []
   },
   {
     "name": "alert",
@@ -798,7 +868,8 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "base",
     "exports": [
-      "FormField"
+      "FormField",
+      "FormSection"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],
@@ -1168,6 +1239,8 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "application",
     "exports": [
+      "AppShell",
+      "AppHeader",
       "NotificationBell"
     ],
     "importFrom": "@joyui/react",
@@ -1220,7 +1293,8 @@ export const CATALOG: JoyComponent[] = [
     "type": "component",
     "layer": "base",
     "exports": [
-      "PageHeader"
+      "PageHeader",
+      "PageToolbar"
     ],
     "importFrom": "@joyui/react",
     "dependencies": [],

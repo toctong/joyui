@@ -6,9 +6,14 @@ import { useRef, useState } from "react";
 import { AdminDashboard } from "@/components/application/admin/admin-dashboard";
 import { LogRow, ShimmerText, WorkingRow, useLogMotion } from "@/components/application/agent-log/agent-log";
 import { AgentThinking } from "@/components/application/agent-thinking/agent-thinking";
+import { AiAgentTemplate } from "@/components/application/ai-agent-template/ai-agent-template";
+import { AiAssistantTemplate } from "@/components/application/ai-assistant-template/ai-assistant-template";
 import { AiChatTemplate } from "@/components/application/ai-chat-template/ai-chat-template";
+import { AiImageTemplate } from "@/components/application/ai-image-template/ai-image-template";
 import { AiComposer } from "@/components/application/ai-kit/ai-composer";
 import { AiConversation } from "@/components/application/ai-kit/ai-conversation";
+import { AiPlaygroundTemplate } from "@/components/application/ai-playground-template/ai-playground-template";
+import { AiVideoTemplate } from "@/components/application/ai-video-template/ai-video-template";
 import { NotificationBell } from "@/components/application/app-shell/notification-bell";
 import { AuthTemplate } from "@/components/application/auth-template/auth-template";
 import { AuthCard } from "@/components/application/auth/auth-card";
@@ -227,6 +232,22 @@ function Preview_agent_thinking() {
   );
 }
 
+function Preview_ai_agent_template() {
+  return (
+    <div className="h-[640px] w-full">
+      <AiAgentTemplate />
+    </div>
+  );
+}
+
+function Preview_ai_assistant_template() {
+  return (
+    <div className="h-[640px] w-full">
+      <AiAssistantTemplate />
+    </div>
+  );
+}
+
 function Preview_ai_chat() {
   const demoMessages = [
     {
@@ -270,6 +291,30 @@ function Preview_ai_chat() {
 function Preview_ai_chat_template() {
   return (
     <AiChatTemplate className="h-[560px] w-full max-w-lg" />
+  );
+}
+
+function Preview_ai_image_template() {
+  return (
+    <div className="h-[640px] w-full">
+      <AiImageTemplate />
+    </div>
+  );
+}
+
+function Preview_ai_playground_template() {
+  return (
+    <div className="h-[640px] w-full">
+      <AiPlaygroundTemplate />
+    </div>
+  );
+}
+
+function Preview_ai_video_template() {
+  return (
+    <div className="h-[640px] w-full">
+      <AiVideoTemplate />
+    </div>
   );
 }
 
@@ -1974,8 +2019,13 @@ export const GENERATED_DOC_PREVIEWS: Record<
   "admin-dashboard": Preview_admin_dashboard,
   "agent-log": Preview_agent_log,
   "agent-thinking": Preview_agent_thinking,
+  "ai-agent-template": Preview_ai_agent_template,
+  "ai-assistant-template": Preview_ai_assistant_template,
   "ai-chat": Preview_ai_chat,
   "ai-chat-template": Preview_ai_chat_template,
+  "ai-image-template": Preview_ai_image_template,
+  "ai-playground-template": Preview_ai_playground_template,
+  "ai-video-template": Preview_ai_video_template,
   "alert": Preview_alert,
   "announcement": Preview_announcement,
   "area-chart-card": Preview_area_chart_card,

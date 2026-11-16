@@ -1,0 +1,36 @@
+---
+title: "AI Playground 模板"
+description: "调参轨 + 提示 / 输出，对标 OpenAI Playground / shadcn playground。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+模型、Temperature、Max tokens、Top P、系统提示与流式开关；`onRun` 接你的 completion API。
+
+<ComponentDocPreview slug="ai-playground-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiPlaygroundTemplate } from "@joyui/react";
+
+<AiPlaygroundTemplate
+  className="h-[640px]"
+  onRun={async (values) => {
+    const text = await complete(values);
+    setOutput(text);
+  }}
+  output={output}
+/>
+```
+
+可选：`npx @joyui/cli add ai-playground-template --yes`。
+
+## API
+
+<DocApiSection slug="ai-playground-template" />

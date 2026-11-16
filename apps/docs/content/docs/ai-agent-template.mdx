@@ -1,0 +1,35 @@
+---
+title: "AI Agent 模板"
+description: "推理 + 工具调用 + 任务轨迹侧栏，对标 agentic / Cursor 风格工作台。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+主区组合 `ChatMessage` / `ReasoningBlock` / `ToolCall`，侧栏用 `LogRow` 展示轨迹；适合接 AI SDK tools 或 LangGraph。
+
+<ComponentDocPreview slug="ai-agent-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiAgentTemplate } from "@joyui/react";
+
+<AiAgentTemplate
+  className="h-[640px]"
+  messages={messages}
+  busy={busy}
+  onSubmit={(prompt) => runAgent(prompt)}
+  panel={<YourTrace />}
+/>
+```
+
+可选：`npx @joyui/cli add ai-agent-template --yes`。
+
+## API
+
+<DocApiSection slug="ai-agent-template" />

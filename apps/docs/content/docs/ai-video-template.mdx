@@ -1,0 +1,32 @@
+---
+title: "视频生成模板"
+description: "Motion 工作室整页壳：VideoGeneration + 画幅 / 时长。"
+status: new
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+
+视频生成整页模板，内置画幅 / 时长芯片与画廊。原语见 [`视频生成`](/docs/video-generation)。
+
+<ComponentDocPreview slug="ai-video-template" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AiVideoTemplate } from "@joyui/react";
+
+<AiVideoTemplate
+  className="h-[640px]"
+  onSubmit={(prompt, meta) => renderClip(prompt, meta)}
+/>
+```
+
+可选：`npx @joyui/cli add ai-video-template --yes`。
+
+## API
+
+<DocApiSection slug="ai-video-template" />

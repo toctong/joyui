@@ -1193,6 +1193,36 @@ import { Tooltip, TooltipTrigger } from "@/components/base/tooltip/tooltip";
     'import { AiChatTemplate } from "@/components/application/ai-chat-template/ai-chat-template";',
     `<AiChatTemplate className="h-[560px] w-full max-w-lg" />`,
   ),
+  "ai-image-template": wrap(
+    'import { AiImageTemplate } from "@/components/application/ai-image-template/ai-image-template";',
+    `<div className="h-[640px] w-full">
+  <AiImageTemplate />
+</div>`,
+  ),
+  "ai-video-template": wrap(
+    'import { AiVideoTemplate } from "@/components/application/ai-video-template/ai-video-template";',
+    `<div className="h-[640px] w-full">
+  <AiVideoTemplate />
+</div>`,
+  ),
+  "ai-assistant-template": wrap(
+    'import { AiAssistantTemplate } from "@/components/application/ai-assistant-template/ai-assistant-template";',
+    `<div className="h-[640px] w-full">
+  <AiAssistantTemplate />
+</div>`,
+  ),
+  "ai-playground-template": wrap(
+    'import { AiPlaygroundTemplate } from "@/components/application/ai-playground-template/ai-playground-template";',
+    `<div className="h-[640px] w-full">
+  <AiPlaygroundTemplate />
+</div>`,
+  ),
+  "ai-agent-template": wrap(
+    'import { AiAgentTemplate } from "@/components/application/ai-agent-template/ai-agent-template";',
+    `<div className="h-[640px] w-full">
+  <AiAgentTemplate />
+</div>`,
+  ),
   "auth-template": wrap(
     'import { AuthTemplate } from "@/components/application/auth-template/auth-template";',
     `<AuthTemplate mode="signin" withMedia={false} />`,

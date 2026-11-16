@@ -46,8 +46,12 @@ describe("published styles contracts", () => {
     }
   });
 
-  it("uses fixed table layout so empty DataTable headers do not collapse", () => {
-    expect(componentsCss).toMatch(/\.bui-table\s*\{[^}]*table-layout:\s*fixed/s);
+  it("uses auto table layout so fixed w-* columns cannot crush neighbors", () => {
+    expect(componentsCss).toMatch(/\.bui-table\s*\{[^}]*table-layout:\s*auto/s);
+  });
+
+  it("publishes sticky trailing actions column styles", () => {
+    expect(componentsCss).toContain(".bui-table-actions");
   });
 
   it("does not publish docs-only landing chrome into components.css", () => {

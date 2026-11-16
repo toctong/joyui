@@ -1,0 +1,83 @@
+---
+title: "应用壳"
+description: "后台布局：侧栏 + 顶栏 + 内容区。AppShell / AppHeader。"
+---
+import { ComponentDocPreview } from "@/components/demos/component-doc-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+
+JoyUI 之前有 `PageHeader`（页内标题）和 `AdminDashboard`（整页模板），但缺少可复用的**控制台外壳**。`AppShell` 提供侧栏槽位 + 顶栏 + 可滚动内容区；`AppHeader` 是持久顶栏（面包屑 / 搜索 / 通知），与页内 `PageHeader` 分开使用。
+
+<ComponentDocPreview slug="app-shell" />
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { AppShell, AppHeader } from "@joyui/react";
+```
+
+主题与组件 CSS 已内置：`@import "@joyui/react/styles.css"`。
+
+## 基本结构
+
+侧栏传入 `DashboardSidebar` 或自建导航；顶栏用 `AppHeader` 放面包屑与 `NotificationBell`。
+
+<DemoFrame
+  fileName="app-shell-basic.tsx"
+  code={`import {
+  AppHeader,
+  AppShell,
+  Breadcrumb,
+  BreadcrumbItem,
+  NotificationBell,
+  PageHeader,
+} from "@joyui/react";
+
+<div className="h-[480px] w-full">
+  <AppShell
+    sidebar={
+      <aside className="flex w-[220px] shrink-0 flex-col rounded-3xl border border-border-button-white bg-background-secondary-default p-3 shadow-sidebar">
+        <p className="px-2 text-title-3-medium text-text-primary">JoyUI Admin</p>
+        <p className="mt-2 px-2 text-body-regular text-text-secondary">侧栏槽位</p>
+      </aside>
+    }
+    header={
+      <AppHeader
+        leading={
+          <Breadcrumb>
+            <BreadcrumbItem href="#">JoyUI</BreadcrumbItem>
+            <BreadcrumbItem current>仪表盘</BreadcrumbItem>
+          </Breadcrumb>
+        }
+        trailing={<NotificationBell />}
+      />
+    }
+  >
+    <PageHeader title="运营概览" description="顶栏是 AppHeader，这里是 PageHeader。" />
+    <div className="rounded-2xl border border-separator-border bg-background-secondary-default p-4 text-body-regular text-text-secondary">
+      页面内容
+    </div>
+  </AppShell>
+</div>`}
+/>
+
+## API
+
+<DocApiSection
+  rows={[
+    {
+      name: "AppShell",
+      type: "sidebar + header? + children",
+      description: "控制台外壳。sidebar 必填；header 建议传 AppHeader。",
+    },
+    {
+      name: "AppHeader",
+      type: "leading? + center? + trailing? + variant?",
+      description: "持久顶栏。默认 flat（无边框阴影）；variant=\"panel\" 为卡片式。与 PageHeader 职责不同。",
+    },
+  ]}
+/>

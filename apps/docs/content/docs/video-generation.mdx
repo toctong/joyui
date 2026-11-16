@@ -1,0 +1,59 @@
+---
+title: "视频生成"
+description: "AI 视频工作室：提示词对话 + 画廊，附带画幅与时长。"
+status: new
+---
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+import { VideoGeneration } from "@joyui/react";
+
+与图像生成同壳，增加画幅 / 时长芯片、视频缩略图播放态与运动风格。用 `onSubmit` / `onAspectChange` / `onDurationChange` 接你的渲染管线。整页模板见 [视频生成模板](/docs/ai-video-template)。
+
+<DemoFrame
+  fileName="video-generation.tsx"
+  code={`import { VideoGeneration } from "@joyui/react";
+
+<div className="h-[640px] w-full">
+  <VideoGeneration />
+</div>`}
+  canvasClassName="min-h-[640px] items-stretch justify-stretch p-0 sm:p-0"
+>
+  <div className="h-[640px] w-full">
+    <VideoGeneration />
+  </div>
+</DemoFrame>
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { VideoGeneration } from "@joyui/react";
+// 或
+import { VideoGeneration } from "@joyui/react/ai";
+```
+
+## 用法
+
+```tsx
+<VideoGeneration
+  aspect="16:9"
+  duration="10s"
+  onAspectChange={setAspect}
+  onDurationChange={setDuration}
+  onSubmit={(prompt, meta) => renderClip(prompt, meta)}
+  renderToolbar={({ aspectChips, durationChips }) => (
+    <>
+      {aspectChips}
+      {durationChips}
+      <YourExtraFilters />
+    </>
+  )}
+/>
+```
+
+## API
+
+<DocApiSection slug="video-generation" />

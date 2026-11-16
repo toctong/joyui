@@ -104,6 +104,8 @@ const components: Entry[] = [
 
 const ai: Entry[] = [
   { name: "AI Chat", href: "/docs/ai-chat", description: "Built-in useChat shell: transcript + composer.", tier: "free", status: "shipped", isNew: true },
+  { name: "Image Generation", href: "/docs/image-generation", description: "Prompt thread + gallery for AI images.", tier: "free", status: "shipped", isNew: true },
+  { name: "Video Generation", href: "/docs/video-generation", description: "Prompt thread + gallery for AI video clips.", tier: "free", status: "shipped", isNew: true },
   { name: "Composer", href: "/docs/composer", description: "AI input: capsule, attachments, loader, and panel.", tier: "free", status: "shipped", isNew: true },
   { name: "Chat Message", href: "/docs/chat-message", description: "User bubble and assistant transcript turn.", tier: "free", status: "shipped", isNew: true },
   { name: "Message Actions", href: "/docs/message-actions", description: "Copy / regenerate row under a reply.", tier: "free", status: "shipped", isNew: true },
@@ -125,6 +127,7 @@ const ai: Entry[] = [
 ];
 
 const blocks: Entry[] = [
+  { name: "App Shell", href: "/docs/app-shell", description: "Admin chrome: sidebar slot + AppHeader + content.", tier: "free", status: "shipped", isNew: true },
   { name: "Auth Card", href: "/docs/auth-card", description: "Sign-in and sign-up blocks with social login.", tier: "free", status: "shipped", isNew: true },
   { name: "Calendar", href: "/docs/calendar", description: "Full month view with event pills.", tier: "pro", status: "shipped" },
   { name: "Data Grid", href: "/docs/data-grid", description: "Editable spreadsheet with selection, filters, and live summaries.", tier: "free", status: "shipped", isNew: true },
@@ -187,6 +190,46 @@ const templates: Entry[] = [
     name: "AI 对话",
     href: "/docs/ai-chat-template",
     description: "全页 AiChat：标题栏 + transcript + composer。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "AI 助手",
+    href: "/docs/ai-assistant-template",
+    description: "多会话侧栏 + AiChat，对标 ChatGPT / vercel/chatbot。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "图像生成",
+    href: "/docs/ai-image-template",
+    description: "Creative 生图工作室整页壳。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "视频生成",
+    href: "/docs/ai-video-template",
+    description: "Motion 视频工作室整页壳。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "AI Playground",
+    href: "/docs/ai-playground-template",
+    description: "调参轨 + 提示 / 输出，对标 OpenAI Playground。",
+    tier: "free",
+    status: "shipped",
+    isNew: true,
+  },
+  {
+    name: "AI Agent",
+    href: "/docs/ai-agent-template",
+    description: "推理 · 工具调用 · 任务轨迹侧栏。",
     tier: "free",
     status: "shipped",
     isNew: true,

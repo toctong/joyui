@@ -1,0 +1,87 @@
+---
+title: "图像生成"
+description: "AI 图像工作室：提示词对话 + 画廊 / 风格侧栏。"
+status: new
+---
+import { DemoFrame } from "@/components/demos/sandpack-preview";
+import { DocApiSection } from "@/components/docs-api-section";
+import { ImageGeneration } from "@joyui/react";
+
+对话式提示词生成图像，右侧画廊与风格面板可复用。可接你自己的生图 API：`onSubmit` 收到提示词后回填 `messages` / `gallery`。整页模板见 [图像生成模板](/docs/ai-image-template)。
+
+<DemoFrame
+  fileName="image-generation.tsx"
+  code={`import { ImageGeneration } from "@joyui/react";
+
+<div className="h-[640px] w-full">
+  <ImageGeneration />
+</div>`}
+  canvasClassName="min-h-[640px] items-stretch justify-stretch p-0 sm:p-0"
+>
+  <div className="h-[640px] w-full">
+    <ImageGeneration />
+  </div>
+</DemoFrame>
+
+## 安装
+
+```bash
+pnpm add @joyui/react
+```
+
+```tsx
+import { ImageGeneration } from "@joyui/react";
+// 或
+import { ImageGeneration } from "@joyui/react/ai";
+```
+
+## 用法
+
+```tsx
+<ImageGeneration
+  aspect="1:1"
+  models={[
+    { id: "fable-5", name: "Fable 5" },
+    { id: "fable-pro", name: "Fable Pro" },
+  ]}
+  onSubmit={(prompt, meta) => {
+    // meta: { aspect, styleId, modelId }
+    // 调用你的生图接口，再更新 messages / gallery
+  }}
+/>
+```
+
+自定义消息与画廊：
+
+```tsx
+<ImageGeneration
+  messages={[
+    { id: "u1", role: "user", text: "一只在月球上的猫" },
+    {
+      id: "a1",
+      role: "assistant",
+      resultLabel: "生成图像",
+      asset: { id: "img1", src: "/demo/cat.png", alt: "猫", ratio: 1 },
+    },
+  ]}
+  gallery={[{ id: "img1", src: "/demo/cat.png", alt: "猫", ratio: 1 }]}
+/>
+```
+
+扩展输入与侧栏：
+
+```tsx
+<ImageGeneration
+  sidePanel={false}
+  showComposerFooter={false}
+  composerProps={{ showMic: false, showAttach: false }}
+  headerActions={<YourMenu />}
+  renderComposer={({ value, setValue, submit, busy }) => (
+    <YourPromptBar value={value} onChange={setValue} onSubmit={submit} busy={busy} />
+  )}
+/>
+```
+
+## API
+
+<DocApiSection slug="image-generation" />

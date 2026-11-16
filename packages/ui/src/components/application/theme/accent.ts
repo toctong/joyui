@@ -13,19 +13,22 @@ export const ACCENT_CHANGE_EVENT = "JoyUI:accent-change";
 
 export type AccentPreset = {
   id: AccentId;
+  /** English label (docs / a11y fallback). */
   label: string;
+  /** Chinese label for settings / admin surfaces. */
+  labelZh: string;
   /** Swatch for the switcher UI (≈ accent-500). */
   swatch: string;
 };
 
 /** Public preset list — keep in sync with `[data-accent]` rules in theme.css. */
 const ACCENT_PRESETS_LIST: AccentPreset[] = [
-  { id: "blue", label: "Blue", swatch: "#3b82f6" },
-  { id: "violet", label: "Violet", swatch: "#8b5cf6" },
-  { id: "teal", label: "Teal", swatch: "#14b8a6" },
-  { id: "orange", label: "Orange", swatch: "#f97316" },
-  { id: "rose", label: "Rose", swatch: "#f43f5e" },
-  { id: "mono", label: "Mono", swatch: "#71717a" },
+  { id: "blue", label: "Blue", labelZh: "蓝色", swatch: "#3b82f6" },
+  { id: "violet", label: "Violet", labelZh: "紫色", swatch: "#8b5cf6" },
+  { id: "teal", label: "Teal", labelZh: "青色", swatch: "#14b8a6" },
+  { id: "orange", label: "Orange", labelZh: "橙色", swatch: "#f97316" },
+  { id: "rose", label: "Rose", labelZh: "玫红", swatch: "#f43f5e" },
+  { id: "mono", label: "Mono", labelZh: "灰色", swatch: "#71717a" },
 ];
 
 export { ACCENT_PRESETS_LIST as ACCENT_PRESETS };
