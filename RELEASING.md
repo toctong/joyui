@@ -1,9 +1,6 @@
 # Releasing
 
-npm 发布为**本地手动**流程（不走 GitHub Actions）。文档站由 Vercel workflows 部署：
-
-- `vercel-production.yml` — `main` 推送后更新生产文档站
-- `vercel-preview.yml` — PR 预览
+仓库默认直接在 `main` 上操作（不强制 PR）。npm 发布为**本地手动**流程；文档站由 `vercel-production.yml` 在推送 `main` 后部署。
 
 ## 包
 

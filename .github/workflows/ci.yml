@@ -1,10 +1,8 @@
-# PR / main：类型检查、测试、构建（对齐成熟组件库 CI）
+# main：类型检查、测试、构建（直接推 main，不走 PR）
 name: CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
     branches: [main]
 
 concurrency:
@@ -48,8 +46,3 @@ jobs:
 
       - name: Pack dry-run (@joyui/react)
         run: pnpm --filter @joyui/react exec npm pack --dry-run
-
-      - name: Changeset status (PR only)
-        if: github.event_name == 'pull_request'
-        run: pnpm changeset status --since=origin/main
-        continue-on-error: true

@@ -60,4 +60,4 @@ pnpm registry:build
 pnpm --filter @joyui/docs dev
 ```
 
-发版见 `RELEASING.md`（本地手动 npm）；贡献见 `CONTRIBUTING.md`。CI：`ci.yml`（检查）+ `vercel-*.yml`（文档站）。
+发版见 `RELEASING.md`（本地手动 npm）；贡献见 `CONTRIBUTING.md`。直接推 `main`：`ci.yml` 检查 + `vercel-production.yml` 部署文档站。

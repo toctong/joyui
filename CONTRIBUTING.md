@@ -36,15 +36,25 @@ pnpm --filter @joyui/react build
 pnpm --filter @joyui/cli build
 ```
 
+## 分支
+
+默认直接在 `main` 上开发与推送，不强制 PR。
+
+推 `main` 后：
+- `ci.yml` 跑检查
+- `vercel-production.yml` 部署文档站
+
 ## 发版
 
-用 Changesets（见 [RELEASING.md](./RELEASING.md)）：
+用 Changesets（见 [RELEASING.md](./RELEASING.md)），本地手动：
 
 ```bash
 pnpm changeset
+pnpm version-packages
+# 然后 npm publish / changeset publish
 ```
 
-提交 PR 时附带 changeset；合并到 `main` 后由维护者按 [RELEASING.md](./RELEASING.md) **本地手动**发版（CI 不自动 publish）。文档站由 Vercel workflow 部署。
+CI 不自动发 npm。
 
 ## 设计约定
 
