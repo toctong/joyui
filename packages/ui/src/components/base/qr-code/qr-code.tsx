@@ -104,7 +104,7 @@ export function QrCode({
       )}
       {overlay ? (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="rounded-lg bg-background-primary-default p-1 shadow-xs ring-1 ring-border-secondary-default">
+          <div className="rounded-lg border border-border-secondary-default bg-background-primary-default p-1 shadow-xs">
             {overlay}
           </div>
         </div>

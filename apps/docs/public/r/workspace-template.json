@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "workspace-template",
+  "type": "registry:ui",
+  "title": "Workspace Template",
+  "description": "Workspace Template component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [
+    "@remixicon/react"
+  ],
+  "registryDependencies": [
+    "dashboard",
+    "profile-cards",
+    "utils",
+    "week-range-pill"
+  ],
+  "files": [
+    {
+      "path": "components/ui/workspace-template/workspace-template.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport {\n  RiBriefcaseLine,\n  RiDashboardLine,\n  RiFolder3Line,\n  RiMailLine,\n  RiMapPinLine,\n  RiSettings4Line,\n  RiUserLine,\n} from \"@remixicon/react\";\nimport {\n  DashboardSidebar,\n  type DashboardNavItem,\n} from \"@/components/ui/dashboard/dashboard-sidebar\";\nimport { StatCards } from \"@/components/ui/dashboard/stat-cards\";\nimport { AlertFeedCard } from \"@/components/ui/profile-cards/alert-feed-card\";\nimport { ProfileInfoCard } from \"@/components/ui/profile-cards/profile-info-card\";\nimport { WeekRangePill } from \"@/components/ui/week-range-pill/week-range-pill\";\nimport { cx } from \"@/lib/utils\";\n\nexport const WORKSPACE_NAV: DashboardNavItem[] = [\n  { key: \"home\", label: \"工作台\", icon: RiDashboardLine, href: \"#\" },\n  { key: \"projects\", label: \"项目\", icon: RiFolder3Line, href: \"#\" },\n  { key: \"people\", label: \"成员\", icon: RiUserLine, href: \"#\" },\n  { key: \"settings\", label: \"设置\", icon: RiSettings4Line, href: \"#\" },\n];\n\nexport type WorkspaceTemplateProps = {\n  className?: string;\n  selected?: string;\n  header?: ReactNode;\n  profile?: ReactNode;\n  feed?: ReactNode;\n};\n\n/**\n * Workspace dashboard: sidebar + stats + profile card + alert feed.\n */\nexport function WorkspaceTemplate({\n  className,\n  selected = \"home\",\n  header,\n  profile,\n  feed,\n}: WorkspaceTemplateProps = {}) {\n  return (\n    <div\n      className={cx(\n        \"relative flex h-full min-h-[640px] w-full gap-4 overflow-hidden bg-background-full p-3\",\n        className,\n      )}\n    >\n      <DashboardSidebar\n        items={WORKSPACE_NAV}\n        selected={selected}\n        showThemeToggle\n        className=\"flex\"\n      />\n\n      <main className=\"relative flex min-h-0 min-w-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto bg-background-full sm:pt-3\">\n        <div className=\"flex w-full max-w-[1100px] flex-col gap-4 self-center px-1 pb-4\">\n          <header className=\"flex flex-wrap items-center justify-between gap-3\">\n            <div>\n              <h1 className=\"text-title-1-medium text-text-primary\">工作台</h1>\n              <p className=\"text-body-2-regular text-text-secondary\">\n                成员资料、本周动态与关键指标\n              </p>\n            </div>\n            <WeekRangePill label=\"本周\" />\n            {header}\n          </header>\n\n          <StatCards />\n\n          <div className=\"grid gap-4 lg:grid-cols-[240px_minmax(0,1fr)]\">\n            {profile ?? (\n              <ProfileInfoCard\n                name=\"Alex Chen\"\n                initials=\"AC\"\n                details={[\n                  { icon: RiUserLine, label: \"角色\", value: \"产品设计师\" },\n                  { icon: RiBriefcaseLine, label: \"团队\", value: \"Growth\" },\n                  { icon: RiMailLine, label: \"邮箱\", value: \"alex@joyui.dev\" },\n                  { icon: RiMapPinLine, label: \"地点\", value: \"上海\" },\n                ]}\n              />\n            )}\n            {feed ?? <AlertFeedCard />}\n          </div>\n        </div>\n      </main>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "WorkspaceTemplate"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

@@ -125,6 +125,90 @@
       }
     },
     {
+      "name": "ai-chat-template",
+      "type": "registry:ui",
+      "title": "Ai Chat Template",
+      "description": "Ai Chat Template component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [
+        "ai-kit",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/ai-chat-template/ai-chat-template.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AiChatTemplate"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "ai-kit",
+      "type": "registry:ui",
+      "title": "AI Kit",
+      "description": "Built-in AI SDK chat kit (AiChat / AiConversation / AiMessage / useChat). Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "agent-thinking",
+        "chat-message",
+        "citation",
+        "message-actions",
+        "prompt-suggestions",
+        "reasoning-block",
+        "tool-call",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/ai-kit/ai-chat.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/ai-kit/ai-composer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/ai-kit/ai-conversation.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/ai-kit/ai-message.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/ai-kit/ai-sdk.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/ai-kit/message-parts.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AiChat",
+          "AiComposer",
+          "AiConversation",
+          "AiMessage",
+          "DefaultChatTransport"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
@@ -239,6 +323,32 @@
         "exports": [
           "AuthCard",
           "AuthMediaCarousel"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "auth-template",
+      "type": "registry:ui",
+      "title": "Auth Template",
+      "description": "Auth Template component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [
+        "auth-card",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/auth-template/auth-template.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AuthTemplate"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -883,7 +993,8 @@
       "registryDependencies": [
         "dropdown",
         "template-copy",
-        "utils"
+        "utils",
+        "voice-ring"
       ],
       "files": [
         {
@@ -1071,13 +1182,13 @@
         "direction",
         "icons",
         "kbd",
-        "medical",
         "segmented-control",
         "settings-modal",
         "template-copy",
         "theme-toggle",
         "tooltip",
-        "utils"
+        "utils",
+        "week-range-pill"
       ],
       "files": [
         {
@@ -2219,8 +2330,10 @@
         "avatar",
         "button",
         "date-picker",
+        "profile-cards",
         "template-copy",
-        "utils"
+        "utils",
+        "week-range-pill"
       ],
       "files": [
         {
@@ -2234,14 +2347,25 @@
         {
           "path": "components/ui/medical/week-range-pill.tsx",
           "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/profile-cards/alert-feed-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/profile-cards/profile-info-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/week-range-pill/week-range-pill.tsx",
+          "type": "registry:ui"
         }
       ],
       "meta": {
         "importFrom": "@joyui/react",
         "exports": [
           "ImportantAlertsCard",
-          "PatientInfoCard",
-          "WeekRangePill"
+          "PatientInfoCard"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -2659,6 +2783,42 @@
           "Popover",
           "PopoverHeader",
           "PopoverFooter"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "profile-cards",
+      "type": "registry:ui",
+      "title": "Profile Cards",
+      "description": "Profile Cards component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "template-copy",
+        "utils",
+        "week-range-pill"
+      ],
+      "files": [
+        {
+          "path": "components/ui/profile-cards/alert-feed-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/profile-cards/profile-info-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "AlertFeedCard",
+          "ProfileInfoCard"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",
@@ -3798,6 +3958,14 @@
       ],
       "files": [
         {
+          "path": "components/ui/theme/accent-switcher.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/theme/accent.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "components/ui/theme/theme-toggle.tsx",
           "type": "registry:ui"
         }
@@ -3805,6 +3973,8 @@
       "meta": {
         "importFrom": "@joyui/react",
         "exports": [
+          "AccentSwitcher",
+          "ACCENT_PRESETS",
           "ThemeToggle"
         ],
         "npm": "@joyui/react",
@@ -4169,6 +4339,63 @@
         "importFrom": "@joyui/react",
         "exports": [
           "WebSearch"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "week-range-pill",
+      "type": "registry:ui",
+      "title": "Week Range Pill",
+      "description": "Week Range Pill component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [],
+      "registryDependencies": [
+        "date-picker",
+        "template-copy",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/ui/week-range-pill/week-range-pill.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "WeekRangePill"
+        ],
+        "npm": "@joyui/react",
+        "styles": "@joyui/react/styles.css",
+        "preferredInstall": "pnpm add @joyui/react"
+      }
+    },
+    {
+      "name": "workspace-template",
+      "type": "registry:ui",
+      "title": "Workspace Template",
+      "description": "Workspace Template component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+      "dependencies": [
+        "@remixicon/react"
+      ],
+      "registryDependencies": [
+        "dashboard",
+        "profile-cards",
+        "utils",
+        "week-range-pill"
+      ],
+      "files": [
+        {
+          "path": "components/ui/workspace-template/workspace-template.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "importFrom": "@joyui/react",
+        "exports": [
+          "WorkspaceTemplate"
         ],
         "npm": "@joyui/react",
         "styles": "@joyui/react/styles.css",

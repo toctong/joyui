@@ -226,7 +226,7 @@ export function inputFieldClassName(
     isDisabled &&
       (outline
         ? "border-border-secondary-default bg-background-primary-disabled text-input-disabled-foreground shadow-none"
-        : "bg-input-disabled-background text-input-disabled-foreground ring-border-secondary-default/70"),
+        : "bg-input-disabled-background text-input-disabled-foreground ring-border-secondary-default"),
     // Invalid
     isInvalid &&
       (outline

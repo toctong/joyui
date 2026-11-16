@@ -364,9 +364,10 @@ export function DataGrid<T extends object>({
   function keyDown(event: KeyboardEvent<HTMLDivElement>) {
     if (event.target !== gridRef.current || editing) return;
     const command = event.ctrlKey || event.metaKey;
-    if (command && event.key.toLowerCase() === "z") { event.preventDefault(); travelHistory(!event.shiftKey); return; }
-    if (command && event.key.toLowerCase() === "y") { event.preventDefault(); travelHistory(false); return; }
-    if (command && event.key.toLowerCase() === "a") {
+    const key = event.key?.toLowerCase();
+    if (command && key === "z") { event.preventDefault(); travelHistory(!event.shiftKey); return; }
+    if (command && key === "y") { event.preventDefault(); travelHistory(false); return; }
+    if (command && key === "a") {
       event.preventDefault();
       if (rows.length && visibleColumns.length) setRange({ anchor: { rowId: getRowId(rows[0]), columnKey: visibleColumns[0].key }, focus: { rowId: getRowId(rows[rows.length - 1]), columnKey: visibleColumns[visibleColumns.length - 1].key } });
       return;

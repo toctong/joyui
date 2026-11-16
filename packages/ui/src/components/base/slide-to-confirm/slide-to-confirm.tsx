@@ -184,7 +184,7 @@ export function SlideToConfirm({
           // so it doesn't dissolve into dark tertiary fills.
           "absolute top-1 z-10 flex size-9 items-center justify-center rounded-full touch-none",
           "bg-background-secondary-default text-foreground-icon-primary shadow-xs",
-          "ring-1 ring-border-secondary-default",
+          "border border-border-secondary-default",
           "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-border-focus-ring",
           !dragging && cx("transition-transform duration-150", EASE),
           done && "text-accent-600",

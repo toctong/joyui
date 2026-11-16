@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auth-template",
+  "type": "registry:ui",
+  "title": "Auth Template",
+  "description": "Auth Template component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [
+    "auth-card",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/auth-template/auth-template.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport { AuthCard, type AuthCardProps } from \"@/components/ui/auth/auth-card\";\nimport { cx } from \"@/lib/utils\";\n\nexport type AuthTemplateProps = AuthCardProps & {\n  frameClassName?: string;\n  mediaSlot?: ReactNode;\n  /** When true, uses `media` or `mediaSlot` for the split pane. */\n  withMedia?: boolean;\n};\n\n/** Full-viewport auth page: centered or media-split AuthCard. */\nexport function AuthTemplate({\n  frameClassName,\n  className,\n  withMedia = false,\n  mediaSlot,\n  media,\n  mode = \"signin\",\n  layout = \"inline\",\n  ...cardProps\n}: AuthTemplateProps) {\n  // AuthMediaCarousel requires `slides` — pass `media` / `mediaSlot` yourself\n  // when you want the split layout (see AuthCard docs).\n  const resolvedMedia = media ?? (withMedia ? mediaSlot : undefined);\n\n  return (\n    <div\n      className={cx(\n        \"flex min-h-[640px] w-full items-center justify-center bg-background-secondary-default p-4 sm:p-8\",\n        frameClassName,\n      )}\n    >\n      <AuthCard\n        mode={mode}\n        layout={layout}\n        media={resolvedMedia}\n        className={className}\n        {...cardProps}\n      />\n    </div>\n  );\n}\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "AuthTemplate"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

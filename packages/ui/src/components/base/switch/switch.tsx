@@ -131,7 +131,7 @@ export function SwitchTrack({
             s.chipRadius[shape],
             state.isSelected
               ? "border-accent-600 from-switch-on-chip-start to-switch-on-chip-end"
-              : "border-border-button-default/50 from-switch-off-chip-start to-switch-off-chip-end",
+              : "border-border-button-default from-switch-off-chip-start to-switch-off-chip-end",
           )}
         />
       </span>

@@ -115,7 +115,8 @@ export function CommandPalette({
   useEffect(() => {
     if (shortcut === false) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== shortcut.toLowerCase()) return;
+      const key = event.key?.toLowerCase();
+      if (!(event.metaKey || event.ctrlKey) || !key || key !== shortcut.toLowerCase()) return;
       event.preventDefault();
       setOpen(!isOpen);
     };

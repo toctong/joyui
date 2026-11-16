@@ -32,6 +32,14 @@ const FOLDER_MAP = {
     "application/composer-loader",
     "application/composer-panel",
   ],
+  "profile-cards": ["application/profile-cards"],
+  "week-range-pill": ["base/week-range-pill"],
+  // Legacy slug: alias re-exports + real sources so `cli add medical` still works.
+  medical: [
+    "application/medical",
+    "application/profile-cards",
+    "base/week-range-pill",
+  ],
   format: null,
   utils: null,
   brand: ["foundations/brand"],

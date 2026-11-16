@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-chat-template",
+  "type": "registry:ui",
+  "title": "Ai Chat Template",
+  "description": "Ai Chat Template component from @joyui/react. Prefer npm: pnpm add @joyui/react",
+  "dependencies": [],
+  "registryDependencies": [
+    "ai-kit",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/ai-chat-template/ai-chat-template.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport { AiChat, type AiChatProps } from \"@/components/ui/ai-kit/ai-chat\";\nimport { cx } from \"@/lib/utils\";\n\nexport type AiChatTemplateProps = AiChatProps & {\n  title?: ReactNode;\n  description?: ReactNode;\n};\n\n/**\n * Full-page AI chat shell: transcript + composer wired to AI SDK `useChat`.\n */\nexport function AiChatTemplate({\n  title = \"AI 对话\",\n  description = \"内置 useChat · 可换 TipTap Composer\",\n  className,\n  ...chatProps\n}: AiChatTemplateProps) {\n  return (\n    <div\n      className={cx(\n        \"flex h-full min-h-[560px] w-full flex-col overflow-hidden rounded-[20px] border border-border-button-default bg-background-primary-default shadow-xs\",\n        className,\n      )}\n    >\n      <header className=\"flex shrink-0 flex-col gap-0.5 border-b border-separator-border px-5 py-4\">\n        <h2 className=\"text-title-2-medium text-text-primary\">{title}</h2>\n        {description ? (\n          <p className=\"text-body-2-regular text-text-secondary\">{description}</p>\n        ) : null}\n      </header>\n      <AiChat\n        className=\"min-h-0 flex-1 border-0 bg-transparent shadow-none\"\n        emptyTitle=\"开始提问\"\n        emptyLabel=\"试试下面的建议，或直接输入。\"\n        {...chatProps}\n      />\n    </div>\n  );\n}\n"
+    }
+  ],
+  "meta": {
+    "importFrom": "@joyui/react",
+    "exports": [
+      "AiChatTemplate"
+    ],
+    "npm": "@joyui/react",
+    "styles": "@joyui/react/styles.css",
+    "preferredInstall": "pnpm add @joyui/react"
+  }
+}

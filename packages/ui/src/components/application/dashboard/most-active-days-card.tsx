@@ -166,7 +166,7 @@ export function MostActiveDaysCard({ className }: { className?: string }) {
                 className={cx(
                   "flex h-12 flex-col items-center justify-center gap-0.5 rounded-xl outline-none transition-colors",
                   selected === day
-                    ? "bg-background-secondary-hover ring-1 ring-border-button-default"
+                    ? "border border-border-button-default bg-background-secondary-hover"
                     : "hover:bg-background-secondary-default",
                 )}
               >
