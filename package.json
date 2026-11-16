@@ -16,7 +16,7 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm test && pnpm build && changeset publish",
-    "release:publish": "pnpm catalog:gen && pnpm --filter @joyui/react build && pnpm --filter @joyui/cli build && changeset publish --registry https://registry.npmjs.org"
+    "release:publish": "pnpm catalog:gen && pnpm --filter @joyui/react build && pnpm --filter @joyui/cli build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
